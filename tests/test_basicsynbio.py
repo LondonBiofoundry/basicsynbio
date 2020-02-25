@@ -1,5 +1,5 @@
 # Uses pytest
-import basicsynbio
+from basicsynbio import basicsynbio
 import pytest
 from Bio import SeqRecord
 from Bio import SeqIO
@@ -24,3 +24,10 @@ def test_basic_slice_ip_first(generic_basic_part):
     sliced_part = generic_basic_part.basic_slice()
     presliced_part = SeqIO.read("sliced_basic_part_ip.gb", "genbank")
     assert sliced_part.seq == presliced_part.seq
+
+def test_basic_slice_is_first():
+    part = basicsynbio.import_basic_part("is_first_part.gb", "genbank")
+    sliced_part = part.basic_slice()
+    presliced_part = SeqIO.read("sliced_basic_part_is.gb", "genbank")
+    assert sliced_part.seq == presliced_part.seq
+
