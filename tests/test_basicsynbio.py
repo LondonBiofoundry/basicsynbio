@@ -4,13 +4,13 @@ import pytest
 
 @pytest.fixture
 def gfp_basicpart():
-    return basicsynbio.import_basic_part("BASIC_sfGFP_ORF.1.gb", "genbank")
+    return basicsynbio.import_basic_part("genbank_files/BASIC_sfGFP_ORF.1.gb", "genbank")
 
 
 @pytest.fixture
 def gfp_seqrec():
     from Bio import SeqIO
-    return SeqIO.read("BASIC_sfGFP_ORF.1.gb", "genbank")
+    return SeqIO.read("genbank_files/BASIC_sfGFP_ORF.1.gb", "genbank")
 
 @pytest.fixture
 def gfp_orf_seq(gfp_seqrec):
@@ -20,14 +20,14 @@ def gfp_orf_seq(gfp_seqrec):
 @pytest.fixture
 def cmr_p15a_basicpart():
     return basicsynbio.import_basic_part(
-        "BASIC_SEVA_37_CmR-p15A.1.gb", "genbank"
+        "genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank"
     )
 
 
 @pytest.fixture
 def cmr_p15a_backbone():
     from Bio import SeqIO
-    cmr_p15a_backbone = SeqIO.read("BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
+    cmr_p15a_backbone = SeqIO.read("genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
     prefix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
     suffix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Suffix"])
     return cmr_p15a_backbone[int(prefix.location.end):] \
@@ -47,9 +47,18 @@ def feature_from_qualifier(seqrec, qualifier_key, qualifier_value):
     raise ValueError(f"{seqrec.id} lacks a feature containing a {qualifier_key}/{qualifier_value} pair in qualifiers")
 
 
+def compare_basicpart_seqrec(basicpart, seqrec):
+    """
+    returns true if basicpart == 
+
+    """
+    pass
+
+
 def test_basic_part(gfp_basicpart, gfp_seqrec):
     """
     Cannot compare features as each is an object
+
     """
     for key, value in gfp_seqrec.__dict__.items():
         if key != "features":
@@ -69,3 +78,7 @@ def test_basic_slice_is(cmr_p15a_basicpart, cmr_p15a_backbone):
 def test_basic_part_exception(gfp_orf_seq):
     with pytest.raises(basicsynbio_exceptions.PartException):
         basicsynbio.BasicPart(gfp_orf_seq, "sfGFP")
+
+
+# def test_basic_assembly(five_part_assembly):
+    
