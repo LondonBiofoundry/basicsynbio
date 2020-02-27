@@ -69,4 +69,3 @@ def test_basic_slice_is(cmr_p15a_basicpart, cmr_p15a_backbone):
 def test_basic_part_exception(gfp_orf_seq):
     with pytest.raises(basicsynbio_exceptions.PartException):
         basicsynbio.BasicPart(gfp_orf_seq, "sfGFP")
-
