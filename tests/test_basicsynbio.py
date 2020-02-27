@@ -2,6 +2,10 @@ from basicsynbio import basicsynbio, basicsynbio_exceptions
 import pytest
 
 
+class ComparisonException(Exception):
+    pass
+
+
 @pytest.fixture
 def gfp_basicpart():
     return basicsynbio.import_basic_part("genbank_files/BASIC_sfGFP_ORF.1.gb", "genbank")
@@ -37,7 +41,7 @@ def cmr_p15a_backbone():
 def feature_from_qualifier(seqrec, qualifier_key, qualifier_value):
     """
     Extract the feature from the seqrec that contains the corresponding
-    qualifier key/qualifier value pair. Features that
+    qualifier key/qualifier value pair.
 
     """
     for feature in seqrec.features:
@@ -49,20 +53,24 @@ def feature_from_qualifier(seqrec, qualifier_key, qualifier_value):
 
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
-    returns true if basicpart == 
+    returns true if basicpart has equivalent seqrec attributes.
+    Ignores seqrec.features as contains objects.
 
     """
-    pass
+    try:
+        for key, value in seqrec.__dict__.items():
+            if key != "features":
+                if value != getattr(basicpart, key):
+                    raise ComparisonException
+    except ComparisonException:
+        print(f"{basicpart.id} != {seqrec.id}")
+        return False
+    else:
+        return True
 
 
 def test_basic_part(gfp_basicpart, gfp_seqrec):
-    """
-    Cannot compare features as each is an object
-
-    """
-    for key, value in gfp_seqrec.__dict__.items():
-        if key != "features":
-            assert value == getattr(gfp_basicpart, key)
+    assert compare_basicpart_seqrec(gfp_basicpart, gfp_seqrec) == True
 
 
 def test_basic_slice_ip(gfp_basicpart, gfp_orf_seq):
