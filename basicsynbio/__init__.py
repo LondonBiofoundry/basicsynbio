@@ -5,5 +5,5 @@ __author__ = 'Matthew Haines <hainesm6@gmail.com>'
 __all__ = []
 
 from .main import BasicPart, BasicLinker, BasicAssembly, import_part
-from .linkers import biolegio_dict
 from .utils import feature_from_qualifier
+from .biolegio import biolegio_dict

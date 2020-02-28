@@ -10,7 +10,6 @@ setuptools.setup(
     license='MIT',
     author="Matthew Haines",
     author_email="hainesm6@gmail.com",
-    data_files=[("csv_xlsx_files", ["csv_xlsx_files/Biolegio_linker_sequences.csv"])],
     description="An open-source Python API to facilitate BASIC DNA Assembly workflows",    
     long_description=long_description,
     long_description_content_type="text/markdown",
