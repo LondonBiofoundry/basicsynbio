@@ -1,5 +1,5 @@
 import basicsynbio
-from basicsynbio import biolegio_dict
+from basicsynbio.linkers import biolegio_dict
 from basicsynbio.exceptions import PartException, AssemblyException
 import pytest
 
