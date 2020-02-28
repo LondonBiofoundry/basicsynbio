@@ -1,5 +1,6 @@
-from basicsynbio import basicsynbio, basic_exceptions, basic_utils
+from basicsynbio import basicsynbio, basic_utils
 from basicsynbio.linkers import biolegio_dict
+from basicsynbio.basic_exceptions import PartException, AssemblyException
 import pytest
 
 
@@ -94,12 +95,12 @@ def test_basic_slice_is(cmr_p15a_basicpart, cmr_p15a_backbone):
 
 
 def test_basic_part_exception(gfp_orf_seq):
-    with pytest.raises(basic_exceptions.PartException):
+    with pytest.raises(PartException):
         basicsynbio.BasicPart(gfp_orf_seq, "sfGFP")
 
 
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
-    with pytest.raises(basic_exceptions.AssemblyException):
+    with pytest.raises(AssemblyException):
         basicsynbio.BasicAssembly(gfp_basicpart, cmr_p15a_basicpart)
 
 
