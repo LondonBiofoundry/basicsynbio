@@ -1,6 +1,5 @@
 import basicsynbio
-from basicsynbio.linkers import biolegio_dict
-from basicsynbio.exceptions import PartException, AssemblyException
+import basicsynbio.main as bs_main
 import pytest
 
 
@@ -54,10 +53,10 @@ def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
          "genbank_files/BASIC_mCherry_ORF.1.gb", "genbank"
      )
      five_part_assembly = basicsynbio.BasicAssembly(
-         biolegio_dict["LMS"], cmr_p15a_basicpart, biolegio_dict["LMP"], \
-             promoter, biolegio_dict["UTR1-RBS2"], gfp_basicpart, \
-                 biolegio_dict["UTR2-RBS1"], bfp_basicpart, \
-                     biolegio_dict["UTR3-RBS1"], rfp_basicpart 
+         basicsynbio.biolegio_dict["LMS"], cmr_p15a_basicpart, basicsynbio.biolegio_dict["LMP"], \
+             promoter, basicsynbio.biolegio_dict["UTR1-RBS2"], gfp_basicpart, \
+                 basicsynbio.biolegio_dict["UTR2-RBS1"], bfp_basicpart, \
+                     basicsynbio.biolegio_dict["UTR3-RBS1"], rfp_basicpart 
      )
      return five_part_assembly._return_seqrec()
 
@@ -95,12 +94,12 @@ def test_basic_slice_is(cmr_p15a_basicpart, cmr_p15a_backbone):
 
 
 def test_basic_part_exception(gfp_orf_seq):
-    with pytest.raises(PartException):
+    with pytest.raises(bs_main.PartException):
         basicsynbio.BasicPart(gfp_orf_seq, "sfGFP")
 
 
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
-    with pytest.raises(AssemblyException):
+    with pytest.raises(bs_main.AssemblyException):
         basicsynbio.BasicAssembly(gfp_basicpart, cmr_p15a_basicpart)
 
 

@@ -3,7 +3,6 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqUtils.CheckSum import seguid
-from basicsynbio.exceptions import PartException, AssemblyException
 import datetime
 
 DATE = datetime.datetime.now()
@@ -118,6 +117,14 @@ class BasicAssembly():
         self._parts_linkers = values
 
 
+class PartException(Exception):
+    pass
+
+
+class AssemblyException(Exception):
+    pass
+
+
 def import_part(handle, format, alphabet=None):
     """
     returns a BASIC part object using Bio.SeqIO.read()
@@ -128,3 +135,4 @@ def import_part(handle, format, alphabet=None):
     for key, value in part.__dict__.items():
         setattr(basic_part, key, value)
     return basic_part
+
