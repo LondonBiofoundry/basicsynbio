@@ -1,4 +1,4 @@
-from basicsynbio.basicsynbio import BasicLinker
+from basicsynbio import BasicLinker
 import csv
 from Bio.Seq import Seq
 

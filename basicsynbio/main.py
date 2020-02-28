@@ -3,7 +3,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqUtils.CheckSum import seguid
-from basicsynbio.basic_exceptions import PartException, AssemblyException
+from basicsynbio.exceptions import PartException, AssemblyException
 import datetime
 
 DATE = datetime.datetime.now()

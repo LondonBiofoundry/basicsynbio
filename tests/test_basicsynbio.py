@@ -1,6 +1,6 @@
-from basicsynbio import basicsynbio, basic_utils
-from basicsynbio.linkers import biolegio_dict
-from basicsynbio.basic_exceptions import PartException, AssemblyException
+import basicsynbio
+from basicsynbio import biolegio_dict
+from basicsynbio.exceptions import PartException, AssemblyException
 import pytest
 
 
@@ -21,7 +21,7 @@ def gfp_seqrec():
 
 @pytest.fixture
 def gfp_orf_seq(gfp_seqrec):
-    gfp_orf_feature = basic_utils.feature_from_qualifier(gfp_seqrec, "gene", ["sfGFP"])
+    gfp_orf_feature = basicsynbio.feature_from_qualifier(gfp_seqrec, "gene", ["sfGFP"])
     return gfp_orf_feature.extract(gfp_seqrec.seq)
 
 
@@ -36,8 +36,8 @@ def cmr_p15a_basicpart():
 def cmr_p15a_backbone():
     from Bio import SeqIO
     cmr_p15a_backbone = SeqIO.read("genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
-    prefix = basic_utils.feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
-    suffix = basic_utils.feature_from_qualifier(cmr_p15a_backbone, "label", ["Suffix"])
+    prefix = basicsynbio.feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
+    suffix = basicsynbio.feature_from_qualifier(cmr_p15a_backbone, "label", ["Suffix"])
     return cmr_p15a_backbone[int(prefix.location.end):] \
         + cmr_p15a_backbone[:int(suffix.location.start)]
 
