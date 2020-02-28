@@ -1,2 +1,0 @@
-class PartException(Exception):
-    pass
