@@ -1,4 +1,7 @@
 language: python
 python:
   - "3.8"
-script: pytest
+script:
+  - coverage run -m pytest
+after_success:
+  - coveralls
