@@ -20,5 +20,8 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.8',
-    install_requires=[],
+    install_requires=[
+        "biopython>=1.76",
+        "datetime"
+    ],
 )
