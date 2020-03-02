@@ -3,6 +3,7 @@
 An open-source Python API to facilitate BASIC DNA Assembly workflows
 
 [![Build Status][travis_badge]][travis_url]
+[![Coverage Status][coverage_badge]][coverage_url]
 [![pypi badge][pypi_badge]][pypi_url]
 [![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
@@ -58,3 +59,5 @@ Originally created by `Matthew Haines - hainesm6@gmail.com`
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
 [travis_badge]: https://travis-ci.org/hainesm6/basicsynbio.svg
 [travis_url]: https://travis-ci.org/hainesm6/basicsynbio
+[coverage_badge]: https://coveralls.io/repos/github/hainesm6/basicsynbio/badge.svg?branch=master
+[coverage_url]: https://coveralls.io/github/hainesm6/basicsynbio?branch=master
