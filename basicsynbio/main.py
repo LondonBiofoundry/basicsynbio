@@ -1,4 +1,5 @@
 from Bio import SeqUtils, SeqIO
+from Bio.Alphabet import IUPAC
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -91,12 +92,15 @@ class BasicAssembly():
                 setattr(seqrec, key, value)
         return seqrec
 
-    def return_file(self, handle, format="genbank", **kwargs):
+    def return_file(self, handle, format="genbank", alphabet=IUPAC.ambiguous_dna, **kwargs):
         """
-        export BASIC assembly to "handle". Default format is genbank. **kwargs assigns Bio.SeqRecord attributes.
+        export BASIC assembly to "handle" using Bio.SeqIO.write().
+        **kwargs assigns alternative Bio.SeqRecord attributes.
 
         """
-        SeqIO.write(self._return_seqrec(**kwargs), handle, format)
+        seqrec = self._return_seqrec(**kwargs)
+        seqrec.seq.alphabet = alphabet
+        SeqIO.write(seqrec, handle, format)
 
     @property
     def parts_linkers(self):
@@ -125,14 +129,26 @@ class AssemblyException(Exception):
     pass
 
 
-def import_part(handle, format, alphabet=None):
+def import_part(handle, format):
     """
     returns a BASIC part object using Bio.SeqIO.read()
 
     """
-    part = SeqIO.read(handle, format, alphabet)
-    basic_part = BasicPart(part.seq, part.id)
-    for key, value in part.__dict__.items():
-        setattr(basic_part, key, value)
-    return basic_part
+    seqrec = SeqIO.read(handle, format)
+    return _seqrec2part(seqrec)
+    
 
+def import_parts(handle, format):
+    """
+    returns BASIC parts in a single file using Bio.SeqIO.parse()
+
+    """
+    parts = SeqIO.parse(handle, format)
+    return [_seqrec2part(part) for part in parts]
+
+
+def _seqrec2part(seqrec):
+    part = BasicPart(seqrec.seq, seqrec.id)
+    for key, value in seqrec.__dict__.items():
+        setattr(part, key, value)
+    return part

@@ -52,13 +52,12 @@ def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
      rfp_basicpart = basicsynbio.import_part(
          "genbank_files/BASIC_mCherry_ORF.1.gb", "genbank"
      )
-     five_part_assembly = basicsynbio.BasicAssembly(
+     return basicsynbio.BasicAssembly(
          basicsynbio.biolegio_dict["LMS"], cmr_p15a_basicpart, basicsynbio.biolegio_dict["LMP"], \
              promoter, basicsynbio.biolegio_dict["UTR1-RBS2"], gfp_basicpart, \
                  basicsynbio.biolegio_dict["UTR2-RBS1"], bfp_basicpart, \
                      basicsynbio.biolegio_dict["UTR3-RBS1"], rfp_basicpart 
      )
-     return five_part_assembly._return_seqrec()
 
 
 def compare_basicpart_seqrec(basicpart, seqrec):
@@ -108,5 +107,20 @@ def test_return_seqrec(five_part_assembly):
     example_assembly = SeqIO.read(
         "genbank_files/five_part_assembly.gb", "genbank"
     )
-    assert five_part_assembly.seq == example_assembly.seq
-    
+    assert five_part_assembly._return_seqrec().seq == example_assembly.seq
+
+
+def test_assembly_return_file(five_part_assembly):
+    import os
+    assembly_seqrec = five_part_assembly._return_seqrec()
+    print(assembly_seqrec.seq.alphabet)
+    five_part_assembly.return_file("test_five_part_assembly.gb")
+    os.remove("test_five_part_assembly.gb")
+
+
+def test_basic_parts_in_file():
+    import os
+    parts = basicsynbio.import_parts(
+        "genbank_files/dnabot_constructs.gb", "genbank"
+    )
+    print(parts[:5])
