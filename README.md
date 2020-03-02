@@ -1,5 +1,4 @@
 # basicsynbio
-
 An open-source Python API to facilitate BASIC DNA Assembly workflows
 
 [![Build Status][travis_badge]][travis_url]
