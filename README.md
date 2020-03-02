@@ -14,11 +14,32 @@ pip install basicsynbio
 
 ## Usage
 
-...
+Import a BASIC part, specified in a genbank file:
 
-## Development setup
+```python
+import basicsynbio as bsb
 
-...
+basic_part = bsb.import_part("basic_part.gb", "genbank")
+```
+
+Or mutliple basic_parts listed seperately in the same file:
+
+```python
+basic_parts = bsb.import_parts("basic_parts.gb", "genbank")
+```
+
+Make an assembly using several BASIC parts and any supplied [Biolegio linkers](https://www.biolegio.com/products-services/basic/), then return an annotated genbank file:
+
+```python
+assembly = bsb.BasicAssembly(
+    bsb.biolegio_dict["LMP"],
+    basic_parts[0],
+    bsb.biolegio_dict["LMS"],
+    basic_parts[1]
+)
+assembly.return_file("my_basic_assembly.gb")
+```
+
 
 ## Contributing
 
@@ -30,9 +51,9 @@ pip install basicsynbio
 
 ## Meta
 
-`Matthew Haines - hainesm6@gmail.com`
-
 This project is licensed under the MIT License - see the ``LICENSE`` file for details
+
+Originally created by `Matthew Haines - hainesm6@gmail.com`
 
 [pypi_badge]: https://img.shields.io/pypi/v/basicsynbio.svg
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
