@@ -1,4 +1,5 @@
 # basicsynbio
+
 An open-source Python API to facilitate BASIC DNA Assembly workflows
 
 [![Build Status][travis_badge]][travis_url]
@@ -39,10 +40,9 @@ assembly = bsb.BasicAssembly(
 assembly.return_file("my_basic_assembly.gb")
 ```
 
-
 ## Contributing
 
-1. Fork it (https://github.com/hainesm6/basicsynbio/fork)
+1. Fork it <https://github.com/hainesm6/basicsynbio/fork>
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -m 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
