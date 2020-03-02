@@ -59,5 +59,5 @@ Originally created by `Matthew Haines - hainesm6@gmail.com`
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
 [travis_badge]: https://travis-ci.org/hainesm6/basicsynbio.svg
 [travis_url]: https://travis-ci.org/hainesm6/basicsynbio
-[coverage_badge]: https://coveralls.io/repos/github/hainesm6/basicsynbio/badge.svg?branch=master
-[coverage_url]: https://coveralls.io/github/hainesm6/basicsynbio?branch=master
+[coverage_badge]:
+[coverage_url]:
