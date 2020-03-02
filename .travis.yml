@@ -2,6 +2,6 @@ language: python
 python:
   - "3.8"
 script:
-  - coverage run -m pytest
+  - python -m pytest --cov=basicsynbio --cov-report=term-missing
 after_success:
   - coveralls
