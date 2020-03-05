@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="basicsynbio",
-    version="0.1.1.dev1",
+    version="0.1.1.dev2",
     url="https://github.com/hainesm6/basicsynbio",
     license='MIT',
     author="Matthew Haines",
