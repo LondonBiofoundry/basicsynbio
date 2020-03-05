@@ -66,7 +66,8 @@ class BasicLinker(SeqRecord):
                 location=FeatureLocation(2, len(self.seq), strand=+1),
                 qualifiers={
                     "function": ["BASIC DNA assembly linker"],
-                    "standard_name": [f"{self.id}"]
+                    "standard_name": [str(self.id)],
+                    "note": [str(self.id)]
                 }
             )
         )
