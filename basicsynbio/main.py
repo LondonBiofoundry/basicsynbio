@@ -29,10 +29,11 @@ class BasicPart(SeqRecord):
         self._is_loc = self._find_iseq(
             self.IS_STR, "iS sequence"
         )
-        self.kwargs = kwargs
 
     def basic_slice(self):
-        returned_seqrec = SeqRecord(seq=self.seq, id=self.id, **self.kwargs)
+        returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
+        for key in returned_seqrec.__dict__.keys():
+            setattr(returned_seqrec, key, self.__dict__[key])
         if self._ip_loc < self._is_loc:
             return returned_seqrec[
                 self._ip_loc + len(self.IP_STR):self._is_loc]

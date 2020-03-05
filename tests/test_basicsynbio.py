@@ -87,9 +87,13 @@ def test_basic_slice_ip(gfp_basicpart, gfp_orf_seq):
     assert sliced_part.seq == gfp_orf_seq
 
 
-def test_basic_slice_is(cmr_p15a_basicpart, cmr_p15a_backbone):
+def test_basic_slice_is_and_features(cmr_p15a_basicpart, cmr_p15a_backbone):
     sliced_cmr_p15a = cmr_p15a_basicpart.basic_slice()
+    print(
+        f"sliced backbone features: {sliced_cmr_p15a.features}\nextracted backbone features: {cmr_p15a_backbone.features}"
+    )
     assert sliced_cmr_p15a.seq == cmr_p15a_backbone.seq
+    assert len(sliced_cmr_p15a.features) == len(cmr_p15a_backbone.features)
 
 
 def test_basic_part_exception(gfp_orf_seq):
