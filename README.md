@@ -53,8 +53,6 @@ assembly.return_file("my_basic_assembly.gb")
 
 This project is licensed under the MIT License - see the ``LICENSE`` file for details
 
-Originally created by `Matthew Haines - hainesm6@gmail.com`
-
 [pypi_badge]: https://img.shields.io/pypi/v/basicsynbio.svg
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
 [travis_badge]: https://travis-ci.org/hainesm6/basicsynbio.svg
