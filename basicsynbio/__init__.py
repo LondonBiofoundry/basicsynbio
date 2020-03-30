@@ -9,7 +9,8 @@ from .main import (
     BasicLinker,
     BasicPart,
     import_part,
-    import_parts
+    import_parts,
+    DEFAULT_ANNOTATIONS
 )
 from .utils import feature_from_qualifier
 from .biolegio import biolegio_dict
