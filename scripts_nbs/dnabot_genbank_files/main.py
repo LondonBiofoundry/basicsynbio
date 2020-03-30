@@ -23,7 +23,7 @@ def generate_vectors():
         vector.name = vector.id[:len(vector.id)-2]
         vector.annotations = bsb.DEFAULT_ANNOTATIONS
         for linker in linkers_features:
-            add_feature_seq(
+            add_feature_w_seq(
                 vector,
                 str(linker.features[0].extract(linker.seq)),
                 function=["BASIC DNA assembly linker"],
@@ -33,7 +33,7 @@ def generate_vectors():
         SeqIO.write(vector, f"{vector.id}.gb", "genbank")
 
 
-def add_feature_seq(seqrec, feature_seq, feature_type="misc_feature", **qualifiers):
+def add_feature_w_seq(seqrec, feature_seq, feature_type="misc_feature", **qualifiers):
     """
     Add a SeqFeature to a SeqRecord (seqrec) using that feature's sequence (feature_seq). Forward strand only.
     Each kwarg value in qualifiers must be given as a list e.g. key=["value"]
