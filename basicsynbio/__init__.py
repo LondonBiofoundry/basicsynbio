@@ -8,9 +8,8 @@ from .main import (
     BasicAssembly,
     BasicLinker,
     BasicPart,
+    BasicPartCreator,
     import_part,
     import_parts,
-    DEFAULT_ANNOTATIONS
 )
-from .utils import feature_from_qualifier
 from .biolegio import biolegio_dict

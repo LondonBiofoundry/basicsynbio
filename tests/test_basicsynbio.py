@@ -1,5 +1,6 @@
 import basicsynbio as bsb
 import basicsynbio.main as bsb_main
+from basicsynbio.utils import feature_from_qualifier
 import pytest
 
 
@@ -20,7 +21,7 @@ def gfp_seqrec():
 
 @pytest.fixture
 def gfp_orf_seq(gfp_seqrec):
-    gfp_orf_feature = bsb.feature_from_qualifier(gfp_seqrec, "gene", ["sfGFP"])
+    gfp_orf_feature = feature_from_qualifier(gfp_seqrec, "gene", ["sfGFP"])
     return gfp_orf_feature.extract(gfp_seqrec.seq)
 
 
@@ -35,8 +36,8 @@ def cmr_p15a_basicpart():
 def cmr_p15a_backbone():
     from Bio import SeqIO
     cmr_p15a_backbone = SeqIO.read("genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
-    prefix = bsb.feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
-    suffix = bsb.feature_from_qualifier(cmr_p15a_backbone, "label", ["Suffix"])
+    prefix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
+    suffix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Suffix"])
     return cmr_p15a_backbone[int(prefix.location.end):] \
         + cmr_p15a_backbone[:int(suffix.location.start)]
 
@@ -123,8 +124,21 @@ def test_assembly_return_file(five_part_assembly):
 
 
 def test_basic_parts_in_file():
-    import os
     parts = bsb.import_parts(
         "genbank_files/dnabot_constructs.gb", "genbank"
     )
     print(parts[:5])
+
+
+def test_basic_part_creator(gfp_orf_seq):
+    gfp_part = bsb.BasicPartCreator(
+        str(gfp_orf_seq),
+        "sfGFP",
+        annotation_type="CDS",
+        note=["fluorescent reporter protein"],
+        gene=["sfGFP"],
+    )
+    gfp_part = gfp_part.create_part()
+    assert str(gfp_part.seq) == bsb_main.IP_STR + str(gfp_orf_seq) + bsb_main.IS_STR
+    assert len(gfp_part.features) == 3
+
