@@ -56,8 +56,8 @@ def generate_parts():
                 "standard_name": [name]
             }
         elif quick_basic_part.part_type == "orf":
-            handle = f"BASIC_{quick_basic_part.abbreviation}_ORF.1.gb"
             name = quick_basic_part.abbreviation
+            handle = f"BASIC_{quick_basic_part.abbreviation}_ORF.1.gb"
             annotation_type = "CDS"
             qualifiers = {
                 "gene": [quick_basic_part.abbreviation],
