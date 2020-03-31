@@ -1,45 +1,40 @@
-LOCUS       BASIC_SEVA_18_AmpR-pUC  3354 bp    DNA     circular UNK 31-MAR-2020
-DEFINITION  Vector for BASIC DNA assembly containing mScarlet counter selection
-            marker.
-ACCESSION   BASIC_SEVA_18_AmpR-pUC
-VERSION     BASIC_SEVA_18_AmpR-pUC.1
+LOCUS       BASIC_mTagBFP2_ORF      3126 bp    DNA     circular UNK 31-MAR-2020
+DEFINITION  mTagBFP2 BASIC part stored in AmpR pUC vector.
+ACCESSION   BASIC_mTagBFP2_ORF
+VERSION     BASIC_mTagBFP2_ORF.1
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
             other sequences; artificial sequences.
 FEATURES             Location/Qualifiers
-     misc_feature    2362..2379
-                     /label="Suffix"
-     CDS             2481..3185
-                     /label="mscarlett"
-     misc_feature    40..57
-                     /label="Prefix"
-     misc_feature    2462..2473
-                     /label="RBS34"
+     misc_feature    3..57
+                     /function="BASIC DNA assembly linker"
+                     /standard_name="LMS"
+                     /note="LMS"
      regulatory      64..166
                      /label="T0"
      Promoter        257..285
                      /label="Amp prom"
      rep_origin      1308..1936
                      /label="ColE1 origin"
-     regulatory      2419..2453
-                     /label="PJ23106"
      regulatory      2248..2352
                      /label="T1"
-     regulatory      3222..3350
-                     /label="terminator_B0015"
      misc_feature    327..1187
                      /label="blaCDS"
-     misc_feature    3..57
+     misc_feature    2364..2418
                      /function="BASIC DNA assembly linker"
                      /standard_name="LMP"
                      /note="LMP"
-     misc_feature    2364..2418
-                     /function="BASIC DNA assembly linker"
-                     /standard_name="LMS"
-                     /note="LMS"
+     CDS             2419..3126
+                     /gene="mTagBFP2"
+                     /note="fluorescent reporter protein"
+                     /translation="MSELIKENMHMKLYMEGTVDNHHFKCTSEGEGKPYEGTQTMRIKV
+                     VEGGPLPFAFDILATSFLYGSKTFINHTQGIPDFFKQSFPEGFTWERVTTYEDGGVLTA
+                     TQDTSLQDGCLIYNVKIRGVNFTSNGPVMQKKTLGWEAFTETLYPADGGLEGRNDMALK
+                     LVGGSHLIANAKTTYRSKKPAKNLKMPGVYYVDYRLERIKEANNETYVEQHEVAVARYC
+                     DLPSKLGHKLNGS"
 ORIGIN
-        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccact
+        1 ggctcgggag acctatcggt aataacagtc caatctggtg taacttcgga atcgtccact
        61 agtcttggac tcctgttgat agatccagta atgacctcag aactccatct ggatttgttc
       121 agaacgctcg gttgccgccg ggcgtttttt attggtgaga atccaggggt ccccaataat
       181 tacgatttaa attagtagcc cgcctaatga gcgggctttt ttttaattcc cctatttgtt
@@ -78,21 +73,18 @@ ORIGIN
      2161 cgacaggttt cccgactgga aagcgggcag tgagcgcaac gcaattaatg tgagttagct
      2221 cactcattag gcaggcgcgc ccagctgtct agggcggcgg atttgtccta ctcaggagag
      2281 cgttcaccga caaacaacag ataaaacgaa aggcccagtc tttcgactga gcctttcgtt
-     2341 ttatttgatg cctttaatta aggctcggga gacctatcgg taataacagt ccaatctggt
-     2401 gtaacttcgg aatcgtcctt tacggctagc tcagtcctag gtatagtgct agctactagt
-     2461 gaaagaggag aaatactagt atggttagca aaggcgaggc ggttatcaag gagtttatgc
-     2521 gttttaaggt tcacatggag ggtagcatga atggtcacga gttcgagatc gagggtgaag
-     2581 gcgagggtcg tccgtacgaa ggcacccaga ccgcgaagct gaaagtgacc aagggtggcc
-     2641 cgctgccgtt cagctgggac atcctgagcc cgcagttcat gtatggcagc cgtgcgttta
-     2701 ccaaacaccc ggcggacatt ccggattact ataagcaaag cttcccggaa ggttttaaat
-     2761 gggagcgtgt tatgaacttc gaagatggtg gcgcggtgac cgttacccag gacaccagcc
-     2821 tggaggatgg caccctgatt tacaaggtga aactgcgtgg caccaacttt ccgccggatg
-     2881 gtccggttat gcagaagaaa acgatgggtt gggaagcgag caccgagcgt ctgtatccgg
-     2941 aagatggcgt gctgaagggt gatatcaaaa tggcgctgcg tctgaaggac ggtggccgtt
-     3001 acctggcgga ttttaagacc acctataaag cgaagaaacc ggtgcaaatg ccgggtgcgt
-     3061 acaacgttga ccgtaaactg gatattacca gccacaacga ggattatacc gtggttgagc
-     3121 aatatgagcg tagcgagggt cgccacagca ccggcggcat ggacgaactg tataagggat
-     3181 cctaataacg ctgatagtgc tagtgtagat cgctactaga gccaggcatc aaataaaacg
-     3241 aaaggctcag tcgaaagact gggcctttcg ttttatctgt tgtttgtcgg tgaacgctct
-     3301 ctactagagt cacactggct caccttcggg tgggcctttc tgcgtttata tact
+     2341 ttatttgatg cctttaatta aggctcgggt aagaactcgc acttcgtgga aacactatta
+     2401 tctggtgggt ctctgtccat gtccgagttg atcaaagaga acatgcatat gaaattatat
+     2461 atggaaggca ctgtagataa tcatcatttt aaatgtacgt cggaaggcga aggtaaacca
+     2521 tatgaaggta cgcagacgat gcgcatcaag gtggtggagg gcggtccgct gccattcgct
+     2581 ttcgatattt tagccacgag cttcctctac ggttctaaaa ctttcatcaa tcacacgcag
+     2641 ggtattccgg acttctttaa acagtcgttc ccggagggtt tcacctggga acgcgttacc
+     2701 acgtatgaag atggtggtgt gcttacggca acgcaggaca cgagccttca ggatgggtgt
+     2761 ttgatttaca acgtgaaaat tcgtggtgtg aacttcacgt ctaacggccc ggtgatgcag
+     2821 aaaaaaacac tgggttggga agcctttacc gaaaccctgt atccggcgga cggtggcctg
+     2881 gaaggccgta atgatatggc cttgaaatta gtcggcggtt cacacctgat cgcgaacgcg
+     2941 aaaacaacct atcgtagtaa aaaaccagcc aaaaacctga aaatgccggg cgtctactac
+     3001 gtagactacc gtctggagcg cattaaagag gcgaataatg aaacctatgt cgagcagcac
+     3061 gaagttgcgg ttgcacgcta ttgcgatctg cccagcaaac tgggccacaa gcttaatggt
+     3121 agctaa
 //
