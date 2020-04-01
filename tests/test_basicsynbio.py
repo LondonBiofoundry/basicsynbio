@@ -116,6 +116,7 @@ def test_return_seqrec(five_part_assembly):
 
 
 def test_assembly_return_file(five_part_assembly):
+    """The BASIC assembly return_file() method is required given all BASIC assemblies might not be BASIC parts."""
     import os
     assembly_seqrec = five_part_assembly._return_seqrec()
     print(assembly_seqrec.seq.alphabet)
@@ -142,3 +143,16 @@ def test_basic_part_creator(gfp_orf_seq):
     assert str(gfp_part.seq) == bsb_main.IP_STR + str(gfp_orf_seq) + bsb_main.IS_STR
     assert len(gfp_part.features) == 3
 
+
+def test_return_part(five_part_assembly):
+    imported_part = bsb.import_part("genbank_files/five_part_assembly.gb", "genbank")
+    api_part = five_part_assembly.return_part("five part assembly")
+    assert api_part.seq == imported_part.seq
+    assert dir(api_part) == dir(imported_part)
+
+
+def test_export_to_file(gfp_basicpart):
+    import os
+    handle = "gfp_basicpart.gb"
+    bsb.export_to_file(gfp_basicpart, handle, "genbank")
+    os.remove(handle)

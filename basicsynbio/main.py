@@ -21,6 +21,11 @@ IS_STR = "GGCTCGGGAGACCTATCG"
 
 
 class BasicPart(SeqRecord):
+    """A DNA sequence that can be used in a BASIC DNA assembly.
+
+    All sequences must contain intergated prefix and suffix sequences.
+    """
+
     def __init__(self, seq, id, **kwargs):
         super().__init__(seq=seq, id=id, **kwargs)
         self._ip_loc = self._find_iseq(
@@ -60,14 +65,14 @@ def _seqrec2part(seqrec):
 
 
 class BasicPartCreator():
-    """class for making new BASIC parts."""
+    """class for making new BASIC parts from strings."""
 
     def __init__(
         self, str_seq, id,
         annotation_type="misc_feature", start=0, end=None,
         **qualifiers: list
     ):
-        """Returns an annotated SeqRecord from a string and id.
+        """Return an annotated SeqRecord from a string and id.
         
         Args:
         annotation_type -- equivalent to Bio.SeqFeature type
@@ -78,6 +83,10 @@ class BasicPartCreator():
         self._seqrec = self._create_seqrec(str_seq, id, annotation_type, start, end, **qualifiers)
 
     def create_part(self, add_i_seqs=True):
+        """Return BASIC part.
+        
+        add_i_seqs -- if True, will append annotated BASIC iP & iS sequences
+        """
         if add_i_seqs:
             ip_seqrec = self._create_seqrec(IP_STR, "iP", note=["BASIC integrated prefix"])
             is_seqrec = self._create_seqrec(IS_STR, "iS", note=["BASIC integrated prefix"])
@@ -119,10 +128,27 @@ class BasicLinker(SeqRecord):
 
 class BasicAssembly():
     def __init__(self, *parts_linkers):
-        """BasicAssembly class requires alternating BasicPart and BasicLinkers."""
+        """BasicAssembly class requires alternating BasicPart and BasicLinkers in any order."""
         self.parts_linkers = parts_linkers
 
-    def _return_seqrec(self, **kwargs):
+    def return_part(self, id, alphabet=IUPAC.ambiguous_dna, **kwargs):
+        """Return a new BASIC part from this assembly.
+
+        id -- identifier of the new part.
+        alphabet -- refer to Bio.Alphabet, required for IO.
+        **kwargs -- passed into the BasicPart constructor.
+        """
+        return _seqrec2part(self._return_seqrec(id=id, alphabet=alphabet, **kwargs))
+    
+    def return_file(self, handle, format="genbank", alphabet=IUPAC.ambiguous_dna, **kwargs):
+        """Export BASIC assembly to "handle" using Bio.SeqIO.write().
+        
+        **kwargs -- assigns alternative Bio.SeqRecord attributes.
+        """
+        seqrec = self._return_seqrec(alphabet, **kwargs)
+        SeqIO.write(seqrec, handle, format)
+
+    def _return_seqrec(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
         seqrec = SeqRecord(Seq(str()))
         for part_linker in self.parts_linkers:
             seqrec += part_linker.basic_slice()
@@ -130,19 +156,11 @@ class BasicAssembly():
         seqrec.name = "BASIC_construct_" + seqrec.id
         seqrec.description = f"BASIC DNA Assembly of {[part_linker.id for part_linker in self.parts_linkers]}"
         seqrec.annotations = DEFAULT_ANNOTATIONS
+        seqrec.seq.alphabet = alphabet
         if kwargs:
             for key, value in kwargs.items():
                 setattr(seqrec, key, value)
         return seqrec
-
-    def return_file(self, handle, format="genbank", alphabet=IUPAC.ambiguous_dna, **kwargs):
-        """Export BASIC assembly to "handle" using Bio.SeqIO.write().
-        
-        **kwargs -- assigns alternative Bio.SeqRecord attributes.
-        """
-        seqrec = self._return_seqrec(**kwargs)
-        seqrec.seq.alphabet = alphabet
-        SeqIO.write(seqrec, handle, format)
 
     @property
     def parts_linkers(self):
@@ -172,12 +190,17 @@ class AssemblyException(Exception):
 
 
 def import_part(handle, format):
-    """Returns a BASIC part object using Bio.SeqIO.read()."""
+    """Return a BASIC part object using Bio.SeqIO.read()."""
     seqrec = SeqIO.read(handle, format)
     return _seqrec2part(seqrec)
     
 
 def import_parts(handle, format):
-    """Returns BASIC parts in a single file using Bio.SeqIO.parse()."""
+    """Return BASIC parts in a single file using Bio.SeqIO.parse()."""
     parts = SeqIO.parse(handle, format)
     return [_seqrec2part(part) for part in parts]
+
+
+def export_to_file(parts, handle, format):
+    """Exports BasicPart/s using Bio.SeqIO.write()."""
+    SeqIO.write(parts, handle, format)

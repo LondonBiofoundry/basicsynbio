@@ -9,6 +9,7 @@ from .main import (
     BasicLinker,
     BasicPart,
     BasicPartCreator,
+    export_to_file,
     import_part,
     import_parts,
 )

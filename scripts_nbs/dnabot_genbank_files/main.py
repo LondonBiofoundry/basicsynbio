@@ -41,7 +41,7 @@ def generate_vectors():
                 standard_name=[str(linker.id)],
                 note=[str(linker.id)]
             )
-        SeqIO.write(vector, (PARTS_DIR / f"{vector.id}.gb"), "genbank")
+        bsb.export_to_file(vector, (PARTS_DIR / f"{vector.id}.gb"), "genbank")
 
 
 @dataclass
@@ -140,14 +140,13 @@ def generate_constructs():
                 assembly = bsb.BasicAssembly(
                     *(identify_basic_part(part, parts_linkers) for part in row[1:])
                 )
-                assembly = assembly._return_seqrec(
+                assembly = assembly.return_part(
                     id=f"dnabot_{row[0]}",
                     name=f"dnabot_{row[0]}",
                     annotations=DEFAULT_ANNOTATIONS
                 )
-                assembly.seq.alphabet = IUPAC.unambiguous_dna
                 assemblies.append(assembly)
-    SeqIO.write(assemblies, MODULE_DIR / "dnabot_constructs.gb", "genbank")   
+    bsb.export_to_file(assemblies, MODULE_DIR / "dnabot_constructs.gb", "genbank")
 
 
 
