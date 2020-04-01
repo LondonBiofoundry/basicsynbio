@@ -1,16 +1,22 @@
 import basicsynbio as bsb
 from basicsynbio.main import DEFAULT_ANNOTATIONS
 from Bio import SeqIO, Seq
+from Bio.Alphabet import IUPAC
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqUtils import nt_search
+import csv
 from dataclasses import dataclass
 from pathlib import Path
 
 MODULE_DIR = (Path.cwd() / "scripts_nbs" / "dnabot_genbank_files")
+PARTS_DIR = (MODULE_DIR / "required_parts")
+if PARTS_DIR not in MODULE_DIR.iterdir():
+    Path.mkdir(MODULE_DIR / "required_parts")
 
 def main():
     generate_vectors()
     generate_parts()
+    generate_constructs()
 
 
 def generate_vectors():
@@ -35,7 +41,7 @@ def generate_vectors():
                 standard_name=[str(linker.id)],
                 note=[str(linker.id)]
             )
-        SeqIO.write(vector, (MODULE_DIR / f"{vector.id}.gb"), "genbank")
+        SeqIO.write(vector, (PARTS_DIR / f"{vector.id}.gb"), "genbank")
 
 
 @dataclass
@@ -75,12 +81,12 @@ def generate_parts():
         )
         assembly = bsb.BasicAssembly(
             bsb.biolegio_dict["LMS"],
-            bsb.import_part((MODULE_DIR / "BASIC_SEVA_18_AmpR-pUC.1.gb"), "genbank"),
+            bsb.import_part((PARTS_DIR / "BASIC_SEVA_18_AmpR-pUC.1.gb"), "genbank"),
             bsb.biolegio_dict["LMP"],
             basic_part_creator.create_part()
         )
         assembly.return_file(
-            (MODULE_DIR / handle),
+            (PARTS_DIR / handle),
             id=handle[:len(handle)-3],
             name=handle[:len(handle)-5],
             annotations=DEFAULT_ANNOTATIONS,
@@ -113,10 +119,42 @@ def generate_parts():
         make_gb_from_quick_part(part)
 
 
+def generate_constructs():
+    def identify_basic_part(target, candidate_list):
+        candidates = [candidate.id for candidate in candidate_list]
+        return candidate_list[candidates.index(target)]
+
+    utr_linker_combos = ((x, y) for x in range(1, 4) for y in range(1, 4))
+    parts_linkers = ["LMP", "LMS"] + [f"UTR{combo[0]}-RBS{combo[1]}" for combo in utr_linker_combos]
+    parts_linkers = [bsb.biolegio_dict[linker] for linker in parts_linkers]
+    part_handles = (handle for handle in PARTS_DIR.iterdir())
+    parts_linkers += [bsb.import_part(handle, "genbank") for handle in part_handles]
+
+    assemblies = []
+    with open((MODULE_DIR / "storch_et_al_cons.csv"), "r", newline="") as cons_csv:
+        csv_reader = csv.reader(cons_csv)
+        for ind, row in enumerate(csv_reader):
+            if ind > 0 and row[1]:
+                row = [
+                    part_linker_string for part_linker_string in row if part_linker_string]
+                assembly = bsb.BasicAssembly(
+                    *(identify_basic_part(part, parts_linkers) for part in row[1:])
+                )
+                assembly = assembly._return_seqrec(
+                    id=f"dnabot_{row[0]}",
+                    name=f"dnabot_{row[0]}",
+                    annotations=DEFAULT_ANNOTATIONS
+                )
+                assembly.seq.alphabet = IUPAC.unambiguous_dna
+                assemblies.append(assembly)
+    SeqIO.write(assemblies, MODULE_DIR / "dnabot_constructs.gb", "genbank")   
+
+
+
 def add_feature_w_seq(seqrec, feature_seq, feature_type="misc_feature", **qualifiers):
-    """
-    Add a SeqFeature to a SeqRecord (seqrec) using that feature's sequence (feature_seq). Forward strand only.
-    Each kwarg value in qualifiers must be given as a list e.g. key=["value"]
+    """Add a SeqFeature to a SeqRecord (seqrec) using that feature's sequence (feature_seq). Forward strand only.
+
+    Each **qualifier value in qualifiers must be given as a list e.g. key=["value"]
 
     """
     qualifier_dict = {qualifier[0]: qualifier[1] for qualifier in qualifiers.items()}
