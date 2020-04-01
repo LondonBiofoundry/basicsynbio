@@ -1,4 +1,4 @@
-LOCUS       BASIC_SEVA_18_AmpR-pUC  3354 bp    DNA     circular UNK 31-MAR-2020
+LOCUS       BASIC_SEVA_18_AmpR-pUC  3354 bp    DNA     circular UNK 01-APR-2020
 DEFINITION  Vector for BASIC DNA assembly containing mScarlet counter selection
             marker.
 ACCESSION   BASIC_SEVA_18_AmpR-pUC
@@ -18,7 +18,7 @@ FEATURES             Location/Qualifiers
                      /label="RBS34"
      regulatory      64..166
                      /label="T0"
-     Promoter        257..285
+     regulatory      257..285
                      /label="Amp prom"
      rep_origin      1308..1936
                      /label="ColE1 origin"
@@ -28,7 +28,7 @@ FEATURES             Location/Qualifiers
                      /label="T1"
      regulatory      3222..3350
                      /label="terminator_B0015"
-     misc_feature    327..1187
+     CDS             327..1187
                      /label="blaCDS"
      misc_feature    3..57
                      /function="BASIC DNA assembly linker"

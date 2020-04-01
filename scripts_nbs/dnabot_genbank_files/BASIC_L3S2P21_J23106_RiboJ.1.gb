@@ -1,5 +1,5 @@
-LOCUS       BASIC_L3S2P21_J23106_RiboJ 2609 bp    DNA     circular UNK 31-MAR-2020
-DEFINITION  J23106 BASIC part stored in AmpR pUC vector.
+LOCUS       BASIC_L3S2P21_J23106_RiboJ 2609 bp    DNA     circular UNK 01-APR-2020
+DEFINITION  J23106 PF1 BASIC part stored in AmpR pUC vector.
 ACCESSION   BASIC_L3S2P21_J23106_RiboJ
 VERSION     BASIC_L3S2P21_J23106_RiboJ.1
 KEYWORDS    .
@@ -13,21 +13,21 @@ FEATURES             Location/Qualifiers
                      /note="LMS"
      regulatory      64..166
                      /label="T0"
-     Promoter        257..285
+     regulatory      257..285
                      /label="Amp prom"
      rep_origin      1308..1936
                      /label="ColE1 origin"
      regulatory      2248..2352
                      /label="T1"
-     misc_feature    327..1187
+     CDS             327..1187
                      /label="blaCDS"
      misc_feature    2364..2418
                      /function="BASIC DNA assembly linker"
                      /standard_name="LMP"
                      /note="LMP"
      regulatory      2419..2609
-                     /note="promoter"
-                     /standard_name="J23106"
+                     /note="insulated promoter"
+                     /standard_name="J23106 PF1"
 ORIGIN
         1 ggctcgggag acctatcggt aataacagtc caatctggtg taacttcgga atcgtccact
        61 agtcttggac tcctgttgat agatccagta atgacctcag aactccatct ggatttgttc

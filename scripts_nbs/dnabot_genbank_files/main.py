@@ -14,11 +14,11 @@ def main():
 
 
 def generate_vectors():
-    paths = [
+    paths = (
         "basic_seva_18_ampr-puc-1.gb",
         "basic_seva_37_cmr-p15a-1.gb"
-    ]
-    paths = [(MODULE_DIR / path) for path in paths]
+    )
+    paths = ((MODULE_DIR / path) for path in paths)
     vectors = (bsb.import_part(handle, "genbank") for handle in paths)
     linkers_features = (bsb.biolegio_dict["LMP"], bsb.biolegio_dict["LMS"])
     for vector in vectors:
@@ -48,11 +48,11 @@ class QuickBasicPart:
 def generate_parts():
     def make_gb_from_quick_part(quick_basic_part):
         if quick_basic_part.part_type == "promoter":
-            name = f"J23{quick_basic_part.abbreviation}"
+            name = f"J23{quick_basic_part.abbreviation} PF1"
             handle = f"BASIC_L3S2P21_J23{quick_basic_part.abbreviation}_RiboJ.1.gb"
             annotation_type = "regulatory"
             qualifiers = {
-                "note": ["promoter"],
+                "note": ["insulated promoter"],
                 "standard_name": [name]
             }
         elif quick_basic_part.part_type == "orf":

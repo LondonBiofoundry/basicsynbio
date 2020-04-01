@@ -1,4 +1,4 @@
-LOCUS       BASIC_sfGFP_ORF         3141 bp    DNA     circular UNK 31-MAR-2020
+LOCUS       BASIC_sfGFP_ORF         3141 bp    DNA     circular UNK 01-APR-2020
 DEFINITION  sfGFP BASIC part stored in AmpR pUC vector.
 ACCESSION   BASIC_sfGFP_ORF
 VERSION     BASIC_sfGFP_ORF.1
@@ -13,13 +13,13 @@ FEATURES             Location/Qualifiers
                      /note="LMS"
      regulatory      64..166
                      /label="T0"
-     Promoter        257..285
+     regulatory      257..285
                      /label="Amp prom"
      rep_origin      1308..1936
                      /label="ColE1 origin"
      regulatory      2248..2352
                      /label="T1"
-     misc_feature    327..1187
+     CDS             327..1187
                      /label="blaCDS"
      misc_feature    2364..2418
                      /function="BASIC DNA assembly linker"
