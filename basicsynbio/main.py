@@ -75,10 +75,12 @@ class BasicPartCreator():
         """Return an annotated SeqRecord from a string and id.
         
         Args:
-        annotation_type -- equivalent to Bio.SeqFeature type
+        str_seq -- sequence of new part as a string
+        id -- identifier for new part.
+        annotation_type -- equivalent to Bio.SeqFeature type e.g. CDS
         start -- start of the annotation
-        end -- end of the annotation, if None defaults to len of the sequence
-        **qualifiers -- equivalent to SeqFeature.qualifiers for annotation
+        end -- end of the annotation, if None defaults to len(str_seq)
+        **qualifiers -- equivalent to Bio.SeqFeature.qualifiers for annotation e.g. standard_name=["LMP"]
         """
         self._seqrec = self._create_seqrec(str_seq, id, annotation_type, start, end, **qualifiers)
 
