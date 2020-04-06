@@ -38,7 +38,7 @@ assembly = bsb.BasicAssembly(
     bsb.biolegio_dict["LMS"],
     basic_parts[1]
 )
-assembly.return_file("my_basic_assembly.gb")
+assembly.return_file("my_basic_assembly.gb", "genbank")
 ```
 
 ## Contributing
