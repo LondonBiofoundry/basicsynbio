@@ -8,9 +8,9 @@ from .main import (
     BasicAssembly,
     BasicLinker,
     BasicPart,
-    BasicPartCreator,
     export_to_file,
     import_part,
     import_parts,
+    seqrec2part
 )
 from .biolegio import biolegio_dict

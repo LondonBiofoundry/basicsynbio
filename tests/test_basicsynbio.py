@@ -1,6 +1,6 @@
 import basicsynbio as bsb
 import basicsynbio.main as bsb_main
-from basicsynbio.utils import feature_from_qualifier
+from basicsynbio.utils import feature_from_qualifier, _easy_seqrec
 import pytest
 
 
@@ -131,15 +131,17 @@ def test_basic_parts_in_file():
     print(parts[:5])
 
 
-def test_basic_part_creator(gfp_orf_seq):
-    gfp_part = bsb.BasicPartCreator(
+def test_add_i_seqs(gfp_orf_seq):
+    gfp_orf_seqrec = _easy_seqrec(
         str(gfp_orf_seq),
         "sfGFP",
         annotation_type="CDS",
         note=["fluorescent reporter protein"],
         gene=["sfGFP"],
     )
-    gfp_part = gfp_part.create_part()
+    gfp_part = bsb.seqrec2part(gfp_orf_seqrec, add_i_seqs=True)
+    print("length of gfp_part: ", len(gfp_part))
+    print("length of correct sequence: ", len(bsb_main.IP_STR) + len(gfp_orf_seq) + len(bsb_main.IS_STR))
     assert str(gfp_part.seq) == bsb_main.IP_STR + str(gfp_orf_seq) + bsb_main.IS_STR
     assert len(gfp_part.features) == 3
 
@@ -156,3 +158,7 @@ def test_export_to_file(gfp_basicpart):
     handle = "gfp_basicpart.gb"
     bsb.export_to_file(gfp_basicpart, handle, "genbank")
     os.remove(handle)
+
+
+def test_add_to_docs():
+    assert 1 == 0

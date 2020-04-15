@@ -1,3 +1,4 @@
+from basicsynbio.utils import _easy_seqrec
 from Bio import SeqUtils, SeqIO
 from Bio.Alphabet import IUPAC
 from Bio.Seq import Seq
@@ -18,6 +19,8 @@ DEFAULT_ANNOTATIONS = {
                     }
 IP_STR = "TCTGGTGGGTCTCTGTCC"
 IS_STR = "GGCTCGGGAGACCTATCG"
+IP_SEQREC = _easy_seqrec(IP_STR, "iP", note=["BASIC integrated prefix"])
+IS_SEQREC = _easy_seqrec(IS_STR, "iS", note=["BASIC integrated suffix"])
 
 
 class BasicPart(SeqRecord):
@@ -57,55 +60,6 @@ class BasicPart(SeqRecord):
         return search_out[1]
 
 
-def _seqrec2part(seqrec):
-    part = BasicPart(seqrec.seq, seqrec.id)
-    for key, value in seqrec.__dict__.items():
-        setattr(part, key, value)
-    return part
-
-
-class BasicPartCreator():
-    """class for making new BASIC parts from strings."""
-
-    def __init__(
-        self, str_seq, id,
-        annotation_type="misc_feature", start=0, end=None,
-        **qualifiers: list
-    ):
-        """Return an annotated SeqRecord from a string and id.
-        
-        Args:
-        str_seq -- sequence of new part as a string
-        id -- identifier for new part.
-        annotation_type -- equivalent to Bio.SeqFeature type e.g. CDS
-        start -- start of the annotation
-        end -- end of the annotation, if None defaults to len(str_seq)
-        **qualifiers -- equivalent to Bio.SeqFeature.qualifiers for annotation e.g. standard_name=["LMP"]
-        """
-        self._seqrec = self._create_seqrec(str_seq, id, annotation_type, start, end, **qualifiers)
-
-    def create_part(self, add_i_seqs=True):
-        """Return BASIC part.
-        
-        add_i_seqs -- if True, will append annotated BASIC iP & iS sequences
-        """
-        if add_i_seqs:
-            ip_seqrec = self._create_seqrec(IP_STR, "iP", note=["BASIC integrated prefix"])
-            is_seqrec = self._create_seqrec(IS_STR, "iS", note=["BASIC integrated prefix"])
-            self._seqrec = ip_seqrec + self._seqrec + is_seqrec
-        return _seqrec2part(self._seqrec)
-
-    def _create_seqrec(self, str_seq, id, annotation_type="misc_feature", start=0, end=None,**qualifiers: list):
-        if not end:
-            end = len(str_seq)
-        seqrec = SeqRecord(Seq(str_seq), id=id, features=[SeqFeature(
-            type=annotation_type,
-            location=FeatureLocation(start=start, end=end, strand=+1),
-            qualifiers={item[0]: item[1] for item in qualifiers.items()}
-        )])
-        return seqrec
-
-
 class BasicLinker(SeqRecord):
     def __init__(self, seq, id, **kwargs):
         super().__init__(seq=seq, id=id, **kwargs)
@@ -140,7 +94,7 @@ class BasicAssembly():
         alphabet -- refer to Bio.Alphabet, required for IO.
         **kwargs -- passed into the BasicPart constructor.
         """
-        return _seqrec2part(self._return_seqrec(id=id, alphabet=alphabet, **kwargs))
+        return seqrec2part(self._return_seqrec(id=id, alphabet=alphabet, **kwargs))
     
     def return_file(self, handle, format="genbank", alphabet=IUPAC.ambiguous_dna, **kwargs):
         """Export BASIC assembly to "handle" using Bio.SeqIO.write().
@@ -191,18 +145,57 @@ class AssemblyException(Exception):
     pass
 
 
-def import_part(handle, format):
-    """Return a BASIC part object using Bio.SeqIO.read()."""
+def _add_i_seq_doc(fun):
+    def wrapper(*args, **kwargs):
+        return fun(*args, **kwargs)
+    wrapper.__doc__ = fun.__doc__ + "\nadd_i_seqs -- if True adds flanking BASIC iP and iS sequences. Note _per_letter_annotations are lost."
+    wrapper.__name__ = fun.__name__
+    return wrapper
+
+
+@_add_i_seq_doc
+def seqrec2part(seqrec, add_i_seqs=False):
+    """Convert a Bio.SeqRecord to a BasicPart, relevant attributes are maintained.
+
+    Args:
+    """
+    if add_i_seqs:
+        new_seqrec = IP_SEQREC + seqrec + IS_SEQREC
+        part = BasicPart(new_seqrec.seq, seqrec.id, features=new_seqrec.features)
+        for key, value in seqrec.__dict__.items():
+            if key not in ("_seq", "_per_letter_annotations", "features"):
+                setattr(part, key, value)
+    else:
+        part = BasicPart(seqrec.seq, seqrec.id)
+        for key, value in seqrec.__dict__.items():
+            setattr(part, key, value)
+    return part
+
+
+@_add_i_seq_doc
+def import_part(handle, format, add_i_seqs=False):
+    """Return a BASIC part object using Bio.SeqIO.read().
+    
+    Args:
+    """
     seqrec = SeqIO.read(handle, format)
-    return _seqrec2part(seqrec)
+    return seqrec2part(seqrec, add_i_seqs)
     
 
-def import_parts(handle, format):
-    """Return BASIC parts in a single file using Bio.SeqIO.parse()."""
-    parts = SeqIO.parse(handle, format)
-    return [_seqrec2part(part) for part in parts]
+@_add_i_seq_doc
+def import_parts(handle, format, add_i_seqs=False):
+    """Return BASIC parts in a single file using Bio.SeqIO.parse().
+    
+    Args:
+    """
+    seqrecs = SeqIO.parse(handle, format)
+    return [seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs]
 
 
 def export_to_file(parts, handle, format):
-    """Exports BasicPart/s using Bio.SeqIO.write()."""
+    """Exports BasicPart/s using Bio.SeqIO.write().
+    
+    Args:
+    parts -- BasicPart objects to export to file handle.    
+    """
     SeqIO.write(parts, handle, format)
