@@ -1,4 +1,4 @@
-import basicsynbio
+import basicsynbio as bsb
 from Bio.Seq import Seq
 
 biolegio_dict = {
@@ -68,5 +68,6 @@ biolegio_dict = {
     "LF5": "CTCGGGCTCGGGCTCCGGATCAGGATCTGGTTCAGGTTCAGGATCAGGATCGGGCTCCGGGTCC",
     "LF6": "CTCGGCCGAAGCGGCTGCTAAAGAAGCAGCTGCTAAAGAGGCGGCCGCCAAGGCAGGGTCC"}
 
-for key, value in biolegio_dict.items():
-    biolegio_dict[key] = basicsynbio.BasicLinker(Seq("GG" + value), key)
+biolegio_dict = {
+    key: bsb.BasicLinker(Seq("GG" + value), key) for key, value in biolegio_dict.items()
+}
