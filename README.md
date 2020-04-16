@@ -18,9 +18,9 @@ An open-source Python API to facilitate [BASIC DNA Assembly](https://www.basic-a
 To create genbank or FASTA files for BASIC DNA assemblies:
 
 1. [Import BASIC parts](#1-import-basic-parts)
-2. [Create assemblies from BASIC parts and linkers](#2-create-assemblies-from-basic-parts-and-linkers)
-3. [Return new parts and hierarchical assemblies](#3-return-new-parts-and-hierarchical-assemblies)
-4. [Exporting sequences](#4-exporting-sequences)
+2. [Create assemblies from BASIC parts using linkers](#2-create-assemblies-from-basic-parts-using-linkers)
+3. [Create hierarchical assemblies](#3-create-hierarchical-assemblies)
+4. [Export sequences](#4-export-sequences)
 
 ### 1. Import BASIC parts
 
@@ -44,15 +44,15 @@ Alternatively, convert a Biopython SeqRecord object into a BASIC part:
 basic_part = bsb.seqrec2part(SeqRecord)
 ```
 
-All BASIC parts require flanking iP and iS sequences. To add these use the optional `add_i_seqs` argument, available for all the above functions e.g.
+All BasicPart objects require flanking iP and iS sequences. To add these when creating your object, use the optional `add_i_seqs` argument, available for all the above functions e.g.
 
 ```python
 basic_part = bsb.seqrec2part(SeqRecord, add_i_seqs=True)
 ```
 
-### 2. Create assemblies from BASIC parts and linkers
+### 2. Create assemblies from BASIC parts using linkers
 
-Make an assembly using several BASIC parts and any [Biolegio linkers](https://www.biolegio.com/products-services/basic/), then return an annotated genbank file:
+Create a BasicAssembly object from your imported BASIC parts using any [Biolegio linkers](https://www.biolegio.com/products-services/basic/):
 
 ```python
 assembly = bsb.BasicAssembly(
@@ -63,9 +63,9 @@ assembly = bsb.BasicAssembly(
 )
 ```
 
-### 3. Return new parts and hierarchical assemblies
+### 3. Create hierarchical assemblies
 
-The `return_part()` method returns a BasicPart object from the assembly, enabling downstream BasicAssemblies (*LMP and LMS linkers must flank the new part*):
+The `return_part()` method returns a BasicPart from the assembly, enabling downstream assemblies. *LMP and LMS linkers must flank the new part sequence within the initial assembly*:
 
 ```python
 new_part = assembly.return_part(id="new_part")
@@ -77,19 +77,19 @@ hierarchical_assembly = bsb.BasicAssembly(
 
 ### 4. Export sequences
 
-Assemblies can be exported to a file directly:
+Applying the `return_file` method on your BasicAssembly object exports the assembled sequence to a genbank file:
 
 ```python
 assembly.return_file(handle="hello_world_assembly.gb")
 ```
 
-or if necessary a BASIC part returned as above, or even a Biopython SeqRecord:
+or if necessary return a BasicPart as above, or even a Biopython SeqRecord:
 
 ```python
 seqrec = assembly.return_seqrec(id="assembly")
 ```
 
-Many of these objects can be exported to the same file using the `export_to_file()` function:
+Collections of these objects can be exported to the same file using the `export_to_file()` function:
 
 ```python
 bsb.export_to_file(
