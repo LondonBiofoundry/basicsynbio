@@ -109,18 +109,18 @@ def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
         bsb.BasicAssembly(gfp_basicpart, cmr_p15a_basicpart)
 
 
-def test_return_seqrec(five_part_assembly):
+def testreturn_seqrec(five_part_assembly):
     from Bio import SeqIO
     example_assembly = SeqIO.read(
         "genbank_files/five_part_assembly.gb", "genbank"
     )
-    assert five_part_assembly._return_seqrec().seq == example_assembly.seq
+    assert five_part_assembly.return_seqrec().seq == example_assembly.seq
 
 
 def test_assembly_return_file(five_part_assembly):
     """The BASIC assembly return_file() method is required given all BASIC assemblies might not be BASIC parts."""
     import os
-    assembly_seqrec = five_part_assembly._return_seqrec()
+    assembly_seqrec = five_part_assembly.return_seqrec()
     print(assembly_seqrec.seq.alphabet)
     five_part_assembly.return_file("test_five_part_assembly.gb")
     os.remove("test_five_part_assembly.gb")
