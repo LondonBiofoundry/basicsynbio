@@ -1,4 +1,5 @@
 from basicsynbio.utils import _easy_seqrec
+from basicsynbio.decorators import add2docs
 from Bio import SeqUtils, SeqIO
 from Bio.Alphabet import IUPAC
 from Bio.Seq import Seq
@@ -21,6 +22,12 @@ IP_STR = "TCTGGTGGGTCTCTGTCC"
 IS_STR = "GGCTCGGGAGACCTATCG"
 IP_SEQREC = _easy_seqrec(IP_STR, "iP", note=["BASIC integrated prefix"])
 IS_SEQREC = _easy_seqrec(IS_STR, "iS", note=["BASIC integrated suffix"])
+
+class CommonArgDocs:
+    ADD_I_SEQS = "add_i_seqs -- if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
+    HANDLE = "handle -- handle to file."
+    FORMAT = "format -- file format."
+    ALPHABET = "alphabet -- Bio.Alphabet. Refer Bio.Alphabet documentation."        
 
 
 class BasicPart(SeqRecord):
@@ -84,23 +91,36 @@ class BasicLinker(SeqRecord):
 
 class BasicAssembly():
     def __init__(self, *parts_linkers):
-        """BasicAssembly class requires alternating BasicPart and BasicLinkers in any order."""
+        """BasicAssembly class requires alternating BasicParts and BasicLinkers in any order.
+        
+        Args:
+            *parts_linkers -- BasicPart or BasicLinker objects.
+        """
         self.parts_linkers = parts_linkers
 
-    def return_part(self, id, alphabet=IUPAC.ambiguous_dna, **kwargs):
+    @add2docs(
+        12,
+        CommonArgDocs.ALPHABET,
+        "**kwargs -- assigns alternative Bio.SeqRecord attributes."
+    )
+    def return_part(self, id: str, alphabet=IUPAC.ambiguous_dna, **kwargs):
         """Return a new BASIC part from this assembly.
 
-        id -- identifier of the new part.
-        alphabet -- refer to Bio.Alphabet, required for IO.
-        **kwargs -- passed into the BasicPart constructor.
-        """
+        Args:
+            id -- identifier of the new part."""
         return seqrec2part(self._return_seqrec(id=id, alphabet=alphabet, **kwargs))
     
+    @add2docs(
+        12,
+        CommonArgDocs.HANDLE,
+        CommonArgDocs.FORMAT,
+        CommonArgDocs.ALPHABET,
+        "**kwargs -- assigns alternative Bio.SeqRecord attributes."
+    )
     def return_file(self, handle, format="genbank", alphabet=IUPAC.ambiguous_dna, **kwargs):
         """Export BASIC assembly to "handle" using Bio.SeqIO.write().
         
-        **kwargs -- assigns alternative Bio.SeqRecord attributes.
-        """
+        Args:"""
         seqrec = self._return_seqrec(alphabet, **kwargs)
         SeqIO.write(seqrec, handle, format)
 
@@ -145,20 +165,11 @@ class AssemblyException(Exception):
     pass
 
 
-def _add_i_seq_doc(fun):
-    def wrapper(*args, **kwargs):
-        return fun(*args, **kwargs)
-    wrapper.__doc__ = fun.__doc__ + "\nadd_i_seqs -- if True adds flanking BASIC iP and iS sequences. Note _per_letter_annotations are lost."
-    wrapper.__name__ = fun.__name__
-    return wrapper
-
-
-@_add_i_seq_doc
+@add2docs(4, CommonArgDocs.ADD_I_SEQS)
 def seqrec2part(seqrec, add_i_seqs=False):
     """Convert a Bio.SeqRecord to a BasicPart, relevant attributes are maintained.
 
-    Args:
-    """
+    Args:"""
     if add_i_seqs:
         new_seqrec = IP_SEQREC + seqrec + IS_SEQREC
         part = BasicPart(new_seqrec.seq, seqrec.id, features=new_seqrec.features)
@@ -172,30 +183,42 @@ def seqrec2part(seqrec, add_i_seqs=False):
     return part
 
 
-@_add_i_seq_doc
+@add2docs(
+    8,
+    CommonArgDocs.HANDLE,
+    CommonArgDocs.FORMAT,
+    CommonArgDocs.ADD_I_SEQS
+)
 def import_part(handle, format, add_i_seqs=False):
     """Return a BASIC part object using Bio.SeqIO.read().
     
-    Args:
-    """
+    Args:"""
     seqrec = SeqIO.read(handle, format)
     return seqrec2part(seqrec, add_i_seqs)
     
 
-@_add_i_seq_doc
+@add2docs(
+    8,
+    CommonArgDocs.HANDLE,
+    CommonArgDocs.FORMAT,
+    CommonArgDocs.ADD_I_SEQS
+)
 def import_parts(handle, format, add_i_seqs=False):
     """Return BASIC parts in a single file using Bio.SeqIO.parse().
     
-    Args:
-    """
+    Args:"""
     seqrecs = SeqIO.parse(handle, format)
     return [seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs]
 
 
+@add2docs(
+    8,
+    CommonArgDocs.HANDLE,
+    CommonArgDocs.FORMAT,
+)
 def export_to_file(parts, handle, format):
     """Exports BasicPart/s using Bio.SeqIO.write().
     
     Args:
-    parts -- BasicPart objects to export to file handle.    
-    """
+        parts -- BasicPart objects to export to file handle."""
     SeqIO.write(parts, handle, format)

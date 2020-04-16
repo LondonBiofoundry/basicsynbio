@@ -1,6 +1,4 @@
 import basicsynbio as bsb
-import basicsynbio.main as bsb_main
-from basicsynbio.utils import feature_from_qualifier, _easy_seqrec
 import pytest
 
 
@@ -21,6 +19,7 @@ def gfp_seqrec():
 
 @pytest.fixture
 def gfp_orf_seq(gfp_seqrec):
+    from basicsynbio.utils import feature_from_qualifier
     gfp_orf_feature = feature_from_qualifier(gfp_seqrec, "gene", ["sfGFP"])
     return gfp_orf_feature.extract(gfp_seqrec.seq)
 
@@ -34,6 +33,7 @@ def cmr_p15a_basicpart():
 
 @pytest.fixture
 def cmr_p15a_backbone():
+    from basicsynbio.utils import feature_from_qualifier
     from Bio import SeqIO
     cmr_p15a_backbone = SeqIO.read("genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
     prefix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
@@ -98,11 +98,13 @@ def test_basic_slice_is_and_features(cmr_p15a_basicpart, cmr_p15a_backbone):
 
 
 def test_basic_part_exception(gfp_orf_seq):
+    import basicsynbio.main as bsb_main
     with pytest.raises(bsb_main.PartException):
         bsb.BasicPart(gfp_orf_seq, "sfGFP")
 
 
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
+    import basicsynbio.main as bsb_main
     with pytest.raises(bsb_main.AssemblyException):
         bsb.BasicAssembly(gfp_basicpart, cmr_p15a_basicpart)
 
@@ -132,6 +134,8 @@ def test_basic_parts_in_file():
 
 
 def test_add_i_seqs(gfp_orf_seq):
+    import basicsynbio.main as bsb_main
+    from basicsynbio.utils import _easy_seqrec
     gfp_orf_seqrec = _easy_seqrec(
         str(gfp_orf_seq),
         "sfGFP",
@@ -160,5 +164,8 @@ def test_export_to_file(gfp_basicpart):
     os.remove(handle)
 
 
-def test_add_to_docs():
-    assert 1 == 0
+def test_add2docs_decorator():
+    from basicsynbio.main import CommonArgDocs
+    core_doc = "Convert a Bio.SeqRecord to a BasicPart, relevant attributes are maintained.\n\n    Args:\n    "
+    print(bsb.seqrec2part.__doc__)
+    assert bsb.seqrec2part.__doc__ == core_doc + CommonArgDocs.ADD_I_SEQS
