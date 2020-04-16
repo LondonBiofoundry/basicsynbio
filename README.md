@@ -65,7 +65,7 @@ assembly = bsb.BasicAssembly(
 
 ### 3. Return new parts and hierarchical assemblies
 
-The `return_part()` method returns a BasicPart object from the assembly, enabling downstream BasicAssemblies (*LMP and LMS flank new part sequences*):
+The `return_part()` method returns a BasicPart object from the assembly, enabling downstream BasicAssemblies (*LMP and LMS linkers must flank the new part*):
 
 ```python
 new_part = assembly.return_part(id="new_part")
@@ -75,7 +75,7 @@ hierarchical_assembly = bsb.BasicAssembly(
 )
 ```
 
-### 4. Exporting sequences
+### 4. Export sequences
 
 Assemblies can be exported to a file directly:
 
@@ -83,13 +83,13 @@ Assemblies can be exported to a file directly:
 assembly.return_file(handle="hello_world_assembly.gb")
 ```
 
-or if necessary a Biopython SeqRecord created:
+or if necessary a BASIC part returned as above, or even a Biopython SeqRecord:
 
 ```python
 seqrec = assembly.return_seqrec(id="assembly")
 ```
 
-The `export_to_file()` function exports several objects to the same file:
+Many of these objects can be exported to the same file using the `export_to_file()` function:
 
 ```python
 bsb.export_to_file(
@@ -117,4 +117,3 @@ This project is licensed under the MIT License - see the ``LICENSE`` file for de
 [coverage_badge]: https://coveralls.io/repos/github/hainesm6/basicsynbio/badge.svg?branch=master
 [coverage_url]: https://coveralls.io/github/hainesm6/basicsynbio?branch=master
 [development_url]: https://packaging.python.org/guides/distributing-packages-using-setuptools/#working-in-development-mode
-
