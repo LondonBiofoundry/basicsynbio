@@ -1,6 +1,6 @@
 # basicsynbio
 
-An open-source Python API to facilitate [BASIC DNA Assembly](https://www.basic-assembly.org/about) workflows
+An open-source Python package to facilitate [BASIC DNA Assembly](https://www.basic-assembly.org/about) workflows
 
 [![Build Status][travis_badge]][travis_url]
 [![Coverage Status][coverage_badge]][coverage_url]
@@ -17,10 +17,15 @@ An open-source Python API to facilitate [BASIC DNA Assembly](https://www.basic-a
 
 Assemble BASIC DNA assembly constructs and export the assembled sequences to FASTA or GenBank files:
 
-1. [Import BASIC parts](#1-import-basic-parts)
-2. [Create assemblies from BASIC parts using linkers](#2-create-assemblies-from-basic-parts-using-linkers)
-3. [Create hierarchical assemblies](#3-create-hierarchical-assemblies)
-4. [Export sequences](#4-export-sequences)
+- [basicsynbio](#basicsynbio)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [1. Import BASIC parts](#1-import-basic-parts)
+    - [2. Create assemblies from BASIC parts using linkers](#2-create-assemblies-from-basic-parts-using-linkers)
+    - [3. Create hierarchical assemblies](#3-create-hierarchical-assemblies)
+    - [4. Export sequences](#4-export-sequences)
+  - [Contributing](#contributing)
+  - [Meta](#meta)
 
 ### 1. Import BASIC parts
 
