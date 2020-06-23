@@ -60,6 +60,17 @@ def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
                      bsb.biolegio_dict["UTR3-RBS1"], rfp_basicpart 
      )
 
+@pytest.fixture
+def gfp_orf_basicpart(gfp_orf_seq):
+    from basicsynbio.utils import _easy_seqrec
+    gfp_orf_seqrec = _easy_seqrec(
+            str(gfp_orf_seq),
+            "sfGFP",
+            annotation_type="CDS",
+            note=["fluorescent reporter protein"],
+            gene=["sfGFP"],
+        )
+    return bsb.seqrec2part(gfp_orf_seqrec, add_i_seqs=True)
 
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
@@ -133,21 +144,12 @@ def test_basic_parts_in_file():
     print(parts[:5])
 
 
-def test_add_i_seqs(gfp_orf_seq):
+def test_add_i_seqs(gfp_orf_basicpart, gfp_orf_seq):
     import basicsynbio.main as bsb_main
-    from basicsynbio.utils import _easy_seqrec
-    gfp_orf_seqrec = _easy_seqrec(
-        str(gfp_orf_seq),
-        "sfGFP",
-        annotation_type="CDS",
-        note=["fluorescent reporter protein"],
-        gene=["sfGFP"],
-    )
-    gfp_part = bsb.seqrec2part(gfp_orf_seqrec, add_i_seqs=True)
-    print("length of gfp_part: ", len(gfp_part))
-    print("length of correct sequence: ", len(bsb_main.IP_STR) + len(gfp_orf_seq) + len(bsb_main.IS_STR))
-    assert str(gfp_part.seq) == bsb_main.IP_STR + str(gfp_orf_seq) + bsb_main.IS_STR
-    assert len(gfp_part.features) == 3
+    print("length of gfp_basicpart: ", len(gfp_orf_basicpart))
+    print("length of correct sequence: ", len(bsb_main.IP_STR) + len(gfp_orf_basicpart) + len(bsb_main.IS_STR))
+    assert str(gfp_orf_basicpart.seq) == bsb_main.IP_STR + str(gfp_orf_seq) + bsb_main.IS_STR
+    assert len(gfp_orf_basicpart.features) == 3
 
 
 def test_return_part(five_part_assembly):
@@ -169,3 +171,17 @@ def test_add2docs_decorator():
     core_doc = "Convert a Bio.SeqRecord to a BasicPart, relevant attributes are maintained.\n\n    Args:\n    "
     print(bsb.seqrec2part.__doc__)
     assert bsb.seqrec2part.__doc__ == core_doc + CommonArgDocs.ADD_I_SEQS
+
+
+def test_new_part_resuspension(gfp_orf_basicpart):
+    from basicsynbio.utils import new_part_resuspension
+    from Bio.SeqUtils import molecular_weight
+    print(f"length of basicpart: {len(gfp_orf_basicpart.seq)}")
+    print(f"estimated MW: {len(gfp_orf_basicpart.seq*660)}")
+    print(f"biopython MW: {molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)}")
+    mass = 750
+    vol = new_part_resuspension(part=gfp_orf_basicpart, mass=mass)
+    mw = molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)
+    print(f"estimated concentration: {mass*1e-9/(vol*1e-6*mw)*1e9}")
+    assert 75 == round(mass*1e-9/(vol*1e-6*mw)*1e9)
+

@@ -1,6 +1,7 @@
 from Bio.Seq import Seq
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqRecord import SeqRecord
+from Bio.SeqUtils import molecular_weight
 
 
 def feature_from_qualifier(seqrec, qualifier_key, qualifier_value):
@@ -34,3 +35,15 @@ def _easy_seqrec(str_seq: str, id, annotation_type="misc_feature", start=0, end=
         qualifiers={item[0]: item[1] for item in qualifiers.items()}
     )])
     return seqrec
+
+
+def new_part_resuspension(part, mass: float, double_stranded=True):
+    """Returns the volume of resuspension buffer (µL) required for a 75 nM solution of part, equivalent to 75 fmol/µL.
+
+    Args:
+        part -- BasicPart object.
+        mass -- mass of synthesised part (ng).
+        double_stranded -- True (default) indicates part is dsDNA.
+
+    """
+    return (mass*10**-9)/molecular_weight(part.seq, double_stranded=double_stranded)*1/(75e-9)*10**6
