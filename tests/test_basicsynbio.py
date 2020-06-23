@@ -27,7 +27,7 @@ def gfp_orf_seq(gfp_seqrec):
 @pytest.fixture
 def cmr_p15a_basicpart():
     return bsb.import_part(
-        "genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank"
+        "genbank_files/previous_versions/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank"
     )
 
 
@@ -35,7 +35,7 @@ def cmr_p15a_basicpart():
 def cmr_p15a_backbone():
     from basicsynbio.utils import feature_from_qualifier
     from Bio import SeqIO
-    cmr_p15a_backbone = SeqIO.read("genbank_files/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
+    cmr_p15a_backbone = SeqIO.read("genbank_files/previous_versions/BASIC_SEVA_37_CmR-p15A.1.gb", "genbank")
     prefix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Prefix"])
     suffix = feature_from_qualifier(cmr_p15a_backbone, "label", ["Suffix"])
     return cmr_p15a_backbone[int(prefix.location.end):] \
