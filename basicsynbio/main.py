@@ -109,7 +109,7 @@ class BasicAssembly():
 
         Args:
             id -- identifier of the new part."""
-        return seqrec2part(self.return_seqrec(id=id, alphabet=alphabet, **kwargs))
+        return seqrec2part(self.return_seqrec(alphabet=alphabet, id=id, **kwargs))
     
     @add2docs(
         12,
