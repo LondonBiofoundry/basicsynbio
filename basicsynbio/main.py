@@ -38,6 +38,7 @@ class BasicPart(SeqRecord):
     """
 
     def __init__(self, seq, id, **kwargs):
+        """Refer to help(BasicPart), id is required."""
         super().__init__(seq=seq, id=id, **kwargs)
         self._ip_loc = self._find_iseq(
             IP_STR, "iP sequence"
@@ -70,6 +71,7 @@ class BasicPart(SeqRecord):
 
 class BasicLinker(SeqRecord):
     def __init__(self, seq, id, **kwargs):
+        """Refer to help(BasicLinker), id is required."""
         super().__init__(seq=seq, id=id, **kwargs)
         self._linker_feature()
 
