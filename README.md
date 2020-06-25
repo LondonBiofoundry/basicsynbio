@@ -82,25 +82,10 @@ hierarchical_assembly = bsb.BasicAssembly(
 
 ### 4. Export sequences
 
-Applying the `return_file` method on your BasicAssembly object exports the assembled sequence to a GenBank file:
+Export `BasicPart`, `BasicAssembly` and `Bio.SeqRecord` objects to a file. One or more can be given:
 
 ```python
-assembly.return_file(handle="hello_world_assembly.gb")
-```
-
-or if necessary return a BasicPart as above, or even a Biopython SeqRecord:
-
-```python
-seqrec = assembly.return_seqrec(id="assembly")
-```
-
-Collections of these objects can be exported to the same file using the `export_to_file()` function:
-
-```python
-bsb.export_to_file(
-    basic_parts,
-    handle="another_basic_parts_file.gb",
-)
+bsb.export_to_file([assembly1, part1], "file.gb")
 ```
 
 ## Contributing

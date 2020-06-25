@@ -112,20 +112,6 @@ class BasicAssembly():
         Args:
             id -- identifier of the new part."""
         return seqrec2part(self.return_seqrec(alphabet=alphabet, id=id, **kwargs))
-    
-    @add2docs(
-        12,
-        CommonArgDocs.HANDLE,
-        CommonArgDocs.FORMAT,
-        CommonArgDocs.ALPHABET,
-        CommonArgDocs.SEQREC_KWARGS
-    )
-    def return_file(self, handle, format="genbank", alphabet=IUPAC.ambiguous_dna, **kwargs):
-        """Export BASIC assembly to "handle" using Bio.SeqIO.write().
-        
-        Args:"""
-        seqrec = self.return_seqrec(alphabet, **kwargs)
-        SeqIO.write(seqrec, handle, format)
 
     @add2docs(
         12,
@@ -192,44 +178,3 @@ def seqrec2part(seqrec, add_i_seqs=False):
         for key, value in seqrec.__dict__.items():
             setattr(part, key, value)
     return part
-
-
-@add2docs(
-    8,
-    CommonArgDocs.HANDLE,
-    CommonArgDocs.FORMAT,
-    CommonArgDocs.ADD_I_SEQS
-)
-def import_part(handle, format, add_i_seqs=False):
-    """Return a BASIC part object using Bio.SeqIO.read().
-    
-    Args:"""
-    seqrec = SeqIO.read(handle, format)
-    return seqrec2part(seqrec, add_i_seqs)
-    
-
-@add2docs(
-    8,
-    CommonArgDocs.HANDLE,
-    CommonArgDocs.FORMAT,
-    CommonArgDocs.ADD_I_SEQS
-)
-def import_parts(handle, format, add_i_seqs=False):
-    """Return BASIC parts in a single file using Bio.SeqIO.parse().
-    
-    Args:"""
-    seqrecs = SeqIO.parse(handle, format)
-    return [seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs]
-
-
-@add2docs(
-    8,
-    CommonArgDocs.HANDLE,
-    CommonArgDocs.FORMAT,
-)
-def export_to_file(parts, handle, format="genbank"):
-    """Exports BasicPart/s using Bio.SeqIO.write().
-    
-    Args:
-        parts -- BasicPart objects to export to file handle."""
-    SeqIO.write(parts, handle, format)
