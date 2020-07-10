@@ -1,0 +1,24 @@
+Name,Feature,Type,Color,Match type
+beta-lactamase,,CDS,,nucleotide
+neomycin phosphotransferase,,CDS,,nucleotide
+chloramphenicol acetyltransferase,,CDS,,nucleotide
+spectinomycin adenyltransferase,,CDS,,nucleotide
+tetracycline efflux transporter,,CDS,,nucleotide
+gentamicin-3-acetyltransferase,,CDS,,nucleotide
+oriT,,misc_feature,,nucleotide
+trfA,,CDS,,nucleotide
+AFV59764.1,,CDS,,nucleotide
+AFV59766.1,,CDS,,nucleotide
+AFV59770.1,,CDS,,nucleotide
+AFV59769.1,,CDS,,nucleotide
+AFV59768.1,,CDS,,nucleotide
+p15A ori,,misc_feature,,nucleotide
+origin pSC101,,rep_origin,,nucleotide
+pUC Ori,,rep_origin,,nucleotide
+ROP,,CDS,,nucleotide
+pBR322_origin,,rep_origin,,nucleotide
+T1,,regulatory,,nucleotide
+T0,,regulatory,,nucleotide
+mScarlett,,CDS,,nucleotide
+LMP,,misc_feature,,nucleotide
+LMS,,misc_feature,,nucleotide
