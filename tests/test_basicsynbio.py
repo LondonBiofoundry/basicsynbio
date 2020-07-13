@@ -8,13 +8,13 @@ class ComparisonException(Exception):
 
 @pytest.fixture
 def gfp_basicpart():
-    return bsb.import_part("sequences/genbank_files/BASIC_sfGFP_ORF.1.gb", "genbank")
+    return bsb.import_part("sequences/genbank_files/misc_BASIC/BASIC_sfGFP_ORF.1.gb", "genbank")
 
 
 @pytest.fixture
 def gfp_seqrec():
     from Bio import SeqIO
-    return SeqIO.read("sequences/genbank_files/BASIC_sfGFP_ORF.1.gb", "genbank")
+    return SeqIO.read("sequences/genbank_files/misc_BASIC/BASIC_sfGFP_ORF.1.gb", "genbank")
 
 
 @pytest.fixture
@@ -45,13 +45,13 @@ def cmr_p15a_backbone():
 @pytest.fixture
 def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
      promoter = bsb.import_part(
-         "sequences/genbank_files/BASIC_L3S2P21_J23105_RiboJ.1.gb", "genbank"
+         "sequences/genbank_files/misc_BASIC/BASIC_L3S2P21_J23105_RiboJ.1.gb", "genbank"
      )
      bfp_basicpart = bsb.import_part(
-         "sequences/genbank_files/BASIC_mTagBFP2_ORF.1.gb", "genbank"
+         "sequences/genbank_files/misc_BASIC/BASIC_mTagBFP2_ORF.1.gb", "genbank"
      )
      rfp_basicpart = bsb.import_part(
-         "sequences/genbank_files/BASIC_mCherry_ORF.1.gb", "genbank"
+         "sequences/genbank_files/misc_BASIC/BASIC_mCherry_ORF.1.gb", "genbank"
      )
      return bsb.BasicAssembly(
          bsb.biolegio_dict["LMS"], cmr_p15a_basicpart, bsb.biolegio_dict["LMP"], \
@@ -125,7 +125,7 @@ def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
 def testreturn_seqrec(five_part_assembly):
     from Bio import SeqIO
     example_assembly = SeqIO.read(
-        "sequences/genbank_files/five_part_assembly.gb", "genbank"
+        "sequences/genbank_files/misc_BASIC/five_part_assembly.gb", "genbank"
     )
     assert five_part_assembly.return_seqrec().seq == example_assembly.seq
 
@@ -142,7 +142,7 @@ def test_assembly_return_file(five_part_assembly):
 
 def test_basic_parts_in_file():
     parts = bsb.import_parts(
-        "sequences/genbank_files/dnabot_constructs.gb", "genbank"
+        "sequences/genbank_files/misc_BASIC/dnabot_constructs.gb", "genbank"
     )
     print(parts[:5])
 
@@ -156,7 +156,7 @@ def test_add_i_seqs(gfp_orf_basicpart, gfp_orf_seq):
 
 
 def test_return_part(five_part_assembly):
-    imported_part = bsb.import_part("sequences/genbank_files/five_part_assembly.gb", "genbank")
+    imported_part = bsb.import_part("sequences/genbank_files/misc_BASIC/five_part_assembly.gb", "genbank")
     api_part = five_part_assembly.return_part("five part assembly")
     assert api_part.seq == imported_part.seq
     assert dir(api_part) == dir(imported_part)
