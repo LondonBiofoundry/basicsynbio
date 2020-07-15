@@ -16,4 +16,7 @@ from .bsb_io import (
     import_part,
     import_parts,
 )
-from .biolegio import biolegio_dict
+from .parts_linkers import (
+    BIOLEGIO_DICT,
+    BSEVA_ICE_DICT
+)

@@ -54,10 +54,10 @@ def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
          "sequences/genbank_files/misc_BASIC/BASIC_mCherry_ORF.1.gb", "genbank"
      )
      return bsb.BasicAssembly(
-         bsb.biolegio_dict["LMS"], cmr_p15a_basicpart, bsb.biolegio_dict["LMP"], \
-             promoter, bsb.biolegio_dict["UTR1-RBS2"], gfp_basicpart, \
-                 bsb.biolegio_dict["UTR2-RBS1"], bfp_basicpart, \
-                     bsb.biolegio_dict["UTR3-RBS1"], rfp_basicpart 
+         bsb.BIOLEGIO_DICT["LMS"], cmr_p15a_basicpart, bsb.BIOLEGIO_DICT["LMP"], \
+             promoter, bsb.BIOLEGIO_DICT["UTR1-RBS2"], gfp_basicpart, \
+                 bsb.BIOLEGIO_DICT["UTR2-RBS1"], bfp_basicpart, \
+                     bsb.BIOLEGIO_DICT["UTR3-RBS1"], rfp_basicpart 
      )
 
 

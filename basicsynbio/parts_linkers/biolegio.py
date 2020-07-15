@@ -1,7 +1,7 @@
 import basicsynbio as bsb
 from Bio.Seq import Seq
 
-biolegio_dict = {
+BIOLEGIO_DICT = {
     "L1": "CTCGTTACTTACGACACTCCGAGACAGTCAGAGGGTATTTATTGAACTAGTCC",
     "L2": "CTCGATCGGTGTGAAAAGTCAGTATCCAGTCGTGTAGTTCTTATTACCTGTCC",
     "L3": "CTCGATCACGGCACTACACTCGTTGCTTTATCGGTATTGTTATTACAGAGTCC",
@@ -68,6 +68,6 @@ biolegio_dict = {
     "LF5": "CTCGGGCTCGGGCTCCGGATCAGGATCTGGTTCAGGTTCAGGATCAGGATCGGGCTCCGGGTCC",
     "LF6": "CTCGGCCGAAGCGGCTGCTAAAGAAGCAGCTGCTAAAGAGGCGGCCGCCAAGGCAGGGTCC"}
 
-biolegio_dict = {
-    key: bsb.BasicLinker(Seq("GG" + value), key) for key, value in biolegio_dict.items()
+BIOLEGIO_DICT = {
+    key: bsb.BasicLinker(Seq("GG" + value), key) for key, value in BIOLEGIO_DICT.items()
 }
