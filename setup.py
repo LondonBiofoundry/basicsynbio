@@ -21,6 +21,7 @@ setuptools.setup(
     ],
     python_requires='>=3.8',
     install_requires=[
-        "biopython>=1.76"
+        "biopython>=1.76",
+        "requests"
     ],
 )

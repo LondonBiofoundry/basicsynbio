@@ -4,6 +4,8 @@ import basicsynbio as bsb
 from Bio import SeqIO
 from Bio.Alphabet import IUPAC
 from Bio.SeqRecord import SeqRecord
+import requests
+import io
 
 
 @add2docs(
@@ -54,3 +56,32 @@ def export_to_file(sequences, handle, format="genbank"):
     else:
         sequences = ((basic_object if not hasattr(basic_object, "return_seqrec") else basic_object.return_seqrec()) for basic_object in sequences)
         SeqIO.write(sequences, handle, format)
+
+
+@add2docs(
+    8,
+    CommonArgDocs.FORMAT,
+)
+def import_ice_part(ice_client, ice_token, ice_num, file_type="original", format="genbank"):
+    """Returns a BasicPart object using an entry on the JBEI-ICE public registry.
+
+    Args:
+        ice_client -- X-ICE-API-Token-Client
+        ice_token -- X-ICE-API-Token
+        ice_num -- Number of Part ID. For instance, ice_num=17338 for JPUB_017338.
+        file_type -- The file type to download e.g. "original", "genbank" or "fasta"."""
+    ice_url = f"https://public-registry.jbei.org/rest/file/{ice_num}/sequence/{file_type}"
+    try:
+        ice_response = requests.get(
+            ice_url,
+            headers={
+                "X-ICE-API-Token-Client": ice_client,
+                "X-ICE-API-Token": ice_token,
+                "Cache-Control": "no-cache"
+            },
+            timeout=30
+        )
+    except TimeoutError:
+        print("No response from public-registry.jbei.org after 30 seconds.")
+    memory_file = io.StringIO(ice_response.text)
+    return seqrec2part(SeqIO.read(memory_file, format))

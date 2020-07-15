@@ -74,10 +74,18 @@ def gfp_orf_basicpart(gfp_orf_seq):
     return bsb.seqrec2part(gfp_orf_seqrec, add_i_seqs=True)
 
 
+@pytest.fixture
+def bseva_68_seqrec():
+    from Bio import SeqIO
+    from pathlib import Path
+    bseva_dir = Path.cwd() / "sequences" / "genbank_files" / "BASIC_SEVA_collection"
+    return SeqIO.read(bseva_dir / "BASIC_SEVA_68.gb", "genbank")
+
+
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
     returns true if basicpart has equivalent seqrec attributes.
-    Ignores seqrec.features as contains objects.
+    Ignores seqrec.features as contains SeqFeature objects.
 
     """
     try:
@@ -196,3 +204,11 @@ def test_new_part_resuspension(gfp_orf_basicpart):
     print(f"estimated concentration: {mass*1e-9/(vol*1e-6*mw)*1e9}")
     assert 75 == round(mass*1e-9/(vol*1e-6*mw)*1e9)
 
+
+def test_import_ice_part(bseva_68_seqrec):
+    import os
+    bseva_68_ice_number = "17337"
+    ice_client = os.environ.get("JBEI_ICE_CLIENT")    
+    ice_token = os.environ.get("JBEI_ICE_TOKEN")
+    bseva_68_part = bsb.import_ice_part(ice_client, ice_token, bseva_68_ice_number)
+    assert compare_basicpart_seqrec(bseva_68_part, bseva_68_seqrec) == True
