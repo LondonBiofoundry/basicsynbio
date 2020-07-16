@@ -6,6 +6,7 @@ from Bio.Alphabet import IUPAC
 from Bio.SeqRecord import SeqRecord
 import requests
 import io
+import icebreaker
 
 
 @add2docs(
@@ -62,26 +63,27 @@ def export_to_file(sequences, handle, format="genbank"):
     8,
     CommonArgDocs.FORMAT,
 )
-def import_ice_part(ice_client, ice_token, ice_num, file_type="original", format="genbank"):
+def import_ice_parts(
+    ice_user_config: dict,
+    *ice_nums,
+    ice_root="https://public-registry.jbei.org/",
+    file_type="original",
+    format="genbank"):
     """Returns a BasicPart object using an entry on the JBEI-ICE public registry.
 
     Args:
-        ice_client -- X-ICE-API-Token-Client
-        ice_token -- X-ICE-API-Token
-        ice_num -- Number of Part ID. For instance, ice_num=17338 for JPUB_017338.
+        ice_user_config -- Either {email: password:} or {token: client:}. Refer to icebreaker documentation. Root is a separate default argument (ice_root).
+        *ice_nums -- Part ID numbers e.g. 17338, ... Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.
+        ice_root -- Root of ice registry. Refer to icebreaker documentation.
         file_type -- The file type to download e.g. "original", "genbank" or "fasta"."""
-    ice_url = f"https://public-registry.jbei.org/rest/file/{ice_num}/sequence/{file_type}"
-    try:
-        ice_response = requests.get(
-            ice_url,
-            headers={
-                "X-ICE-API-Token-Client": ice_client,
-                "X-ICE-API-Token": ice_token,
-                "Cache-Control": "no-cache"
-            },
-            timeout=30
+    ice_config = ice_user_config
+    ice_config["root"] = ice_root
+    ice = icebreaker.IceClient(ice_config)
+    for ice_num in ice_nums:
+        bytes_file = ice.request(
+            method="GET",
+            endpoint=f"file/{ice_num}/sequence/{file_type}",
+            response_type="file"
         )
-    except TimeoutError:
-        print("No response from public-registry.jbei.org after 30 seconds.")
-    memory_file = io.StringIO(ice_response.text)
-    return seqrec2part(SeqIO.read(memory_file, format))
+        memory_file = io.StringIO(bytes_file.decode("utf-8"))
+        yield import_part(memory_file, "genbank")

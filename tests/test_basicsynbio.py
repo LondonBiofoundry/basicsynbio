@@ -82,6 +82,14 @@ def bseva_68_seqrec():
     return SeqIO.read(bseva_dir / "BASIC_SEVA_68.gb", "genbank")
 
 
+@pytest.fixture
+def ice_user_config():
+    import os
+    ice_client = os.environ.get("JBEI_ICE_CLIENT")    
+    ice_token = os.environ.get("JBEI_ICE_TOKEN")
+    return {"client": ice_client, "token": ice_token}
+
+
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
     returns true if basicpart has equivalent seqrec attributes.
@@ -138,7 +146,7 @@ def testreturn_seqrec(five_part_assembly):
     assert five_part_assembly.return_seqrec().seq == example_assembly.seq
 
 
-@pytest.mark.skip(reason="Added io module and removed BasicAssembly.return_file() method")
+@pytest.mark.skip(reason="Added bsb_io module and removed BasicAssembly.return_file() method")
 def test_assembly_return_file(five_part_assembly):
     """The BASIC assembly return_file() method is required given all BASIC assemblies might not be BASIC parts."""
     import os
@@ -205,10 +213,14 @@ def test_new_part_resuspension(gfp_orf_basicpart):
     assert 75 == round(mass*1e-9/(vol*1e-6*mw)*1e9)
 
 
-def test_import_ice_part(bseva_68_seqrec):
-    import os
-    bseva_68_ice_number = "17337"
-    ice_client = os.environ.get("JBEI_ICE_CLIENT")    
-    ice_token = os.environ.get("JBEI_ICE_TOKEN")
-    bseva_68_part = bsb.import_ice_part(ice_client, ice_token, bseva_68_ice_number)
-    assert compare_basicpart_seqrec(bseva_68_part, bseva_68_seqrec) == True
+def test_import_ice_parts(bseva_68_seqrec, ice_user_config):
+    ice_nums= ["17337"]
+    print(f"ice_user_config before import parts: {ice_user_config}")
+    ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
+    assert compare_basicpart_seqrec(next(ice_parts), bseva_68_seqrec) == True
+
+
+def test_import_all_ice_parts(ice_user_config):
+    ice_nums = (value for value in bsb.BSEVA_ICE_DICT.values())
+    ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
+    assert len(list(ice_parts)) == len(bsb.BSEVA_ICE_DICT)

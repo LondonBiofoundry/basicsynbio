@@ -12,7 +12,7 @@ from .main import (
 )
 from .bsb_io import (
     export_to_file,
-    import_ice_part,
+    import_ice_parts,
     import_part,
     import_parts,
 )
