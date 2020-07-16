@@ -2,3 +2,4 @@
 
 from .biolegio import BIOLEGIO_DICT
 from .ice import BSEVA_ICE_DICT
+from .bseva import BSEVA_DICT

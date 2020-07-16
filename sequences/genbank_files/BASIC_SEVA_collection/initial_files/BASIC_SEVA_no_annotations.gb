@@ -1,4 +1,4 @@
-LOCUS       BASIC_SEVA_12           4843 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_12           4843 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_12
 VERSION     BASIC_SEVA_12
@@ -90,7 +90,7 @@ ORIGIN
      4741 actgggcctt tcgttttatc tgttgtttgt cggtgaacgc tctctactag agtcacactg
      4801 gctcaccttc gggtgggcct ttctgcgttt atatactggc tcg
 //
-LOCUS       BASIC_SEVA_13           4143 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_13           4143 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_13
 VERSION     BASIC_SEVA_13
@@ -171,7 +171,7 @@ ORIGIN
      4081 tctctactag agtcacactg gctcaccttc gggtgggcct ttctgcgttt atatactggc
      4141 tcg
 //
-LOCUS       BASIC_SEVA_14           4394 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_14           4394 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_14
 VERSION     BASIC_SEVA_14
@@ -256,7 +256,7 @@ ORIGIN
      4321 tcggtgaacg ctctctacta gagtcacact ggctcacctt cgggtgggcc tttctgcgtt
      4381 tatatactgg ctcg
 //
-LOCUS       BASIC_SEVA_15           6099 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_15           6099 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_15
 VERSION     BASIC_SEVA_15
@@ -369,7 +369,7 @@ ORIGIN
      6001 ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc tactagagtc acactggctc
      6061 accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_17           4081 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_17           4081 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_17
 VERSION     BASIC_SEVA_17
@@ -449,7 +449,7 @@ ORIGIN
      4021 tctactagag tcacactggc tcaccttcgg gtgggccttt ctgcgtttat atactggctc
      4081 g
 //
-LOCUS       BASIC_SEVA_18           3354 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_18           3354 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_18
 VERSION     BASIC_SEVA_18
@@ -516,7 +516,7 @@ ORIGIN
      3241 tcagtcgaaa gactgggcct ttcgttttat ctgttgtttg tcggtgaacg ctctctacta
      3301 gagtcacact ggctcacctt cgggtgggcc tttctgcgtt tatatactgg ctcg
 //
-LOCUS       BASIC_SEVA_19           3810 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_19           3810 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_19
 VERSION     BASIC_SEVA_19
@@ -591,7 +591,7 @@ ORIGIN
      3721 ttttatctgt tgtttgtcgg tgaacgctct ctactagagt cacactggct caccttcggg
      3781 tgggcctttc tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_22           4731 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_22           4731 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_22
 VERSION     BASIC_SEVA_22
@@ -681,7 +681,7 @@ ORIGIN
      4621 gtcgaaagac tgggcctttc gttttatctg ttgtttgtcg gtgaacgctc tctactagag
      4681 tcacactggc tcaccttcgg gtgggccttt ctgcgtttat atactggctc g
 //
-LOCUS       BASIC_SEVA_23           4031 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_23           4031 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_23
 VERSION     BASIC_SEVA_23
@@ -760,7 +760,7 @@ ORIGIN
      3961 gtgaacgctc tctactagag tcacactggc tcaccttcgg gtgggccttt ctgcgtttat
      4021 atactggctc g
 //
-LOCUS       BASIC_SEVA_24           4282 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_24           4282 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_24
 VERSION     BASIC_SEVA_24
@@ -843,7 +843,7 @@ ORIGIN
      4201 gttgtttgtc ggtgaacgct ctctactaga gtcacactgg ctcaccttcg ggtgggcctt
      4261 tctgcgttta tatactggct cg
 //
-LOCUS       BASIC_SEVA_25           5987 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_25           5987 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_25
 VERSION     BASIC_SEVA_25
@@ -954,7 +954,7 @@ ORIGIN
      5881 aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta ctagagtcac
      5941 actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_27           3969 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_27           3969 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_27
 VERSION     BASIC_SEVA_27
@@ -1032,7 +1032,7 @@ ORIGIN
      3901 gaacgctctc tactagagtc acactggctc accttcgggt gggcctttct gcgtttatat
      3961 actggctcg
 //
-LOCUS       BASIC_SEVA_28           3242 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_28           3242 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_28
 VERSION     BASIC_SEVA_28
@@ -1098,7 +1098,7 @@ ORIGIN
      3181 ctctactaga gtcacactgg ctcaccttcg ggtgggcctt tctgcgttta tatactggct
      3241 cg
 //
-LOCUS       BASIC_SEVA_29           3698 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_29           3698 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_29
 VERSION     BASIC_SEVA_29
@@ -1171,7 +1171,7 @@ ORIGIN
      3601 gcctttcgtt ttatctgttg tttgtcggtg aacgctctct actagagtca cactggctca
      3661 ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_32           4587 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_32           4587 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_32
 VERSION     BASIC_SEVA_32
@@ -1259,7 +1259,7 @@ ORIGIN
      4501 tatctgttgt ttgtcggtga acgctctcta ctagagtcac actggctcac cttcgggtgg
      4561 gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_33           3887 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_33           3887 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_33
 VERSION     BASIC_SEVA_33
@@ -1335,7 +1335,7 @@ ORIGIN
      3781 aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta ctagagtcac
      3841 actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_34           4138 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_34           4138 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_34
 VERSION     BASIC_SEVA_34
@@ -1415,7 +1415,7 @@ ORIGIN
      4021 aggctcagtc gaaagactgg gcctttcgtt ttatctgttg tttgtcggtg aacgctctct
      4081 actagagtca cactggctca ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_35           5843 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_35           5843 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_35
 VERSION     BASIC_SEVA_35
@@ -1524,7 +1524,7 @@ ORIGIN
      5761 tgttgtttgt cggtgaacgc tctctactag agtcacactg gctcaccttc gggtgggcct
      5821 ttctgcgttt atatactggc tcg
 //
-LOCUS       BASIC_SEVA_37           3825 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_37           3825 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_37
 VERSION     BASIC_SEVA_37
@@ -1599,7 +1599,7 @@ ORIGIN
      3721 agactgggcc tttcgtttta tctgttgttt gtcggtgaac gctctctact agagtcacac
      3781 tggctcacct tcgggtgggc ctttctgcgt ttatatactg gctcg
 //
-LOCUS       BASIC_SEVA_38           3098 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_38           3098 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_38
 VERSION     BASIC_SEVA_38
@@ -1662,7 +1662,7 @@ ORIGIN
      3001 gcctttcgtt ttatctgttg tttgtcggtg aacgctctct actagagtca cactggctca
      3061 ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_39           3554 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_39           3554 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_39
 VERSION     BASIC_SEVA_39
@@ -1733,7 +1733,7 @@ ORIGIN
      3481 tcggtgaacg ctctctacta gagtcacact ggctcacctt cgggtgggcc tttctgcgtt
      3541 tatatactgg ctcg
 //
-LOCUS       BASIC_SEVA_42           4801 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_42           4801 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_42
 VERSION     BASIC_SEVA_42
@@ -1825,7 +1825,7 @@ ORIGIN
      4741 tctactagag tcacactggc tcaccttcgg gtgggccttt ctgcgtttat atactggctc
      4801 g
 //
-LOCUS       BASIC_SEVA_43           4101 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_43           4101 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_43
 VERSION     BASIC_SEVA_43
@@ -1905,7 +1905,7 @@ ORIGIN
      4021 ttgtttgtcg gtgaacgctc tctactagag tcacactggc tcaccttcgg gtgggccttt
      4081 ctgcgtttat atactggctc g
 //
-LOCUS       BASIC_SEVA_44           4352 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_44           4352 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_44
 VERSION     BASIC_SEVA_44
@@ -1989,7 +1989,7 @@ ORIGIN
      4261 cgttttatct gttgtttgtc ggtgaacgct ctctactaga gtcacactgg ctcaccttcg
      4321 ggtgggcctt tctgcgttta tatactggct cg
 //
-LOCUS       BASIC_SEVA_45           6057 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_45           6057 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_45
 VERSION     BASIC_SEVA_45
@@ -2101,7 +2101,7 @@ ORIGIN
      5941 ggctcagtcg aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta
      6001 ctagagtcac actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_47           4039 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_47           4039 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_47
 VERSION     BASIC_SEVA_47
@@ -2180,7 +2180,7 @@ ORIGIN
      3961 gtttgtcggt gaacgctctc tactagagtc acactggctc accttcgggt gggcctttct
      4021 gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_48           3312 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_48           3312 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_48
 VERSION     BASIC_SEVA_48
@@ -2247,7 +2247,7 @@ ORIGIN
      3241 ggtgaacgct ctctactaga gtcacactgg ctcaccttcg ggtgggcctt tctgcgttta
      3301 tatactggct cg
 //
-LOCUS       BASIC_SEVA_49           3768 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_49           3768 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_49
 VERSION     BASIC_SEVA_49
@@ -2321,7 +2321,7 @@ ORIGIN
      3661 gaaagactgg gcctttcgtt ttatctgttg tttgtcggtg aacgctctct actagagtca
      3721 cactggctca ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_52           5079 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_52           5079 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_52
 VERSION     BASIC_SEVA_52
@@ -2417,7 +2417,7 @@ ORIGIN
      4981 ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc tactagagtc acactggctc
      5041 accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_53           4379 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_53           4379 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_53
 VERSION     BASIC_SEVA_53
@@ -2501,7 +2501,7 @@ ORIGIN
      4261 aaggctcagt cgaaagactg ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc
      4321 tactagagtc acactggctc accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_54           4630 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_54           4630 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_54
 VERSION     BASIC_SEVA_54
@@ -2590,7 +2590,7 @@ ORIGIN
      4561 tgaacgctct ctactagagt cacactggct caccttcggg tgggcctttc tgcgtttata
      4621 tactggctcg
 //
-LOCUS       BASIC_SEVA_55           6335 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_55           6335 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_55
 VERSION     BASIC_SEVA_55
@@ -2707,7 +2707,7 @@ ORIGIN
      6241 tttcgtttta tctgttgttt gtcggtgaac gctctctact agagtcacac tggctcacct
      6301 tcgggtgggc ctttctgcgt ttatatactg gctcg
 //
-LOCUS       BASIC_SEVA_57           4317 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_57           4317 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_57
 VERSION     BASIC_SEVA_57
@@ -2790,7 +2790,7 @@ ORIGIN
      4201 ggctcagtcg aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta
      4261 ctagagtcac actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_58           3590 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_58           3590 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_58
 VERSION     BASIC_SEVA_58
@@ -2861,7 +2861,7 @@ ORIGIN
      3481 tcgaaagact gggcctttcg ttttatctgt tgtttgtcgg tgaacgctct ctactagagt
      3541 cacactggct caccttcggg tgggcctttc tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_59           4046 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_59           4046 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_59
 VERSION     BASIC_SEVA_59
@@ -2940,7 +2940,7 @@ ORIGIN
      3961 atctgttgtt tgtcggtgaa cgctctctac tagagtcaca ctggctcacc ttcgggtggg
      4021 cctttctgcg tttatatact ggctcg
 //
-LOCUS       BASIC_SEVA_62           4609 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_62           4609 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_62
 VERSION     BASIC_SEVA_62
@@ -3028,7 +3028,7 @@ ORIGIN
      4501 cgaaagactg ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc tactagagtc
      4561 acactggctc accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_63           3909 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_63           3909 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_63
 VERSION     BASIC_SEVA_63
@@ -3105,7 +3105,7 @@ ORIGIN
      3841 gaacgctctc tactagagtc acactggctc accttcgggt gggcctttct gcgtttatat
      3901 actggctcg
 //
-LOCUS       BASIC_SEVA_64           4160 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_64           4160 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_64
 VERSION     BASIC_SEVA_64
@@ -3186,7 +3186,7 @@ ORIGIN
      4081 tgtttgtcgg tgaacgctct ctactagagt cacactggct caccttcggg tgggcctttc
      4141 tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_65           5865 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_65           5865 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_65
 VERSION     BASIC_SEVA_65
@@ -3295,7 +3295,7 @@ ORIGIN
      5761 agactgggcc tttcgtttta tctgttgttt gtcggtgaac gctctctact agagtcacac
      5821 tggctcacct tcgggtgggc ctttctgcgt ttatatactg gctcg
 //
-LOCUS       BASIC_SEVA_67           3847 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_67           3847 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_67
 VERSION     BASIC_SEVA_67
@@ -3371,7 +3371,7 @@ ORIGIN
      3781 acgctctcta ctagagtcac actggctcac cttcgggtgg gcctttctgc gtttatatac
      3841 tggctcg
 //
-LOCUS       BASIC_SEVA_68           3120 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_68           3120 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_68
 VERSION     BASIC_SEVA_68
@@ -3434,7 +3434,7 @@ ORIGIN
      3001 aaaggctcag tcgaaagact gggcctttcg ttttatctgt tgtttgtcgg tgaacgctct
      3061 ctactagagt cacactggct caccttcggg tgggcctttc tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_69           3576 bp    DNA     circular UNK 14-JUL-2020
+LOCUS       BASIC_SEVA_69           3576 bp    DNA     circular UNK 16-JUL-2020
 DEFINITION  .
 ACCESSION   BASIC_SEVA_69
 VERSION     BASIC_SEVA_69

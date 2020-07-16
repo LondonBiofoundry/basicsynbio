@@ -18,5 +18,6 @@ from .bsb_io import (
 )
 from .parts_linkers import (
     BIOLEGIO_DICT,
+    BSEVA_DICT,
     BSEVA_ICE_DICT
 )
