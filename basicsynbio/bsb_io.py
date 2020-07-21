@@ -34,7 +34,7 @@ def import_parts(handle, format, add_i_seqs=False):
     
     Args:"""
     seqrecs = SeqIO.parse(handle, format)
-    return [seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs]
+    yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
 
 @add2docs(

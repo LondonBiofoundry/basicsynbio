@@ -160,7 +160,7 @@ def test_basic_parts_in_file():
     parts = bsb.import_parts(
         "sequences/genbank_files/misc_BASIC/dnabot_constructs.gb", "genbank"
     )
-    print(parts[:5])
+    print(list(parts)[:5])
 
 
 def test_add_i_seqs(gfp_orf_basicpart, gfp_orf_seq):
@@ -228,5 +228,6 @@ def test_import_all_ice_parts(ice_user_config):
 
 
 def test_bseva_dict(bseva_68_seqrec):
+    print(bsb.BSEVA_DICT.keys())
     bseva_68_part = bsb.BSEVA_DICT["68"]
     assert compare_basicpart_seqrec(bseva_68_part, bseva_68_seqrec) == True

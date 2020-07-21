@@ -1,12 +1,31 @@
-LOCUS       BASIC_SEVA_12           4843 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_12           4843 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and RK2
+            origin of replication..
 ACCESSION   BASIC_SEVA_12
 VERSION     BASIC_SEVA_12
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      3798..3832
+                     /label="J23119"
+     CDS             3964..4668
+                     /label="mScarlett"
+     regulatory      4705..4833
+                     /label="B0015"
+     misc_feature    3649..3705
+                     /label="LMS"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
+     misc_feature    1299..3520
+                     /label="SEVA_RK2"
+     regulatory      3535..3639
+                     /label="SEVA_T1"
+     misc_feature    join(4838..4843,1..51)
+                     /label="LMP"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -90,15 +109,34 @@ ORIGIN
      4741 actgggcctt tcgttttatc tgttgtttgt cggtgaacgc tctctactag agtcacactg
      4801 gctcaccttc gggtgggcct ttctgcgttt atatactggc tcg
 //
-LOCUS       BASIC_SEVA_13           4143 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_13           4143 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and pBBR1
+            origin of replication..
 ACCESSION   BASIC_SEVA_13
 VERSION     BASIC_SEVA_13
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    join(4138..4143,1..51)
+                     /label="LMP"
+     regulatory      2835..2939
+                     /label="SEVA_T1"
+     misc_feature    2949..3005
+                     /label="LMS"
+     CDS             3264..3968
+                     /label="mScarlett"
+     regulatory      4005..4133
+                     /label="B0015"
+     regulatory      3098..3132
+                     /label="J23119"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    1299..2820
+                     /label="SEVA_pBBR1"
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -171,15 +209,36 @@ ORIGIN
      4081 tctctactag agtcacactg gctcaccttc gggtgggcct ttctgcgttt atatactggc
      4141 tcg
 //
-LOCUS       BASIC_SEVA_14           4394 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_14           4394 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
+            pRO1600/ColE1 origin of replication..
 ACCESSION   BASIC_SEVA_14
 VERSION     BASIC_SEVA_14
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      3496..3507
+                     /label="B0034"
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
+     misc_feature    join(4389..4394,1..51)
+                     /label="LMP"
+     regulatory      4256..4384
+                     /label="B0015"
+     misc_feature    3396..3452
+                     /label="LMS"
+     regulatory      3453..3487
+                     /label="J23105"
+     regulatory      3282..3386
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    1299..3267
+                     /label="SEVA_pRO1600/ColE1"
+     CDS             3515..4219
+                     /label="mScarlett"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -256,15 +315,36 @@ ORIGIN
      4321 tcggtgaacg ctctctacta gagtcacact ggctcacctt cgggtgggcc tttctgcgtt
      4381 tatatactgg ctcg
 //
-LOCUS       BASIC_SEVA_15           6099 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_15           6099 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
+            RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_15
 VERSION     BASIC_SEVA_15
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    5101..5157
+                     /label="LMS"
+     regulatory      4987..5091
+                     /label="SEVA_T1"
+     regulatory      5961..6089
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
+     misc_feature    1299..4972
+                     /label="SEVA_RSF101"
+     regulatory      5158..5192
+                     /label="J23119"
+     CDS             5220..5924
+                     /label="mScarlett"
+     misc_feature    join(6094..6099,1..51)
+                     /label="LMP"
+     regulatory      5201..5212
+                     /label="B0034"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -369,15 +449,34 @@ ORIGIN
      6001 ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc tactagagtc acactggctc
      6061 accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_17           4081 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_17           4081 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and pSC101
+            origin of replication..
 ACCESSION   BASIC_SEVA_17
 VERSION     BASIC_SEVA_17
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             3202..3906
+                     /label="mScarlett"
+     regulatory      3036..3070
+                     /label="J23119"
+     misc_feature    2887..2943
+                     /label="LMS"
+     misc_feature    1299..2758
+                     /label="SEVA_pSC101"
+     regulatory      2773..2877
+                     /label="SEVA_T1"
+     misc_feature    join(4076..4081,1..51)
+                     /label="LMP"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3943..4071
+                     /label="B0015"
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -449,15 +548,36 @@ ORIGIN
      4021 tctactagag tcacactggc tcaccttcgg gtgggccttt ctgcgtttat atactggctc
      4081 g
 //
-LOCUS       BASIC_SEVA_18           3354 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_18           3354 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and pUC
+            origin of replication..
 ACCESSION   BASIC_SEVA_18
 VERSION     BASIC_SEVA_18
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
+     regulatory      2242..2346
+                     /label="SEVA_T1"
+     regulatory      2413..2447
+                     /label="J23106"
+     misc_feature    2356..2412
+                     /label="LMS"
+     regulatory      3216..3344
+                     /label="B0015"
+     CDS             2475..3179
+                     /label="mScarlett"
+     misc_feature    1299..2227
+                     /label="SEVA_pUC"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2456..2467
+                     /label="B0034"
+     misc_feature    join(3349..3354,1..51)
+                     /label="LMP"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -516,15 +636,36 @@ ORIGIN
      3241 tcagtcgaaa gactgggcct ttcgttttat ctgttgtttg tcggtgaacg ctctctacta
      3301 gagtcacact ggctcacctt cgggtgggcc tttctgcgtt tatatactgg ctcg
 //
-LOCUS       BASIC_SEVA_19           3810 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_19           3810 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
+            pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_19
 VERSION     BASIC_SEVA_19
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    1299..2683
+                     /label="SEVA_pBR322-ROP"
+     misc_feature    join(3805..3810,1..51)
+                     /label="LMP"
+     regulatory      2912..2923
+                     /label="B0034"
+     regulatory      2698..2802
+                     /label="SEVA_T1"
+     regulatory      3672..3800
+                     /label="B0015"
+     misc_feature    187..1225
+                     /label="SEVA_Ap"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2869..2903
+                     /label="J23119"
+     CDS             2931..3635
+                     /label="mScarlett"
+     misc_feature    2812..2868
+                     /label="LMS"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -591,15 +732,34 @@ ORIGIN
      3721 ttttatctgt tgtttgtcgg tgaacgctct ctactagagt cacactggct caccttcggg
      3781 tgggcctttc tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_22           4731 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_22           4731 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and RK2
+            origin of replication..
 ACCESSION   BASIC_SEVA_22
 VERSION     BASIC_SEVA_22
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      4593..4721
+                     /label="B0015"
+     misc_feature    join(4726..4731,1..51)
+                     /label="LMP"
+     CDS             3852..4556
+                     /label="mScarlett"
+     misc_feature    3537..3593
+                     /label="LMS"
+     regulatory      3686..3720
+                     /label="J23119"
+     regulatory      3423..3527
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..1113
+                     /label="SEVA_Km"
+     misc_feature    1187..3408
+                     /label="SEVA_RK2"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -681,15 +841,34 @@ ORIGIN
      4621 gtcgaaagac tgggcctttc gttttatctg ttgtttgtcg gtgaacgctc tctactagag
      4681 tcacactggc tcaccttcgg gtgggccttt ctgcgtttat atactggctc g
 //
-LOCUS       BASIC_SEVA_23           4031 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_23           4031 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and pBBR1
+            origin of replication..
 ACCESSION   BASIC_SEVA_23
 VERSION     BASIC_SEVA_23
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      3893..4021
+                     /label="B0015"
+     misc_feature    join(4026..4031,1..51)
+                     /label="LMP"
+     misc_feature    2837..2893
+                     /label="LMS"
+     misc_feature    1187..2708
+                     /label="SEVA_pBBR1"
+     regulatory      2986..3020
+                     /label="J23119"
+     regulatory      2723..2827
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..1113
+                     /label="SEVA_Km"
+     CDS             3152..3856
+                     /label="mScarlett"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -760,15 +939,36 @@ ORIGIN
      3961 gtgaacgctc tctactagag tcacactggc tcaccttcgg gtgggccttt ctgcgtttat
      4021 atactggctc g
 //
-LOCUS       BASIC_SEVA_24           4282 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_24           4282 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
+            pRO1600/ColE1 origin of replication..
 ACCESSION   BASIC_SEVA_24
 VERSION     BASIC_SEVA_24
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    join(4277..4282,1..51)
+                     /label="LMP"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3170..3274
+                     /label="SEVA_T1"
+     regulatory      3341..3375
+                     /label="J23105"
+     misc_feature    1187..3155
+                     /label="SEVA_pRO1600/ColE1"
+     regulatory      3384..3395
+                     /label="B0034"
+     CDS             3403..4107
+                     /label="mScarlett"
+     misc_feature    3284..3340
+                     /label="LMS"
+     regulatory      4144..4272
+                     /label="B0015"
+     misc_feature    187..1113
+                     /label="SEVA_Km"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -843,15 +1043,36 @@ ORIGIN
      4201 gttgtttgtc ggtgaacgct ctctactaga gtcacactgg ctcaccttcg ggtgggcctt
      4261 tctgcgttta tatactggct cg
 //
-LOCUS       BASIC_SEVA_25           5987 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_25           5987 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and RSF1010
+            origin of replication..
 ACCESSION   BASIC_SEVA_25
 VERSION     BASIC_SEVA_25
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    join(5982..5987,1..51)
+                     /label="LMP"
+     regulatory      4875..4979
+                     /label="SEVA_T1"
+     misc_feature    4989..5045
+                     /label="LMS"
+     CDS             5108..5812
+                     /label="mScarlett"
+     misc_feature    1187..4860
+                     /label="SEVA_RSF101"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      5046..5080
+                     /label="J23119"
+     regulatory      5089..5100
+                     /label="B0034"
+     regulatory      5849..5977
+                     /label="B0015"
+     misc_feature    187..1113
+                     /label="SEVA_Km"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -954,15 +1175,34 @@ ORIGIN
      5881 aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta ctagagtcac
      5941 actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_27           3969 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_27           3969 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and pSC101
+            origin of replication..
 ACCESSION   BASIC_SEVA_27
 VERSION     BASIC_SEVA_27
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      2661..2765
+                     /label="SEVA_T1"
+     misc_feature    join(3964..3969,1..51)
+                     /label="LMP"
+     misc_feature    2775..2831
+                     /label="LMS"
+     regulatory      2924..2958
+                     /label="J23119"
+     misc_feature    1187..2646
+                     /label="SEVA_pSC101"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..1113
+                     /label="SEVA_Km"
+     CDS             3090..3794
+                     /label="mScarlett"
+     regulatory      3831..3959
+                     /label="B0015"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1032,15 +1272,36 @@ ORIGIN
      3901 gaacgctctc tactagagtc acactggctc accttcgggt gggcctttct gcgtttatat
      3961 actggctcg
 //
-LOCUS       BASIC_SEVA_28           3242 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_28           3242 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and pUC
+            origin of replication..
 ACCESSION   BASIC_SEVA_28
 VERSION     BASIC_SEVA_28
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    187..1113
+                     /label="SEVA_Km"
+     regulatory      2130..2234
+                     /label="SEVA_T1"
+     regulatory      2344..2355
+                     /label="B0034"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    2244..2300
+                     /label="LMS"
+     regulatory      2301..2335
+                     /label="J23106"
+     regulatory      3104..3232
+                     /label="B0015"
+     misc_feature    join(3237..3242,1..51)
+                     /label="LMP"
+     CDS             2363..3067
+                     /label="mScarlett"
+     misc_feature    1187..2115
+                     /label="SEVA_pUC"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1098,15 +1359,36 @@ ORIGIN
      3181 ctctactaga gtcacactgg ctcaccttcg ggtgggcctt tctgcgttta tatactggct
      3241 cg
 //
-LOCUS       BASIC_SEVA_29           3698 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_29           3698 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
+            pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_29
 VERSION     BASIC_SEVA_29
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      2800..2811
+                     /label="B0034"
+     misc_feature    join(3693..3698,1..51)
+                     /label="LMP"
+     misc_feature    1187..2571
+                     /label="SEVA_pBR322-ROP"
+     misc_feature    2700..2756
+                     /label="LMS"
+     CDS             2819..3523
+                     /label="mScarlett"
+     regulatory      2586..2690
+                     /label="SEVA_T1"
+     regulatory      3560..3688
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..1113
+                     /label="SEVA_Km"
+     regulatory      2757..2791
+                     /label="J23119"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1171,15 +1453,34 @@ ORIGIN
      3601 gcctttcgtt ttatctgttg tttgtcggtg aacgctctct actagagtca cactggctca
      3661 ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_32           4587 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_32           4587 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            RK2 origin of replication..
 ACCESSION   BASIC_SEVA_32
 VERSION     BASIC_SEVA_32
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     misc_feature    join(4582..4587,1..51)
+                     /label="LMP"
+     CDS             3708..4412
+                     /label="mScarlett"
+     regulatory      4449..4577
+                     /label="B0015"
+     misc_feature    3393..3449
+                     /label="LMS"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3279..3383
+                     /label="SEVA_T1"
+     regulatory      3542..3576
+                     /label="J23119"
+     misc_feature    1043..3264
+                     /label="SEVA_RK2"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1259,15 +1560,34 @@ ORIGIN
      4501 tatctgttgt ttgtcggtga acgctctcta ctagagtcac actggctcac cttcgggtgg
      4561 gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_33           3887 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_33           3887 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            pBBR1 origin of replication..
 ACCESSION   BASIC_SEVA_33
 VERSION     BASIC_SEVA_33
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             3008..3712
+                     /label="mScarlett"
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     misc_feature    join(3882..3887,1..51)
+                     /label="LMP"
+     regulatory      3749..3877
+                     /label="B0015"
+     regulatory      2579..2683
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    1043..2564
+                     /label="SEVA_pBBR1"
+     misc_feature    2693..2749
+                     /label="LMS"
+     regulatory      2842..2876
+                     /label="J23119"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1335,15 +1655,36 @@ ORIGIN
      3781 aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta ctagagtcac
      3841 actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_34           4138 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_34           4138 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            pRO1600/ColE1 origin of replication..
 ACCESSION   BASIC_SEVA_34
 VERSION     BASIC_SEVA_34
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      3026..3130
+                     /label="SEVA_T1"
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     CDS             3259..3963
+                     /label="mScarlett"
+     regulatory      3197..3231
+                     /label="J23105"
+     misc_feature    1043..3011
+                     /label="SEVA_pRO1600/ColE1"
+     misc_feature    join(4133..4138,1..51)
+                     /label="LMP"
+     regulatory      4000..4128
+                     /label="B0015"
+     misc_feature    3140..3196
+                     /label="LMS"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3240..3251
+                     /label="B0034"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1415,15 +1756,36 @@ ORIGIN
      4021 aggctcagtc gaaagactgg gcctttcgtt ttatctgttg tttgtcggtg aacgctctct
      4081 actagagtca cactggctca ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_35           5843 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_35           5843 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_35
 VERSION     BASIC_SEVA_35
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      4902..4936
+                     /label="J23119"
+     regulatory      5705..5833
+                     /label="B0015"
+     regulatory      4731..4835
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     CDS             4964..5668
+                     /label="mScarlett"
+     regulatory      4945..4956
+                     /label="B0034"
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     misc_feature    1043..4716
+                     /label="SEVA_RSF101"
+     misc_feature    4845..4901
+                     /label="LMS"
+     misc_feature    join(5838..5843,1..51)
+                     /label="LMP"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1524,15 +1886,34 @@ ORIGIN
      5761 tgttgtttgt cggtgaacgc tctctactag agtcacactg gctcaccttc gggtgggcct
      5821 ttctgcgttt atatactggc tcg
 //
-LOCUS       BASIC_SEVA_37           3825 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_37           3825 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_37
 VERSION     BASIC_SEVA_37
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     misc_feature    2631..2687
+                     /label="LMS"
+     regulatory      3687..3815
+                     /label="B0015"
+     regulatory      2517..2621
+                     /label="SEVA_T1"
+     CDS             2946..3650
+                     /label="mScarlett"
+     misc_feature    join(3820..3825,1..51)
+                     /label="LMP"
+     regulatory      2780..2814
+                     /label="J23119"
+     misc_feature    1043..2502
+                     /label="SEVA_pSC101"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1599,15 +1980,36 @@ ORIGIN
      3721 agactgggcc tttcgtttta tctgttgttt gtcggtgaac gctctctact agagtcacac
      3781 tggctcacct tcgggtgggc ctttctgcgt ttatatactg gctcg
 //
-LOCUS       BASIC_SEVA_38           3098 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_38           3098 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            pUC origin of replication..
 ACCESSION   BASIC_SEVA_38
 VERSION     BASIC_SEVA_38
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2157..2191
+                     /label="J23106"
+     misc_feature    join(3093..3098,1..51)
+                     /label="LMP"
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     misc_feature    1043..1971
+                     /label="SEVA_pUC"
+     regulatory      1986..2090
+                     /label="SEVA_T1"
+     regulatory      2200..2211
+                     /label="B0034"
+     regulatory      2960..3088
+                     /label="B0015"
+     CDS             2219..2923
+                     /label="mScarlett"
+     misc_feature    2100..2156
+                     /label="LMS"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1662,15 +2064,36 @@ ORIGIN
      3001 gcctttcgtt ttatctgttg tttgtcggtg aacgctctct actagagtca cactggctca
      3061 ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_39           3554 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_39           3554 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
+            pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_39
 VERSION     BASIC_SEVA_39
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    187..969
+                     /label="SEVA_Cm"
+     CDS             2675..3379
+                     /label="mScarlett"
+     misc_feature    join(3549..3554,1..51)
+                     /label="LMP"
+     regulatory      2442..2546
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    1043..2427
+                     /label="SEVA_pBR322-ROP"
+     regulatory      2613..2647
+                     /label="J23119"
+     regulatory      2656..2667
+                     /label="B0034"
+     misc_feature    2556..2612
+                     /label="LMS"
+     regulatory      3416..3544
+                     /label="B0015"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1733,15 +2156,34 @@ ORIGIN
      3481 tcggtgaacg ctctctacta gagtcacact ggctcacctt cgggtgggcc tttctgcgtt
      3541 tatatactgg ctcg
 //
-LOCUS       BASIC_SEVA_42           4801 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_42           4801 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and RK2
+            origin of replication..
 ACCESSION   BASIC_SEVA_42
 VERSION     BASIC_SEVA_42
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    3607..3663
+                     /label="LMS"
+     regulatory      3493..3597
+                     /label="SEVA_T1"
+     misc_feature    1257..3478
+                     /label="SEVA_RK2"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      4663..4791
+                     /label="B0015"
+     misc_feature    join(4796..4801,1..51)
+                     /label="LMP"
+     regulatory      3756..3790
+                     /label="J23119"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     CDS             3922..4626
+                     /label="mScarlett"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1825,15 +2267,34 @@ ORIGIN
      4741 tctactagag tcacactggc tcaccttcgg gtgggccttt ctgcgtttat atactggctc
      4801 g
 //
-LOCUS       BASIC_SEVA_43           4101 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_43           4101 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
+            pBBR1 origin of replication..
 ACCESSION   BASIC_SEVA_43
 VERSION     BASIC_SEVA_43
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    join(4096..4101,1..51)
+                     /label="LMP"
+     CDS             3222..3926
+                     /label="mScarlett"
+     regulatory      3056..3090
+                     /label="J23119"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     misc_feature    2907..2963
+                     /label="LMS"
+     regulatory      3963..4091
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2793..2897
+                     /label="SEVA_T1"
+     misc_feature    1257..2778
+                     /label="SEVA_pBBR1"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1905,15 +2366,36 @@ ORIGIN
      4021 ttgtttgtcg gtgaacgctc tctactagag tcacactggc tcaccttcgg gtgggccttt
      4081 ctgcgtttat atactggctc g
 //
-LOCUS       BASIC_SEVA_44           4352 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_44           4352 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
+            pRO1600/ColE1 origin of replication..
 ACCESSION   BASIC_SEVA_44
 VERSION     BASIC_SEVA_44
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      4214..4342
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     misc_feature    3354..3410
+                     /label="LMS"
+     misc_feature    join(4347..4352,1..51)
+                     /label="LMP"
+     misc_feature    1257..3225
+                     /label="SEVA_pRO1600/ColE1"
+     regulatory      3240..3344
+                     /label="SEVA_T1"
+     regulatory      3454..3465
+                     /label="B0034"
+     regulatory      3411..3445
+                     /label="J23105"
+     CDS             3473..4177
+                     /label="mScarlett"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -1989,15 +2471,36 @@ ORIGIN
      4261 cgttttatct gttgtttgtc ggtgaacgct ctctactaga gtcacactgg ctcaccttcg
      4321 ggtgggcctt tctgcgttta tatactggct cg
 //
-LOCUS       BASIC_SEVA_45           6057 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_45           6057 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
+            RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_45
 VERSION     BASIC_SEVA_45
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      5159..5170
+                     /label="B0034"
+     regulatory      4945..5049
+                     /label="SEVA_T1"
+     misc_feature    1257..4930
+                     /label="SEVA_RSF101"
+     regulatory      5919..6047
+                     /label="B0015"
+     misc_feature    join(6052..6057,1..51)
+                     /label="LMP"
+     misc_feature    5059..5115
+                     /label="LMS"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     CDS             5178..5882
+                     /label="mScarlett"
+     regulatory      5116..5150
+                     /label="J23119"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2101,15 +2604,34 @@ ORIGIN
      5941 ggctcagtcg aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta
      6001 ctagagtcac actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_47           4039 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_47           4039 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
+            pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_47
 VERSION     BASIC_SEVA_47
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             3160..3864
+                     /label="mScarlett"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     misc_feature    2845..2901
+                     /label="LMS"
+     regulatory      3901..4029
+                     /label="B0015"
+     regulatory      2994..3028
+                     /label="J23119"
+     regulatory      2731..2835
+                     /label="SEVA_T1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    1257..2716
+                     /label="SEVA_pSC101"
+     misc_feature    join(4034..4039,1..51)
+                     /label="LMP"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2180,15 +2702,36 @@ ORIGIN
      3961 gtttgtcggt gaacgctctc tactagagtc acactggctc accttcgggt gggcctttct
      4021 gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_48           3312 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_48           3312 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and pUC
+            origin of replication..
 ACCESSION   BASIC_SEVA_48
 VERSION     BASIC_SEVA_48
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    join(3307..3312,1..51)
+                     /label="LMP"
+     regulatory      3174..3302
+                     /label="B0015"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     regulatory      2371..2405
+                     /label="J23106"
+     misc_feature    2314..2370
+                     /label="LMS"
+     CDS             2433..3137
+                     /label="mScarlett"
+     regulatory      2414..2425
+                     /label="B0034"
+     regulatory      2200..2304
+                     /label="SEVA_T1"
+     misc_feature    1257..2185
+                     /label="SEVA_pUC"
+     regulatory      58..160
+                     /label="SEVA_T0"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2247,15 +2790,36 @@ ORIGIN
      3241 ggtgaacgct ctctactaga gtcacactgg ctcaccttcg ggtgggcctt tctgcgttta
      3301 tatactggct cg
 //
-LOCUS       BASIC_SEVA_49           3768 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_49           3768 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
+            pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_49
 VERSION     BASIC_SEVA_49
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             2889..3593
+                     /label="mScarlett"
+     misc_feature    1257..2641
+                     /label="SEVA_pBR322-ROP"
+     misc_feature    195..1183
+                     /label="SEVA_Sm/Sp"
+     regulatory      2870..2881
+                     /label="B0034"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2827..2861
+                     /label="J23119"
+     regulatory      3630..3758
+                     /label="B0015"
+     misc_feature    join(3763..3768,1..51)
+                     /label="LMP"
+     regulatory      2656..2760
+                     /label="SEVA_T1"
+     misc_feature    2770..2826
+                     /label="LMS"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2321,15 +2885,34 @@ ORIGIN
      3661 gaaagactgg gcctttcgtt ttatctgttg tttgtcggtg aacgctctct actagagtca
      3721 cactggctca ccttcgggtg ggcctttctg cgtttatata ctggctcg
 //
-LOCUS       BASIC_SEVA_52           5079 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_52           5079 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and RK2
+            origin of replication..
 ACCESSION   BASIC_SEVA_52
 VERSION     BASIC_SEVA_52
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      4034..4068
+                     /label="J23119"
+     misc_feature    3885..3941
+                     /label="LMS"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     regulatory      3771..3875
+                     /label="SEVA_T1"
+     misc_feature    join(5074..5079,1..51)
+                     /label="LMP"
+     regulatory      4941..5069
+                     /label="B0015"
+     CDS             4200..4904
+                     /label="mScarlett"
+     misc_feature    1535..3756
+                     /label="SEVA_RK2"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2417,15 +3000,34 @@ ORIGIN
      4981 ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc tactagagtc acactggctc
      5041 accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_53           4379 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_53           4379 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
+            pBBR1 origin of replication..
 ACCESSION   BASIC_SEVA_53
 VERSION     BASIC_SEVA_53
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     misc_feature    join(4374..4379,1..51)
+                     /label="LMP"
+     misc_feature    3185..3241
+                     /label="LMS"
+     regulatory      4241..4369
+                     /label="B0015"
+     regulatory      3071..3175
+                     /label="SEVA_T1"
+     CDS             3500..4204
+                     /label="mScarlett"
+     misc_feature    1535..3056
+                     /label="SEVA_pBBR1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3334..3368
+                     /label="J23119"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2501,15 +3103,36 @@ ORIGIN
      4261 aaggctcagt cgaaagactg ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc
      4321 tactagagtc acactggctc accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_54           4630 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_54           4630 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
+            pRO1600/ColE1 origin of replication..
 ACCESSION   BASIC_SEVA_54
 VERSION     BASIC_SEVA_54
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      3518..3622
+                     /label="SEVA_T1"
+     misc_feature    3632..3688
+                     /label="LMS"
+     misc_feature    join(4625..4630,1..51)
+                     /label="LMP"
+     regulatory      3689..3723
+                     /label="J23105"
+     regulatory      3732..3743
+                     /label="B0034"
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     CDS             3751..4455
+                     /label="mScarlett"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      4492..4620
+                     /label="B0015"
+     misc_feature    1535..3503
+                     /label="SEVA_pRO1600/ColE1"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2590,15 +3213,36 @@ ORIGIN
      4561 tgaacgctct ctactagagt cacactggct caccttcggg tgggcctttc tgcgtttata
      4621 tactggctcg
 //
-LOCUS       BASIC_SEVA_55           6335 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_55           6335 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
+            RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_55
 VERSION     BASIC_SEVA_55
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     regulatory      5437..5448
+                     /label="B0034"
+     misc_feature    1535..5208
+                     /label="SEVA_RSF101"
+     regulatory      6197..6325
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    join(6330..6335,1..51)
+                     /label="LMP"
+     CDS             5456..6160
+                     /label="mScarlett"
+     misc_feature    5337..5393
+                     /label="LMS"
+     regulatory      5394..5428
+                     /label="J23119"
+     regulatory      5223..5327
+                     /label="SEVA_T1"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2707,15 +3351,34 @@ ORIGIN
      6241 tttcgtttta tctgttgttt gtcggtgaac gctctctact agagtcacac tggctcacct
      6301 tcgggtgggc ctttctgcgt ttatatactg gctcg
 //
-LOCUS       BASIC_SEVA_57           4317 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_57           4317 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
+            pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_57
 VERSION     BASIC_SEVA_57
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             3438..4142
+                     /label="mScarlett"
+     regulatory      3272..3306
+                     /label="J23119"
+     misc_feature    1535..2994
+                     /label="SEVA_pSC101"
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     regulatory      3009..3113
+                     /label="SEVA_T1"
+     misc_feature    join(4312..4317,1..51)
+                     /label="LMP"
+     regulatory      4179..4307
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    3123..3179
+                     /label="LMS"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2790,15 +3453,36 @@ ORIGIN
      4201 ggctcagtcg aaagactggg cctttcgttt tatctgttgt ttgtcggtga acgctctcta
      4261 ctagagtcac actggctcac cttcgggtgg gcctttctgc gtttatatac tggctcg
 //
-LOCUS       BASIC_SEVA_58           3590 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_58           3590 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and pUC
+            origin of replication..
 ACCESSION   BASIC_SEVA_58
 VERSION     BASIC_SEVA_58
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             2711..3415
+                     /label="mScarlett"
+     regulatory      3452..3580
+                     /label="B0015"
+     regulatory      2478..2582
+                     /label="SEVA_T1"
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     misc_feature    join(3585..3590,1..51)
+                     /label="LMP"
+     regulatory      2692..2703
+                     /label="B0034"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    2592..2648
+                     /label="LMS"
+     regulatory      2649..2683
+                     /label="J23106"
+     misc_feature    1535..2463
+                     /label="SEVA_pUC"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2861,15 +3545,36 @@ ORIGIN
      3481 tcgaaagact gggcctttcg ttttatctgt tgtttgtcgg tgaacgctct ctactagagt
      3541 cacactggct caccttcggg tgggcctttc tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_59           4046 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_59           4046 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
+            pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_59
 VERSION     BASIC_SEVA_59
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      2934..3038
+                     /label="SEVA_T1"
+     misc_feature    3048..3104
+                     /label="LMS"
+     regulatory      3148..3159
+                     /label="B0034"
+     misc_feature    1535..2919
+                     /label="SEVA_pBR322-ROP"
+     regulatory      3105..3139
+                     /label="J23119"
+     regulatory      3908..4036
+                     /label="B0015"
+     CDS             3167..3871
+                     /label="mScarlett"
+     misc_feature    195..1461
+                     /label="SEVA_Tet"
+     misc_feature    join(4041..4046,1..51)
+                     /label="LMP"
+     regulatory      58..160
+                     /label="SEVA_T0"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -2940,15 +3645,34 @@ ORIGIN
      3961 atctgttgtt tgtcggtgaa cgctctctac tagagtcaca ctggctcacc ttcgggtggg
      4021 cctttctgcg tttatatact ggctcg
 //
-LOCUS       BASIC_SEVA_62           4609 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_62           4609 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and RK2
+            origin of replication..
 ACCESSION   BASIC_SEVA_62
 VERSION     BASIC_SEVA_62
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      3301..3405
+                     /label="SEVA_T1"
+     misc_feature    join(4604..4609,1..51)
+                     /label="LMP"
+     misc_feature    1065..3286
+                     /label="SEVA_RK2"
+     CDS             3730..4434
+                     /label="mScarlett"
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      4471..4599
+                     /label="B0015"
+     misc_feature    3415..3471
+                     /label="LMS"
+     regulatory      3564..3598
+                     /label="J23119"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -3028,15 +3752,34 @@ ORIGIN
      4501 cgaaagactg ggcctttcgt tttatctgtt gtttgtcggt gaacgctctc tactagagtc
      4561 acactggctc accttcgggt gggcctttct gcgtttatat actggctcg
 //
-LOCUS       BASIC_SEVA_63           3909 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_63           3909 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and pBBR1
+            origin of replication..
 ACCESSION   BASIC_SEVA_63
 VERSION     BASIC_SEVA_63
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    2715..2771
+                     /label="LMS"
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     regulatory      2864..2898
+                     /label="J23119"
+     regulatory      2601..2705
+                     /label="SEVA_T1"
+     misc_feature    join(3904..3909,1..51)
+                     /label="LMP"
+     misc_feature    1065..2586
+                     /label="SEVA_pBBR1"
+     CDS             3030..3734
+                     /label="mScarlett"
+     regulatory      3771..3899
+                     /label="B0015"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -3105,15 +3848,36 @@ ORIGIN
      3841 gaacgctctc tactagagtc acactggctc accttcgggt gggcctttct gcgtttatat
      3901 actggctcg
 //
-LOCUS       BASIC_SEVA_64           4160 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_64           4160 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
+            pRO1600/ColE1 origin of replication..
 ACCESSION   BASIC_SEVA_64
 VERSION     BASIC_SEVA_64
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     CDS             3281..3985
+                     /label="mScarlett"
+     regulatory      3048..3152
+                     /label="SEVA_T1"
+     misc_feature    3162..3218
+                     /label="LMS"
+     regulatory      3219..3253
+                     /label="J23105"
+     misc_feature    join(4155..4160,1..51)
+                     /label="LMP"
+     misc_feature    1065..3033
+                     /label="SEVA_pRO1600/ColE1"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3262..3273
+                     /label="B0034"
+     regulatory      4022..4150
+                     /label="B0015"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -3186,15 +3950,36 @@ ORIGIN
      4081 tgtttgtcgg tgaacgctct ctactagagt cacactggct caccttcggg tgggcctttc
      4141 tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_65           5865 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_65           5865 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
+            RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_65
 VERSION     BASIC_SEVA_65
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      4967..4978
+                     /label="B0034"
+     misc_feature    join(5860..5865,1..51)
+                     /label="LMP"
+     CDS             4986..5690
+                     /label="mScarlett"
+     regulatory      5727..5855
+                     /label="B0015"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     misc_feature    4867..4923
+                     /label="LMS"
+     regulatory      4924..4958
+                     /label="J23119"
+     regulatory      4753..4857
+                     /label="SEVA_T1"
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     misc_feature    1065..4738
+                     /label="SEVA_RSF101"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -3295,15 +4080,34 @@ ORIGIN
      5761 agactgggcc tttcgtttta tctgttgttt gtcggtgaac gctctctact agagtcacac
      5821 tggctcacct tcgggtgggc ctttctgcgt ttatatactg gctcg
 //
-LOCUS       BASIC_SEVA_67           3847 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_67           3847 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and pSC101
+            origin of replication..
 ACCESSION   BASIC_SEVA_67
 VERSION     BASIC_SEVA_67
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     CDS             2968..3672
+                     /label="mScarlett"
+     misc_feature    join(3842..3847,1..51)
+                     /label="LMP"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      3709..3837
+                     /label="B0015"
+     misc_feature    2653..2709
+                     /label="LMS"
+     regulatory      2539..2643
+                     /label="SEVA_T1"
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     misc_feature    1065..2524
+                     /label="SEVA_pSC101"
+     regulatory      2802..2836
+                     /label="J23119"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -3371,15 +4175,36 @@ ORIGIN
      3781 acgctctcta ctagagtcac actggctcac cttcgggtgg gcctttctgc gtttatatac
      3841 tggctcg
 //
-LOCUS       BASIC_SEVA_68           3120 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_68           3120 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and pUC
+            origin of replication..
 ACCESSION   BASIC_SEVA_68
 VERSION     BASIC_SEVA_68
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      2008..2112
+                     /label="SEVA_T1"
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     misc_feature    2122..2178
+                     /label="LMS"
+     regulatory      2222..2233
+                     /label="B0034"
+     misc_feature    join(3115..3120,1..51)
+                     /label="LMP"
+     regulatory      2982..3110
+                     /label="B0015"
+     misc_feature    1065..1993
+                     /label="SEVA_pUC"
+     CDS             2241..2945
+                     /label="mScarlett"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2179..2213
+                     /label="J23106"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
@@ -3434,15 +4259,36 @@ ORIGIN
      3001 aaaggctcag tcgaaagact gggcctttcg ttttatctgt tgtttgtcgg tgaacgctct
      3061 ctactagagt cacactggct caccttcggg tgggcctttc tgcgtttata tactggctcg
 //
-LOCUS       BASIC_SEVA_69           3576 bp    DNA     circular UNK 21-JUL-2020
-DEFINITION  .
+LOCUS       BASIC_SEVA_69           3576 bp    ds-DNA  circular UNK 13-JUL-2020
+DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
+            pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_69
 VERSION     BASIC_SEVA_69
 KEYWORDS    .
 SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
+  ORGANISM  synthetic construct other sequences; artificial sequences.
+            .
 FEATURES             Location/Qualifiers
+     regulatory      2464..2568
+                     /label="SEVA_T1"
+     regulatory      2635..2669
+                     /label="J23119"
+     CDS             2697..3401
+                     /label="mScarlett"
+     regulatory      3438..3566
+                     /label="B0015"
+     misc_feature    1065..2449
+                     /label="SEVA_pBR322-ROP"
+     misc_feature    join(3571..3576,1..51)
+                     /label="LMP"
+     misc_feature    2578..2634
+                     /label="LMS"
+     misc_feature    187..991
+                     /label="SEVA_Gm"
+     regulatory      58..160
+                     /label="SEVA_T0"
+     regulatory      2678..2689
+                     /label="B0034"
 ORIGIN
         1 ggtaagaact cgcacttcgt ggaaacacta ttatctggtg ggtctctgtc cactagtctt
        61 ggactcctgt tgatagatcc agtaatgacc tcagaactcc atctggattt gttcagaacg
