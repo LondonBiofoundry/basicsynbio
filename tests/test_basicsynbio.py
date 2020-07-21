@@ -231,3 +231,19 @@ def test_bseva_dict(bseva_68_seqrec):
     print(bsb.BSEVA_DICT.keys())
     bseva_68_part = bsb.BSEVA_DICT["68"]
     assert compare_basicpart_seqrec(bseva_68_part, bseva_68_seqrec) == True
+
+
+def test_bpromoter_dict():
+    from Bio import SeqIO
+    bpromoters_handle = "./basicsynbio/parts_linkers/BASIC_promoter_collection.gb"
+    bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
+    for seqrec in bpromoter_seqrecs:
+        assert compare_basicpart_seqrec(bsb.BPROMOTER_DICT[seqrec.id], seqrec) == True
+
+
+def test_bcds_dict():
+    from Bio import SeqIO
+    bcds_handle = "./basicsynbio/parts_linkers/BASIC_cds_collection.gb"
+    bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
+    for seqrec in bcds_seqrecs:
+        assert compare_basicpart_seqrec(bsb.BCDS_DICT[seqrec.id], seqrec) == True
