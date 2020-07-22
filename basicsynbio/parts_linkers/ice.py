@@ -1,3 +1,5 @@
+"""Module contains objects to access parts/linkers stored on ice instances."""
+
 BSEVA_ICE_DICT = {
     "12": "17297",
     "13": "17298",

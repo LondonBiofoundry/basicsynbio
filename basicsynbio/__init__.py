@@ -21,3 +21,6 @@ from .parts_linkers import (
     BSEVA_DICT,
     BSEVA_ICE_DICT
 )
+from .cam import (
+    new_part_resuspension
+)

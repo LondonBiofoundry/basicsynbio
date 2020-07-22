@@ -1,3 +1,5 @@
+"""Module contains objects for importing and exporting parts and sequences."""
+
 from basicsynbio.decorators import add2docs
 from basicsynbio.main import CommonArgDocs, IP_SEQREC, IS_SEQREC, seqrec2part
 import basicsynbio as bsb

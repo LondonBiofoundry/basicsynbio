@@ -1,0 +1,1613 @@
+LOCUS       B-P1                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23119"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TGACAGCTAG CTCAGTCCTA
+      121 GGTATAATGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P2                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23111"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TGACGGCTAG CTCAGTCCTA
+      121 GGTATAGTGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P3                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23104"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TGACAGCTAG CTCAGTCCTA
+      121 GGTATTGTGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P4                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23101"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TTACAGCTAG CTCAGTCCTA
+      121 GGTATTATGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P5                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23108"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTC TGACAGCTAG CTCAGTCCTA
+      121 GGTATAATGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P6                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23106"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TTACGGCTAG CTCAGTCCTA
+      121 GGTATAGTGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P7                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23105"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TTACGGCTAG CTCAGTCCTA
+      121 GGTACTATGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P8                     227 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..134
+                     /label="J23116"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    135..209
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TGACAGCTAG CTCAGTCCTA
+      121 GGGACTATGC TAGCAGCTGT CACCGGATGT GCTTTCCGGT CTGATGAGTC CGTGAGGACG
+      181 AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P9                     223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      96..130
+                     /label="J23119"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTGAC AGCTAGCTCA GTCCTAGGTA
+      121 TAATGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P10                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..130
+                     /label="J23111"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTGAC GGCTAGCTCA GTCCTAGGTA
+      121 TAGTGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P11                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..130
+                     /label="J23104"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTGAC AGCTAGCTCA GTCCTAGGTA
+      121 TTGTGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P12                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..130
+                     /label="J23101"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTTAC AGCTAGCTCA GTCCTAGGTA
+      121 TTATGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P13                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      96..130
+                     /label="J23108"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTCTGAC AGCTAGCTCA GTCCTAGGTA
+      121 TAATGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P14                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..130
+                     /label="J23106"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTTAC GGCTAGCTCA GTCCTAGGTA
+      121 TAGTGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P15                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..130
+                     /label="J23105"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTTAC GGCTAGCTCA GTCCTAGGTA
+      121 CTATGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P16                    223 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    131..205
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      96..130
+                     /label="J23116"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTGAC AGCTAGCTCA GTCCTAGGGA
+      121 CTATGCTAGC AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA TGAGTCCGTG AGGACGAAAG
+      181 CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA TCG
+//
+LOCUS       B-P17                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..124
+                     /label="J23119"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TGACAGCTAG CTCAGTCCTA GGTATAATGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P18                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..124
+                     /label="J23111"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TGACGGCTAG CTCAGTCCTA GGTATAGTGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P19                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      90..124
+                     /label="J23104"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TGACAGCTAG CTCAGTCCTA GGTATTGTGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P20                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      90..124
+                     /label="J23101"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TTACAGCTAG CTCAGTCCTA GGTATTATGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P21                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..124
+                     /label="J23108"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTC TGACAGCTAG CTCAGTCCTA GGTATAATGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P22                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..124
+                     /label="J23106"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TTACGGCTAG CTCAGTCCTA GGTATAGTGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P23                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      90..124
+                     /label="J23105"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TTACGGCTAG CTCAGTCCTA GGTACTATGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P24                    217 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    125..199
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..124
+                     /label="J23116"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TGACAGCTAG CTCAGTCCTA GGGACTATGC
+      121 TAGCAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC TGTGAAGGCG AAACTACCTC
+      181 TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P25                    258 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..165
+                     /label="Phlf"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    166..240
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTC GACGTACGGT GGAATCTGAT
+      121 TCGTTACCAA TTGACATGAT ACGAAACGTA CCGTATCGTT AAGGTAGCTG TCACCGGATG
+      181 TGCTTTCCGG TCTGATGAGT CCGTGAGGAC GAAACAGCCT CTACAAATAA TTTTGTTTAA
+      241 GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P27                    268 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    176..250
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..175
+                     /label="TetR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT TTTCAGCAGG ACGCACTGAC
+      121 CTCCCTATCA GTGATAGAGA TTGACATCCC TATCAGTGAT AGAGATACTG AGCACAGCTG
+      181 TCACCGGATG TGCTTTCCGG TCTGATGAGT CCGTGAGGAC GAAACAGCCT CTACAAATAA
+      241 TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P28                    242 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      100..149
+                     /label="VanR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    150..224
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTA TTGGATCCAA TTGACAGCTA
+      121 GCTCAGTCCT AGGTACCATT GGATCCAATA GCTGTCACCG GATGTGCTTT CCGGTCTGAT
+      181 GAGTCCGTGA GGACGAAACA GCCTCTACAA ATAATTTTGT TTAAGGCTCG GGAGACCTAT
+      241 CG
+//
+LOCUS       B-P29                    247 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    155..229
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..154
+                     /label="LuxR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTA CCTGTAGGAT CGTACAGGTT
+      121 TACGCAAGAA AATGGTTTGT TACAGTCGAA TAAAAGCTGT CACCGGATGT GCTTTCCGGT
+      181 CTGATGAGTC CGTGAGGACG AAACAGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA
+      241 CCTATCG
+//
+LOCUS       B-P30                    418 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      100..325
+                     /label="CinR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    326..400
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTC CCTTTGTGCG TCCAAACGGA
+      121 CGCACGGCGC TCTAAAGCGG GTCGCGATCT TTCAGATTCG CTCCTCGCGC TTTCAGTCTT
+      181 TGTTTTGGCG CATGTCGTTA TCGCAAAACC GCTGCACACT TTTGCGCGAC ATGCTCTGAT
+      241 CCCCCTCATC TGGGGGGGCC TATCTGAGGG AATTTCCGAT CCGGCTCGCC TGAACCATTC
+      301 TGCTTTCCAC GAACTTGAAA ACGCTAGCTG TCACCGGATG TGCTTTCCGG TCTGATGAGT
+      361 CCGTGAGGAC GAAACAGCCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P31                    248 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    156..230
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..155
+                     /label="LacI"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT GTTGACAATT AATCATCGGC
+      121 TCGTATAATG TGTGGAATTG TGAGCGCTCA CAATTAGCTG TCACCGGATG TGCTTTCCGG
+      181 TCTGATGAGT CCGTGAGGAC GAAACAGCCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG
+      241 ACCTATCG
+//
+LOCUS       B-P32                    481 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..388
+                     /label="AraC"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    389..463
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTA GAAACCAATT GTCCATATTG
+      121 CATCAGACAT TGCCGTCACT GCGTCTTTTA CTGGCTCTTC TCGCTAACCA AACCGGTAAC
+      181 CCCGCTTATT AAAAGCATTC TGTAACAAAG CGGGACCAAA GCCATGACAA AAACGCGTAA
+      241 CAAAAGTGTC TATAATCACG GCAGAAAAGT CCACATTGAT TATTTGCACG GCGTCACACT
+      301 TTGCTATGCC ATAGCATTTT TATCCATAAG ATTAGCGGAT CCTACCTGAC GCTTTTTATC
+      361 GCAACTCTCT ACTGTTTCTC CATACCCGAG CTGTCACCGG ATGTGCTTTC CGGTCTGATG
+      421 AGTCCGTGAG GACGAAACAG CCTCTACAAA TAATTTTGTT TAAGGCTCGG GAGACCTATC
+      481 G
+//
+LOCUS       B-P33                    254 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    162..236
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..161
+                     /label="Phlf"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTCGACG TACGGTGGAA TCTGATTCGT
+      121 TACCAATTGA CATGATACGA AACGTACCGT ATCGTTAAGG TAGCGCTCAA CGGGTGTGCT
+      181 TCCCGTTCTG ATGAGTCCGT GAGGACGAAA GCGCCTCTAC AAATAATTTT GTTTAAGGCT
+      241 CGGGAGACCT ATCG
+//
+LOCUS       B-P35                    264 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..171
+                     /label="TetR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    172..246
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTTTTC AGCAGGACGC ACTGACCTCC
+      121 CTATCAGTGA TAGAGATTGA CATCCCTATC AGTGATAGAG ATACTGAGCA CAGCGCTCAA
+      181 CGGGTGTGCT TCCCGTTCTG ATGAGTCCGT GAGGACGAAA GCGCCTCTAC AAATAATTTT
+      241 GTTTAAGGCT CGGGAGACCT ATCG
+//
+LOCUS       B-P36                    238 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    146..220
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..145
+                     /label="VanR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTATTGG ATCCAATTGA CAGCTAGCTC
+      121 AGTCCTAGGT ACCATTGGAT CCAATAGCGC TCAACGGGTG TGCTTCCCGT TCTGATGAGT
+      181 CCGTGAGGAC GAAAGCGCCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P37                    243 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      96..150
+                     /label="LuxR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    151..225
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTACCTG TAGGATCGTA CAGGTTTACG
+      121 CAAGAAAATG GTTTGTTACA GTCGAATAAA AGCGCTCAAC GGGTGTGCTT CCCGTTCTGA
+      181 TGAGTCCGTG AGGACGAAAG CGCCTCTACA AATAATTTTG TTTAAGGCTC GGGAGACCTA
+      241 TCG
+//
+LOCUS       B-P38                    414 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    322..396
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      96..321
+                     /label="CinR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTCCCTT TGTGCGTCCA AACGGACGCA
+      121 CGGCGCTCTA AAGCGGGTCG CGATCTTTCA GATTCGCTCC TCGCGCTTTC AGTCTTTGTT
+      181 TTGGCGCATG TCGTTATCGC AAAACCGCTG CACACTTTTG CGCGACATGC TCTGATCCCC
+      241 CTCATCTGGG GGGGCCTATC TGAGGGAATT TCCGATCCGG CTCGCCTGAA CCATTCTGCT
+      301 TTCCACGAAC TTGAAAACGC TAGCGCTCAA CGGGTGTGCT TCCCGTTCTG ATGAGTCCGT
+      361 GAGGACGAAA GCGCCTCTAC AAATAATTTT GTTTAAGGCT CGGGAGACCT ATCG
+//
+LOCUS       B-P39                    244 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..151
+                     /label="LacI"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    152..226
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTGTTG ACAATTAATC ATCGGCTCGT
+      121 ATAATGTGTG GAATTGTGAG CGCTCACAAT TAGCGCTCAA CGGGTGTGCT TCCCGTTCTG
+      181 ATGAGTCCGT GAGGACGAAA GCGCCTCTAC AAATAATTTT GTTTAAGGCT CGGGAGACCT
+      241 ATCG
+//
+LOCUS       B-P40                    477 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    385..459
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..384
+                     /label="AraC"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTAGAAA CCAATTGTCC ATATTGCATC
+      121 AGACATTGCC GTCACTGCGT CTTTTACTGG CTCTTCTCGC TAACCAAACC GGTAACCCCG
+      181 CTTATTAAAA GCATTCTGTA ACAAAGCGGG ACCAAAGCCA TGACAAAAAC GCGTAACAAA
+      241 AGTGTCTATA ATCACGGCAG AAAAGTCCAC ATTGATTATT TGCACGGCGT CACACTTTGC
+      301 TATGCCATAG CATTTTTATC CATAAGATTA GCGGATCCTA CCTGACGCTT TTTATCGCAA
+      361 CTCTCTACTG TTTCTCCATA CCCGAGCGCT CAACGGGTGT GCTTCCCGTT CTGATGAGTC
+      421 CGTGAGGACG AAAGCGCCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P41                    248 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    156..230
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..155
+                     /label="Phlf"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTC GACGTACGGT GGAATCTGAT TCGTTACCAA
+      121 TTGACATGAT ACGAAACGTA CCGTATCGTT AAGGTAGTAG TCACCGGCTG TGCTTGCCGG
+      181 TCTGATGAGC CTGTGAAGGC GAAACTACCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG
+      241 ACCTATCG
+//
+LOCUS       B-P42                    272 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    180..254
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..179
+                     /label="CymR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTA ACAAACAGAC AATCTGGTCT GTTTGTATTA
+      121 TGGAAAATTT TTCTGTATAA TAGATTCAAC AAACAGACAA TCTGGTCTGT TTGTATTATA
+      181 GTAGTCACCG GCTGTGCTTG CCGGTCTGAT GAGCCTGTGA AGGCGAAACT ACCTCTACAA
+      241 ATAATTTTGT TTAAGGCTCG GGAGACCTAT CG
+//
+LOCUS       B-P43                    258 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    166..240
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..165
+                     /label="TetR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT TTTCAGCAGG ACGCACTGAC CTCCCTATCA
+      121 GTGATAGAGA TTGACATCCC TATCAGTGAT AGAGATACTG AGCACAGTAG TCACCGGCTG
+      181 TGCTTGCCGG TCTGATGAGC CTGTGAAGGC GAAACTACCT CTACAAATAA TTTTGTTTAA
+      241 GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P44                    232 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..139
+                     /label="VanR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    140..214
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTA TTGGATCCAA TTGACAGCTA GCTCAGTCCT
+      121 AGGTACCATT GGATCCAATA GTAGTCACCG GCTGTGCTTG CCGGTCTGAT GAGCCTGTGA
+      181 AGGCGAAACT ACCTCTACAA ATAATTTTGT TTAAGGCTCG GGAGACCTAT CG
+//
+LOCUS       B-P45                    237 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    145..219
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      90..144
+                     /label="LuxR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTA CCTGTAGGAT CGTACAGGTT TACGCAAGAA
+      121 AATGGTTTGT TACAGTCGAA TAAAAGTAGT CACCGGCTGT GCTTGCCGGT CTGATGAGCC
+      181 TGTGAAGGCG AAACTACCTC TACAAATAAT TTTGTTTAAG GCTCGGGAGA CCTATCG
+//
+LOCUS       B-P46                    408 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    316..390
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..315
+                     /label="CinR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTC CCTTTGTGCG TCCAAACGGA CGCACGGCGC
+      121 TCTAAAGCGG GTCGCGATCT TTCAGATTCG CTCCTCGCGC TTTCAGTCTT TGTTTTGGCG
+      181 CATGTCGTTA TCGCAAAACC GCTGCACACT TTTGCGCGAC ATGCTCTGAT CCCCCTCATC
+      241 TGGGGGGGCC TATCTGAGGG AATTTCCGAT CCGGCTCGCC TGAACCATTC TGCTTTCCAC
+      301 GAACTTGAAA ACGCTAGTAG TCACCGGCTG TGCTTGCCGG TCTGATGAGC CTGTGAAGGC
+      361 GAAACTACCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P47                    238 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..145
+                     /label="LacI"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    146..220
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT GTTGACAATT AATCATCGGC TCGTATAATG
+      121 TGTGGAATTG TGAGCGCTCA CAATTAGTAG TCACCGGCTG TGCTTGCCGG TCTGATGAGC
+      181 CTGTGAAGGC GAAACTACCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P48                    471 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    379..453
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..378
+                     /label="AraC"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTA GAAACCAATT GTCCATATTG CATCAGACAT
+      121 TGCCGTCACT GCGTCTTTTA CTGGCTCTTC TCGCTAACCA AACCGGTAAC CCCGCTTATT
+      181 AAAAGCATTC TGTAACAAAG CGGGACCAAA GCCATGACAA AAACGCGTAA CAAAAGTGTC
+      241 TATAATCACG GCAGAAAAGT CCACATTGAT TATTTGCACG GCGTCACACT TTGCTATGCC
+      301 ATAGCATTTT TATCCATAAG ATTAGCGGAT CCTACCTGAC GCTTTTTATC GCAACTCTCT
+      361 ACTGTTTCTC CATACCCGAG TAGTCACCGG CTGTGCTTGC CGGTCTGATG AGCCTGTGAA
+      421 GGCGAAACTA CCTCTACAAA TAATTTTGTT TAAGGCTCGG GAGACCTATC G
+//
+LOCUS       B-P49                    215 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    123..197
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..122
+                     /label="T7_100"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT AATACGACTC ACTATAGGGG
+      121 ACAGCTGTCA CCGGATGTGC TTTCCGGTCT GATGAGTCCG TGAGGACGAA ACAGCCTCTA
+      181 CAAATAATTT TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P50                    215 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      100..122
+                     /label="T7_52"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    123..197
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT AATACGACTC ACTGCCGGGA
+      121 GAAGCTGTCA CCGGATGTGC TTTCCGGTCT GATGAGTCCG TGAGGACGAA ACAGCCTCTA
+      181 CAAATAATTT TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P51                    215 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    123..197
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..122
+                     /label="T7_50"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT AATACGACTC ACTATGGGGA
+      121 GAAGCTGTCA CCGGATGTGC TTTCCGGTCT GATGAGTCCG TGAGGACGAA ACAGCCTCTA
+      181 CAAATAATTT TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P52                    215 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    123..197
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      100..122
+                     /label="T7_25"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTT AATACGACTC ACTGTCGGGG
+      121 GAAGCTGTCA CCGGATGTGC TTTCCGGTCT GATGAGTCCG TGAGGACGAA ACAGCCTCTA
+      181 CAAATAATTT TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P53                    211 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    119..193
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..118
+                     /label="T7_100"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTAATA CGACTCACTA TAGGGGACAG
+      121 CGCTCAACGG GTGTGCTTCC CGTTCTGATG AGTCCGTGAG GACGAAAGCG CCTCTACAAA
+      181 TAATTTTGTT TAAGGCTCGG GAGACCTATC G
+//
+LOCUS       B-P54                    211 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    119..193
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..118
+                     /label="T7_52"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTAATA CGACTCACTG CCGGGAGAAG
+      121 CGCTCAACGG GTGTGCTTCC CGTTCTGATG AGTCCGTGAG GACGAAAGCG CCTCTACAAA
+      181 TAATTTTGTT TAAGGCTCGG GAGACCTATC G
+//
+LOCUS       B-P56                    211 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..118
+                     /label="T7_25"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    119..193
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTAATA CGACTCACTG TCGGGGGAAG
+      121 CGCTCAACGG GTGTGCTTCC CGTTCTGATG AGTCCGTGAG GACGAAAGCG CCTCTACAAA
+      181 TAATTTTGTT TAAGGCTCGG GAGACCTATC G
+//
+LOCUS       B-P57                    205 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    113..187
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      90..112
+                     /label="T7_100"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT AATACGACTC ACTATAGGGG ACAGTAGTCA
+      121 CCGGCTGTGC TTGCCGGTCT GATGAGCCTG TGAAGGCGAA ACTACCTCTA CAAATAATTT
+      181 TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P58                    205 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..112
+                     /label="T7_52"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    113..187
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT AATACGACTC ACTGCCGGGA GAAGTAGTCA
+      121 CCGGCTGTGC TTGCCGGTCT GATGAGCCTG TGAAGGCGAA ACTACCTCTA CAAATAATTT
+      181 TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P61                    255 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      100..162
+                     /label="BetI"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    163..237
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTA GCGCGGGTGA GAGGGATTCG
+      121 TTACCAATAG ACAATTGATT GGACGTTCAA TATAATGCTA GCAGCTGTCA CCGGATGTGC
+      181 TTTCCGGTCT GATGAGTCCG TGAGGACGAA ACAGCCTCTA CAAATAATTT TGTTTAAGGC
+      241 TCGGGAGACC TATCG
+//
+LOCUS       B-P62                    239 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..146
+                     /label="Ttg"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    147..221
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTCACCC AGCAGTATTT ACAAACAACC
+      121 ATGAATGTAA GTATATTCCT TAGCAAAGCG CTCAACGGGT GTGCTTCCCG TTCTGATGAG
+      181 TCCGTGAGGA CGAAAGCGCC TCTACAAATA ATTTTGTTTA AGGCTCGGGA GACCTATCG
+//
+LOCUS       B-P63                    298 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    206..280
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      90..205
+                     /label="SaITTC"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTG GGGCCTCGCT TGGGTTATTG CTGGTGCCCG
+      121 GCCGGGCGCA ATATTCATGT TGATGATTTA TTATATATCG AGTGGTGTAT TTATTTATAT
+      181 TGTTTGCTCC GTTACCGTTA TTAACAGTAG TCACCGGCTG TGCTTGCCGG TCTGATGAGC
+      241 CTGTGAAGGC GAAACTACCT CTACAAATAA TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P59                    205 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    113..187
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      90..112
+                     /label="T7_50"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT AATACGACTC ACTATGGGGA GAAGTAGTCA
+      121 CCGGCTGTGC TTGCCGGTCT GATGAGCCTG TGAAGGCGAA ACTACCTCTA CAAATAATTT
+      181 TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P60                    205 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      90..112
+                     /label="T7_25"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..69
+                     /label="Terminator3"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    113..187
+                     /label="RiboC"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    70..89
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCGA CGAACAATAA GGCCTCCCTA ACGGGGGGCC TTTTTTATTG
+       61 ATAACAAAAG TGCCTACTCT GGAAAATCTT AATACGACTC ACTGTCGGGG GAAGTAGTCA
+      121 CCGGCTGTGC TTGCCGGTCT GATGAGCCTG TGAAGGCGAA ACTACCTCTA CAAATAATTT
+      181 TGTTTAAGGC TCGGGAGACC TATCG
+//
+LOCUS       B-P26                    282 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      100..189
+                     /label="CymR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    80..99
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     misc_feature    190..264
+                     /label="RiboA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGGCCTCCC GAAAGGGGGG
+       61 CCTTTTTTCG TTTTGGTCCG TGCCTACTCT GGAAAATCTA ACAAACAGAC AATCTGGTCT
+      121 GTTTGTATTA TGGAAAATTT TTCTGTATAA TAGATTCAAC AAACAGACAA TCTGGTCTGT
+      181 TTGTATTATA GCTGTCACCG GATGTGCTTT CCGGTCTGAT GAGTCCGTGA GGACGAAACA
+      241 GCCTCTACAA ATAATTTTGT TTAAGGCTCG GGAGACCTAT CG
+//
+LOCUS       B-P34                    278 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      96..185
+                     /label="CymR"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    186..260
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTAACAA ACAGACAATC TGGTCTGTTT
+      121 GTATTATGGA AAATTTTTCT GTATAATAGA TTCAACAAAC AGACAATCTG GTCTGTTTGT
+      181 ATTATAGCGC TCAACGGGTG TGCTTCCCGT TCTGATGAGT CCGTGAGGAC GAAAGCGCCT
+      241 CTACAAATAA TTTTGTTTAA GGCTCGGGAG ACCTATCG
+//
+LOCUS       B-P55                    211 bp ds-DNA     linear       22-JUL-2020
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     regulatory      96..118
+                     /label="T7_50"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    119..193
+                     /label="RiboB"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+     regulatory      19..75
+                     /label="Terminator2"
+                     /ApEinfo_revcolor=#faac61
+                     /ApEinfo_fwdcolor=#faac61
+     misc_feature    76..95
+                     /label="SpacerA"
+                     /ApEinfo_revcolor=#f58a5e
+                     /ApEinfo_fwdcolor=#f58a5e
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCCT CGGTACCAAA TTCCAGAAAA GAGACGCTTT CGAGCGTCTT
+       61 TTTTCGTTTT GGTCCGTGCC TACTCTGGAA AATCTTAATA CGACTCACTA TGGGGAGAAG
+      121 CGCTCAACGG GTGTGCTTCC CGTTCTGATG AGTCCGTGAG GACGAAAGCG CCTCTACAAA
+      181 TAATTTTGTT TAAGGCTCGG GAGACCTATC G
+//

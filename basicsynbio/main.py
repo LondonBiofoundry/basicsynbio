@@ -1,3 +1,5 @@
+"""Main module for basicsynbio."""
+
 from basicsynbio.utils import _easy_seqrec
 from basicsynbio.decorators import add2docs
 from Bio import SeqUtils, SeqIO
@@ -84,9 +86,7 @@ class BasicLinker(SeqRecord):
                 type="misc_feature",
                 location=FeatureLocation(2, len(self.seq), strand=+1),
                 qualifiers={
-                    "function": ["BASIC DNA assembly linker"],
-                    "standard_name": [str(self.id)],
-                    "note": [str(self.id)]
+                    "label": [str(self.id)]
                 }
             )
         )

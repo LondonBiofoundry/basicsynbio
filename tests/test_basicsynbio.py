@@ -201,13 +201,12 @@ def test_add2docs_decorator():
 
 
 def test_new_part_resuspension(gfp_orf_basicpart):
-    from basicsynbio.utils import new_part_resuspension
     from Bio.SeqUtils import molecular_weight
     print(f"length of basicpart: {len(gfp_orf_basicpart.seq)}")
     print(f"estimated MW: {len(gfp_orf_basicpart.seq*660)}")
     print(f"biopython MW: {molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)}")
     mass = 750
-    vol = new_part_resuspension(part=gfp_orf_basicpart, mass=mass)
+    vol = bsb.new_part_resuspension(part=gfp_orf_basicpart, mass=mass)
     mw = molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)
     print(f"estimated concentration: {mass*1e-9/(vol*1e-6*mw)*1e9}")
     assert 75 == round(mass*1e-9/(vol*1e-6*mw)*1e9)
@@ -247,3 +246,9 @@ def test_bcds_dict():
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
         assert compare_basicpart_seqrec(bsb.BCDS_DICT[seqrec.id], seqrec) == True
+
+    
+def test_all_feature_values(gfp_orf_basicpart):
+    from basicsynbio.utils import all_feature_values
+    print(all_feature_values(gfp_orf_basicpart))
+    assert all_feature_values(gfp_orf_basicpart) == ["BASIC integrated prefix", "fluorescent reporter protein", "sfGFP", "BASIC integrated suffix"]
