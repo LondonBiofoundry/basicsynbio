@@ -44,7 +44,7 @@ def import_parts(handle, format, add_i_seqs=False):
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
 )
-def export_to_file(sequences, handle, format="genbank"):
+def export_sequences_to_file(sequences, handle, format="genbank"):
     """Exports sequences using Bio.SeqIO.write().
     
     Args:

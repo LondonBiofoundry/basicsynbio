@@ -43,22 +43,45 @@ def cmr_p15a_backbone():
 
 
 @pytest.fixture
-def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
-     promoter = bsb.import_part(
+def five_part_assembly_parts(cmr_p15a_basicpart, gfp_basicpart):
+    promoter = bsb.import_part(
          "sequences/genbank_files/misc_BASIC/BASIC_L3S2P21_J23105_RiboJ.1.gb", "genbank"
      )
-     bfp_basicpart = bsb.import_part(
+    bfp_basicpart = bsb.import_part(
          "sequences/genbank_files/misc_BASIC/BASIC_mTagBFP2_ORF.1.gb", "genbank"
      )
-     rfp_basicpart = bsb.import_part(
+    rfp_basicpart = bsb.import_part(
          "sequences/genbank_files/misc_BASIC/BASIC_mCherry_ORF.1.gb", "genbank"
      )
-     return bsb.BasicAssembly(
-         bsb.BIOLEGIO_LINKERS["LMS"], cmr_p15a_basicpart, bsb.BIOLEGIO_LINKERS["LMP"], \
-             promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], gfp_basicpart, \
-                 bsb.BIOLEGIO_LINKERS["UTR2-RBS1"], bfp_basicpart, \
-                     bsb.BIOLEGIO_LINKERS["UTR3-RBS1"], rfp_basicpart 
-     )
+    return [
+         cmr_p15a_basicpart,
+         promoter,
+         gfp_basicpart,
+         bfp_basicpart,
+         rfp_basicpart
+     ]
+
+
+@pytest.fixture
+def five_part_assembly_linkers():
+    return [
+        bsb.BIOLEGIO_LINKERS["LMS"],
+        bsb.BIOLEGIO_LINKERS["LMP"],
+        bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], 
+        bsb.BIOLEGIO_LINKERS["UTR2-RBS1"],
+        bsb.BIOLEGIO_LINKERS["UTR3-RBS1"],
+    ]
+
+
+@pytest.fixture
+def five_part_assembly(five_part_assembly_parts, five_part_assembly_linkers):
+    zipped_parts_linkers = zip(five_part_assembly_linkers, five_part_assembly_parts)
+    parts_linkers = []
+    for part_linker in zipped_parts_linkers:
+        parts_linkers += list(part_linker)
+    print([part_linker.id for part_linker in parts_linkers])
+    print([type(part_linker) for part_linker in parts_linkers])
+    return bsb.BasicAssembly(*parts_linkers)
 
 
 @pytest.fixture
@@ -185,13 +208,13 @@ def test_return_part(five_part_assembly):
 def test_export_to_file(gfp_basicpart, five_part_assembly, gfp_seqrec):
     import os
     try:
-        bsb.export_to_file(gfp_basicpart, "test_export.gb", "genbank")
+        bsb.export_sequences_to_file(gfp_basicpart, "test_export.gb", "genbank")
         print("finished exporting BasicPart")
-        bsb.export_to_file(five_part_assembly, "test_export.gb", "genbank")
+        bsb.export_sequences_to_file(five_part_assembly, "test_export.gb", "genbank")
         print("finished exporting BasicAssembly")
-        bsb.export_to_file(gfp_seqrec, "test_export.gb", "genbank")
+        bsb.export_sequences_to_file(gfp_seqrec, "test_export.gb", "genbank")
         print("finished exporting SeqRecord")
-        bsb.export_to_file([gfp_basicpart, five_part_assembly, gfp_seqrec], "test_export.gb", "genbank")
+        bsb.export_sequences_to_file([gfp_basicpart, five_part_assembly, gfp_seqrec], "test_export.gb", "genbank")
         print("finished exporting iterable")
     finally:
         os.remove("test_export.gb")
@@ -263,3 +286,26 @@ def test_multiple_integrated_sequences(gfp_orf_seqrec):
     with pytest.raises(PartException):
         seqrec2part(IP_SEQREC + IP_SEQREC + gfp_orf_seqrec + IS_SEQREC)
 
+
+def test_BasicAssembly_clips(five_part_assembly, five_part_assembly_parts, five_part_assembly_linkers):
+    from basicsynbio.main import ClipReaction
+    clips = []
+    for ind, part in enumerate(five_part_assembly_parts):
+        if ind == len(five_part_assembly_parts) - 1:
+            clips.append(
+                ClipReaction(
+                    prefix=five_part_assembly_linkers[ind],
+                    part=part,
+                    suffix=five_part_assembly_linkers[0]
+                )
+            )
+        else:
+            clips.append(
+                ClipReaction(
+                    prefix=five_part_assembly_linkers[ind],
+                    part=part,
+                    suffix=five_part_assembly_linkers[ind + 1]
+                )
+            )
+    for clip in clips:
+        assert clip in five_part_assembly.clip_reactions

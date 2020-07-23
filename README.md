@@ -85,7 +85,7 @@ hierarchical_assembly = bsb.BasicAssembly(
 Export `BasicPart`, `BasicAssembly` and `Bio.SeqRecord` objects to a file. One or more can be given:
 
 ```python
-bsb.export_to_file([assembly1, part1], "file.gb")
+bsb.export_sequences_to_file([assembly1, part1], "file.gb")
 ```
 
 ## Contributing

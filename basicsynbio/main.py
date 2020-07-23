@@ -105,6 +105,7 @@ class BasicAssembly():
         
         Args:"""
         self.parts_linkers = parts_linkers
+        self.clip_reactions = self.return_clip_reactions()
 
     @add2docs(
         12,
@@ -139,6 +140,26 @@ class BasicAssembly():
             for key, value in kwargs.items():
                 setattr(seqrec, key, value)
         return seqrec
+    
+    def return_clip_reactions(self):
+        """returns clip reactions required for assembly of self."""
+        clip_reactions = []
+        for ind, part_linker in enumerate(self.parts_linkers):
+            if type(part_linker) == BasicLinker:
+                pass
+            else:
+                if ind == len(self.parts_linkers) - 1:
+                    suffix=self.parts_linkers[0]
+                else:
+                    suffix=self.parts_linkers[ind+1]
+                clip_reactions.append(
+                    ClipReaction(
+                        prefix=self.parts_linkers[ind-1],
+                        part=part_linker,
+                        suffix=suffix
+                    )
+                )
+        return clip_reactions
 
     @property
     def parts_linkers(self):
@@ -157,6 +178,31 @@ class BasicAssembly():
                     raise AssemblyException(
                         f"Alternating BasicPart, BasicLinker instances required: {value.id} is preceeded by {type(values[ind - 1])} and is of type {type(value)}.")
         self._parts_linkers = values
+
+
+class ClipReaction():
+    """Class for describing clip reactions."""
+    def __init__(self, prefix, part, suffix):
+        """Initiaties a ClipReaction.
+
+        Args:
+            prefix -- BasicLinker instance used as prefix in clip reaction.
+            part -- BasicPart instance.
+            suffix -- BasicLinker instance used as suffix in clip reaction.
+        
+        """
+        self.prefix = prefix
+        self.suffix = suffix
+        self.part = part
+
+    def __eq__(self, other):
+        if not isinstance(other, ClipReaction):
+            raise TypeError(f"{other} is not a ClipReaction instance.")
+        return (
+            str(self.prefix.seq) == str(other.prefix.seq) and
+            str(self.part.seq) == str(other.part.seq) and
+            str(self.suffix.seq) == str(other.suffix.seq)
+        ) 
 
 
 class PartException(Exception):
