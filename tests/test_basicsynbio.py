@@ -62,15 +62,19 @@ def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
 
 
 @pytest.fixture
-def gfp_orf_basicpart(gfp_orf_seq):
+def gfp_orf_seqrec(gfp_orf_seq):
     from basicsynbio.utils import _easy_seqrec
-    gfp_orf_seqrec = _easy_seqrec(
+    return _easy_seqrec(
             str(gfp_orf_seq),
             "sfGFP",
             annotation_type="CDS",
             note=["fluorescent reporter protein"],
             gene=["sfGFP"],
         )
+    
+
+@pytest.fixture
+def gfp_orf_basicpart(gfp_orf_seqrec):
     return bsb.seqrec2part(gfp_orf_seqrec, add_i_seqs=True)
 
 
@@ -252,3 +256,10 @@ def test_all_feature_values(gfp_orf_basicpart):
     from basicsynbio.utils import all_feature_values
     print(all_feature_values(gfp_orf_basicpart))
     assert all_feature_values(gfp_orf_basicpart) == ["BASIC integrated prefix", "fluorescent reporter protein", "sfGFP", "BASIC integrated suffix"]
+
+
+def test_multiple_integrated_sequences(gfp_orf_seqrec):
+    from basicsynbio.main import IP_SEQREC, IS_SEQREC, PartException, seqrec2part
+    with pytest.raises(PartException):
+        seqrec2part(IP_SEQREC + IP_SEQREC + gfp_orf_seqrec + IS_SEQREC)
+

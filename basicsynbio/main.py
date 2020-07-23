@@ -69,6 +69,8 @@ class BasicPart(SeqRecord):
         )
         if len(search_out) < 2:
             raise PartException(f"{self.id} lacks {iseq_id}")
+        elif len(search_out) > 2:
+            raise PartException(f"{self.id} contains multiple {iseq_id}")
         return search_out[1]
 
 
