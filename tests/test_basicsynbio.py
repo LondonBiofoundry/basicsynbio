@@ -54,10 +54,10 @@ def five_part_assembly(cmr_p15a_basicpart, gfp_basicpart):
          "sequences/genbank_files/misc_BASIC/BASIC_mCherry_ORF.1.gb", "genbank"
      )
      return bsb.BasicAssembly(
-         bsb.BIOLEGIO_DICT["LMS"], cmr_p15a_basicpart, bsb.BIOLEGIO_DICT["LMP"], \
-             promoter, bsb.BIOLEGIO_DICT["UTR1-RBS2"], gfp_basicpart, \
-                 bsb.BIOLEGIO_DICT["UTR2-RBS1"], bfp_basicpart, \
-                     bsb.BIOLEGIO_DICT["UTR3-RBS1"], rfp_basicpart 
+         bsb.BIOLEGIO_LINKERS["LMS"], cmr_p15a_basicpart, bsb.BIOLEGIO_LINKERS["LMP"], \
+             promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], gfp_basicpart, \
+                 bsb.BIOLEGIO_LINKERS["UTR2-RBS1"], bfp_basicpart, \
+                     bsb.BIOLEGIO_LINKERS["UTR3-RBS1"], rfp_basicpart 
      )
 
 
@@ -227,8 +227,8 @@ def test_import_all_ice_parts(ice_user_config):
 
 
 def test_bseva_dict(bseva_68_seqrec):
-    print(bsb.BSEVA_DICT.keys())
-    bseva_68_part = bsb.BSEVA_DICT["68"]
+    print(bsb.BSEVA_PARTS.keys())
+    bseva_68_part = bsb.BSEVA_PARTS["68"]
     assert compare_basicpart_seqrec(bseva_68_part, bseva_68_seqrec) == True
 
 
@@ -237,7 +237,7 @@ def test_bpromoter_dict():
     bpromoters_handle = "./basicsynbio/parts_linkers/BASIC_promoter_collection.gb"
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
-        assert compare_basicpart_seqrec(bsb.BPROMOTER_DICT[seqrec.id], seqrec) == True
+        assert compare_basicpart_seqrec(bsb.BPROMOTER_PARTS[seqrec.id], seqrec) == True
 
 
 def test_bcds_dict():
@@ -245,7 +245,7 @@ def test_bcds_dict():
     bcds_handle = "./basicsynbio/parts_linkers/BASIC_cds_collection.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
-        assert compare_basicpart_seqrec(bsb.BCDS_DICT[seqrec.id], seqrec) == True
+        assert compare_basicpart_seqrec(bsb.BCDS_PARTS[seqrec.id], seqrec) == True
 
     
 def test_all_feature_values(gfp_orf_basicpart):

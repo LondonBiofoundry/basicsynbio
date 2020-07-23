@@ -2,8 +2,9 @@
 
 import basicsynbio as bsb
 from Bio.Seq import Seq
+from .main import PartLinkerCollection
 
-BIOLEGIO_DICT = {
+BIOLEGIO_LINKERS = {
     "L1": "CTCGTTACTTACGACACTCCGAGACAGTCAGAGGGTATTTATTGAACTAGTCC",
     "L2": "CTCGATCGGTGTGAAAAGTCAGTATCCAGTCGTGTAGTTCTTATTACCTGTCC",
     "L3": "CTCGATCACGGCACTACACTCGTTGCTTTATCGGTATTGTTATTACAGAGTCC",
@@ -70,6 +71,11 @@ BIOLEGIO_DICT = {
     "LF5": "CTCGGGCTCGGGCTCCGGATCAGGATCTGGTTCAGGTTCAGGATCAGGATCGGGCTCCGGGTCC",
     "LF6": "CTCGGCCGAAGCGGCTGCTAAAGAAGCAGCTGCTAAAGAGGCGGCCGCCAAGGCAGGGTCC"}
 
-BIOLEGIO_DICT = {
-    key: bsb.BasicLinker(Seq("GG" + value), key) for key, value in BIOLEGIO_DICT.items()
+BIOLEGIO_LINKERS = {
+    key: bsb.BasicLinker(
+        Seq("GG" + value),
+        key,
+        description="visit https://www.biolegio.com/products-services/basic/ for further information."
+    ) for key, value in BIOLEGIO_LINKERS.items()
 }
+BIOLEGIO_LINKERS = PartLinkerCollection(BIOLEGIO_LINKERS.items())

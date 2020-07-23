@@ -30,7 +30,8 @@ class CommonArgDocs:
     HANDLE = "handle -- handle to file."
     FORMAT = "format -- file format."
     ALPHABET = "alphabet -- Bio.Alphabet. Refer Bio.Alphabet documentation."
-    SEQREC_KWARGS = "**kwargs -- assigns alternative Bio.SeqRecord attributes."        
+    SEQREC_KWARGS = "**kwargs -- assigns alternative Bio.SeqRecord attributes."
+    PARTS_LINKERS_ARGS  = "*parts_linkers -- BasicPart or BasicLinker objects."       
 
 
 class BasicPart(SeqRecord):
@@ -93,12 +94,14 @@ class BasicLinker(SeqRecord):
 
 
 class BasicAssembly():
+    @add2docs(
+        12,
+        CommonArgDocs.PARTS_LINKERS_ARGS
+    )
     def __init__(self, *parts_linkers):
         """BasicAssembly class requires alternating BasicParts and BasicLinkers in any order.
         
-        Args:
-            *parts_linkers -- BasicPart or BasicLinker objects.
-        """
+        Args:"""
         self.parts_linkers = parts_linkers
 
     @add2docs(

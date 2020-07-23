@@ -17,8 +17,10 @@ from .bsb_io import (
     import_parts,
 )
 from .parts_linkers import (
-    BIOLEGIO_DICT,
-    BSEVA_DICT,
+    BCDS_PARTS,
+    BIOLEGIO_LINKERS,
+    BPROMOTER_PARTS,
+    BSEVA_PARTS,
     BSEVA_ICE_DICT
 )
 from .cam import (
