@@ -1,5 +1,7 @@
 LOCUS       B-P1_Terminator1_J23119_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P1 stored in BASIC_SEVA_18.
+DEFINITION  B-P1 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P1,
+            contains a J23119 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P1
 VERSION     B-P1
 KEYWORDS    .
@@ -74,7 +76,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P2_Terminator1_J23111_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P2 stored in BASIC_SEVA_18.
+DEFINITION  B-P2 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P2,
+            contains a J23111 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P2
 VERSION     B-P2
 KEYWORDS    .
@@ -149,7 +153,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P3_Terminator1_J23104_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P3 stored in BASIC_SEVA_18.
+DEFINITION  B-P3 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P3,
+            contains a J23104 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P3
 VERSION     B-P3
 KEYWORDS    .
@@ -224,7 +230,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P4_Terminator1_J23101_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P4 stored in BASIC_SEVA_18.
+DEFINITION  B-P4 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P4,
+            contains a J23101 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P4
 VERSION     B-P4
 KEYWORDS    .
@@ -299,7 +307,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P5_Terminator1_J23108_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P5 stored in BASIC_SEVA_18.
+DEFINITION  B-P5 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P5,
+            contains a J23108 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P5
 VERSION     B-P5
 KEYWORDS    .
@@ -374,7 +384,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P6_Terminator1_J23106_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P6 stored in BASIC_SEVA_18.
+DEFINITION  B-P6 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P6,
+            contains a J23106 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P6
 VERSION     B-P6
 KEYWORDS    .
@@ -449,7 +461,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P7_Terminator1_J23105_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P7 stored in BASIC_SEVA_18.
+DEFINITION  B-P7 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P7,
+            contains a J23105 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P7
 VERSION     B-P7
 KEYWORDS    .
@@ -524,7 +538,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P8_Terminator1_J23116_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P8 stored in BASIC_SEVA_18.
+DEFINITION  B-P8 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P8,
+            contains a J23116 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P8
 VERSION     B-P8
 KEYWORDS    .
@@ -599,7 +615,9 @@ ORIGIN
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P9_Terminator2_J23119_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P9 stored in BASIC_SEVA_18.
+DEFINITION  B-P9 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P9,
+            contains a J23119 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P9
 VERSION     B-P9
 KEYWORDS    .
@@ -674,7 +692,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P10_Terminator2_J23111_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P10 stored in BASIC_SEVA_18.
+DEFINITION  B-P10 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P10,
+            contains a J23111 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P10
 VERSION     B-P10
 KEYWORDS    .
@@ -749,7 +769,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P11_Terminator2_J23104_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P11 stored in BASIC_SEVA_18.
+DEFINITION  B-P11 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P11,
+            contains a J23104 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P11
 VERSION     B-P11
 KEYWORDS    .
@@ -824,7 +846,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P12_Terminator2_J23101_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P12 stored in BASIC_SEVA_18.
+DEFINITION  B-P12 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P12,
+            contains a J23101 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P12
 VERSION     B-P12
 KEYWORDS    .
@@ -899,7 +923,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P13_Terminator2_J23108_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P13 stored in BASIC_SEVA_18.
+DEFINITION  B-P13 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P13,
+            contains a J23108 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P13
 VERSION     B-P13
 KEYWORDS    .
@@ -974,7 +1000,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P14_Terminator2_J23106_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P14 stored in BASIC_SEVA_18.
+DEFINITION  B-P14 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P14,
+            contains a J23106 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P14
 VERSION     B-P14
 KEYWORDS    .
@@ -1049,7 +1077,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P15_Terminator2_J23105_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P15 stored in BASIC_SEVA_18.
+DEFINITION  B-P15 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P15,
+            contains a J23105 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P15
 VERSION     B-P15
 KEYWORDS    .
@@ -1124,7 +1154,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P16_Terminator2_J23116_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P16 stored in BASIC_SEVA_18.
+DEFINITION  B-P16 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P16,
+            contains a J23116 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P16
 VERSION     B-P16
 KEYWORDS    .
@@ -1199,7 +1231,9 @@ ORIGIN
      2581 cgttttattt gatgccttta attaa
 //
 LOCUS       B-P17_Terminator3_J23119_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P17 stored in BASIC_SEVA_18.
+DEFINITION  B-P17 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P17,
+            contains a J23119 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P17
 VERSION     B-P17
 KEYWORDS    .
@@ -1274,7 +1308,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P18_Terminator3_J23111_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P18 stored in BASIC_SEVA_18.
+DEFINITION  B-P18 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P18,
+            contains a J23111 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P18
 VERSION     B-P18
 KEYWORDS    .
@@ -1349,7 +1385,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P19_Terminator3_J23104_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P19 stored in BASIC_SEVA_18.
+DEFINITION  B-P19 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P19,
+            contains a J23104 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P19
 VERSION     B-P19
 KEYWORDS    .
@@ -1424,7 +1462,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P20_Terminator3_J23101_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P20 stored in BASIC_SEVA_18.
+DEFINITION  B-P20 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P20,
+            contains a J23101 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P20
 VERSION     B-P20
 KEYWORDS    .
@@ -1499,7 +1539,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P21_Terminator3_J23108_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P21 stored in BASIC_SEVA_18.
+DEFINITION  B-P21 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P21,
+            contains a J23108 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P21
 VERSION     B-P21
 KEYWORDS    .
@@ -1574,7 +1616,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P22_Terminator3_J23106_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P22 stored in BASIC_SEVA_18.
+DEFINITION  B-P22 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P22,
+            contains a J23106 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P22
 VERSION     B-P22
 KEYWORDS    .
@@ -1649,7 +1693,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P23_Terminator3_J23105_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P23 stored in BASIC_SEVA_18.
+DEFINITION  B-P23 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P23,
+            contains a J23105 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P23
 VERSION     B-P23
 KEYWORDS    .
@@ -1724,7 +1770,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P24_Terminator3_J23116_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P24 stored in BASIC_SEVA_18.
+DEFINITION  B-P24 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P24,
+            contains a J23116 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P24
 VERSION     B-P24
 KEYWORDS    .
@@ -1799,7 +1847,9 @@ ORIGIN
      2581 atttgatgcc tttaattaa
 //
 LOCUS       B-P25_Terminator1_Phlf_RiboA 2640 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P25 stored in BASIC_SEVA_18.
+DEFINITION  B-P25 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P25,
+            contains a Phlf promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P25
 VERSION     B-P25
 KEYWORDS    .
@@ -1874,7 +1924,9 @@ ORIGIN
      2581 taaaacgaaa ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P27_Terminator1_TetR_RiboA 2650 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P27 stored in BASIC_SEVA_18.
+DEFINITION  B-P27 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P27,
+            contains a TetR promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P27
 VERSION     B-P27
 KEYWORDS    .
@@ -1950,7 +2002,9 @@ ORIGIN
      2641 ctttaattaa
 //
 LOCUS       B-P28_Terminator1_VanR_RiboA 2624 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P28 stored in BASIC_SEVA_18.
+DEFINITION  B-P28 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P28,
+            contains a VanR promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P28
 VERSION     B-P28
 KEYWORDS    .
@@ -2025,7 +2079,9 @@ ORIGIN
      2581 gtctttcgac tgagcctttc gttttatttg atgcctttaa ttaa
 //
 LOCUS       B-P29_Terminator1_LuxR_RiboA 2629 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P29 stored in BASIC_SEVA_18.
+DEFINITION  B-P29 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P29,
+            contains a LuxR promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P29
 VERSION     B-P29
 KEYWORDS    .
@@ -2100,7 +2156,9 @@ ORIGIN
      2581 gcccagtctt tcgactgagc ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P30_Terminator1_CinR_RiboA 2800 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P30 stored in BASIC_SEVA_18.
+DEFINITION  B-P30 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P30,
+            contains a CinR promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P30
 VERSION     B-P30
 KEYWORDS    .
@@ -2178,7 +2236,9 @@ ORIGIN
      2761 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P31_Terminator1_LacI_RiboA 2630 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P31 stored in BASIC_SEVA_18.
+DEFINITION  B-P31 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P31,
+            contains a LacI promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P31
 VERSION     B-P31
 KEYWORDS    .
@@ -2253,7 +2313,9 @@ ORIGIN
      2581 ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P32_Terminator1_AraC_RiboA 2863 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P32 stored in BASIC_SEVA_18.
+DEFINITION  B-P32 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P32,
+            contains a AraC promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P32
 VERSION     B-P32
 KEYWORDS    .
@@ -2332,7 +2394,9 @@ ORIGIN
      2821 tctttcgact gagcctttcg ttttatttga tgcctttaat taa
 //
 LOCUS       B-P33_Terminator2_Phlf_RiboB 2636 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P33 stored in BASIC_SEVA_18.
+DEFINITION  B-P33 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P33,
+            contains a Phlf promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P33
 VERSION     B-P33
 KEYWORDS    .
@@ -2407,7 +2471,9 @@ ORIGIN
      2581 acgaaaggcc cagtctttcg actgagcctt tcgttttatt tgatgccttt aattaa
 //
 LOCUS       B-P35_Terminator2_TetR_RiboB 2646 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P35 stored in BASIC_SEVA_18.
+DEFINITION  B-P35 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P35,
+            contains a TetR promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P35
 VERSION     B-P35
 KEYWORDS    .
@@ -2483,7 +2549,9 @@ ORIGIN
      2641 aattaa
 //
 LOCUS       B-P36_Terminator2_VanR_RiboB 2620 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P36 stored in BASIC_SEVA_18.
+DEFINITION  B-P36 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P36,
+            contains a VanR promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P36
 VERSION     B-P36
 KEYWORDS    .
@@ -2558,7 +2626,9 @@ ORIGIN
      2581 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P37_Terminator2_LuxR_RiboB 2625 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P37 stored in BASIC_SEVA_18.
+DEFINITION  B-P37 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P37,
+            contains a LuxR promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P37
 VERSION     B-P37
 KEYWORDS    .
@@ -2633,7 +2703,9 @@ ORIGIN
      2581 agtctttcga ctgagccttt cgttttattt gatgccttta attaa
 //
 LOCUS       B-P38_Terminator2_CinR_RiboB 2796 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P38 stored in BASIC_SEVA_18.
+DEFINITION  B-P38 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P38,
+            contains a CinR promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P38
 VERSION     B-P38
 KEYWORDS    .
@@ -2711,7 +2783,9 @@ ORIGIN
      2761 actgagcctt tcgttttatt tgatgccttt aattaa
 //
 LOCUS       B-P39_Terminator2_LacI_RiboB 2626 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P39 stored in BASIC_SEVA_18.
+DEFINITION  B-P39 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P39,
+            contains a LacI promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P39
 VERSION     B-P39
 KEYWORDS    .
@@ -2786,7 +2860,9 @@ ORIGIN
      2581 cagtctttcg actgagcctt tcgttttatt tgatgccttt aattaa
 //
 LOCUS       B-P40_Terminator2_AraC_RiboB 2859 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P40 stored in BASIC_SEVA_18.
+DEFINITION  B-P40 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P40,
+            contains a AraC promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P40
 VERSION     B-P40
 KEYWORDS    .
@@ -2865,7 +2941,9 @@ ORIGIN
      2821 tcgactgagc ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P41_Terminator3_Phlf_RiboC 2630 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P41 stored in BASIC_SEVA_18.
+DEFINITION  B-P41 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P41,
+            contains a Phlf promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P41
 VERSION     B-P41
 KEYWORDS    .
@@ -2940,7 +3018,9 @@ ORIGIN
      2581 ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P42_Terminator3_CymR_RiboC 2654 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P42 stored in BASIC_SEVA_18.
+DEFINITION  B-P42 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P42,
+            contains a CymR promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P42
 VERSION     B-P42
 KEYWORDS    .
@@ -3016,7 +3096,9 @@ ORIGIN
      2641 atgcctttaa ttaa
 //
 LOCUS       B-P43_Terminator3_TetR_RiboC 2640 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P43 stored in BASIC_SEVA_18.
+DEFINITION  B-P43 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P43,
+            contains a TetR promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P43
 VERSION     B-P43
 KEYWORDS    .
@@ -3091,7 +3173,9 @@ ORIGIN
      2581 taaaacgaaa ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P44_Terminator3_VanR_RiboC 2614 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P44 stored in BASIC_SEVA_18.
+DEFINITION  B-P44 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P44,
+            contains a VanR promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P44
 VERSION     B-P44
 KEYWORDS    .
@@ -3166,7 +3250,9 @@ ORIGIN
      2581 tgagcctttc gttttatttg atgcctttaa ttaa
 //
 LOCUS       B-P45_Terminator3_LuxR_RiboC 2619 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P45 stored in BASIC_SEVA_18.
+DEFINITION  B-P45 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P45,
+            contains a LuxR promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P45
 VERSION     B-P45
 KEYWORDS    .
@@ -3241,7 +3327,9 @@ ORIGIN
      2581 tcgactgagc ctttcgtttt atttgatgcc tttaattaa
 //
 LOCUS       B-P46_Terminator3_CinR_RiboC 2790 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P46 stored in BASIC_SEVA_18.
+DEFINITION  B-P46 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P46,
+            contains a CinR promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P46
 VERSION     B-P46
 KEYWORDS    .
@@ -3319,7 +3407,9 @@ ORIGIN
      2761 cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P47_Terminator3_LacI_RiboC 2620 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P47 stored in BASIC_SEVA_18.
+DEFINITION  B-P47 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P47,
+            contains a LacI promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P47
 VERSION     B-P47
 KEYWORDS    .
@@ -3394,7 +3484,9 @@ ORIGIN
      2581 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P48_Terminator3_AraC_RiboC 2853 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P48 stored in BASIC_SEVA_18.
+DEFINITION  B-P48 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P48,
+            contains a AraC promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P48
 VERSION     B-P48
 KEYWORDS    .
@@ -3473,7 +3565,9 @@ ORIGIN
      2821 gagcctttcg ttttatttga tgcctttaat taa
 //
 LOCUS       B-P49_Terminator1_T7_100_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P49 stored in BASIC_SEVA_18.
+DEFINITION  B-P49 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P49,
+            contains a T7_100 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P49
 VERSION     B-P49
 KEYWORDS    .
@@ -3548,7 +3642,9 @@ ORIGIN
      2581 ttgatgcctt taattaa
 //
 LOCUS       B-P50_Terminator1_T7_52_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P50 stored in BASIC_SEVA_18.
+DEFINITION  B-P50 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P50,
+            contains a T7_52 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P50
 VERSION     B-P50
 KEYWORDS    .
@@ -3623,7 +3719,9 @@ ORIGIN
      2581 ttgatgcctt taattaa
 //
 LOCUS       B-P51_Terminator1_T7_50_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P51 stored in BASIC_SEVA_18.
+DEFINITION  B-P51 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P51,
+            contains a T7_50 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P51
 VERSION     B-P51
 KEYWORDS    .
@@ -3698,7 +3796,9 @@ ORIGIN
      2581 ttgatgcctt taattaa
 //
 LOCUS       B-P52_Terminator1_T7_25_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P52 stored in BASIC_SEVA_18.
+DEFINITION  B-P52 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P52,
+            contains a T7_25 promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P52
 VERSION     B-P52
 KEYWORDS    .
@@ -3773,7 +3873,9 @@ ORIGIN
      2581 ttgatgcctt taattaa
 //
 LOCUS       B-P53_Terminator2_T7_100_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P53 stored in BASIC_SEVA_18.
+DEFINITION  B-P53 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P53,
+            contains a T7_100 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P53
 VERSION     B-P53
 KEYWORDS    .
@@ -3848,7 +3950,9 @@ ORIGIN
      2581 tgcctttaat taa
 //
 LOCUS       B-P54_Terminator2_T7_52_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P54 stored in BASIC_SEVA_18.
+DEFINITION  B-P54 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P54,
+            contains a T7_52 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P54
 VERSION     B-P54
 KEYWORDS    .
@@ -3923,7 +4027,9 @@ ORIGIN
      2581 tgcctttaat taa
 //
 LOCUS       B-P56_Terminator2_T7_25_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P56 stored in BASIC_SEVA_18.
+DEFINITION  B-P56 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P56,
+            contains a T7_25 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P56
 VERSION     B-P56
 KEYWORDS    .
@@ -3998,7 +4104,9 @@ ORIGIN
      2581 tgcctttaat taa
 //
 LOCUS       B-P57_Terminator3_T7_100_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P57 stored in BASIC_SEVA_18.
+DEFINITION  B-P57 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P57,
+            contains a T7_100 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P57
 VERSION     B-P57
 KEYWORDS    .
@@ -4073,7 +4181,9 @@ ORIGIN
      2581 taattaa
 //
 LOCUS       B-P58_Terminator3_T7_52_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P58 stored in BASIC_SEVA_18.
+DEFINITION  B-P58 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P58,
+            contains a T7_52 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P58
 VERSION     B-P58
 KEYWORDS    .
@@ -4148,7 +4258,9 @@ ORIGIN
      2581 taattaa
 //
 LOCUS       B-P61_Terminator1_BetI_RiboA 2637 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P61 stored in BASIC_SEVA_18.
+DEFINITION  B-P61 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P61,
+            contains a BetI promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P61
 VERSION     B-P61
 KEYWORDS    .
@@ -4223,7 +4335,9 @@ ORIGIN
      2581 aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt taattaa
 //
 LOCUS       B-P62_Terminator2_Ttg_RiboB 2621 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P62 stored in BASIC_SEVA_18.
+DEFINITION  B-P62 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P62,
+            contains a Ttg promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P62
 VERSION     B-P62
 KEYWORDS    .
@@ -4298,7 +4412,9 @@ ORIGIN
      2581 tttcgactga gcctttcgtt ttatttgatg cctttaatta a
 //
 LOCUS       B-P63_Terminator3_SaITTC_RiboC 2680 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P63 stored in BASIC_SEVA_18.
+DEFINITION  B-P63 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P63,
+            contains a SaITTC promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P63
 VERSION     B-P63
 KEYWORDS    .
@@ -4374,7 +4490,9 @@ ORIGIN
      2641 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
 LOCUS       B-P59_Terminator3_T7_50_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P59 stored in BASIC_SEVA_18.
+DEFINITION  B-P59 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P59,
+            contains a T7_50 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P59
 VERSION     B-P59
 KEYWORDS    .
@@ -4449,7 +4567,9 @@ ORIGIN
      2581 taattaa
 //
 LOCUS       B-P60_Terminator3_T7_25_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P60 stored in BASIC_SEVA_18.
+DEFINITION  B-P60 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P60,
+            contains a T7_25 promoter with an upstream Terminator3 and a
+            downstream RiboC.
 ACCESSION   B-P60
 VERSION     B-P60
 KEYWORDS    .
@@ -4524,7 +4644,9 @@ ORIGIN
      2581 taattaa
 //
 LOCUS       B-P26_Terminator1_CymR_RiboA 2664 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P26 stored in BASIC_SEVA_18.
+DEFINITION  B-P26 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P26,
+            contains a CymR promoter with an upstream Terminator1 and a
+            downstream RiboA.
 ACCESSION   B-P26
 VERSION     B-P26
 KEYWORDS    .
@@ -4600,7 +4722,9 @@ ORIGIN
      2641 gttttatttg atgcctttaa ttaa
 //
 LOCUS       B-P34_Terminator2_CymR_RiboB 2660 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P34 stored in BASIC_SEVA_18.
+DEFINITION  B-P34 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P34,
+            contains a CymR promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P34
 VERSION     B-P34
 KEYWORDS    .
@@ -4676,7 +4800,9 @@ ORIGIN
      2641 tatttgatgc ctttaattaa
 //
 LOCUS       B-P55_Terminator2_T7_50_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P55 stored in BASIC_SEVA_18.
+DEFINITION  B-P55 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P55,
+            contains a T7_50 promoter with an upstream Terminator2 and a
+            downstream RiboB.
 ACCESSION   B-P55
 VERSION     B-P55
 KEYWORDS    .
