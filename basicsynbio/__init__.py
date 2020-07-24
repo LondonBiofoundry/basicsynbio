@@ -8,6 +8,7 @@ from .main import (
     BasicAssembly,
     BasicLinker,
     BasicPart,
+    BasicUTRRBSLinker,
     seqrec2part
 )
 from .bsb_io import (

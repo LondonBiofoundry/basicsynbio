@@ -309,3 +309,15 @@ def test_BasicAssembly_clips(five_part_assembly, five_part_assembly_parts, five_
             )
     for clip in clips:
         assert clip in five_part_assembly.clip_reactions
+
+
+def test_assembly_exception_same_utr_linker(cmr_p15a_basicpart, gfp_basicpart):
+    from basicsynbio.main import AssemblyException
+    with pytest.raises(AssemblyException, match="BasicAssembly initiated with UTR1-S used 2 times."):
+        bsb.BasicAssembly(
+            cmr_p15a_basicpart,
+            bsb.BIOLEGIO_LINKERS["UTR1-RBS1"],
+            gfp_basicpart,
+            bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]
+        )
+

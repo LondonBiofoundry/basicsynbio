@@ -75,9 +75,18 @@ class BasicPart(SeqRecord):
 
 
 class BasicLinker(SeqRecord):
-    def __init__(self, seq, id, **kwargs):
-        """Refer to help(BasicLinker), id is required."""
+    def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
+        """Constructor for BasicLinker.
+        
+        Args:
+            seq -- Refer to BioPython.SeqRecord.SeqRecord documentation.
+            id -- Refer to BioPython.SeqRecord.SeqRecord documentation
+            prefix_id -- ID for prefix linker half.
+            suffix_id -- ID for suffix linker half.
+        """
         super().__init__(seq=seq, id=id, **kwargs)
+        self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
+        self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
         self._linker_feature()
 
     def basic_slice(self):
@@ -94,6 +103,21 @@ class BasicLinker(SeqRecord):
             )
         )
 
+    def _assign_linker_half_id(self, linker_half, id):
+        if not id and linker_half == "prefix":
+            return f"{self.id}-P"
+        elif not id and linker_half == "suffix":
+            return f"{self.id}-S"
+        return id
+
+
+class BasicUTRRBSLinker(BasicLinker):
+    """Sub-class for UTR-RBS linkers."""
+    def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
+        super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
+        self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
+        self.suffix_id = f"UTR{self.id[3]}-S"
+        
 
 class BasicAssembly():
     @add2docs(
@@ -105,7 +129,7 @@ class BasicAssembly():
         
         Args:"""
         self.parts_linkers = parts_linkers
-        self.clip_reactions = self.return_clip_reactions()
+        self.clip_reactions = self._return_clip_reactions()
 
     @add2docs(
         12,
@@ -141,11 +165,11 @@ class BasicAssembly():
                 setattr(seqrec, key, value)
         return seqrec
     
-    def return_clip_reactions(self):
+    def _return_clip_reactions(self):
         """returns clip reactions required for assembly of self."""
         clip_reactions = []
         for ind, part_linker in enumerate(self.parts_linkers):
-            if type(part_linker) == BasicLinker:
+            if issubclass(type(part_linker), BasicLinker):
                 pass
             else:
                 if ind == len(self.parts_linkers) - 1:
@@ -159,7 +183,22 @@ class BasicAssembly():
                         suffix=suffix
                     )
                 )
+        self._check_clip_reactions(clip_reactions)
         return clip_reactions
+
+    def _check_clip_reactions(self, clip_reactions):
+        """Checks clip reactions are compatible e.g. same half linker not used multiple times."""
+
+        def _check_linker_half_ids(linker_halves):
+            """Check linker_havles are compatible."""
+            for linker_half in linker_halves:
+                if linker_halves.count(linker_half) > 1:
+                    raise AssemblyException(f"BasicAssembly initiated with {linker_half} used {linker_halves.count(linker_half)} times.")
+        
+        prefix_linkers = [clip_reaction._linker_half_ids()[0] for clip_reaction in clip_reactions]
+        _check_linker_half_ids(prefix_linkers)
+        suffix_linkers = [clip_reaction._linker_half_ids()[1] for clip_reaction in clip_reactions]
+        _check_linker_half_ids(suffix_linkers)
 
     @property
     def parts_linkers(self):
@@ -195,13 +234,17 @@ class ClipReaction():
         self.suffix = suffix
         self.part = part
 
+    def _linker_half_ids(self):
+        """Returns the ids for prefix and suffix linkers."""
+        return self.prefix.prefix_id, self.suffix.suffix_id
+
     def __eq__(self, other):
         if not isinstance(other, ClipReaction):
             raise TypeError(f"{other} is not a ClipReaction instance.")
         return (
-            str(self.prefix.seq) == str(other.prefix.seq) and
-            str(self.part.seq) == str(other.part.seq) and
-            str(self.suffix.seq) == str(other.suffix.seq)
+            str(self.prefix.id) == str(other.prefix.id) and
+            str(self.part.id) == str(other.part.id) and
+            str(self.suffix.id) == str(other.suffix.id)
         ) 
 
 
