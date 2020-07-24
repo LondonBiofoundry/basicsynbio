@@ -16,15 +16,13 @@ class PartLinkerCollection(dict):
     8,
     CommonArgDocs.PARTS_LINKERS_ARGS
 )
-def make_collection(*parts_linkers, key_mapping=None):
+def make_collection(*parts_linkers, keys=None):
     """Generates a PartLinkerCollection object.
     
     Args:
-        key_mapping -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker."""
-    if not key_mapping:
+        keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker."""
+    if not keys:
         collection = {part_linker.id: part_linker for part_linker in parts_linkers}
     else:
-        collection = dict()
-        for ind, key in enumerate(key_mapping):
-            collection[key] = parts_linkers[ind]
+        collection = {key: value for key, value in zip(keys, parts_linkers)}
     return PartLinkerCollection(collection.items())
