@@ -117,6 +117,18 @@ def ice_user_config():
     return {"client": ice_client, "token": ice_token}
 
 
+@pytest.fixture
+def bsai_part_seqrec(gfp_orf_seq):
+    from Bio.Seq import Seq
+    from Bio.SeqRecord import SeqRecord
+    bsai_site = Seq("GGTCTC")
+    insertion_ind = len(gfp_orf_seq) // 2
+    return SeqRecord(
+        gfp_orf_seq[:insertion_ind] + bsai_site + gfp_orf_seq[insertion_ind:],
+        id="bsai_part"
+    )
+
+
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
     returns true if basicpart has equivalent seqrec attributes.
@@ -321,3 +333,7 @@ def test_assembly_exception_same_utr_linker(cmr_p15a_basicpart, gfp_basicpart):
             bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]
         )
 
+
+def test_bsai_site_in_part(bsai_part_seqrec):
+    with pytest.raises(bsb.main.PartException, match=f"{bsai_part_seqrec.id} contains more than two BsaI sites."):
+        bsb.seqrec2part(bsai_part_seqrec, add_i_seqs=True)

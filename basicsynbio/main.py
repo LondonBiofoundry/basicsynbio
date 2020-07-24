@@ -4,6 +4,7 @@ from basicsynbio.utils import _easy_seqrec
 from basicsynbio.decorators import add2docs
 from Bio import SeqUtils, SeqIO
 from Bio.Alphabet import IUPAC
+from Bio.Restriction.Restriction import BsaI
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -49,6 +50,8 @@ class BasicPart(SeqRecord):
         self._is_loc = self._find_iseq(
             IS_STR, "iS sequence"
         )
+        self._check_bsai()
+
 
     def basic_slice(self):
         """Return the SeqRecord flanked by BASIC iP & iS sequences."""
@@ -72,6 +75,11 @@ class BasicPart(SeqRecord):
         elif len(search_out) > 2:
             raise PartException(f"{self.id} contains multiple {iseq_id}")
         return search_out[1]
+    
+    def _check_bsai(self):
+        """Checks if sliced basic part contains a BsaI site."""
+        if len(BsaI.search(self.seq)) > 2:
+            raise PartException(f"{self.id} contains more than two BsaI sites.")
 
 
 class BasicLinker(SeqRecord):
