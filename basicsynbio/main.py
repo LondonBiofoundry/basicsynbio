@@ -13,18 +13,19 @@ import datetime
 
 DATE = datetime.datetime.now()
 DEFAULT_ANNOTATIONS = {
-                        "source": "synthetic construct",
-                        "organism": "synthetic construct",
-                        "taxonomy": ["other sequences", "artificial sequences"],
-                        "date": DATE.strftime("%d-") + DATE.strftime("%b").upper() + DATE.strftime("-%Y"),
-                        "accessions": [],
-                        "sequence_version": 1,
-                        "topology": "circular"
-                    }
+    "source": "synthetic construct",
+    "organism": "synthetic construct",
+    "taxonomy": ["other sequences", "artificial sequences"],
+    "date": DATE.strftime("%d-") + DATE.strftime("%b").upper() + DATE.strftime("-%Y"),
+    "accessions": [],
+    "sequence_version": 1,
+    "topology": "circular"
+}
 IP_STR = "TCTGGTGGGTCTCTGTCC"
 IS_STR = "GGCTCGGGAGACCTATCG"
 IP_SEQREC = _easy_seqrec(IP_STR, "iP", note=["BASIC integrated prefix"])
 IS_SEQREC = _easy_seqrec(IS_STR, "iS", note=["BASIC integrated suffix"])
+
 
 class CommonArgDocs:
     ADD_I_SEQS = "add_i_seqs -- if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
@@ -32,7 +33,7 @@ class CommonArgDocs:
     FORMAT = "format -- file format."
     ALPHABET = "alphabet -- Bio.Alphabet. Refer Bio.Alphabet documentation."
     SEQREC_KWARGS = "**kwargs -- assigns alternative Bio.SeqRecord attributes."
-    PARTS_LINKERS_ARGS  = "*parts_linkers -- BasicPart or BasicLinker objects."       
+    PARTS_LINKERS_ARGS = "*parts_linkers -- BasicPart or BasicLinker objects."
 
 
 class BasicPart(SeqRecord):
@@ -51,7 +52,6 @@ class BasicPart(SeqRecord):
             IS_STR, "iS sequence"
         )
         self._check_bsai()
-
 
     def basic_slice(self):
         """Return the SeqRecord flanked by BASIC iP & iS sequences."""
@@ -75,17 +75,18 @@ class BasicPart(SeqRecord):
         elif len(search_out) > 2:
             raise PartException(f"{self.id} contains multiple {iseq_id}")
         return search_out[1]
-    
+
     def _check_bsai(self):
         """Checks if sliced basic part contains a BsaI site."""
         if len(BsaI.search(self.seq)) > 2:
-            raise PartException(f"{self.id} contains more than two BsaI sites.")
+            raise PartException(
+                f"{self.id} contains more than two BsaI sites.")
 
 
 class BasicLinker(SeqRecord):
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         """Constructor for BasicLinker.
-        
+
         Args:
             seq -- Refer to BioPython.SeqRecord.SeqRecord documentation.
             id -- Refer to BioPython.SeqRecord.SeqRecord documentation
@@ -121,11 +122,12 @@ class BasicLinker(SeqRecord):
 
 class BasicUTRRBSLinker(BasicLinker):
     """Sub-class for UTR-RBS linkers."""
+
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
         self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = f"UTR{self.id[3]}-S"
-        
+
 
 class BasicAssembly():
     @add2docs(
@@ -134,7 +136,7 @@ class BasicAssembly():
     )
     def __init__(self, *parts_linkers):
         """BasicAssembly class requires alternating BasicParts and BasicLinkers in any order.
-        
+
         Args:"""
         self.parts_linkers = parts_linkers
         self.clip_reactions = self._return_clip_reactions()
@@ -158,7 +160,7 @@ class BasicAssembly():
     )
     def return_seqrec(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
         """Returns a Bio.SeqRecord object of the assembled construct.
-        
+
         Args:"""
         seqrec = SeqRecord(Seq(str()))
         for part_linker in self.parts_linkers:
@@ -172,7 +174,7 @@ class BasicAssembly():
             for key, value in kwargs.items():
                 setattr(seqrec, key, value)
         return seqrec
-    
+
     def _return_clip_reactions(self):
         """returns clip reactions required for assembly of self."""
         clip_reactions = []
@@ -181,9 +183,9 @@ class BasicAssembly():
                 pass
             else:
                 if ind == len(self.parts_linkers) - 1:
-                    suffix=self.parts_linkers[0]
+                    suffix = self.parts_linkers[0]
                 else:
-                    suffix=self.parts_linkers[ind+1]
+                    suffix = self.parts_linkers[ind+1]
                 clip_reactions.append(
                     ClipReaction(
                         prefix=self.parts_linkers[ind-1],
@@ -201,11 +203,14 @@ class BasicAssembly():
             """Check linker_havles are compatible."""
             for linker_half in linker_halves:
                 if linker_halves.count(linker_half) > 1:
-                    raise AssemblyException(f"BasicAssembly initiated with {linker_half} used {linker_halves.count(linker_half)} times.")
-        
-        prefix_linkers = [clip_reaction._linker_half_ids()[0] for clip_reaction in clip_reactions]
+                    raise AssemblyException(
+                        f"BasicAssembly initiated with {linker_half} used {linker_halves.count(linker_half)} times.")
+
+        prefix_linkers = [clip_reaction._linker_half_ids()[0]
+                          for clip_reaction in clip_reactions]
         _check_linker_half_ids(prefix_linkers)
-        suffix_linkers = [clip_reaction._linker_half_ids()[1] for clip_reaction in clip_reactions]
+        suffix_linkers = [clip_reaction._linker_half_ids()[1]
+                          for clip_reaction in clip_reactions]
         _check_linker_half_ids(suffix_linkers)
 
     @property
@@ -229,6 +234,7 @@ class BasicAssembly():
 
 class ClipReaction():
     """Class for describing clip reactions."""
+
     def __init__(self, prefix, part, suffix):
         """Initiaties a ClipReaction.
 
@@ -236,7 +242,7 @@ class ClipReaction():
             prefix -- BasicLinker instance used as prefix in clip reaction.
             part -- BasicPart instance.
             suffix -- BasicLinker instance used as suffix in clip reaction.
-        
+
         """
         self.prefix = prefix
         self.suffix = suffix
@@ -253,7 +259,7 @@ class ClipReaction():
             str(self.prefix.id) == str(other.prefix.id) and
             str(self.part.id) == str(other.part.id) and
             str(self.suffix.id) == str(other.suffix.id)
-        ) 
+        )
 
 
 class PartException(Exception):
@@ -271,7 +277,8 @@ def seqrec2part(seqrec, add_i_seqs=False):
     Args:"""
     if add_i_seqs:
         new_seqrec = IP_SEQREC + seqrec + IS_SEQREC
-        part = BasicPart(new_seqrec.seq, seqrec.id, features=new_seqrec.features)
+        part = BasicPart(new_seqrec.seq, seqrec.id,
+                         features=new_seqrec.features)
         for key, value in seqrec.__dict__.items():
             if key not in ("_seq", "_per_letter_annotations", "features"):
                 setattr(part, key, value)

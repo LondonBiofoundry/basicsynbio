@@ -74,13 +74,15 @@ utr_rbs_linkers = {
     "UTR3-RBS-AM24": "CTCGGTATCTCGTGGTCTGACGGTAAAATCTATTGTAATCYVRGGRGGTAGTCC",
 }
 
+
 def _make_linker(linker_class, str_seq, id, description="visit https://www.biolegio.com/products-services/basic/ for further information."):
     seq = Seq("GG" + str_seq)
     return linker_class(
         seq,
         id,
         description=description
-    )    
+    )
+
 
 BIOLEGIO_LINKERS = {
     key: _make_linker(bsb.BasicLinker, value, key) for key, value in standard_linkers.items()

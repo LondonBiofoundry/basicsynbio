@@ -19,11 +19,11 @@ import icebreaker
 )
 def import_part(handle, format, add_i_seqs=False):
     """Return a BASIC part object using Bio.SeqIO.read().
-    
+
     Args:"""
     seqrec = SeqIO.read(handle, format)
     return seqrec2part(seqrec, add_i_seqs)
-    
+
 
 @add2docs(
     8,
@@ -33,7 +33,7 @@ def import_part(handle, format, add_i_seqs=False):
 )
 def import_parts(handle, format, add_i_seqs=False):
     """Return BASIC parts in a single file using Bio.SeqIO.parse().
-    
+
     Args:"""
     seqrecs = SeqIO.parse(handle, format)
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
@@ -46,7 +46,7 @@ def import_parts(handle, format, add_i_seqs=False):
 )
 def export_sequences_to_file(sequences, handle, format="genbank"):
     """Exports sequences using Bio.SeqIO.write().
-    
+
     Args:
         sequences -- objects to export to file handle. BasicPart, BasicAssembly or SeqRecord instances."""
     if type(sequences) in [bsb.BasicPart, bsb.BasicAssembly, SeqRecord]:
@@ -57,7 +57,8 @@ def export_sequences_to_file(sequences, handle, format="genbank"):
         except AttributeError:
             SeqIO.write(basic_object, handle, format)
     else:
-        sequences = ((basic_object if not hasattr(basic_object, "return_seqrec") else basic_object.return_seqrec()) for basic_object in sequences)
+        sequences = ((basic_object if not hasattr(basic_object, "return_seqrec")
+                      else basic_object.return_seqrec()) for basic_object in sequences)
         SeqIO.write(sequences, handle, format)
 
 
@@ -66,11 +67,11 @@ def export_sequences_to_file(sequences, handle, format="genbank"):
     CommonArgDocs.FORMAT,
 )
 def import_ice_parts(
-    ice_user_config: dict,
-    *ice_nums,
-    ice_root="https://public-registry.jbei.org/",
-    file_type="original",
-    format="genbank"):
+        ice_user_config: dict,
+        *ice_nums,
+        ice_root="https://public-registry.jbei.org/",
+        file_type="original",
+        format="genbank"):
     """Returns a BasicPart object using an entry on the JBEI-ICE public registry.
 
     Args:

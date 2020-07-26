@@ -129,6 +129,19 @@ def bsai_part_seqrec(gfp_orf_seq):
     )
 
 
+@pytest.fixture
+def promoter_assemblies():
+    for promoter in bsb.BPROMOTER_PARTS.values():
+        yield bsb.BasicAssembly(
+            bsb.BSEVA_PARTS["27"],
+            bsb.BIOLEGIO_LINKERS["LMP"],
+            promoter,
+            bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
+            bsb.BCDS_PARTS["sfGFP"],
+            bsb.BIOLEGIO_LINKERS["LMS"]
+        )
+
+
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
     returns true if basicpart has equivalent seqrec attributes.
@@ -337,3 +350,24 @@ def test_assembly_exception_same_utr_linker(cmr_p15a_basicpart, gfp_basicpart):
 def test_bsai_site_in_part(bsai_part_seqrec):
     with pytest.raises(bsb.main.PartException, match=f"{bsai_part_seqrec.id} contains more than two BsaI sites."):
         bsb.seqrec2part(bsai_part_seqrec, add_i_seqs=True)
+
+
+def test_build_parts(promoter_assemblies):
+    build = bsb.BasicBuild(*promoter_assemblies)
+    parts = [promoter_part for promoter_part in bsb.BPROMOTER_PARTS]
+    parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["27"]]
+    part_ids = [part.id for part in parts]
+    for part in build.parts:
+        assert part.id in part_ids
+
+
+def test_build_linkers(promoter_assemblies):
+    assert True == False
+
+
+def test_build_clip_reactions(promoter_assemblies):
+    assert True == False
+
+
+def test_build_assemblies(promoter_assemblies):
+    assert True == False
