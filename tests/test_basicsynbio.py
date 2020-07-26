@@ -258,7 +258,7 @@ def test_import_ice_parts(bseva_68_seqrec, ice_user_config):
     assert compare_basicpart_seqrec(next(ice_parts), bseva_68_seqrec) == True
 
 
-@pytest.mark.skip(reason="Test takes too long.")
+@pytest.mark.slow
 def test_import_all_ice_parts(ice_user_config):
     ice_nums = (value for value in bsb.BSEVA_ICE_DICT.values())
     ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
