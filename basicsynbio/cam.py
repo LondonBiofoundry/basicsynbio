@@ -15,3 +15,16 @@ def new_part_resuspension(part, mass: float, double_stranded=True):
 
     """
     return (mass*10**-9)/molecular_weight(part.seq, double_stranded=double_stranded)*1/(75e-9)*10**6
+
+
+class BasicBuild():
+    """A BasicBuild object provides methods and attributes for building BasicAssembly objects."""
+
+    def __init__(self, *basic_assemblies):
+        """Construct BasicBuild object.
+        
+        Args:
+            *basic_assembiles -- BasicAssembly objects.
+
+        """
+        pass
