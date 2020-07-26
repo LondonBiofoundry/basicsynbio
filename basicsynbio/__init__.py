@@ -25,5 +25,6 @@ from .parts_linkers import (
     BSEVA_ICE_DICT
 )
 from .cam import (
+    BasicBuild,
     new_part_resuspension
 )

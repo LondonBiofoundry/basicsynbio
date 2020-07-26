@@ -222,7 +222,7 @@ class BasicAssembly():
         if not all(
                 issubclass(type(value), BasicPart) or issubclass(type(value), BasicLinker) for value in values):
             raise TypeError(
-                "Not all *parts_linkers are BasicParts or BasicLinkers."
+                "Not all *parts_linkers are BasicParts or BasicLinkers instances."
             )
         for ind, value in enumerate(values):
             if ind != 0:

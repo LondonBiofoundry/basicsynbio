@@ -129,17 +129,16 @@ def bsai_part_seqrec(gfp_orf_seq):
     )
 
 
-@pytest.fixture
+@pytest.yield_fixture
 def promoter_assemblies():
-    for promoter in bsb.BPROMOTER_PARTS.values():
-        yield bsb.BasicAssembly(
+    return [bsb.BasicAssembly(
             bsb.BSEVA_PARTS["27"],
             bsb.BIOLEGIO_LINKERS["LMP"],
             promoter,
             bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
             bsb.BCDS_PARTS["sfGFP"],
             bsb.BIOLEGIO_LINKERS["LMS"]
-        )
+        ) for promoter in bsb.BPROMOTER_PARTS.values()]
 
 
 def compare_basicpart_seqrec(basicpart, seqrec):
@@ -354,10 +353,11 @@ def test_bsai_site_in_part(bsai_part_seqrec):
 
 def test_build_parts(promoter_assemblies):
     build = bsb.BasicBuild(*promoter_assemblies)
-    parts = [promoter_part for promoter_part in bsb.BPROMOTER_PARTS]
+    parts = [promoter_part for promoter_part in bsb.BPROMOTER_PARTS.values()]
     parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["27"]]
+    # print(parts)
     part_ids = [part.id for part in parts]
-    for part in build.parts:
+    for part in build.unique_parts:
         assert part.id in part_ids
 
 
