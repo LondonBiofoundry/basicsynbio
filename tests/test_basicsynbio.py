@@ -130,15 +130,15 @@ def bsai_part_seqrec(gfp_orf_seq):
 
 
 @pytest.yield_fixture
-def promoter_assemblies():
-    return [bsb.BasicAssembly(
+def promoter_assemblies_build():
+    return bsb.BasicBuild(*(bsb.BasicAssembly(
             bsb.BSEVA_PARTS["27"],
             bsb.BIOLEGIO_LINKERS["LMP"],
             promoter,
             bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
             bsb.BCDS_PARTS["sfGFP"],
             bsb.BIOLEGIO_LINKERS["LMS"]
-        ) for promoter in bsb.BPROMOTER_PARTS.values()]
+        ) for promoter in bsb.BPROMOTER_PARTS.values()))
 
 
 def compare_basicpart_seqrec(basicpart, seqrec):
@@ -351,23 +351,25 @@ def test_bsai_site_in_part(bsai_part_seqrec):
         bsb.seqrec2part(bsai_part_seqrec, add_i_seqs=True)
 
 
-def test_build_parts(promoter_assemblies):
-    build = bsb.BasicBuild(*promoter_assemblies)
+def test_build_parts(promoter_assemblies_build):
     parts = [promoter_part for promoter_part in bsb.BPROMOTER_PARTS.values()]
     parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["27"]]
-    # print(parts)
+    print(parts)
     part_ids = [part.id for part in parts]
-    for part in build.unique_parts:
+    for part in promoter_assemblies_build.unique_parts:
         assert part.id in part_ids
 
 
-def test_build_linkers(promoter_assemblies):
+def test_build_linkers(promoter_assemblies_build):
+    linkers = ("LMP", "UTR1-RBS2", "LMS")
+    linker_ids = [bsb.BIOLEGIO_LINKERS[linker].id for linker in linkers]
+    for linker in promoter_assemblies_build.unique_linkers:
+        assert linker.id in linker_ids
+
+
+def test_build_clip_reactions(promoter_assemblies_build):
     assert True == False
 
 
-def test_build_clip_reactions(promoter_assemblies):
-    assert True == False
-
-
-def test_build_assemblies(promoter_assemblies):
+def test_build_assemblies(promoter_assemblies_build):
     assert True == False

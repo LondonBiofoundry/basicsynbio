@@ -27,15 +27,20 @@ class BasicBuild():
 
         """
         self.basic_assemblies = basic_assemblies
-        self.unique_parts = list(self._return_unique_parts())
+        all_parts = []
+        all_linkers = []
+        for assembly in self.basic_assemblies:
+            all_parts += [clip_reaction.part for clip_reaction in assembly.clip_reactions]
+            all_linkers += [clip_reaction.prefix for clip_reaction in assembly.clip_reactions]
+        self.unique_parts = list(self._unique_objects_by_id(*all_parts))
+        self.unique_linkers = list(self._unique_objects_by_id(*all_linkers))
     
-    def _return_unique_parts(self):
-        """Returns all unique BasicPart objects required to build self.basic_assemblies."""
-        all_parts = [clip_reaction.part for assembly in self.basic_assemblies for clip_reaction in assembly.clip_reactions]
-        all_part_ids = [part.id for part in all_parts]
-        unique_part_ids = {part.id for part in all_parts}
-        for part_id in unique_part_ids:
-            yield all_parts[all_part_ids.index(part_id)]
+    def _unique_objects_by_id(self, *instances):
+        """From *instances, returns a collection of elements which all have a unique id attribute."""
+        all_ids = [instance.id for instance in instances]
+        unqiue_ids = {instance.id for instance in instances}
+        for unique_id in unqiue_ids:
+            yield instances[all_ids.index(unique_id)]
 
     @property
     def basic_assemblies(self):
