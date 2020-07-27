@@ -81,7 +81,7 @@ def five_part_assembly(five_part_assembly_parts, five_part_assembly_linkers):
         parts_linkers += list(part_linker)
     print([part_linker.id for part_linker in parts_linkers])
     print([type(part_linker) for part_linker in parts_linkers])
-    return bsb.BasicAssembly(*parts_linkers)
+    return bsb.BasicAssembly("five_part_assembly", *parts_linkers)
 
 
 @pytest.fixture
@@ -132,6 +132,7 @@ def bsai_part_seqrec(gfp_orf_seq):
 @pytest.yield_fixture
 def promoter_assemblies_build():
     return bsb.BasicBuild(*(bsb.BasicAssembly(
+            promoter.id,
             bsb.BSEVA_PARTS["27"],
             bsb.BIOLEGIO_LINKERS["LMP"],
             promoter,
@@ -186,7 +187,7 @@ def test_basic_part_exception(gfp_orf_seq):
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
     import basicsynbio.main as bsb_main
     with pytest.raises(bsb_main.AssemblyException):
-        bsb.BasicAssembly(gfp_basicpart, cmr_p15a_basicpart)
+        bsb.BasicAssembly("test", gfp_basicpart, cmr_p15a_basicpart)
 
 
 def testreturn_seqrec(five_part_assembly):
@@ -224,7 +225,7 @@ def test_add_i_seqs(gfp_orf_basicpart, gfp_orf_seq):
 
 def test_return_part(five_part_assembly):
     imported_part = bsb.import_part("sequences/genbank_files/misc_BASIC/five_part_assembly.gb", "genbank")
-    api_part = five_part_assembly.return_part("five part assembly")
+    api_part = five_part_assembly.return_part()
     assert api_part.seq == imported_part.seq
     assert dir(api_part) == dir(imported_part)
 
@@ -333,12 +334,19 @@ def test_BasicAssembly_clips(five_part_assembly, five_part_assembly_parts, five_
             )
     for clip in clips:
         assert clip in five_part_assembly.clip_reactions
+    
+
+@pytest.mark.skip(reason="people should realise this is a bad idea!")
+def test_assembly_monkey_clips(five_part_assembly):
+    five_part_assembly.parts_linkers = (bsb.BSEVA_PARTS["18"], bsb.BIOLEGIO_LINKERS["LMP"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"])
+    assert len(five_part_assembly.clip_reactions) == len([part for part in five_part_assembly.parts_linkers if isinstance(part, bsb.BasicPart)])
 
 
 def test_assembly_exception_same_utr_linker(cmr_p15a_basicpart, gfp_basicpart):
     from basicsynbio.main import AssemblyException
     with pytest.raises(AssemblyException, match="BasicAssembly initiated with UTR1-S used 2 times."):
         bsb.BasicAssembly(
+            "test",
             cmr_p15a_basicpart,
             bsb.BIOLEGIO_LINKERS["UTR1-RBS1"],
             gfp_basicpart,
@@ -367,9 +375,17 @@ def test_build_linkers(promoter_assemblies_build):
         assert linker.id in linker_ids
 
 
-def test_build_clip_reactions(promoter_assemblies_build):
-    assert True == False
+def test_build_clip_info(promoter_assemblies_build):
+    from basicsynbio.main import ClipReaction
+    clip_reactions = [
+        ClipReaction(bsb.BIOLEGIO_LINKERS["LMS"], bsb.BSEVA_PARTS["27"], bsb.BIOLEGIO_LINKERS["LMP"]),
+        ClipReaction(bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"]),
+    ]
+    clip_reactions += [ClipReaction(bsb.BIOLEGIO_LINKERS["LMP"], promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]) for promoter in bsb.BPROMOTER_PARTS.values()]
+    for element in promoter_assemblies_build.clips_info:
+        assert element.clip_reaction in clip_reactions
+    assert len(promoter_assemblies_build.clips_info) == len(clip_reactions)
 
 
-def test_build_assemblies(promoter_assemblies_build):
-    assert True == False
+def test_build_clip_inds(promoter_assemblies_build):
+    print(promoter_assemblies_build.clips_inds)

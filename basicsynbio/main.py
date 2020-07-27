@@ -9,6 +9,7 @@ from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqUtils.CheckSum import seguid
+from collections import Counter
 import datetime
 
 DATE = datetime.datetime.now()
@@ -82,6 +83,14 @@ class BasicPart(SeqRecord):
             raise PartException(
                 f"{self.id} contains more than two BsaI sites.")
 
+    def __eq__(self, other):
+        if not isinstance(other, BasicPart):
+            raise TypeError(f"{other} is not a BasicPart instance.")
+        return (
+            self.id == other.id and
+            str(self.seq) == str(other.seq)
+        )
+
 
 class BasicLinker(SeqRecord):
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
@@ -94,8 +103,8 @@ class BasicLinker(SeqRecord):
             suffix_id -- ID for suffix linker half.
         """
         super().__init__(seq=seq, id=id, **kwargs)
-        self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
-        self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
+        self._prefix_id = self._assign_linker_half_id("prefix", prefix_id)
+        self._suffix_id = self._assign_linker_half_id("suffix", suffix_id)
         self._linker_feature()
 
     def basic_slice(self):
@@ -119,14 +128,22 @@ class BasicLinker(SeqRecord):
             return f"{self.id}-S"
         return id
 
+    def __eq__(self, other):
+        if not isinstance(other, BasicLinker):
+            raise TypeError(f"{other} is not a BasicLinker instance.")
+        return (
+            self.id == other.id and
+            str(self.seq) == str(other.seq)
+        )
+
 
 class BasicUTRRBSLinker(BasicLinker):
     """Sub-class for UTR-RBS linkers."""
 
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
-        self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
-        self.suffix_id = f"UTR{self.id[3]}-S"
+        self._prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
+        self._suffix_id = f"UTR{self.id[3]}-S"
 
 
 class BasicAssembly():
@@ -134,24 +151,25 @@ class BasicAssembly():
         12,
         CommonArgDocs.PARTS_LINKERS_ARGS
     )
-    def __init__(self, *parts_linkers):
+    def __init__(self, id: str, *parts_linkers):
         """BasicAssembly class requires alternating BasicParts and BasicLinkers in any order.
 
-        Args:"""
+        Args:
+            id -- Identifier for BasicAssemby object. Should be unique amongst BasicAssembly instances in a BasicBuild."""
+        self.id = id
         self.parts_linkers = parts_linkers
-        self.clip_reactions = self._return_clip_reactions()
+        self.clip_reactions = self.return_clip_reactions()
 
     @add2docs(
         12,
         CommonArgDocs.ALPHABET,
         CommonArgDocs.SEQREC_KWARGS
     )
-    def return_part(self, id: str, alphabet=IUPAC.ambiguous_dna, **kwargs):
+    def return_part(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
         """Return a new BASIC part from this assembly.
 
-        Args:
-            id -- identifier of the new part."""
-        return seqrec2part(self.return_seqrec(alphabet=alphabet, id=id, **kwargs))
+        Args:"""
+        return seqrec2part(self.return_seqrec(alphabet=alphabet, **kwargs))
 
     @add2docs(
         12,
@@ -165,8 +183,8 @@ class BasicAssembly():
         seqrec = SeqRecord(Seq(str()))
         for part_linker in self.parts_linkers:
             seqrec += part_linker.basic_slice()
-        seqrec.id = seguid(seqrec.seq)
-        seqrec.name = "BASIC_construct_" + seqrec.id
+        seqrec.id = self.id
+        seqrec.name = "BASIC_construct_" + self.id
         seqrec.description = f"BASIC DNA Assembly of {[part_linker.id for part_linker in self.parts_linkers]}"
         seqrec.annotations = DEFAULT_ANNOTATIONS
         seqrec.seq.alphabet = alphabet
@@ -175,7 +193,7 @@ class BasicAssembly():
                 setattr(seqrec, key, value)
         return seqrec
 
-    def _return_clip_reactions(self):
+    def return_clip_reactions(self):
         """returns clip reactions required for assembly of self."""
         clip_reactions = []
         for ind, part_linker in enumerate(self.parts_linkers):
@@ -194,24 +212,24 @@ class BasicAssembly():
                     )
                 )
         self._check_clip_reactions(clip_reactions)
-        return clip_reactions
+        return tuple(clip_reactions)
 
     def _check_clip_reactions(self, clip_reactions):
         """Checks clip reactions are compatible e.g. same half linker not used multiple times."""
 
-        def _check_linker_half_ids(linker_halves):
-            """Check linker_havles are compatible."""
-            for linker_half in linker_halves:
-                if linker_halves.count(linker_half) > 1:
-                    raise AssemblyException(
-                        f"BasicAssembly initiated with {linker_half} used {linker_halves.count(linker_half)} times.")
+        def _check_linker_halves(linker_halves):
+            """Check linker_havles are compatible. Note UTR linker-halves must be compatible."""
+            if len(linker_halves) > len(set(linker_halves)):
+                linker_half_counts = Counter(linker_halves)
+                raise AssemblyException(
+                    f"BasicAssembly initiated with {linker_half_counts.most_common(1)[0][0]} used {linker_half_counts.most_common(1)[0][1]} times.")
 
-        prefix_linkers = [clip_reaction._linker_half_ids()[0]
+        prefix_linkers = [clip_reaction.linker_half_ids()[0]
                           for clip_reaction in clip_reactions]
-        _check_linker_half_ids(prefix_linkers)
-        suffix_linkers = [clip_reaction._linker_half_ids()[1]
+        _check_linker_halves(prefix_linkers)
+        suffix_linkers = [clip_reaction.linker_half_ids()[1]
                           for clip_reaction in clip_reactions]
-        _check_linker_half_ids(suffix_linkers)
+        _check_linker_halves(suffix_linkers)
 
     @property
     def parts_linkers(self):
@@ -233,10 +251,10 @@ class BasicAssembly():
 
 
 class ClipReaction():
-    """Class for describing clip reactions."""
+    """Class for describing clip reactions. Note ClipReaction is hashable."""
 
     def __init__(self, prefix, part, suffix):
-        """Initiaties a ClipReaction.
+        """Initiaties ClipReaction.
 
         Args:
             prefix -- BasicLinker instance used as prefix in clip reaction.
@@ -244,21 +262,28 @@ class ClipReaction():
             suffix -- BasicLinker instance used as suffix in clip reaction.
 
         """
-        self.prefix = prefix
-        self.suffix = suffix
-        self.part = part
+        self._prefix = prefix
+        self._suffix = suffix
+        self._part = part
 
-    def _linker_half_ids(self):
-        """Returns the ids for prefix and suffix linkers."""
-        return self.prefix.prefix_id, self.suffix.suffix_id
+    def linker_half_ids(self):
+        """Returns the ids for prefix and suffix linkers in the form (prefix_id, suffix_id)."""
+        return self._prefix._prefix_id, self._suffix._suffix_id
+
+    def clip_items(self):
+        """Return (prefix, part, suffix)."""
+        return self._prefix, self._part, self._suffix
+
+    def __hash__(self):
+        return hash((self._prefix.id, self._part.id, self._suffix.id))
 
     def __eq__(self, other):
         if not isinstance(other, ClipReaction):
             raise TypeError(f"{other} is not a ClipReaction instance.")
         return (
-            str(self.prefix.id) == str(other.prefix.id) and
-            str(self.part.id) == str(other.part.id) and
-            str(self.suffix.id) == str(other.suffix.id)
+            self._prefix == other._prefix and
+            self._part == other._part and
+            self._suffix == other._suffix
         )
 
 
