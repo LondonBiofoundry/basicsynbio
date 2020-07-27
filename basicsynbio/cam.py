@@ -4,6 +4,7 @@ from Bio.SeqUtils import molecular_weight
 from .main import BasicAssembly, ClipReaction
 from dataclasses import dataclass
 from collections import OrderedDict
+import json
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -51,7 +52,11 @@ class BasicBuild():
             for clip_reaction in assembly.clip_reactions:
                 clips_dict[clip_reaction].append(assembly)
         return tuple(ClipInfo(key, tuple(value)) for key, value in clips_dict.items())
-
+    
+    def dumps_json(self):
+        """Returns json serialisation of BasicBuild object."""
+        return json.dumps(self)
+    
     @property
     def basic_assemblies(self):
         return self._basic_assemblies

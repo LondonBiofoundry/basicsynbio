@@ -389,3 +389,20 @@ def test_build_clip_info(promoter_assemblies_build):
 
 def test_build_clip_inds(promoter_assemblies_build):
     print(promoter_assemblies_build.clips_inds)
+
+
+def test_build_dumps_json(promoter_assemblies_build):
+    import json
+    promoter_assemblies_json = promoter_assemblies_build.dumps_json()
+    decoded_json = json.loads(promoter_assemblies_json)
+    for unique_part in promoter_assemblies_build.unique_parts:
+        assert unique_part in decoded_json.unique_parts
+    for unique_linker in promoter_assemblies_build.unique_linkers:
+        assert unique_linker in decoded_json.unique_linkers
+    for clip_reaction in promoter_assemblies_build.clips_inds.keys():
+        assert clip_reaction in list(decoded_json.clips_inds.keys())
+    for assembly in promoter_assemblies_build.basic_assemblies:
+        assert assembly in decoded_json.basic_assemblies
+    
+
+
