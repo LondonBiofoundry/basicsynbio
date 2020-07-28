@@ -41,7 +41,7 @@ class BasicBuild():
             element.clip_reaction._part for element in self.clips_info)
         self.unique_linkers = tuple(
             element.clip_reaction._prefix for element in self.clips_info)
-        self.clips_inds = {element.clip_reaction: ind for ind,
+        self.clip_indexes = {element.clip_reaction: ind for ind,
                            element in enumerate(self.clips_info)}
 
     def return_clips_info(self):
@@ -52,10 +52,6 @@ class BasicBuild():
             for clip_reaction in assembly.clip_reactions:
                 clips_dict[clip_reaction].append(assembly)
         return tuple(ClipInfo(key, tuple(value)) for key, value in clips_dict.items())
-    
-    def dumps_json(self):
-        """Returns json serialisation of BasicBuild object."""
-        return json.dumps(self)
     
     @property
     def basic_assemblies(self):

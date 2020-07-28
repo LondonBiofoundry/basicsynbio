@@ -103,8 +103,8 @@ class BasicLinker(SeqRecord):
             suffix_id -- ID for suffix linker half.
         """
         super().__init__(seq=seq, id=id, **kwargs)
-        self._prefix_id = self._assign_linker_half_id("prefix", prefix_id)
-        self._suffix_id = self._assign_linker_half_id("suffix", suffix_id)
+        self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
+        self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
         self._linker_feature()
 
     def basic_slice(self):
@@ -142,8 +142,8 @@ class BasicUTRRBSLinker(BasicLinker):
 
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
-        self._prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
-        self._suffix_id = f"UTR{self.id[3]}-S"
+        self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
+        self.suffix_id = f"UTR{self.id[3]}-S"
 
 
 class BasicAssembly():
@@ -268,7 +268,7 @@ class ClipReaction():
 
     def linker_half_ids(self):
         """Returns the ids for prefix and suffix linkers in the form (prefix_id, suffix_id)."""
-        return self._prefix._prefix_id, self._suffix._suffix_id
+        return self._prefix.prefix_id, self._suffix.suffix_id
 
     def clip_items(self):
         """Return (prefix, part, suffix)."""

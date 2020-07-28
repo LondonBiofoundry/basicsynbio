@@ -159,6 +159,18 @@ def compare_basicpart_seqrec(basicpart, seqrec):
     else:
         return True
 
+def json_round_trip(class_instance, encoder, decoder):
+    """Encodes object as serialised json and returns decoded object.
+    
+    Args:
+        object -- class instance to be serialised.
+        encoder -- json encoder Class.
+        decoder -- json decoder function.
+    """
+    import json
+    serialised_object = json.dumps(class_instance, cls=encoder)
+    return json.loads(serialised_object, object_hook=decoder)
+
 
 def test_basic_part(gfp_basicpart, gfp_seqrec):
     assert compare_basicpart_seqrec(gfp_basicpart, gfp_seqrec) == True
@@ -388,21 +400,33 @@ def test_build_clip_info(promoter_assemblies_build):
 
 
 def test_build_clip_inds(promoter_assemblies_build):
-    print(promoter_assemblies_build.clips_inds)
+    print(promoter_assemblies_build.clip_indexes)
 
 
-def test_build_dumps_json(promoter_assemblies_build):
+def test_seqrec_json(gfp_basicpart):
+    from basicsynbio.json import SeqRecEncoder, decode_seqrec
+    gfp_seqrec = json_round_trip(gfp_basicpart, SeqRecEncoder, decode_seqrec)
+    assert isinstance(bsb.seqrec2part(gfp_seqrec), bsb.BasicPart)
+
+
+def test_linker_json():
+    from basicsynbio.json import BasicLinkerEncoder, decode_basic_linker
+    assert isinstance(json_round_trip(bsb.BIOLEGIO_LINKERS["LMP"], BasicLinkerEncoder, decode_basic_linker), bsb.BasicLinker)
+
+
+def test_clip_encoding(five_part_assembly):
+    from basicsynbio.json import ClipReactionEncoder
     import json
-    promoter_assemblies_json = promoter_assemblies_build.dumps_json()
-    decoded_json = json.loads(promoter_assemblies_json)
-    for unique_part in promoter_assemblies_build.unique_parts:
-        assert unique_part in decoded_json.unique_parts
-    for unique_linker in promoter_assemblies_build.unique_linkers:
-        assert unique_linker in decoded_json.unique_linkers
-    for clip_reaction in promoter_assemblies_build.clips_inds.keys():
-        assert clip_reaction in list(decoded_json.clips_inds.keys())
-    for assembly in promoter_assemblies_build.basic_assemblies:
-        assert assembly in decoded_json.basic_assemblies
-    
+    print(json.dumps(five_part_assembly.clip_reactions[0], cls=ClipReactionEncoder))
+
+
+def test_assembly_json(five_part_assembly):
+    from basicsynbio.json import BasicAssemblyEncoder, decode_basic_assembly
+    assert isinstance(json_round_trip(five_part_assembly, BasicAssemblyEncoder, decode_basic_assembly), bsb.BasicAssembly)
+
+
+def test_assembly_json(promoter_assemblies_build):
+    from basicsynbio.json import BasicBuildEncoder, decode_basic_build
+    assert isinstance(json_round_trip(promoter_assemblies_build, BasicBuildEncoder, decode_basic_build), bsb.BasicBuild)
 
 
