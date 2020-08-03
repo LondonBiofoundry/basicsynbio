@@ -306,7 +306,7 @@ def test_bpromoter_dict():
 
 def test_bcds_dict():
     from Bio import SeqIO
-    bcds_handle = "./basicsynbio/parts_linkers/BASIC_cds_collection.gb"
+    bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
         assert compare_basicpart_seqrec(bsb.BCDS_PARTS[seqrec.id], seqrec) == True
