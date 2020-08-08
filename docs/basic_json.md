@@ -6,7 +6,7 @@ This document tries to come with a json representation of BASIC DNA assembly bui
 
 1. Object easily converted into build instructions for liquid-handling robotics.
 2. Object facilitates validation of constructs.
-3. Capable of decoding object back into BasicBuild object.
+3. Capable of decoding object back into a BasicBuild object.
 
 ## Draft data structure
 
@@ -57,12 +57,21 @@ To setup clip reactions:
 number = len(build.clips_data[i].basic_assemblies)/assemblies_per_clip
 ```
 
-where `assemblies_per_clip` can vary between different implementations of BASIC assembly.
+where `assemblies_per_clip` can vary between different implementations of BASIC assembly e.g. DNA-BOT vs manual.
 
 To complete assemblies:
 - Each object in `build.basic_assemblies` contains the indexes of required clip reactions as an array (`clips_indexes`). These can be used to identify which specific clip reactions to transfer when assembling the construct.
 
 ## How build json object facilitates validation of constructs
 
+Each object in the `build.basic_assemblies` dictionary contains a `seqrecord` key-value pair which contains the `Bio.SeqRecord.SeqRecord` of the given BasicAssembly as a value. This can be converted into an annotated genbank file. *Can then mention the two common approaches for validating constructs. Specifically using sequencing primers that anneal to the T0 & T1 for validating inserts and diagnostic digests for validating insert/backbone*.
+
 ## How the build json object can be decoded
 
+Using the corresponding json.load/loads command and passing the `decode_build` to the `object_hook` argument, e.g.
+
+```python
+decoded_build = json.loads(serialised_build, object_hook=bsb.decode_build)
+```
+
+This internally generates all unique bsb.BasicPart and bsb.BasicLinker objects in separate dictionaries, assigning each to a kye corresponding to their unique hash value. These dictionaries and the data in the build json object are used to generate each `BasicAssembly` object by identifying corresponding `id` and `*parts_linkers` arguments for each. The resulting BasicAssembly objects can then be parsed into the `BasicBuild` constructor to generate the BasicBuild object.
