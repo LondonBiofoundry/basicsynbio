@@ -64,7 +64,7 @@ To complete assemblies:
 
 ## How build json object facilitates validation of constructs
 
-Each object in the `build.basic_assemblies` dictionary contains a `seqrecord` key-value pair which contains the `Bio.SeqRecord.SeqRecord` of the given BasicAssembly as a value. This can be converted into an annotated genbank file. *Can then mention the two common approaches for validating constructs. Specifically using sequencing primers that anneal to the T0 & T1 for validating inserts and diagnostic digests for validating insert/backbone*.
+Each object in the `build.basic_assemblies` dictionary contains a `seqrecord` key-value pair which contains the `Bio.SeqRecord.SeqRecord` of the given BasicAssembly as a value. This can be converted into an annotated genbank file. Other data formats could also be assigned to seperate attributes for each BasicAssembly object if desired in future iterations e.g. SBOL. *Can then mention the two common approaches for validating constructs. Specifically using sequencing primers that anneal to the T0 & T1 for validating inserts and diagnostic digests for validating insert/backbone*.
 
 ## How the build json object can be decoded
 

@@ -430,3 +430,13 @@ def test_assembly_json(promoter_assemblies_build):
     assert isinstance(json_round_trip(promoter_assemblies_build, BasicBuildEncoder, decode_basic_build), bsb.BasicBuild)
 
 
+def test_basic_build_indetical_ids(five_part_assembly):
+    from basicsynbio.cam import BuildException
+    with pytest.raises(
+        BuildException,
+        match=f"ID '{five_part_assembly.id}' has been assigned to 2 BasicAssembly instance/s."
+    ):
+        bsb.BasicBuild(
+            five_part_assembly,
+            five_part_assembly
+        )

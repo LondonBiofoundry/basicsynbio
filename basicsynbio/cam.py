@@ -3,7 +3,7 @@
 from Bio.SeqUtils import molecular_weight
 from .main import BasicAssembly, ClipReaction
 from dataclasses import dataclass
-from collections import OrderedDict
+from collections import OrderedDict, Counter
 import json
 
 
@@ -52,6 +52,14 @@ class BasicBuild():
             for clip_reaction in assembly.clip_reactions:
                 clips_dict[clip_reaction].append(assembly)
         return tuple(ClipInfo(key, tuple(value)) for key, value in clips_dict.items())
+
+    def _duplicate_assembly_ids(self, assemblies):
+        """If multiple elements of assemblies have same "id" attribute, raises a BuildException"""
+        assemblies_ids = [assembly.id for assembly in assemblies]
+        if len(set(assemblies_ids)) < len(assemblies):
+            top_assembly_id = Counter(assemblies_ids).most_common(1)[0]
+            raise BuildException(
+                f"ID '{top_assembly_id[0]}' has been assigned to {top_assembly_id[1]} BasicAssembly instance/s.")
     
     @property
     def basic_assemblies(self):
@@ -64,4 +72,9 @@ class BasicBuild():
             raise TypeError(
                 "Not all *basic_assemblies are BasicAssembly instances."
             )
+        self._duplicate_assembly_ids(values)
         self._basic_assemblies = values
+
+
+class BuildException(Exception):
+    pass

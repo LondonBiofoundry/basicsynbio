@@ -220,9 +220,9 @@ class BasicAssembly():
         def _check_linker_halves(linker_halves):
             """Check linker_havles are compatible. Note UTR linker-halves must be compatible."""
             if len(linker_halves) > len(set(linker_halves)):
-                linker_half_counts = Counter(linker_halves)
+                top_linker_half = Counter(linker_halves).most_common(1)[0]
                 raise AssemblyException(
-                    f"BasicAssembly initiated with {linker_half_counts.most_common(1)[0][0]} used {linker_half_counts.most_common(1)[0][1]} times.")
+                    f"BasicAssembly initiated with {top_linker_half[0]} used {top_linker_half[1]} times.")
 
         prefix_linkers = [clip_reaction.linker_half_ids()[0]
                           for clip_reaction in clip_reactions]
