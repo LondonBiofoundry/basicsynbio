@@ -37,10 +37,12 @@ class BasicBuild():
         """
         self.basic_assemblies = basic_assemblies
         self.clips_info = self.return_clips_info()
-        self.unique_parts = tuple(
-            element.clip_reaction._part for element in self.clips_info)
-        self.unique_linkers = tuple(
-            element.clip_reaction._prefix for element in self.clips_info)
+        self.unique_parts = self._unique_parts_linkers(
+            *(element.clip_reaction._part for element in self.clips_info)
+        )
+        self.unique_linkers = self._unique_parts_linkers(
+            *(element.clip_reaction._prefix for element in self.clips_info)
+        )
         self.clip_indexes = {element.clip_reaction: ind for ind,
                            element in enumerate(self.clips_info)}
 
@@ -53,14 +55,20 @@ class BasicBuild():
                 clips_dict[clip_reaction].append(assembly)
         return tuple(ClipInfo(key, tuple(value)) for key, value in clips_dict.items())
 
+    def _unique_parts_linkers(self, *parts_linkers):
+        """Returns a dictionary of unique objects based on hash of 'id' and 'seq' attribute."""
+        return {
+            hash((part_linker.id, part_linker.seq)): part_linker for part_linker in parts_linkers
+        }
+
     def _duplicate_assembly_ids(self, assemblies):
-        """If multiple elements of assemblies have same "id" attribute, raises a BuildException"""
+        """If multiple elements of self.basic_assemblies have same "id" attribute, raises a BuildException"""
         assemblies_ids = [assembly.id for assembly in assemblies]
         if len(set(assemblies_ids)) < len(assemblies):
             top_assembly_id = Counter(assemblies_ids).most_common(1)[0]
             raise BuildException(
-                f"ID '{top_assembly_id[0]}' has been assigned to {top_assembly_id[1]} BasicAssembly instance/s.")
-    
+                f"ID '{top_assembly_id[0]}' has been assigned to {top_assembly_id[1]} BasicAssembly instance/s. All assemblies of a build should have a unique 'id' attribute.")
+
     @property
     def basic_assemblies(self):
         return self._basic_assemblies

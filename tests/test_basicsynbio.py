@@ -276,6 +276,7 @@ def test_new_part_resuspension(gfp_orf_basicpart):
     assert 75 == round(mass*1e-9/(vol*1e-6*mw)*1e9)
 
 
+@pytest.mark.slow
 def test_import_ice_parts(bseva_68_seqrec, ice_user_config):
     ice_nums= ["17337"]
     print(f"ice_user_config before import parts: {ice_user_config}")
@@ -376,14 +377,14 @@ def test_build_parts(promoter_assemblies_build):
     parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["27"]]
     print(parts)
     part_ids = [part.id for part in parts]
-    for part in promoter_assemblies_build.unique_parts:
+    for part in promoter_assemblies_build.unique_parts.values():
         assert part.id in part_ids
 
 
 def test_build_linkers(promoter_assemblies_build):
     linkers = ("LMP", "UTR1-RBS2", "LMS")
     linker_ids = [bsb.BIOLEGIO_LINKERS[linker].id for linker in linkers]
-    for linker in promoter_assemblies_build.unique_linkers:
+    for linker in promoter_assemblies_build.unique_linkers.values():
         assert linker.id in linker_ids
 
 
@@ -434,9 +435,17 @@ def test_basic_build_indetical_ids(five_part_assembly):
     from basicsynbio.cam import BuildException
     with pytest.raises(
         BuildException,
-        match=f"ID '{five_part_assembly.id}' has been assigned to 2 BasicAssembly instance/s."
+        match=f"ID '{five_part_assembly.id}' has been assigned to 2 BasicAssembly instance/s. All assemblies of a build should have a unique 'id' attribute."
     ):
         bsb.BasicBuild(
             five_part_assembly,
             five_part_assembly
         )
+
+
+def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
+    true_unique_linkers = []
+    for linker in promoter_assemblies_build.unique_linkers.values():
+        if linker not in true_unique_linkers:
+            true_unique_linkers.append(linker)
+    assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers)
