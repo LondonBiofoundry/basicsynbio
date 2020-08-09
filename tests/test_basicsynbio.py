@@ -395,8 +395,8 @@ def test_build_clips_data(promoter_assemblies_build):
         ClipReaction(bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"]),
     ]
     clip_reactions += [ClipReaction(bsb.BIOLEGIO_LINKERS["LMP"], promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]) for promoter in bsb.BPROMOTER_PARTS.values()]
-    for element in promoter_assemblies_build.clips_data:
-        assert element["clip_reaction"] in clip_reactions
+    for clip_reaction in promoter_assemblies_build.clips_data.keys():
+        assert clip_reaction in clip_reactions
     assert len(promoter_assemblies_build.clips_data) == len(clip_reactions)
 
 
@@ -422,7 +422,7 @@ def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
 
 def test_encode_build(promoter_assemblies_build):
     import json
-    json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder)
+    json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
 
 
 def test_partially_decoded_build(promoter_assemblies_build):

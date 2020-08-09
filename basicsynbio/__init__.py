@@ -1,4 +1,8 @@
-"""basicsynbio - An open-source Python API to facilitate BASIC DNA Assembly workflows"""
+"""basicsynbio - An open-source Python API to facilitate BASIC DNA Assembly workflows
+
+When importing objects from modules, list each alphabetically.
+
+"""
 
 __version__ = '0.1.0'
 __author__ = 'Matthew Haines <hainesm6@gmail.com>'
@@ -26,5 +30,6 @@ from .parts_linkers import (
 )
 from .cam import (
     BasicBuild,
+    BuildEncoder,
     new_part_resuspension
 )

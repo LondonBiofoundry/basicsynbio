@@ -156,6 +156,8 @@ class BasicAssembly():
 
         Args:
             id -- Identifier for BasicAssemby object. Should be unique amongst BasicAssembly instances in a BasicBuild."""
+        if isinstance(id, str) == False:
+            raise TypeError(f"id parsed to BasicAssembly constructor was not of type str.")
         self.id = id
         self.parts_linkers = parts_linkers
         self.clip_reactions = self.return_clip_reactions()
@@ -247,6 +249,8 @@ class BasicAssembly():
                 if type(values[ind - 1]) == type(value):
                     raise AssemblyException(
                         f"Alternating BasicPart, BasicLinker instances required: {value.id} is preceeded by {type(values[ind - 1])} and is of type {type(value)}.")
+        if len(values) % 2 != 0:
+            raise AssemblyException(f"BasicAssembly instance with id:{self.id}, initiated with an odd number of BasicPart/BasicLinker objects. An even number is a requirement.")
         self._parts_linkers = values
 
 

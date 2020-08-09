@@ -16,7 +16,7 @@ build = {
         "hash((part_1.id, part_1.seq))": {
             "id": "part_1.id",
             "sequence": "part_1.seq",
-            "clips_indexes": []
+            "clips_hashes": []
         }, ...
     },
     "unique_linkers": {
@@ -26,11 +26,11 @@ build = {
             "sequence": "linker_1.seq",
             "prefix_id": "linker_1 prefix",
             "suffix_id": "linker_1 suffix",
-            "clips_indexes": []
+            "clips_hashes": []
         }, ...
     },
-    "clips_data": [
-        {
+    "clips_data": {
+        "hash(clip_reaction)": {
             "prefix_linker_key": "hash of corresponding linker from unique linkers",
             "part_key": "hash of correspond part from unique parts",
             "suffix_linker_key": "hash of corresponding linker from unique linkers",
@@ -38,9 +38,17 @@ build = {
                 "index corresponding to 1st basic assembly using this clip reaction", ...
             ]
         }, ...
+    },
+    "assembly_data": [
+        {
+            "id": "basic_assembly1.id",
+            "clips_hashes": []
+        }
     ]
 }
 ```
+
+*Decided not to put clips_data in an array given multiple of the same clip reaction can be required. However, only one of each basic assembly is constructed and therefore order could be important during construction and validation.*
 
 ## How build json object facilitates instructions for building assemblies?
 
@@ -70,7 +78,7 @@ my_build = bsb.BasicBuild(*my_assemblies)
 bsb.export_sequences_to_file(my_build.basic_assemblies, handle=file_handle)
 ```
 
-The id attribute of a `build.basic_assemblies` element will match the [VERSION field](https://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html#VersionB) of the associated genbank entry in the resulting file. A  Basic Assembly construct has been successfully assembled if it's sequence matches that prediceted by the genbank file. Techniques such as Sanger Sequencing and diagnostic digests can be used to facilitate this (Ref).
+The id attribute of a `build.basic_assemblies` element will match the [VERSION field](https://www.ncbi.nlm.nih.gov/Sitemap/samplerecord.html#VersionB) of the associated genbank entry in the resulting file. *Furthermore, the order of basic assemblies in both should match making it easy to associate assemblies*. A  Basic Assembly construct has been successfully assembled if it's sequence matches that prediceted by the genbank file. Techniques such as Sanger Sequencing and diagnostic digests can be used to facilitate this (Ref).
 
 *Can then specifically mention these approaches. Specifically using sequencing primers that anneal to the T0 & T1 for validating inserts and BsaI diagnostic digests for validating insert/backbone*.
 

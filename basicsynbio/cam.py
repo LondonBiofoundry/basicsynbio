@@ -26,51 +26,46 @@ class BasicBuild():
         """Initiate BasicBuild.
 
         Args:
-            *basic_assembiles -- BasicAssembly objects.
+            *basic_assemblies -- BasicAssembly objects.
 
         """
         self.basic_assemblies = basic_assemblies
-        self.clips_data = self.return_clips_data()
+        self.clips_data = self._return_clips_data()
         self.unique_parts = self._unique_parts_linkers(
             "part",
-            *(element["clip_reaction"]._part for element in self.clips_data)
+            *(clip_reaction._part for clip_reaction in self.clips_data)
         )
         self.unique_linkers = self._unique_parts_linkers(
             "linker",
-            *(element["clip_reaction"]._prefix for element in self.clips_data)
+            *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
-        for ind, element in enumerate(self.clips_data):
-            clip_reaction = element["clip_reaction"]
-            part_hash = self._part_linker_hash(clip_reaction._part)
-            prefix_hash = self._part_linker_hash(clip_reaction._prefix)
-            self.unique_parts[part_hash]["clips_indexes"].append(ind)
-            self.unique_linkers[prefix_hash]["clips_indexes"].append(ind)
+        for clip_reaction in self.clips_data.keys():
+            part_hash = _seqrecord_hash(clip_reaction._part)
+            prefix_hash = _seqrecord_hash(clip_reaction._prefix)
+            self.unique_parts[part_hash]["clip_reactions"].append(clip_reaction)
+            self.unique_linkers[prefix_hash]["clip_reactions"].append(clip_reaction)
 
-    def return_clips_data(self):
-        """Returns {ClipReaction: [BasicAssemblies]} where BasicAssembly objects in list require ClipReaction."""
+    def _return_clips_data(self):
+        """Returns a dictionary of ClipReactions with values describing basic_assemblies it uses."""
         clips_dict = OrderedDict(
             **{clip_reaction: [] for assembly in self.basic_assemblies for clip_reaction in assembly.clip_reactions})
         for assembly in self.basic_assemblies:
             for clip_reaction in assembly.clip_reactions:
                 clips_dict[clip_reaction].append(assembly)
-        return tuple({"clip_reaction": key, "basic_assemblies": value} for key, value in clips_dict.items())
+        return clips_dict
 
     def _unique_parts_linkers(self, object_key: str, *parts_linkers):
-        """Returns a dictionary of unique objects based on hash of 'id' and 'seq' attribute. Includes an empty list associated to populate with clips_indexes.
+        """Returns a dictionary of unique objects based on hash of 'id' and 'seq' attribute. Includes an empty list associated to populate with clip_reactions used by each unique part/linker.
         
         Args:
             object_key -- "part" or "linker".
         """
         return {
-            self._part_linker_hash(part_linker): {
+            _seqrecord_hash(part_linker): {
                 object_key: part_linker,
-                "clips_indexes": []
+                "clip_reactions": []
             } for part_linker in parts_linkers
         }
-
-    def _part_linker_hash(self, part_linker):
-        """Returns a hash of the part_linker based on id and sequence."""
-        return hash((part_linker.id, part_linker.seq))
 
     def _duplicate_assembly_ids(self, assemblies):
         """If multiple elements of self.basic_assemblies have same "id" attribute, raises a BuildException"""
@@ -95,5 +90,61 @@ class BasicBuild():
         self._basic_assemblies = values
 
 
+class BuildEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, BasicBuild):
+            return {
+                "unique_parts": self.unique_parts_json(obj),
+                "unique_linkers": self.unique_linkers_json(obj),
+                "clips_data": self.clips_data_json(obj),
+                "assembly_data": self.assembly_data_json(obj)
+            }
+        return super().default(obj)
+    
+    def unique_parts_json(self, obj):
+        return {
+            str(key): {
+                "id": value["part"].id,
+                "sequence": str(value["part"].seq),
+                "clip_reactions": [str(hash(clip_reaction)) for clip_reaction in value["clip_reactions"]]
+            }
+        for key, value in obj.unique_parts.items()}
+    
+    def unique_linkers_json(self, obj):
+        return {
+            str(key): {
+                "id": value["linker"].id,
+                "linker_class": str(type(value["linker"])),
+                "sequence": str(value["linker"].seq),
+                "prefix_id": value["linker"].prefix_id,
+                "suffix_id": value["linker"].suffix_id,
+                "clip_reactions": [str(hash(clip_reaction)) for clip_reaction in value["clip_reactions"]]
+            }
+        for key, value in obj.unique_linkers.items()}
+
+    def clips_data_json(self, obj):
+        return {
+            str(hash(key)): {
+                "prefix": str(_seqrecord_hash(key._prefix)),
+                "part": str(_seqrecord_hash(key._part)),
+                "suffix": str(_seqrecord_hash(key._suffix)),
+                "assembly_data_indexes": [obj.basic_assemblies.index(assembly) for assembly in value]
+            }
+        for key, value in obj.clips_data.items()}
+        
+    def assembly_data_json(self, obj):
+        return [
+            {
+                "id": assembly.id,
+                "clip_reactions": [str(hash(clip_reaction)) for clip_reaction in assembly.clip_reactions]
+            }
+        for assembly in obj.basic_assemblies]
+
+
 class BuildException(Exception):
     pass
+
+
+def _seqrecord_hash(seqrecord_obj):
+        """Returns a hash of a Bio.SeqRecord.SeqRecord-like object."""
+        return hash((seqrecord_obj.id, seqrecord_obj.seq))
