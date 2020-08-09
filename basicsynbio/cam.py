@@ -19,12 +19,6 @@ def new_part_resuspension(part, mass: float, double_stranded=True):
     return (mass*10**-9)/molecular_weight(part.seq, double_stranded=double_stranded)*1/(75e-9)*10**6
 
 
-@dataclass
-class ClipInfo:
-    clip_reaction: ClipReaction
-    basic_assemblies: tuple
-
-
 class BasicBuild():
     """Class provides methods and attributes for building BasicAssembly objects."""
 
@@ -36,30 +30,47 @@ class BasicBuild():
 
         """
         self.basic_assemblies = basic_assemblies
-        self.clips_info = self.return_clips_info()
+        self.clips_data = self.return_clips_data()
         self.unique_parts = self._unique_parts_linkers(
-            *(element.clip_reaction._part for element in self.clips_info)
+            "part",
+            *(element["clip_reaction"]._part for element in self.clips_data)
         )
         self.unique_linkers = self._unique_parts_linkers(
-            *(element.clip_reaction._prefix for element in self.clips_info)
+            "linker",
+            *(element["clip_reaction"]._prefix for element in self.clips_data)
         )
-        self.clip_indexes = {element.clip_reaction: ind for ind,
-                           element in enumerate(self.clips_info)}
+        for ind, element in enumerate(self.clips_data):
+            clip_reaction = element["clip_reaction"]
+            part_hash = self._part_linker_hash(clip_reaction._part)
+            prefix_hash = self._part_linker_hash(clip_reaction._prefix)
+            self.unique_parts[part_hash]["clips_indexes"].append(ind)
+            self.unique_linkers[prefix_hash]["clips_indexes"].append(ind)
 
-    def return_clips_info(self):
+    def return_clips_data(self):
         """Returns {ClipReaction: [BasicAssemblies]} where BasicAssembly objects in list require ClipReaction."""
         clips_dict = OrderedDict(
             **{clip_reaction: [] for assembly in self.basic_assemblies for clip_reaction in assembly.clip_reactions})
         for assembly in self.basic_assemblies:
             for clip_reaction in assembly.clip_reactions:
                 clips_dict[clip_reaction].append(assembly)
-        return tuple(ClipInfo(key, tuple(value)) for key, value in clips_dict.items())
+        return tuple({"clip_reaction": key, "basic_assemblies": value} for key, value in clips_dict.items())
 
-    def _unique_parts_linkers(self, *parts_linkers):
-        """Returns a dictionary of unique objects based on hash of 'id' and 'seq' attribute."""
+    def _unique_parts_linkers(self, object_key: str, *parts_linkers):
+        """Returns a dictionary of unique objects based on hash of 'id' and 'seq' attribute. Includes an empty list associated to populate with clips_indexes.
+        
+        Args:
+            object_key -- "part" or "linker".
+        """
         return {
-            hash((part_linker.id, part_linker.seq)): part_linker for part_linker in parts_linkers
+            self._part_linker_hash(part_linker): {
+                object_key: part_linker,
+                "clips_indexes": []
+            } for part_linker in parts_linkers
         }
+
+    def _part_linker_hash(self, part_linker):
+        """Returns a hash of the part_linker based on id and sequence."""
+        return hash((part_linker.id, part_linker.seq))
 
     def _duplicate_assembly_ids(self, assemblies):
         """If multiple elements of self.basic_assemblies have same "id" attribute, raises a BuildException"""

@@ -38,13 +38,7 @@ build = {
                 "index corresponding to 1st basic assembly using this clip reaction", ...
             ]
         }, ...
-    ],
-    "basic_assemblies": [
-        {
-            "id": "basic_assembly_1.id",
-            "clips_indexes": []
-        }, ...
-    ],
+    ]
 }
 ```
 

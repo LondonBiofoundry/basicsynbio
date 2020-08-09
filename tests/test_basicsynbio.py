@@ -377,31 +377,27 @@ def test_build_parts(promoter_assemblies_build):
     parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["27"]]
     print(parts)
     part_ids = [part.id for part in parts]
-    for part in promoter_assemblies_build.unique_parts.values():
-        assert part.id in part_ids
+    for element in promoter_assemblies_build.unique_parts.values():
+        assert element["part"].id in part_ids
 
 
 def test_build_linkers(promoter_assemblies_build):
     linkers = ("LMP", "UTR1-RBS2", "LMS")
     linker_ids = [bsb.BIOLEGIO_LINKERS[linker].id for linker in linkers]
-    for linker in promoter_assemblies_build.unique_linkers.values():
-        assert linker.id in linker_ids
+    for element in promoter_assemblies_build.unique_linkers.values():
+        assert element["linker"].id in linker_ids
 
 
-def test_build_clip_info(promoter_assemblies_build):
+def test_build_clips_data(promoter_assemblies_build):
     from basicsynbio.main import ClipReaction
     clip_reactions = [
         ClipReaction(bsb.BIOLEGIO_LINKERS["LMS"], bsb.BSEVA_PARTS["27"], bsb.BIOLEGIO_LINKERS["LMP"]),
         ClipReaction(bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"]),
     ]
     clip_reactions += [ClipReaction(bsb.BIOLEGIO_LINKERS["LMP"], promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]) for promoter in bsb.BPROMOTER_PARTS.values()]
-    for element in promoter_assemblies_build.clips_info:
-        assert element.clip_reaction in clip_reactions
-    assert len(promoter_assemblies_build.clips_info) == len(clip_reactions)
-
-
-def test_build_clip_inds(promoter_assemblies_build):
-    print(promoter_assemblies_build.clip_indexes)
+    for element in promoter_assemblies_build.clips_data:
+        assert element["clip_reaction"] in clip_reactions
+    assert len(promoter_assemblies_build.clips_data) == len(clip_reactions)
 
 
 def test_basic_build_indetical_ids(five_part_assembly):
