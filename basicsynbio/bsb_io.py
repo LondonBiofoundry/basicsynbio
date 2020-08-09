@@ -9,6 +9,7 @@ from Bio.SeqRecord import SeqRecord
 import requests
 import io
 import icebreaker
+import json
 
 
 @add2docs(
@@ -90,6 +91,5 @@ def import_ice_parts(
         )
         memory_file = io.StringIO(bytes_file.decode("utf-8"))
         yield import_part(memory_file, "genbank")
-
 
 

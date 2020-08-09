@@ -404,33 +404,6 @@ def test_build_clip_inds(promoter_assemblies_build):
     print(promoter_assemblies_build.clip_indexes)
 
 
-def test_seqrec_json(gfp_basicpart):
-    from basicsynbio.json import SeqRecEncoder, decode_seqrec
-    gfp_seqrec = json_round_trip(gfp_basicpart, SeqRecEncoder, decode_seqrec)
-    assert isinstance(bsb.seqrec2part(gfp_seqrec), bsb.BasicPart)
-
-
-def test_linker_json():
-    from basicsynbio.json import BasicLinkerEncoder, decode_basic_linker
-    assert isinstance(json_round_trip(bsb.BIOLEGIO_LINKERS["LMP"], BasicLinkerEncoder, decode_basic_linker), bsb.BasicLinker)
-
-
-def test_clip_encoding(five_part_assembly):
-    from basicsynbio.json import ClipReactionEncoder
-    import json
-    print(json.dumps(five_part_assembly.clip_reactions[0], cls=ClipReactionEncoder))
-
-
-def test_assembly_json(five_part_assembly):
-    from basicsynbio.json import BasicAssemblyEncoder, decode_basic_assembly
-    assert isinstance(json_round_trip(five_part_assembly, BasicAssemblyEncoder, decode_basic_assembly), bsb.BasicAssembly)
-
-
-def test_assembly_json(promoter_assemblies_build):
-    from basicsynbio.json import BasicBuildEncoder, decode_basic_build
-    assert isinstance(json_round_trip(promoter_assemblies_build, BasicBuildEncoder, decode_basic_build), bsb.BasicBuild)
-
-
 def test_basic_build_indetical_ids(five_part_assembly):
     from basicsynbio.cam import BuildException
     with pytest.raises(
@@ -449,3 +422,7 @@ def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
         if linker not in true_unique_linkers:
             true_unique_linkers.append(linker)
     assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers)
+
+
+def test_partially_decoded_build(promoter_assemblies_build):
+    assert isinstance(json_round_trip(promoter_assemblies_build, bsb.BuildEncoder, bsb.build_object_hook), bsb.BasicBuild)
