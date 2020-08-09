@@ -424,5 +424,19 @@ def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
     assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers)
 
 
+def test_encode_build(promoter_assemblies_build):
+    import json
+    json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder)
+
+
 def test_partially_decoded_build(promoter_assemblies_build):
-    assert isinstance(json_round_trip(promoter_assemblies_build, bsb.BuildEncoder, bsb.build_object_hook), bsb.BasicBuild)
+    assert True == isinstance(json_round_trip(promoter_assemblies_build, bsb.BuildEncoder, bsb.build_object_hook), bsb.BasicBuild)
+
+
+def test_decoded_build(promoter_assemblies_build, gfp_seqrec):
+    import json
+    encoded_build = json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder)
+    decoded_build = bsb.decode_build(encoded_build, *promoter_assemblies_build.unique_parts.values())
+    gfp_seqrec_hash = hash((gfp_seqrec.id, gfp_seqrec.seq))
+    assert True == compare_basicpart_seqrec(decoded_build.unique_parts[gfp_seqrec_hash].part, gfp_seqrec)
+    
