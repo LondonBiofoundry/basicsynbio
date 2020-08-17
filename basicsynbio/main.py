@@ -11,6 +11,7 @@ from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
 import datetime
+import hashlib
 
 DATE = datetime.datetime.now()
 DEFAULT_ANNOTATIONS = {
@@ -277,6 +278,10 @@ class ClipReaction():
     def clip_items(self):
         """Return (prefix, part, suffix)."""
         return self._prefix, self._part, self._suffix
+
+    def _hexdigest(self, length=16, byteorder="big", signed=True):
+        """Returns the hexadecimal digest of the Clip Reaction hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
+        return hashlib.md5(self.__hash__().to_bytes(length, byteorder=byteorder, signed=signed)).hexdigest()
 
     def __hash__(self):
         return hash((self._prefix.id, self._part.id, self._suffix.id))

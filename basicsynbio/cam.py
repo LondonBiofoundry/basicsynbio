@@ -5,6 +5,7 @@ from .main import BasicAssembly, ClipReaction
 from dataclasses import dataclass
 from collections import OrderedDict, Counter
 import json
+import hashlib
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -40,8 +41,8 @@ class BasicBuild():
             *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
         for clip_reaction in self.clips_data.keys():
-            part_hash = _seqrecord_hash(clip_reaction._part)
-            prefix_hash = _seqrecord_hash(clip_reaction._prefix)
+            part_hash = _seqrecord_hexdigest(clip_reaction._part)
+            prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
             self.unique_parts[part_hash]["clip_reactions"].append(clip_reaction)
             self.unique_linkers[prefix_hash]["clip_reactions"].append(clip_reaction)
 
@@ -61,7 +62,7 @@ class BasicBuild():
             object_key -- "part" or "linker".
         """
         return {
-            _seqrecord_hash(part_linker): {
+            _seqrecord_hexdigest(part_linker): {
                 object_key: part_linker,
                 "clip_reactions": []
             } for part_linker in parts_linkers
@@ -103,31 +104,43 @@ class BuildEncoder(json.JSONEncoder):
     
     def unique_parts_json(self, obj):
         return {
-            str(key): {
-                "id": value["part"].id,
+            key: {
                 "sequence": str(value["part"].seq),
-                "clip_reactions": [str(hash(clip_reaction)) for clip_reaction in value["clip_reactions"]]
+                "id": value["part"].id,
+                "name": value["part"].name,
+                "description": value["part"].description,
+                "clip_reactions": [clip_reaction._hexdigest() for clip_reaction in value["clip_reactions"]]
             }
         for key, value in obj.unique_parts.items()}
     
     def unique_linkers_json(self, obj):
         return {
-            str(key): {
+            key: {
                 "id": value["linker"].id,
                 "linker_class": str(type(value["linker"])),
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
-                "clip_reactions": [str(hash(clip_reaction)) for clip_reaction in value["clip_reactions"]]
+                "clip_reactions": [clip_reaction._hexdigest() for clip_reaction in value["clip_reactions"]]
             }
         for key, value in obj.unique_linkers.items()}
 
     def clips_data_json(self, obj):
         return {
-            str(hash(key)): {
-                "prefix": str(_seqrecord_hash(key._prefix)),
-                "part": str(_seqrecord_hash(key._part)),
-                "suffix": str(_seqrecord_hash(key._suffix)),
+            key._hexdigest(): {
+                "prefix": {
+                    "key": _seqrecord_hexdigest(key._prefix),
+                    "id": key._prefix.prefix_id
+                },
+                "part": {
+                    "key": _seqrecord_hexdigest(key._part),
+                    "id": key._part.id,
+                    "name": key._part.name
+                },
+                "suffix": {
+                    "key": _seqrecord_hexdigest(key._suffix),
+                    "id": key._suffix.suffix_id
+                },
                 "assembly_data_indexes": [obj.basic_assemblies.index(assembly) for assembly in value]
             }
         for key, value in obj.clips_data.items()}
@@ -136,7 +149,7 @@ class BuildEncoder(json.JSONEncoder):
         return [
             {
                 "id": assembly.id,
-                "clip_reactions": [str(hash(clip_reaction)) for clip_reaction in assembly.clip_reactions]
+                "clip_reactions": [clip_reaction._hexdigest() for clip_reaction in assembly.clip_reactions]
             }
         for assembly in obj.basic_assemblies]
 
@@ -145,6 +158,14 @@ class BuildException(Exception):
     pass
 
 
-def _seqrecord_hash(seqrecord_obj):
-        """Returns a hash of a Bio.SeqRecord.SeqRecord-like object."""
-        return hash((seqrecord_obj.id, seqrecord_obj.seq))
+def _seqrecord_hexdigest(seqrecord_obj):
+        """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using relevant attributes."""
+        seqrec_hash = hashlib.md5(str(seqrecord_obj.seq).encode("UTF-8"))
+        bytes_objs = [getattr(seqrecord_obj, attribute).encode("UTF-8") for attribute in [
+            "id",
+            "name",
+            "description"
+        ]]
+        for element in bytes_objs:
+            seqrec_hash.update(element)
+        return seqrec_hash.hexdigest()
