@@ -428,8 +428,7 @@ def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
 
 def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_build):
     import json
-    decoded_build = json.loads(promoter_assemblies_json, cls=bsb.
-    )
+    decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     assert True == isinstance(decoded_build, bsb.BasicBuild)
     assert len(promoter_assemblies_build.basic_assemblies) == len(decoded_build.basic_assemblies)
 
