@@ -30,6 +30,7 @@ from .parts_linkers import (
 )
 from .cam import (
     BasicBuild,
+    BuildDecoder,
     BuildEncoder,
     new_part_resuspension
 )

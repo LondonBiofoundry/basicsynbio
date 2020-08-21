@@ -280,7 +280,7 @@ class ClipReaction():
         return self._prefix, self._part, self._suffix
 
     def _hexdigest(self, length=16, byteorder="big", signed=True):
-        """Returns the hexadecimal digest of the Clip Reaction hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
+        """Returns the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
         return hashlib.md5(self.__hash__().to_bytes(length, byteorder=byteorder, signed=signed)).hexdigest()
 
     def __hash__(self):
@@ -297,6 +297,10 @@ class ClipReaction():
 
 
 class PartException(Exception):
+    pass
+
+
+class LinkerException(Exception):
     pass
 
 

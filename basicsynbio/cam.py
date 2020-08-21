@@ -1,11 +1,20 @@
 """Module contains a collection of objects for computer assisted manufacturing within the BASIC DNA assembly framework."""
 
 from Bio.SeqUtils import molecular_weight
-from .main import BasicAssembly, ClipReaction
+from Bio.Seq import Seq
+from .main import (
+    BasicAssembly,
+    BasicLinker,
+    BasicPart,
+    BasicUTRRBSLinker,
+    ClipReaction,
+    LinkerException    
+)
 from dataclasses import dataclass
 from collections import OrderedDict, Counter
 import json
 import hashlib
+import re
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -98,11 +107,13 @@ class BuildEncoder(json.JSONEncoder):
                 "unique_parts": self.unique_parts_json(obj),
                 "unique_linkers": self.unique_linkers_json(obj),
                 "clips_data": self.clips_data_json(obj),
-                "assembly_data": self.assembly_data_json(obj)
+                "assembly_data": self.assembly_data_json(obj),
+                "__BasicBuild__": True
             }
         return super().default(obj)
     
-    def unique_parts_json(self, obj):
+    @staticmethod
+    def unique_parts_json(obj):
         return {
             key: {
                 "sequence": str(value["part"].seq),
@@ -113,7 +124,8 @@ class BuildEncoder(json.JSONEncoder):
             }
         for key, value in obj.unique_parts.items()}
     
-    def unique_linkers_json(self, obj):
+    @staticmethod
+    def unique_linkers_json(obj):
         return {
             key: {
                 "id": value["linker"].id,
@@ -124,8 +136,9 @@ class BuildEncoder(json.JSONEncoder):
                 "clip_reactions": [clip_reaction._hexdigest() for clip_reaction in value["clip_reactions"]]
             }
         for key, value in obj.unique_linkers.items()}
-
-    def clips_data_json(self, obj):
+    
+    @staticmethod
+    def clips_data_json(obj):
         return {
             key._hexdigest(): {
                 "prefix": {
@@ -144,8 +157,9 @@ class BuildEncoder(json.JSONEncoder):
                 "assembly_data_indexes": [obj.basic_assemblies.index(assembly) for assembly in value]
             }
         for key, value in obj.clips_data.items()}
-        
-    def assembly_data_json(self, obj):
+    
+    @staticmethod
+    def assembly_data_json(obj):
         return [
             {
                 "id": assembly.id,
@@ -156,6 +170,61 @@ class BuildEncoder(json.JSONEncoder):
 
 class BuildException(Exception):
     pass
+
+
+class BuildDecoder(json.JSONDecoder):
+    def __init__(self):
+        json.JSONDecoder.__init__(self, object_hook=self.decode_build)
+
+    def decode_build(self, dictionary):
+        if "__BasicBuild__" in dictionary:
+            self.unique_parts = self.return_unqiue_parts(dictionary)
+            self.unique_linkers = self.return_unique_linkers(dictionary)
+            basic_assemblies = self.return_basic_assemblies(dictionary)
+            return BasicBuild(*basic_assemblies)
+        return dictionary
+
+    def return_basic_assemblies(self, dictionary):
+        for assembly in dictionary["assembly_data"]:
+            parts_linkers = []
+            for clip_reaction in assembly["clip_reactions"]:
+                parts_linkers += [
+                    self.unique_linkers[dictionary["clips_data"][clip_reaction]["prefix"]["key"]],
+                    self.unique_parts[dictionary["clips_data"][clip_reaction]["part"]["key"]],
+                ]
+            yield BasicAssembly(assembly["id"], *parts_linkers)
+
+    @staticmethod
+    def return_unqiue_parts(dictionary):
+        return {
+            key: BasicPart(
+                seq=Seq(value["sequence"]),
+                id=value["id"],
+                name=value["name"],
+                description=value["description"]
+            )
+        for key, value in dictionary["unique_parts"].items()}
+
+    @staticmethod
+    def return_unique_linkers(dictionary):
+        unique_linkers = {}
+        for key, value in dictionary["unique_linkers"].items():
+            if re.match(".*BasicLinker", value["linker_class"]):
+                unique_linker = BasicLinker(
+                    seq=Seq(value["sequence"]),
+                    id=value["id"]
+                )
+            elif re.match(".*BasicUTRRBSLinker", value["linker_class"]):
+                unique_linker = BasicUTRRBSLinker(
+                    seq=Seq(value["sequence"]),
+                    id=value["id"]
+                )
+            else:
+                raise LinkerException(f"unique linker '{key}' does not have a recognised 'linker_class' attribute.")
+            unique_linker.prefix_id = value["prefix_id"]
+            unique_linker.suffix_id = value["suffix_id"]
+            unique_linkers[key] = unique_linker
+        return unique_linkers
 
 
 def _seqrecord_hexdigest(seqrecord_obj):

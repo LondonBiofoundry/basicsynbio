@@ -142,6 +142,12 @@ def promoter_assemblies_build():
         ) for promoter in bsb.BPROMOTER_PARTS.values()))
 
 
+@pytest.fixture
+def promoter_assemblies_json(promoter_assemblies_build):
+    import json
+    return json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
+
+
 def compare_basicpart_seqrec(basicpart, seqrec):
     """
     returns true if basicpart has equivalent seqrec attributes.
@@ -169,7 +175,7 @@ def json_round_trip(class_instance, encoder, decoder):
     """
     import json
     serialised_object = json.dumps(class_instance, cls=encoder)
-    return json.loads(serialised_object, object_hook=decoder)
+    return json.loads(serialised_object, cls=decoder)
 
 
 def test_basic_part(gfp_basicpart, gfp_seqrec):
@@ -420,13 +426,12 @@ def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
     assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers)
 
 
-def test_encode_build(promoter_assemblies_build):
+def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_build):
     import json
-    json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
-
-
-def test_partially_decoded_build(promoter_assemblies_build):
-    assert True == isinstance(json_round_trip(promoter_assemblies_build, bsb.BuildEncoder, bsb.build_object_hook), bsb.BasicBuild)
+    decoded_build = json.loads(promoter_assemblies_json, cls=bsb.
+    )
+    assert True == isinstance(decoded_build, bsb.BasicBuild)
+    assert len(promoter_assemblies_build.basic_assemblies) == len(decoded_build.basic_assemblies)
 
 
 def test_decoded_build(promoter_assemblies_build, gfp_seqrec):
