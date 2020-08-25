@@ -148,7 +148,7 @@ def promoter_assemblies_json(promoter_assemblies_build):
     return json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
 
 
-def compare_basicpart_seqrec(basicpart, seqrec):
+def compare_seqrec_instances(basicpart, seqrec):
     """
     returns true if basicpart has equivalent seqrec attributes.
     Ignores seqrec.features as contains SeqFeature objects.
@@ -179,7 +179,7 @@ def json_round_trip(class_instance, encoder, decoder):
 
 
 def test_basic_part(gfp_basicpart, gfp_seqrec):
-    assert compare_basicpart_seqrec(gfp_basicpart, gfp_seqrec) == True
+    assert compare_seqrec_instances(gfp_basicpart, gfp_seqrec) == True
 
 
 def test_basic_slice_ip(gfp_basicpart, gfp_orf_seq):
@@ -287,7 +287,7 @@ def test_import_ice_parts(bseva_68_seqrec, ice_user_config):
     ice_nums= ["17337"]
     print(f"ice_user_config before import parts: {ice_user_config}")
     ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
-    assert compare_basicpart_seqrec(next(ice_parts), bseva_68_seqrec) == True
+    assert compare_seqrec_instances(next(ice_parts), bseva_68_seqrec) == True
 
 
 @pytest.mark.slow
@@ -300,7 +300,7 @@ def test_import_all_ice_parts(ice_user_config):
 def test_bseva_dict(bseva_68_seqrec):
     print(bsb.BSEVA_PARTS.keys())
     bseva_68_part = bsb.BSEVA_PARTS["68"]
-    assert compare_basicpart_seqrec(bseva_68_part, bseva_68_seqrec) == True
+    assert compare_seqrec_instances(bseva_68_part, bseva_68_seqrec) == True
 
 
 def test_bpromoter_dict():
@@ -308,7 +308,7 @@ def test_bpromoter_dict():
     bpromoters_handle = "./basicsynbio/parts_linkers/BASIC_promoter_collection.gb"
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
-        assert compare_basicpart_seqrec(bsb.BPROMOTER_PARTS[seqrec.id], seqrec) == True
+        assert compare_seqrec_instances(bsb.BPROMOTER_PARTS[seqrec.id], seqrec) == True
 
 
 def test_bcds_dict():
@@ -316,7 +316,7 @@ def test_bcds_dict():
     bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
-        assert compare_basicpart_seqrec(bsb.BCDS_PARTS[seqrec.id], seqrec) == True
+        assert compare_seqrec_instances(bsb.BCDS_PARTS[seqrec.id], seqrec) == True
 
     
 def test_all_feature_values(gfp_orf_basicpart):
@@ -433,10 +433,12 @@ def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_b
     assert len(promoter_assemblies_build.basic_assemblies) == len(decoded_build.basic_assemblies)
 
 
-def test_decoded_build(promoter_assemblies_build, gfp_seqrec):
+def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     import json
-    encoded_build = json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder)
-    decoded_build = bsb.decode_build(encoded_build, *promoter_assemblies_build.unique_parts.values())
-    gfp_seqrec_hash = hash((gfp_seqrec.id, gfp_seqrec.seq))
-    assert True == compare_basicpart_seqrec(decoded_build.unique_parts[gfp_seqrec_hash].part, gfp_seqrec)
+    from basicsynbio.cam import _seqrecord_hexdigest
+    decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
+    original_parts = (part_dict["part"] for part_dict in promoter_assemblies_build.unique_parts.values())
+    decoded_build.update_parts(*original_parts)
+    sfgfp_hash = _seqrecord_hexdigest(bsb.BCDS_PARTS["sfGFP"])
+    assert compare_seqrec_instances(decoded_build.unique_parts[sfgfp_hash]["part"], bsb.BCDS_PARTS["sfGFP"])
     

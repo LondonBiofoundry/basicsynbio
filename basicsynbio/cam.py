@@ -54,7 +54,20 @@ class BasicBuild():
             prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
             self.unique_parts[part_hash]["clip_reactions"].append(clip_reaction)
             self.unique_linkers[prefix_hash]["clip_reactions"].append(clip_reaction)
-
+    
+    def update_parts(self, *parts):
+        """Updates BasicBuild instance with *parts, replacing existing all BasicParts used in assemblies with the matching equivalent in *parts."""
+        if len(parts) != len(self.unique_parts):
+            raise ValueError(f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts)} elements. The two must match.")
+        parts_dict = self._unique_parts_linkers("part", *parts)
+        basic_assemblies = []
+        for assembly in self.basic_assemblies:
+            parts_linkers = [
+                part_linker if isinstance(part_linker, BasicLinker) else parts_dict[_seqrecord_hexdigest(part_linker)]["part"] for part_linker in assembly.parts_linkers
+            ]
+            basic_assemblies.append(BasicAssembly(assembly.id, *parts_linkers))
+        self.__init__(*basic_assemblies)
+    
     def _return_clips_data(self):
         """Returns a dictionary of ClipReactions with values describing basic_assemblies it uses."""
         clips_dict = OrderedDict(
@@ -65,10 +78,11 @@ class BasicBuild():
         return clips_dict
 
     def _unique_parts_linkers(self, object_key: str, *parts_linkers):
-        """Returns a dictionary of unique objects based on hash of 'id' and 'seq' attribute. Includes an empty list associated to populate with clip_reactions used by each unique part/linker.
+        """Returns a dictionary of unique objects in *parts_linkers. Includes an empty list for each item to populate with clip_reactions used by each unique part/linker.
         
         Args:
             object_key -- "part" or "linker".
+        
         """
         return {
             _seqrecord_hexdigest(part_linker): {
@@ -168,10 +182,6 @@ class BuildEncoder(json.JSONEncoder):
         for assembly in obj.basic_assemblies]
 
 
-class BuildException(Exception):
-    pass
-
-
 class BuildDecoder(json.JSONDecoder):
     def __init__(self):
         json.JSONDecoder.__init__(self, object_hook=self.decode_build)
@@ -225,6 +235,10 @@ class BuildDecoder(json.JSONDecoder):
             unique_linker.suffix_id = value["suffix_id"]
             unique_linkers[key] = unique_linker
         return unique_linkers
+
+
+class BuildException(Exception):
+    pass
 
 
 def _seqrecord_hexdigest(seqrecord_obj):
