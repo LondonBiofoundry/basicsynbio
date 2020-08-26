@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="basicsynbio",
-    version="0.1.1.dev3",
+    version="0.1.0",
     url="https://github.com/hainesm6/basicsynbio",
     license='MIT',
     author="Matthew Haines",
@@ -23,6 +23,7 @@ setuptools.setup(
     install_requires=[
         "biopython>=1.76",
         "icebreaker",
-        "python-Levenshtein"
+        "python-Levenshtein",
+        "sbol2"
     ],
 )

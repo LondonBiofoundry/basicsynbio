@@ -148,22 +148,18 @@ def promoter_assemblies_json(promoter_assemblies_build):
     return json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
 
 
-def compare_seqrec_instances(basicpart, seqrec):
+def compare_seqrec_instances(seqrec1, seqrec2):
     """
-    returns true if basicpart has equivalent seqrec attributes.
+    returns true if seqrec1 has equivalent seqrec2 attributes.
     Ignores seqrec.features as contains SeqFeature objects.
 
     """
-    try:
-        for key, value in seqrec.__dict__.items():
-            if key != "features":
-                if value != getattr(basicpart, key):
-                    raise ComparisonException
-    except ComparisonException:
-        print(f"{basicpart.id} != {seqrec.id}")
-        return False
-    else:
-        return True
+    for key, value in seqrec2.__dict__.items():
+        if key != "features":
+            if value != getattr(seqrec1, key):
+                print(f"seqrec2's '{key}' attribute does not match that obtained from seqrec1.")
+                return False
+    return True
 
 def json_round_trip(class_instance, encoder, decoder):
     """Encodes object as serialised json and returns decoded object.
@@ -440,5 +436,12 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     original_parts = (part_dict["part"] for part_dict in promoter_assemblies_build.unique_parts.values())
     decoded_build.update_parts(*original_parts)
     sfgfp_hash = _seqrecord_hexdigest(bsb.BCDS_PARTS["sfGFP"])
-    assert compare_seqrec_instances(decoded_build.unique_parts[sfgfp_hash]["part"], bsb.BCDS_PARTS["sfGFP"])
-    
+    assert compare_seqrec_instances(decoded_build.unique_parts[sfgfp_hash]["part"], bsb.BCDS_PARTS["sfGFP"]) == True
+
+
+@pytest.mark.slow
+def test_import_sbol_part():
+    bseva18_from_sbol = bsb.import_sbol_part("./sequences/alternative_formats/bseva18.rdf")#
+    # online converter changes annotations attribute
+    bseva18_from_sbol.annotations = bsb.BSEVA_PARTS["18"].annotations
+    assert compare_seqrec_instances(bseva18_from_sbol, bsb.BSEVA_PARTS["18"]) == True

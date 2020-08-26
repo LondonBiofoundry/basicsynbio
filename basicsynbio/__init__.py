@@ -20,6 +20,7 @@ from .bsb_io import (
     import_ice_parts,
     import_part,
     import_parts,
+    import_sbol_part
 )
 from .parts_linkers import (
     BCDS_PARTS,

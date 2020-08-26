@@ -6,10 +6,13 @@ import basicsynbio as bsb
 from Bio import SeqIO
 from Bio.Alphabet import IUPAC
 from Bio.SeqRecord import SeqRecord
-import requests
 import io
 import icebreaker
 import json
+import requests
+import os
+import tempfile
+from sbol2 import Document
 
 
 @add2docs(
@@ -19,10 +22,28 @@ import json
     CommonArgDocs.ADD_I_SEQS
 )
 def import_part(handle, format, add_i_seqs=False):
-    """Return a BASIC part object using Bio.SeqIO.read().
+    """Return a BasicPart object using Bio.SeqIO.read().
 
     Args:"""
     seqrec = SeqIO.read(handle, format)
+    return seqrec2part(seqrec, add_i_seqs)
+
+
+@add2docs(
+    8,
+    CommonArgDocs.ADD_I_SEQS
+)
+def import_sbol_part(path, add_i_seqs=False):
+    """Returns a BasicPart object using sbol2.Document.exportToFormat.
+    
+    Args:
+        path -- Path to sbol file."""
+    doc = Document(path)
+    fp = tempfile.NamedTemporaryFile(delete=False)
+    doc.exportToFormat("GenBank", fp.name)
+    seqrec = SeqIO.read(fp.name, "genbank")
+    fp.close()
+    os.unlink(fp.name)
     return seqrec2part(seqrec, add_i_seqs)
 
 
@@ -33,7 +54,7 @@ def import_part(handle, format, add_i_seqs=False):
     CommonArgDocs.ADD_I_SEQS
 )
 def import_parts(handle, format, add_i_seqs=False):
-    """Return BASIC parts in a single file using Bio.SeqIO.parse().
+    """Return BasicParts in a single file using Bio.SeqIO.parse().
 
     Args:"""
     seqrecs = SeqIO.parse(handle, format)
@@ -91,5 +112,3 @@ def import_ice_parts(
         )
         memory_file = io.StringIO(bytes_file.decode("utf-8"))
         yield import_part(memory_file, "genbank")
-
-

@@ -1,0 +1,217 @@
+<?xml version="1.0" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:gbConv="http://sbols.org/genBankConversion#" xmlns:sbol="http://sbols.org/v2#" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:genbank="http://www.ncbi.nlm.nih.gov/genbank#" xmlns:prov="http://www.w3.org/ns/prov#" xmlns:om="http://www.ontology-of-units-of-measure.org/resource/om-2/">
+  <sbol:ComponentDefinition rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18">
+    <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18"/>
+    <sbol:displayId>BASIC_SEVA_18</sbol:displayId>
+    <dcterms:description>BASIC SEVA vector containing Ampicillin resistance marker and pUC origin of replication..</dcterms:description>
+    <genbank:locus>BASIC_SEVA_18</genbank:locus>
+    <genbank:molecule>ds-DNA</genbank:molecule>
+    <genbank:division>UNK</genbank:division>
+    <genbank:date>13-JUL-2020</genbank:date>
+    <genbank:keywords>.</genbank:keywords>
+    <genbank:source>synthetic construct</genbank:source>
+    <genbank:organism>synthetic construct other sequences; artificial sequences. .</genbank:organism>
+    <sbol:type rdf:resource="http://www.biopax.org/release/biopax-level3.owl#DnaRegion"/>
+    <sbol:type rdf:resource="http://identifiers.org/so/SO:0000988"/>
+    <sbol:role rdf:resource="http://identifiers.org/so/SO:0000804"/>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation6">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation6"/>
+        <sbol:displayId>annotation6</sbol:displayId>
+        <dcterms:title>SEVA_pUC</dcterms:title>
+        <gbConv:label>SEVA_pUC</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0001411"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation6/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation6/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>1299</sbol:start>
+            <sbol:end>2227</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation3">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation3"/>
+        <sbol:displayId>annotation3</sbol:displayId>
+        <dcterms:title>LMS</dcterms:title>
+        <gbConv:label>LMS</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0001411"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation3/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation3/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>2356</sbol:start>
+            <sbol:end>2412</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation9">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation9"/>
+        <sbol:displayId>annotation9</sbol:displayId>
+        <dcterms:title>LMP</dcterms:title>
+        <gbConv:multiRangeType>join</gbConv:multiRangeType>
+        <gbConv:label>LMP</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0001411"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation9/range0">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation9/range0"/>
+            <sbol:displayId>range0</sbol:displayId>
+            <gbConv:position>position0</gbConv:position>
+            <sbol:start>3349</sbol:start>
+            <sbol:end>3354</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation9/range1">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation9/range1"/>
+            <sbol:displayId>range1</sbol:displayId>
+            <gbConv:position>position1</gbConv:position>
+            <sbol:start>1</sbol:start>
+            <sbol:end>51</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation1">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation1"/>
+        <sbol:displayId>annotation1</sbol:displayId>
+        <dcterms:title>SEVA_T1</dcterms:title>
+        <gbConv:label>SEVA_T1</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005836"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation1/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation1/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>2242</sbol:start>
+            <sbol:end>2346</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation0">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation0"/>
+        <sbol:displayId>annotation0</sbol:displayId>
+        <dcterms:title>SEVA_Ap</dcterms:title>
+        <gbConv:label>SEVA_Ap</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0001411"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation0/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation0/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>187</sbol:start>
+            <sbol:end>1225</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation5">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation5"/>
+        <sbol:displayId>annotation5</sbol:displayId>
+        <dcterms:title>mScarlett</dcterms:title>
+        <gbConv:label>mScarlett</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0000316"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation5/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation5/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>2475</sbol:start>
+            <sbol:end>3179</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation8">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation8"/>
+        <sbol:displayId>annotation8</sbol:displayId>
+        <dcterms:title>B0034</dcterms:title>
+        <gbConv:label>B0034</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005836"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation8/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation8/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>2456</sbol:start>
+            <sbol:end>2467</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation7">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation7"/>
+        <sbol:displayId>annotation7</sbol:displayId>
+        <dcterms:title>SEVA_T0</dcterms:title>
+        <gbConv:label>SEVA_T0</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005836"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation7/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation7/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>58</sbol:start>
+            <sbol:end>160</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation4">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation4"/>
+        <sbol:displayId>annotation4</sbol:displayId>
+        <dcterms:title>B0015</dcterms:title>
+        <gbConv:label>B0015</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005836"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation4/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation4/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>3216</sbol:start>
+            <sbol:end>3344</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequenceAnnotation>
+      <sbol:SequenceAnnotation rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation2">
+        <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation2"/>
+        <sbol:displayId>annotation2</sbol:displayId>
+        <dcterms:title>J23106</dcterms:title>
+        <gbConv:label>J23106</gbConv:label>
+        <sbol:role rdf:resource="http://identifiers.org/so/SO:0005836"/>
+        <sbol:location>
+          <sbol:Range rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation2/range">
+            <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18/annotation2/range"/>
+            <sbol:displayId>range</sbol:displayId>
+            <sbol:start>2413</sbol:start>
+            <sbol:end>2447</sbol:end>
+            <sbol:orientation rdf:resource="http://sbols.org/v2#inline"/>
+          </sbol:Range>
+        </sbol:location>
+      </sbol:SequenceAnnotation>
+    </sbol:sequenceAnnotation>
+    <sbol:sequence rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18_seq"/>
+  </sbol:ComponentDefinition>
+  <sbol:Sequence rdf:about="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18_seq">
+    <sbol:persistentIdentity rdf:resource="http://sbols.org/bseva18/1.0.0/BASIC_SEVA_18_seq"/>
+    <sbol:displayId>BASIC_SEVA_18_seq</sbol:displayId>
+    <sbol:elements>ggtaagaactcgcacttcgtggaaacactattatctggtgggtctctgtccactagtcttggactcctgttgatagatccagtaatgacctcagaactccatctggatttgttcagaacgctcggttgccgccgggcgttttttattggtgagaatccaggggtccccaataattacgatttaaattagtagcccgcctaatgagcgggcttttttttaattcccctatttgtttatttttctaaatacattcaaatatgtatccgctcatgagacaataaccctgataaatgcttcaataatattgaaaaaggaagagtatgagcattcagcattttcgtgtggcgctgattccgttttttgcggcgttttgcctgccggtgtttgcgcatccggaaaccctggtgaaagtgaaagatgcggaagatcaactgggtgcgcgcgtgggctatattgaactggatctgaacagcggcaaaattctggaatcttttcgtccggaagaacgttttccgatgatgagcacctttaaagtgctgctgtgcggtgcggttctgagccgtgtggatgcgggccaggaacaactgggccgtcgtattcattatagccagaacgatctggtggaatatagcccggtgaccgaaaaacatctgaccgatggcatgaccgtgcgtgaactgtgcagcgcggcgattaccatgagcgataacaccgcggcgaacctgctgctgacgaccattggcggtccgaaagaactgaccgcgtttctgcataacatgggcgatcatgtgacccgtctggatcgttgggaaccggaactgaacgaagcgattccgaacgatgaacgtgataccaccatgccggcagcaatggcgaccaccctgcgtaaactgctgacgggtgagctgctgaccctggcaagccgccagcaactgattgattggatggaagcggataaagtggcgggtccgctgctgcgtagcgcgctgccggctggctggtttattgcggataaaagcggtgcgggcgaacgtggcagccgtggcattattgcggcgctgggcccggatggtaaaccgagccgtattgtggtgatttataccaccggcagccaggcgacgatggatgaacgtaaccgtcagattgcggaaattggcgcgagcctgattaaacattggtaaaccgatacaattaaaggctccttttggagcctttttttttggacgacccttgtcggctcgacccacgactattgactgctctgagaaagttgattgttacgattagtccggccggccccgtagaaaagatcaaaggatcttcttgagatcctttttttctgcgcgtaatctgctgcttgcaaacaaaaaaaccaccgctaccagcggtggtttgtttgccggatcaagagctaccaactctttttccgaaggtaactggcttcagcagagcgcagataccaaatactgttcttctagtgtagccgtagttaggccaccacttcaagaactctgtagcaccgcctacatacctcgctctgctaatcctgttaccagtggctgctgccagtggcgataagtcgtgtcttaccgggttggactcaagacgatagttaccggataaggcgcagcggtcgggctgaacggggggttcgtgcacacagcccagcttggagcgaacgacctacaccgaactgagatacctacagcgtgagctttgagaaagcgccacgcttcccgaagggagaaaggcggacaggtatccggtaagcggcagggtcggaacaggagagcgcacgagggagcttccagggggaaacgcctggtatctttatagtcctgtcgggtttcgccacctctgacttgagcgtcgatttttgtgatgctcgtcaggggggcggagcctatggaaaaacgccagcaacgcggcctttttacggttcctggccttttgctggccttttgctcacatgttctttcctgcgttatcccctgattctgtggataaccgtattaccgcctttgagtgagctgataccgctcgccgcagccgaacgaccgagcgcagcgagtcagtgagcgaggaagcggaagagcgcccaatacgcaaaccgcctctccccgcgcgttggccgattcattaatgcagctggcacgacaggtttcccgactggaaagcgggcagtgagcgcaacgcaattaatgtgagttagctcactcattaggcaggcgcgcccagctgtctagggcggcggatttgtcctactcaggagagcgttcaccgacaaacaacagataaaacgaaaggcccagtctttcgactgagcctttcgttttatttgatgcctttaattaaggctcgggagacctatcggtaataacagtccaatctggtgtaacttcggaatcgtcctttacggctagctcagtcctaggtatagtgctagctactagtgaaagaggagaaatactagtatggttagcaaaggcgaggcggttatcaaggagtttatgcgttttaaggttcacatggagggtagcatgaatggtcacgagttcgagatcgagggtgaaggcgagggtcgtccgtacgaaggcacccagaccgcgaagctgaaagtgaccaagggtggcccgctgccgttcagctgggacatcctgagcccgcagttcatgtatggcagccgtgcgtttaccaaacacccggcggacattccggattactataagcaaagcttcccggaaggttttaaatgggagcgtgttatgaacttcgaagatggtggcgcggtgaccgttacccaggacaccagcctggaggatggcaccctgatttacaaggtgaaactgcgtggcaccaactttccgccggatggtccggttatgcagaagaaaacgatgggttgggaagcgagcaccgagcgtctgtatccggaagatggcgtgctgaagggtgatatcaaaatggcgctgcgtctgaaggacggtggccgttacctggcggattttaagaccacctataaagcgaagaaaccggtgcaaatgccgggtgcgtacaacgttgaccgtaaactggatattaccagccacaacgaggattataccgtggttgagcaatatgagcgtagcgagggtcgccacagcaccggcggcatggacgaactgtataagggatcctaataacgctgatagtgctagtgtagatcgctactagagccaggcatcaaataaaacgaaaggctcagtcgaaagactgggcctttcgttttatctgttgtttgtcggtgaacgctctctactagagtcacactggctcaccttcgggtgggcctttctgcgtttatatactggctcg</sbol:elements>
+    <sbol:encoding rdf:resource="http://www.chem.qmul.ac.uk/iubmb/misc/naseq.html"/>
+  </sbol:Sequence>
+</rdf:RDF>
