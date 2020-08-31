@@ -9,7 +9,6 @@ from Bio.SeqRecord import SeqRecord
 import io
 import icebreaker
 import json
-import requests
 import os
 import tempfile
 from sbol2 import Document
