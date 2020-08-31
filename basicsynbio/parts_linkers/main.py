@@ -13,7 +13,6 @@ class PartLinkerCollection(dict):
 
 
 @add2docs(
-    8,
     CommonArgDocs.PARTS_LINKERS_ARGS
 )
 def make_collection(*parts_linkers, keys=None):

@@ -15,7 +15,6 @@ from sbol2 import Document
 
 
 @add2docs(
-    8,
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
     CommonArgDocs.ADD_I_SEQS
@@ -29,7 +28,6 @@ def import_part(handle, format, add_i_seqs=False):
 
 
 @add2docs(
-    8,
     CommonArgDocs.ADD_I_SEQS
 )
 def import_sbol_part(path, add_i_seqs=False):
@@ -47,7 +45,6 @@ def import_sbol_part(path, add_i_seqs=False):
 
 
 @add2docs(
-    8,
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
     CommonArgDocs.ADD_I_SEQS
@@ -61,7 +58,6 @@ def import_parts(handle, format, add_i_seqs=False):
 
 
 @add2docs(
-    8,
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
 )
@@ -84,7 +80,6 @@ def export_sequences_to_file(sequences, handle, format="genbank"):
 
 
 @add2docs(
-    8,
     CommonArgDocs.FORMAT,
 )
 def import_ice_parts(
