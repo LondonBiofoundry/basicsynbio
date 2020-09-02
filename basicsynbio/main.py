@@ -33,13 +33,13 @@ class CommonArgDocs:
     ADD_I_SEQS = ":param bool add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
     HANDLE = ":param handle: handle to file."
     FORMAT = ":param string format: file format."
-    ALPHABET = ":param string alphabet: Bio.Alphabet. Refer Bio.Alphabet documentation."
-    SEQREC_KWARGS = ":param \**kwargs: assigns alternative Bio.SeqRecord attributes."
+    ALPHABET = ":param Bio.Alphabet alphabet: Refer to Bio.Alphabet documentation."
+    SEQREC_KWARGS = ":param \**kwargs: assigns alternative SeqRecord attributes."
     PARTS_LINKERS_ARGS = ":param \*parts_linkers: :py:class:`BasicPart` and :py:class:`BasicLinker` objects."
 
 
 class BasicPart(SeqRecord):
-    """A DNA sequence joined with other BasicParts via :py:class:`BasicLinker` instances when initialising :py:class:BasicAssembly: objects.
+    """A DNA sequence joined with other BasicParts via :py:class:`BasicLinker` instances when initialising :py:class:`BasicAssembly` objects.
 
     All sequences must contain intergated prefix and suffix sequences.
 
@@ -103,7 +103,7 @@ BasicPart.__doc__ += CommonArgDocs.SEQREC_KWARGS
 
 
 class BasicLinker(SeqRecord):
-    """A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart` instances when initialising :py:class:BasicAssembly: objects.
+    """A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart` instances when initialising :py:class:`BasicAssembly` objects.
     
 
     :param seq: Refer to Bio.SeqRecord.SeqRecord documentation.
@@ -160,9 +160,9 @@ class BasicUTRRBSLinker(BasicLinker):
 
 
 class BasicAssembly():
-    """BasicAssembly class requires alternating :py:class:`BasicPart` and :py:class`` instances in any order.
+    """BasicAssembly class requires alternating :py:class:`BasicPart` and :py:class:`BasicLinker` instances in any order.
 
-    :param string id: Identifier for BasicAssemby object. Must be unique amongst BasicAssembly instances in a BasicBuild.
+    :param string id: Identifier for BasicAssemby object. Must be unique amongst BasicAssembly instances used to initiate a BasicBuild object.
     
     """
     def __init__(self, id: str, *parts_linkers):
@@ -177,7 +177,9 @@ class BasicAssembly():
         CommonArgDocs.SEQREC_KWARGS
     )
     def return_part(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
-        """:return: :py:class:`BasicPart` from the result of this assembly.
+        """:return: Assembled construct as a new part.
+
+        :rtype: :py:class:`BasicPart`
         
         """
         return seqrec2part(self.return_seqrec(alphabet=alphabet, **kwargs))
@@ -187,7 +189,9 @@ class BasicAssembly():
         CommonArgDocs.SEQREC_KWARGS
     )
     def return_seqrec(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
-        """Returns a Bio.SeqRecord object of the assembled construct.
+        """:return: Assembled construct as a seqrecord.
+
+        :rtype: Bio.SeqRecord.SeqRecord
         
         """
         seqrec = SeqRecord(Seq(str()))
@@ -204,7 +208,11 @@ class BasicAssembly():
         return seqrec
 
     def return_clip_reactions(self):
-        """Returns clip reactions required for assembly of self."""
+        """:return: clip reactions required for assembly of self.
+
+        :rtype: tuple 
+        
+        """
         clip_reactions = []
         for ind, part_linker in enumerate(self.parts_linkers):
             if issubclass(type(part_linker), BasicLinker):
@@ -266,34 +274,36 @@ BasicAssembly.__doc__ += CommonArgDocs.PARTS_LINKERS_ARGS
 
 
 class ClipReaction():
-    """Class for describing clip reactions. Note ClipReaction is hashable."""
+    """Class for describing clip reactions. Note ClipReaction is hashable.
 
+    :param BasicLinker prefix: :py:class:`BasicLinker` used as prefix in clip reaction.
+    :param BasicPart part: :py:class:`BasicPart` used as part in clip reaction.
+    :param BasicLinker suffix: :py:class:`BasicLinker` used as suffix in clip reaction.
+
+    """
     def __init__(self, prefix, part, suffix):
-        """Initiaties ClipReaction.
-
-        :param BasicLinker prefix: :py:class:`BasicLinker` instance used as prefix in clip reaction.
-        :param BasicPart part: :py:class:`BasicPart` instance.
-        :param BasicLinker suffix: :py:class:`BasicLinker` instance used as suffix in clip reaction.
-
-        """
         self._prefix = prefix
         self._suffix = suffix
         self._part = part
 
     def linker_half_ids(self):
-        """Returns the ids for prefix and suffix linkers in the form (prefix_id, suffix_id)."""
+        """:return: ids for prefix and suffix linkers in the form (prefix_id, suffix_id).
+        
+        :rtype: tuple(string, string)
+        
+        """
         return self._prefix.prefix_id, self._suffix.suffix_id
 
     def clip_items(self):
         """:return: (prefix, part, suffix).
         
-        :rtype: tuple
+        :rtype: tuple(BasicLinker, BasicPart, BasicLinker)
 
         """
         return self._prefix, self._part, self._suffix
 
     def _hexdigest(self, length=16, byteorder="big", signed=True):
-        """Returns the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
+        """:return: the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
         return hashlib.md5(self.__hash__().to_bytes(length, byteorder=byteorder, signed=signed)).hexdigest()
 
     def __hash__(self):
@@ -323,7 +333,10 @@ class AssemblyException(Exception):
 
 @add2docs(CommonArgDocs.ADD_I_SEQS)
 def seqrec2part(seqrec, add_i_seqs=False):
-    """Convert a Bio.SeqRecord to a :py:class:`BasicPart`, relevant attributes are maintained.
+    """Convert a SeqRecord to a :py:class:`BasicPart`, relevant attributes are maintained.
+
+    :param seqrec: SeqRecord to be converted to BasicPart subclass.
+    :type seqrec: Bio.SeqRecord.SeqRecord
 
     """
     if add_i_seqs:
