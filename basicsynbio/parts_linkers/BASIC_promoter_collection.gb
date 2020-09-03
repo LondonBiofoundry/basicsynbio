@@ -1,4 +1,4 @@
-LOCUS       B-P1_Terminator1_J23119_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P1_Terminator1_J23119_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P1 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P1,
             contains a J23119 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -23,12 +23,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -75,7 +75,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P2_Terminator1_J23111_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P2_Terminator1_J23111_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P2 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P2,
             contains a J23111 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -100,12 +100,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -152,7 +152,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P3_Terminator1_J23104_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P3_Terminator1_J23104_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P3 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P3,
             contains a J23104 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -177,12 +177,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -229,7 +229,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P4_Terminator1_J23101_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P4_Terminator1_J23101_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P4 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P4,
             contains a J23101 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -254,12 +254,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -306,7 +306,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P5_Terminator1_J23108_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P5_Terminator1_J23108_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P5 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P5,
             contains a J23108 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -331,12 +331,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -383,7 +383,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P6_Terminator1_J23106_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P6_Terminator1_J23106_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P6 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P6,
             contains a J23106 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -408,12 +408,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -460,7 +460,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P7_Terminator1_J23105_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P7_Terminator1_J23105_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P7 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P7,
             contains a J23105 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -485,12 +485,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -537,7 +537,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P8_Terminator1_J23116_RiboA 2609 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P8_Terminator1_J23116_RiboA 2609 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P8 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P8,
             contains a J23116 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -562,12 +562,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    441..1479
                      /label="SEVA_Ap"
-     regulatory      2496..2600
-                     /label="SEVA_T1"
      misc_feature    1553..2481
                      /label="SEVA_pUC"
-     regulatory      312..414
+     misc_feature    312..414
                      /label="SEVA_T0"
+     misc_feature    2496..2600
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -614,7 +614,7 @@ ORIGIN
      2521 caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc
      2581 ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P9_Terminator2_J23119_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P9_Terminator2_J23119_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P9 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P9,
             contains a J23119 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -639,12 +639,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -691,7 +691,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P10_Terminator2_J23111_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P10_Terminator2_J23111_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P10 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P10,
             contains a J23111 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -716,12 +716,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -768,7 +768,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P11_Terminator2_J23104_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P11_Terminator2_J23104_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P11 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P11,
             contains a J23104 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -793,12 +793,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -845,7 +845,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P12_Terminator2_J23101_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P12_Terminator2_J23101_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P12 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P12,
             contains a J23101 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -870,12 +870,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -922,7 +922,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P13_Terminator2_J23108_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P13_Terminator2_J23108_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P13 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P13,
             contains a J23108 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -947,12 +947,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -999,7 +999,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P14_Terminator2_J23106_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P14_Terminator2_J23106_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P14 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P14,
             contains a J23106 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -1024,12 +1024,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -1076,7 +1076,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P15_Terminator2_J23105_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P15_Terminator2_J23105_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P15 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P15,
             contains a J23105 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -1101,12 +1101,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -1153,7 +1153,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P16_Terminator2_J23116_RiboB 2605 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P16_Terminator2_J23116_RiboB 2605 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P16 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P16,
             contains a J23116 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -1178,12 +1178,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    437..1475
                      /label="SEVA_Ap"
-     regulatory      2492..2596
-                     /label="SEVA_T1"
      misc_feature    1549..2477
                      /label="SEVA_pUC"
-     regulatory      308..410
+     misc_feature    308..410
                      /label="SEVA_T0"
+     misc_feature    2492..2596
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -1230,7 +1230,7 @@ ORIGIN
      2521 agagcgttca ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt
      2581 cgttttattt gatgccttta attaa
 //
-LOCUS       B-P17_Terminator3_J23119_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P17_Terminator3_J23119_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P17 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P17,
             contains a J23119 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1255,12 +1255,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1307,7 +1307,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P18_Terminator3_J23111_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P18_Terminator3_J23111_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P18 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P18,
             contains a J23111 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1332,12 +1332,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1384,7 +1384,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P19_Terminator3_J23104_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P19_Terminator3_J23104_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P19 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P19,
             contains a J23104 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1409,12 +1409,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1461,7 +1461,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P20_Terminator3_J23101_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P20_Terminator3_J23101_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P20 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P20,
             contains a J23101 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1486,12 +1486,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1538,7 +1538,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P21_Terminator3_J23108_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P21_Terminator3_J23108_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P21 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P21,
             contains a J23108 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1563,12 +1563,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1615,7 +1615,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P22_Terminator3_J23106_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P22_Terminator3_J23106_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P22 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P22,
             contains a J23106 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1640,12 +1640,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1692,7 +1692,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P23_Terminator3_J23105_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P23_Terminator3_J23105_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P23 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P23,
             contains a J23105 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1717,12 +1717,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1769,7 +1769,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P24_Terminator3_J23116_RiboC 2599 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P24_Terminator3_J23116_RiboC 2599 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P24 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P24,
             contains a J23116 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -1794,12 +1794,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    431..1469
                      /label="SEVA_Ap"
-     regulatory      2486..2590
-                     /label="SEVA_T1"
      misc_feature    1543..2471
                      /label="SEVA_pUC"
-     regulatory      302..404
+     misc_feature    302..404
                      /label="SEVA_T0"
+     misc_feature    2486..2590
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -1846,7 +1846,7 @@ ORIGIN
      2521 ttcaccgaca aacaacagat aaaacgaaag gcccagtctt tcgactgagc ctttcgtttt
      2581 atttgatgcc tttaattaa
 //
-LOCUS       B-P25_Terminator1_Phlf_RiboA 2640 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P25_Terminator1_Phlf_RiboA 2640 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P25 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P25,
             contains a Phlf promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -1871,12 +1871,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    472..1510
                      /label="SEVA_Ap"
-     regulatory      2527..2631
-                     /label="SEVA_T1"
      misc_feature    1584..2512
                      /label="SEVA_pUC"
-     regulatory      343..445
+     misc_feature    343..445
                      /label="SEVA_T0"
+     misc_feature    2527..2631
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -1923,7 +1923,85 @@ ORIGIN
      2521 cagctgtcta gggcggcgga tttgtcctac tcaggagagc gttcaccgac aaacaacaga
      2581 taaaacgaaa ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P27_Terminator1_TetR_RiboA 2650 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P26_Terminator1_CymR_RiboA 2664 bp    DNA     circular UNK 03-SEP-2020
+DEFINITION  B-P26 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P26,
+            contains a CymR promoter with an upstream Terminator1 and a
+            downstream RiboA.
+ACCESSION   B-P26
+VERSION     B-P26
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    3..57
+                     /label="LMP"
+     regulatory      58..118
+                     /label="Terminator1"
+     regulatory      139..228
+                     /label="CymR"
+     misc_feature    119..138
+                     /label="SpacerA"
+     misc_feature    229..303
+                     /label="RiboA"
+     misc_feature    306..360
+                     /label="LMS"
+     misc_feature    496..1534
+                     /label="SEVA_Ap"
+     misc_feature    1608..2536
+                     /label="SEVA_pUC"
+     misc_feature    367..469
+                     /label="SEVA_T0"
+     misc_feature    2551..2655
+                     /label="SEVA_T1"
+ORIGIN
+        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
+       61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
+      121 gcctactctg gaaaatctaa caaacagaca atctggtctg tttgtattat ggaaaatttt
+      181 tctgtataat agattcaaca aacagacaat ctggtctgtt tgtattatag ctgtcaccgg
+      241 atgtgctttc cggtctgatg agtccgtgag gacgaaacag cctctacaaa taattttgtt
+      301 taaggctcgg gagacctatc ggtaataaca gtccaatctg gtgtaacttc ggaatcgtcc
+      361 actagtcttg gactcctgtt gatagatcca gtaatgacct cagaactcca tctggatttg
+      421 ttcagaacgc tcggttgccg ccgggcgttt tttattggtg agaatccagg ggtccccaat
+      481 aattacgatt taaattagta gcccgcctaa tgagcgggct tttttttaat tcccctattt
+      541 gtttattttt ctaaatacat tcaaatatgt atccgctcat gagacaataa ccctgataaa
+      601 tgcttcaata atattgaaaa aggaagagta tgagcattca gcattttcgt gtggcgctga
+      661 ttccgttttt tgcggcgttt tgcctgccgg tgtttgcgca tccggaaacc ctggtgaaag
+      721 tgaaagatgc ggaagatcaa ctgggtgcgc gcgtgggcta tattgaactg gatctgaaca
+      781 gcggcaaaat tctggaatct tttcgtccgg aagaacgttt tccgatgatg agcaccttta
+      841 aagtgctgct gtgcggtgcg gttctgagcc gtgtggatgc gggccaggaa caactgggcc
+      901 gtcgtattca ttatagccag aacgatctgg tggaatatag cccggtgacc gaaaaacatc
+      961 tgaccgatgg catgaccgtg cgtgaactgt gcagcgcggc gattaccatg agcgataaca
+     1021 ccgcggcgaa cctgctgctg acgaccattg gcggtccgaa agaactgacc gcgtttctgc
+     1081 ataacatggg cgatcatgtg acccgtctgg atcgttggga accggaactg aacgaagcga
+     1141 ttccgaacga tgaacgtgat accaccatgc cggcagcaat ggcgaccacc ctgcgtaaac
+     1201 tgctgacggg tgagctgctg accctggcaa gccgccagca actgattgat tggatggaag
+     1261 cggataaagt ggcgggtccg ctgctgcgta gcgcgctgcc ggctggctgg tttattgcgg
+     1321 ataaaagcgg tgcgggcgaa cgtggcagcc gtggcattat tgcggcgctg ggcccggatg
+     1381 gtaaaccgag ccgtattgtg gtgatttata ccaccggcag ccaggcgacg atggatgaac
+     1441 gtaaccgtca gattgcggaa attggcgcga gcctgattaa acattggtaa accgatacaa
+     1501 ttaaaggctc cttttggagc cttttttttt ggacgaccct tgtcggctcg acccacgact
+     1561 attgactgct ctgagaaagt tgattgttac gattagtccg gccggccccg tagaaaagat
+     1621 caaaggatct tcttgagatc ctttttttct gcgcgtaatc tgctgcttgc aaacaaaaaa
+     1681 accaccgcta ccagcggtgg tttgtttgcc ggatcaagag ctaccaactc tttttccgaa
+     1741 ggtaactggc ttcagcagag cgcagatacc aaatactgtt cttctagtgt agccgtagtt
+     1801 aggccaccac ttcaagaact ctgtagcacc gcctacatac ctcgctctgc taatcctgtt
+     1861 accagtggct gctgccagtg gcgataagtc gtgtcttacc gggttggact caagacgata
+     1921 gttaccggat aaggcgcagc ggtcgggctg aacggggggt tcgtgcacac agcccagctt
+     1981 ggagcgaacg acctacaccg aactgagata cctacagcgt gagctttgag aaagcgccac
+     2041 gcttcccgaa gggagaaagg cggacaggta tccggtaagc ggcagggtcg gaacaggaga
+     2101 gcgcacgagg gagcttccag ggggaaacgc ctggtatctt tatagtcctg tcgggtttcg
+     2161 ccacctctga cttgagcgtc gatttttgtg atgctcgtca ggggggcgga gcctatggaa
+     2221 aaacgccagc aacgcggcct ttttacggtt cctggccttt tgctggcctt ttgctcacat
+     2281 gttctttcct gcgttatccc ctgattctgt ggataaccgt attaccgcct ttgagtgagc
+     2341 tgataccgct cgccgcagcc gaacgaccga gcgcagcgag tcagtgagcg aggaagcgga
+     2401 agagcgccca atacgcaaac cgcctctccc cgcgcgttgg ccgattcatt aatgcagctg
+     2461 gcacgacagg tttcccgact ggaaagcggg cagtgagcgc aacgcaatta atgtgagtta
+     2521 gctcactcat taggcaggcg cgcccagctg tctagggcgg cggatttgtc ctactcagga
+     2581 gagcgttcac cgacaaacaa cagataaaac gaaaggccca gtctttcgac tgagcctttc
+     2641 gttttatttg atgcctttaa ttaa
+//
+LOCUS       B-P27_Terminator1_TetR_RiboA 2650 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P27 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P27,
             contains a TetR promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -1948,12 +2026,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    482..1520
                      /label="SEVA_Ap"
-     regulatory      2537..2641
-                     /label="SEVA_T1"
      misc_feature    1594..2522
                      /label="SEVA_pUC"
-     regulatory      353..455
+     misc_feature    353..455
                      /label="SEVA_T0"
+     misc_feature    2537..2641
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -2001,7 +2079,7 @@ ORIGIN
      2581 aaacaacaga taaaacgaaa ggcccagtct ttcgactgag cctttcgttt tatttgatgc
      2641 ctttaattaa
 //
-LOCUS       B-P28_Terminator1_VanR_RiboA 2624 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P28_Terminator1_VanR_RiboA 2624 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P28 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P28,
             contains a VanR promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -2026,12 +2104,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    456..1494
                      /label="SEVA_Ap"
-     regulatory      2511..2615
-                     /label="SEVA_T1"
      misc_feature    1568..2496
                      /label="SEVA_pUC"
-     regulatory      327..429
+     misc_feature    327..429
                      /label="SEVA_T0"
+     misc_feature    2511..2615
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -2078,7 +2156,7 @@ ORIGIN
      2521 cggatttgtc ctactcagga gagcgttcac cgacaaacaa cagataaaac gaaaggccca
      2581 gtctttcgac tgagcctttc gttttatttg atgcctttaa ttaa
 //
-LOCUS       B-P29_Terminator1_LuxR_RiboA 2629 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P29_Terminator1_LuxR_RiboA 2629 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P29 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P29,
             contains a LuxR promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -2103,12 +2181,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    461..1499
                      /label="SEVA_Ap"
-     regulatory      2516..2620
-                     /label="SEVA_T1"
      misc_feature    1573..2501
                      /label="SEVA_pUC"
-     regulatory      332..434
+     misc_feature    332..434
                      /label="SEVA_T0"
+     misc_feature    2516..2620
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -2155,7 +2233,7 @@ ORIGIN
      2521 ggcggcggat ttgtcctact caggagagcg ttcaccgaca aacaacagat aaaacgaaag
      2581 gcccagtctt tcgactgagc ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P30_Terminator1_CinR_RiboA 2800 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P30_Terminator1_CinR_RiboA 2800 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P30 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P30,
             contains a CinR promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -2180,12 +2258,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    632..1670
                      /label="SEVA_Ap"
-     regulatory      2687..2791
-                     /label="SEVA_T1"
      misc_feature    1744..2672
                      /label="SEVA_pUC"
-     regulatory      503..605
+     misc_feature    503..605
                      /label="SEVA_T0"
+     misc_feature    2687..2791
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -2235,7 +2313,7 @@ ORIGIN
      2701 tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa ggcccagtct
      2761 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P31_Terminator1_LacI_RiboA 2630 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P31_Terminator1_LacI_RiboA 2630 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P31 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P31,
             contains a LacI promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -2260,12 +2338,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    462..1500
                      /label="SEVA_Ap"
-     regulatory      2517..2621
-                     /label="SEVA_T1"
      misc_feature    1574..2502
                      /label="SEVA_pUC"
-     regulatory      333..435
+     misc_feature    333..435
                      /label="SEVA_T0"
+     misc_feature    2517..2621
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -2312,7 +2390,7 @@ ORIGIN
      2521 gggcggcgga tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa
      2581 ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P32_Terminator1_AraC_RiboA 2863 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P32_Terminator1_AraC_RiboA 2863 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P32 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P32,
             contains a AraC promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -2337,12 +2415,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    695..1733
                      /label="SEVA_Ap"
-     regulatory      2750..2854
-                     /label="SEVA_T1"
      misc_feature    1807..2735
                      /label="SEVA_pUC"
-     regulatory      566..668
+     misc_feature    566..668
                      /label="SEVA_T0"
+     misc_feature    2750..2854
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -2393,7 +2471,7 @@ ORIGIN
      2761 ggatttgtcc tactcaggag agcgttcacc gacaaacaac agataaaacg aaaggcccag
      2821 tctttcgact gagcctttcg ttttatttga tgcctttaat taa
 //
-LOCUS       B-P33_Terminator2_Phlf_RiboB 2636 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P33_Terminator2_Phlf_RiboB 2636 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P33 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P33,
             contains a Phlf promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2418,12 +2496,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    468..1506
                      /label="SEVA_Ap"
-     regulatory      2523..2627
-                     /label="SEVA_T1"
      misc_feature    1580..2508
                      /label="SEVA_pUC"
-     regulatory      339..441
+     misc_feature    339..441
                      /label="SEVA_T0"
+     misc_feature    2523..2627
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2470,7 +2548,85 @@ ORIGIN
      2521 tgtctagggc ggcggatttg tcctactcag gagagcgttc accgacaaac aacagataaa
      2581 acgaaaggcc cagtctttcg actgagcctt tcgttttatt tgatgccttt aattaa
 //
-LOCUS       B-P35_Terminator2_TetR_RiboB 2646 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P34_Terminator2_CymR_RiboB 2660 bp    DNA     circular UNK 03-SEP-2020
+DEFINITION  B-P34 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P34,
+            contains a CymR promoter with an upstream Terminator2 and a
+            downstream RiboB.
+ACCESSION   B-P34
+VERSION     B-P34
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    3..57
+                     /label="LMP"
+     misc_feature    115..134
+                     /label="SpacerA"
+     regulatory      135..224
+                     /label="CymR"
+     regulatory      58..114
+                     /label="Terminator2"
+     misc_feature    225..299
+                     /label="RiboB"
+     misc_feature    302..356
+                     /label="LMS"
+     misc_feature    492..1530
+                     /label="SEVA_Ap"
+     misc_feature    1604..2532
+                     /label="SEVA_pUC"
+     misc_feature    363..465
+                     /label="SEVA_T0"
+     misc_feature    2547..2651
+                     /label="SEVA_T1"
+ORIGIN
+        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
+       61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
+      121 actctggaaa atctaacaaa cagacaatct ggtctgtttg tattatggaa aatttttctg
+      181 tataatagat tcaacaaaca gacaatctgg tctgtttgta ttatagcgct caacgggtgt
+      241 gcttcccgtt ctgatgagtc cgtgaggacg aaagcgcctc tacaaataat tttgtttaag
+      301 gctcgggaga cctatcggta ataacagtcc aatctggtgt aacttcggaa tcgtccacta
+      361 gtcttggact cctgttgata gatccagtaa tgacctcaga actccatctg gatttgttca
+      421 gaacgctcgg ttgccgccgg gcgtttttta ttggtgagaa tccaggggtc cccaataatt
+      481 acgatttaaa ttagtagccc gcctaatgag cgggcttttt tttaattccc ctatttgttt
+      541 atttttctaa atacattcaa atatgtatcc gctcatgaga caataaccct gataaatgct
+      601 tcaataatat tgaaaaagga agagtatgag cattcagcat tttcgtgtgg cgctgattcc
+      661 gttttttgcg gcgttttgcc tgccggtgtt tgcgcatccg gaaaccctgg tgaaagtgaa
+      721 agatgcggaa gatcaactgg gtgcgcgcgt gggctatatt gaactggatc tgaacagcgg
+      781 caaaattctg gaatcttttc gtccggaaga acgttttccg atgatgagca cctttaaagt
+      841 gctgctgtgc ggtgcggttc tgagccgtgt ggatgcgggc caggaacaac tgggccgtcg
+      901 tattcattat agccagaacg atctggtgga atatagcccg gtgaccgaaa aacatctgac
+      961 cgatggcatg accgtgcgtg aactgtgcag cgcggcgatt accatgagcg ataacaccgc
+     1021 ggcgaacctg ctgctgacga ccattggcgg tccgaaagaa ctgaccgcgt ttctgcataa
+     1081 catgggcgat catgtgaccc gtctggatcg ttgggaaccg gaactgaacg aagcgattcc
+     1141 gaacgatgaa cgtgatacca ccatgccggc agcaatggcg accaccctgc gtaaactgct
+     1201 gacgggtgag ctgctgaccc tggcaagccg ccagcaactg attgattgga tggaagcgga
+     1261 taaagtggcg ggtccgctgc tgcgtagcgc gctgccggct ggctggttta ttgcggataa
+     1321 aagcggtgcg ggcgaacgtg gcagccgtgg cattattgcg gcgctgggcc cggatggtaa
+     1381 accgagccgt attgtggtga tttataccac cggcagccag gcgacgatgg atgaacgtaa
+     1441 ccgtcagatt gcggaaattg gcgcgagcct gattaaacat tggtaaaccg atacaattaa
+     1501 aggctccttt tggagccttt ttttttggac gacccttgtc ggctcgaccc acgactattg
+     1561 actgctctga gaaagttgat tgttacgatt agtccggccg gccccgtaga aaagatcaaa
+     1621 ggatcttctt gagatccttt ttttctgcgc gtaatctgct gcttgcaaac aaaaaaacca
+     1681 ccgctaccag cggtggtttg tttgccggat caagagctac caactctttt tccgaaggta
+     1741 actggcttca gcagagcgca gataccaaat actgttcttc tagtgtagcc gtagttaggc
+     1801 caccacttca agaactctgt agcaccgcct acatacctcg ctctgctaat cctgttacca
+     1861 gtggctgctg ccagtggcga taagtcgtgt cttaccgggt tggactcaag acgatagtta
+     1921 ccggataagg cgcagcggtc gggctgaacg gggggttcgt gcacacagcc cagcttggag
+     1981 cgaacgacct acaccgaact gagataccta cagcgtgagc tttgagaaag cgccacgctt
+     2041 cccgaaggga gaaaggcgga caggtatccg gtaagcggca gggtcggaac aggagagcgc
+     2101 acgagggagc ttccaggggg aaacgcctgg tatctttata gtcctgtcgg gtttcgccac
+     2161 ctctgacttg agcgtcgatt tttgtgatgc tcgtcagggg ggcggagcct atggaaaaac
+     2221 gccagcaacg cggccttttt acggttcctg gccttttgct ggccttttgc tcacatgttc
+     2281 tttcctgcgt tatcccctga ttctgtggat aaccgtatta ccgcctttga gtgagctgat
+     2341 accgctcgcc gcagccgaac gaccgagcgc agcgagtcag tgagcgagga agcggaagag
+     2401 cgcccaatac gcaaaccgcc tctccccgcg cgttggccga ttcattaatg cagctggcac
+     2461 gacaggtttc ccgactggaa agcgggcagt gagcgcaacg caattaatgt gagttagctc
+     2521 actcattagg caggcgcgcc cagctgtcta gggcggcgga tttgtcctac tcaggagagc
+     2581 gttcaccgac aaacaacaga taaaacgaaa ggcccagtct ttcgactgag cctttcgttt
+     2641 tatttgatgc ctttaattaa
+//
+LOCUS       B-P35_Terminator2_TetR_RiboB 2646 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P35 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P35,
             contains a TetR promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2495,12 +2651,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    478..1516
                      /label="SEVA_Ap"
-     regulatory      2533..2637
-                     /label="SEVA_T1"
      misc_feature    1590..2518
                      /label="SEVA_pUC"
-     regulatory      349..451
+     misc_feature    349..451
                      /label="SEVA_T0"
+     misc_feature    2533..2637
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2548,7 +2704,7 @@ ORIGIN
      2581 aacagataaa acgaaaggcc cagtctttcg actgagcctt tcgttttatt tgatgccttt
      2641 aattaa
 //
-LOCUS       B-P36_Terminator2_VanR_RiboB 2620 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P36_Terminator2_VanR_RiboB 2620 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P36 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P36,
             contains a VanR promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2573,12 +2729,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    452..1490
                      /label="SEVA_Ap"
-     regulatory      2507..2611
-                     /label="SEVA_T1"
      misc_feature    1564..2492
                      /label="SEVA_pUC"
-     regulatory      323..425
+     misc_feature    323..425
                      /label="SEVA_T0"
+     misc_feature    2507..2611
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2625,7 +2781,7 @@ ORIGIN
      2521 tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa ggcccagtct
      2581 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P37_Terminator2_LuxR_RiboB 2625 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P37_Terminator2_LuxR_RiboB 2625 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P37 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P37,
             contains a LuxR promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2650,12 +2806,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    457..1495
                      /label="SEVA_Ap"
-     regulatory      2512..2616
-                     /label="SEVA_T1"
      misc_feature    1569..2497
                      /label="SEVA_pUC"
-     regulatory      328..430
+     misc_feature    328..430
                      /label="SEVA_T0"
+     misc_feature    2512..2616
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2702,7 +2858,7 @@ ORIGIN
      2521 gcggatttgt cctactcagg agagcgttca ccgacaaaca acagataaaa cgaaaggccc
      2581 agtctttcga ctgagccttt cgttttattt gatgccttta attaa
 //
-LOCUS       B-P38_Terminator2_CinR_RiboB 2796 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P38_Terminator2_CinR_RiboB 2796 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P38 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P38,
             contains a CinR promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2727,12 +2883,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    628..1666
                      /label="SEVA_Ap"
-     regulatory      2683..2787
-                     /label="SEVA_T1"
      misc_feature    1740..2668
                      /label="SEVA_pUC"
-     regulatory      499..601
+     misc_feature    499..601
                      /label="SEVA_T0"
+     misc_feature    2683..2787
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2782,7 +2938,7 @@ ORIGIN
      2701 tcctactcag gagagcgttc accgacaaac aacagataaa acgaaaggcc cagtctttcg
      2761 actgagcctt tcgttttatt tgatgccttt aattaa
 //
-LOCUS       B-P39_Terminator2_LacI_RiboB 2626 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P39_Terminator2_LacI_RiboB 2626 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P39 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P39,
             contains a LacI promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2807,12 +2963,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    458..1496
                      /label="SEVA_Ap"
-     regulatory      2513..2617
-                     /label="SEVA_T1"
      misc_feature    1570..2498
                      /label="SEVA_pUC"
-     regulatory      329..431
+     misc_feature    329..431
                      /label="SEVA_T0"
+     misc_feature    2513..2617
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2859,7 +3015,7 @@ ORIGIN
      2521 ggcggatttg tcctactcag gagagcgttc accgacaaac aacagataaa acgaaaggcc
      2581 cagtctttcg actgagcctt tcgttttatt tgatgccttt aattaa
 //
-LOCUS       B-P40_Terminator2_AraC_RiboB 2859 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P40_Terminator2_AraC_RiboB 2859 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P40 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P40,
             contains a AraC promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -2884,12 +3040,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    691..1729
                      /label="SEVA_Ap"
-     regulatory      2746..2850
-                     /label="SEVA_T1"
      misc_feature    1803..2731
                      /label="SEVA_pUC"
-     regulatory      562..664
+     misc_feature    562..664
                      /label="SEVA_T0"
+     misc_feature    2746..2850
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -2940,7 +3096,7 @@ ORIGIN
      2761 ttgtcctact caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt
      2821 tcgactgagc ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P41_Terminator3_Phlf_RiboC 2630 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P41_Terminator3_Phlf_RiboC 2630 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P41 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P41,
             contains a Phlf promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -2965,12 +3121,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    462..1500
                      /label="SEVA_Ap"
-     regulatory      2517..2621
-                     /label="SEVA_T1"
      misc_feature    1574..2502
                      /label="SEVA_pUC"
-     regulatory      333..435
+     misc_feature    333..435
                      /label="SEVA_T0"
+     misc_feature    2517..2621
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3017,7 +3173,7 @@ ORIGIN
      2521 gggcggcgga tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa
      2581 ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P42_Terminator3_CymR_RiboC 2654 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P42_Terminator3_CymR_RiboC 2654 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P42 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P42,
             contains a CymR promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3042,12 +3198,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    486..1524
                      /label="SEVA_Ap"
-     regulatory      2541..2645
-                     /label="SEVA_T1"
      misc_feature    1598..2526
                      /label="SEVA_pUC"
-     regulatory      357..459
+     misc_feature    357..459
                      /label="SEVA_T0"
+     misc_feature    2541..2645
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3095,7 +3251,7 @@ ORIGIN
      2581 cgacaaacaa cagataaaac gaaaggccca gtctttcgac tgagcctttc gttttatttg
      2641 atgcctttaa ttaa
 //
-LOCUS       B-P43_Terminator3_TetR_RiboC 2640 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P43_Terminator3_TetR_RiboC 2640 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P43 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P43,
             contains a TetR promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3120,12 +3276,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    472..1510
                      /label="SEVA_Ap"
-     regulatory      2527..2631
-                     /label="SEVA_T1"
      misc_feature    1584..2512
                      /label="SEVA_pUC"
-     regulatory      343..445
+     misc_feature    343..445
                      /label="SEVA_T0"
+     misc_feature    2527..2631
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3172,7 +3328,7 @@ ORIGIN
      2521 cagctgtcta gggcggcgga tttgtcctac tcaggagagc gttcaccgac aaacaacaga
      2581 taaaacgaaa ggcccagtct ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P44_Terminator3_VanR_RiboC 2614 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P44_Terminator3_VanR_RiboC 2614 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P44 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P44,
             contains a VanR promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3197,12 +3353,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    446..1484
                      /label="SEVA_Ap"
-     regulatory      2501..2605
-                     /label="SEVA_T1"
      misc_feature    1558..2486
                      /label="SEVA_pUC"
-     regulatory      317..419
+     misc_feature    317..419
                      /label="SEVA_T0"
+     misc_feature    2501..2605
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3249,7 +3405,7 @@ ORIGIN
      2521 ctactcagga gagcgttcac cgacaaacaa cagataaaac gaaaggccca gtctttcgac
      2581 tgagcctttc gttttatttg atgcctttaa ttaa
 //
-LOCUS       B-P45_Terminator3_LuxR_RiboC 2619 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P45_Terminator3_LuxR_RiboC 2619 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P45 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P45,
             contains a LuxR promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3274,12 +3430,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    451..1489
                      /label="SEVA_Ap"
-     regulatory      2506..2610
-                     /label="SEVA_T1"
      misc_feature    1563..2491
                      /label="SEVA_pUC"
-     regulatory      322..424
+     misc_feature    322..424
                      /label="SEVA_T0"
+     misc_feature    2506..2610
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3326,7 +3482,7 @@ ORIGIN
      2521 ttgtcctact caggagagcg ttcaccgaca aacaacagat aaaacgaaag gcccagtctt
      2581 tcgactgagc ctttcgtttt atttgatgcc tttaattaa
 //
-LOCUS       B-P46_Terminator3_CinR_RiboC 2790 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P46_Terminator3_CinR_RiboC 2790 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P46 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P46,
             contains a CinR promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3351,12 +3507,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    622..1660
                      /label="SEVA_Ap"
-     regulatory      2677..2781
-                     /label="SEVA_T1"
      misc_feature    1734..2662
                      /label="SEVA_pUC"
-     regulatory      493..595
+     misc_feature    493..595
                      /label="SEVA_T0"
+     misc_feature    2677..2781
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3406,7 +3562,7 @@ ORIGIN
      2701 tcaggagagc gttcaccgac aaacaacaga taaaacgaaa ggcccagtct ttcgactgag
      2761 cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P47_Terminator3_LacI_RiboC 2620 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P47_Terminator3_LacI_RiboC 2620 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P47 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P47,
             contains a LacI promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3431,12 +3587,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    452..1490
                      /label="SEVA_Ap"
-     regulatory      2507..2611
-                     /label="SEVA_T1"
      misc_feature    1564..2492
                      /label="SEVA_pUC"
-     regulatory      323..425
+     misc_feature    323..425
                      /label="SEVA_T0"
+     misc_feature    2507..2611
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3483,7 +3639,7 @@ ORIGIN
      2521 tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa ggcccagtct
      2581 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
-LOCUS       B-P48_Terminator3_AraC_RiboC 2853 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P48_Terminator3_AraC_RiboC 2853 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P48 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P48,
             contains a AraC promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -3508,12 +3664,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    685..1723
                      /label="SEVA_Ap"
-     regulatory      2740..2844
-                     /label="SEVA_T1"
      misc_feature    1797..2725
                      /label="SEVA_pUC"
-     regulatory      556..658
+     misc_feature    556..658
                      /label="SEVA_T0"
+     misc_feature    2740..2844
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -3564,7 +3720,7 @@ ORIGIN
      2761 tactcaggag agcgttcacc gacaaacaac agataaaacg aaaggcccag tctttcgact
      2821 gagcctttcg ttttatttga tgcctttaat taa
 //
-LOCUS       B-P49_Terminator1_T7_100_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P49_Terminator1_T7_100_RiboA 2597 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P49 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P49,
             contains a T7_100 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -3589,12 +3745,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    429..1467
                      /label="SEVA_Ap"
-     regulatory      2484..2588
-                     /label="SEVA_T1"
      misc_feature    1541..2469
                      /label="SEVA_pUC"
-     regulatory      300..402
+     misc_feature    300..402
                      /label="SEVA_T0"
+     misc_feature    2484..2588
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -3641,7 +3797,7 @@ ORIGIN
      2521 caccgacaaa caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat
      2581 ttgatgcctt taattaa
 //
-LOCUS       B-P50_Terminator1_T7_52_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P50_Terminator1_T7_52_RiboA 2597 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P50 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P50,
             contains a T7_52 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -3666,12 +3822,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    429..1467
                      /label="SEVA_Ap"
-     regulatory      2484..2588
-                     /label="SEVA_T1"
      misc_feature    1541..2469
                      /label="SEVA_pUC"
-     regulatory      300..402
+     misc_feature    300..402
                      /label="SEVA_T0"
+     misc_feature    2484..2588
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -3718,7 +3874,7 @@ ORIGIN
      2521 caccgacaaa caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat
      2581 ttgatgcctt taattaa
 //
-LOCUS       B-P51_Terminator1_T7_50_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P51_Terminator1_T7_50_RiboA 2597 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P51 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P51,
             contains a T7_50 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -3743,12 +3899,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    429..1467
                      /label="SEVA_Ap"
-     regulatory      2484..2588
-                     /label="SEVA_T1"
      misc_feature    1541..2469
                      /label="SEVA_pUC"
-     regulatory      300..402
+     misc_feature    300..402
                      /label="SEVA_T0"
+     misc_feature    2484..2588
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -3795,7 +3951,7 @@ ORIGIN
      2521 caccgacaaa caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat
      2581 ttgatgcctt taattaa
 //
-LOCUS       B-P52_Terminator1_T7_25_RiboA 2597 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P52_Terminator1_T7_25_RiboA 2597 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P52 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P52,
             contains a T7_25 promoter with an upstream Terminator1 and a
             downstream RiboA.
@@ -3820,12 +3976,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    429..1467
                      /label="SEVA_Ap"
-     regulatory      2484..2588
-                     /label="SEVA_T1"
      misc_feature    1541..2469
                      /label="SEVA_pUC"
-     regulatory      300..402
+     misc_feature    300..402
                      /label="SEVA_T0"
+     misc_feature    2484..2588
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
@@ -3872,7 +4028,7 @@ ORIGIN
      2521 caccgacaaa caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat
      2581 ttgatgcctt taattaa
 //
-LOCUS       B-P53_Terminator2_T7_100_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P53_Terminator2_T7_100_RiboB 2593 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P53 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P53,
             contains a T7_100 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -3897,12 +4053,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    425..1463
                      /label="SEVA_Ap"
-     regulatory      2480..2584
-                     /label="SEVA_T1"
      misc_feature    1537..2465
                      /label="SEVA_pUC"
-     regulatory      296..398
+     misc_feature    296..398
                      /label="SEVA_T0"
+     misc_feature    2480..2584
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -3949,7 +4105,7 @@ ORIGIN
      2521 gacaaacaac agataaaacg aaaggcccag tctttcgact gagcctttcg ttttatttga
      2581 tgcctttaat taa
 //
-LOCUS       B-P54_Terminator2_T7_52_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P54_Terminator2_T7_52_RiboB 2593 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P54 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P54,
             contains a T7_52 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -3974,12 +4130,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    425..1463
                      /label="SEVA_Ap"
-     regulatory      2480..2584
-                     /label="SEVA_T1"
      misc_feature    1537..2465
                      /label="SEVA_pUC"
-     regulatory      296..398
+     misc_feature    296..398
                      /label="SEVA_T0"
+     misc_feature    2480..2584
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -4026,7 +4182,84 @@ ORIGIN
      2521 gacaaacaac agataaaacg aaaggcccag tctttcgact gagcctttcg ttttatttga
      2581 tgcctttaat taa
 //
-LOCUS       B-P56_Terminator2_T7_25_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P55_Terminator2_T7_50_RiboB 2593 bp    DNA     circular UNK 03-SEP-2020
+DEFINITION  B-P55 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P55,
+            contains a T7_50 promoter with an upstream Terminator2 and a
+            downstream RiboB.
+ACCESSION   B-P55
+VERSION     B-P55
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    3..57
+                     /label="LMP"
+     regulatory      135..157
+                     /label="T7_50"
+     misc_feature    158..232
+                     /label="RiboB"
+     regulatory      58..114
+                     /label="Terminator2"
+     misc_feature    115..134
+                     /label="SpacerA"
+     misc_feature    235..289
+                     /label="LMS"
+     misc_feature    425..1463
+                     /label="SEVA_Ap"
+     misc_feature    1537..2465
+                     /label="SEVA_pUC"
+     misc_feature    296..398
+                     /label="SEVA_T0"
+     misc_feature    2480..2584
+                     /label="SEVA_T1"
+ORIGIN
+        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
+       61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
+      121 actctggaaa atcttaatac gactcactat ggggagaagc gctcaacggg tgtgcttccc
+      181 gttctgatga gtccgtgagg acgaaagcgc ctctacaaat aattttgttt aaggctcggg
+      241 agacctatcg gtaataacag tccaatctgg tgtaacttcg gaatcgtcca ctagtcttgg
+      301 actcctgttg atagatccag taatgacctc agaactccat ctggatttgt tcagaacgct
+      361 cggttgccgc cgggcgtttt ttattggtga gaatccaggg gtccccaata attacgattt
+      421 aaattagtag cccgcctaat gagcgggctt ttttttaatt cccctatttg tttatttttc
+      481 taaatacatt caaatatgta tccgctcatg agacaataac cctgataaat gcttcaataa
+      541 tattgaaaaa ggaagagtat gagcattcag cattttcgtg tggcgctgat tccgtttttt
+      601 gcggcgtttt gcctgccggt gtttgcgcat ccggaaaccc tggtgaaagt gaaagatgcg
+      661 gaagatcaac tgggtgcgcg cgtgggctat attgaactgg atctgaacag cggcaaaatt
+      721 ctggaatctt ttcgtccgga agaacgtttt ccgatgatga gcacctttaa agtgctgctg
+      781 tgcggtgcgg ttctgagccg tgtggatgcg ggccaggaac aactgggccg tcgtattcat
+      841 tatagccaga acgatctggt ggaatatagc ccggtgaccg aaaaacatct gaccgatggc
+      901 atgaccgtgc gtgaactgtg cagcgcggcg attaccatga gcgataacac cgcggcgaac
+      961 ctgctgctga cgaccattgg cggtccgaaa gaactgaccg cgtttctgca taacatgggc
+     1021 gatcatgtga cccgtctgga tcgttgggaa ccggaactga acgaagcgat tccgaacgat
+     1081 gaacgtgata ccaccatgcc ggcagcaatg gcgaccaccc tgcgtaaact gctgacgggt
+     1141 gagctgctga ccctggcaag ccgccagcaa ctgattgatt ggatggaagc ggataaagtg
+     1201 gcgggtccgc tgctgcgtag cgcgctgccg gctggctggt ttattgcgga taaaagcggt
+     1261 gcgggcgaac gtggcagccg tggcattatt gcggcgctgg gcccggatgg taaaccgagc
+     1321 cgtattgtgg tgatttatac caccggcagc caggcgacga tggatgaacg taaccgtcag
+     1381 attgcggaaa ttggcgcgag cctgattaaa cattggtaaa ccgatacaat taaaggctcc
+     1441 ttttggagcc tttttttttg gacgaccctt gtcggctcga cccacgacta ttgactgctc
+     1501 tgagaaagtt gattgttacg attagtccgg ccggccccgt agaaaagatc aaaggatctt
+     1561 cttgagatcc tttttttctg cgcgtaatct gctgcttgca aacaaaaaaa ccaccgctac
+     1621 cagcggtggt ttgtttgccg gatcaagagc taccaactct ttttccgaag gtaactggct
+     1681 tcagcagagc gcagatacca aatactgttc ttctagtgta gccgtagtta ggccaccact
+     1741 tcaagaactc tgtagcaccg cctacatacc tcgctctgct aatcctgtta ccagtggctg
+     1801 ctgccagtgg cgataagtcg tgtcttaccg ggttggactc aagacgatag ttaccggata
+     1861 aggcgcagcg gtcgggctga acggggggtt cgtgcacaca gcccagcttg gagcgaacga
+     1921 cctacaccga actgagatac ctacagcgtg agctttgaga aagcgccacg cttcccgaag
+     1981 ggagaaaggc ggacaggtat ccggtaagcg gcagggtcgg aacaggagag cgcacgaggg
+     2041 agcttccagg gggaaacgcc tggtatcttt atagtcctgt cgggtttcgc cacctctgac
+     2101 ttgagcgtcg atttttgtga tgctcgtcag gggggcggag cctatggaaa aacgccagca
+     2161 acgcggcctt tttacggttc ctggcctttt gctggccttt tgctcacatg ttctttcctg
+     2221 cgttatcccc tgattctgtg gataaccgta ttaccgcctt tgagtgagct gataccgctc
+     2281 gccgcagccg aacgaccgag cgcagcgagt cagtgagcga ggaagcggaa gagcgcccaa
+     2341 tacgcaaacc gcctctcccc gcgcgttggc cgattcatta atgcagctgg cacgacaggt
+     2401 ttcccgactg gaaagcgggc agtgagcgca acgcaattaa tgtgagttag ctcactcatt
+     2461 aggcaggcgc gcccagctgt ctagggcggc ggatttgtcc tactcaggag agcgttcacc
+     2521 gacaaacaac agataaaacg aaaggcccag tctttcgact gagcctttcg ttttatttga
+     2581 tgcctttaat taa
+//
+LOCUS       B-P56_Terminator2_T7_25_RiboB 2593 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P56 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P56,
             contains a T7_25 promoter with an upstream Terminator2 and a
             downstream RiboB.
@@ -4051,12 +4284,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    425..1463
                      /label="SEVA_Ap"
-     regulatory      2480..2584
-                     /label="SEVA_T1"
      misc_feature    1537..2465
                      /label="SEVA_pUC"
-     regulatory      296..398
+     misc_feature    296..398
                      /label="SEVA_T0"
+     misc_feature    2480..2584
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
@@ -4103,7 +4336,7 @@ ORIGIN
      2521 gacaaacaac agataaaacg aaaggcccag tctttcgact gagcctttcg ttttatttga
      2581 tgcctttaat taa
 //
-LOCUS       B-P57_Terminator3_T7_100_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P57_Terminator3_T7_100_RiboC 2587 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P57 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P57,
             contains a T7_100 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -4128,12 +4361,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    419..1457
                      /label="SEVA_Ap"
-     regulatory      2474..2578
-                     /label="SEVA_T1"
      misc_feature    1531..2459
                      /label="SEVA_pUC"
-     regulatory      290..392
+     misc_feature    290..392
                      /label="SEVA_T0"
+     misc_feature    2474..2578
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -4180,7 +4413,7 @@ ORIGIN
      2521 caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt
      2581 taattaa
 //
-LOCUS       B-P58_Terminator3_T7_52_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P58_Terminator3_T7_52_RiboC 2587 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P58 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P58,
             contains a T7_52 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -4205,12 +4438,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    419..1457
                      /label="SEVA_Ap"
-     regulatory      2474..2578
-                     /label="SEVA_T1"
      misc_feature    1531..2459
                      /label="SEVA_pUC"
-     regulatory      290..392
+     misc_feature    290..392
                      /label="SEVA_T0"
+     misc_feature    2474..2578
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -4257,239 +4490,7 @@ ORIGIN
      2521 caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt
      2581 taattaa
 //
-LOCUS       B-P61_Terminator1_BetI_RiboA 2637 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P61 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P61,
-            contains a BetI promoter with an upstream Terminator1 and a
-            downstream RiboA.
-ACCESSION   B-P61
-VERSION     B-P61
-KEYWORDS    .
-SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
-FEATURES             Location/Qualifiers
-     misc_feature    3..57
-                     /label="LMP"
-     regulatory      139..201
-                     /label="BetI"
-     misc_feature    119..138
-                     /label="SpacerA"
-     misc_feature    202..276
-                     /label="RiboA"
-     regulatory      58..118
-                     /label="Terminator1"
-     misc_feature    279..333
-                     /label="LMS"
-     misc_feature    469..1507
-                     /label="SEVA_Ap"
-     regulatory      2524..2628
-                     /label="SEVA_T1"
-     misc_feature    1581..2509
-                     /label="SEVA_pUC"
-     regulatory      340..442
-                     /label="SEVA_T0"
-ORIGIN
-        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
-       61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
-      121 gcctactctg gaaaatctag cgcgggtgag agggattcgt taccaataga caattgattg
-      181 gacgttcaat ataatgctag cagctgtcac cggatgtgct ttccggtctg atgagtccgt
-      241 gaggacgaaa cagcctctac aaataatttt gtttaaggct cgggagacct atcggtaata
-      301 acagtccaat ctggtgtaac ttcggaatcg tccactagtc ttggactcct gttgatagat
-      361 ccagtaatga cctcagaact ccatctggat ttgttcagaa cgctcggttg ccgccgggcg
-      421 ttttttattg gtgagaatcc aggggtcccc aataattacg atttaaatta gtagcccgcc
-      481 taatgagcgg gctttttttt aattccccta tttgtttatt tttctaaata cattcaaata
-      541 tgtatccgct catgagacaa taaccctgat aaatgcttca ataatattga aaaaggaaga
-      601 gtatgagcat tcagcatttt cgtgtggcgc tgattccgtt ttttgcggcg ttttgcctgc
-      661 cggtgtttgc gcatccggaa accctggtga aagtgaaaga tgcggaagat caactgggtg
-      721 cgcgcgtggg ctatattgaa ctggatctga acagcggcaa aattctggaa tcttttcgtc
-      781 cggaagaacg ttttccgatg atgagcacct ttaaagtgct gctgtgcggt gcggttctga
-      841 gccgtgtgga tgcgggccag gaacaactgg gccgtcgtat tcattatagc cagaacgatc
-      901 tggtggaata tagcccggtg accgaaaaac atctgaccga tggcatgacc gtgcgtgaac
-      961 tgtgcagcgc ggcgattacc atgagcgata acaccgcggc gaacctgctg ctgacgacca
-     1021 ttggcggtcc gaaagaactg accgcgtttc tgcataacat gggcgatcat gtgacccgtc
-     1081 tggatcgttg ggaaccggaa ctgaacgaag cgattccgaa cgatgaacgt gataccacca
-     1141 tgccggcagc aatggcgacc accctgcgta aactgctgac gggtgagctg ctgaccctgg
-     1201 caagccgcca gcaactgatt gattggatgg aagcggataa agtggcgggt ccgctgctgc
-     1261 gtagcgcgct gccggctggc tggtttattg cggataaaag cggtgcgggc gaacgtggca
-     1321 gccgtggcat tattgcggcg ctgggcccgg atggtaaacc gagccgtatt gtggtgattt
-     1381 ataccaccgg cagccaggcg acgatggatg aacgtaaccg tcagattgcg gaaattggcg
-     1441 cgagcctgat taaacattgg taaaccgata caattaaagg ctccttttgg agcctttttt
-     1501 tttggacgac ccttgtcggc tcgacccacg actattgact gctctgagaa agttgattgt
-     1561 tacgattagt ccggccggcc ccgtagaaaa gatcaaagga tcttcttgag atcctttttt
-     1621 tctgcgcgta atctgctgct tgcaaacaaa aaaaccaccg ctaccagcgg tggtttgttt
-     1681 gccggatcaa gagctaccaa ctctttttcc gaaggtaact ggcttcagca gagcgcagat
-     1741 accaaatact gttcttctag tgtagccgta gttaggccac cacttcaaga actctgtagc
-     1801 accgcctaca tacctcgctc tgctaatcct gttaccagtg gctgctgcca gtggcgataa
-     1861 gtcgtgtctt accgggttgg actcaagacg atagttaccg gataaggcgc agcggtcggg
-     1921 ctgaacgggg ggttcgtgca cacagcccag cttggagcga acgacctaca ccgaactgag
-     1981 atacctacag cgtgagcttt gagaaagcgc cacgcttccc gaagggagaa aggcggacag
-     2041 gtatccggta agcggcaggg tcggaacagg agagcgcacg agggagcttc cagggggaaa
-     2101 cgcctggtat ctttatagtc ctgtcgggtt tcgccacctc tgacttgagc gtcgattttt
-     2161 gtgatgctcg tcaggggggc ggagcctatg gaaaaacgcc agcaacgcgg cctttttacg
-     2221 gttcctggcc ttttgctggc cttttgctca catgttcttt cctgcgttat cccctgattc
-     2281 tgtggataac cgtattaccg cctttgagtg agctgatacc gctcgccgca gccgaacgac
-     2341 cgagcgcagc gagtcagtga gcgaggaagc ggaagagcgc ccaatacgca aaccgcctct
-     2401 ccccgcgcgt tggccgattc attaatgcag ctggcacgac aggtttcccg actggaaagc
-     2461 gggcagtgag cgcaacgcaa ttaatgtgag ttagctcact cattaggcag gcgcgcccag
-     2521 ctgtctaggg cggcggattt gtcctactca ggagagcgtt caccgacaaa caacagataa
-     2581 aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt taattaa
-//
-LOCUS       B-P62_Terminator2_Ttg_RiboB 2621 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P62 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P62,
-            contains a Ttg promoter with an upstream Terminator2 and a
-            downstream RiboB.
-ACCESSION   B-P62
-VERSION     B-P62
-KEYWORDS    .
-SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
-FEATURES             Location/Qualifiers
-     misc_feature    3..57
-                     /label="LMP"
-     regulatory      135..185
-                     /label="Ttg"
-     misc_feature    186..260
-                     /label="RiboB"
-     regulatory      58..114
-                     /label="Terminator2"
-     misc_feature    115..134
-                     /label="SpacerA"
-     misc_feature    263..317
-                     /label="LMS"
-     misc_feature    453..1491
-                     /label="SEVA_Ap"
-     regulatory      2508..2612
-                     /label="SEVA_T1"
-     misc_feature    1565..2493
-                     /label="SEVA_pUC"
-     regulatory      324..426
-                     /label="SEVA_T0"
-ORIGIN
-        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
-       61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
-      121 actctggaaa atctcaccca gcagtattta caaacaacca tgaatgtaag tatattcctt
-      181 agcaaagcgc tcaacgggtg tgcttcccgt tctgatgagt ccgtgaggac gaaagcgcct
-      241 ctacaaataa ttttgtttaa ggctcgggag acctatcggt aataacagtc caatctggtg
-      301 taacttcgga atcgtccact agtcttggac tcctgttgat agatccagta atgacctcag
-      361 aactccatct ggatttgttc agaacgctcg gttgccgccg ggcgtttttt attggtgaga
-      421 atccaggggt ccccaataat tacgatttaa attagtagcc cgcctaatga gcgggctttt
-      481 ttttaattcc cctatttgtt tatttttcta aatacattca aatatgtatc cgctcatgag
-      541 acaataaccc tgataaatgc ttcaataata ttgaaaaagg aagagtatga gcattcagca
-      601 ttttcgtgtg gcgctgattc cgttttttgc ggcgttttgc ctgccggtgt ttgcgcatcc
-      661 ggaaaccctg gtgaaagtga aagatgcgga agatcaactg ggtgcgcgcg tgggctatat
-      721 tgaactggat ctgaacagcg gcaaaattct ggaatctttt cgtccggaag aacgttttcc
-      781 gatgatgagc acctttaaag tgctgctgtg cggtgcggtt ctgagccgtg tggatgcggg
-      841 ccaggaacaa ctgggccgtc gtattcatta tagccagaac gatctggtgg aatatagccc
-      901 ggtgaccgaa aaacatctga ccgatggcat gaccgtgcgt gaactgtgca gcgcggcgat
-      961 taccatgagc gataacaccg cggcgaacct gctgctgacg accattggcg gtccgaaaga
-     1021 actgaccgcg tttctgcata acatgggcga tcatgtgacc cgtctggatc gttgggaacc
-     1081 ggaactgaac gaagcgattc cgaacgatga acgtgatacc accatgccgg cagcaatggc
-     1141 gaccaccctg cgtaaactgc tgacgggtga gctgctgacc ctggcaagcc gccagcaact
-     1201 gattgattgg atggaagcgg ataaagtggc gggtccgctg ctgcgtagcg cgctgccggc
-     1261 tggctggttt attgcggata aaagcggtgc gggcgaacgt ggcagccgtg gcattattgc
-     1321 ggcgctgggc ccggatggta aaccgagccg tattgtggtg atttatacca ccggcagcca
-     1381 ggcgacgatg gatgaacgta accgtcagat tgcggaaatt ggcgcgagcc tgattaaaca
-     1441 ttggtaaacc gatacaatta aaggctcctt ttggagcctt tttttttgga cgacccttgt
-     1501 cggctcgacc cacgactatt gactgctctg agaaagttga ttgttacgat tagtccggcc
-     1561 ggccccgtag aaaagatcaa aggatcttct tgagatcctt tttttctgcg cgtaatctgc
-     1621 tgcttgcaaa caaaaaaacc accgctacca gcggtggttt gtttgccgga tcaagagcta
-     1681 ccaactcttt ttccgaaggt aactggcttc agcagagcgc agataccaaa tactgttctt
-     1741 ctagtgtagc cgtagttagg ccaccacttc aagaactctg tagcaccgcc tacatacctc
-     1801 gctctgctaa tcctgttacc agtggctgct gccagtggcg ataagtcgtg tcttaccggg
-     1861 ttggactcaa gacgatagtt accggataag gcgcagcggt cgggctgaac ggggggttcg
-     1921 tgcacacagc ccagcttgga gcgaacgacc tacaccgaac tgagatacct acagcgtgag
-     1981 ctttgagaaa gcgccacgct tcccgaaggg agaaaggcgg acaggtatcc ggtaagcggc
-     2041 agggtcggaa caggagagcg cacgagggag cttccagggg gaaacgcctg gtatctttat
-     2101 agtcctgtcg ggtttcgcca cctctgactt gagcgtcgat ttttgtgatg ctcgtcaggg
-     2161 gggcggagcc tatggaaaaa cgccagcaac gcggcctttt tacggttcct ggccttttgc
-     2221 tggccttttg ctcacatgtt ctttcctgcg ttatcccctg attctgtgga taaccgtatt
-     2281 accgcctttg agtgagctga taccgctcgc cgcagccgaa cgaccgagcg cagcgagtca
-     2341 gtgagcgagg aagcggaaga gcgcccaata cgcaaaccgc ctctccccgc gcgttggccg
-     2401 attcattaat gcagctggca cgacaggttt cccgactgga aagcgggcag tgagcgcaac
-     2461 gcaattaatg tgagttagct cactcattag gcaggcgcgc ccagctgtct agggcggcgg
-     2521 atttgtccta ctcaggagag cgttcaccga caaacaacag ataaaacgaa aggcccagtc
-     2581 tttcgactga gcctttcgtt ttatttgatg cctttaatta a
-//
-LOCUS       B-P63_Terminator3_SaITTC_RiboC 2680 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P63 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P63,
-            contains a SaITTC promoter with an upstream Terminator3 and a
-            downstream RiboC.
-ACCESSION   B-P63
-VERSION     B-P63
-KEYWORDS    .
-SOURCE      synthetic construct
-  ORGANISM  synthetic construct
-            other sequences; artificial sequences.
-FEATURES             Location/Qualifiers
-     misc_feature    3..57
-                     /label="LMP"
-     regulatory      58..108
-                     /label="Terminator3"
-     misc_feature    245..319
-                     /label="RiboC"
-     misc_feature    109..128
-                     /label="SpacerA"
-     regulatory      129..244
-                     /label="SaITTC"
-     misc_feature    322..376
-                     /label="LMS"
-     misc_feature    512..1550
-                     /label="SEVA_Ap"
-     regulatory      2567..2671
-                     /label="SEVA_T1"
-     misc_feature    1624..2552
-                     /label="SEVA_pUC"
-     regulatory      383..485
-                     /label="SEVA_T0"
-ORIGIN
-        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
-       61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
-      121 gaaaatctgg ggcctcgctt gggttattgc tggtgcccgg ccgggcgcaa tattcatgtt
-      181 gatgatttat tatatatcga gtggtgtatt tatttatatt gtttgctccg ttaccgttat
-      241 taacagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
-      301 tacaaataat tttgtttaag gctcgggaga cctatcggta ataacagtcc aatctggtgt
-      361 aacttcggaa tcgtccacta gtcttggact cctgttgata gatccagtaa tgacctcaga
-      421 actccatctg gatttgttca gaacgctcgg ttgccgccgg gcgtttttta ttggtgagaa
-      481 tccaggggtc cccaataatt acgatttaaa ttagtagccc gcctaatgag cgggcttttt
-      541 tttaattccc ctatttgttt atttttctaa atacattcaa atatgtatcc gctcatgaga
-      601 caataaccct gataaatgct tcaataatat tgaaaaagga agagtatgag cattcagcat
-      661 tttcgtgtgg cgctgattcc gttttttgcg gcgttttgcc tgccggtgtt tgcgcatccg
-      721 gaaaccctgg tgaaagtgaa agatgcggaa gatcaactgg gtgcgcgcgt gggctatatt
-      781 gaactggatc tgaacagcgg caaaattctg gaatcttttc gtccggaaga acgttttccg
-      841 atgatgagca cctttaaagt gctgctgtgc ggtgcggttc tgagccgtgt ggatgcgggc
-      901 caggaacaac tgggccgtcg tattcattat agccagaacg atctggtgga atatagcccg
-      961 gtgaccgaaa aacatctgac cgatggcatg accgtgcgtg aactgtgcag cgcggcgatt
-     1021 accatgagcg ataacaccgc ggcgaacctg ctgctgacga ccattggcgg tccgaaagaa
-     1081 ctgaccgcgt ttctgcataa catgggcgat catgtgaccc gtctggatcg ttgggaaccg
-     1141 gaactgaacg aagcgattcc gaacgatgaa cgtgatacca ccatgccggc agcaatggcg
-     1201 accaccctgc gtaaactgct gacgggtgag ctgctgaccc tggcaagccg ccagcaactg
-     1261 attgattgga tggaagcgga taaagtggcg ggtccgctgc tgcgtagcgc gctgccggct
-     1321 ggctggttta ttgcggataa aagcggtgcg ggcgaacgtg gcagccgtgg cattattgcg
-     1381 gcgctgggcc cggatggtaa accgagccgt attgtggtga tttataccac cggcagccag
-     1441 gcgacgatgg atgaacgtaa ccgtcagatt gcggaaattg gcgcgagcct gattaaacat
-     1501 tggtaaaccg atacaattaa aggctccttt tggagccttt ttttttggac gacccttgtc
-     1561 ggctcgaccc acgactattg actgctctga gaaagttgat tgttacgatt agtccggccg
-     1621 gccccgtaga aaagatcaaa ggatcttctt gagatccttt ttttctgcgc gtaatctgct
-     1681 gcttgcaaac aaaaaaacca ccgctaccag cggtggtttg tttgccggat caagagctac
-     1741 caactctttt tccgaaggta actggcttca gcagagcgca gataccaaat actgttcttc
-     1801 tagtgtagcc gtagttaggc caccacttca agaactctgt agcaccgcct acatacctcg
-     1861 ctctgctaat cctgttacca gtggctgctg ccagtggcga taagtcgtgt cttaccgggt
-     1921 tggactcaag acgatagtta ccggataagg cgcagcggtc gggctgaacg gggggttcgt
-     1981 gcacacagcc cagcttggag cgaacgacct acaccgaact gagataccta cagcgtgagc
-     2041 tttgagaaag cgccacgctt cccgaaggga gaaaggcgga caggtatccg gtaagcggca
-     2101 gggtcggaac aggagagcgc acgagggagc ttccaggggg aaacgcctgg tatctttata
-     2161 gtcctgtcgg gtttcgccac ctctgacttg agcgtcgatt tttgtgatgc tcgtcagggg
-     2221 ggcggagcct atggaaaaac gccagcaacg cggccttttt acggttcctg gccttttgct
-     2281 ggccttttgc tcacatgttc tttcctgcgt tatcccctga ttctgtggat aaccgtatta
-     2341 ccgcctttga gtgagctgat accgctcgcc gcagccgaac gaccgagcgc agcgagtcag
-     2401 tgagcgagga agcggaagag cgcccaatac gcaaaccgcc tctccccgcg cgttggccga
-     2461 ttcattaatg cagctggcac gacaggtttc ccgactggaa agcgggcagt gagcgcaacg
-     2521 caattaatgt gagttagctc actcattagg caggcgcgcc cagctgtcta gggcggcgga
-     2581 tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa ggcccagtct
-     2641 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
-//
-LOCUS       B-P59_Terminator3_T7_50_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P59_Terminator3_T7_50_RiboC 2587 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P59 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P59,
             contains a T7_50 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -4514,12 +4515,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    419..1457
                      /label="SEVA_Ap"
-     regulatory      2474..2578
-                     /label="SEVA_T1"
      misc_feature    1531..2459
                      /label="SEVA_pUC"
-     regulatory      290..392
+     misc_feature    290..392
                      /label="SEVA_T0"
+     misc_feature    2474..2578
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -4566,7 +4567,7 @@ ORIGIN
      2521 caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt
      2581 taattaa
 //
-LOCUS       B-P60_Terminator3_T7_25_RiboC 2587 bp    DNA     circular UNK 23-JUL-2020
+LOCUS       B-P60_Terminator3_T7_25_RiboC 2587 bp    DNA     circular UNK 03-SEP-2020
 DEFINITION  B-P60 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P60,
             contains a T7_25 promoter with an upstream Terminator3 and a
             downstream RiboC.
@@ -4591,12 +4592,12 @@ FEATURES             Location/Qualifiers
                      /label="LMS"
      misc_feature    419..1457
                      /label="SEVA_Ap"
-     regulatory      2474..2578
-                     /label="SEVA_T1"
      misc_feature    1531..2459
                      /label="SEVA_pUC"
-     regulatory      290..392
+     misc_feature    290..392
                      /label="SEVA_T0"
+     misc_feature    2474..2578
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
        61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
@@ -4643,12 +4644,12 @@ ORIGIN
      2521 caacagataa aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt
      2581 taattaa
 //
-LOCUS       B-P26_Terminator1_CymR_RiboA 2664 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P26 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P26,
-            contains a CymR promoter with an upstream Terminator1 and a
+LOCUS       B-P61_Terminator1_BetI_RiboA 2637 bp    DNA     circular UNK 03-SEP-2020
+DEFINITION  B-P61 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P61,
+            contains a BetI promoter with an upstream Terminator1 and a
             downstream RiboA.
-ACCESSION   B-P26
-VERSION     B-P26
+ACCESSION   B-P61
+VERSION     B-P61
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -4656,77 +4657,76 @@ SOURCE      synthetic construct
 FEATURES             Location/Qualifiers
      misc_feature    3..57
                      /label="LMP"
-     regulatory      58..118
-                     /label="Terminator1"
-     regulatory      139..228
-                     /label="CymR"
+     regulatory      139..201
+                     /label="BetI"
      misc_feature    119..138
                      /label="SpacerA"
-     misc_feature    229..303
+     misc_feature    202..276
                      /label="RiboA"
-     misc_feature    306..360
+     regulatory      58..118
+                     /label="Terminator1"
+     misc_feature    279..333
                      /label="LMS"
-     misc_feature    496..1534
+     misc_feature    469..1507
                      /label="SEVA_Ap"
-     regulatory      2551..2655
-                     /label="SEVA_T1"
-     misc_feature    1608..2536
+     misc_feature    1581..2509
                      /label="SEVA_pUC"
-     regulatory      367..469
+     misc_feature    340..442
                      /label="SEVA_T0"
+     misc_feature    2524..2628
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag aggcctcccg aaaggggggc cttttttcgt tttggtccgt
-      121 gcctactctg gaaaatctaa caaacagaca atctggtctg tttgtattat ggaaaatttt
-      181 tctgtataat agattcaaca aacagacaat ctggtctgtt tgtattatag ctgtcaccgg
-      241 atgtgctttc cggtctgatg agtccgtgag gacgaaacag cctctacaaa taattttgtt
-      301 taaggctcgg gagacctatc ggtaataaca gtccaatctg gtgtaacttc ggaatcgtcc
-      361 actagtcttg gactcctgtt gatagatcca gtaatgacct cagaactcca tctggatttg
-      421 ttcagaacgc tcggttgccg ccgggcgttt tttattggtg agaatccagg ggtccccaat
-      481 aattacgatt taaattagta gcccgcctaa tgagcgggct tttttttaat tcccctattt
-      541 gtttattttt ctaaatacat tcaaatatgt atccgctcat gagacaataa ccctgataaa
-      601 tgcttcaata atattgaaaa aggaagagta tgagcattca gcattttcgt gtggcgctga
-      661 ttccgttttt tgcggcgttt tgcctgccgg tgtttgcgca tccggaaacc ctggtgaaag
-      721 tgaaagatgc ggaagatcaa ctgggtgcgc gcgtgggcta tattgaactg gatctgaaca
-      781 gcggcaaaat tctggaatct tttcgtccgg aagaacgttt tccgatgatg agcaccttta
-      841 aagtgctgct gtgcggtgcg gttctgagcc gtgtggatgc gggccaggaa caactgggcc
-      901 gtcgtattca ttatagccag aacgatctgg tggaatatag cccggtgacc gaaaaacatc
-      961 tgaccgatgg catgaccgtg cgtgaactgt gcagcgcggc gattaccatg agcgataaca
-     1021 ccgcggcgaa cctgctgctg acgaccattg gcggtccgaa agaactgacc gcgtttctgc
-     1081 ataacatggg cgatcatgtg acccgtctgg atcgttggga accggaactg aacgaagcga
-     1141 ttccgaacga tgaacgtgat accaccatgc cggcagcaat ggcgaccacc ctgcgtaaac
-     1201 tgctgacggg tgagctgctg accctggcaa gccgccagca actgattgat tggatggaag
-     1261 cggataaagt ggcgggtccg ctgctgcgta gcgcgctgcc ggctggctgg tttattgcgg
-     1321 ataaaagcgg tgcgggcgaa cgtggcagcc gtggcattat tgcggcgctg ggcccggatg
-     1381 gtaaaccgag ccgtattgtg gtgatttata ccaccggcag ccaggcgacg atggatgaac
-     1441 gtaaccgtca gattgcggaa attggcgcga gcctgattaa acattggtaa accgatacaa
-     1501 ttaaaggctc cttttggagc cttttttttt ggacgaccct tgtcggctcg acccacgact
-     1561 attgactgct ctgagaaagt tgattgttac gattagtccg gccggccccg tagaaaagat
-     1621 caaaggatct tcttgagatc ctttttttct gcgcgtaatc tgctgcttgc aaacaaaaaa
-     1681 accaccgcta ccagcggtgg tttgtttgcc ggatcaagag ctaccaactc tttttccgaa
-     1741 ggtaactggc ttcagcagag cgcagatacc aaatactgtt cttctagtgt agccgtagtt
-     1801 aggccaccac ttcaagaact ctgtagcacc gcctacatac ctcgctctgc taatcctgtt
-     1861 accagtggct gctgccagtg gcgataagtc gtgtcttacc gggttggact caagacgata
-     1921 gttaccggat aaggcgcagc ggtcgggctg aacggggggt tcgtgcacac agcccagctt
-     1981 ggagcgaacg acctacaccg aactgagata cctacagcgt gagctttgag aaagcgccac
-     2041 gcttcccgaa gggagaaagg cggacaggta tccggtaagc ggcagggtcg gaacaggaga
-     2101 gcgcacgagg gagcttccag ggggaaacgc ctggtatctt tatagtcctg tcgggtttcg
-     2161 ccacctctga cttgagcgtc gatttttgtg atgctcgtca ggggggcgga gcctatggaa
-     2221 aaacgccagc aacgcggcct ttttacggtt cctggccttt tgctggcctt ttgctcacat
-     2281 gttctttcct gcgttatccc ctgattctgt ggataaccgt attaccgcct ttgagtgagc
-     2341 tgataccgct cgccgcagcc gaacgaccga gcgcagcgag tcagtgagcg aggaagcgga
-     2401 agagcgccca atacgcaaac cgcctctccc cgcgcgttgg ccgattcatt aatgcagctg
-     2461 gcacgacagg tttcccgact ggaaagcggg cagtgagcgc aacgcaatta atgtgagtta
-     2521 gctcactcat taggcaggcg cgcccagctg tctagggcgg cggatttgtc ctactcagga
-     2581 gagcgttcac cgacaaacaa cagataaaac gaaaggccca gtctttcgac tgagcctttc
-     2641 gttttatttg atgcctttaa ttaa
+      121 gcctactctg gaaaatctag cgcgggtgag agggattcgt taccaataga caattgattg
+      181 gacgttcaat ataatgctag cagctgtcac cggatgtgct ttccggtctg atgagtccgt
+      241 gaggacgaaa cagcctctac aaataatttt gtttaaggct cgggagacct atcggtaata
+      301 acagtccaat ctggtgtaac ttcggaatcg tccactagtc ttggactcct gttgatagat
+      361 ccagtaatga cctcagaact ccatctggat ttgttcagaa cgctcggttg ccgccgggcg
+      421 ttttttattg gtgagaatcc aggggtcccc aataattacg atttaaatta gtagcccgcc
+      481 taatgagcgg gctttttttt aattccccta tttgtttatt tttctaaata cattcaaata
+      541 tgtatccgct catgagacaa taaccctgat aaatgcttca ataatattga aaaaggaaga
+      601 gtatgagcat tcagcatttt cgtgtggcgc tgattccgtt ttttgcggcg ttttgcctgc
+      661 cggtgtttgc gcatccggaa accctggtga aagtgaaaga tgcggaagat caactgggtg
+      721 cgcgcgtggg ctatattgaa ctggatctga acagcggcaa aattctggaa tcttttcgtc
+      781 cggaagaacg ttttccgatg atgagcacct ttaaagtgct gctgtgcggt gcggttctga
+      841 gccgtgtgga tgcgggccag gaacaactgg gccgtcgtat tcattatagc cagaacgatc
+      901 tggtggaata tagcccggtg accgaaaaac atctgaccga tggcatgacc gtgcgtgaac
+      961 tgtgcagcgc ggcgattacc atgagcgata acaccgcggc gaacctgctg ctgacgacca
+     1021 ttggcggtcc gaaagaactg accgcgtttc tgcataacat gggcgatcat gtgacccgtc
+     1081 tggatcgttg ggaaccggaa ctgaacgaag cgattccgaa cgatgaacgt gataccacca
+     1141 tgccggcagc aatggcgacc accctgcgta aactgctgac gggtgagctg ctgaccctgg
+     1201 caagccgcca gcaactgatt gattggatgg aagcggataa agtggcgggt ccgctgctgc
+     1261 gtagcgcgct gccggctggc tggtttattg cggataaaag cggtgcgggc gaacgtggca
+     1321 gccgtggcat tattgcggcg ctgggcccgg atggtaaacc gagccgtatt gtggtgattt
+     1381 ataccaccgg cagccaggcg acgatggatg aacgtaaccg tcagattgcg gaaattggcg
+     1441 cgagcctgat taaacattgg taaaccgata caattaaagg ctccttttgg agcctttttt
+     1501 tttggacgac ccttgtcggc tcgacccacg actattgact gctctgagaa agttgattgt
+     1561 tacgattagt ccggccggcc ccgtagaaaa gatcaaagga tcttcttgag atcctttttt
+     1621 tctgcgcgta atctgctgct tgcaaacaaa aaaaccaccg ctaccagcgg tggtttgttt
+     1681 gccggatcaa gagctaccaa ctctttttcc gaaggtaact ggcttcagca gagcgcagat
+     1741 accaaatact gttcttctag tgtagccgta gttaggccac cacttcaaga actctgtagc
+     1801 accgcctaca tacctcgctc tgctaatcct gttaccagtg gctgctgcca gtggcgataa
+     1861 gtcgtgtctt accgggttgg actcaagacg atagttaccg gataaggcgc agcggtcggg
+     1921 ctgaacgggg ggttcgtgca cacagcccag cttggagcga acgacctaca ccgaactgag
+     1981 atacctacag cgtgagcttt gagaaagcgc cacgcttccc gaagggagaa aggcggacag
+     2041 gtatccggta agcggcaggg tcggaacagg agagcgcacg agggagcttc cagggggaaa
+     2101 cgcctggtat ctttatagtc ctgtcgggtt tcgccacctc tgacttgagc gtcgattttt
+     2161 gtgatgctcg tcaggggggc ggagcctatg gaaaaacgcc agcaacgcgg cctttttacg
+     2221 gttcctggcc ttttgctggc cttttgctca catgttcttt cctgcgttat cccctgattc
+     2281 tgtggataac cgtattaccg cctttgagtg agctgatacc gctcgccgca gccgaacgac
+     2341 cgagcgcagc gagtcagtga gcgaggaagc ggaagagcgc ccaatacgca aaccgcctct
+     2401 ccccgcgcgt tggccgattc attaatgcag ctggcacgac aggtttcccg actggaaagc
+     2461 gggcagtgag cgcaacgcaa ttaatgtgag ttagctcact cattaggcag gcgcgcccag
+     2521 ctgtctaggg cggcggattt gtcctactca ggagagcgtt caccgacaaa caacagataa
+     2581 aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt taattaa
 //
-LOCUS       B-P34_Terminator2_CymR_RiboB 2660 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P34 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P34,
-            contains a CymR promoter with an upstream Terminator2 and a
+LOCUS       B-P62_Terminator2_Ttg_RiboB 2621 bp    DNA     circular UNK 03-SEP-2020
+DEFINITION  B-P62 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P62,
+            contains a Ttg promoter with an upstream Terminator2 and a
             downstream RiboB.
-ACCESSION   B-P34
-VERSION     B-P34
+ACCESSION   B-P62
+VERSION     B-P62
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -4734,77 +4734,76 @@ SOURCE      synthetic construct
 FEATURES             Location/Qualifiers
      misc_feature    3..57
                      /label="LMP"
-     misc_feature    115..134
-                     /label="SpacerA"
-     regulatory      135..224
-                     /label="CymR"
+     regulatory      135..185
+                     /label="Ttg"
+     misc_feature    186..260
+                     /label="RiboB"
      regulatory      58..114
                      /label="Terminator2"
-     misc_feature    225..299
-                     /label="RiboB"
-     misc_feature    302..356
+     misc_feature    115..134
+                     /label="SpacerA"
+     misc_feature    263..317
                      /label="LMS"
-     misc_feature    492..1530
+     misc_feature    453..1491
                      /label="SEVA_Ap"
-     regulatory      2547..2651
-                     /label="SEVA_T1"
-     misc_feature    1604..2532
+     misc_feature    1565..2493
                      /label="SEVA_pUC"
-     regulatory      363..465
+     misc_feature    324..426
                      /label="SEVA_T0"
+     misc_feature    2508..2612
+                     /label="SEVA_T1"
 ORIGIN
         1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
        61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
-      121 actctggaaa atctaacaaa cagacaatct ggtctgtttg tattatggaa aatttttctg
-      181 tataatagat tcaacaaaca gacaatctgg tctgtttgta ttatagcgct caacgggtgt
-      241 gcttcccgtt ctgatgagtc cgtgaggacg aaagcgcctc tacaaataat tttgtttaag
-      301 gctcgggaga cctatcggta ataacagtcc aatctggtgt aacttcggaa tcgtccacta
-      361 gtcttggact cctgttgata gatccagtaa tgacctcaga actccatctg gatttgttca
-      421 gaacgctcgg ttgccgccgg gcgtttttta ttggtgagaa tccaggggtc cccaataatt
-      481 acgatttaaa ttagtagccc gcctaatgag cgggcttttt tttaattccc ctatttgttt
-      541 atttttctaa atacattcaa atatgtatcc gctcatgaga caataaccct gataaatgct
-      601 tcaataatat tgaaaaagga agagtatgag cattcagcat tttcgtgtgg cgctgattcc
-      661 gttttttgcg gcgttttgcc tgccggtgtt tgcgcatccg gaaaccctgg tgaaagtgaa
-      721 agatgcggaa gatcaactgg gtgcgcgcgt gggctatatt gaactggatc tgaacagcgg
-      781 caaaattctg gaatcttttc gtccggaaga acgttttccg atgatgagca cctttaaagt
-      841 gctgctgtgc ggtgcggttc tgagccgtgt ggatgcgggc caggaacaac tgggccgtcg
-      901 tattcattat agccagaacg atctggtgga atatagcccg gtgaccgaaa aacatctgac
-      961 cgatggcatg accgtgcgtg aactgtgcag cgcggcgatt accatgagcg ataacaccgc
-     1021 ggcgaacctg ctgctgacga ccattggcgg tccgaaagaa ctgaccgcgt ttctgcataa
-     1081 catgggcgat catgtgaccc gtctggatcg ttgggaaccg gaactgaacg aagcgattcc
-     1141 gaacgatgaa cgtgatacca ccatgccggc agcaatggcg accaccctgc gtaaactgct
-     1201 gacgggtgag ctgctgaccc tggcaagccg ccagcaactg attgattgga tggaagcgga
-     1261 taaagtggcg ggtccgctgc tgcgtagcgc gctgccggct ggctggttta ttgcggataa
-     1321 aagcggtgcg ggcgaacgtg gcagccgtgg cattattgcg gcgctgggcc cggatggtaa
-     1381 accgagccgt attgtggtga tttataccac cggcagccag gcgacgatgg atgaacgtaa
-     1441 ccgtcagatt gcggaaattg gcgcgagcct gattaaacat tggtaaaccg atacaattaa
-     1501 aggctccttt tggagccttt ttttttggac gacccttgtc ggctcgaccc acgactattg
-     1561 actgctctga gaaagttgat tgttacgatt agtccggccg gccccgtaga aaagatcaaa
-     1621 ggatcttctt gagatccttt ttttctgcgc gtaatctgct gcttgcaaac aaaaaaacca
-     1681 ccgctaccag cggtggtttg tttgccggat caagagctac caactctttt tccgaaggta
-     1741 actggcttca gcagagcgca gataccaaat actgttcttc tagtgtagcc gtagttaggc
-     1801 caccacttca agaactctgt agcaccgcct acatacctcg ctctgctaat cctgttacca
-     1861 gtggctgctg ccagtggcga taagtcgtgt cttaccgggt tggactcaag acgatagtta
-     1921 ccggataagg cgcagcggtc gggctgaacg gggggttcgt gcacacagcc cagcttggag
-     1981 cgaacgacct acaccgaact gagataccta cagcgtgagc tttgagaaag cgccacgctt
-     2041 cccgaaggga gaaaggcgga caggtatccg gtaagcggca gggtcggaac aggagagcgc
-     2101 acgagggagc ttccaggggg aaacgcctgg tatctttata gtcctgtcgg gtttcgccac
-     2161 ctctgacttg agcgtcgatt tttgtgatgc tcgtcagggg ggcggagcct atggaaaaac
-     2221 gccagcaacg cggccttttt acggttcctg gccttttgct ggccttttgc tcacatgttc
-     2281 tttcctgcgt tatcccctga ttctgtggat aaccgtatta ccgcctttga gtgagctgat
-     2341 accgctcgcc gcagccgaac gaccgagcgc agcgagtcag tgagcgagga agcggaagag
-     2401 cgcccaatac gcaaaccgcc tctccccgcg cgttggccga ttcattaatg cagctggcac
-     2461 gacaggtttc ccgactggaa agcgggcagt gagcgcaacg caattaatgt gagttagctc
-     2521 actcattagg caggcgcgcc cagctgtcta gggcggcgga tttgtcctac tcaggagagc
-     2581 gttcaccgac aaacaacaga taaaacgaaa ggcccagtct ttcgactgag cctttcgttt
-     2641 tatttgatgc ctttaattaa
+      121 actctggaaa atctcaccca gcagtattta caaacaacca tgaatgtaag tatattcctt
+      181 agcaaagcgc tcaacgggtg tgcttcccgt tctgatgagt ccgtgaggac gaaagcgcct
+      241 ctacaaataa ttttgtttaa ggctcgggag acctatcggt aataacagtc caatctggtg
+      301 taacttcgga atcgtccact agtcttggac tcctgttgat agatccagta atgacctcag
+      361 aactccatct ggatttgttc agaacgctcg gttgccgccg ggcgtttttt attggtgaga
+      421 atccaggggt ccccaataat tacgatttaa attagtagcc cgcctaatga gcgggctttt
+      481 ttttaattcc cctatttgtt tatttttcta aatacattca aatatgtatc cgctcatgag
+      541 acaataaccc tgataaatgc ttcaataata ttgaaaaagg aagagtatga gcattcagca
+      601 ttttcgtgtg gcgctgattc cgttttttgc ggcgttttgc ctgccggtgt ttgcgcatcc
+      661 ggaaaccctg gtgaaagtga aagatgcgga agatcaactg ggtgcgcgcg tgggctatat
+      721 tgaactggat ctgaacagcg gcaaaattct ggaatctttt cgtccggaag aacgttttcc
+      781 gatgatgagc acctttaaag tgctgctgtg cggtgcggtt ctgagccgtg tggatgcggg
+      841 ccaggaacaa ctgggccgtc gtattcatta tagccagaac gatctggtgg aatatagccc
+      901 ggtgaccgaa aaacatctga ccgatggcat gaccgtgcgt gaactgtgca gcgcggcgat
+      961 taccatgagc gataacaccg cggcgaacct gctgctgacg accattggcg gtccgaaaga
+     1021 actgaccgcg tttctgcata acatgggcga tcatgtgacc cgtctggatc gttgggaacc
+     1081 ggaactgaac gaagcgattc cgaacgatga acgtgatacc accatgccgg cagcaatggc
+     1141 gaccaccctg cgtaaactgc tgacgggtga gctgctgacc ctggcaagcc gccagcaact
+     1201 gattgattgg atggaagcgg ataaagtggc gggtccgctg ctgcgtagcg cgctgccggc
+     1261 tggctggttt attgcggata aaagcggtgc gggcgaacgt ggcagccgtg gcattattgc
+     1321 ggcgctgggc ccggatggta aaccgagccg tattgtggtg atttatacca ccggcagcca
+     1381 ggcgacgatg gatgaacgta accgtcagat tgcggaaatt ggcgcgagcc tgattaaaca
+     1441 ttggtaaacc gatacaatta aaggctcctt ttggagcctt tttttttgga cgacccttgt
+     1501 cggctcgacc cacgactatt gactgctctg agaaagttga ttgttacgat tagtccggcc
+     1561 ggccccgtag aaaagatcaa aggatcttct tgagatcctt tttttctgcg cgtaatctgc
+     1621 tgcttgcaaa caaaaaaacc accgctacca gcggtggttt gtttgccgga tcaagagcta
+     1681 ccaactcttt ttccgaaggt aactggcttc agcagagcgc agataccaaa tactgttctt
+     1741 ctagtgtagc cgtagttagg ccaccacttc aagaactctg tagcaccgcc tacatacctc
+     1801 gctctgctaa tcctgttacc agtggctgct gccagtggcg ataagtcgtg tcttaccggg
+     1861 ttggactcaa gacgatagtt accggataag gcgcagcggt cgggctgaac ggggggttcg
+     1921 tgcacacagc ccagcttgga gcgaacgacc tacaccgaac tgagatacct acagcgtgag
+     1981 ctttgagaaa gcgccacgct tcccgaaggg agaaaggcgg acaggtatcc ggtaagcggc
+     2041 agggtcggaa caggagagcg cacgagggag cttccagggg gaaacgcctg gtatctttat
+     2101 agtcctgtcg ggtttcgcca cctctgactt gagcgtcgat ttttgtgatg ctcgtcaggg
+     2161 gggcggagcc tatggaaaaa cgccagcaac gcggcctttt tacggttcct ggccttttgc
+     2221 tggccttttg ctcacatgtt ctttcctgcg ttatcccctg attctgtgga taaccgtatt
+     2281 accgcctttg agtgagctga taccgctcgc cgcagccgaa cgaccgagcg cagcgagtca
+     2341 gtgagcgagg aagcggaaga gcgcccaata cgcaaaccgc ctctccccgc gcgttggccg
+     2401 attcattaat gcagctggca cgacaggttt cccgactgga aagcgggcag tgagcgcaac
+     2461 gcaattaatg tgagttagct cactcattag gcaggcgcgc ccagctgtct agggcggcgg
+     2521 atttgtccta ctcaggagag cgttcaccga caaacaacag ataaaacgaa aggcccagtc
+     2581 tttcgactga gcctttcgtt ttatttgatg cctttaatta a
 //
-LOCUS       B-P55_Terminator2_T7_50_RiboB 2593 bp    DNA     circular UNK 23-JUL-2020
-DEFINITION  B-P55 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P55,
-            contains a T7_50 promoter with an upstream Terminator2 and a
-            downstream RiboB.
-ACCESSION   B-P55
-VERSION     B-P55
+LOCUS       B-P63_Terminator3_SaITTC_RiboC 2680 bp    DNA     circular UNK 03-SEP-2020
+DEFINITION  B-P63 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P63,
+            contains a SaITTC promoter with an upstream Terminator3 and a
+            downstream RiboC.
+ACCESSION   B-P63
+VERSION     B-P63
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -4812,67 +4811,68 @@ SOURCE      synthetic construct
 FEATURES             Location/Qualifiers
      misc_feature    3..57
                      /label="LMP"
-     regulatory      135..157
-                     /label="T7_50"
-     misc_feature    158..232
-                     /label="RiboB"
-     regulatory      58..114
-                     /label="Terminator2"
-     misc_feature    115..134
+     regulatory      58..108
+                     /label="Terminator3"
+     misc_feature    245..319
+                     /label="RiboC"
+     misc_feature    109..128
                      /label="SpacerA"
-     misc_feature    235..289
+     regulatory      129..244
+                     /label="SaITTC"
+     misc_feature    322..376
                      /label="LMS"
-     misc_feature    425..1463
+     misc_feature    512..1550
                      /label="SEVA_Ap"
-     regulatory      2480..2584
-                     /label="SEVA_T1"
-     misc_feature    1537..2465
+     misc_feature    1624..2552
                      /label="SEVA_pUC"
-     regulatory      296..398
+     misc_feature    383..485
                      /label="SEVA_T0"
+     misc_feature    2567..2671
+                     /label="SEVA_T1"
 ORIGIN
-        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccctc
-       61 ggtaccaaat tccagaaaag agacgctttc gagcgtcttt tttcgttttg gtccgtgcct
-      121 actctggaaa atcttaatac gactcactat ggggagaagc gctcaacggg tgtgcttccc
-      181 gttctgatga gtccgtgagg acgaaagcgc ctctacaaat aattttgttt aaggctcggg
-      241 agacctatcg gtaataacag tccaatctgg tgtaacttcg gaatcgtcca ctagtcttgg
-      301 actcctgttg atagatccag taatgacctc agaactccat ctggatttgt tcagaacgct
-      361 cggttgccgc cgggcgtttt ttattggtga gaatccaggg gtccccaata attacgattt
-      421 aaattagtag cccgcctaat gagcgggctt ttttttaatt cccctatttg tttatttttc
-      481 taaatacatt caaatatgta tccgctcatg agacaataac cctgataaat gcttcaataa
-      541 tattgaaaaa ggaagagtat gagcattcag cattttcgtg tggcgctgat tccgtttttt
-      601 gcggcgtttt gcctgccggt gtttgcgcat ccggaaaccc tggtgaaagt gaaagatgcg
-      661 gaagatcaac tgggtgcgcg cgtgggctat attgaactgg atctgaacag cggcaaaatt
-      721 ctggaatctt ttcgtccgga agaacgtttt ccgatgatga gcacctttaa agtgctgctg
-      781 tgcggtgcgg ttctgagccg tgtggatgcg ggccaggaac aactgggccg tcgtattcat
-      841 tatagccaga acgatctggt ggaatatagc ccggtgaccg aaaaacatct gaccgatggc
-      901 atgaccgtgc gtgaactgtg cagcgcggcg attaccatga gcgataacac cgcggcgaac
-      961 ctgctgctga cgaccattgg cggtccgaaa gaactgaccg cgtttctgca taacatgggc
-     1021 gatcatgtga cccgtctgga tcgttgggaa ccggaactga acgaagcgat tccgaacgat
-     1081 gaacgtgata ccaccatgcc ggcagcaatg gcgaccaccc tgcgtaaact gctgacgggt
-     1141 gagctgctga ccctggcaag ccgccagcaa ctgattgatt ggatggaagc ggataaagtg
-     1201 gcgggtccgc tgctgcgtag cgcgctgccg gctggctggt ttattgcgga taaaagcggt
-     1261 gcgggcgaac gtggcagccg tggcattatt gcggcgctgg gcccggatgg taaaccgagc
-     1321 cgtattgtgg tgatttatac caccggcagc caggcgacga tggatgaacg taaccgtcag
-     1381 attgcggaaa ttggcgcgag cctgattaaa cattggtaaa ccgatacaat taaaggctcc
-     1441 ttttggagcc tttttttttg gacgaccctt gtcggctcga cccacgacta ttgactgctc
-     1501 tgagaaagtt gattgttacg attagtccgg ccggccccgt agaaaagatc aaaggatctt
-     1561 cttgagatcc tttttttctg cgcgtaatct gctgcttgca aacaaaaaaa ccaccgctac
-     1621 cagcggtggt ttgtttgccg gatcaagagc taccaactct ttttccgaag gtaactggct
-     1681 tcagcagagc gcagatacca aatactgttc ttctagtgta gccgtagtta ggccaccact
-     1741 tcaagaactc tgtagcaccg cctacatacc tcgctctgct aatcctgtta ccagtggctg
-     1801 ctgccagtgg cgataagtcg tgtcttaccg ggttggactc aagacgatag ttaccggata
-     1861 aggcgcagcg gtcgggctga acggggggtt cgtgcacaca gcccagcttg gagcgaacga
-     1921 cctacaccga actgagatac ctacagcgtg agctttgaga aagcgccacg cttcccgaag
-     1981 ggagaaaggc ggacaggtat ccggtaagcg gcagggtcgg aacaggagag cgcacgaggg
-     2041 agcttccagg gggaaacgcc tggtatcttt atagtcctgt cgggtttcgc cacctctgac
-     2101 ttgagcgtcg atttttgtga tgctcgtcag gggggcggag cctatggaaa aacgccagca
-     2161 acgcggcctt tttacggttc ctggcctttt gctggccttt tgctcacatg ttctttcctg
-     2221 cgttatcccc tgattctgtg gataaccgta ttaccgcctt tgagtgagct gataccgctc
-     2281 gccgcagccg aacgaccgag cgcagcgagt cagtgagcga ggaagcggaa gagcgcccaa
-     2341 tacgcaaacc gcctctcccc gcgcgttggc cgattcatta atgcagctgg cacgacaggt
-     2401 ttcccgactg gaaagcgggc agtgagcgca acgcaattaa tgtgagttag ctcactcatt
-     2461 aggcaggcgc gcccagctgt ctagggcggc ggatttgtcc tactcaggag agcgttcacc
-     2521 gacaaacaac agataaaacg aaaggcccag tctttcgact gagcctttcg ttttatttga
-     2581 tgcctttaat taa
+        1 ggctcgggta agaactcgca cttcgtggaa acactattat ctggtgggtc tctgtccgac
+       61 gaacaataag gcctccctaa cggggggcct tttttattga taacaaaagt gcctactctg
+      121 gaaaatctgg ggcctcgctt gggttattgc tggtgcccgg ccgggcgcaa tattcatgtt
+      181 gatgatttat tatatatcga gtggtgtatt tatttatatt gtttgctccg ttaccgttat
+      241 taacagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      301 tacaaataat tttgtttaag gctcgggaga cctatcggta ataacagtcc aatctggtgt
+      361 aacttcggaa tcgtccacta gtcttggact cctgttgata gatccagtaa tgacctcaga
+      421 actccatctg gatttgttca gaacgctcgg ttgccgccgg gcgtttttta ttggtgagaa
+      481 tccaggggtc cccaataatt acgatttaaa ttagtagccc gcctaatgag cgggcttttt
+      541 tttaattccc ctatttgttt atttttctaa atacattcaa atatgtatcc gctcatgaga
+      601 caataaccct gataaatgct tcaataatat tgaaaaagga agagtatgag cattcagcat
+      661 tttcgtgtgg cgctgattcc gttttttgcg gcgttttgcc tgccggtgtt tgcgcatccg
+      721 gaaaccctgg tgaaagtgaa agatgcggaa gatcaactgg gtgcgcgcgt gggctatatt
+      781 gaactggatc tgaacagcgg caaaattctg gaatcttttc gtccggaaga acgttttccg
+      841 atgatgagca cctttaaagt gctgctgtgc ggtgcggttc tgagccgtgt ggatgcgggc
+      901 caggaacaac tgggccgtcg tattcattat agccagaacg atctggtgga atatagcccg
+      961 gtgaccgaaa aacatctgac cgatggcatg accgtgcgtg aactgtgcag cgcggcgatt
+     1021 accatgagcg ataacaccgc ggcgaacctg ctgctgacga ccattggcgg tccgaaagaa
+     1081 ctgaccgcgt ttctgcataa catgggcgat catgtgaccc gtctggatcg ttgggaaccg
+     1141 gaactgaacg aagcgattcc gaacgatgaa cgtgatacca ccatgccggc agcaatggcg
+     1201 accaccctgc gtaaactgct gacgggtgag ctgctgaccc tggcaagccg ccagcaactg
+     1261 attgattgga tggaagcgga taaagtggcg ggtccgctgc tgcgtagcgc gctgccggct
+     1321 ggctggttta ttgcggataa aagcggtgcg ggcgaacgtg gcagccgtgg cattattgcg
+     1381 gcgctgggcc cggatggtaa accgagccgt attgtggtga tttataccac cggcagccag
+     1441 gcgacgatgg atgaacgtaa ccgtcagatt gcggaaattg gcgcgagcct gattaaacat
+     1501 tggtaaaccg atacaattaa aggctccttt tggagccttt ttttttggac gacccttgtc
+     1561 ggctcgaccc acgactattg actgctctga gaaagttgat tgttacgatt agtccggccg
+     1621 gccccgtaga aaagatcaaa ggatcttctt gagatccttt ttttctgcgc gtaatctgct
+     1681 gcttgcaaac aaaaaaacca ccgctaccag cggtggtttg tttgccggat caagagctac
+     1741 caactctttt tccgaaggta actggcttca gcagagcgca gataccaaat actgttcttc
+     1801 tagtgtagcc gtagttaggc caccacttca agaactctgt agcaccgcct acatacctcg
+     1861 ctctgctaat cctgttacca gtggctgctg ccagtggcga taagtcgtgt cttaccgggt
+     1921 tggactcaag acgatagtta ccggataagg cgcagcggtc gggctgaacg gggggttcgt
+     1981 gcacacagcc cagcttggag cgaacgacct acaccgaact gagataccta cagcgtgagc
+     2041 tttgagaaag cgccacgctt cccgaaggga gaaaggcgga caggtatccg gtaagcggca
+     2101 gggtcggaac aggagagcgc acgagggagc ttccaggggg aaacgcctgg tatctttata
+     2161 gtcctgtcgg gtttcgccac ctctgacttg agcgtcgatt tttgtgatgc tcgtcagggg
+     2221 ggcggagcct atggaaaaac gccagcaacg cggccttttt acggttcctg gccttttgct
+     2281 ggccttttgc tcacatgttc tttcctgcgt tatcccctga ttctgtggat aaccgtatta
+     2341 ccgcctttga gtgagctgat accgctcgcc gcagccgaac gaccgagcgc agcgagtcag
+     2401 tgagcgagga agcggaagag cgcccaatac gcaaaccgcc tctccccgcg cgttggccga
+     2461 ttcattaatg cagctggcac gacaggtttc ccgactggaa agcgggcagt gagcgcaacg
+     2521 caattaatgt gagttagctc actcattagg caggcgcgcc cagctgtcta gggcggcgga
+     2581 tttgtcctac tcaggagagc gttcaccgac aaacaacaga taaaacgaaa ggcccagtct
+     2641 ttcgactgag cctttcgttt tatttgatgc ctttaattaa
 //
