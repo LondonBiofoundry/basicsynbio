@@ -20,9 +20,13 @@ from sbol2 import Document
     CommonArgDocs.ADD_I_SEQS
 )
 def import_part(handle, format, add_i_seqs=False):
-    """Return a BasicPart object using Bio.SeqIO.read().
+    """:return: Part object using Bio.SeqIO.read().
 
-    Args:"""
+    Refer to BioPython documentation for further information.
+
+    :rtype: :py:class:`BasicPart`
+
+    """
     seqrec = SeqIO.read(handle, format)
     return seqrec2part(seqrec, add_i_seqs)
 
@@ -31,10 +35,14 @@ def import_part(handle, format, add_i_seqs=False):
     CommonArgDocs.ADD_I_SEQS
 )
 def import_sbol_part(path, add_i_seqs=False):
-    """Returns a BasicPart object using sbol2.Document.exportToFormat.
+    """:return: Part object using sbol2.Document.exportToFormat.
+
+    Refer to pysbol2 documentation for further information.
     
-    Args:
-        path -- Path to sbol file."""
+    :rtype: :py:class:`BasicPart` object.
+    :param string path: Path to sbol file.
+    
+    """
     doc = Document(path)
     fp = tempfile.NamedTemporaryFile(delete=False)
     doc.exportToFormat("GenBank", fp.name)
@@ -50,9 +58,11 @@ def import_sbol_part(path, add_i_seqs=False):
     CommonArgDocs.ADD_I_SEQS
 )
 def import_parts(handle, format, add_i_seqs=False):
-    """Return BasicParts in a single file using Bio.SeqIO.parse().
+    """:return: Generator of :py:class:`BasicPart` instances using Bio.SeqIO.parse().
 
-    Args:"""
+    Refer to BioPython documentation for further information.
+
+    """
     seqrecs = SeqIO.parse(handle, format)
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
@@ -64,8 +74,12 @@ def import_parts(handle, format, add_i_seqs=False):
 def export_sequences_to_file(sequences, handle, format="genbank"):
     """Exports sequences using Bio.SeqIO.write().
 
-    Args:
-        sequences -- objects to export to file handle. BasicPart, BasicAssembly or SeqRecord instances."""
+    Refer to Bio.SeqIO.write documentation for further information.
+
+    :param sequences: objects to export to file handle. 
+    :type sequences: A single object or iterable of type/s :py:class:`BasicPart`, :py:class:`BasicAssembly` or Bio.SeqRecord.SeqRecord.
+
+    """
     if type(sequences) in [bsb.BasicPart, bsb.BasicAssembly, SeqRecord]:
         basic_object = sequences
         try:
@@ -79,22 +93,23 @@ def export_sequences_to_file(sequences, handle, format="genbank"):
         SeqIO.write(sequences, handle, format)
 
 
-@add2docs(
-    CommonArgDocs.FORMAT,
-)
 def import_ice_parts(
         ice_user_config: dict,
         *ice_nums,
         ice_root="https://public-registry.jbei.org/",
         file_type="original",
         format="genbank"):
-    """Returns a BasicPart object using an entry on the JBEI-ICE public registry.
+    """Returns a BasicPart object using an entry on a JBEI-ICE instance. Uses icebreaker under the hood.
 
-    Args:
-        ice_user_config -- Either {email: password:} or {token: client:}. Refer to icebreaker documentation. Root is a separate default argument (ice_root).
-        *ice_nums -- Part ID numbers e.g. 17338, ... Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.
-        ice_root -- Root of ice registry. Refer to icebreaker documentation.
-        file_type -- The file type to download e.g. "original", "genbank" or "fasta"."""
+    Refer to icebreaker documentation for further information.
+
+    :param dict ice_user_config: Either {email: password:} or {token: client:}. Note, compared to icebreaker, 'Root' is a separate default argument (ice_root).  
+    :param \*ice_nums: Part ID numbers as strings e.g. '17338'. Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338. 
+    :param string ice_root: Root of ice registry.
+    :param string file_type: The file type to download e.g. "original", "genbank" or "fasta".
+    :param string format: Format of the downloaded file. If :param file_type: == "fasta", :param format: must be correspondingly set to "fasta".
+        
+    """
     ice_config = ice_user_config
     ice_config["root"] = ice_root
     ice = icebreaker.IceClient(ice_config)
