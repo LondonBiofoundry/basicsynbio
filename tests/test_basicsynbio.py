@@ -262,7 +262,6 @@ def test_add2docs_decorator():
 
     :param seqrec: SeqRecord to be converted to BasicPart subclass.
     :type seqrec: Bio.SeqRecord.SeqRecord
-
     """
     print(bsb.seqrec2part.__doc__)
     assert bsb.seqrec2part.__doc__ == core_doc + "\n" + CommonArgDocs.ADD_I_SEQS

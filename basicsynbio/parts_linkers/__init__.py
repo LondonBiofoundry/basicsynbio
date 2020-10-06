@@ -1,4 +1,5 @@
-"""The parts_linkers subpackage houses a collection of modules describing parts and/or linkers."""
+"""The parts_linkers subpackage houses a collection of modules describing parts
+and/or linkers."""
 
 from .basic_linkers import BIOLEGIO_LINKERS
 from .ice import BSEVA_ICE_DICT

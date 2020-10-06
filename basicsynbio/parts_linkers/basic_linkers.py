@@ -1,4 +1,5 @@
-"""Module contains objects to access BASIC DNA assembly parts from within the pacakge."""
+"""Module contains objects to access BASIC DNA assembly parts from within the
+pacakge."""
 
 import basicsynbio as bsb
 from Bio.Seq import Seq
