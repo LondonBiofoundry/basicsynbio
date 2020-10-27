@@ -1,0 +1,475 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API reference &#8212; basicsynbio 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="contributing.html" />
+    <link rel="prev" title="basicsynbio documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="api-reference">
+<h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-basicsynbio.main">
+<span id="main-py"></span><h2>main.py<a class="headerlink" href="#module-basicsynbio.main" title="Permalink to this headline">¶</a></h2>
+<p>Main module for basicsynbio.</p>
+<dl class="py exception">
+<dt id="basicsynbio.main.AssemblyException">
+<em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">AssemblyException</code><a class="reference internal" href="_modules/basicsynbio/main.html#AssemblyException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.AssemblyException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.main.BasicAssembly">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicAssembly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">parts_linkers</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for BASIC DNA assemblies.</p>
+<p>BasicAssembly class requires alternating <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a> and <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a> instances in any order.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>id</strong> (<em>string</em>) – Identifier for BasicAssemby object. Must be unique amongst BasicAssembly instances used to initiate a BasicBuild object.</p></li>
+<li><p><strong>*parts_linkers</strong> – <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a> and <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a> objects.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="basicsynbio.main.BasicAssembly.return_clip_reactions">
+<code class="sig-name descname">return_clip_reactions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_clip_reactions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_clip_reactions" title="Permalink to this definition">¶</a></dt>
+<dd><p><a class="reference internal" href="#basicsynbio.main.ClipReaction" title="basicsynbio.main.ClipReaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClipReaction</span></code></a> instances required for BASIC assembly.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>A tuple of ClipReactions.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="basicsynbio.main.BasicAssembly.return_part">
+<code class="sig-name descname">return_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alphabet</span><span class="o">=</span><span class="default_value">IUPACAmbiguousDNA()</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assembled construct as a new part.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a>.</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>alphabet</strong> (<em>Bio.Alphabet</em>) – Refer to Bio.Alphabet documentation.</p></li>
+<li><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="basicsynbio.main.BasicAssembly.return_seqrec">
+<code class="sig-name descname">return_seqrec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alphabet</span><span class="o">=</span><span class="default_value">IUPACAmbiguousDNA()</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_seqrec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_seqrec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Assembled construct as a seqrecord.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>Bio.SeqRecord.SeqRecord</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>alphabet</strong> (<em>Bio.Alphabet</em>) – Refer to Bio.Alphabet documentation.</p></li>
+<li><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.main.BasicLinker">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicLinker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">prefix_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">suffix_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicLinker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicLinker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for BASIC DNA assembly linkers.</p>
+<p>A DNA sequence joined with other BasicLinkers via <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a> instances when initialising <a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicAssembly</span></code></a> objects.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> – Refer to Bio.SeqRecord.SeqRecord documentation.</p></li>
+<li><p><strong>id</strong> (<em>string</em>) – Refer to Bio.SeqRecord.SeqRecord documentation.</p></li>
+<li><p><strong>prefix_id</strong> (<em>string</em>) – ID for prefix linker half.</p></li>
+<li><p><strong>suffix_id</strong> (<em>string</em>) – ID for suffix linker half.</p></li>
+<li><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.main.BasicPart">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicPart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for BASIC DNA assembly parts.</p>
+<p>A DNA sequence joined with other BasicParts via <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a> instances when initialising <a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicAssembly</span></code></a> objects. All sequences must contain intergated prefix and suffix sequences.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq</strong> – Refer to Bio.SeqRecord.SeqRecord documentation.</p></li>
+<li><p><strong>id</strong> (<em>string</em>) – Refer to Bio.SeqRecord.SeqRecord documentation</p></li>
+<li><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.main.BasicUTRRBSLinker">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicUTRRBSLinker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span></em>, <em class="sig-param"><span class="n">id</span></em>, <em class="sig-param"><span class="n">prefix_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">suffix_id</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicUTRRBSLinker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicUTRRBSLinker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sub-class of <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a> for UTR-RBS linkers.</p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.main.ClipReaction">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">ClipReaction</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">prefix</span></em>, <em class="sig-param"><span class="n">part</span></em>, <em class="sig-param"><span class="n">suffix</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#ClipReaction"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.ClipReaction" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for describing clip reactions. Note ClipReaction is hashable.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>prefix</strong> (<a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><em>BasicLinker</em></a>) – <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a> used as prefix in clip reaction.</p></li>
+<li><p><strong>part</strong> (<a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><em>BasicPart</em></a>) – <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a> used as part in clip reaction.</p></li>
+<li><p><strong>suffix</strong> (<a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><em>BasicLinker</em></a>) – <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a> used as suffix in clip reaction.</p></li>
+</ul>
+</dd>
+</dl>
+<dl class="py method">
+<dt id="basicsynbio.main.ClipReaction.clip_items">
+<code class="sig-name descname">clip_items</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#ClipReaction.clip_items"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.ClipReaction.clip_items" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>(prefix, part, suffix).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple(<a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker">BasicLinker</a>, <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">BasicPart</a>, <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker">BasicLinker</a>)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="basicsynbio.main.ClipReaction.linker_half_ids">
+<code class="sig-name descname">linker_half_ids</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#ClipReaction.linker_half_ids"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.ClipReaction.linker_half_ids" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ids for prefix and suffix linkers in the form (prefix_id, suffix_id).</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>tuple(string, string)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="basicsynbio.main.LinkerException">
+<em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">LinkerException</code><a class="reference internal" href="_modules/basicsynbio/main.html#LinkerException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.LinkerException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py exception">
+<dt id="basicsynbio.main.PartException">
+<em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">PartException</code><a class="reference internal" href="_modules/basicsynbio/main.html#PartException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.PartException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.main.seqrec2part">
+<code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">seqrec2part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seqrec</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#seqrec2part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.seqrec2part" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert SeqRecord to <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a>.</p>
+<p>Relevant attributes are maintained.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seqrec</strong> (<em>Bio.SeqRecord.SeqRecord</em>) – SeqRecord to be converted to <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a> subclass.</p></li>
+<li><p><strong>add_i_seqs</strong> (<em>bool</em>) – if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-basicsynbio.bsb_io">
+<span id="bsb-io-py"></span><h2>bsb_io.py<a class="headerlink" href="#module-basicsynbio.bsb_io" title="Permalink to this headline">¶</a></h2>
+<p>Module contains objects for importing and exporting parts and sequences.</p>
+<dl class="py function">
+<dt id="basicsynbio.bsb_io.export_sequences_to_file">
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">export_sequences_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sequences</span></em>, <em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'genbank'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#export_sequences_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.export_sequences_to_file" title="Permalink to this definition">¶</a></dt>
+<dd><p>Exports sequences using Bio.SeqIO.write().</p>
+<blockquote>
+<div><p>Refer to Biopython documentation for further information on Bio.SeqIO.write().</p>
+<dl class="field-list simple">
+<dt class="field-odd">param sequences</dt>
+<dd class="field-odd"><p>objects to export to file handle.</p>
+</dd>
+<dt class="field-even">type sequences</dt>
+<dd class="field-even"><p>A single object or iterable of type/s BasicPart, BasicAssembly or Bio.SeqRecord.SeqRecord.</p>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>handle</strong> – handle to file.</p></li>
+<li><p><strong>format</strong> (<em>string</em>) – file format.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.bsb_io.import_ice_parts">
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_ice_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ice_user_config</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">ice_nums</span></em>, <em class="sig-param"><span class="n">ice_root</span><span class="o">=</span><span class="default_value">'https://public-registry.jbei.org/'</span></em>, <em class="sig-param"><span class="n">file_type</span><span class="o">=</span><span class="default_value">'original'</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'genbank'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_ice_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_ice_parts" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code> object using an entry on a JBEI-ICE instance.</p>
+</dd>
+</dl>
+<p>Uses icebreaker under the hood. Refer to <cite>icebreaker documentation &lt;https://edinburgh-genome-foundry.github.io/icebreaker/&gt;</cite> for further information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ice_user_config</strong> (<em>dict</em>) – Either {email: password:} or {token: client:}. Note, compared to icebreaker, ‘Root’ is a separate default argument (ice_root).</p></li>
+<li><p><strong>*ice_nums</strong> – Part ID numbers as strings e.g. “17338”. Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.</p></li>
+<li><p><strong>ice_root</strong> (<em>string</em>) – Root of ice registry.</p></li>
+<li><p><strong>file_type</strong> (<em>string</em>) – The file type to download e.g. “original”, “genbank” or “fasta”.</p></li>
+<li><p><strong>format</strong> (<em>string</em>) – Format of the downloaded file. If file_type == “fasta”, format must also be “fasta”.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.bsb_io.import_part">
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">format</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_part" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>Part object using Bio.SeqIO.read().</p>
+<p>Refer to Biopython documentation for further information on Bio.SeqIO.read().</p>
+<dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>handle</strong> – handle to file.</p></li>
+<li><p><strong>format</strong> (<em>string</em>) – file format.</p></li>
+<li><p><strong>add_i_seqs</strong> (<em>bool</em>) – if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.bsb_io.import_parts">
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">format</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_parts" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>Generator of <code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code> instances using Bio.SeqIO.parse().</p>
+<p>Refer to Biopython documentation for further information on Bio.SeqIO.parse().</p>
+</p>
+</dd>
+<dt class="field-even">Parameters</dt>
+<dd class="field-even"><ul class="simple">
+<li><p><strong>handle</strong> – handle to file.</p></li>
+<li><p><strong>format</strong> (<em>string</em>) – file format.</p></li>
+<li><p><strong>add_i_seqs</strong> (<em>bool</em>) – if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.</p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.bsb_io.import_sbol_part">
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_sbol_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_sbol_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_sbol_part" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p><p>Part object using sbol2.Document.exportToFormat.</p>
+<p>Refer to pysbol2 documentation for further information.</p>
+<dl class="field-list simple">
+<dt class="field-odd">rtype</dt>
+<dd class="field-odd"><p><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code> object.</p>
+</dd>
+<dt class="field-even">param string path</dt>
+<dd class="field-even"><p>Path to sbol file.</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>add_i_seqs</strong> (<em>bool</em>) – if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-basicsynbio.cam">
+<span id="cam-py"></span><h2>cam.py<a class="headerlink" href="#module-basicsynbio.cam" title="Permalink to this headline">¶</a></h2>
+<p>Module contains a collection of objects for computer assisted manufacturing
+within the BASIC DNA assembly framework.</p>
+<dl class="py class">
+<dt id="basicsynbio.cam.BasicBuild">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BasicBuild</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">basic_assemblies</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class provides methods and attributes for building BasicAssembly
+objects.</p>
+<dl class="py method">
+<dt id="basicsynbio.cam.BasicBuild.update_parts">
+<code class="sig-name descname">update_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">parts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.update_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.update_parts" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates BasicBuild instance with <a href="#id1"><span class="problematic" id="id2">*</span></a>parts, replacing existing all
+BasicParts used in assemblies with the matching equivalent in.</p>
+<p><a href="#id3"><span class="problematic" id="id4">*</span></a>parts.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.cam.BuildDecoder">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BuildDecoder</code><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildDecoder" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.cam.BuildEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BuildEncoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">skipkeys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ensure_ascii</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">check_circular</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">allow_nan</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">sort_keys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">separators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="py method">
+<dt id="basicsynbio.cam.BuildEncoder.default">
+<code class="sig-name descname">default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder.default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dd><p>Implement this method in a subclass such that it returns
+a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
+(to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
+<p>For example, to support arbitrary iterators, you could
+implement default like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">):</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">iterable</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">o</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+        <span class="k">pass</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span>
+    <span class="c1"># Let the base class default method raise the TypeError</span>
+    <span class="k">return</span> <span class="n">JSONEncoder</span><span class="o">.</span><span class="n">default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">o</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py exception">
+<dt id="basicsynbio.cam.BuildException">
+<em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BuildException</code><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildException" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.cam.new_part_resuspension">
+<code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">new_part_resuspension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part</span></em>, <em class="sig-param"><span class="n">mass</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">double_stranded</span><span class="o">=</span><span class="default_value">True</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#new_part_resuspension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.new_part_resuspension" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the volume of resuspension buffer (µL) required for a 75 nM
+solution of part, equivalent to 75 fmol/µL.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>part – BasicPart object.
+mass – mass of synthesised part (ng).
+double_stranded – True (default) indicates part is dsDNA.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">basicsynbio</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.main">main.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.bsb_io">bsb_io.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.cam">cam.py</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">basicsynbio documentation</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">&lt;no title&gt;</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, London Biofoundry.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/api.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

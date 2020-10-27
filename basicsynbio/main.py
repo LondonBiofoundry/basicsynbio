@@ -57,7 +57,7 @@ class BasicPart(SeqRecord):
         )
         self._check_bsai()
 
-    def _basic_slice(self):
+    def basic_slice(self):
         """:return: seqrecord flanked by BASIC iP & iS sequences.
         
         :rtype: Bio.SeqRecord.SeqRecord

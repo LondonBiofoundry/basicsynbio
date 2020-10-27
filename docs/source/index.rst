@@ -8,6 +8,7 @@ basicsynbio is an open-source Python package to help facilitate `BASIC DNA Assem
    :caption: Table of Contents
    
    API reference <api>
+   Contributing <contributing>
 
 Indices and tables
 ==================
