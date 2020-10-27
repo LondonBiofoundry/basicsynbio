@@ -1,14 +1,14 @@
 basicsynbio documentation
 =======================================
 
-basicsynbio is an open-source Python package to help facilitate `BASIC DNA Assembly <https://www.basic-assembly.org/about>`_ workflows.
+basicsynbio is an open-source Python package to help facilitate BASIC DNA Assembly workflows.
 
 .. toctree::
    :maxdepth: 2
    :caption: Table of Contents
    
    Introduction <introduction>
-   Useage <useage>
+   Usage <usage>
    Contributing <contributing>
    API reference <api>
    
