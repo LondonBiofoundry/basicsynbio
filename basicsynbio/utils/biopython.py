@@ -1,4 +1,4 @@
-"""Module contains utilities to improve the interface with BioPython."""
+"""Module contains utilities to improve the interface with Biopython."""
 
 from Bio.Seq import Seq
 from Bio.SeqFeature import SeqFeature, FeatureLocation
@@ -6,9 +6,8 @@ from Bio.SeqRecord import SeqRecord
 
 
 def feature_from_qualifier(seqrec, qualifier_key, qualifier_value):
-    """Extract the feature from the seqrec that contains the corresponding qualifier key/qualifier value pair.
-
-    """
+    """Extract the feature from the seqrec that contains the corresponding
+    qualifier key/qualifier value pair."""
     for feature in seqrec.features:
         if qualifier_key in feature.qualifiers:
             if feature.qualifiers[qualifier_key] == qualifier_value:
@@ -27,7 +26,6 @@ def _easy_seqrec(str_seq: str, id, annotation_type="misc_feature", start=0, end=
         start -- start of the annotation
         end -- end of the annotation, if None defaults to len(str_seq)
         **qualifiers -- equivalent to Bio.SeqFeature.qualifiers for annotation e.g. standard_name=["LMP"]
-
     """
     if not end:
         end = len(str_seq)
@@ -40,7 +38,8 @@ def _easy_seqrec(str_seq: str, id, annotation_type="misc_feature", start=0, end=
 
 
 def all_feature_values(part):
-    """Returns the values of all Bio.SeqFeature.qualifiers in part as a list."""
+    """Returns the values of all Bio.SeqFeature.qualifiers in part as a
+    list."""
     values = []
     for seqfeature in part.features:
         feature_values = list(seqfeature.qualifiers.values())

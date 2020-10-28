@@ -1,0 +1,67 @@
+Contributing
+============
+
+Setting up a development environment
+------------------------------------
+
+#. Fork the `basicsynbio repository`_.
+#. Clone your fork::
+
+    git clone https://github.com/username/basicsynbio.git
+
+#. cd into the directory.
+#. Using a virtual environment running Python 3.7 or greater install the dependancies::
+
+    pip install -r requirements.txt
+
+#. Install the package in editable mode::
+
+    pip install -e .
+
+#. Confirm all test pass::
+
+    pytest [--runslow]
+
+.. _basicsynbio repository: https://github.com/LondonBiofoundry/basicsynbio.git
+
+Making changes
+--------------
+
+Steps
+^^^^^
+
+#. set the upstream repository::
+
+    git remote add upstream https://github.com/LondonBiofoundry/basicsynbio.git
+
+#. Pull the latest changes to origin/master::
+
+    git pull upstream master
+
+#. Create a new branch for your development::
+
+    git checkout -b dev/foobar
+
+#. Make the development then stage and commit::
+
+    git add .
+    git commit -m "make this desirable development to basicsynbio"
+
+#. Push the development back to GitHub::
+
+    git push origin dev/foobar
+
+#. Go to GitHub and create a new Pull Request.
+
+Guidelines
+^^^^^^^^^^
+
+* All new code should have assocated tests written using `pytest`_.
+* Format docstrings according to the `Google Style Guide`_. This enables automated documentation of the API using `sphinx.ext.napoleon`_.
+* Update the documentation if required. The documentation is formated using `Sphinx`_ and as such all files must be written in reST or Markdown.
+
+.. _pytest: https://docs.pytest.org/en/stable/
+.. _Google Style Guide: https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings
+.. _sphinx.ext.napoleon: https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html
+.. _Sphinx: https://www.sphinx-doc.org/en/master/usage/quickstart.html
+

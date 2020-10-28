@@ -103,10 +103,7 @@ def gfp_orf_basicpart(gfp_orf_seqrec):
 
 @pytest.fixture
 def bseva_68_seqrec():
-    from Bio import SeqIO
-    from pathlib import Path
-    bseva_dir = Path.cwd() / "sequences" / "genbank_files" / "BASIC_SEVA_collection"
-    return SeqIO.read(bseva_dir / "BASIC_SEVA_68.gb", "genbank")
+    return bsb.BSEVA_PARTS["68"]
 
 
 @pytest.fixture
@@ -261,9 +258,13 @@ def test_export_to_file(gfp_basicpart, five_part_assembly, gfp_seqrec):
 
 def test_add2docs_decorator():
     from basicsynbio.main import CommonArgDocs
-    core_doc = "Convert a Bio.SeqRecord to a BasicPart, relevant attributes are maintained.\n\n    Args:\n    "
+    core_doc = """Convert a SeqRecord to a :py:class:`BasicPart`, relevant attributes are maintained.
+
+    :param seqrec: SeqRecord to be converted to BasicPart subclass.
+    :type seqrec: Bio.SeqRecord.SeqRecord
+    """
     print(bsb.seqrec2part.__doc__)
-    assert bsb.seqrec2part.__doc__ == core_doc + CommonArgDocs.ADD_I_SEQS
+    assert bsb.seqrec2part.__doc__ == core_doc + "\n" + CommonArgDocs.ADD_I_SEQS
 
 
 def test_new_part_resuspension(gfp_orf_basicpart):

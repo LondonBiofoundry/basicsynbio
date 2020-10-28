@@ -1,4 +1,8 @@
-"""Package contains utilites. Objects that peform various tasks but are not core objects of the basicsynbio package."""
+"""Package contains utilites.
+
+Objects that peform various tasks but are not core objects of the
+basicsynbio package.
+"""
 
 from .benchling import *
 from .biopython import (

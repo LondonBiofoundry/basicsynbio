@@ -1,4 +1,5 @@
-"""Module contains a collection of objects for computer assisted manufacturing within the BASIC DNA assembly framework."""
+"""Module contains a collection of objects for computer assisted manufacturing
+within the BASIC DNA assembly framework."""
 
 from Bio.SeqUtils import molecular_weight
 from Bio.Seq import Seq
@@ -18,26 +19,26 @@ import re
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
-    """Returns the volume of resuspension buffer (µL) required for a 75 nM solution of part, equivalent to 75 fmol/µL.
+    """Returns the volume of resuspension buffer (µL) required for a 75 nM
+    solution of part, equivalent to 75 fmol/µL.
 
     Args:
         part -- BasicPart object.
         mass -- mass of synthesised part (ng).
         double_stranded -- True (default) indicates part is dsDNA.
-
     """
     return (mass*10**-9)/molecular_weight(part.seq, double_stranded=double_stranded)*1/(75e-9)*10**6
 
 
 class BasicBuild():
-    """Class provides methods and attributes for building BasicAssembly objects."""
+    """Class provides methods and attributes for building BasicAssembly
+    objects."""
 
     def __init__(self, *basic_assemblies):
         """Initiate BasicBuild.
 
         Args:
             *basic_assemblies -- BasicAssembly objects.
-
         """
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
@@ -56,7 +57,11 @@ class BasicBuild():
             self.unique_linkers[prefix_hash]["clip_reactions"].append(clip_reaction)
     
     def update_parts(self, *parts):
-        """Updates BasicBuild instance with *parts, replacing existing all BasicParts used in assemblies with the matching equivalent in *parts."""
+        """Updates BasicBuild instance with *parts, replacing existing all
+        BasicParts used in assemblies with the matching equivalent in.
+
+        *parts.
+        """
         if len(parts) != len(self.unique_parts):
             raise ValueError(f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts)} elements. The two must match.")
         parts_dict = self._unique_parts_linkers("part", *parts)
@@ -69,7 +74,8 @@ class BasicBuild():
         self.__init__(*basic_assemblies)
     
     def _return_clips_data(self):
-        """Returns a dictionary of ClipReactions with values describing basic_assemblies it uses."""
+        """Returns a dictionary of ClipReactions with values describing
+        basic_assemblies it uses."""
         clips_dict = OrderedDict(
             **{clip_reaction: [] for assembly in self.basic_assemblies for clip_reaction in assembly.clip_reactions})
         for assembly in self.basic_assemblies:
@@ -78,11 +84,12 @@ class BasicBuild():
         return clips_dict
 
     def _unique_parts_linkers(self, object_key: str, *parts_linkers):
-        """Returns a dictionary of unique objects in *parts_linkers. Includes an empty list for each item to populate with clip_reactions used by each unique part/linker.
-        
+        """Returns a dictionary of unique objects in *parts_linkers. Includes
+        an empty list for each item to populate with clip_reactions used by
+        each unique part/linker.
+
         Args:
             object_key -- "part" or "linker".
-        
         """
         return {
             _seqrecord_hexdigest(part_linker): {
@@ -92,7 +99,8 @@ class BasicBuild():
         }
 
     def _duplicate_assembly_ids(self, assemblies):
-        """If multiple elements of self.basic_assemblies have same "id" attribute, raises a BuildException"""
+        """If multiple elements of self.basic_assemblies have same "id"
+        attribute, raises a BuildException."""
         assemblies_ids = [assembly.id for assembly in assemblies]
         if len(set(assemblies_ids)) < len(assemblies):
             top_assembly_id = Counter(assemblies_ids).most_common(1)[0]
@@ -242,7 +250,8 @@ class BuildException(Exception):
 
 
 def _seqrecord_hexdigest(seqrecord_obj):
-        """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using relevant attributes."""
+        """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
+        relevant attributes."""
         seqrec_hash = hashlib.md5(str(seqrecord_obj.seq).encode("UTF-8"))
         bytes_objs = [getattr(seqrecord_obj, attribute).encode("UTF-8") for attribute in [
             "id",

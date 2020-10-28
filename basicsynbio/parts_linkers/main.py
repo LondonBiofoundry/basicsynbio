@@ -13,14 +13,14 @@ class PartLinkerCollection(dict):
 
 
 @add2docs(
-    8,
     CommonArgDocs.PARTS_LINKERS_ARGS
 )
 def make_collection(*parts_linkers, keys=None):
     """Generates a PartLinkerCollection object.
 
     Args:
-        keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker."""
+        keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
+    """
     if not keys:
         collection = {
             part_linker.id: part_linker for part_linker in parts_linkers}

@@ -30,22 +30,24 @@ IS_SEQREC = _easy_seqrec(IS_STR, "iS", note=["BASIC integrated suffix"])
 
 
 class CommonArgDocs:
-    ADD_I_SEQS = "add_i_seqs -- if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
-    HANDLE = "handle -- handle to file."
-    FORMAT = "format -- file format."
-    ALPHABET = "alphabet -- Bio.Alphabet. Refer Bio.Alphabet documentation."
-    SEQREC_KWARGS = "**kwargs -- assigns alternative Bio.SeqRecord attributes."
-    PARTS_LINKERS_ARGS = "*parts_linkers -- BasicPart or BasicLinker objects."
+    ADD_I_SEQS = ":param bool add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
+    HANDLE = ":param handle: handle to file."
+    FORMAT = ":param string format: file format."
+    ALPHABET = ":param Bio.Alphabet alphabet: Refer to Bio.Alphabet documentation."
+    SEQREC_KWARGS = ":param \**kwargs: assigns alternative SeqRecord attributes."
+    PARTS_LINKERS_ARGS = ":param \*parts_linkers: :py:class:`BasicPart` and :py:class:`BasicLinker` objects."
 
 
 class BasicPart(SeqRecord):
-    """A DNA sequence that can be used in a BASIC DNA assembly.
+    """Class for BASIC DNA assembly parts.
 
-    All sequences must contain intergated prefix and suffix sequences.
+    A DNA sequence joined with other BasicParts via :py:class:`BasicLinker` instances when initialising :py:class:`BasicAssembly` objects. All sequences must contain intergated prefix and suffix sequences.
+
+    :param seq: Refer to Bio.SeqRecord.SeqRecord documentation.
+    :param string id: Refer to Bio.SeqRecord.SeqRecord documentation
     """
 
     def __init__(self, seq, id, **kwargs):
-        """Refer to help(BasicPart), id is required."""
         super().__init__(seq=seq, id=id, **kwargs)
         self._ip_loc = self._find_iseq(
             IP_STR, "iP sequence"
@@ -56,7 +58,10 @@ class BasicPart(SeqRecord):
         self._check_bsai()
 
     def basic_slice(self):
-        """Return the SeqRecord flanked by BASIC iP & iS sequences."""
+        """:return: seqrecord flanked by BASIC iP & iS sequences.
+        
+        :rtype: Bio.SeqRecord.SeqRecord
+        """
         returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
         for key in returned_seqrec.__dict__.keys():
             setattr(returned_seqrec, key, self.__dict__[key])
@@ -79,7 +84,7 @@ class BasicPart(SeqRecord):
         return search_out[1]
 
     def _check_bsai(self):
-        """Checks if sliced basic part contains a BsaI site."""
+        """Checks if sliced BasicPart contains a BsaI site."""
         if len(BsaI.search(self.seq)) > 2:
             raise PartException(
                 f"{self.id} contains more than two BsaI sites.")
@@ -93,16 +98,20 @@ class BasicPart(SeqRecord):
         )
 
 
-class BasicLinker(SeqRecord):
-    def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
-        """Constructor for BasicLinker.
+BasicPart.__doc__ += CommonArgDocs.SEQREC_KWARGS
 
-        Args:
-            seq -- Refer to BioPython.SeqRecord.SeqRecord documentation.
-            id -- Refer to BioPython.SeqRecord.SeqRecord documentation
-            prefix_id -- ID for prefix linker half.
-            suffix_id -- ID for suffix linker half.
-        """
+
+class BasicLinker(SeqRecord):
+    """Class for BASIC DNA assembly linkers.
+
+    A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart` instances when initialising :py:class:`BasicAssembly` objects.
+
+    :param seq: Refer to Bio.SeqRecord.SeqRecord documentation.
+    :param string id: Refer to Bio.SeqRecord.SeqRecord documentation.
+    :param string prefix_id: ID for prefix linker half.
+    :param string suffix_id: ID for suffix linker half.
+    """
+    def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq=seq, id=id, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
@@ -138,8 +147,11 @@ class BasicLinker(SeqRecord):
         )
 
 
+BasicLinker.__doc__ += CommonArgDocs.SEQREC_KWARGS
+
+
 class BasicUTRRBSLinker(BasicLinker):
-    """Sub-class for UTR-RBS linkers."""
+    """Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers."""
 
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
@@ -148,15 +160,13 @@ class BasicUTRRBSLinker(BasicLinker):
 
 
 class BasicAssembly():
-    @add2docs(
-        12,
-        CommonArgDocs.PARTS_LINKERS_ARGS
-    )
-    def __init__(self, id: str, *parts_linkers):
-        """BasicAssembly class requires alternating BasicParts and BasicLinkers in any order.
+    """Class for BASIC DNA assemblies.
 
-        Args:
-            id -- Identifier for BasicAssemby object. Should be unique amongst BasicAssembly instances in a BasicBuild."""
+    BasicAssembly class requires alternating :py:class:`BasicPart` and :py:class:`BasicLinker` instances in any order.
+
+    :param string id: Identifier for BasicAssemby object. Must be unique amongst BasicAssembly instances used to initiate a BasicBuild object.
+    """
+    def __init__(self, id: str, *parts_linkers):
         if isinstance(id, str) == False:
             raise TypeError(f"id parsed to BasicAssembly constructor was not of type str.")
         self.id = id
@@ -164,25 +174,27 @@ class BasicAssembly():
         self.clip_reactions = self.return_clip_reactions()
 
     @add2docs(
-        12,
         CommonArgDocs.ALPHABET,
-        CommonArgDocs.SEQREC_KWARGS
+        CommonArgDocs.SEQREC_KWARGS,
+        indentation=8
     )
     def return_part(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
-        """Return a new BASIC part from this assembly.
+        """Assembled construct as a new part.
 
-        Args:"""
+        :rtype: :py:class:`BasicPart`.
+        """
         return seqrec2part(self.return_seqrec(alphabet=alphabet, **kwargs))
 
     @add2docs(
-        12,
         CommonArgDocs.ALPHABET,
-        CommonArgDocs.SEQREC_KWARGS
+        CommonArgDocs.SEQREC_KWARGS,
+        indentation=8
     )
     def return_seqrec(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
-        """Returns a Bio.SeqRecord object of the assembled construct.
+        """Assembled construct as a seqrecord.
 
-        Args:"""
+        :rtype: Bio.SeqRecord.SeqRecord
+        """
         seqrec = SeqRecord(Seq(str()))
         for part_linker in self.parts_linkers:
             seqrec += part_linker.basic_slice()
@@ -197,7 +209,10 @@ class BasicAssembly():
         return seqrec
 
     def return_clip_reactions(self):
-        """returns clip reactions required for assembly of self."""
+        """:py:class:`ClipReaction` instances required for BASIC assembly.
+
+        :rtype: A tuple of ClipReactions.
+        """
         clip_reactions = []
         for ind, part_linker in enumerate(self.parts_linkers):
             if issubclass(type(part_linker), BasicLinker):
@@ -218,10 +233,14 @@ class BasicAssembly():
         return tuple(clip_reactions)
 
     def _check_clip_reactions(self, clip_reactions):
-        """Checks clip reactions are compatible e.g. same half linker not used multiple times."""
+        """Checks clip reactions are compatible e.g. same half linker not used
+        multiple times."""
 
         def _check_linker_halves(linker_halves):
-            """Check linker_havles are compatible. Note UTR linker-halves must be compatible."""
+            """Check linker_havles are compatible.
+
+            Note UTR linker-halves must be compatible.
+            """
             if len(linker_halves) > len(set(linker_halves)):
                 top_linker_half = Counter(linker_halves).most_common(1)[0]
                 raise AssemblyException(
@@ -255,32 +274,38 @@ class BasicAssembly():
         self._parts_linkers = values
 
 
+BasicAssembly.__doc__ += CommonArgDocs.PARTS_LINKERS_ARGS
+
+
 class ClipReaction():
-    """Class for describing clip reactions. Note ClipReaction is hashable."""
+    """Class for describing clip reactions. Note ClipReaction is hashable.
+
+    :param BasicLinker prefix: :py:class:`BasicLinker` used as prefix in clip reaction.
+    :param BasicPart part: :py:class:`BasicPart` used as part in clip reaction.
+    :param BasicLinker suffix: :py:class:`BasicLinker` used as suffix in clip reaction.
+    """
 
     def __init__(self, prefix, part, suffix):
-        """Initiaties ClipReaction.
-
-        Args:
-            prefix -- BasicLinker instance used as prefix in clip reaction.
-            part -- BasicPart instance.
-            suffix -- BasicLinker instance used as suffix in clip reaction.
-
-        """
         self._prefix = prefix
         self._suffix = suffix
         self._part = part
 
     def linker_half_ids(self):
-        """Returns the ids for prefix and suffix linkers in the form (prefix_id, suffix_id)."""
+        """:return: ids for prefix and suffix linkers in the form (prefix_id, suffix_id).
+        
+        :rtype: tuple(string, string)
+        """
         return self._prefix.prefix_id, self._suffix.suffix_id
 
     def clip_items(self):
-        """Return (prefix, part, suffix)."""
+        """:return: (prefix, part, suffix).
+
+        :rtype: tuple(BasicLinker, BasicPart, BasicLinker)
+        """
         return self._prefix, self._part, self._suffix
 
     def _hexdigest(self, length=16, byteorder="big", signed=True):
-        """Returns the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
+        """:return: the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""
         return hashlib.md5(self.__hash__().to_bytes(length, byteorder=byteorder, signed=signed)).hexdigest()
 
     def __hash__(self):
@@ -308,11 +333,15 @@ class AssemblyException(Exception):
     pass
 
 
-@add2docs(4, CommonArgDocs.ADD_I_SEQS)
+@add2docs(CommonArgDocs.ADD_I_SEQS, indentation=4)
 def seqrec2part(seqrec, add_i_seqs=False):
-    """Convert a Bio.SeqRecord to a BasicPart, relevant attributes are maintained.
+    """Convert SeqRecord to :py:class:`BasicPart`.
 
-    Args:"""
+    Relevant attributes are maintained.
+
+    :param seqrec: SeqRecord to be converted to :py:class:`BasicPart` subclass.
+    :type seqrec: Bio.SeqRecord.SeqRecord
+    """
     if add_i_seqs:
         new_seqrec = IP_SEQREC + seqrec + IS_SEQREC
         part = BasicPart(new_seqrec.seq, seqrec.id,
