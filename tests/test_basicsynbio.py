@@ -258,13 +258,15 @@ def test_export_to_file(gfp_basicpart, five_part_assembly, gfp_seqrec):
 
 def test_add2docs_decorator():
     from basicsynbio.main import CommonArgDocs
-    core_doc = """Convert a SeqRecord to a :py:class:`BasicPart`, relevant attributes are maintained.
+    core_doc = """Convert SeqRecord to :py:class:`BasicPart`.
 
-    :param seqrec: SeqRecord to be converted to BasicPart subclass.
+    Relevant attributes are maintained.
+
+    :param seqrec: SeqRecord to be converted to :py:class:`BasicPart` subclass.
     :type seqrec: Bio.SeqRecord.SeqRecord
     """
     print(bsb.seqrec2part.__doc__)
-    assert bsb.seqrec2part.__doc__ == core_doc + "\n" + CommonArgDocs.ADD_I_SEQS
+    assert bsb.seqrec2part.__doc__ == core_doc + "\n" + " "*4 + CommonArgDocs.ADD_I_SEQS
 
 
 def test_new_part_resuspension(gfp_orf_basicpart):
