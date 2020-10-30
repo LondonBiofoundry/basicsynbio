@@ -20,7 +20,8 @@ DEFAULT_ANNOTATIONS = {
     "date": DATE.strftime("%d-") + DATE.strftime("%b").upper() + DATE.strftime("-%Y"),
     "accessions": [],
     "sequence_version": 1,
-    "topology": "circular"
+    "topology": "circular",
+    "molecule_type": "DNA"
 }
 IP_STR = "TCTGGTGGGTCTCTGTCC"
 IS_STR = "GGCTCGGGAGACCTATCG"
