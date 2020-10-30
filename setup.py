@@ -21,7 +21,7 @@ setuptools.setup(
     ],
     python_requires='>=3.7',
     install_requires=[
-        "biopython>=1.76",
+        "biopython>=1.78",
         "icebreaker",
         "python-Levenshtein",
         "sbol2"
