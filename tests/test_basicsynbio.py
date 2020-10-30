@@ -144,6 +144,11 @@ def promoter_assemblies_json(promoter_assemblies_build):
     import json
     return json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
 
+@pytest.fixture
+def km521207_short():
+    from Bio import SeqIO
+    return SeqIO.read("sequences/misc/km521207-short.gb", "genbank")
+
 
 def compare_seqrec_instances(seqrec1, seqrec2):
     """
@@ -253,6 +258,20 @@ def test_export_to_file(gfp_basicpart, five_part_assembly, gfp_seqrec):
         print("finished exporting iterable")
     finally:
         os.remove("test_export.gb")
+
+def test_export_basic_part(km521207_short):
+    import os
+    try:
+        template_start = bsb.utils.feature_from_qualifier(km521207_short, "label", ["pdt#3"]).location.start
+        template_end = bsb.utils.feature_from_qualifier(km521207_short, "label", ["P2 primer"]).location.end
+        template = bsb.seqrec2part(km521207_short[template_start:template_end], add_i_seqs=True)
+        bsb.export_sequences_to_file(template, "test_export.gb")
+        print("finished exporting GenBank")
+        bsb.export_sequences_to_file(template, "test_export.fasta", format="fasta")
+        print("finished exporting Fasta")
+    finally:
+        os.remove("test_export.gb")
+        os.remove("test_export.fasta")
 
 
 def test_add2docs_decorator():
