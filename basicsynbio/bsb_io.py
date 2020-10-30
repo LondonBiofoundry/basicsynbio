@@ -70,7 +70,7 @@ def import_parts(handle, format, add_i_seqs=False):
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
 )
-def export_sequences_to_file(sequences, handle, format="genbank"):
+def export_sequences_to_file(sequences, handle, format="genbank", molecule_type="DNA"):
     """Exports sequences using Bio.SeqIO.write().
 
     Refer to Biopython documentation for further information on Bio.SeqIO.write().
@@ -82,8 +82,10 @@ def export_sequences_to_file(sequences, handle, format="genbank"):
         basic_object = sequences
         try:
             basic_object = basic_object.return_seqrec()
+            basic_object.annotations["molecule_type"] = molecule_type
             SeqIO.write(basic_object, handle, format)
         except AttributeError:
+            basic_object.annotations["molecule_type"] = molecule_type
             SeqIO.write(basic_object, handle, format)
     else:
         sequences = ((basic_object if not hasattr(basic_object, "return_seqrec")
