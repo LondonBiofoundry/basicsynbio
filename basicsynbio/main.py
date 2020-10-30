@@ -32,7 +32,6 @@ class CommonArgDocs:
     ADD_I_SEQS = ":param bool add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
     HANDLE = ":param handle: handle to file."
     FORMAT = ":param string format: file format."
-    ALPHABET = ":param Bio.Alphabet alphabet: Refer to Bio.Alphabet documentation."
     SEQREC_KWARGS = ":param \**kwargs: assigns alternative SeqRecord attributes."
     PARTS_LINKERS_ARGS = ":param \*parts_linkers: :py:class:`BasicPart` and :py:class:`BasicLinker` objects."
 
@@ -173,7 +172,6 @@ class BasicAssembly():
         self.clip_reactions = self.return_clip_reactions()
 
     @add2docs(
-        CommonArgDocs.ALPHABET,
         CommonArgDocs.SEQREC_KWARGS,
         indentation=8
     )
@@ -182,10 +180,9 @@ class BasicAssembly():
 
         :rtype: :py:class:`BasicPart`.
         """
-        return seqrec2part(self.return_seqrec(alphabet=alphabet, **kwargs))
+        return seqrec2part(self.return_seqrec(**kwargs))
 
     @add2docs(
-        CommonArgDocs.ALPHABET,
         CommonArgDocs.SEQREC_KWARGS,
         indentation=8
     )
