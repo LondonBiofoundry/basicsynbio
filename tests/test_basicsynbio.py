@@ -214,7 +214,6 @@ def test_assembly_return_file(five_part_assembly):
     """The BASIC assembly return_file() method is required given all BASIC assemblies might not be BASIC parts."""
     import os
     assembly_seqrec = five_part_assembly.return_seqrec()
-    print(assembly_seqrec.seq.alphabet)
     five_part_assembly.return_file("test_five_part_assembly.gb")
     os.remove("test_five_part_assembly.gb")
 
