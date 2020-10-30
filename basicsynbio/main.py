@@ -3,7 +3,6 @@
 from basicsynbio.utils import _easy_seqrec
 from basicsynbio.decorators import add2docs
 from Bio import SeqUtils, SeqIO
-from Bio.Alphabet import IUPAC
 from Bio.Restriction.Restriction import BsaI
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -33,7 +32,6 @@ class CommonArgDocs:
     ADD_I_SEQS = ":param bool add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
     HANDLE = ":param handle: handle to file."
     FORMAT = ":param string format: file format."
-    ALPHABET = ":param Bio.Alphabet alphabet: Refer to Bio.Alphabet documentation."
     SEQREC_KWARGS = ":param \**kwargs: assigns alternative SeqRecord attributes."
     PARTS_LINKERS_ARGS = ":param \*parts_linkers: :py:class:`BasicPart` and :py:class:`BasicLinker` objects."
 
@@ -174,23 +172,21 @@ class BasicAssembly():
         self.clip_reactions = self.return_clip_reactions()
 
     @add2docs(
-        CommonArgDocs.ALPHABET,
         CommonArgDocs.SEQREC_KWARGS,
         indentation=8
     )
-    def return_part(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
+    def return_part(self, **kwargs):
         """Assembled construct as a new part.
 
         :rtype: :py:class:`BasicPart`.
         """
-        return seqrec2part(self.return_seqrec(alphabet=alphabet, **kwargs))
+        return seqrec2part(self.return_seqrec(**kwargs))
 
     @add2docs(
-        CommonArgDocs.ALPHABET,
         CommonArgDocs.SEQREC_KWARGS,
         indentation=8
     )
-    def return_seqrec(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
+    def return_seqrec(self, **kwargs):
         """Assembled construct as a seqrecord.
 
         :rtype: Bio.SeqRecord.SeqRecord
@@ -202,7 +198,6 @@ class BasicAssembly():
         seqrec.name = "BASIC_construct_" + self.id
         seqrec.description = f"BASIC DNA Assembly of {[part_linker.id for part_linker in self.parts_linkers]}"
         seqrec.annotations = DEFAULT_ANNOTATIONS
-        seqrec.seq.alphabet = alphabet
         if kwargs:
             for key, value in kwargs.items():
                 setattr(seqrec, key, value)
