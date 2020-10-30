@@ -4,7 +4,6 @@ from basicsynbio.decorators import add2docs
 from basicsynbio.main import CommonArgDocs, IP_SEQREC, IS_SEQREC, seqrec2part
 import basicsynbio as bsb
 from Bio import SeqIO
-from Bio.Alphabet import IUPAC
 from Bio.SeqRecord import SeqRecord
 import io
 import icebreaker

@@ -3,7 +3,6 @@
 from basicsynbio.utils import _easy_seqrec
 from basicsynbio.decorators import add2docs
 from Bio import SeqUtils, SeqIO
-from Bio.Alphabet import IUPAC
 from Bio.Restriction.Restriction import BsaI
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
@@ -178,7 +177,7 @@ class BasicAssembly():
         CommonArgDocs.SEQREC_KWARGS,
         indentation=8
     )
-    def return_part(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
+    def return_part(self, **kwargs):
         """Assembled construct as a new part.
 
         :rtype: :py:class:`BasicPart`.
@@ -190,7 +189,7 @@ class BasicAssembly():
         CommonArgDocs.SEQREC_KWARGS,
         indentation=8
     )
-    def return_seqrec(self, alphabet=IUPAC.ambiguous_dna, **kwargs):
+    def return_seqrec(self, **kwargs):
         """Assembled construct as a seqrecord.
 
         :rtype: Bio.SeqRecord.SeqRecord
@@ -202,7 +201,6 @@ class BasicAssembly():
         seqrec.name = "BASIC_construct_" + self.id
         seqrec.description = f"BASIC DNA Assembly of {[part_linker.id for part_linker in self.parts_linkers]}"
         seqrec.annotations = DEFAULT_ANNOTATIONS
-        seqrec.seq.alphabet = alphabet
         if kwargs:
             for key, value in kwargs.items():
                 setattr(seqrec, key, value)
