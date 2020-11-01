@@ -22,6 +22,7 @@ setuptools.setup(
     python_requires='>=3.7',
     install_requires=[
         "biopython>=1.78",
+        "pydna",
         "icebreaker",
         "python-Levenshtein",
         "sbol2"
