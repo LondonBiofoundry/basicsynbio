@@ -11,6 +11,7 @@ from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
 import datetime
 import hashlib
+from pydna.dseq import Dseq
 
 DATE = datetime.datetime.now()
 DEFAULT_ANNOTATIONS = {
@@ -298,6 +299,40 @@ class ClipReaction():
         :rtype: tuple(BasicLinker, BasicPart, BasicLinker)
         """
         return self._prefix, self._part, self._suffix
+
+    def predict_clip_reaction_sequence(self):
+        """:return: A Pydna Dseq Object containing the predicted clip reaction sequence.
+
+        :rtype: Pydna Dseq Object
+        """
+        # Initiating sequences from self to Pydna Dseq Objects
+        partDseq = Dseq(str(self._part.seq))
+        prefixDseq = Dseq(str(self._prefix.seq)+str('G'))
+        suffixDseq = Dseq(str(self._suffix.seq))
+        # Creating Bsa1 central fragment of part
+        BsaICutPart = partDseq.cut(BsaI)[1]
+        # Creating Suffix - BsaI
+        BsaICutSuffix = suffixDseq.cut(BsaI)[1]
+        # Creating Suffix - Half Linker
+        # Obtaining watson string
+        WatsonSuffix = str(BsaICutSuffix[:(4+12+21)])
+        # Obtaining crick string
+        Crick16bp = BsaICutSuffix[:(4+12)]
+        CrickReversed = Crick16bp.reverse_complement()
+        CrickWithoutOverhang = CrickReversed[:-4]
+        Linker_suffix = Dseq(WatsonSuffix,CrickWithoutOverhang,-4)
+        # Creating Prefix - Bsa1
+        BsaICutPrefix = prefixDseq.cut(BsaI)[0]
+        # Creating Suffix - Half Linker
+        # Obtaining crick string
+        PrefixReverseComp = BsaICutPrefix.reverse_complement()
+        CrickPrefix = str(PrefixReverseComp[:(4+12+21)])
+        # Obtaining watson string
+        WatsonPrefix = str(BsaICutPrefix)[-16:-4]
+        Linker_prefix = Dseq(WatsonPrefix,CrickPrefix,21)
+        # Joining sticky ends of parts and linkers
+        predict_clip_reaction = Linker_prefix + BsaICutPart + Linker_suffix
+        return predict_clip_reaction
 
     def _hexdigest(self, length=16, byteorder="big", signed=True):
         """:return: the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes()."""

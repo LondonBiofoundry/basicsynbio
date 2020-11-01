@@ -447,3 +447,14 @@ def test_import_sbol_part():
     # online converter changes annotations attribute
     bseva18_from_sbol.annotations = bsb.BSEVA_PARTS["18"].annotations
     assert compare_seqrec_instances(bseva18_from_sbol, bsb.BSEVA_PARTS["18"]) == True
+
+def test_predict_clip_reaction_product():
+    first60_flat_seq = 'CTTCGTGGAAACACTATTATCTGGTGGGTCTCTGTCCACTAGTCTTGGACTCCTGTTGAT'
+    last60_flat_seq = 'TTATTTGATGCCTTTAATTAAGGCTCGGGAGACCTATCGGTAATAACAGTCCAATCTGGT'
+    prefix = bsb.BIOLEGIO_LINKERS["LMP"]
+    part = bsb.BSEVA_PARTS["18"]
+    suffix = bsb.BIOLEGIO_LINKERS["LMS"]
+    testClip = bsb.main.ClipReaction(prefix,part,suffix)
+    seq = str(testClip.predict_clip_reaction_sequence())
+    assert seq[:60] == first60_flat_seq
+    assert seq[-60:] == last60_flat_seq
