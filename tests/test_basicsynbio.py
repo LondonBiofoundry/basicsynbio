@@ -81,7 +81,7 @@ def five_part_assembly(five_part_assembly_parts, five_part_assembly_linkers):
         parts_linkers += list(part_linker)
     print([part_linker.id for part_linker in parts_linkers])
     print([type(part_linker) for part_linker in parts_linkers])
-    return bsb.BasicAssembly("five_part_assembly", *parts_linkers)
+    return bsb.BasicAssembly("5_part", *parts_linkers)
 
 
 @pytest.fixture
