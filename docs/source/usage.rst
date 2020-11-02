@@ -135,10 +135,10 @@ BasicAssembly objects:
     import basicsynbio as bsb
 
     cds_assemblies = (bsb.BasicAssembly(
-        ind,
+        str(ind),
         bsb.BSEVA_PARTS["18"],
         bsb.BIOLEGIO_LINKERS["LMP"],
-        part,
+        bsb.BCDS_PARTS[part],
         bsb.BIOLEGIO_LINKERS["LMS"],
         ) for ind, part in enumerate(bsb.BCDS_PARTS))
     build = bsb.BasicBuild(cds_assemblies)
