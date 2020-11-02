@@ -16,6 +16,7 @@ from collections import OrderedDict, Counter
 import json
 import hashlib
 import re
+import types
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -113,6 +114,8 @@ class BasicBuild():
 
     @basic_assemblies.setter
     def basic_assemblies(self, values):
+        if (issubclass(type(values[0]), types.GeneratorType)):
+            values = list(values[0])
         if not all(
                 issubclass(type(value), BasicAssembly) for value in values):
             raise TypeError(
