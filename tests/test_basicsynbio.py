@@ -255,6 +255,18 @@ def test_export_to_file(gfp_basicpart, five_part_assembly, gfp_seqrec):
         os.remove("test_export.gb")
 
 
+def test_export_new_part(gfp_orf_seq):
+    import os
+    from Bio.SeqRecord import SeqRecord
+    try:
+        seqrec = SeqRecord(gfp_orf_seq, "gfp_orf")
+        template = bsb.seqrec2part(seqrec, add_i_seqs=True)
+        bsb.export_sequences_to_file(template, "test_export.gb")
+        print("finished exporting GenBank")
+    finally:
+        os.remove("test_export.gb")
+
+
 def test_add2docs_decorator():
     from basicsynbio.main import CommonArgDocs
     core_doc = """Convert SeqRecord to :py:class:`BasicPart`.
