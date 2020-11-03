@@ -70,7 +70,7 @@ def import_parts(handle, format, add_i_seqs=False):
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
 )
-def export_sequences_to_file(sequences, handle, format="genbank"):
+def export_sequences_to_file(sequences, handle, format="genbank", molecule_type="DNA"):
     """Exports sequences using Bio.SeqIO.write().
 
     Refer to Biopython documentation for further information on Bio.SeqIO.write().
@@ -79,17 +79,23 @@ def export_sequences_to_file(sequences, handle, format="genbank"):
     :type sequences: A single object or iterable of type/s BasicPart, BasicAssembly or Bio.SeqRecord.SeqRecord.
     """
     if type(sequences) in [bsb.BasicPart, bsb.BasicAssembly, SeqRecord]:
-        basic_object = sequences
-        try:
-            basic_object = basic_object.return_seqrec()
-            SeqIO.write(basic_object, handle, format)
-        except AttributeError:
-            SeqIO.write(basic_object, handle, format)
-    else:
-        sequences = ((basic_object if not hasattr(basic_object, "return_seqrec")
-                      else basic_object.return_seqrec()) for basic_object in sequences)
+        SeqIO.write(_process_basic_object(sequences, molecule_type), handle, format)
+    elif hasattr(sequences, "__iter__"):
+        sequences = (_process_basic_object(basic_object, molecule_type) for basic_object in sequences)
         SeqIO.write(sequences, handle, format)
+    else:
+        raise ValueError("sequences was not iterable or of type BasicPart, BasicAssembly or SeqRecord")
 
+
+def _process_basic_object(basic_object, molecule_type):
+    """Converts basic_object into an object that can be processed by Bio.SeqIO."""
+    try:
+        basic_object = basic_object.return_seqrec()
+    except AttributeError:
+        pass
+    basic_object.annotations["molecule_type"] = molecule_type
+    return basic_object
+        
 
 def import_ice_parts(
         ice_user_config: dict,
