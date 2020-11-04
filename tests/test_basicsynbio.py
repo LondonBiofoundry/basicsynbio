@@ -128,15 +128,16 @@ def bsai_part_seqrec(gfp_orf_seq):
 
 @pytest.yield_fixture
 def promoter_assemblies_build():
-    return bsb.BasicBuild(*(bsb.BasicAssembly(
-            promoter.id,
-            bsb.BSEVA_PARTS["27"],
-            bsb.BIOLEGIO_LINKERS["LMP"],
-            promoter,
-            bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
-            bsb.BCDS_PARTS["sfGFP"],
-            bsb.BIOLEGIO_LINKERS["LMS"]
-        ) for promoter in bsb.BPROMOTER_PARTS.values()))
+    promoter_assemblies = (bsb.BasicAssembly(
+        f"promoter_construct_{ind}",
+        bsb.BSEVA_PARTS["26"],
+        bsb.BIOLEGIO_LINKERS["LMP"],
+        promoter,
+        bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
+        bsb.BCDS_PARTS["sfGFP"],
+        bsb.BIOLEGIO_LINKERS["LMS"]
+        ) for ind, promoter in enumerate(bsb.BPROMOTER_PARTS.values()))
+    return bsb.BasicBuild(*promoter_assemblies)
 
 
 @pytest.fixture
@@ -390,7 +391,7 @@ def test_bsai_site_in_part(bsai_part_seqrec):
 
 def test_build_parts(promoter_assemblies_build):
     parts = [promoter_part for promoter_part in bsb.BPROMOTER_PARTS.values()]
-    parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["27"]]
+    parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["26"]]
     print(parts)
     part_ids = [part.id for part in parts]
     for element in promoter_assemblies_build.unique_parts.values():
@@ -407,7 +408,7 @@ def test_build_linkers(promoter_assemblies_build):
 def test_build_clips_data(promoter_assemblies_build):
     from basicsynbio.main import ClipReaction
     clip_reactions = [
-        ClipReaction(bsb.BIOLEGIO_LINKERS["LMS"], bsb.BSEVA_PARTS["27"], bsb.BIOLEGIO_LINKERS["LMP"]),
+        ClipReaction(bsb.BIOLEGIO_LINKERS["LMS"], bsb.BSEVA_PARTS["26"], bsb.BIOLEGIO_LINKERS["LMP"]),
         ClipReaction(bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"]),
     ]
     clip_reactions += [ClipReaction(bsb.BIOLEGIO_LINKERS["LMP"], promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]) for promoter in bsb.BPROMOTER_PARTS.values()]

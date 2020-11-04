@@ -127,21 +127,23 @@ subsequent hierarchical assembly:
 ~~~~~~~~~~~~~~~~~~~
 
 More often than not, a collection of BASIC assemblies are constructed in parallel. 
-To aid this process users should initiate a ``BasicBuild`` with multiple
+To aid this process users should create a ``BasicBuild`` object using multiple
 BasicAssembly objects:
 
 .. code:: python
 
     import basicsynbio as bsb
 
-    cds_assemblies = (bsb.BasicAssembly(
-        ind,
-        bsb.BSEVA_PARTS["18"],
+    promoter_assemblies = (bsb.BasicAssembly(
+        f"promoter_construct_{ind}",
+        bsb.BSEVA_PARTS["26"],
         bsb.BIOLEGIO_LINKERS["LMP"],
-        part,
-        bsb.BIOLEGIO_LINKERS["LMS"],
-        ) for ind, part in enumerate(bsb.BCDS_PARTS))
-    build = bsb.BasicBuild(cds_assemblies)
+        promoter,
+        bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
+        bsb.BCDS_PARTS["sfGFP"],
+        bsb.BIOLEGIO_LINKERS["LMS"]
+        ) for ind, part in enumerate(bsb.BPROMOTER_PARTS.values()))
+    build = bsb.BasicBuild(*promoter_assemblies)
 
 The ``build`` instance contains data describing the unique BasicParts, BasicLinkers and ClipReactions objects
 associated with this build. These objects together provide a description of the materials and steps required
