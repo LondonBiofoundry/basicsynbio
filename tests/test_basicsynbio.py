@@ -288,6 +288,7 @@ def test_new_part_resuspension(gfp_orf_basicpart):
     print(f"biopython MW: {molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)}")
     mass = 750
     vol = bsb.new_part_resuspension(part=gfp_orf_basicpart, mass=mass)
+    print(f"Calculated volume of resuspension buffer: {vol}")
     mw = molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)
     print(f"estimated concentration: {mass*1e-9/(vol*1e-6*mw)*1e9}")
     assert 75 == round(mass*1e-9/(vol*1e-6*mw)*1e9)
