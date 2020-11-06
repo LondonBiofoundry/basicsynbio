@@ -267,6 +267,16 @@ def test_export_new_part(gfp_orf_seq):
     finally:
         os.remove("test_export.gb")
 
+def test_export_csv(promoter_assemblies_build):
+    import os
+    try:
+        promoter_assemblies_build.export_csv()
+        print("finished exporting Assemblies.csv")
+        print("finished exporting Clips.csv")
+    finally:
+        os.remove("Assemblies.csv")
+        os.remove("Clips.csv")
+
 
 def test_add2docs_decorator():
     from basicsynbio.main import CommonArgDocs
