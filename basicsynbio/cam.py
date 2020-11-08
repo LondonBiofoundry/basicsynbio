@@ -17,6 +17,8 @@ import json
 import hashlib
 import re
 import csv
+import zipfile
+import os
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -122,10 +124,13 @@ class BasicBuild():
         self._duplicate_assembly_ids(values)
         self._basic_assemblies = values
 
-    def export_csv(self):
+    def export_csvs(self,path=''):
         """Writes information about each clip and assembly to
         two dependent CSV files in the same folder the command
         is executed"""
+        clips_csv_path = path+'/'+'Clips.csv' if path else 'Clips.csv'
+        assembly_csv_path = path+'/'+'Assemblies.csv' if path else 'Assemblies.csv'
+        zip_path = path+'/'+'ExportCSVs.zip' if path else 'ExportCSVs.zip'
         joint_assembly_clips = {}
         for assembly in self.basic_assemblies:
             joint_assembly_clips[assembly.id] = []
@@ -134,7 +139,7 @@ class BasicBuild():
             for associated_assembly in clip[1]:
                 joint_assembly_clips[associated_assembly.id].append(index+1)
         # Writing CSV files
-        with open('Clips.csv','w',newline='') as f:
+        with open(clips_csv_path,'w',newline='') as f:
             fieldnames = ['index',
                           'prefix_id',
                           'part_id',
@@ -146,12 +151,17 @@ class BasicBuild():
             thewriter.writeheader()
             for item in self._csv_clip_map(joint_assembly_clips):
                 thewriter.writerow(item)
-        with open('Assemblies.csv','w',newline='') as f:
+        with open(assembly_csv_path,'w',newline='') as f:
             fieldnames = ['index','assembly_id','clip_reaction_ids']
             thewriter = csv.DictWriter(f,fieldnames=fieldnames)
             thewriter.writeheader()
             for item in self._csv_assembly_map(joint_assembly_clips):
                 thewriter.writerow(item)
+        with zipfile.ZipFile(zip_path,'w') as my_zip:
+            my_zip.write(assembly_csv_path)
+            my_zip.write(clips_csv_path)
+        os.remove(assembly_csv_path)
+        os.remove(clips_csv_path)
 
     def _csv_clip_map(self,joint_assembly_clips):
         """Returns a List of dictionaries parsable by csv.DictWriter
