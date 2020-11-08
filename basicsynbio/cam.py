@@ -210,7 +210,6 @@ class BasicBuild():
                 'assembly_id':item,
                 'clip_reaction_ids':joint_assembly_clips[item],
             })
-        print(Assembly_csv_object)
         return Assembly_csv_object
 
 class BuildEncoder(json.JSONEncoder):
