@@ -127,7 +127,12 @@ class BasicBuild():
     def export_csvs(self,path=''):
         """Writes information about each clip and assembly to
         two dependent CSV files in the same folder the command
-        is executed"""
+        is executed
+        
+        Args:
+            path (str) -- the folder in which the zip file containing 
+            output csvs is created.
+        """
         clips_csv_path = path+'/'+'Clips.csv' if path else 'Clips.csv'
         assembly_csv_path = path+'/'+'Assemblies.csv' if path else 'Assemblies.csv'
         zip_path = path+'/'+'ExportCSVs.zip' if path else 'ExportCSVs.zip'
