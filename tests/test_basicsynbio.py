@@ -395,14 +395,14 @@ def test_build_parts(promoter_assemblies_build):
     parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["26"]]
     print(parts)
     part_ids = [part.id for part in parts]
-    for element in promoter_assemblies_build.unique_parts.values():
+    for element in promoter_assemblies_build.unique_parts_data.values():
         assert element["part"].id in part_ids
 
 
 def test_build_linkers(promoter_assemblies_build):
     linkers = ("LMP", "UTR1-RBS2", "LMS")
     linker_ids = [bsb.BIOLEGIO_LINKERS[linker].id for linker in linkers]
-    for element in promoter_assemblies_build.unique_linkers.values():
+    for element in promoter_assemblies_build.unique_linkers_data.values():
         assert element["linker"].id in linker_ids
 
 
@@ -432,10 +432,18 @@ def test_basic_build_indetical_ids(five_part_assembly):
 
 def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
     true_unique_linkers = []
-    for linker in promoter_assemblies_build.unique_linkers.values():
+    for linker in promoter_assemblies_build.unique_linkers_data.values():
         if linker not in true_unique_linkers:
             true_unique_linkers.append(linker)
-    assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers)
+    assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers_data)
+
+def test_type_of_unique_parts_is_tuple_of_parts(promoter_assemblies_build):
+    assert isinstance(promoter_assemblies_build.unique_parts,tuple)
+    assert isinstance(promoter_assemblies_build.unique_parts[0],bsb.BasicPart)
+
+def test_type_of_unique_linkers_is_tuple_of_parts(promoter_assemblies_build):
+    assert isinstance(promoter_assemblies_build.unique_linkers,tuple)
+    assert isinstance(promoter_assemblies_build.unique_linkers[0],bsb.BasicLinker)
 
 
 def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_build):
@@ -449,10 +457,10 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     import json
     from basicsynbio.cam import _seqrecord_hexdigest
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
-    original_parts = (part_dict["part"] for part_dict in promoter_assemblies_build.unique_parts.values())
+    original_parts = (part_dict["part"] for part_dict in promoter_assemblies_build.unique_parts_data.values())
     decoded_build.update_parts(*original_parts)
     sfgfp_hash = _seqrecord_hexdigest(bsb.BCDS_PARTS["sfGFP"])
-    assert compare_seqrec_instances(decoded_build.unique_parts[sfgfp_hash]["part"], bsb.BCDS_PARTS["sfGFP"]) == True
+    assert compare_seqrec_instances(decoded_build.unique_parts_data[sfgfp_hash]["part"], bsb.BCDS_PARTS["sfGFP"]) == True
 
 
 @pytest.mark.slow

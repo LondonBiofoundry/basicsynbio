@@ -42,19 +42,21 @@ class BasicBuild():
         """
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
-        self.unique_parts = self._unique_parts_linkers(
+        self.unique_parts_data = self._unique_parts_linkers(
             "part",
             *(clip_reaction._part for clip_reaction in self.clips_data)
         )
-        self.unique_linkers = self._unique_parts_linkers(
+        self.unique_linkers_data = self._unique_parts_linkers(
             "linker",
             *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
+        self.unique_parts = self._unique_parts()
+        self.unique_linkers = self._unique_linkers()
         for clip_reaction in self.clips_data.keys():
             part_hash = _seqrecord_hexdigest(clip_reaction._part)
             prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
-            self.unique_parts[part_hash]["clip_reactions"].append(clip_reaction)
-            self.unique_linkers[prefix_hash]["clip_reactions"].append(clip_reaction)
+            self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
+            self.unique_linkers_data[prefix_hash]["clip_reactions"].append(clip_reaction)
     
     def update_parts(self, *parts):
         """Updates BasicBuild instance with *parts, replacing existing all
@@ -62,8 +64,8 @@ class BasicBuild():
 
         *parts.
         """
-        if len(parts) != len(self.unique_parts):
-            raise ValueError(f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts)} elements. The two must match.")
+        if len(parts) != len(self.unique_parts_data):
+            raise ValueError(f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts_data)} elements. The two must match.")
         parts_dict = self._unique_parts_linkers("part", *parts)
         basic_assemblies = []
         for assembly in self.basic_assemblies:
@@ -97,6 +99,19 @@ class BasicBuild():
                 "clip_reactions": []
             } for part_linker in parts_linkers
         }
+
+    def _unique_parts(self):
+        """Returns a tuple of each unique part in the build"""
+        seen = set()
+        return tuple(clip_reaction._part for clip_reaction in self.clips_data
+               if not (clip_reaction._part.id in seen or seen.add(clip_reaction._part.id)))
+
+        
+    def _unique_linkers(self):
+        """Returns a tuple of each unique linker in the build"""
+        seen = set() 
+        return tuple(clip_reaction._prefix for clip_reaction in self.clips_data 
+               if not (clip_reaction._prefix.id in seen or seen.add(clip_reaction._prefix.id)))
 
     def _duplicate_assembly_ids(self, assemblies):
         """If multiple elements of self.basic_assemblies have same "id"
@@ -144,7 +159,7 @@ class BuildEncoder(json.JSONEncoder):
                 "description": value["part"].description,
                 "clip_reactions": [clip_reaction._hexdigest() for clip_reaction in value["clip_reactions"]]
             }
-        for key, value in obj.unique_parts.items()}
+        for key, value in obj.unique_parts_data.items()}
     
     @staticmethod
     def unique_linkers_json(obj):
@@ -157,7 +172,7 @@ class BuildEncoder(json.JSONEncoder):
                 "suffix_id": value["linker"].suffix_id,
                 "clip_reactions": [clip_reaction._hexdigest() for clip_reaction in value["clip_reactions"]]
             }
-        for key, value in obj.unique_linkers.items()}
+        for key, value in obj.unique_linkers_data.items()}
     
     @staticmethod
     def clips_data_json(obj):
@@ -196,8 +211,8 @@ class BuildDecoder(json.JSONDecoder):
 
     def decode_build(self, dictionary):
         if "__BasicBuild__" in dictionary:
-            self.unique_parts = self.return_unqiue_parts(dictionary)
-            self.unique_linkers = self.return_unique_linkers(dictionary)
+            self.unique_parts_data = self.return_unqiue_parts(dictionary)
+            self.unique_linkers_data = self.return_unique_linkers(dictionary)
             basic_assemblies = self.return_basic_assemblies(dictionary)
             return BasicBuild(*basic_assemblies)
         return dictionary
@@ -207,8 +222,8 @@ class BuildDecoder(json.JSONDecoder):
             parts_linkers = []
             for clip_reaction in assembly["clip_reactions"]:
                 parts_linkers += [
-                    self.unique_linkers[dictionary["clips_data"][clip_reaction]["prefix"]["key"]],
-                    self.unique_parts[dictionary["clips_data"][clip_reaction]["part"]["key"]],
+                    self.unique_linkers_data[dictionary["clips_data"][clip_reaction]["prefix"]["key"]],
+                    self.unique_parts_data[dictionary["clips_data"][clip_reaction]["part"]["key"]],
                 ]
             yield BasicAssembly(assembly["id"], *parts_linkers)
 
