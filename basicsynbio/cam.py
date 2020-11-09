@@ -104,14 +104,14 @@ class BasicBuild():
         """Returns a tuple of each unique part in the build"""
         seen = set()
         return tuple(clip_reaction._part for clip_reaction in self.clips_data
-               if not (clip_reaction._part.id in seen or seen.add(clip_reaction._part.id)))
+               if not (str(clip_reaction._part) in seen or seen.add(str(clip_reaction._part))))
 
         
     def _unique_linkers(self):
         """Returns a tuple of each unique linker in the build"""
         seen = set() 
         return tuple(clip_reaction._prefix for clip_reaction in self.clips_data 
-               if not (clip_reaction._prefix.id in seen or seen.add(clip_reaction._prefix.id)))
+               if not (str(clip_reaction._prefix) in seen or seen.add(str(clip_reaction._prefix))))
 
     def _duplicate_assembly_ids(self, assemblies):
         """If multiple elements of self.basic_assemblies have same "id"
