@@ -11,14 +11,16 @@ from .main import (
     ClipReaction,
     LinkerException    
 )
-from dataclasses import dataclass
-from collections import OrderedDict, Counter
-import json
-import hashlib
-import re
 import csv
-import zipfile
+from dataclasses import dataclass
+from datetime import datetime
+from collections import OrderedDict, Counter
+import hashlib
+import json
 import os
+from pathlib import Path
+import re
+import zipfile
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -124,19 +126,21 @@ class BasicBuild():
         self._duplicate_assembly_ids(values)
         self._basic_assemblies = values
 
-    def export_csvs(self,path=''):
+    def export_csvs(self, path=None):
         """Writes information about each clip and assembly to
         two dependent CSV files in the same folder the command
         is executed
         
         Args:
-            path (str) -- the folder in which the zip file containing 
+            path (str) -- path to zipped folder of csv files. If none defaults to working directory with time stamped name. 
             output csvs is created.
         """
-        clips_csv_path = path+'/'+'Clips.csv' if path else 'Clips.csv'
-        assembly_csv_path = path+'/'+'Assemblies.csv' if path else 'Assemblies.csv'
-        zip_path = path+'/'+'ExportCSVs.zip' if path else 'ExportCSVs.zip'
-        with open(clips_csv_path,'w',newline='') as f:
+        if path == None:
+            now = datetime.now()
+            zip_path = Path.cwd() / f"build_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+        else:
+            zip_path = path
+        with open(Path.cwd() / "clips.csv", 'w', newline='') as f:
             fieldnames = ['index','prefix_id','part_id','part_name','suffix_id','total_assemblies','assembly_index']
             thewriter = csv.DictWriter(f,fieldnames=fieldnames)
             thewriter.writeheader()
@@ -148,9 +152,9 @@ class BasicBuild():
                 'suffix_id':clip[0]._suffix.suffix_id,
                 'total_assemblies':len(clip[1]),
                 'assembly_index':[self.basic_assemblies.index(assembly)+1 for assembly in clip[1]],
-            } for index,clip in enumerate(list(self.clips_data.items()))]:
+            } for index, clip in enumerate(list(self.clips_data.items()))]:
                 thewriter.writerow(item)
-        with open(assembly_csv_path,'w',newline='') as f:
+        with open(Path.cwd() / "assemblies.csv",'w',newline='') as f:
             fieldnames = ['index','assembly_id','clip_reaction_ids']
             thewriter = csv.DictWriter(f,fieldnames=fieldnames)
             thewriter.writeheader()
@@ -162,10 +166,10 @@ class BasicBuild():
             } for assemblyobject in self.basic_assemblies]:
                 thewriter.writerow(item)
         with zipfile.ZipFile(zip_path,'w') as my_zip:
-            my_zip.write(assembly_csv_path)
-            my_zip.write(clips_csv_path)
-        os.remove(assembly_csv_path)
-        os.remove(clips_csv_path)
+            my_zip.write(Path.cwd() / "assemblies.csv")
+            my_zip.write(Path.cwd() / "clips.csv")
+        os.remove(Path.cwd() / "assemblies.csv")
+        os.remove(Path.cwd() / "clips.csv")
 
 class BuildEncoder(json.JSONEncoder):
     def default(self, obj):
