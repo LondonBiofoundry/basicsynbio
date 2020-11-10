@@ -142,7 +142,7 @@ BasicAssembly objects:
         bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
         bsb.BCDS_PARTS["sfGFP"],
         bsb.BIOLEGIO_LINKERS["LMS"]
-        ) for ind, part in enumerate(bsb.BPROMOTER_PARTS.values()))
+        ) for ind, promoter in enumerate(bsb.BPROMOTER_PARTS.values()))
     build = bsb.BasicBuild(*promoter_assemblies)
 
 The ``build`` instance contains data describing the unique BasicParts, BasicLinkers and ClipReactions objects
