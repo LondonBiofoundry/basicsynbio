@@ -270,12 +270,11 @@ def test_export_new_part(gfp_orf_seq):
 def test_export_csv(promoter_assemblies_build):
     import os
     try:
-        promoter_assemblies_build.export_csv()
+        promoter_assemblies_build.export_csvs()
         print("finished exporting Assemblies.csv")
         print("finished exporting Clips.csv")
     finally:
-        os.remove("Assemblies.csv")
-        os.remove("Clips.csv")
+        os.remove("ExportCSVs.zip")
 
 
 def test_add2docs_decorator():

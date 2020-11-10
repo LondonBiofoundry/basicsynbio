@@ -136,86 +136,36 @@ class BasicBuild():
         clips_csv_path = path+'/'+'Clips.csv' if path else 'Clips.csv'
         assembly_csv_path = path+'/'+'Assemblies.csv' if path else 'Assemblies.csv'
         zip_path = path+'/'+'ExportCSVs.zip' if path else 'ExportCSVs.zip'
-        joint_assembly_clips = {}
-        for assembly in self.basic_assemblies:
-            joint_assembly_clips[assembly.id] = []
-        clips = list(self.clips_data.items())
-        for index, clip in enumerate(clips):
-            for associated_assembly in clip[1]:
-                joint_assembly_clips[associated_assembly.id].append(index+1)
-        # Writing CSV files
         with open(clips_csv_path,'w',newline='') as f:
-            fieldnames = ['index',
-                          'prefix_id',
-                          'part_id',
-                          'part_name',
-                          'suffix_id',
-                          'total_assemblies',
-                          'assembly_index']
+            fieldnames = ['index','prefix_id','part_id','part_name','suffix_id','total_assemblies','assembly_index']
             thewriter = csv.DictWriter(f,fieldnames=fieldnames)
             thewriter.writeheader()
-            for item in self._csv_clip_map(joint_assembly_clips):
+            for item in [{
+                'index':index+1,
+                'prefix_id':clip[0]._prefix.prefix_id,
+                'part_id':clip[0]._part.id,
+                'part_name':clip[0]._part.name,
+                'suffix_id':clip[0]._suffix.suffix_id,
+                'total_assemblies':len(clip[1]),
+                'assembly_index':[self.basic_assemblies.index(assembly)+1 for assembly in clip[1]],
+            } for index,clip in enumerate(list(self.clips_data.items()))]:
                 thewriter.writerow(item)
         with open(assembly_csv_path,'w',newline='') as f:
             fieldnames = ['index','assembly_id','clip_reaction_ids']
             thewriter = csv.DictWriter(f,fieldnames=fieldnames)
             thewriter.writeheader()
-            for item in self._csv_assembly_map(joint_assembly_clips):
+            for item in [{
+                'index':self.basic_assemblies.index(assemblyobject),
+                'assembly_id':assemblyobject.id,
+                'clip_reaction_ids':[index+1 for index,clip in enumerate(list(self.clips_data.items()))
+                                    if any(Asembly.id==assemblyobject.id for Asembly in clip[1])]
+            } for assemblyobject in self.basic_assemblies]:
                 thewriter.writerow(item)
         with zipfile.ZipFile(zip_path,'w') as my_zip:
             my_zip.write(assembly_csv_path)
             my_zip.write(clips_csv_path)
         os.remove(assembly_csv_path)
         os.remove(clips_csv_path)
-
-    def _csv_clip_map(self,joint_assembly_clips):
-        """Returns a List of dictionaries parsable by csv.DictWriter
-        of the following format:
-        [{'index': 65, 'prefix_id': 'LMP-P', 'part_id': 'B-P63',
-          'part_name': 'B-P63_Terminator3_SaITTC_RiboC',
-          'suffix_id': 'UTR1-S', 'total_assemblies': 1,
-          'assembly_index': [63]},...]
-
-        Args:
-            joint_assembly_clips(Dict) -- assembly.id:array of clip indices
-            Example -- {'B-P1': [1, 2, 3], 'B-P2': [1, 3, 4],...}
-        """
-        temp = list(joint_assembly_clips.items())
-        Clip_csv_object = []
-        for clip in self.clips_data:
-            assemblies = []
-            for basicassembly in self.clips_data[clip]:
-                res = [idx for idx, key in enumerate(temp) if key[0] == basicassembly.id]
-                assemblies.append(res[0]+1)
-            Clip_csv_object.append({
-                'index':list(self.clips_data).index(clip)+1,
-                'prefix_id':clip._prefix.prefix_id,
-                'part_id':clip._part.id,
-                'part_name':clip._part.name,
-                'suffix_id':clip._suffix.suffix_id,
-                'total_assemblies':len(assemblies),
-                'assembly_index':assemblies,
-            })
-        return Clip_csv_object 
-
-    def _csv_assembly_map(self,joint_assembly_clips):
-        """Returns a List of dictionaries parsable by csv.DictWriter
-        of the following format:
-        [{'index': 1, 'assembly_id': 'B-P1', 'clip_reaction_ids': [1, 2, 3]}
-         ,...]
-
-        Args:
-            joint_assembly_clips(Dict) -- assembly.id:array of clip indices
-            Example -- {'B-P1': [1, 2, 3], 'B-P2': [1, 3, 4],...}
-        """
-        Assembly_csv_object = []
-        for item in joint_assembly_clips:
-            Assembly_csv_object.append({
-                'index':list(map(lambda assembly: assembly.id,self.basic_assemblies)).index(item)+1,
-                'assembly_id':item,
-                'clip_reaction_ids':joint_assembly_clips[item],
-            })
-        return Assembly_csv_object
 
 class BuildEncoder(json.JSONEncoder):
     def default(self, obj):
