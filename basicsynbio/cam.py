@@ -11,11 +11,16 @@ from .main import (
     ClipReaction,
     LinkerException    
 )
+import csv
 from dataclasses import dataclass
+from datetime import datetime
 from collections import OrderedDict, Counter
-import json
 import hashlib
+import json
+import os
+from pathlib import Path
 import re
+import zipfile
 
 
 def new_part_resuspension(part, mass: float, double_stranded=True):
@@ -42,6 +47,7 @@ class BasicBuild():
         """
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
+        self.unique_clips = [clip for clip in self.clips_data.keys()]
         self.unique_parts_data = self._unique_parts_linkers(
             "part",
             *(clip_reaction._part for clip_reaction in self.clips_data)
@@ -52,7 +58,7 @@ class BasicBuild():
         )
         self.unique_parts = self._unique_parts()
         self.unique_linkers = self._unique_linkers()
-        for clip_reaction in self.clips_data.keys():
+        for clip_reaction in self.unique_clips:
             part_hash = _seqrecord_hexdigest(clip_reaction._part)
             prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
             self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
@@ -122,6 +128,54 @@ class BasicBuild():
             raise BuildException(
                 f"ID '{top_assembly_id[0]}' has been assigned to {top_assembly_id[1]} BasicAssembly instance/s. All assemblies of a build should have a unique 'id' attribute.")
 
+    def export_csvs(self, path=None):
+        """Writes information about each clip_data and assembly to
+        two dependent CSV files in the same folder the command
+        is executed
+        
+        Args:
+            path (str) -- path to zipped folder of csv files. If none defaults to working directory with a time stamped name. 
+            output csvs is created.
+        """
+        if path == None:
+            now = datetime.now()
+            zip_path = Path.cwd() / f"build_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+        else:
+            zip_path = path
+        with open(Path.cwd() / "clips.csv", "w", newline="") as f:
+            fieldnames = ["Clip index","Prefix ID","Part ID","Part name","Suffix ID","Total assemblies","Assembly indexes"]
+            thewriter = csv.DictWriter(f, fieldnames=fieldnames)
+            thewriter.writeheader()
+            for index, clip_data in enumerate(self.clips_data.items()):
+                thewriter.writerow(
+                    {
+                        "Clip index":index + 1,
+                        "Prefix ID":clip_data[0]._prefix.prefix_id,
+                        "Part ID":clip_data[0]._part.id,
+                        "Part name":clip_data[0]._part.name,
+                        "Suffix ID":clip_data[0]._suffix.suffix_id,
+                        "Total assemblies":len(clip_data[1]),
+                        "Assembly indexes":[self.basic_assemblies.index(assembly) + 1 for assembly in clip_data[1]]
+                    }
+                )
+        with open(Path.cwd() / "assemblies.csv", "w", newline="") as f:
+            fieldnames = ["Assembly index", "Assembly ID", 'Clip indexes']
+            thewriter = csv.DictWriter(f,fieldnames=fieldnames)
+            thewriter.writeheader()
+            for index, assembly in enumerate(self.basic_assemblies):
+                thewriter.writerow(
+                    {
+                        "Assembly index": index + 1,
+                        "Assembly ID": assembly.id,
+                        "Clip indexes": [self.unique_clips.index(clip_reaction) + 1 for clip_reaction in assembly.clip_reactions]
+                    }
+                )
+        with zipfile.ZipFile(zip_path,'w') as my_zip:
+            my_zip.write(Path.cwd() / "assemblies.csv")
+            my_zip.write(Path.cwd() / "clips.csv")
+        os.remove(Path.cwd() / "assemblies.csv")
+        os.remove(Path.cwd() / "clips.csv")
+
     @property
     def basic_assemblies(self):
         return self._basic_assemblies
@@ -135,7 +189,6 @@ class BasicBuild():
             )
         self._duplicate_assembly_ids(values)
         self._basic_assemblies = values
-
 
 class BuildEncoder(json.JSONEncoder):
     def default(self, obj):
