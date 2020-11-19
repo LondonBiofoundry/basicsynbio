@@ -23,10 +23,10 @@ from .bsb_io import (
     import_sbol_part
 )
 from .parts_linkers import (
-    BCDS_PARTS,
-    BIOLEGIO_LINKERS,
-    BPROMOTER_PARTS,
-    BSEVA_PARTS,
+    BASIC_CDS_PARTS,
+    BASIC_BIOLEGIO_LINKERS,
+    BASIC_PROMOTER_PARTS,
+    BASIC_SEVA_PARTS,
     BSEVA_ICE_DICT
 )
 from .cam import (
