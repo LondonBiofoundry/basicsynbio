@@ -48,16 +48,16 @@ class BasicBuild():
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
         self.unique_clips = [clip for clip in self.clips_data.keys()]
-        self.unique_parts_data = self._unique_parts_linkers(
+        self.unique_parts_data = self._unique_parts_linkers_data(
             "part",
             *(clip_reaction._part for clip_reaction in self.clips_data)
         )
-        self.unique_linkers_data = self._unique_parts_linkers(
+        self.unique_linkers_data = self._unique_parts_linkers_data(
             "linker",
             *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
-        self.unique_parts = self._unique_parts()
-        self.unique_linkers = self._unique_linkers()
+        self.unique_parts = tuple(clip_reaction._part for clip_reaction in self.unique_clips)
+        self.unique_linkers = tuple(clip_reaction._prefix for clip_reaction in self.unique_clips)
         for clip_reaction in self.unique_clips:
             part_hash = _seqrecord_hexdigest(clip_reaction._part)
             prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
@@ -72,7 +72,7 @@ class BasicBuild():
         """
         if len(parts) != len(self.unique_parts_data):
             raise ValueError(f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts_data)} elements. The two must match.")
-        parts_dict = self._unique_parts_linkers("part", *parts)
+        parts_dict = self._unique_parts_linkers_data("part", *parts)
         basic_assemblies = []
         for assembly in self.basic_assemblies:
             parts_linkers = [
@@ -91,7 +91,7 @@ class BasicBuild():
                 clips_dict[clip_reaction].append(assembly)
         return clips_dict
 
-    def _unique_parts_linkers(self, object_key: str, *parts_linkers):
+    def _unique_parts_linkers_data(self, object_key: str, *parts_linkers):
         """Returns a dictionary of unique objects in *parts_linkers. Includes
         an empty list for each item to populate with clip_reactions used by
         each unique part/linker.
@@ -105,19 +105,6 @@ class BasicBuild():
                 "clip_reactions": []
             } for part_linker in parts_linkers
         }
-
-    def _unique_parts(self):
-        """Returns a tuple of each unique part in the build"""
-        seen = set()
-        return tuple(clip_reaction._part for clip_reaction in self.clips_data
-               if not (str(clip_reaction._part) in seen or seen.add(str(clip_reaction._part))))
-
-        
-    def _unique_linkers(self):
-        """Returns a tuple of each unique linker in the build"""
-        seen = set() 
-        return tuple(clip_reaction._prefix for clip_reaction in self.clips_data 
-               if not (str(clip_reaction._prefix) in seen or seen.add(str(clip_reaction._prefix))))
 
     def _duplicate_assembly_ids(self, assemblies):
         """If multiple elements of self.basic_assemblies have same "id"
