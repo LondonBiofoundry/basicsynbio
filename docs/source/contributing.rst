@@ -53,13 +53,23 @@ Steps
 
 #. Go to GitHub and create a new Pull Request.
 
-Guidelines
-^^^^^^^^^^
+Guidelines for changes
+----------------------
 
-* All new code should have assocated tests written using `pytest`_.
+General Guidelines
+^^^^^^^^^^^^^^^^^^
+
+* Code should be formatted using `black`_.
+* New code should have assocated tests written using `pytest`_.
+* Update the documentation if required. The documentation is formated using `Sphinx`_ and as such all files must be written in reST.
+
+
+Guidelines for docstrings
+
 * Format docstrings according to the `Google Style Guide`_. This enables automated documentation of the API using `sphinx.ext.napoleon`_.
-* Update the documentation if required. The documentation is formated using `Sphinx`_ and as such all files must be written in reST or Markdown.
 
+
+.. _black: https://github.com/psf/black
 .. _pytest: https://docs.pytest.org/en/stable/
 .. _Google Style Guide: https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings
 .. _sphinx.ext.napoleon: https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html

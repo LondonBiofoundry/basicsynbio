@@ -13,10 +13,18 @@ def feature_from_qualifier(seqrec, qualifier_key, qualifier_value):
             if feature.qualifiers[qualifier_key] == qualifier_value:
                 return feature
     raise ValueError(
-        f"{seqrec.id} lacks a feature containing a {qualifier_key}/{qualifier_value} pair in qualifiers")
+        f"{seqrec.id} lacks a feature containing a {qualifier_key}/{qualifier_value} pair in qualifiers"
+    )
 
 
-def _easy_seqrec(str_seq: str, id, annotation_type="misc_feature", start=0, end=None, **qualifiers: list):
+def _easy_seqrec(
+    str_seq: str,
+    id,
+    annotation_type="misc_feature",
+    start=0,
+    end=None,
+    **qualifiers: list,
+):
     """Return an annotated SeqRecord from a string and id.
 
     Args:
@@ -29,11 +37,17 @@ def _easy_seqrec(str_seq: str, id, annotation_type="misc_feature", start=0, end=
     """
     if not end:
         end = len(str_seq)
-    seqrec = SeqRecord(Seq(str_seq), id=id, features=[SeqFeature(
-        type=annotation_type,
-        location=FeatureLocation(start=start, end=end, strand=+1),
-        qualifiers={item[0]: item[1] for item in qualifiers.items()}
-    )])
+    seqrec = SeqRecord(
+        Seq(str_seq),
+        id=id,
+        features=[
+            SeqFeature(
+                type=annotation_type,
+                location=FeatureLocation(start=start, end=end, strand=+1),
+                qualifiers={item[0]: item[1] for item in qualifiers.items()},
+            )
+        ],
+    )
     return seqrec
 
 

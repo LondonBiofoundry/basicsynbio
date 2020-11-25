@@ -15,8 +15,7 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="&lt;no title&gt;" href="contributing.html" />
-    <link rel="prev" title="basicsynbio documentation" href="index.html" />
+    <link rel="prev" title="build.json" href="build_example.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -69,34 +68,28 @@
 
 <dl class="py method">
 <dt id="basicsynbio.main.BasicAssembly.return_part">
-<code class="sig-name descname">return_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alphabet</span><span class="o">=</span><span class="default_value">IUPACAmbiguousDNA()</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_part" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">return_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_part" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assembled construct as a new part.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a>.</p>
 </dd>
 <dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>alphabet</strong> (<em>Bio.Alphabet</em>) – Refer to Bio.Alphabet documentation.</p></li>
-<li><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p></li>
-</ul>
+<dd class="field-even"><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
 <dt id="basicsynbio.main.BasicAssembly.return_seqrec">
-<code class="sig-name descname">return_seqrec</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">alphabet</span><span class="o">=</span><span class="default_value">IUPACAmbiguousDNA()</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_seqrec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_seqrec" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">return_seqrec</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_seqrec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_seqrec" title="Permalink to this definition">¶</a></dt>
 <dd><p>Assembled construct as a seqrecord.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Return type</dt>
 <dd class="field-odd"><p>Bio.SeqRecord.SeqRecord</p>
 </dd>
 <dt class="field-even">Parameters</dt>
-<dd class="field-even"><ul class="simple">
-<li><p><strong>alphabet</strong> (<em>Bio.Alphabet</em>) – Refer to Bio.Alphabet documentation.</p></li>
-<li><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p></li>
-</ul>
+<dd class="field-even"><p><strong>**kwargs</strong> – assigns alternative SeqRecord attributes.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -135,6 +128,19 @@
 </ul>
 </dd>
 </dl>
+<dl class="py method">
+<dt id="basicsynbio.main.BasicPart.basic_slice">
+<code class="sig-name descname">basic_slice</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.basic_slice"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.basic_slice" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>seqrecord flanked by BASIC iP &amp; iS sequences.</p>
+</dd>
+<dt class="field-even">Return type</dt>
+<dd class="field-even"><p>Bio.SeqRecord.SeqRecord</p>
+</dd>
+</dl>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -215,7 +221,7 @@
 <p>Module contains objects for importing and exporting parts and sequences.</p>
 <dl class="py function">
 <dt id="basicsynbio.bsb_io.export_sequences_to_file">
-<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">export_sequences_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sequences</span></em>, <em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'genbank'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#export_sequences_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.export_sequences_to_file" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">export_sequences_to_file</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">sequences</span></em>, <em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'genbank'</span></em>, <em class="sig-param"><span class="n">molecule_type</span><span class="o">=</span><span class="default_value">'DNA'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#export_sequences_to_file"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.export_sequences_to_file" title="Permalink to this definition">¶</a></dt>
 <dd><p>Exports sequences using Bio.SeqIO.write().</p>
 <blockquote>
 <div><p>Refer to Biopython documentation for further information on Bio.SeqIO.write().</p>
@@ -337,6 +343,19 @@ within the BASIC DNA assembly framework.</p>
 <dd><p>Class provides methods and attributes for building BasicAssembly
 objects.</p>
 <dl class="py method">
+<dt id="basicsynbio.cam.BasicBuild.export_csvs">
+<code class="sig-name descname">export_csvs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.export_csvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.export_csvs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes information about each clip_data and assembly to
+two dependent CSV files in the same folder the command
+is executed</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>path (str) – path to zipped folder of csv files. If none defaults to working directory with a time stamped name.
+output csvs is created.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
 <dt id="basicsynbio.cam.BasicBuild.update_parts">
 <code class="sig-name descname">update_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">parts</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.update_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.update_parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates BasicBuild instance with <a href="#id1"><span class="problematic" id="id2">*</span></a>parts, replacing existing all
@@ -417,6 +436,11 @@ double_stranded – True (default) indicates part is dsDNA.</p>
 <h3>Navigation</h3>
 <p class="caption"><span class="caption-text">Table of Contents</span></p>
 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Part and linker collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_example.html">build.json</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.main">main.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.bsb_io">bsb_io.py</a></li>
@@ -429,8 +453,7 @@ double_stranded – True (default) indicates part is dsDNA.</p>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="index.html" title="previous chapter">basicsynbio documentation</a></li>
-      <li>Next: <a href="contributing.html" title="next chapter">&lt;no title&gt;</a></li>
+      <li>Previous: <a href="build_example.html" title="previous chapter">build.json</a></li>
   </ul></li>
 </ul>
 </div>

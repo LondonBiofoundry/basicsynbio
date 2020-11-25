@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; basicsynbio 0.1.0 documentation</title>
+    <title>Contributing &#8212; basicsynbio 0.1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
@@ -15,7 +15,8 @@
     <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="prev" title="API reference" href="api.html" />
+    <link rel="next" title="Part and linker collections" href="collections.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -32,7 +33,87 @@
 
           <div class="body" role="main">
             
-  
+  <div class="section" id="contributing">
+<h1>Contributing<a class="headerlink" href="#contributing" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="setting-up-a-development-environment">
+<h2>Setting up a development environment<a class="headerlink" href="#setting-up-a-development-environment" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Fork the <a class="reference external" href="https://github.com/LondonBiofoundry/basicsynbio.git">basicsynbio repository</a>.</p></li>
+<li><p>Clone your fork:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">username</span><span class="o">/</span><span class="n">basicsynbio</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</li>
+<li><p>cd into the directory.</p></li>
+<li><p>Using a virtual environment running Python 3.7 or greater install the dependancies:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+</li>
+<li><p>Install the package in editable mode:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Confirm all test pass:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pytest</span> <span class="p">[</span><span class="o">--</span><span class="n">runslow</span><span class="p">]</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="making-changes">
+<h2>Making changes<a class="headerlink" href="#making-changes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="steps">
+<h3>Steps<a class="headerlink" href="#steps" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>set the upstream repository:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="n">add</span> <span class="n">upstream</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">LondonBiofoundry</span><span class="o">/</span><span class="n">basicsynbio</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+</li>
+<li><p>Pull the latest changes to origin/master:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">pull</span> <span class="n">upstream</span> <span class="n">master</span>
+</pre></div>
+</div>
+</li>
+<li><p>Create a new branch for your development:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">checkout</span> <span class="o">-</span><span class="n">b</span> <span class="n">dev</span><span class="o">/</span><span class="n">foobar</span>
+</pre></div>
+</div>
+</li>
+<li><p>Make the development then stage and commit:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">add</span> <span class="o">.</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s2">&quot;make this desirable development to basicsynbio&quot;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Push the development back to GitHub:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">push</span> <span class="n">origin</span> <span class="n">dev</span><span class="o">/</span><span class="n">foobar</span>
+</pre></div>
+</div>
+</li>
+<li><p>Go to GitHub and create a new Pull Request.</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="guidelines-for-changes">
+<h2>Guidelines for changes<a class="headerlink" href="#guidelines-for-changes" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="general-guidelines">
+<h3>General Guidelines<a class="headerlink" href="#general-guidelines" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>Code should be formatted using <a class="reference external" href="https://github.com/psf/black">black</a>.</p></li>
+<li><p>New code should have assocated tests written using <a class="reference external" href="https://docs.pytest.org/en/stable/">pytest</a>.</p></li>
+<li><p>Update the documentation if required. The documentation is formated using <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/quickstart.html">Sphinx</a> and as such all files must be written in reST.</p></li>
+</ul>
+<p>Guidelines for docstrings</p>
+<ul class="simple">
+<li><p>Format docstrings according to the <a class="reference external" href="https://google.github.io/styleguide/pyguide.html#38-comments-and-docstrings">Google Style Guide</a>. This enables automated documentation of the API using <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/extensions/napoleon.html">sphinx.ext.napoleon</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+
 
           </div>
           
@@ -51,7 +132,17 @@
 
 <h3>Navigation</h3>
 <p class="caption"><span class="caption-text">Table of Contents</span></p>
-<ul>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Contributing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-a-development-environment">Setting up a development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#making-changes">Making changes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#guidelines-for-changes">Guidelines for changes</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Part and linker collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_example.html">build.json</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
 </ul>
 
@@ -59,7 +150,8 @@
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="api.html" title="previous chapter">API reference</a></li>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="collections.html" title="next chapter">Part and linker collections</a></li>
   </ul></li>
 </ul>
 </div>
