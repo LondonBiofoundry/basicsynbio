@@ -65,11 +65,11 @@ def five_part_assembly_parts(cmr_p15a_basicpart, gfp_basicpart):
 @pytest.fixture
 def five_part_assembly_linkers():
     return [
-        bsb.BIOLEGIO_LINKERS["LMS"],
-        bsb.BIOLEGIO_LINKERS["LMP"],
-        bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], 
-        bsb.BIOLEGIO_LINKERS["UTR2-RBS1"],
-        bsb.BIOLEGIO_LINKERS["UTR3-RBS1"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"], 
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR2-RBS1"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR3-RBS1"],
     ]
 
 
@@ -103,7 +103,7 @@ def gfp_orf_basicpart(gfp_orf_seqrec):
 
 @pytest.fixture
 def bseva_68_seqrec():
-    return bsb.BSEVA_PARTS["68"]
+    return bsb.BASIC_SEVA_PARTS["v0.1"]["68"]
 
 
 @pytest.fixture
@@ -130,13 +130,13 @@ def bsai_part_seqrec(gfp_orf_seq):
 def promoter_assemblies_build():
     promoter_assemblies = (bsb.BasicAssembly(
         f"promoter_construct_{ind}",
-        bsb.BSEVA_PARTS["26"],
-        bsb.BIOLEGIO_LINKERS["LMP"],
+        bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
         promoter,
-        bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
-        bsb.BCDS_PARTS["sfGFP"],
-        bsb.BIOLEGIO_LINKERS["LMS"]
-        ) for ind, promoter in enumerate(bsb.BPROMOTER_PARTS.values()))
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"],
+        bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]
+        ) for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values()))
     return bsb.BasicBuild(*promoter_assemblies)
 
 
@@ -319,8 +319,8 @@ def test_import_all_ice_parts(ice_user_config):
 
 
 def test_bseva_dict(bseva_68_seqrec):
-    print(bsb.BSEVA_PARTS.keys())
-    bseva_68_part = bsb.BSEVA_PARTS["68"]
+    print(bsb.BASIC_SEVA_PARTS["v0.1"].keys())
+    bseva_68_part = bsb.BASIC_SEVA_PARTS["v0.1"]["68"]
     assert compare_seqrec_instances(bseva_68_part, bseva_68_seqrec) == True
 
 
@@ -329,7 +329,7 @@ def test_bpromoter_dict():
     bpromoters_handle = "./basicsynbio/parts_linkers/BASIC_promoter_collection.gb"
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
-        assert compare_seqrec_instances(bsb.BPROMOTER_PARTS[seqrec.id], seqrec) == True
+        assert compare_seqrec_instances(bsb.BASIC_PROMOTER_PARTS["v0.1"][seqrec.id], seqrec) == True
 
 
 def test_bcds_dict():
@@ -337,7 +337,7 @@ def test_bcds_dict():
     bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
-        assert compare_seqrec_instances(bsb.BCDS_PARTS[seqrec.id], seqrec) == True
+        assert compare_seqrec_instances(bsb.BASIC_CDS_PARTS["v0.1"][seqrec.id], seqrec) == True
 
     
 def test_all_feature_values(gfp_orf_basicpart):
@@ -378,7 +378,7 @@ def test_BasicAssembly_clips(five_part_assembly, five_part_assembly_parts, five_
 
 @pytest.mark.skip(reason="people should realise this is a bad idea!")
 def test_assembly_monkey_clips(five_part_assembly):
-    five_part_assembly.parts_linkers = (bsb.BSEVA_PARTS["18"], bsb.BIOLEGIO_LINKERS["LMP"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"])
+    five_part_assembly.parts_linkers = (bsb.BASIC_SEVA_PARTS["v0.1"]["18"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"], bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"])
     assert len(five_part_assembly.clip_reactions) == len([part for part in five_part_assembly.parts_linkers if isinstance(part, bsb.BasicPart)])
 
 
@@ -388,9 +388,9 @@ def test_assembly_exception_same_utr_linker(cmr_p15a_basicpart, gfp_basicpart):
         bsb.BasicAssembly(
             "test",
             cmr_p15a_basicpart,
-            bsb.BIOLEGIO_LINKERS["UTR1-RBS1"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS1"],
             gfp_basicpart,
-            bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"]
         )
 
 
@@ -400,8 +400,8 @@ def test_bsai_site_in_part(bsai_part_seqrec):
 
 
 def test_build_parts(promoter_assemblies_build):
-    parts = [promoter_part for promoter_part in bsb.BPROMOTER_PARTS.values()]
-    parts += [bsb.BCDS_PARTS["sfGFP"], bsb.BSEVA_PARTS["26"]]
+    parts = [promoter_part for promoter_part in bsb.BASIC_PROMOTER_PARTS["v0.1"].values()]
+    parts += [bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"], bsb.BASIC_SEVA_PARTS["v0.1"]["26"]]
     print(parts)
     part_ids = [part.id for part in parts]
     for element in promoter_assemblies_build.unique_parts_data.values():
@@ -410,7 +410,7 @@ def test_build_parts(promoter_assemblies_build):
 
 def test_build_linkers(promoter_assemblies_build):
     linkers = ("LMP", "UTR1-RBS2", "LMS")
-    linker_ids = [bsb.BIOLEGIO_LINKERS[linker].id for linker in linkers]
+    linker_ids = [bsb.BASIC_BIOLEGIO_LINKERS["v0.1"][linker].id for linker in linkers]
     for element in promoter_assemblies_build.unique_linkers_data.values():
         assert element["linker"].id in linker_ids
 
@@ -418,10 +418,10 @@ def test_build_linkers(promoter_assemblies_build):
 def test_build_clips_data(promoter_assemblies_build):
     from basicsynbio.main import ClipReaction
     clip_reactions = [
-        ClipReaction(bsb.BIOLEGIO_LINKERS["LMS"], bsb.BSEVA_PARTS["26"], bsb.BIOLEGIO_LINKERS["LMP"]),
-        ClipReaction(bsb.BIOLEGIO_LINKERS["UTR1-RBS2"], bsb.BCDS_PARTS["sfGFP"], bsb.BIOLEGIO_LINKERS["LMS"]),
+        ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"], bsb.BASIC_SEVA_PARTS["v0.1"]["26"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"]),
+        ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"], bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]),
     ]
-    clip_reactions += [ClipReaction(bsb.BIOLEGIO_LINKERS["LMP"], promoter, bsb.BIOLEGIO_LINKERS["UTR1-RBS2"]) for promoter in bsb.BPROMOTER_PARTS.values()]
+    clip_reactions += [ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"], promoter, bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"]) for promoter in bsb.BASIC_PROMOTER_PARTS["v0.1"].values()]
     for clip_reaction in promoter_assemblies_build.clips_data.keys():
         assert clip_reaction in clip_reactions
     assert len(promoter_assemblies_build.clips_data) == len(clip_reactions)
@@ -468,13 +468,12 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     original_parts = (part_dict["part"] for part_dict in promoter_assemblies_build.unique_parts_data.values())
     decoded_build.update_parts(*original_parts)
-    sfgfp_hash = _seqrecord_hexdigest(bsb.BCDS_PARTS["sfGFP"])
-    assert compare_seqrec_instances(decoded_build.unique_parts_data[sfgfp_hash]["part"], bsb.BCDS_PARTS["sfGFP"]) == True
-
+    sfgfp_hash = _seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
+    assert compare_seqrec_instances(decoded_build.unique_parts_data[sfgfp_hash]["part"], bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"]) == True
 
 @pytest.mark.slow
 def test_import_sbol_part():
     bseva18_from_sbol = bsb.import_sbol_part("./sequences/alternative_formats/bseva18.rdf")#
     # online converter changes annotations attribute
-    bseva18_from_sbol.annotations = bsb.BSEVA_PARTS["18"].annotations
-    assert compare_seqrec_instances(bseva18_from_sbol, bsb.BSEVA_PARTS["18"]) == True
+    bseva18_from_sbol.annotations = bsb.BASIC_SEVA_PARTS["v0.1"]["18"].annotations
+    assert compare_seqrec_instances(bseva18_from_sbol, bsb.BASIC_SEVA_PARTS["v0.1"]["18"]) == True

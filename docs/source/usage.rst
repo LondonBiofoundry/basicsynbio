@@ -29,14 +29,14 @@ it:
 .. code:: python
 
     import basicsynbio as bsb
-    basic_seva18 = bsb.BSEVA_PARTS["18"]
+    basic_seva18 = bsb.BASIC_SEVA_PARTS["v0.1]["18"]
 
 * A list of all part and linker collections is given :doc:`collections`.
 * The contents of each collection can be displayed using the print function e.g.
 
 .. code:: python
 
-    print(bsb.BSEVA_PARTS)
+    print(bsb.BASIC_SEVA_PARTS["v0.1])
 
 1b. Import parts from external sources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -102,10 +102,10 @@ Create a ``BasicAssembly`` object from your imported BASIC parts using any
     my_basic_part = bsb.import_part("my_basic_part.gb", "genbank")
     assembly = bsb.BasicAssembly(
         "my_first_basic_assembly",
-        bsb.BIOLEGIO_LINKERS["LMP"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
         my_basic_part,
-        bsb.BIOLEGIO_LINKERS["LMS"],
-        bsb.BSEVA_PARTS["18"]
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+        bsb.BASIC_SEVA_PARTS["v0.1"]["18"]
     )
 
 This creates a BasicAssembly object where ``my_basic_part`` has been cloned
@@ -136,13 +136,13 @@ BasicAssembly objects:
 
     promoter_assemblies = (bsb.BasicAssembly(
         f"promoter_construct_{ind}",
-        bsb.BSEVA_PARTS["26"],
-        bsb.BIOLEGIO_LINKERS["LMP"],
+        bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
         promoter,
-        bsb.BIOLEGIO_LINKERS["UTR1-RBS2"],
-        bsb.BCDS_PARTS["sfGFP"],
-        bsb.BIOLEGIO_LINKERS["LMS"]
-        ) for ind, promoter in enumerate(bsb.BPROMOTER_PARTS.values()))
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"],
+        bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]
+        ) for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values()))
     build = bsb.BasicBuild(*promoter_assemblies)
 
 The ``build`` instance contains data describing the unique BasicParts, BasicLinkers and ClipReactions objects

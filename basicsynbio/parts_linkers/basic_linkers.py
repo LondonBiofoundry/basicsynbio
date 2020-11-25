@@ -91,4 +91,6 @@ BIOLEGIO_LINKERS = {
 BIOLEGIO_LINKERS.update(
     **{key: _make_linker(bsb.BasicUTRRBSLinker, value, key) for key, value in utr_rbs_linkers.items()}
 )
-BIOLEGIO_LINKERS = PartLinkerCollection(BIOLEGIO_LINKERS.items())
+BASIC_BIOLEGIO_LINKERS = {
+    "v0.1": PartLinkerCollection(BIOLEGIO_LINKERS.items())
+}
