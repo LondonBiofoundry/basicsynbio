@@ -53,13 +53,13 @@ class BasicPart(SeqRecord):
         self._check_bsai()
 
     def basic_slice(self) -> SeqRecord:
-        """The Function to obtain seqrecord flanked by BASIC iP & iS sequences
+        """The Function to obtain region flanked by BASIC iP & iS sequences
 
         Returns:
-            SeqRecord: The seqrecord flanked by BASIC iP & iS sequences.
+            SeqRecord: The region flanked by BASIC iP & iS sequences as a SeqRecord object.
 
         Raises:
-            ValueError: If incorrect sequence is used.
+            ValueError: If iP and iS sequences not correctly identified.
 
         """
         returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
@@ -75,7 +75,7 @@ class BasicPart(SeqRecord):
         else:
             raise ValueError("incorrect sequence used.")
 
-    def _find_iseq(self, iseq_str: str, iseq_id: str ="integrated sequence") -> int:
+    def _find_iseq(self, iseq_str: str, iseq_id: str = "integrated sequence") -> int:
         """The Function to find index/location of iseq_str within the sequence.
 
         Args:
