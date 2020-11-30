@@ -1,0 +1,287 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Usage &#8212; basicsynbio 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="usage">
+<h1>Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>The basicsynbio API extends the <a class="reference external" href="https://biopython.org/">Biopython library</a>.
+Extensive knowledge of Biopython is
+not required but basic knowledge of key objects would aid users.</p>
+<div class="section" id="basicsynbio-workflow">
+<h2>basicsynbio workflow<a class="headerlink" href="#basicsynbio-workflow" title="Permalink to this headline">¶</a></h2>
+<p>The core basicsynbio workflow has the following steps associated with
+it:</p>
+<ol class="arabic simple">
+<li><p>Get the parts (either from collections or externally)</p></li>
+<li><p>Create the assemblies</p></li>
+<li><p>Create the build</p></li>
+<li><p>Export your data</p></li>
+</ol>
+<div class="section" id="a-accessing-basic-part-collections">
+<h3>1a. Accessing BASIC part collections<a class="headerlink" href="#a-accessing-basic-part-collections" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>The basicsynbio package contains collections of parts and linkers compatible with BASIC DNA assembly.</p></li>
+<li><p>Each collection behaves like a <a class="reference external" href="&lt;https://docs.python.org/3/tutorial/datastructures.html#dictionaries&gt;">dictionary</a> object.</p></li>
+<li><p>For instance, to access the BASIC backbone with ampicilin resistance and a pUC ori (equivalent to <a class="reference external" href="&lt;http://seva-plasmids.com/&gt;">SEVA</a> 18), input the following:</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
+<span class="n">basic_seva18</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_SEVA_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1][&quot;</span><span class="mi">18</span><span class="s2">&quot;]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>A list of all part and linker collections is given <a class="reference internal" href="collections.html"><span class="doc">Part and linker collections</span></a>.</p></li>
+<li><p>The contents of each collection can be displayed using the print function e.g.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_SEVA_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1])</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="b-import-parts-from-external-sources">
+<h3>1b. Import parts from external sources<a class="headerlink" href="#b-import-parts-from-external-sources" title="Permalink to this headline">¶</a></h3>
+<p>Compatible BASIC parts can be imported from multiple sources.
+To import one BASIC part from a local file (e.g. genbank file) run:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
+
+<span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_part</span><span class="p">(</span><span class="s2">&quot;basic_part.gb&quot;</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Otherwise mutliple BASIC parts from the same gb file are imported as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_parts</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_parts</span><span class="p">(</span><span class="s2">&quot;basic_parts.gb&quot;</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Convert <a class="reference external" href="https://biopython.org/wiki/SeqRecord">Biopython SeqRecords</a> or similar objects into BASIC parts:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>For a part given in <a class="reference external" href="https://sbolstandard.org/">SBOL</a> use:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_sbol_part</span><span class="p">(</span><span class="s2">&quot;basic_part.rdf&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Finally you can also import one or more parts from a JBEI-ICE instance, e.g. the <a class="reference external" href="https://public-registry.jbei.org/">public-registry</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ice_nums</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="nb">int</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17297</span><span class="p">,</span> <span class="mi">17339</span><span class="p">))</span>
+<span class="n">basic_parts</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_ice_parts</span><span class="p">(</span><span class="n">ice_user_config</span><span class="p">,</span> <span class="o">*</span><span class="n">ice_nums</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>All BasicPart objects require flanking <em>i</em>P and <em>i</em>S sequences. To add these
+when creating your object, use the optional <code class="docutils literal notranslate"><span class="pre">add_i_seqs</span></code> argument,
+available for all the above functions e.g.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-the-assemblies">
+<h3>2. Create the assemblies<a class="headerlink" href="#create-the-assemblies" title="Permalink to this headline">¶</a></h3>
+<p>Create a <code class="docutils literal notranslate"><span class="pre">BasicAssembly</span></code> object from your imported BASIC parts using any
+<a class="reference external" href="https://www.biolegio.com/products-services/basic/">Biolegio Linkers</a> contained within the <code class="docutils literal notranslate"><span class="pre">BIOLEGIO_LINKERS</span></code> collection:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
+<span class="n">my_basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_part</span><span class="p">(</span><span class="s2">&quot;my_basic_part.gb&quot;</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="n">assembly</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">(</span>
+    <span class="s2">&quot;my_first_basic_assembly&quot;</span><span class="p">,</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_BIOLEGIO_LINKERS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;LMP&quot;</span><span class="p">],</span>
+    <span class="n">my_basic_part</span><span class="p">,</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_BIOLEGIO_LINKERS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;LMS&quot;</span><span class="p">],</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_SEVA_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;18&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>This creates a BasicAssembly object where <code class="docutils literal notranslate"><span class="pre">my_basic_part</span></code> has been cloned
+into the BASIC_SEVA_18 backbone.</p>
+<p>A desirable feature of BASIC DNA Assembly is its single-tier format (<a class="reference internal" href="introduction.html"><span class="doc">Introduction</span></a>).
+This ensures any assembly flanked by LMP and LMS linkers can be used in a
+subsequent hierarchical assembly:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_part</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">return_part</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;new_part&quot;</span><span class="p">)</span>
+<span class="n">hierarchical_assembly</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">(</span>
+    <span class="n">new_part</span><span class="p">,</span>
+    <span class="o">...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="create-the-build">
+<h3>3. Create the build<a class="headerlink" href="#create-the-build" title="Permalink to this headline">¶</a></h3>
+<p>More often than not, a collection of BASIC assemblies are constructed in parallel.
+To aid this process users should create a <code class="docutils literal notranslate"><span class="pre">BasicBuild</span></code> object using multiple
+BasicAssembly objects:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
+
+<span class="n">promoter_assemblies</span> <span class="o">=</span> <span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">(</span>
+    <span class="sa">f</span><span class="s2">&quot;promoter_construct_</span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_SEVA_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;26&quot;</span><span class="p">],</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_BIOLEGIO_LINKERS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;LMP&quot;</span><span class="p">],</span>
+    <span class="n">promoter</span><span class="p">,</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_BIOLEGIO_LINKERS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;UTR1-RBS2&quot;</span><span class="p">],</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_CDS_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;sfGFP&quot;</span><span class="p">],</span>
+    <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_BIOLEGIO_LINKERS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;LMS&quot;</span><span class="p">]</span>
+    <span class="p">)</span> <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">promoter</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_PROMOTER_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+<span class="n">build</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicBuild</span><span class="p">(</span><span class="o">*</span><span class="n">promoter_assemblies</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">build</span></code> instance contains data describing the unique BasicParts, BasicLinkers and ClipReactions objects
+associated with this build. These objects together provide a description of the materials and steps required
+to construct your assemblies.</p>
+</div>
+<div class="section" id="export-your-data">
+<h3>4. Export your data<a class="headerlink" href="#export-your-data" title="Permalink to this headline">¶</a></h3>
+<p>BasicBuild objects can be serialised using the <a class="reference external" href="https://docs.python.org/3/library/json.html">json API</a>, part of the standard library:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my_build.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">build</span><span class="p">,</span> <span class="n">json_file</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">bsb</span><span class="o">.</span><span class="n">BuildEncoder</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Like the associated build object, the resulting output (<a class="reference internal" href="build_example.html"><span class="doc">build.json</span></a>)
+contains data on the unique BasicParts (<code class="docutils literal notranslate"><span class="pre">unique_parts</span></code>), BasicLinkers (<code class="docutils literal notranslate"><span class="pre">unique_linkers</span></code>)
+and ClipReactions (<code class="docutils literal notranslate"><span class="pre">clips_data</span></code>) objects required to build the assemblies (<code class="docutils literal notranslate"><span class="pre">assembly_data</span></code>).
+This data can either be analysed directly or further processed to
+generate assemblies manually or via any liquid-handling robotic platform.</p>
+<p>In addition to exporting build data as a json file, <strong>it is recommended to export
+annotated BasicAssembly objects and the unique BasicParts</strong> associated with the build.
+Notably, any collection of BasicPart <a class="footnote-reference brackets" href="#f1" id="id1">1</a> or BasicAssembly
+objects can be exported using the formats supported by <a class="reference external" href="https://biopython.org/wiki/SeqIO">BioPython</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unique_parts</span> <span class="o">=</span> <span class="p">(</span><span class="n">part_dict</span><span class="p">[</span><span class="s2">&quot;part&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">part_dict</span> <span class="ow">in</span> <span class="n">build</span><span class="o">.</span><span class="n">unique_parts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">unique_parts</span><span class="p">,</span> <span class="s2">&quot;the_parts_i_need.gb&quot;</span><span class="p">)</span>
+<span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">cds_assemblies</span><span class="p">,</span> <span class="s2">&quot;cds_assemblies.gb&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="importing-from-build-json">
+<h2>Importing from build.json<a class="headerlink" href="#importing-from-build-json" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to decode build.json objects, restoring the BasicBuild object.
+Users have two options:</p>
+<ol class="arabic simple">
+<li><p>The first method uses only the build.json file and results in correct sequences, although, with a loss of metainformation e.g. annotations, features etc.</p></li>
+<li><p>The second method extends the first, updating the decoded BasicBuild object using the original BasicParts with the correct annotations.</p></li>
+</ol>
+<p>To partially decode a build.json file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;build.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">build_json</span><span class="p">:</span>
+    <span class="n">partially_decoded_build</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">build_json</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">bsb</span><span class="o">.</span><span class="n">BuildDecoder</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To completely decode this file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">original_parts</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_parts</span><span class="p">(</span><span class="s2">&quot;the_parts_i_need.gb&quot;</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+<span class="n">decoded_build</span><span class="o">.</span><span class="n">update_parts</span><span class="p">(</span><span class="o">*</span><span class="n">original_parts</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Footnotes</p>
+<dl class="footnote brackets">
+<dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
+<dd><p>This also applies to any Biopython SeqRecord-like object.</p>
+</dd>
+</dl>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">basicsynbio</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#basicsynbio-workflow">basicsynbio workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-from-build-json">Importing from build.json</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="collections.html">Part and linker collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="build_example.html">build.json</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="introduction.html" title="previous chapter">Introduction</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, London Biofoundry.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/usage.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
