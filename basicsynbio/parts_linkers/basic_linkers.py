@@ -19,7 +19,8 @@ standard_linkers = {
     "LF3": "CTCGGGCTCGGGCTCCGGATCTGGTTCAGGTTCAGGATCGGGCTCCGGGTCC",
     "LF4": "CTCGGGCTCGGGCTCCGGATCAGGATCTGGTTCAGGTTCAGGATCGGGCTCCGGGTCC",
     "LF5": "CTCGGGCTCGGGCTCCGGATCAGGATCTGGTTCAGGTTCAGGATCAGGATCGGGCTCCGGGTCC",
-    "LF6": "CTCGGCCGAAGCGGCTGCTAAAGAAGCAGCTGCTAAAGAGGCGGCCGCCAAGGCAGGGTCC"}
+    "LF6": "CTCGGCCGAAGCGGCTGCTAAAGAAGCAGCTGCTAAAGAGGCGGCCGCCAAGGCAGGGTCC",
+}
 
 utr_rbs_linkers = {
     "UTR1-RBS1": "CTCGTTGAACACCGTCTCAGGTAAGTATCAGTTGTAAATCACACAGGACTAGTCC",
@@ -76,21 +77,24 @@ utr_rbs_linkers = {
 }
 
 
-def _make_linker(linker_class, str_seq, id, description="visit https://www.biolegio.com/products-services/basic/ for further information."):
+def _make_linker(
+    linker_class,
+    str_seq,
+    id,
+    description="visit https://www.biolegio.com/products-services/basic/ for further information.",
+):
     seq = Seq("GG" + str_seq)
-    return linker_class(
-        seq,
-        id,
-        description=description
-    )
+    return linker_class(seq, id, description=description)
 
 
 BIOLEGIO_LINKERS = {
-    key: _make_linker(bsb.BasicLinker, value, key) for key, value in standard_linkers.items()
+    key: _make_linker(bsb.BasicLinker, value, key)
+    for key, value in standard_linkers.items()
 }
 BIOLEGIO_LINKERS.update(
-    **{key: _make_linker(bsb.BasicUTRRBSLinker, value, key) for key, value in utr_rbs_linkers.items()}
+    **{
+        key: _make_linker(bsb.BasicUTRRBSLinker, value, key)
+        for key, value in utr_rbs_linkers.items()
+    }
 )
-BASIC_BIOLEGIO_LINKERS = {
-    "v0.1": PartLinkerCollection(BIOLEGIO_LINKERS.items())
-}
+BASIC_BIOLEGIO_LINKERS = {"v0.1": PartLinkerCollection(BIOLEGIO_LINKERS.items())}

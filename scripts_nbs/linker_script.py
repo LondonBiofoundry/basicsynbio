@@ -3,7 +3,7 @@ from Bio.Seq import Seq
 import json
 
 biolegio_dict = {}
-with open(r"csv_xlsx_files\Biolegio_linker_sequences.csv", newline='') as csv_file:
+with open(r"csv_xlsx_files\Biolegio_linker_sequences.csv", newline="") as csv_file:
     reader = csv.reader(csv_file)
     for ind, line in enumerate(reader):
         if ind != 0:
