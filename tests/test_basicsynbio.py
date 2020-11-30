@@ -128,15 +128,20 @@ def bsai_part_seqrec(gfp_orf_seq):
 
 @pytest.yield_fixture
 def promoter_assemblies_build():
-    promoter_assemblies = (bsb.BasicAssembly(
-        f"promoter_construct_{ind}",
-        bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
-        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
-        promoter,
-        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"],
-        bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
-        bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]
-        ) for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values()))
+    utr_linkers = ["UTR1-RBS1", "UTR1-RBS2", "UTR1-RBS3"]
+    promoter_assemblies = []
+    for utr_linker in utr_linkers:
+        promoter_assemblies += [
+            bsb.BasicAssembly(
+            f"promoter_construct_{ind}_{utr_linker}",
+            bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+            promoter,
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"][utr_linker],
+            bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]
+            ) for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values())
+        ]
     return bsb.BasicBuild(*promoter_assemblies)
 
 
@@ -409,7 +414,7 @@ def test_build_parts(promoter_assemblies_build):
 
 
 def test_build_linkers(promoter_assemblies_build):
-    linkers = ("LMP", "UTR1-RBS2", "LMS")
+    linkers = ("LMP", "UTR1-RBS1", "UTR1-RBS2", "UTR1-RBS3", "LMS")
     linker_ids = [bsb.BASIC_BIOLEGIO_LINKERS["v0.1"][linker].id for linker in linkers]
     for element in promoter_assemblies_build.unique_linkers_data.values():
         assert element["linker"].id in linker_ids
@@ -418,10 +423,11 @@ def test_build_linkers(promoter_assemblies_build):
 def test_build_clips_data(promoter_assemblies_build):
     from basicsynbio.main import ClipReaction
     clip_reactions = [
-        ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"], bsb.BASIC_SEVA_PARTS["v0.1"]["26"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"]),
-        ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"], bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]),
+        ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"], bsb.BASIC_SEVA_PARTS["v0.1"]["26"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"])
     ]
-    clip_reactions += [ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"], promoter, bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["UTR1-RBS2"]) for promoter in bsb.BASIC_PROMOTER_PARTS["v0.1"].values()]
+    for utr_linker in ("UTR1-RBS1", "UTR1-RBS2", "UTR1-RBS3"):
+        clip_reactions.append(ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"][utr_linker], bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"], bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"]))
+        clip_reactions += [ClipReaction(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"], promoter, bsb.BASIC_BIOLEGIO_LINKERS["v0.1"][utr_linker]) for promoter in bsb.BASIC_PROMOTER_PARTS["v0.1"].values()]
     for clip_reaction in promoter_assemblies_build.clips_data.keys():
         assert clip_reaction in clip_reactions
     assert len(promoter_assemblies_build.clips_data) == len(clip_reactions)
@@ -440,15 +446,19 @@ def test_basic_build_indetical_ids(five_part_assembly):
 
 
 def test_unique_parts_in_build_are_unique(promoter_assemblies_build):
-    true_unique_linkers = []
-    for linker in promoter_assemblies_build.unique_linkers_data.values():
-        if linker not in true_unique_linkers:
-            true_unique_linkers.append(linker)
-    assert len(true_unique_linkers) == len(promoter_assemblies_build.unique_linkers_data)
+    true_unique_parts = []
+    for part in promoter_assemblies_build.unique_parts:
+        if part not in true_unique_parts:
+            true_unique_parts.append(part)
+    print(f"true unique part IDs: {[part.id for part in true_unique_parts]}")
+    print(f"build unique part IDs: {[part.id for part in promoter_assemblies_build.unique_parts]}")
+    assert len(true_unique_parts) == len(promoter_assemblies_build.unique_parts)
+
 
 def test_type_of_unique_parts_is_tuple_of_parts(promoter_assemblies_build):
     assert isinstance(promoter_assemblies_build.unique_parts,tuple)
     assert isinstance(promoter_assemblies_build.unique_parts[0],bsb.BasicPart)
+
 
 def test_type_of_unique_linkers_is_tuple_of_parts(promoter_assemblies_build):
     assert isinstance(promoter_assemblies_build.unique_linkers,tuple)
