@@ -56,13 +56,13 @@ class BasicBuild():
             "linker",
             *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
-        self.unique_parts = tuple(clip_reaction._part for clip_reaction in self.unique_clips)
-        self.unique_linkers = tuple(clip_reaction._prefix for clip_reaction in self.unique_clips)
         for clip_reaction in self.unique_clips:
             part_hash = _seqrecord_hexdigest(clip_reaction._part)
             prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
             self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
             self.unique_linkers_data[prefix_hash]["clip_reactions"].append(clip_reaction)
+        self.unique_parts = tuple(part_dict["part"] for part_dict in self.unique_parts_data.values())
+        self.unique_linkers = tuple(linker_dict["linker"] for linker_dict in self.unique_linkers_data.values())
     
     def update_parts(self, *parts):
         """Updates BasicBuild instance with *parts, replacing existing all
