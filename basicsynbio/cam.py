@@ -362,7 +362,7 @@ def _seqrecord_hexdigest(seqrecord_obj):
     seqrec_hash = hashlib.md5(str(seqrecord_obj.seq).encode("UTF-8"))
     bytes_objs = [
         getattr(seqrecord_obj, attribute).encode("UTF-8")
-        for attribute in ["id", "name", "description"]
+        for attribute in ["name", "description"]
     ]
     for element in bytes_objs:
         seqrec_hash.update(element)
