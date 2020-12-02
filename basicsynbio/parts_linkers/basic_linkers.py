@@ -81,18 +81,16 @@ utr_rbs_linkers = {
 def _make_linker(
     linker_class,
     str_seq,
-    id,
+    name,
     description="visit https://www.biolegio.com/products-services/basic/ for further information.",
 ):
     seq = Seq("GG" + str_seq)
-
     seqlikeobject= lambda: None
     setattr(seqlikeobject, 'seq', seq)
-    setattr(seqlikeobject, 'name', id)
+    setattr(seqlikeobject, 'name', name)
     setattr(seqlikeobject, 'description', description)
-
-    uniqueID = _seqrecord_hexdigest(seqlikeobject)
-    return linker_class(seq, uniqueID, name=id, description=description)
+    unique_id = _seqrecord_hexdigest(seqlikeobject)
+    return linker_class(seq, unique_id, name=name, description=description)
 
 
 BIOLEGIO_LINKERS = {
