@@ -52,10 +52,15 @@ class BasicPart(SeqRecord):
         self._is_loc = self._find_iseq(IS_STR, "iS sequence")
         self._check_bsai()
 
-    def basic_slice(self):
-        """:return: seqrecord flanked by BASIC iP & iS sequences.
+    def basic_slice(self) -> SeqRecord:
+        """The Function to obtain seqrecord flanked by BASIC iP & iS sequences
 
-        :rtype: Bio.SeqRecord.SeqRecord
+        Returns:
+            SeqRecord: The seqrecord flanked by BASIC iP & iS sequences.
+
+        Raises:
+            ValueError: If incorrect sequence is used.
+
         """
         returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
         for key in returned_seqrec.__dict__.keys():
@@ -70,7 +75,22 @@ class BasicPart(SeqRecord):
         else:
             raise ValueError("incorrect sequence used.")
 
-    def _find_iseq(self, iseq_str, iseq_id="integrated sequence"):
+    def _find_iseq(self, iseq_str: str, iseq_id: str ="integrated sequence") -> int:
+        """The Function to find index/location of iseq_str within the sequence.
+
+        Args:
+            iseq_str (str): The subsequence you are searching for.
+            iseq_id (str): The id/name of the subsequence (iseq_str),
+                Defaults to "integrated sequence".
+
+        Returns:
+            int: The index/location of iseq within sequence.
+
+        Raises:
+            PartException: If iseq_str can not be found within the sequence,
+                if multiple iseq_str exist within the sequence.
+
+        """
         search_out = SeqUtils.nt_search(str(self.seq), iseq_str)
         if len(search_out) < 2:
             raise PartException(f"{self.id} lacks {iseq_id}")
