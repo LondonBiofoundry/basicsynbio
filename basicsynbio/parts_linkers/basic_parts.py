@@ -8,20 +8,20 @@ from .main import PartLinkerCollection, make_collection
 with resources.open_text(
     "basicsynbio.parts_linkers", f"BASIC_promoter_collection.gb"
 ) as gb_file:
-    BPROMOTER_PARTS = list(bsb.import_parts(gb_file, "genbank"))
+    imported_parts = list(bsb.import_parts(gb_file, "genbank"))
     BASIC_PROMOTER_PARTS = {
         "v0.1": make_collection(
-            *BPROMOTER_PARTS, keys=[part.id for part in BPROMOTER_PARTS]
+            *imported_parts, keys=(part.id for part in imported_parts)
         )
     }
 
 with resources.open_text(
     "basicsynbio.parts_linkers", f"BASIC_CDS_collection.gb"
 ) as gb_file:
-    BCDS_PARTS = list(bsb.import_parts(gb_file, "genbank"))
+    imported_parts = list(bsb.import_parts(gb_file, "genbank"))
     BASIC_CDS_PARTS = {
         "v0.1": make_collection(
-            *BCDS_PARTS, keys=[part.id for part in BCDS_PARTS]
+            *imported_parts, keys=(part.id for part in imported_parts)
         )
     }
 

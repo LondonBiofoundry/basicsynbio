@@ -1,7 +1,7 @@
 from basicsynbio.decorators import add2docs
 from basicsynbio.main import CommonArgDocs
 from basicsynbio.main import BasicPart
-from ..cam import _seqrecord_hexdigest
+from basicsynbio.cam import _seqrecord_hexdigest
 
 
 class PartLinkerCollection(dict):
