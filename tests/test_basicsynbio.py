@@ -594,23 +594,25 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
         == True
     )
 
+
 def test_error_raise_basic_slice_less_90():
     from Bio.Seq import Seq
-    mypart = bsb.BasicPart(
-        Seq("TCTGGTGGGTCTCTGTCCAAGGCTCGGGAGACCTATCG"),
-        'test'
-    )
+
     with pytest.raises(ValueError):
-        mypart.basic_slice()
+        mypart = bsb.BasicPart(Seq("TCTGGTGGGTCTCTGTCCAAGGCTCGGGAGACCTATCG"), "test")
+
 
 def test_warning_raise_basic_slice_90_150():
     from Bio.Seq import Seq
-    mypart = bsb.BasicPart(
-        Seq("TCTGGTGGGTCTCTGTCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGCTCGGGAGACCTATCG"),
-        'test'
-    )
+
     with pytest.warns(UserWarning):
-        mypart.basic_slice()
+        mypart = bsb.BasicPart(
+            Seq(
+                "TCTGGTGGGTCTCTGTCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGCTCGGGAGACCTATCG"
+            ),
+            "test",
+        )
+
 
 @pytest.mark.slow
 def test_import_sbol_part():
