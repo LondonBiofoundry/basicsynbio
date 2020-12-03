@@ -11,6 +11,7 @@ from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
 import datetime
 import hashlib
+from typing import Union
 import warnings
 
 DATE = datetime.datetime.now()
@@ -71,6 +72,22 @@ class BasicPart(SeqRecord):
         for key in seqrec.__dict__.keys():
             setattr(seqrec, key, self.__dict__[key])
         return seqrec
+
+    def concentration(self, stock: bool =True, clip_vol: float =30, circular: bool =True, ndigit: int =None) -> Union[float, int]:
+        """Obtain the recommended concentration of part in ng/µL.
+
+        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.
+
+        Args:
+            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the final concentration of part in a clip reaction (ng/µL).
+            clip_vol: volume of the clip reaction (µL).
+            circular: The part is circular or linear if False.
+            ndigit: Refer to built-in round function documentation.
+        """
+        final_concentration = 2.5*SeqUtils.molecular_weight(self.seq, circular=circular, double_stranded=True)/1e6
+        if stock:
+            return round(final_concentration*clip_vol, ndigit)
+        return round(final_concentration, ndigit)
 
     def _find_iseq(self, seq, iseq_str, iseq_id="integrated sequence"):
         search_out = SeqUtils.nt_search(str(seq), iseq_str)

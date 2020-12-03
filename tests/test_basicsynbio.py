@@ -154,6 +154,12 @@ def promoter_assemblies_json(promoter_assemblies_build):
     return json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
 
 
+@pytest.fixture
+def gfp_part_final_conc(gfp_basicpart):
+    from Bio.SeqUtils import molecular_weight
+    return 2.5*molecular_weight(gfp_basicpart.seq, double_stranded=True, circular=True)/1e6
+
+
 def compare_seqrec_instances(seqrec1, seqrec2):
     """
     returns true if seqrec1 has equivalent seqrec2 attributes.
@@ -207,6 +213,15 @@ def test_basic_part_exception(gfp_orf_seq):
 
     with pytest.raises(bsb_main.PartException):
         bsb.BasicPart(gfp_orf_seq, "sfGFP")
+
+
+def test_basic_part_final_concentration(gfp_basicpart, gfp_part_final_conc):
+    assert gfp_basicpart.concentration(stock=False) == round(gfp_part_final_conc)
+
+
+def test_basic_part_stock_concentration(gfp_basicpart, gfp_part_final_conc):
+    clip_vol = 30
+    assert gfp_basicpart.concentration(stock=True) == round(gfp_part_final_conc * clip_vol)
 
 
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):

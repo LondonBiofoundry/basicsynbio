@@ -157,6 +157,8 @@ class BasicBuild:
                 "Prefix ID",
                 "Part ID",
                 "Part Name",
+                "Part suggested stock concentration (ng/µL)",
+                "Part stock per 30 µL clip (µL)",
                 "Suffix ID",
                 "Total assemblies",
                 "Assembly indexes",
@@ -170,6 +172,8 @@ class BasicBuild:
                         "Prefix ID": clip_data[0]._prefix.prefix_id,
                         "Part ID": clip_data[0]._part.id,
                         "Part Name": clip_data[0]._part.name,
+                        "Part suggested stock concentration (ng/µL)": clip_data[0]._part.concentration(),
+                        "Part stock per 30 µL clip (µL)": 1,
                         "Suffix ID": clip_data[0]._suffix.suffix_id,
                         "Total assemblies": len(clip_data[1]),
                         "Assembly indexes": [
@@ -235,6 +239,8 @@ class BuildEncoder(json.JSONEncoder):
                 "id": value["part"].id,
                 "name": value["part"].name,
                 "description": value["part"].description,
+                "suggested stock concentration (ng/µL)": value["part"].concentration(),
+                "stock per 30 µL clip (µL)": 1,
                 "clip_reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in value["clip_reactions"]
@@ -266,7 +272,7 @@ class BuildEncoder(json.JSONEncoder):
             key._hexdigest(): {
                 "prefix": {
                     "key": _seqrecord_hexdigest(key._prefix),
-                    "id": key._prefix.prefix_id,
+                    "prefix_id": key._prefix.prefix_id,
                 },
                 "part": {
                     "key": _seqrecord_hexdigest(key._part),
@@ -275,7 +281,7 @@ class BuildEncoder(json.JSONEncoder):
                 },
                 "suffix": {
                     "key": _seqrecord_hexdigest(key._suffix),
-                    "id": key._suffix.suffix_id,
+                    "suffix_id": key._suffix.suffix_id,
                 },
                 "assembly_data_indexes": [
                     obj.basic_assemblies.index(assembly) for assembly in value
