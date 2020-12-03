@@ -5,8 +5,11 @@
             "id": "BASIC_SEVA_18",
             "name": "BASIC_SEVA_18",
             "description": "BASIC SEVA vector containing Ampicillin resistance marker and pUC origin of replication.",
-            "clip_reactions": [
-                "a17f9b89e08e7ac8fd2fc8cbeab1c381"
+            "suggested stock concentration (ng/µL)": 155,
+            "stock per 30 µL clip (µL)": 1,
+            "total clip reactions": 1,
+            "clip reactions": [
+                "a54cb7fb1dd055683d37a160ac76434a"
             ]
         },
         "f3eb90a77c18c828cc1c0e2ce99d9f83": {
@@ -14,8 +17,11 @@
             "id": "sfGFP",
             "name": "BASIC_sfGFP_CDS",
             "description": "sfGFP stored in BASIC_SEVA_18",
-            "clip_reactions": [
-                "9e38c3a7ed4952083534545dcb360886"
+            "suggested stock concentration (ng/µL)": 146,
+            "stock per 30 µL clip (µL)": 1,
+            "total clip reactions": 1,
+            "clip reactions": [
+                "607d7464cb9ec9dd73dc2a312af784f5"
             ]
         },
         "62771c44c2711126d5250509d5b64554": {
@@ -23,8 +29,11 @@
             "id": "mCherry",
             "name": "BASIC_mCherry_CDS",
             "description": "mCherry stored in BASIC_SEVA_18",
-            "clip_reactions": [
-                "eb00ca53c64289f8b3c56a9da4e7b029"
+            "suggested stock concentration (ng/µL)": 145,
+            "stock per 30 µL clip (µL)": 1,
+            "total clip reactions": 1,
+            "clip reactions": [
+                "0f8412b805e86b18a9b6e090e5fde5c5"
             ]
         },
         "adb85d1208ec49e5cf26279bbf0391c0": {
@@ -32,8 +41,11 @@
             "id": "mTagBFP2",
             "name": "BASIC_mTagBFP2_CDS",
             "description": "mTagBFP2 stored in BASIC_SEVA_18",
-            "clip_reactions": [
-                "c79d3d8e6615d838c2a0018a8d7b1548"
+            "suggested stock concentration (ng/µL)": 145,
+            "stock per 30 µL clip (µL)": 1,
+            "total clip reactions": 1,
+            "clip reactions": [
+                "aa4bad3a71bc7e66df2e99667aee8fc6"
             ]
         }
     },
@@ -44,8 +56,9 @@
             "sequence": "GGCTCGGGAGACCTATCGGTAATAACAGTCCAATCTGGTGTAACTTCGGAATCGTCC",
             "prefix_id": "LMS-P",
             "suffix_id": "LMS-S",
-            "clip_reactions": [
-                "a17f9b89e08e7ac8fd2fc8cbeab1c381"
+            "total clip reactions": 1,
+            "clip reactions": [
+                "a54cb7fb1dd055683d37a160ac76434a"
             ]
         },
         "357de88d7edf91937d038bd7fbeda1ef": {
@@ -54,15 +67,16 @@
             "sequence": "GGCTCGGGTAAGAACTCGCACTTCGTGGAAACACTATTATCTGGTGGGTCTCTGTCC",
             "prefix_id": "LMP-P",
             "suffix_id": "LMP-S",
-            "clip_reactions": [
-                "9e38c3a7ed4952083534545dcb360886",
-                "eb00ca53c64289f8b3c56a9da4e7b029",
-                "c79d3d8e6615d838c2a0018a8d7b1548"
+            "total clip reactions": 3,
+            "clip reactions": [
+                "607d7464cb9ec9dd73dc2a312af784f5",
+                "0f8412b805e86b18a9b6e090e5fde5c5",
+                "aa4bad3a71bc7e66df2e99667aee8fc6"
             ]
         }
     },
     "clips_data": {
-        "a17f9b89e08e7ac8fd2fc8cbeab1c381": {
+        "a54cb7fb1dd055683d37a160ac76434a": {
             "prefix": {
                 "key": "6e6499106b18b6144ed1c965e3c3fef9",
                 "prefix_id": "LMS-P"
@@ -76,13 +90,14 @@
                 "key": "357de88d7edf91937d038bd7fbeda1ef",
                 "suffix_id": "LMP-S"
             },
-            "assembly_data_indexes": [
+            "total assemblies": 3,
+            "assembly indexes": [
                 0,
                 1,
                 2
             ]
         },
-        "9e38c3a7ed4952083534545dcb360886": {
+        "607d7464cb9ec9dd73dc2a312af784f5": {
             "prefix": {
                 "key": "357de88d7edf91937d038bd7fbeda1ef",
                 "prefix_id": "LMP-P"
@@ -96,11 +111,12 @@
                 "key": "6e6499106b18b6144ed1c965e3c3fef9",
                 "suffix_id": "LMS-S"
             },
-            "assembly_data_indexes": [
+            "total assemblies": 1,
+            "assembly indexes": [
                 0
             ]
         },
-        "eb00ca53c64289f8b3c56a9da4e7b029": {
+        "0f8412b805e86b18a9b6e090e5fde5c5": {
             "prefix": {
                 "key": "357de88d7edf91937d038bd7fbeda1ef",
                 "prefix_id": "LMP-P"
@@ -114,11 +130,12 @@
                 "key": "6e6499106b18b6144ed1c965e3c3fef9",
                 "suffix_id": "LMS-S"
             },
-            "assembly_data_indexes": [
+            "total assemblies": 1,
+            "assembly indexes": [
                 1
             ]
         },
-        "c79d3d8e6615d838c2a0018a8d7b1548": {
+        "aa4bad3a71bc7e66df2e99667aee8fc6": {
             "prefix": {
                 "key": "357de88d7edf91937d038bd7fbeda1ef",
                 "prefix_id": "LMP-P"
@@ -132,7 +149,8 @@
                 "key": "6e6499106b18b6144ed1c965e3c3fef9",
                 "suffix_id": "LMS-S"
             },
-            "assembly_data_indexes": [
+            "total assemblies": 1,
+            "assembly indexes": [
                 2
             ]
         }
@@ -140,23 +158,23 @@
     "assembly_data": [
         {
             "id": "sfGFP",
-            "clip_reactions": [
-                "a17f9b89e08e7ac8fd2fc8cbeab1c381",
-                "9e38c3a7ed4952083534545dcb360886"
+            "clip reactions": [
+                "a54cb7fb1dd055683d37a160ac76434a",
+                "607d7464cb9ec9dd73dc2a312af784f5"
             ]
         },
         {
             "id": "mCherry",
-            "clip_reactions": [
-                "a17f9b89e08e7ac8fd2fc8cbeab1c381",
-                "eb00ca53c64289f8b3c56a9da4e7b029"
+            "clip reactions": [
+                "a54cb7fb1dd055683d37a160ac76434a",
+                "0f8412b805e86b18a9b6e090e5fde5c5"
             ]
         },
         {
             "id": "mTagBFP2",
-            "clip_reactions": [
-                "a17f9b89e08e7ac8fd2fc8cbeab1c381",
-                "c79d3d8e6615d838c2a0018a8d7b1548"
+            "clip reactions": [
+                "a54cb7fb1dd055683d37a160ac76434a",
+                "aa4bad3a71bc7e66df2e99667aee8fc6"
             ]
         }
     ],

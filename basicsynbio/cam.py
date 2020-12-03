@@ -241,7 +241,8 @@ class BuildEncoder(json.JSONEncoder):
                 "description": value["part"].description,
                 "suggested stock concentration (ng/µL)": value["part"].concentration(),
                 "stock per 30 µL clip (µL)": 1,
-                "clip_reactions": [
+                "total clip reactions": len(value["clip_reactions"]),
+                "clip reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in value["clip_reactions"]
                 ],
@@ -258,7 +259,8 @@ class BuildEncoder(json.JSONEncoder):
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
-                "clip_reactions": [
+                "total clip reactions": len(value["clip_reactions"]),
+                "clip reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in value["clip_reactions"]
                 ],
@@ -283,7 +285,8 @@ class BuildEncoder(json.JSONEncoder):
                     "key": _seqrecord_hexdigest(key._suffix),
                     "suffix_id": key._suffix.suffix_id,
                 },
-                "assembly_data_indexes": [
+                "total assemblies": len(value),
+                "assembly indexes": [
                     obj.basic_assemblies.index(assembly) for assembly in value
                 ],
             }
@@ -295,7 +298,7 @@ class BuildEncoder(json.JSONEncoder):
         return [
             {
                 "id": assembly.id,
-                "clip_reactions": [
+                "clip reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in assembly.clip_reactions
                 ],
@@ -319,7 +322,7 @@ class BuildDecoder(json.JSONDecoder):
     def return_basic_assemblies(self, dictionary):
         for assembly in dictionary["assembly_data"]:
             parts_linkers = []
-            for clip_reaction in assembly["clip_reactions"]:
+            for clip_reaction in assembly["clip reactions"]:
                 parts_linkers += [
                     self.unique_linkers_data[
                         dictionary["clips_data"][clip_reaction]["prefix"]["key"]
