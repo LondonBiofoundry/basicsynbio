@@ -115,15 +115,6 @@ def bseva_68_seqrec():
 
 
 @pytest.fixture
-def ice_user_config():
-    import os
-
-    ice_client = os.environ.get("JBEI_ICE_CLIENT")
-    ice_token = os.environ.get("JBEI_ICE_TOKEN")
-    return {"client": ice_client, "token": ice_token}
-
-
-@pytest.fixture
 def bsai_part_seqrec(gfp_orf_seq):
     from Bio.Seq import Seq
     from Bio.SeqRecord import SeqRecord
@@ -349,21 +340,6 @@ def test_new_part_resuspension(gfp_orf_basicpart):
     mw = molecular_weight(gfp_orf_basicpart.seq, double_stranded=True)
     print(f"estimated concentration: {mass*1e-9/(vol*1e-6*mw)*1e9}")
     assert 75 == round(mass * 1e-9 / (vol * 1e-6 * mw) * 1e9)
-
-
-@pytest.mark.slow
-def test_import_ice_parts(bseva_68_seqrec, ice_user_config):
-    ice_nums = ["17337"]
-    print(f"ice_user_config before import parts: {ice_user_config}")
-    ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
-    assert compare_seqrec_instances(next(ice_parts), bseva_68_seqrec) == True
-
-
-@pytest.mark.slow
-def test_import_all_ice_parts(ice_user_config):
-    ice_nums = (value for value in bsb.BSEVA_ICE_DICT.values())
-    ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
-    assert len(list(ice_parts)) == len(bsb.BSEVA_ICE_DICT)
 
 
 def test_bseva_dict(bseva_68_seqrec):

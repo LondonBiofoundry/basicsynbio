@@ -6,7 +6,6 @@ import basicsynbio as bsb
 from Bio import SeqIO
 from Bio.SeqRecord import SeqRecord
 import io
-import icebreaker
 import json
 import os
 import tempfile
@@ -90,34 +89,3 @@ def _process_basic_object(basic_object, molecule_type):
         pass
     basic_object.annotations["molecule_type"] = molecule_type
     return basic_object
-
-
-def import_ice_parts(
-    ice_user_config: dict,
-    *ice_nums,
-    ice_root="https://public-registry.jbei.org/",
-    file_type="original",
-    format="genbank",
-):
-    """:returns: a :py:class:`BasicPart` object using an entry on a JBEI-ICE instance.
-
-    Uses icebreaker under the hood. Refer to `icebreaker documentation <https://edinburgh-genome-foundry.github.io/icebreaker/>` for further information.
-
-    :param dict ice_user_config: Either {email: password:} or {token: client:}. Note, compared to icebreaker, 'Root' is a separate default argument (ice_root).
-    :param \*ice_nums: Part ID numbers as strings e.g. "17338". Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.
-    :param string ice_root: Root of ice registry.
-    :param string file_type: The file type to download e.g. "original", "genbank" or "fasta".
-    :param string format: Format of the downloaded file. If file_type == "fasta", format must also be "fasta".
-
-    """
-    ice_config = ice_user_config
-    ice_config["root"] = ice_root
-    ice = icebreaker.IceClient(ice_config)
-    for ice_num in ice_nums:
-        bytes_file = ice.request(
-            method="GET",
-            endpoint=f"file/{ice_num}/sequence/{file_type}",
-            response_type="file",
-        )
-        memory_file = io.StringIO(bytes_file.decode("utf-8"))
-        yield import_part(memory_file, "genbank")
