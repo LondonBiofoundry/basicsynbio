@@ -54,17 +54,25 @@ class BasicBuild:
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
         self.unique_clips = [clip for clip in self.clips_data.keys()]
-        self.unique_parts = self._unique_parts_linkers(
+        self.unique_parts_data = self._unique_parts_linkers_data(
             "part", *(clip_reaction._part for clip_reaction in self.clips_data)
         )
-        self.unique_linkers = self._unique_parts_linkers(
+        self.unique_linkers_data = self._unique_parts_linkers_data(
             "linker", *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
         for clip_reaction in self.unique_clips:
             part_hash = _seqrecord_hexdigest(clip_reaction._part)
             prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
-            self.unique_parts[part_hash]["clip_reactions"].append(clip_reaction)
-            self.unique_linkers[prefix_hash]["clip_reactions"].append(clip_reaction)
+            self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
+            self.unique_linkers_data[prefix_hash]["clip_reactions"].append(
+                clip_reaction
+            )
+        self.unique_parts = tuple(
+            part_dict["part"] for part_dict in self.unique_parts_data.values()
+        )
+        self.unique_linkers = tuple(
+            linker_dict["linker"] for linker_dict in self.unique_linkers_data.values()
+        )
 
     def update_parts(self, *parts):
         """Updates BasicBuild instance with *parts, replacing existing all
@@ -72,11 +80,11 @@ class BasicBuild:
 
         *parts.
         """
-        if len(parts) != len(self.unique_parts):
+        if len(parts) != len(self.unique_parts_data):
             raise ValueError(
-                f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts)} elements. The two must match."
+                f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts_data)} elements. The two must match."
             )
-        parts_dict = self._unique_parts_linkers("part", *parts)
+        parts_dict = self._unique_parts_linkers_data("part", *parts)
         basic_assemblies = []
         for assembly in self.basic_assemblies:
             parts_linkers = [
@@ -103,7 +111,7 @@ class BasicBuild:
                 clips_dict[clip_reaction].append(assembly)
         return clips_dict
 
-    def _unique_parts_linkers(self, object_key: str, *parts_linkers):
+    def _unique_parts_linkers_data(self, object_key: str, *parts_linkers):
         """Returns a dictionary of unique objects in *parts_linkers. Includes
         an empty list for each item to populate with clip_reactions used by
         each unique part/linker.
@@ -228,7 +236,7 @@ class BuildEncoder(json.JSONEncoder):
                     for clip_reaction in value["clip_reactions"]
                 ],
             }
-            for key, value in obj.unique_parts.items()
+            for key, value in obj.unique_parts_data.items()
         }
 
     @staticmethod
@@ -245,7 +253,7 @@ class BuildEncoder(json.JSONEncoder):
                     for clip_reaction in value["clip_reactions"]
                 ],
             }
-            for key, value in obj.unique_linkers.items()
+            for key, value in obj.unique_linkers_data.items()
         }
 
     @staticmethod
@@ -292,8 +300,8 @@ class BuildDecoder(json.JSONDecoder):
 
     def decode_build(self, dictionary):
         if "__BasicBuild__" in dictionary:
-            self.unique_parts = self.return_unqiue_parts(dictionary)
-            self.unique_linkers = self.return_unique_linkers(dictionary)
+            self.unique_parts_data = self.return_unqiue_parts(dictionary)
+            self.unique_linkers_data = self.return_unique_linkers(dictionary)
             basic_assemblies = self.return_basic_assemblies(dictionary)
             return BasicBuild(*basic_assemblies)
         return dictionary
@@ -303,10 +311,10 @@ class BuildDecoder(json.JSONDecoder):
             parts_linkers = []
             for clip_reaction in assembly["clip_reactions"]:
                 parts_linkers += [
-                    self.unique_linkers[
+                    self.unique_linkers_data[
                         dictionary["clips_data"][clip_reaction]["prefix"]["key"]
                     ],
-                    self.unique_parts[
+                    self.unique_parts_data[
                         dictionary["clips_data"][clip_reaction]["part"]["key"]
                     ],
                 ]
