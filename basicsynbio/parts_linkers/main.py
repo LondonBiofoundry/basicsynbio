@@ -3,6 +3,8 @@ from basicsynbio.main import CommonArgDocs
 
 
 class PartLinkerCollection(dict):
+    """Class to hold Part Linker Collections.
+    """
     def __str__(self):
         string = ""
         for item in self.items():
@@ -17,7 +19,14 @@ def make_collection(*parts_linkers, keys=None):
     """Generates a PartLinkerCollection object.
 
     Args:
-        keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
+        *parts_linkers (iterable of Parts/Linkers): iterable of BasicParts
+            or BasicLinkers used to create the collection
+        keys (optional): If None, uses id attribute, otherwise user supplies
+            iterable of keys corresponding to each part/linker. Defaults to
+
+    Returns:
+        Collection
+            
     """
     if not keys:
         collection = {part_linker.id: part_linker for part_linker in parts_linkers}

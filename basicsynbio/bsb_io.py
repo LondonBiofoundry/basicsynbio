@@ -14,27 +14,40 @@ from sbol2 import Document
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_part(handle, format, add_i_seqs=False):
-    """:return: Part object using Bio.SeqIO.read().
+def import_part(handle, format: str, add_i_seqs: bool =False) -> bsb.BasicPart:
+    """Imports a Part object using Bio.SeqIO.read().
 
-    Refer to Biopython documentation for further information on Bio.SeqIO.read().
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.read().
 
-    :rtype: :py:class:`BasicPart`
+    Args:
+        handle: handle of file to be parsed
+        format (str): format of handle file could be 'fasta', 'genbank'...
+        add_i_seqs (bool, optional): if True adds flanking BASIC iP and iS sequences.
+            Note, letter_annotations attribute is lost."
 
+    Returns:
+        BasicPart: a Part object using Bio.SeqIO.read()
     """
     seqrec = SeqIO.read(handle, format)
     return seqrec2part(seqrec, add_i_seqs)
 
 
 @add2docs(CommonArgDocs.ADD_I_SEQS)
-def import_sbol_part(path, add_i_seqs=False):
-    """:return: Part object using sbol2.Document.exportToFormat.
+def import_sbol_part(path, add_i_seqs=False) -> bsb.BasicPart:
+    """Imports a BasicPart object using sbol2.Document.exportToFormat.
 
-    Refer to pysbol2 documentation for further information.
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.read().
+        Refer to pysbol2 documentation for further information.
 
-    :rtype: :py:class:`BasicPart` object.
-    :param string path: Path to sbol file.
+    Args:
+        path (str): path to SBOL file.
+        add_i_seqs (bool, optional): if True adds flanking BASIC iP and iS sequences.
+            Note, letter_annotations attribute is lost."
 
+    Returns:
+        BasicPart: a Part object using Bio.SeqIO.read()
     """
     doc = Document(path)
     fp = tempfile.NamedTemporaryFile(delete=False)
@@ -46,11 +59,20 @@ def import_sbol_part(path, add_i_seqs=False):
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_parts(handle, format, add_i_seqs=False):
-    """:return: Generator of :py:class:`BasicPart` instances using Bio.SeqIO.parse().
+def import_parts(handle, format: str, add_i_seqs=False):
+    """Imports a Generator of BasicPart objects using Bio.SeqIO.parse().
 
-    Refer to Biopython documentation for further information on Bio.SeqIO.parse().
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.parse().
 
+    Args:
+        handle: handle of file to be parsed
+        format (str): format of handle file could be 'fasta', 'genbank'...
+        add_i_seqs (bool, optional): if True adds flanking BASIC iP and iS sequences.
+            Note, letter_annotations attribute is lost."
+
+    Yields:
+        BasicPart: all BasicPart objects within the file.
     """
     seqrecs = SeqIO.parse(handle, format)
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
@@ -61,12 +83,26 @@ def import_parts(handle, format, add_i_seqs=False):
     CommonArgDocs.FORMAT,
 )
 def export_sequences_to_file(sequences, handle, format="genbank", molecule_type="DNA"):
-    """Exports sequences using Bio.SeqIO.write().
+    """Exports sequences to file using Bio.SeqIO.write().
 
-    Refer to Biopython documentation for further information on Bio.SeqIO.write().
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.write().
 
-    :param sequences: objects to export to file handle.
-    :type sequences: A single object or iterable of type/s BasicPart, BasicAssembly or Bio.SeqRecord.SeqRecord.
+    Args:
+        sequences(iterable of singular BasicPart/BasicLinker/SeqRecord): 
+            Sequences to export.
+        handle (str): File name to write to.
+        format (str, optional): Format of handle file could be 'fasta', 'genbank'.
+            Defaults to 'genbank'.
+        molecule_type (str, optional): Type of molecule within sequences.
+            defaults to 'DNA'.
+
+    Raises:
+        ValueError: sequences was not of correct type.
+
+    Todo:
+        Consider changing ValueError to TypeError.
+
     """
     if type(sequences) in [bsb.BasicPart, bsb.BasicAssembly, SeqRecord]:
         SeqIO.write(_process_basic_object(sequences, molecule_type), handle, format)
@@ -83,7 +119,20 @@ def export_sequences_to_file(sequences, handle, format="genbank", molecule_type=
 
 
 def _process_basic_object(basic_object, molecule_type):
-    """Converts basic_object into an object that can be processed by Bio.SeqIO."""
+    """Converts basic_object into an object that can be processed by Bio.SeqIO.
+    
+    Args:
+        basic_object: Basic object which needes annotation attribute filling
+        molecule_type (str, optional): Type of molecule within sequences.
+            defaults to 'DNA'.
+
+    Returns:
+        basic_object with annotation attribute filled to allow Bio.SeqIO
+        processing
+
+    Raises:
+        AttributeError: if basic_object does not have attribute return_seq()
+    """
     try:
         basic_object = basic_object.return_seqrec()
     except AttributeError:
@@ -95,20 +144,31 @@ def _process_basic_object(basic_object, molecule_type):
 def import_ice_parts(
     ice_user_config: dict,
     *ice_nums,
-    ice_root="https://public-registry.jbei.org/",
-    file_type="original",
-    format="genbank",
+    ice_root: str ="https://public-registry.jbei.org/",
+    file_type: str ="original",
+    format: str ="genbank",
 ):
-    """:returns: a :py:class:`BasicPart` object using an entry on a JBEI-ICE instance.
+    """Returns: a :py:class:`BasicPart` object using an entry on a JBEI-ICE instance.
 
-    Uses icebreaker under the hood. Refer to `icebreaker documentation <https://edinburgh-genome-foundry.github.io/icebreaker/>` for further information.
+    Note:
+        Uses icebreaker under the hood. Refer to `icebreaker documentation
+            <https://edinburgh-genome-foundry.github.io/icebreaker/>` for 
+            further information.
+        Note compared to icebreaker, 'Root' is a separate default argument (ice_root).
 
-    :param dict ice_user_config: Either {email: password:} or {token: client:}. Note, compared to icebreaker, 'Root' is a separate default argument (ice_root).
-    :param \*ice_nums: Part ID numbers as strings e.g. "17338". Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.
-    :param string ice_root: Root of ice registry.
-    :param string file_type: The file type to download e.g. "original", "genbank" or "fasta".
-    :param string format: Format of the downloaded file. If file_type == "fasta", format must also be "fasta".
+    Args:
+        ice_user_config (dictionary): Either {email: password:} or {token: client:}
+            Note compared to icebreaker, 'Root' is a separate default argument 
+            (ice_root).
+        *ice_nums: Part ID numbers as strings e.g. "17338". Note, the distinction
+            between Part ID and Part ID number. For instance, number is 17338
+            for ID=JPUB_017338.
+        ice_root (str, optional): Root of ice registry.
+        file_type (str, optional): The file type to download e.g. "original", "genbank" or "fasta".
+        format (str, optional): Format of the downloaded file. If file_type == "fasta", format must also be "fasta".
 
+    Yields:
+        BasicPart: all BasicPart objects within the JBEI-ICE instance.
     """
     ice_config = ice_user_config
     ice_config["root"] = ice_root

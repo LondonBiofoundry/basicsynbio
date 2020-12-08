@@ -319,12 +319,19 @@ def test_export_csv(promoter_assemblies_build):
 def test_add2docs_decorator():
     from basicsynbio.main import CommonArgDocs
 
-    core_doc = """Convert SeqRecord to :py:class:`BasicPart`.
+    core_doc = """A function to Convert SeqRecord to :py:class:`BasicPart`.
+    
+    Note:
+        Relevant attributes are maintained.
 
-    Relevant attributes are maintained.
+    Args:
+        seqrec(Bio.SeqRecord.SeqRecord): SeqRecord to be converted to
+            :py:class:`BasicPart` subclass.
+        add_i_seqs(bool, optional): if True adds flanking BASIC iP and iS 
+            sequences. Note, letter_annotations attribute is lost.
 
-    :param seqrec: SeqRecord to be converted to :py:class:`BasicPart` subclass.
-    :type seqrec: Bio.SeqRecord.SeqRecord
+    Returns:
+        BasicPart: the BasicPart created from Args
     """
     print(bsb.seqrec2part.__doc__)
     assert (

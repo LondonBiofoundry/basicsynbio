@@ -6,6 +6,12 @@ def only_label_feature(part):
 
     Useful for getting rid of ApEinfo features following Benchling
     exports.
+
+    Args:
+        part: part subject to qualifier simplification.
+
+    Returns:
+        part: with simplified qualifiers
     """
     for feature in part.features:
         feature.qualifiers = {"label": feature.qualifiers["label"]}

@@ -4,8 +4,12 @@
 def add2docs(*doc_lines, indentation=0):
     """Decorator for adding docstrings to functions.
 
-    :param \*doc_lines: collection of docstrings by lines.
-    :param int indentation: white space buffered to each line.
+    Args:
+        *doc_lines: collection of docstrings by lines.
+        indentation(int, optional): white space buffered to each line.
+
+    Returns:
+        Decorator.
     """
     doc_lines = ["\n" + " " * indentation + line for line in doc_lines]
 

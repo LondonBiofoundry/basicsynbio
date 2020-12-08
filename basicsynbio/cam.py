@@ -28,9 +28,9 @@ def new_part_resuspension(part, mass: float, double_stranded=True):
     solution of part, equivalent to 75 fmol/µL.
 
     Args:
-        part -- BasicPart object.
-        mass -- mass of synthesised part (ng).
-        double_stranded -- True (default) indicates part is dsDNA.
+        part (BasicPart): BasicPart object.
+        mass (float): mass of synthesised part (ng).
+        double_stranded (bool): True (default) indicates part is dsDNA.
     """
     return (
         (mass * 10 ** -9)
@@ -43,13 +43,28 @@ def new_part_resuspension(part, mass: float, double_stranded=True):
 
 class BasicBuild:
     """Class provides methods and attributes for building BasicAssembly
-    objects."""
+    objects.
+    
+    Attributes:
+        basic_assemblies (tuple of BasicAssemblies): A collection of all the
+            assemblies within the BasicBuild object.
+        clips_data (dictionary): A dictionary of each clip reaction as a key
+            with associated assemblys as values.
+        unique_clips (tuple of ClipReaction): A list of each unique ClipReaction
+            within the BasicBuild object.
+        unique_parts (dictionary): A dictionary containg the hexdigest of each
+            unique part along with a sub-dictionary describing the part and
+            associated clip_reactions.
+        unique_linkers (dictionary): A dictionary containg the hexdigest of each
+            unique linker along with a sub-dictionary describing the linker and
+            associated clip_reactions.
+    """
 
     def __init__(self, *basic_assemblies):
         """Initiate BasicBuild.
 
         Args:
-            *basic_assemblies -- BasicAssembly objects.
+            *basic_assemblies: BasicAssembly objects.
         """
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
@@ -70,7 +85,13 @@ class BasicBuild:
         """Updates BasicBuild instance with *parts, replacing existing all
         BasicParts used in assemblies with the matching equivalent in.
 
-        *parts.
+        Args:
+            *parts (tuple of BasicParts): parts to replace the BasicParts used in
+                assemblies
+
+        Raises:
+            ValueError: if length parts is not equal to lenght this build's
+                unique parts
         """
         if len(parts) != len(self.unique_parts):
             raise ValueError(
@@ -88,9 +109,15 @@ class BasicBuild:
             basic_assemblies.append(BasicAssembly(assembly.id, *parts_linkers))
         self.__init__(*basic_assemblies)
 
-    def _return_clips_data(self):
-        """Returns a dictionary of ClipReactions with values describing
-        basic_assemblies it uses."""
+    def _return_clips_data(self) -> dict:
+        """A function to returns a dictionary of ClipReactions with values
+        describing basic_assemblies it uses.
+        
+        Returns:
+            dictionary: each ClipReaction as keys with values describing
+            basic_assemblies it uses
+                
+        """
         clips_dict = OrderedDict(
             **{
                 clip_reaction: []
@@ -103,13 +130,20 @@ class BasicBuild:
                 clips_dict[clip_reaction].append(assembly)
         return clips_dict
 
-    def _unique_parts_linkers(self, object_key: str, *parts_linkers):
+    def _unique_parts_linkers(self, object_key: str, *parts_linkers) -> dict:
         """Returns a dictionary of unique objects in *parts_linkers. Includes
         an empty list for each item to populate with clip_reactions used by
         each unique part/linker.
 
         Args:
-            object_key -- "part" or "linker".
+            object_key (str): can be "part" or "linker".
+            *parts_linkers: collection of parts and linkers present within build
+                used to search through for uniqueness.
+
+        Returns:
+            dictionary: cointaing hexdigest of part linker along with a sub 
+            dictionary describing part_linker and associated clip_reactions
+
         """
         return {
             _seqrecord_hexdigest(part_linker): {
@@ -121,7 +155,15 @@ class BasicBuild:
 
     def _duplicate_assembly_ids(self, assemblies):
         """If multiple elements of self.basic_assemblies have same "id"
-        attribute, raises a BuildException."""
+        attribute, raises a BuildException.
+        
+        Args:
+            assemblies(list(BasicAssemblies)): A list of all the assemblies
+                within the BasicBuild.
+
+        Raises:
+            BuildException: if non unique id's within assemblies of BasicBuild.
+        """
         assemblies_ids = [assembly.id for assembly in assemblies]
         if len(set(assemblies_ids)) < len(assemblies):
             top_assembly_id = Counter(assemblies_ids).most_common(1)[0]
@@ -135,8 +177,8 @@ class BasicBuild:
         is executed
 
         Args:
-            path (str) -- path to zipped folder of csv files. If none defaults to working directory with a time stamped name.
-            output csvs is created.
+            path (str, optional): path to zipped folder of csv files. If none defaults to
+                working directory with a time stamped name, output csvs is created.
         """
         if path == None:
             now = datetime.now()
@@ -193,6 +235,7 @@ class BasicBuild:
 
     @property
     def basic_assemblies(self):
+        """list(assemblies): returns all `BasicAssemby` objects with `Basicbuild`"""
         return self._basic_assemblies
 
     @basic_assemblies.setter
@@ -204,6 +247,18 @@ class BasicBuild:
 
 
 class BuildEncoder(json.JSONEncoder):
+    """A Class to encode BasicBuild objects extending `json.JSONEncoder` class
+
+    Attributes:
+        unique_parts_json (dictionary): Returns a JSON object describing unique
+            parts with the Basicbuild.
+        unique_linkers_json (dictionary): Returns a JSON object describing unique
+            linkers with the Basicbuild.
+        clips_data_json (dictionary): Returns a JSON object describing ClipReactions
+            with the Basicbuild.
+        assembly_data_json (list): Returns a list of dictionarys describing a the
+            assemblies within the `BasicBuild 
+    """
     def default(self, obj):
         if isinstance(obj, BasicBuild):
             return {
@@ -217,6 +272,17 @@ class BuildEncoder(json.JSONEncoder):
 
     @staticmethod
     def unique_parts_json(obj):
+        """A function to create machine readable json objects, completely
+        describing unique parts.
+
+        Args:
+            obj: BasicBuild object to be decoded
+
+        Returns:
+            dictionary: for each key within `unique_parts` gives a value of a
+            sub-dictionary containing, information on sequence, id, name,
+            description and associated clip reactions.
+        """
         return {
             key: {
                 "sequence": str(value["part"].seq),
@@ -233,6 +299,17 @@ class BuildEncoder(json.JSONEncoder):
 
     @staticmethod
     def unique_linkers_json(obj):
+        """A function to create machine readable json objects, completely
+        describing unique linkers.
+
+        Args:
+            obj: BasicBuild object to be decoded
+
+        Returns:
+            dictionary: for each key within `unique_linkers` gives a value of a
+            sub-dictionary containing, information on id, linker_class, sequence,
+            prefix_id, suffix_id and associated clip reactions.
+        """
         return {
             key: {
                 "id": value["linker"].id,
@@ -250,6 +327,16 @@ class BuildEncoder(json.JSONEncoder):
 
     @staticmethod
     def clips_data_json(obj):
+        """A function to create machine readable json objects, completely
+        describing ClipReaction objects within BasicBuild.
+
+        Args:
+            obj: BasicBuild object to be decoded
+
+        Returns:
+            dictionary: for each key within `clips_data` gives a value of a
+            sub-dictionary containing, information on prefix, part, suffix and associated assemblies.
+        """
         return {
             key._hexdigest(): {
                 "prefix": {
@@ -274,6 +361,17 @@ class BuildEncoder(json.JSONEncoder):
 
     @staticmethod
     def assembly_data_json(obj):
+        """A function to create machine readable json objects, completely
+        describing BasicAssembly objects within BasicBuild.
+
+        Args:
+            obj: BasicBuild object to be decoded
+
+        Returns:
+            list: returns a list of dictionaries populated by
+            `BasicBuild.basic_assemblies`, each dictionary describes id and
+            associated clip reactions
+        """
         return [
             {
                 "id": assembly.id,
@@ -287,10 +385,29 @@ class BuildEncoder(json.JSONEncoder):
 
 
 class BuildDecoder(json.JSONDecoder):
+    """A Class to decode JSON dictionary to basicsynbio objects,
+    extending `json.JSONDecoder` class
+
+    Attributes:
+        decode_build (dictionary): To return BasicBuild object
+        return_basic_assemblies (dictionary): To yield BasicAssemblies
+        return_unqiue_parts (dictionary): To return a dictionary of unique
+            BasicPart objects within encoded BasicBuild
+        return_unique_linkers (dictionary): To return a dictionary of unique
+            BasicLinker objects within encoded BasicBuild
+    """
     def __init__(self):
         json.JSONDecoder.__init__(self, object_hook=self.decode_build)
 
     def decode_build(self, dictionary):
+        """A Class to return BasicBuild from encoded JSON object
+
+        Args:
+            dictionary: JSON object encoded by BuildEncoder
+
+        Returns:
+            BasicBuild: BasicBuild object built from encoded JSON
+        """
         if "__BasicBuild__" in dictionary:
             self.unique_parts = self.return_unqiue_parts(dictionary)
             self.unique_linkers = self.return_unique_linkers(dictionary)
@@ -299,6 +416,14 @@ class BuildDecoder(json.JSONDecoder):
         return dictionary
 
     def return_basic_assemblies(self, dictionary):
+        """A Class to yield BasicAssembly objects from encoded JSON object
+
+        Args:
+            dictionary: JSON object encoded by BuildEncoder
+
+        Yields:
+            BasicAssembly: BasicAssembly objects within encoded BasicBuild
+        """
         for assembly in dictionary["assembly_data"]:
             parts_linkers = []
             for clip_reaction in assembly["clip_reactions"]:
@@ -314,6 +439,14 @@ class BuildDecoder(json.JSONDecoder):
 
     @staticmethod
     def return_unqiue_parts(dictionary):
+        """A Class to return a BasicPart objects from encoded JSON object
+
+        Args:
+            dictionary: JSON object encoded by BuildEncoder
+
+        Returns:
+            dictionary: containing unique BasicPart objects
+        """
         return {
             key: BasicPart(
                 seq=Seq(value["sequence"]),
@@ -326,6 +459,14 @@ class BuildDecoder(json.JSONDecoder):
 
     @staticmethod
     def return_unique_linkers(dictionary):
+        """A Class to return a BasicLinker objects from encoded JSON object
+
+        Args:
+            dictionary: JSON object encoded by BuildEncoder
+
+        Returns:
+            dictionary: containing unique BasicLinker objects
+        """
         unique_linkers = {}
         for key, value in dictionary["unique_linkers"].items():
             if re.match(".*BasicLinker", value["linker_class"]):
@@ -350,7 +491,15 @@ class BuildException(Exception):
 
 def _seqrecord_hexdigest(seqrecord_obj):
     """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
-    relevant attributes."""
+    relevant attributes.
+    
+    Args:
+        seqrecord_obj: Bio.SeqRecord.SeqRecord-like object, containing relevant
+            attributes
+    
+    Returns:
+        MD5 hash
+    """
     seqrec_hash = hashlib.md5(str(seqrecord_obj.seq).encode("UTF-8"))
     bytes_objs = [
         getattr(seqrecord_obj, attribute).encode("UTF-8")
