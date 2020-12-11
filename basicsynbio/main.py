@@ -231,15 +231,10 @@ class BasicAssembly:
         prefix_linkers = [
             clip_reaction.linker_half_ids()[0] for clip_reaction in clip_reactions
         ]
-        #print(prefix_linkers)
         _check_linker_halves(prefix_linkers)
         suffix_linkers = [
             clip_reaction.linker_half_ids()[1] for clip_reaction in clip_reactions
         ]
-        for clip_reaction in clip_reactions:
-            print(clip_reaction._suffix)
-            print(clip_reaction._suffix.suffix_id)
-
         _check_linker_halves(suffix_linkers)
 
     @property
