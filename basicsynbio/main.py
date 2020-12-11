@@ -11,6 +11,7 @@ from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
 import datetime
 import hashlib
+import warnings
 
 DATE = datetime.datetime.now()
 DEFAULT_ANNOTATIONS = {
@@ -58,6 +59,7 @@ class BasicPart(SeqRecord):
         :rtype: Bio.SeqRecord.SeqRecord
         """
         returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
+        self._check_basic_slice_length(len(returned_seqrec))
         for key in returned_seqrec.__dict__.keys():
             setattr(returned_seqrec, key, self.__dict__[key])
         if self._ip_loc < self._is_loc:
@@ -82,6 +84,17 @@ class BasicPart(SeqRecord):
         """Checks if sliced BasicPart contains a BsaI site."""
         if len(BsaI.search(self.seq)) > 2:
             raise PartException(f"{self.id} contains more than two BsaI sites.")
+
+    def _check_basic_slice_length(self, num_base_pairs):
+        if (90 <= num_base_pairs < 150):
+            warnings.warn(
+                f'Basic Slice of part {self.name} is {num_base_pairs} base pairs long, this is between 90 and 150 base pairs which may cause inconsistencies during assembly',
+                UserWarning
+            )
+        if num_base_pairs < 90:
+            raise ValueError(
+                f'Basic Slice of part {self.name} is {num_base_pairs} base pairs long, this is less than 90 base pairs which may cause errors during assembly'
+            )
 
     def __eq__(self, other):
         if not isinstance(other, BasicPart):
