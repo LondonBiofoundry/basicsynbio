@@ -153,10 +153,10 @@ class BasicBuild:
             zip_path = path
         with open(Path.cwd() / "clips.csv", "w", newline="") as f:
             fieldnames = [
-                "Clip index",
+                "Clip Index",
                 "Prefix ID",
                 "Part ID",
-                "Part name",
+                "Part Name",
                 "Suffix ID",
                 "Total assemblies",
                 "Assembly indexes",
@@ -166,10 +166,10 @@ class BasicBuild:
             for index, clip_data in enumerate(self.clips_data.items()):
                 thewriter.writerow(
                     {
-                        "Clip index": index + 1,
+                        "Clip Index": index + 1,
                         "Prefix ID": clip_data[0]._prefix.prefix_id,
                         "Part ID": clip_data[0]._part.id,
-                        "Part name": clip_data[0]._part.name,
+                        "Part Name": clip_data[0]._part.name,
                         "Suffix ID": clip_data[0]._suffix.suffix_id,
                         "Total assemblies": len(clip_data[1]),
                         "Assembly indexes": [
