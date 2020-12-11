@@ -88,12 +88,12 @@ class BasicPart(SeqRecord):
     def _check_basic_slice_length(self, num_base_pairs):
         if (90 <= num_base_pairs < 150):
             warnings.warn(
-                f'Basic Slice of part {self.name} is {num_base_pairs} base pairs long, this is between 90 and 150 base pairs which may cause inconsistencies during assembly',
+                f'Basic Slice of part {self.name} is {num_base_pairs} base pairs long, this is between 90 and 150 base pairs which may cause inconsistencies during assembly.',
                 UserWarning
             )
         if num_base_pairs < 90:
             raise ValueError(
-                f'Basic Slice of part {self.name} is {num_base_pairs} base pairs long, this is less than 90 base pairs which may cause errors during assembly'
+                f'Basic Slice of part {self.name} is {num_base_pairs} base pairs long, this is less than 90 base pairs which may cause errors during assembly.'
             )
 
     def __eq__(self, other):
