@@ -210,6 +210,7 @@ class BasicAssembly:
                         suffix=suffix,
                     )
                 )
+        print(clip_reactions)
         self._check_clip_reactions(clip_reactions)
         return tuple(clip_reactions)
 
@@ -222,6 +223,7 @@ class BasicAssembly:
 
             Note UTR linker-halves must be compatible.
             """
+            #print(linker_halves)
             if len(linker_halves) > len(set(linker_halves)):
                 top_linker_half = Counter(linker_halves).most_common(1)[0]
                 raise AssemblyException(
@@ -235,6 +237,8 @@ class BasicAssembly:
         suffix_linkers = [
             clip_reaction.linker_half_ids()[1] for clip_reaction in clip_reactions
         ]
+        print(prefix_linkers)
+        print(suffix_linkers)
         _check_linker_halves(suffix_linkers)
 
     @property

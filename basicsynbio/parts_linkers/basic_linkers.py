@@ -4,6 +4,7 @@ pacakge."""
 import basicsynbio as bsb
 from Bio.Seq import Seq
 from .main import PartLinkerCollection
+from ..cam import _seqrecord_hexdigest
 
 standard_linkers = {
     "L1": "CTCGTTACTTACGACACTCCGAGACAGTCAGAGGGTATTTATTGAACTAGTCC",
@@ -84,7 +85,14 @@ def _make_linker(
     description="visit https://www.biolegio.com/products-services/basic/ for further information.",
 ):
     seq = Seq("GG" + str_seq)
-    return linker_class(seq, id, description=description)
+
+    seqlikeobject= lambda: None
+    setattr(seqlikeobject, 'seq', seq)
+    setattr(seqlikeobject, 'name', id)
+    setattr(seqlikeobject, 'description', description)
+
+    uniqueID = _seqrecord_hexdigest(seqlikeobject)
+    return linker_class(seq, uniqueID, name=id, description=description)
 
 
 BIOLEGIO_LINKERS = {

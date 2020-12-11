@@ -1,5 +1,7 @@
 from basicsynbio.decorators import add2docs
 from basicsynbio.main import CommonArgDocs
+from basicsynbio.main import BasicPart
+from ..cam import _seqrecord_hexdigest
 
 
 class PartLinkerCollection(dict):
@@ -15,12 +17,20 @@ class PartLinkerCollection(dict):
 @add2docs(CommonArgDocs.PARTS_LINKERS_ARGS)
 def make_collection(*parts_linkers, keys=None):
     """Generates a PartLinkerCollection object.
-
     Args:
         keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
     """
+    #parts_linkers_withID = map(processId_part,parts_linkers)
     if not keys:
         collection = {part_linker.id: part_linker for part_linker in parts_linkers}
     else:
         collection = {key: value for key, value in zip(keys, parts_linkers)}
     return PartLinkerCollection(collection.items())
+
+def processId_part(part):
+    seqlikeobject= lambda: None
+    setattr(seqlikeobject, 'seq', part.seq)
+    setattr(seqlikeobject, 'name', part.name)
+    setattr(seqlikeobject, 'description', part.description)
+    setattr(part,'id',_seqrecord_hexdigest(seqlikeobject))
+    return part
