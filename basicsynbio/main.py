@@ -143,7 +143,7 @@ class BasicUTRRBSLinker(BasicLinker):
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
         self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
-        self.suffix_id = f"UTR{self.id[3]}-S"
+        self.suffix_id = f"UTR{self.name[3]}-S"
 
 
 class BasicAssembly:
@@ -210,7 +210,6 @@ class BasicAssembly:
                         suffix=suffix,
                     )
                 )
-        print(clip_reactions)
         self._check_clip_reactions(clip_reactions)
         return tuple(clip_reactions)
 
@@ -223,7 +222,6 @@ class BasicAssembly:
 
             Note UTR linker-halves must be compatible.
             """
-            #print(linker_halves)
             if len(linker_halves) > len(set(linker_halves)):
                 top_linker_half = Counter(linker_halves).most_common(1)[0]
                 raise AssemblyException(
@@ -233,12 +231,15 @@ class BasicAssembly:
         prefix_linkers = [
             clip_reaction.linker_half_ids()[0] for clip_reaction in clip_reactions
         ]
+        #print(prefix_linkers)
         _check_linker_halves(prefix_linkers)
         suffix_linkers = [
             clip_reaction.linker_half_ids()[1] for clip_reaction in clip_reactions
         ]
-        print(prefix_linkers)
-        print(suffix_linkers)
+        for clip_reaction in clip_reactions:
+            print(clip_reaction._suffix)
+            print(clip_reaction._suffix.suffix_id)
+
         _check_linker_halves(suffix_linkers)
 
     @property

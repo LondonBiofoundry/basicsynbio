@@ -20,17 +20,13 @@ def make_collection(*parts_linkers, keys=None):
     Args:
         keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
     """
-    #parts_linkers_withID = map(processId_part,parts_linkers)
+    parts_linkers_withID = map(processId_part,parts_linkers)
     if not keys:
-        collection = {part_linker.id: part_linker for part_linker in parts_linkers}
+        collection = {part_linker.id: part_linker for part_linker in parts_linkers_withID}
     else:
-        collection = {key: value for key, value in zip(keys, parts_linkers)}
+        collection = {key: value for key, value in zip(keys, parts_linkers_withID)}
     return PartLinkerCollection(collection.items())
 
 def processId_part(part):
-    seqlikeobject= lambda: None
-    setattr(seqlikeobject, 'seq', part.seq)
-    setattr(seqlikeobject, 'name', part.name)
-    setattr(seqlikeobject, 'description', part.description)
-    setattr(part,'id',_seqrecord_hexdigest(seqlikeobject))
+    setattr(part,'id',_seqrecord_hexdigest(part))
     return part
