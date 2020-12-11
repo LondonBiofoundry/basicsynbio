@@ -179,13 +179,17 @@ class BasicBuild:
                     }
                 )
         with open(Path.cwd() / "assemblies.csv", "w", newline="") as f:
-            fieldnames = ["Assembly index", "Assembly ID", "Clip indexes"]
+            fieldnames = [
+                "Assembly Index",
+                "Assembly ID",
+                "Clip indexes"
+            ]
             thewriter = csv.DictWriter(f, fieldnames=fieldnames)
             thewriter.writeheader()
             for index, assembly in enumerate(self.basic_assemblies):
                 thewriter.writerow(
                     {
-                        "Assembly index": index + 1,
+                        "Assembly Index": index + 1,
                         "Assembly ID": assembly.id,
                         "Clip indexes": [
                             self.unique_clips.index(clip_reaction) + 1
