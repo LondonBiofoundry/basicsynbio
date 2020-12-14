@@ -58,16 +58,16 @@ class BasicPart(SeqRecord):
         :rtype: Bio.SeqRecord.SeqRecord
         """
         returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
-        self._check_basic_slice_length(len(returned_seqrec))
         for key in returned_seqrec.__dict__.keys():
             setattr(returned_seqrec, key, self.__dict__[key])
         if self._ip_loc < self._is_loc:
-            return returned_seqrec[self._ip_loc + len(IP_STR) : self._is_loc]
+            basic_slice = returned_seqrec[self._ip_loc + len(IP_STR) : self._is_loc]
+            self._check_basic_slice_length(len(basic_slice))
+            return basic_slice
         elif self._ip_loc > self._is_loc:
-            return (
-                returned_seqrec[self._ip_loc + len(IP_STR) :]
-                + returned_seqrec[: self._is_loc]
-            )
+            basic_slice = returned_seqrec[self._ip_loc + len(IP_STR) :]+returned_seqrec[: self._is_loc]
+            self._check_basic_slice_length(len(basic_slice))
+            return basic_slice
         else:
             raise ValueError("incorrect sequence used.")
 
