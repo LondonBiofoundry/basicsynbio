@@ -1,5 +1,6 @@
 from basicsynbio.decorators import add2docs
-from basicsynbio.main import CommonArgDocs
+from basicsynbio.main import CommonArgDocs, BasicPart, BasicLinker
+from typing import Union, Iterable, Dict
 
 
 class PartLinkerCollection(dict):
@@ -15,14 +16,14 @@ class PartLinkerCollection(dict):
 
 
 @add2docs(CommonArgDocs.PARTS_LINKERS_ARGS)
-def make_collection(*parts_linkers, keys=None):
+def make_collection(*parts_linkers: Union[BasicPart, BasicLinker], keys: Iterable[str] =None) -> Dict[str, Union[BasicPart, BasicLinker]]:
     """Generates a PartLinkerCollection object.
 
     Args:
         *parts_linkers (iterable of Parts/Linkers): iterable of BasicParts
             or BasicLinkers used to create the collection
         keys (optional): If None, uses id attribute, otherwise user supplies
-            iterable of keys corresponding to each part/linker. Defaults to
+            iterable of keys corresponding to each part/linker. Defaults to None
 
     Returns:
         Collection

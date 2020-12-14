@@ -1,0 +1,1211 @@
+LOCUS       BASIC-P1-PF1-J23119      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P1
+VERSION     B-P1
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P1-PF1-J23119"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacagctag ctcagtccta
+      121 ggtataatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P2-PF1-J23111      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P2
+VERSION     B-P2
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P2-PF1-J23111"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacggctag ctcagtccta
+      121 ggtatagtgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P3-PF1-J23104      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P3
+VERSION     B-P3
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P3-PF1-J23104"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacagctag ctcagtccta
+      121 ggtattgtgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P4-PF1-J23101      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P4
+VERSION     B-P4
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P4-PF1-J23101"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt ttacagctag ctcagtccta
+      121 ggtattatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P5-PF1-J23108      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P5
+VERSION     B-P5
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P5-PF1-J23108"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctc tgacagctag ctcagtccta
+      121 ggtataatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P6-PF1-J23106      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P6
+VERSION     B-P6
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P6-PF1-J23106"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt ttacggctag ctcagtccta
+      121 ggtatagtgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P7-PF1-J23105      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P7
+VERSION     B-P7
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P7-PF1-J23105"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt ttacggctag ctcagtccta
+      121 ggtactatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P8-PF1-J23116      227 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P8
+VERSION     B-P8
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..209
+                     /note="BASIC-P8-PF1-J23116"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacagctag ctcagtccta
+      121 gggactatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P9-PF2-J23119      223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P9
+VERSION     B-P9
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P9-PF2-J23119"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac agctagctca gtcctaggta
+      121 taatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P10-PF2-J23111     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P10
+VERSION     B-P10
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P10-PF2-J23111"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac ggctagctca gtcctaggta
+      121 tagtgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P11-PF2-J23104     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P11
+VERSION     B-P11
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P11-PF2-J23104"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac agctagctca gtcctaggta
+      121 ttgtgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P12-PF2-J23101     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P12
+VERSION     B-P12
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P12-PF2-J23101"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttttac agctagctca gtcctaggta
+      121 ttatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P13-PF2-J23108     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P13
+VERSION     B-P13
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P13-PF2-J23108"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctctgac agctagctca gtcctaggta
+      121 taatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P14-PF2-J23106     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P14
+VERSION     B-P14
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P14-PF2-J23106"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttttac ggctagctca gtcctaggta
+      121 tagtgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P15-PF2-J23105     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P15
+VERSION     B-P15
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P15-PF2-J23105"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttttac ggctagctca gtcctaggta
+      121 ctatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P16-PF2-J23116     223 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P16
+VERSION     B-P16
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..205
+                     /note="BASIC-P16-PF2-J23116"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac agctagctca gtcctaggga
+      121 ctatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       BASIC-P17-PF3-J23119     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P17
+VERSION     B-P17
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P17-PF3-J23119"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacagctag ctcagtccta ggtataatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P18-PF3-J23111     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P18
+VERSION     B-P18
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P18-PF3-J23111"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacggctag ctcagtccta ggtatagtgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P19-PF3-J23104     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P19
+VERSION     B-P19
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P19-PF3-J23104"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacagctag ctcagtccta ggtattgtgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P20-PF3-J23101     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P20
+VERSION     B-P20
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P20-PF3-J23101"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt ttacagctag ctcagtccta ggtattatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P21-PF3-J23108     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P21
+VERSION     B-P21
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P21-PF3-J23108"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctc tgacagctag ctcagtccta ggtataatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P22-PF3-J23106     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P22
+VERSION     B-P22
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P22-PF3-J23106"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt ttacggctag ctcagtccta ggtatagtgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P23-PF3-J23105     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P23
+VERSION     B-P23
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P23-PF3-J23105"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt ttacggctag ctcagtccta ggtactatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P24-PF3-J23116     217 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P24
+VERSION     B-P24
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..199
+                     /note="BASIC-P24-PF3-J23116"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacagctag ctcagtccta gggactatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P25-PF1-pPhlF      258 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P25
+VERSION     B-P25
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..240
+                     /note="BASIC-P25-PF1-pPhlF"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctc gacgtacggt ggaatctgat
+      121 tcgttaccaa ttgacatgat acgaaacgta ccgtatcgtt aaggtagctg tcaccggatg
+      181 tgctttccgg tctgatgagt ccgtgaggac gaaacagcct ctacaaataa ttttgtttaa
+      241 ggctcgggag acctatcg
+//
+LOCUS       BASIC-P26-PF1-pCymR      282 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P26
+VERSION     B-P26
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..264
+                     /note="BASIC-P26-PF1-pCymR"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta acaaacagac aatctggtct
+      121 gtttgtatta tggaaaattt ttctgtataa tagattcaac aaacagacaa tctggtctgt
+      181 ttgtattata gctgtcaccg gatgtgcttt ccggtctgat gagtccgtga ggacgaaaca
+      241 gcctctacaa ataattttgt ttaaggctcg ggagacctat cg
+//
+LOCUS       BASIC-P27-PF1-pTetR      268 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P27
+VERSION     B-P27
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..250
+                     /note="BASIC-P27-PF1-pTetR"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tttcagcagg acgcactgac
+      121 ctccctatca gtgatagaga ttgacatccc tatcagtgat agagatactg agcacagctg
+      181 tcaccggatg tgctttccgg tctgatgagt ccgtgaggac gaaacagcct ctacaaataa
+      241 ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       BASIC-P28-PF1-pVan       242 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P28
+VERSION     B-P28
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..224
+                     /note="BASIC-P28-PF1-pVan"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta ttggatccaa ttgacagcta
+      121 gctcagtcct aggtaccatt ggatccaata gctgtcaccg gatgtgcttt ccggtctgat
+      181 gagtccgtga ggacgaaaca gcctctacaa ataattttgt ttaaggctcg ggagacctat
+      241 cg
+//
+LOCUS       BASIC-P29-PF1-pLux       247 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P29
+VERSION     B-P29
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..229
+                     /note="BASIC-P29-PF1-pLux"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta cctgtaggat cgtacaggtt
+      121 tacgcaagaa aatggtttgt tacagtcgaa taaaagctgt caccggatgt gctttccggt
+      181 ctgatgagtc cgtgaggacg aaacagcctc tacaaataat tttgtttaag gctcgggaga
+      241 cctatcg
+//
+LOCUS       BASIC-P30-PF1-pCin       418 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P30
+VERSION     B-P30
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..400
+                     /note="BASIC-P30-PF1-pCin"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctc cctttgtgcg tccaaacgga
+      121 cgcacggcgc tctaaagcgg gtcgcgatct ttcagattcg ctcctcgcgc tttcagtctt
+      181 tgttttggcg catgtcgtta tcgcaaaacc gctgcacact tttgcgcgac atgctctgat
+      241 ccccctcatc tgggggggcc tatctgaggg aatttccgat ccggctcgcc tgaaccattc
+      301 tgctttccac gaacttgaaa acgctagctg tcaccggatg tgctttccgg tctgatgagt
+      361 ccgtgaggac gaaacagcct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       BASIC-P31-PF1-pLac       248 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P31
+VERSION     B-P31
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..230
+                     /note="BASIC-P31-PF1-pLac"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt gttgacaatt aatcatcggc
+      121 tcgtataatg tgtggaattg tgagcgctca caattagctg tcaccggatg tgctttccgg
+      181 tctgatgagt ccgtgaggac gaaacagcct ctacaaataa ttttgtttaa ggctcgggag
+      241 acctatcg
+//
+LOCUS       BASIC-P32-PF1-pBAD       481 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P32
+VERSION     B-P32
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..463
+                     /note="BASIC-P32-PF1-pBAD"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta gaaaccaatt gtccatattg
+      121 catcagacat tgccgtcact gcgtctttta ctggctcttc tcgctaacca aaccggtaac
+      181 cccgcttatt aaaagcattc tgtaacaaag cgggaccaaa gccatgacaa aaacgcgtaa
+      241 caaaagtgtc tataatcacg gcagaaaagt ccacattgat tatttgcacg gcgtcacact
+      301 ttgctatgcc atagcatttt tatccataag attagcggat cctacctgac gctttttatc
+      361 gcaactctct actgtttctc catacccgag ctgtcaccgg atgtgctttc cggtctgatg
+      421 agtccgtgag gacgaaacag cctctacaaa taattttgtt taaggctcgg gagacctatc
+      481 g
+//
+LOCUS       BASIC-P33-PF2-pPhlF      254 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P33
+VERSION     B-P33
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..236
+                     /note="BASIC-P33-PF2-pPhlF"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctcgacg tacggtggaa tctgattcgt
+      121 taccaattga catgatacga aacgtaccgt atcgttaagg tagcgctcaa cgggtgtgct
+      181 tcccgttctg atgagtccgt gaggacgaaa gcgcctctac aaataatttt gtttaaggct
+      241 cgggagacct atcg
+//
+LOCUS       BASIC-P34-PF2-pCymR      278 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P34
+VERSION     B-P34
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..260
+                     /note="BASIC-P34-PF2-pCymR"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctaacaa acagacaatc tggtctgttt
+      121 gtattatgga aaatttttct gtataataga ttcaacaaac agacaatctg gtctgtttgt
+      181 attatagcgc tcaacgggtg tgcttcccgt tctgatgagt ccgtgaggac gaaagcgcct
+      241 ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       BASIC-P35-PF2-pTetR      264 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P35
+VERSION     B-P35
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..246
+                     /note="BASIC-P35-PF2-pTetR"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttttc agcaggacgc actgacctcc
+      121 ctatcagtga tagagattga catccctatc agtgatagag atactgagca cagcgctcaa
+      181 cgggtgtgct tcccgttctg atgagtccgt gaggacgaaa gcgcctctac aaataatttt
+      241 gtttaaggct cgggagacct atcg
+//
+LOCUS       BASIC-P36-PF2-pVan       238 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P36
+VERSION     B-P36
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..220
+                     /note="BASIC-P36-PF2-pVan"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctattgg atccaattga cagctagctc
+      121 agtcctaggt accattggat ccaatagcgc tcaacgggtg tgcttcccgt tctgatgagt
+      181 ccgtgaggac gaaagcgcct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       BASIC-P37-PF2-pLux       243 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P37
+VERSION     B-P37
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..225
+                     /note="BASIC-P37-PF2-pLux"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctacctg taggatcgta caggtttacg
+      121 caagaaaatg gtttgttaca gtcgaataaa agcgctcaac gggtgtgctt cccgttctga
+      181 tgagtccgtg aggacgaaag cgcctctaca aataattttg tttaaggctc gggagaccta
+      241 tcg
+//
+LOCUS       BASIC-P38-PF2-pCin       414 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P38
+VERSION     B-P38
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..396
+                     /note="BASIC-P38-PF2-pCin"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctccctt tgtgcgtcca aacggacgca
+      121 cggcgctcta aagcgggtcg cgatctttca gattcgctcc tcgcgctttc agtctttgtt
+      181 ttggcgcatg tcgttatcgc aaaaccgctg cacacttttg cgcgacatgc tctgatcccc
+      241 ctcatctggg ggggcctatc tgagggaatt tccgatccgg ctcgcctgaa ccattctgct
+      301 ttccacgaac ttgaaaacgc tagcgctcaa cgggtgtgct tcccgttctg atgagtccgt
+      361 gaggacgaaa gcgcctctac aaataatttt gtttaaggct cgggagacct atcg
+//
+LOCUS       BASIC-P39-PF2-pLac       244 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P39
+VERSION     B-P39
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..226
+                     /note="BASIC-P39-PF2-pLac"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttgttg acaattaatc atcggctcgt
+      121 ataatgtgtg gaattgtgag cgctcacaat tagcgctcaa cgggtgtgct tcccgttctg
+      181 atgagtccgt gaggacgaaa gcgcctctac aaataatttt gtttaaggct cgggagacct
+      241 atcg
+//
+LOCUS       BASIC-P40-PF2-pBAD       477 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P40
+VERSION     B-P40
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..459
+                     /note="BASIC-P40-PF2-pBAD"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctagaaa ccaattgtcc atattgcatc
+      121 agacattgcc gtcactgcgt cttttactgg ctcttctcgc taaccaaacc ggtaaccccg
+      181 cttattaaaa gcattctgta acaaagcggg accaaagcca tgacaaaaac gcgtaacaaa
+      241 agtgtctata atcacggcag aaaagtccac attgattatt tgcacggcgt cacactttgc
+      301 tatgccatag catttttatc cataagatta gcggatccta cctgacgctt tttatcgcaa
+      361 ctctctactg tttctccata cccgagcgct caacgggtgt gcttcccgtt ctgatgagtc
+      421 cgtgaggacg aaagcgcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P41-PF3-pPhlF      248 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P41
+VERSION     B-P41
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..230
+                     /note="BASIC-P41-PF3-pPhlF"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctc gacgtacggt ggaatctgat tcgttaccaa
+      121 ttgacatgat acgaaacgta ccgtatcgtt aaggtagtag tcaccggctg tgcttgccgg
+      181 tctgatgagc ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa ggctcgggag
+      241 acctatcg
+//
+LOCUS       BASIC-P42-PF3-pCymR      272 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P42
+VERSION     B-P42
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..254
+                     /note="BASIC-P42-PF3-pCymR"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta acaaacagac aatctggtct gtttgtatta
+      121 tggaaaattt ttctgtataa tagattcaac aaacagacaa tctggtctgt ttgtattata
+      181 gtagtcaccg gctgtgcttg ccggtctgat gagcctgtga aggcgaaact acctctacaa
+      241 ataattttgt ttaaggctcg ggagacctat cg
+//
+LOCUS       BASIC-P43-PF3-pTetR      258 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P43
+VERSION     B-P43
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..240
+                     /note="BASIC-P43-PF3-pTetR"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tttcagcagg acgcactgac ctccctatca
+      121 gtgatagaga ttgacatccc tatcagtgat agagatactg agcacagtag tcaccggctg
+      181 tgcttgccgg tctgatgagc ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa
+      241 ggctcgggag acctatcg
+//
+LOCUS       BASIC-P44-PF3-pVan       232 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P44
+VERSION     B-P44
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..214
+                     /note="BASIC-P44-PF3-pVan"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta ttggatccaa ttgacagcta gctcagtcct
+      121 aggtaccatt ggatccaata gtagtcaccg gctgtgcttg ccggtctgat gagcctgtga
+      181 aggcgaaact acctctacaa ataattttgt ttaaggctcg ggagacctat cg
+//
+LOCUS       BASIC-P45-PF3-pLux       237 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P45
+VERSION     B-P45
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..219
+                     /note="BASIC-P45-PF3-pLux"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta cctgtaggat cgtacaggtt tacgcaagaa
+      121 aatggtttgt tacagtcgaa taaaagtagt caccggctgt gcttgccggt ctgatgagcc
+      181 tgtgaaggcg aaactacctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       BASIC-P46-PF3-pCin       408 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P46
+VERSION     B-P46
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..390
+                     /note="BASIC-P46-PF3-pCin"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctc cctttgtgcg tccaaacgga cgcacggcgc
+      121 tctaaagcgg gtcgcgatct ttcagattcg ctcctcgcgc tttcagtctt tgttttggcg
+      181 catgtcgtta tcgcaaaacc gctgcacact tttgcgcgac atgctctgat ccccctcatc
+      241 tgggggggcc tatctgaggg aatttccgat ccggctcgcc tgaaccattc tgctttccac
+      301 gaacttgaaa acgctagtag tcaccggctg tgcttgccgg tctgatgagc ctgtgaaggc
+      361 gaaactacct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       BASIC-P47-PF3-pLac       238 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P47
+VERSION     B-P47
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..220
+                     /note="BASIC-P47-PF3-pLac"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt gttgacaatt aatcatcggc tcgtataatg
+      121 tgtggaattg tgagcgctca caattagtag tcaccggctg tgcttgccgg tctgatgagc
+      181 ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       BASIC-P48-PF3-pBAD       471 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P48
+VERSION     B-P48
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..453
+                     /note="BASIC-P48-PF3-pBAD"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta gaaaccaatt gtccatattg catcagacat
+      121 tgccgtcact gcgtctttta ctggctcttc tcgctaacca aaccggtaac cccgcttatt
+      181 aaaagcattc tgtaacaaag cgggaccaaa gccatgacaa aaacgcgtaa caaaagtgtc
+      241 tataatcacg gcagaaaagt ccacattgat tatttgcacg gcgtcacact ttgctatgcc
+      301 atagcatttt tatccataag attagcggat cctacctgac gctttttatc gcaactctct
+      361 actgtttctc catacccgag tagtcaccgg ctgtgcttgc cggtctgatg agcctgtgaa
+      421 ggcgaaacta cctctacaaa taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       BASIC-P49-PF1-T7-100     215 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P49
+VERSION     B-P49
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..197
+                     /note="BASIC-P49-PF1-T7-100"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actatagggg
+      121 acagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P50-PF1-T7-52      215 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P50
+VERSION     B-P50
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..197
+                     /note="BASIC-P50-PF1-T7-52"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actgccggga
+      121 gaagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P51-PF1-T7-50      215 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P51
+VERSION     B-P51
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..197
+                     /note="BASIC-P51-PF1-T7-50"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actatgggga
+      121 gaagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P52-PF1-T7-25      215 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P52
+VERSION     B-P52
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..197
+                     /note="BASIC-P52-PF1-T7-25"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actgtcgggg
+      121 gaagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P53-PF2-T7-100     211 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P53
+VERSION     B-P53
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..193
+                     /note="BASIC-P53-PF2-T7-100"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcacta taggggacag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       BASIC-P54-PF2-T7-52      211 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P54
+VERSION     B-P54
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..193
+                     /note="BASIC-P54-PF2-T7-52"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcactg ccgggagaag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       BASIC-P55-PF2-T7-50      211 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P55
+VERSION     B-P55
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..193
+                     /note="BASIC-P55-PF2-T7-50"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcacta tggggagaag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       BASIC-P56-PF2-T7-25      211 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P56
+VERSION     B-P56
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..193
+                     /note="BASIC-P56-PF2-T7-25"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcactg tcgggggaag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       BASIC-P57-PF3-T7-100     205 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P57
+VERSION     B-P57
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..187
+                     /note="BASIC-P57-PF3-T7-100"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actatagggg acagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P58-PF3-T7-52      205 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P58
+VERSION     B-P58
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..187
+                     /note="BASIC-P58-PF3-T7-52"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actgccggga gaagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P59-PF3-T7-50      205 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P59
+VERSION     B-P59
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..187
+                     /note="BASIC-P59-PF3-T7-50"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actatgggga gaagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P60-PF3-T7-25      205 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   B-P60
+VERSION     B-P60
+KEYWORDS    .
+SOURCE      
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..187
+                     /note="BASIC-P60-PF3-T7-25"
+                     /function="BASIC DNA Assembly insulated promoter"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actgtcgggg gaagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       BASIC-P61-PF1-pBetI      255 bp    DNA     linear   UNK 29-APR-2020
+DEFINITION  BASIC insulated promoter.
+ACCESSION   B-P61
+VERSION     B-P61
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    1..18
+                     /note="BASIC integrated prefix"
+     regulatory      19..79
+                     /regulatory_class="terminator"
+                     /standard_name="T1"
+     misc_feature    80..99
+                     /note="spacer between terminator and promoter"
+                     /standard_name="SpA"
+     regulatory      100..162
+                     /standard_name="pBetI"
+                     /regulatory_class="promoter"
+     misc_feature    163..237
+                     /note="ribozyme-based insulator"
+                     /standard_name="RiboA"
+     misc_feature    238..255
+                     /note="BASIC integrated suffix"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta gcgcgggtga gagggattcg
+      121 ttaccaatag acaattgatt ggacgttcaa tataatgcta gcagctgtca ccggatgtgc
+      181 tttccggtct gatgagtccg tgaggacgaa acagcctcta caaataattt tgtttaaggc
+      241 tcgggagacc tatcg
+//
+LOCUS       BASIC-P62-PF2-pTtg       239 bp    DNA     linear   UNK 29-APR-2020
+DEFINITION  BASIC insulated promoter.
+ACCESSION   B-P62
+VERSION     B-P62
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    1..18
+                     /note="BASIC integrated prefix"
+     regulatory      19..75
+                     /regulatory_class="terminator"
+                     /standard_name="T2"
+     misc_feature    76..95
+                     /note="spacer between terminator and promoter"
+                     /standard_name="SpA"
+     regulatory      96..146
+                     /standard_name="pTtg"
+                     /regulatory_class="promoter"
+     misc_feature    147..221
+                     /note="ribozyme-based insulator"
+                     /standard_name="RiboB"
+     misc_feature    222..239
+                     /note="BASIC integrated suffix"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctcaccc agcagtattt acaaacaacc
+      121 atgaatgtaa gtatattcct tagcaaagcg ctcaacgggt gtgcttcccg ttctgatgag
+      181 tccgtgagga cgaaagcgcc tctacaaata attttgttta aggctcggga gacctatcg
+//
+LOCUS       BASIC-P63-PF3-pSaITTC    298 bp    DNA     linear   UNK 29-APR-2020
+DEFINITION  BASIC insulated promoter.
+ACCESSION   B-P63
+VERSION     B-P63
+KEYWORDS    .
+SOURCE      synthetic construct
+  ORGANISM  synthetic construct
+            other sequences; artificial sequences.
+FEATURES             Location/Qualifiers
+     misc_feature    1..18
+                     /note="BASIC integrated prefix"
+     regulatory      19..69
+                     /regulatory_class="terminator"
+                     /standard_name="T3"
+     misc_feature    70..89
+                     /note="spacer between terminator and promoter"
+                     /standard_name="SpA"
+     regulatory      90..205
+                     /standard_name="pSaITTC"
+                     /regulatory_class="promoter"
+     misc_feature    206..280
+                     /note="ribozyme-based insulator"
+                     /standard_name="RiboC"
+     misc_feature    281..298
+                     /note="BASIC integrated suffix"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctg gggcctcgct tgggttattg ctggtgcccg
+      121 gccgggcgca atattcatgt tgatgattta ttatatatcg agtggtgtat ttatttatat
+      181 tgtttgctcc gttaccgtta ttaacagtag tcaccggctg tgcttgccgg tctgatgagc
+      241 ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//

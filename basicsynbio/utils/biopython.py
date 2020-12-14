@@ -3,16 +3,17 @@
 from Bio.Seq import Seq
 from Bio.SeqFeature import SeqFeature, FeatureLocation
 from Bio.SeqRecord import SeqRecord
+from typing import Union, List
 
 
-def feature_from_qualifier(seqrec, qualifier_key: str, qualifier_value: str):
+def feature_from_qualifier(seqrec: Union['BasicPart', SeqRecord], qualifier_key: str, qualifier_value: str) -> SeqFeature:
     """Extract the feature from the seqrec that contains the corresponding
     qualifier key/qualifier value pair.
     
     Args:
         seqrec: sequence record subject to search.
-        qualifier_key (str): search key within seqrec.features.
-        qualifier_value (str): Search value within seqrec.features.
+        qualifier_key: search key within seqrec.features.
+        qualifier_value: Search value within seqrec.features.
 
     Returns:
         feature: located feature with a key and value specified in Args.
@@ -42,11 +43,11 @@ def _easy_seqrec(
     """Return an annotated SeqRecord from a string and id.
 
     Args:
-        str_seq (str): sequence of SeqRecord.
+        str_seq: sequence of SeqRecord.
         id : Identifier for new part.
-        annotation_type (str, optional): Equivalent to Bio.SeqFeature type e.g. CDS,
+        annotation_type (optional): Equivalent to Bio.SeqFeature type e.g. CDS,
             Defaults to "misc_feature".
-        start (int, optional): start of the annotation, Defaults to 0.
+        start (optional): start of the annotation, Defaults to 0.
         end (optional): end of the annotation, if None defaults to len(str_seq),
             Defaults to 'None'.
         **qualifiers: equivalent to Bio.SeqFeature.qualifiers for annotation e.g. standard_name=["LMP"].
@@ -70,7 +71,7 @@ def _easy_seqrec(
     return seqrec
 
 
-def all_feature_values(part):
+def all_feature_values(part: Union[SeqRecord, 'BasicPart']) -> List[str]:
     """Returns the values of all Bio.SeqFeature.qualifiers in part as a
     list.
     

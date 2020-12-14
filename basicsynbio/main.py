@@ -1,5 +1,4 @@
 """Main module for basicsynbio."""
-
 from basicsynbio.utils import _easy_seqrec
 from basicsynbio.decorators import add2docs
 from Bio import SeqUtils, SeqIO
@@ -11,6 +10,7 @@ from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
 import datetime
 import hashlib
+from typing import Union, Tuple
 
 DATE = datetime.datetime.now()
 DEFAULT_ANNOTATIONS = {
@@ -53,8 +53,8 @@ class BasicPart(SeqRecord):
         """Class for BASIC DNA assembly parts.
 
         Args:
-            seq (seq): Refer to Bio.SeqRecord.SeqRecord documentation.
-            id (string): Refer to Bio.SeqRecord.SeqRecord documentation.
+            seq: Refer to Bio.SeqRecord.SeqRecord documentation.
+            id: Refer to Bio.SeqRecord.SeqRecord documentation.
             **kwargs: assigns alternative SeqRecord attributes.
         """
         super().__init__(seq=seq, id=id, **kwargs)
@@ -89,8 +89,8 @@ class BasicPart(SeqRecord):
         """The Function to find index/location of iseq_str within the sequence.
 
         Args:
-            iseq_str (str): The subsequence you are searching for.
-            iseq_id (str, optional): The id/name of the subsequence 
+            iseq_str: The subsequence you are searching for.
+            iseq_id (optional): The id/name of the subsequence 
                 (iseq_str), Defaults to "integrated sequence".
 
         Returns:
@@ -117,19 +117,7 @@ class BasicPart(SeqRecord):
         if len(BsaI.search(self.seq)) > 2:
             raise PartException(f"{self.id} contains more than two BsaI sites.")
 
-    def __eq__(self, other) -> bool:
-        """The function test if an object `other` is equal to this BasicPart.
-        
-        Args:
-            other (BasicPart): The object to be compared for similarity with 
-                this BasicPart.
-
-        Returns:
-            bool: True if `other` is equal to self, false otherwise.
-
-        Raises:
-            TypeError: If the `other` arg is not of type BasicPart.
-        """
+    def __eq__(self, other: 'BasicPart') -> bool:
         if not isinstance(other, BasicPart):
             raise TypeError(f"{other} is not a BasicPart instance.")
         return self.id == other.id and str(self.seq) == str(other.seq)
@@ -149,20 +137,19 @@ class BasicLinker(SeqRecord):
         suffix_id (str): The suffix half linker id.
         seq: Refer to Bio.SeqRecord.SeqRecord documentation.
         id: Refer to Bio.SeqRecord.SeqRecord documentation.
-        features (array[seqFeature]): array of features and their details,
-            with the BasicLinker object.
+        features : Refer to Bio.SeqRecord.SeqRecord documentation.
 
     """
 
-    def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
-        """Class for BASIC DNA assembly parts.
+    def __init__(self, seq, id: str, prefix_id:str=None, suffix_id:str=None, **kwargs):
+        """Class for BASIC DNA assembly linkers.
 
         Args:
-            seq (seq): Refer to Bio.SeqRecord.SeqRecord documentation.
-            id (string): Refer to Bio.SeqRecord.SeqRecord documentation.
-            prefix_id (str, optional): prefix id if known and not needing 
+            seq : Refer to Bio.SeqRecord.SeqRecord documentation.
+            id : Refer to Bio.SeqRecord.SeqRecord documentation.
+            prefix_id (optional): prefix id if known and not needing 
                 generation, defaults to None.
-            suffix_id (str, optional): suffix id if known and not needing 
+            suffix_id (optional): suffix id if known and not needing 
                 generation, defaults to None.
             **kwargs: assigns alternative SeqRecord attributes.
         """
@@ -190,11 +177,11 @@ class BasicLinker(SeqRecord):
             )
         )
 
-    def _assign_linker_half_id(self, linker_half: str, id) -> str:
+    def _assign_linker_half_id(self, linker_half: str, id: str) -> str:
         """The function to assign half linker id attributes.
 
         Args:
-            linker_half (str): A variable to determine whether linker half
+            linker_half : A variable to determine whether linker half
                 is being assigned for a 'prefix' or a 'suffix'.
             id: if present linker half id is determined and returned, if half
                 linker id needs generating, pass (None).
@@ -208,19 +195,7 @@ class BasicLinker(SeqRecord):
             return f"{self.id}-S"
         return id
 
-    def __eq__(self, other) -> bool:
-        """The function test if an object `other` is equal to this BasicLinker.
-        
-        Args:
-            other (BasicLinker): The object to be compared for similarity with 
-                this BasicLinker.
-
-        Returns:
-            bool: True if `other` is equal to self, false otherwise.
-
-        Raises:
-            TypeError: If the `other` arg is not of type BasicLinker.
-        """
+    def __eq__(self, other: 'BasicLinker') -> bool:
         if not isinstance(other, BasicLinker):
             raise TypeError(f"{other} is not a BasicLinker instance.")
         return self.id == other.id and str(self.seq) == str(other.seq)
@@ -232,27 +207,9 @@ BasicLinker.__doc__ += CommonArgDocs.SEQREC_KWARGS
 class BasicUTRRBSLinker(BasicLinker):
     """Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers.
     
-    Attributes:
-        prefix_id (str): The prefix half linker id.
-        suffix_id (str): The suffix half linker id.
-        seq: Refer to Bio.SeqRecord.SeqRecord documentation.
-        id: Refer to Bio.SeqRecord.SeqRecord documentation.
-        features (array[seqFeature]): array of features and their details,
-            with the BasicLinker object.
     """
 
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
-        """The function to initial the basic slice of `BasicLinker` objects.
-        
-        Args:
-            seq (seq): Refer to Bio.SeqRecord.SeqRecord documentation.
-            id (string): Refer to Bio.SeqRecord.SeqRecord documentation.
-            prefix_id (str, optional): prefix id if known and not needing 
-                generation, defaults to None.
-            suffix_id (str, optional): suffix id if known and not needing 
-                generation, defaults to None.
-            **kwargs: assigns alternative SeqRecord attributes.
-        """
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
         self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = f"UTR{self.id[3]}-S"
@@ -266,24 +223,24 @@ class BasicAssembly:
         :py:class:`BasicLinker` instances in any order.
 
     Attributes:
-        id(str): Identifier for BasicAssemby object. Must be unique
+        id: Identifier for BasicAssemby object. Must be unique
             amongst BasicAssembly instances used to initiate a BasicBuild
             object.
-        parts_linkers(tuple): tuple of BasicPart and BasicLinker objects used to
+        parts_linkers: tuple of BasicPart and BasicLinker objects used to
             create this assembly.
-        clip_reactions(tuple): The :py:class:`ClipReaction` instances required
+        clip_reactions: The :py:class:`ClipReaction` instances required
             for BASIC assembly.
     """
 
-    def __init__(self, id: str, *parts_linkers):
+    def __init__(self, id: str, *parts_linkers: Union[BasicPart, BasicLinker]):
         """Class for BASIC DNA assemblies.
 
         Args:
-            id (string): Identifier for BasicAssemby object. Must be unique
+            id: Identifier for BasicAssemby object. Must be unique
                 amongst BasicAssembly instances used to initiate a BasicBuild
                 object.
-            *parts_linkers(tuple): tuple of BasicPart and BasicLinker
-                objects used to create this assembly.
+            *parts_linkers: Alternating BasicPart and BasicLinker objects used
+                to create this assembly.
 
         Raises:
             TypeError: If the id parsed to BasicAssembly constructor was not of
@@ -302,7 +259,8 @@ class BasicAssembly:
         """A function to return the assembled construct as a new part.
 
         Args:
-            **kwargs: assigns alternative SeqRecord attributes.
+            **kwargs: Assigns alternative SeqRecord attributes to the returned
+                object.
 
         Returns:
             BasicPart: assembled construct as a new part.
@@ -317,7 +275,7 @@ class BasicAssembly:
             **kwargs: assigns alternative SeqRecord attributes.
 
         Returns:
-            SeqRecord: assembled construct as a new seqrecord.
+            seqrec: assembled construct as a new seqrecord.
         """
         seqrec = SeqRecord(Seq(str()))
         for part_linker in self.parts_linkers:
@@ -331,11 +289,11 @@ class BasicAssembly:
                 setattr(seqrec, key, value)
         return seqrec
 
-    def return_clip_reactions(self) -> tuple:
+    def return_clip_reactions(self) -> Tuple['ClipReaction', ...]:
         """A function to return the :py:class:`ClipReaction` instances required for BASIC assembly.
 
         Returns:
-            tuple(ClipReaction): A collection of `ClipReaction` instances 
+            tuple: A collection of `ClipReaction` instances 
             required for BASIC assembly.
         """
         clip_reactions = []
@@ -362,7 +320,7 @@ class BasicAssembly:
         multiple times.
         
         Args:
-            clip_reactions (list(ClipReaction)): the list of `ClipReaction`
+            clip_reactions: the list of `ClipReaction`
                 objects to be analysed for compatability.
         """
 
@@ -373,7 +331,7 @@ class BasicAssembly:
                 UTR linker-halves must be compatible.
 
             Args:
-                linker_halves (list(half_linker_id)): the list of 
+                linker_halves: the list of 
                     half_linker_ids to be analysed for compatability.
 
             Raises:
@@ -396,8 +354,6 @@ class BasicAssembly:
 
     @property
     def parts_linkers(self):
-        """tuple(BasicPart & BasicLinker): Returns tuple of BasicParts and 
-            BasicLinkers in the assembly"""
         return self._parts_linkers
 
     @parts_linkers.setter
@@ -431,39 +387,30 @@ class ClipReaction:
     Note: 
         ClipReaction is hashable.
 
-    Attributes:
-        prefix(BasicLinker): The BasicLinker used as a prefix in this clip
-        part(BasicPart): The central BasicPart within this clip
-        suffix(BasicLinker): The BasicLinker used as a suffix in this clip
     """
 
     def __init__(self, prefix, part, suffix):
         """Class for describing clip reactions.
-
-        Args:
-            prefix(BasicLinker): The BasicLinker used as a prefix in this clip
-            part(BasicPart): The central BasicPart within this clip
-            suffix(BasicLinker): The BasicLinker used as a suffix in this clip
 
         """
         self._prefix = prefix
         self._suffix = suffix
         self._part = part
 
-    def linker_half_ids(self) -> tuple:
+    def linker_half_ids(self) -> Tuple[str, str]:
         """A function to return ids for prefix and suffix linkers in the form (prefix_id, suffix_id).
 
         Returns:
-            tuple(string, string): returns ids for prefix and suffix linkers in
+            tuple: returns ids for prefix and suffix linkers in
             the form (prefix_id, suffix_id).
         """
         return self._prefix.prefix_id, self._suffix.suffix_id
 
-    def clip_items(self) -> tuple:
+    def clip_items(self) -> Tuple[BasicLinker, BasicPart, BasicLinker]:
         """A function to returns a tuple describing each of the items within each clip.
 
         Returns:
-            tuple(BasicLinker, BasicPart, BasicLinker): items within each clip
+            tuple: items within each clip
         """
         return self._prefix, self._part, self._suffix
 
@@ -477,10 +424,10 @@ class ClipReaction:
             See docs for information on built-in function: int.to_bytes().
 
         Args:
-            length(int, optional): bit length.
-            byteorder(string, optional): determines where most signaficat byte is 
+            length(optional): bit length.
+            byteorder(optional): determines where most signaficat byte is 
                 locatated, see Note.
-            signed(bool, optional): see Note.
+            signed(optional): see Note.
 
         Returns:
             string: hexadecimal digest of the Clip Reaction md5 hash by
@@ -503,7 +450,7 @@ class ClipReaction:
         """The function test if an object `other` is equal to this `ClipReaction`.
         
         Args:
-            other (ClipReaction): The object to be compared for similarity with 
+            other: The object to be compared for similarity with 
                 this ClipReaction.
 
         Returns:
@@ -541,9 +488,9 @@ def seqrec2part(seqrec: SeqRecord, add_i_seqs=False) -> BasicPart:
         Relevant attributes are maintained.
 
     Args:
-        seqrec(Bio.SeqRecord.SeqRecord): SeqRecord to be converted to
+        seqrec: SeqRecord to be converted to
             :py:class:`BasicPart` subclass.
-        add_i_seqs(bool, optional): if True adds flanking BASIC iP and iS 
+        add_i_seqs(optional): if True adds flanking BASIC iP and iS 
             sequences. Note, letter_annotations attribute is lost.
 
     Returns:

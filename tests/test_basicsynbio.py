@@ -328,9 +328,9 @@ def test_add2docs_decorator():
         Relevant attributes are maintained.
 
     Args:
-        seqrec(Bio.SeqRecord.SeqRecord): SeqRecord to be converted to
+        seqrec: SeqRecord to be converted to
             :py:class:`BasicPart` subclass.
-        add_i_seqs(bool, optional): if True adds flanking BASIC iP and iS 
+        add_i_seqs(optional): if True adds flanking BASIC iP and iS 
             sequences. Note, letter_annotations attribute is lost.
 
     Returns:
