@@ -22,7 +22,7 @@ def make_collection(*parts_linkers, keys=None):
     """
     parts_linkers_withID = map(processId_part,parts_linkers)
     if not keys:
-        collection = {part_linker.id: part_linker for part_linker in parts_linkers_withID}
+        collection = {part_linker.name: part_linker for part_linker in parts_linkers_withID}
     else:
         collection = {key: value for key, value in zip(keys, parts_linkers_withID)}
     return PartLinkerCollection(collection.items())
