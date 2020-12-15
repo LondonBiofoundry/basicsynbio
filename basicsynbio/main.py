@@ -123,9 +123,9 @@ class BasicLinker(SeqRecord):
 
     def _assign_linker_half_id(self, linker_half, id):
         if not id and linker_half == "prefix":
-            return f"{self.id}-P"
+            return f"{self.name}-P"
         elif not id and linker_half == "suffix":
-            return f"{self.id}-S"
+            return f"{self.name}-S"
         return id
 
     def __eq__(self, other):
