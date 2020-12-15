@@ -11,6 +11,7 @@ from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
 import datetime
 import hashlib
+import warnings
 
 DATE = datetime.datetime.now()
 DEFAULT_ANNOTATIONS = {
@@ -47,41 +48,70 @@ class BasicPart(SeqRecord):
     """
 
     def __init__(self, seq, id, **kwargs):
+        self.id = id
+        self.seq = seq
         super().__init__(seq=seq, id=id, **kwargs)
-        self._ip_loc = self._find_iseq(IP_STR, "iP sequence")
-        self._is_loc = self._find_iseq(IS_STR, "iS sequence")
-        self._check_bsai()
 
     def basic_slice(self):
         """:return: seqrecord flanked by BASIC iP & iS sequences.
 
         :rtype: Bio.SeqRecord.SeqRecord
         """
-        returned_seqrec = SeqRecord(seq=self.seq, id=self.id)
-        for key in returned_seqrec.__dict__.keys():
-            setattr(returned_seqrec, key, self.__dict__[key])
+        seqrec = self.to_seqrec()
         if self._ip_loc < self._is_loc:
-            return returned_seqrec[self._ip_loc + len(IP_STR) : self._is_loc]
+            return seqrec[self._ip_loc + len(IP_STR) : self._is_loc]
         elif self._ip_loc > self._is_loc:
-            return (
-                returned_seqrec[self._ip_loc + len(IP_STR) :]
-                + returned_seqrec[: self._is_loc]
-            )
+            return seqrec[self._ip_loc + len(IP_STR) :] + seqrec[: self._is_loc]
         else:
             raise ValueError("incorrect sequence used.")
 
-    def _find_iseq(self, iseq_str, iseq_id="integrated sequence"):
-        search_out = SeqUtils.nt_search(str(self.seq), iseq_str)
+    def to_seqrec(self) -> SeqRecord:
+        """Create a SeqRecord instance. All relevant attributes are maintained."""
+        seqrec = SeqRecord(seq=self.seq, id=self.id)
+        for key in seqrec.__dict__.keys():
+            setattr(seqrec, key, self.__dict__[key])
+        return seqrec
+
+    def _find_iseq(self, seq, iseq_str, iseq_id="integrated sequence"):
+        search_out = SeqUtils.nt_search(str(seq), iseq_str)
         if len(search_out) < 2:
             raise PartException(f"{self.id} lacks {iseq_id}")
         elif len(search_out) > 2:
             raise PartException(f"{self.id} contains multiple {iseq_id}")
         return search_out[1]
 
-    def _check_bsai(self):
-        """Checks if sliced BasicPart contains a BsaI site."""
-        if len(BsaI.search(self.seq)) > 2:
+    def _check_bsai(self, seq):
+        """Checks if seq contains a BsaI site."""
+        if len(BsaI.search(seq)) > 2:
             raise PartException(f"{self.id} contains more than two BsaI sites.")
+
+    def _check_basic_slice_length(self, num_base_pairs):
+        if 90 <= num_base_pairs < 150:
+            warnings.warn(
+                f"Sequence flanked by iP and iS sequences in {self.id} is {num_base_pairs} base pairs long, this part may not be efficiently purified during clip reaction purification.",
+                UserWarning,
+            )
+        if num_base_pairs < 90:
+            raise ValueError(
+                f"Sequence flanked by iP and iS sequences in {self.id} is {num_base_pairs} base pairs long, this is less than 90 base pairs which is incompatible with unligated linker removal during clip reaction purification."
+            )
+
+    @property
+    def seq(self):
+        return self._seq
+
+    @seq.setter
+    def seq(self, value):
+        self._check_bsai(value)
+        self._ip_loc = self._find_iseq(value, IP_STR, "iP sequence")
+        self._is_loc = self._find_iseq(value, IS_STR, "iS sequence")
+        if self._ip_loc < self._is_loc:
+            self._check_basic_slice_length(self._is_loc - self._ip_loc + len(IP_STR))
+        elif self._ip_loc > self._is_loc:
+            self._check_basic_slice_length(
+                len(value) - self._ip_loc + len(IP_STR) + self._is_loc
+            )
+        self._seq = value
 
     def __eq__(self, other):
         if not isinstance(other, BasicPart):
