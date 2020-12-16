@@ -8,7 +8,7 @@ BASIC DNA Assembly
 
 BASIC DNA Assembly uses DNA parts flanked by standardised *i*\ P and *i*\ S sequences,
 along with linker sequences to assemble multi-part DNA constructs. 
-It is a powerful technology with > 90 % accuracy for assembling DNA constructs containing 
+It is a powerful assembly technology with > 90 % accuracy for assembling DNA constructs containing 
 up to 14 parts and linkers per assembly round [#Storch2015]_. BASIC also benefits from
 a single-tier format, where any BASIC part can be used in any BASIC assembly. This
 simplifies the workflow, making BASIC amenable to automation [#Storch2020]_ and aiding hierarchial assemblies.
@@ -32,7 +32,7 @@ I can't figure out the sequence of my construct/s...
 
 Once a user had a acquired the parts they needed for their assembly, 
 there was the challenge of figuring out what the resulting sequence of the construct was.
-This step is critical in determining whether the assembly was successful. To the best of our
+This step is critical in determining whether any assembly had been successful. To the best of our
 knowledge, no software was previously available to analyse BASIC parts and linkers
 and stitch them together. A user would often have to do all of this manually.
 
@@ -48,10 +48,11 @@ My assembly hasn't worked...
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 New users coming to BASIC DNA assembly were often not familiar with the various requirements
-of this technolgy. For instance:
+of this technology. For instance:
 
 * They wouldn't flank their parts with *i*\ P and *i*\ S sequences.
-* Their Part would contain an internal BsaI restriction site.
+* Their part would contain an internal BsaI restriction site.
+* Parts would be too small in length, leading to loss during purification.
 * They would use the same Linker or Linker-half multiple times in the same assembly.
 
 It would then take some time to identify the fault which often involved the help of experts.
@@ -59,10 +60,9 @@ It would then take some time to identify the fault which often involved the help
 Summary
 -------
 
-While BASIC DNA assembly has several desirable features, it has multiple shortcomings,
+While BASIC DNA assembly has several desirable features, without good software to supplement it, it has a number of shortcomings
 making it difficult for new users to adopt and for existing users to implement.
-We built the basicsynbio package to overcome these shortcomings making BASIC DNA assembly
-more reliable as well as easier to adopt and implement.
+We built the basicsynbio package with this in mind.
 
 .. [#Storch2015] Storch, M., Casini, A., Mackrow, B., Fleming, T., Trewhitt, H., Ellis, T., & Baldwin, G. S. (2015). BASIC: A New Biopart Assembly Standard for Idempotent Cloning Provides Accurate, Single-Tier DNA Assembly for Synthetic Biology. ACS Synthetic Biology, 4(7), 781–787. https://doi.org/10.1021/sb500356d
 .. [#Storch2020] Storch, M., Haines, M. C., & Baldwin, G. S. (2020). DNA-BOT: a low-cost, automated DNA assembly platform for synthetic biology. Synthetic Biology, 5(1). https://doi.org/10.1093/synbio/ysaa010

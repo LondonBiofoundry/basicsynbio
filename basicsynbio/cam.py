@@ -231,8 +231,8 @@ class BasicBuild:
                     }
                 )
         with zipfile.ZipFile(zip_path, "w") as my_zip:
-            my_zip.write(Path.cwd() / "assemblies.csv")
-            my_zip.write(Path.cwd() / "clips.csv")
+            my_zip.write("assemblies.csv")
+            my_zip.write("clips.csv")
         os.remove(Path.cwd() / "assemblies.csv")
         os.remove(Path.cwd() / "clips.csv")
 
@@ -499,3 +499,4 @@ def _seqrecord_hexdigest(seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]
     for element in bytes_objs:
         seqrec_hash.update(element)
     return seqrec_hash.hexdigest()
+    

@@ -141,6 +141,32 @@
 </dl>
 </dd></dl>
 
+<dl class="py method">
+<dt id="basicsynbio.main.BasicPart.concentration">
+<code class="sig-name descname">concentration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stock</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.concentration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.concentration" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the recommended concentration of part in ng/µL.</p>
+<p>This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the final concentration of part in a clip reaction (ng/µL).
+clip_vol: volume of the clip reaction (µL).
+circular: The part is circular or linear if False.
+ndigit: Refer to built-in round function documentation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="basicsynbio.main.BasicPart.seq">
+<em class="property">property </em><code class="sig-name descname">seq</code><a class="headerlink" href="#basicsynbio.main.BasicPart.seq" title="Permalink to this definition">¶</a></dt>
+<dd><p>The sequence itself, as a Seq or MutableSeq object.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="basicsynbio.main.BasicPart.to_seqrec">
+<code class="sig-name descname">to_seqrec</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Bio.SeqRecord.SeqRecord<a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.to_seqrec"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.to_seqrec" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a SeqRecord instance. All relevant attributes are maintained.</p>
+</dd></dl>
+
 </dd></dl>
 
 <dl class="py class">
@@ -245,28 +271,6 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="basicsynbio.bsb_io.import_ice_parts">
-<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_ice_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">ice_user_config</span><span class="p">:</span> <span class="n">dict</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">ice_nums</span></em>, <em class="sig-param"><span class="n">ice_root</span><span class="o">=</span><span class="default_value">'https://public-registry.jbei.org/'</span></em>, <em class="sig-param"><span class="n">file_type</span><span class="o">=</span><span class="default_value">'original'</span></em>, <em class="sig-param"><span class="n">format</span><span class="o">=</span><span class="default_value">'genbank'</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_ice_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_ice_parts" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="field-list simple">
-<dt class="field-odd">Returns</dt>
-<dd class="field-odd"><p>a <code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code> object using an entry on a JBEI-ICE instance.</p>
-</dd>
-</dl>
-<p>Uses icebreaker under the hood. Refer to <cite>icebreaker documentation &lt;https://edinburgh-genome-foundry.github.io/icebreaker/&gt;</cite> for further information.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>ice_user_config</strong> (<em>dict</em>) – Either {email: password:} or {token: client:}. Note, compared to icebreaker, ‘Root’ is a separate default argument (ice_root).</p></li>
-<li><p><strong>*ice_nums</strong> – Part ID numbers as strings e.g. “17338”. Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.</p></li>
-<li><p><strong>ice_root</strong> (<em>string</em>) – Root of ice registry.</p></li>
-<li><p><strong>file_type</strong> (<em>string</em>) – The file type to download e.g. “original”, “genbank” or “fasta”.</p></li>
-<li><p><strong>format</strong> (<em>string</em>) – Format of the downloaded file. If file_type == “fasta”, format must also be “fasta”.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
 <dt id="basicsynbio.bsb_io.import_part">
 <code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">handle</span></em>, <em class="sig-param"><span class="n">format</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_part" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
@@ -310,8 +314,8 @@
 </dd></dl>
 
 <dl class="py function">
-<dt id="basicsynbio.bsb_io.import_sbol_part">
-<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_sbol_part</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_sbol_part"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_sbol_part" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.bsb_io.import_sbol_parts">
+<code class="sig-prename descclassname">basicsynbio.bsb_io.</code><code class="sig-name descname">import_sbol_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span></em>, <em class="sig-param"><span class="n">add_i_seqs</span><span class="o">=</span><span class="default_value">False</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/bsb_io.html#import_sbol_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.bsb_io.import_sbol_parts" title="Permalink to this definition">¶</a></dt>
 <dd><dl class="field-list simple">
 <dt class="field-odd">Returns</dt>
 <dd class="field-odd"><p><p>Part object using sbol2.Document.exportToFormat.</p>

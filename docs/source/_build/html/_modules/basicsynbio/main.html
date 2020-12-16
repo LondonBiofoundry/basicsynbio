@@ -45,6 +45,8 @@
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="n">DATE</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
 <span class="n">DEFAULT_ANNOTATIONS</span> <span class="o">=</span> <span class="p">{</span>
@@ -81,41 +83,86 @@
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_iseq</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">,</span> <span class="s2">&quot;iP sequence&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_iseq</span><span class="p">(</span><span class="n">IS_STR</span><span class="p">,</span> <span class="s2">&quot;iS sequence&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_check_bsai</span><span class="p">()</span>
 
 <div class="viewcode-block" id="BasicPart.basic_slice"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.basic_slice">[docs]</a>    <span class="k">def</span> <span class="nf">basic_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;:return: seqrecord flanked by BASIC iP &amp; iS sequences.</span>
 
 <span class="sd">        :rtype: Bio.SeqRecord.SeqRecord</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">returned_seqrec</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">returned_seqrec</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-            <span class="nb">setattr</span><span class="p">(</span><span class="n">returned_seqrec</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="n">seqrec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_seqrec</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">:</span>
-            <span class="k">return</span> <span class="n">returned_seqrec</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">)</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">]</span>
+            <span class="k">return</span> <span class="n">seqrec</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">)</span> <span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">]</span>
         <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">:</span>
-            <span class="k">return</span> <span class="p">(</span>
-                <span class="n">returned_seqrec</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">)</span> <span class="p">:]</span>
-                <span class="o">+</span> <span class="n">returned_seqrec</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">]</span>
-            <span class="p">)</span>
+            <span class="k">return</span> <span class="n">seqrec</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">)</span> <span class="p">:]</span> <span class="o">+</span> <span class="n">seqrec</span><span class="p">[:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">]</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;incorrect sequence used.&quot;</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_find_iseq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">iseq_str</span><span class="p">,</span> <span class="n">iseq_id</span><span class="o">=</span><span class="s2">&quot;integrated sequence&quot;</span><span class="p">):</span>
-        <span class="n">search_out</span> <span class="o">=</span> <span class="n">SeqUtils</span><span class="o">.</span><span class="n">nt_search</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">),</span> <span class="n">iseq_str</span><span class="p">)</span>
+<div class="viewcode-block" id="BasicPart.to_seqrec"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.to_seqrec">[docs]</a>    <span class="k">def</span> <span class="nf">to_seqrec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeqRecord</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Create a SeqRecord instance. All relevant attributes are maintained.&quot;&quot;&quot;</span>
+        <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">seqrec</span><span class="o">.</span><span class="vm">__dict__</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+            <span class="nb">setattr</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+        <span class="k">return</span> <span class="n">seqrec</span></div>
+
+<div class="viewcode-block" id="BasicPart.concentration"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.concentration">[docs]</a>    <span class="k">def</span> <span class="nf">concentration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clip_vol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Obtain the recommended concentration of part in ng/µL.</span>
+
+<span class="sd">        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the final concentration of part in a clip reaction (ng/µL).</span>
+<span class="sd">            clip_vol: volume of the clip reaction (µL).</span>
+<span class="sd">            circular: The part is circular or linear if False.</span>
+<span class="sd">            ndigit: Refer to built-in round function documentation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">final_concentration</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">SeqUtils</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="n">circular</span><span class="p">,</span> <span class="n">double_stranded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">/</span><span class="mf">1e6</span>
+        <span class="k">if</span> <span class="n">stock</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="o">*</span><span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
+
+    <span class="k">def</span> <span class="nf">_find_iseq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="n">iseq_str</span><span class="p">,</span> <span class="n">iseq_id</span><span class="o">=</span><span class="s2">&quot;integrated sequence&quot;</span><span class="p">):</span>
+        <span class="n">search_out</span> <span class="o">=</span> <span class="n">SeqUtils</span><span class="o">.</span><span class="n">nt_search</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">iseq_str</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PartException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> lacks </span><span class="si">{</span><span class="n">iseq_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_out</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PartException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> contains multiple </span><span class="si">{</span><span class="n">iseq_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">search_out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
-    <span class="k">def</span> <span class="nf">_check_bsai</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks if sliced BasicPart contains a BsaI site.&quot;&quot;&quot;</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">BsaI</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">def</span> <span class="nf">_check_bsai</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks if seq contains a BsaI site.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">BsaI</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PartException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> contains more than two BsaI sites.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_check_basic_slice_length</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_base_pairs</span><span class="p">):</span>
+        <span class="k">if</span> <span class="mi">90</span> <span class="o">&lt;=</span> <span class="n">num_base_pairs</span> <span class="o">&lt;</span> <span class="mi">150</span><span class="p">:</span>
+            <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Sequence flanked by iP and iS sequences in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">num_base_pairs</span><span class="si">}</span><span class="s2"> base pairs long, this part may not be efficiently purified during clip reaction purification.&quot;</span><span class="p">,</span>
+                <span class="ne">UserWarning</span><span class="p">,</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">num_base_pairs</span> <span class="o">&lt;</span> <span class="mi">90</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;Sequence flanked by iP and iS sequences in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">num_base_pairs</span><span class="si">}</span><span class="s2"> base pairs long, this is less than 90 base pairs which is incompatible with unligated linker removal during clip reaction purification.&quot;</span>
+            <span class="p">)</span>
+
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seq</span>
+
+    <span class="nd">@seq</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_check_bsai</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_iseq</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">IP_STR</span><span class="p">,</span> <span class="s2">&quot;iP sequence&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_find_iseq</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">IS_STR</span><span class="p">,</span> <span class="s2">&quot;iS sequence&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_basic_slice_length</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">))</span>
+        <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_check_basic_slice_length</span><span class="p">(</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">)</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">)</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seq</span> <span class="o">=</span> <span class="n">value</span>
 
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">BasicPart</span><span class="p">):</span>
@@ -402,7 +449,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../collections.html">Part and linker collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../build_example.html">build.json</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
 </ul>
 

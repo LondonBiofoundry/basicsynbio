@@ -40,7 +40,7 @@
 <h2>BASIC DNA Assembly<a class="headerlink" href="#basic-dna-assembly" title="Permalink to this headline">¶</a></h2>
 <p>BASIC DNA Assembly uses DNA parts flanked by standardised <em>i</em>P and <em>i</em>S sequences,
 along with linker sequences to assemble multi-part DNA constructs.
-It is a powerful technology with &gt; 90 % accuracy for assembling DNA constructs containing
+It is a powerful assembly technology with &gt; 90 % accuracy for assembling DNA constructs containing
 up to 14 parts and linkers per assembly round <a class="footnote-reference brackets" href="#storch2015" id="id1">1</a>. BASIC also benefits from
 a single-tier format, where any BASIC part can be used in any BASIC assembly. This
 simplifies the workflow, making BASIC amenable to automation <a class="footnote-reference brackets" href="#storch2020" id="id2">2</a> and aiding hierarchial assemblies.
@@ -60,7 +60,7 @@ DNA sequences had to first be acquire from multiple sources/users.</p>
 <h3>I can’t figure out the sequence of my construct/s…<a class="headerlink" href="#i-can-t-figure-out-the-sequence-of-my-construct-s" title="Permalink to this headline">¶</a></h3>
 <p>Once a user had a acquired the parts they needed for their assembly,
 there was the challenge of figuring out what the resulting sequence of the construct was.
-This step is critical in determining whether the assembly was successful. To the best of our
+This step is critical in determining whether any assembly had been successful. To the best of our
 knowledge, no software was previously available to analyse BASIC parts and linkers
 and stitch them together. A user would often have to do all of this manually.</p>
 </div>
@@ -73,10 +73,11 @@ result was specific to certain liquid-handling platforms rather than being gener
 <div class="section" id="my-assembly-hasn-t-worked">
 <h3>My assembly hasn’t worked…<a class="headerlink" href="#my-assembly-hasn-t-worked" title="Permalink to this headline">¶</a></h3>
 <p>New users coming to BASIC DNA assembly were often not familiar with the various requirements
-of this technolgy. For instance:</p>
+of this technology. For instance:</p>
 <ul class="simple">
 <li><p>They wouldn’t flank their parts with <em>i</em>P and <em>i</em>S sequences.</p></li>
-<li><p>Their Part would contain an internal BsaI restriction site.</p></li>
+<li><p>Their part would contain an internal BsaI restriction site.</p></li>
+<li><p>Parts would be too small in length, leading to loss during purification.</p></li>
 <li><p>They would use the same Linker or Linker-half multiple times in the same assembly.</p></li>
 </ul>
 <p>It would then take some time to identify the fault which often involved the help of experts.</p>
@@ -84,10 +85,9 @@ of this technolgy. For instance:</p>
 </div>
 <div class="section" id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>While BASIC DNA assembly has several desirable features, it has multiple shortcomings,
+<p>While BASIC DNA assembly has several desirable features, without good software to supplement it, it has a number of shortcomings
 making it difficult for new users to adopt and for existing users to implement.
-We built the basicsynbio package to overcome these shortcomings making BASIC DNA assembly
-more reliable as well as easier to adopt and implement.</p>
+We built the basicsynbio package with this in mind.</p>
 <dl class="footnote brackets">
 <dt class="label" id="storch2015"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
 <dd><p>Storch, M., Casini, A., Mackrow, B., Fleming, T., Trewhitt, H., Ellis, T., &amp; Baldwin, G. S. (2015). BASIC: A New Biopart Assembly Standard for Idempotent Cloning Provides Accurate, Single-Tier DNA Assembly for Synthetic Biology. ACS Synthetic Biology, 4(7), 781–787. <a class="reference external" href="https://doi.org/10.1021/sb500356d">https://doi.org/10.1021/sb500356d</a></p>
