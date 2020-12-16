@@ -170,9 +170,9 @@ class BasicLinker(SeqRecord):
 
     def _assign_linker_half_id(self, linker_half, id):
         if not id and linker_half == "prefix":
-            return f"{self.id}-P"
+            return f"{self.name}-P"
         elif not id and linker_half == "suffix":
-            return f"{self.id}-S"
+            return f"{self.name}-S"
         return id
 
     def __eq__(self, other):
@@ -190,7 +190,7 @@ class BasicUTRRBSLinker(BasicLinker):
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
         self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
-        self.suffix_id = f"UTR{self.id[3]}-S"
+        self.suffix_id = f"UTR{self.name[3]}-S"
 
 
 class BasicAssembly:

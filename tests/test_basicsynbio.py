@@ -369,9 +369,11 @@ def test_bpromoter_dict():
     bpromoters_handle = "./basicsynbio/parts_linkers/BASIC_promoter_collection.gb"
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
+        collection_key = seqrec.id
+        setattr(seqrec,'id',bsb.cam._seqrecord_hexdigest(seqrec))
         assert (
             compare_seqrec_instances(
-                bsb.BASIC_PROMOTER_PARTS["v0.1"][seqrec.id], seqrec
+                bsb.BASIC_PROMOTER_PARTS["v0.1"][collection_key], seqrec
             )
             == True
         )
@@ -383,8 +385,10 @@ def test_bcds_dict():
     bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
+        collection_key = seqrec.id
+        setattr(seqrec,'id',bsb.cam._seqrecord_hexdigest(seqrec))
         assert (
-            compare_seqrec_instances(bsb.BASIC_CDS_PARTS["v0.1"][seqrec.id], seqrec)
+            compare_seqrec_instances(bsb.BASIC_CDS_PARTS["v0.1"][collection_key], seqrec)
             == True
         )
 
