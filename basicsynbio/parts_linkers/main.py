@@ -1,7 +1,8 @@
 from basicsynbio.decorators import add2docs
 from basicsynbio.main import CommonArgDocs
-from basicsynbio.main import BasicPart
+from basicsynbio.main import BasicPart, BasicLinker
 from basicsynbio.cam import _seqrecord_hexdigest
+from typing import Union
 
 
 class PartLinkerCollection(dict):
@@ -15,18 +16,21 @@ class PartLinkerCollection(dict):
 
 
 @add2docs(CommonArgDocs.PARTS_LINKERS_ARGS)
-def make_collection(*parts_linkers, keys=None):
-    """Generates a PartLinkerCollection object.
+def make_collection(*parts_linkers: Union[BasicPart, BasicLinker], keys=None, id_function: callable =None) -> dict:
+    """Generates a PartLinkerCollection object using parts_linkers.
     Args:
-        keys -- if None, uses id attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
+        keys -- if None, uses name attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
+        id_function: function to define id of objects. If none uses set_part_linker_id function.
     """
-    parts_linkers_withID = map(processId_part,parts_linkers)
+    parts_linkers_w_id = map(set_part_linker_id, parts_linkers)
     if not keys:
-        collection = {part_linker.name: part_linker for part_linker in parts_linkers_withID}
+        collection = {part_linker.name: part_linker for part_linker in parts_linkers_w_id}
     else:
-        collection = {key: value for key, value in zip(keys, parts_linkers_withID)}
+        collection = {key: value for key, value in zip(keys, parts_linkers_w_id)}
     return PartLinkerCollection(collection.items())
 
-def processId_part(part):
-    setattr(part,'id',_seqrecord_hexdigest(part))
-    return part
+
+def set_part_linker_id(part_linker):
+    """Sets the id attribute of a part_linker using the output of _seqrecord_hexdigest."""
+    part_linker.id = _seqrecord_hexdigest(part_linker)
+    return part_linker

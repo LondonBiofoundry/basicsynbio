@@ -85,12 +85,14 @@ def _make_linker(
     description="visit https://www.biolegio.com/products-services/basic/ for further information.",
 ):
     seq = Seq("GG" + str_seq)
-    seqlikeobject= lambda: None
-    setattr(seqlikeobject, 'seq', seq)
-    setattr(seqlikeobject, 'name', name)
-    setattr(seqlikeobject, 'description', description)
-    unique_id = _seqrecord_hexdigest(seqlikeobject)
-    return linker_class(seq, unique_id, name=name, description=description)
+    linker = linker_class(
+        seq,
+        id="temp_id",
+        name=name,
+        description=description
+    )
+    linker.id = _seqrecord_hexdigest(linker)
+    return linker
 
 
 BIOLEGIO_LINKERS = {
