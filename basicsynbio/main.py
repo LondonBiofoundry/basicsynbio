@@ -103,11 +103,11 @@ class BasicPart(SeqRecord):
             return round(final_concentration*clip_vol, ndigit)
         return round(final_concentration, ndigit)
 
-    def _find_iseq(self, seq, iseq_str, iseq_id="integrated sequence"):
-            def _find_iseq(self, iseq_str: str, iseq_id: str = "integrated sequence") -> int:
+    def _find_iseq(self, seq: Seq, iseq_str: str, iseq_id: str = "integrated sequence") -> int:
         """The Function to find index/location of iseq_str within the sequence.
 
         Args:
+            seq: Sequence to search.
             iseq_str: The subsequence you are searching for.
             iseq_id (optional): The id/name of the subsequence 
                 (iseq_str), Defaults to "integrated sequence".
