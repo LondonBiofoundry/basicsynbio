@@ -611,11 +611,13 @@ def test_warning_raise_basic_slice_90_150():
 
 @pytest.mark.slow
 def test_import_sbol_part():
+    from basicsynbio.cam import _seqrecord_hexdigest
     bseva18_from_sbol = bsb.import_sbol_part(
         "./sequences/alternative_formats/bseva18.rdf"
-    )  #
+    )
     # online converter changes annotations attribute
     bseva18_from_sbol.annotations = bsb.BASIC_SEVA_PARTS["v0.1"]["18"].annotations
+    bseva18_from_sbol.id = _seqrecord_hexdigest(bseva18_from_sbol)
     assert (
         compare_seqrec_instances(bseva18_from_sbol, bsb.BASIC_SEVA_PARTS["v0.1"]["18"])
         == True
