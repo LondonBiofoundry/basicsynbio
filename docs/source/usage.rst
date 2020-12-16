@@ -56,29 +56,31 @@ Otherwise mutliple BASIC parts from the same gb file are imported as follows:
 
     basic_parts = bsb.import_parts("basic_parts.gb", "genbank")
 
-Convert `Biopython SeqRecords`_ or similar objects into BASIC parts:
+Convert `Biopython SeqRecords`_ or similar objects into BASIC parts.
+This is useful for accessing sequences via `NCBI Entrez`_ directly. 
+The following leverages BioPython and Entrez to generate a new BASIC part encoding sfGFP from `KJ541673.2`_:
 
 .. _Biopython SeqRecords: https://biopython.org/wiki/SeqRecord
+.. _NCBI Entrez: https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html
+.. _KJ541673.2: https://www.ncbi.nlm.nih.gov/nuccore/KJ541673.2
 
 .. code:: python
 
-    basic_part = bsb.seqrec2part(SeqRecord)
+    from Bio import Entrez, SeqIO
+    import basicsynbio as bsb
+    from basicsynbio.utils import feature_from_qualifier
+    Entrez.email = "hainesm6@gmail.com"
+    with Entrez.efetch(db="nucleotide", id="KJ541673.2", rettype="gb", retmode="text") as handle:
+        kj541673 = SeqIO.read(handle, "genbank")
+        sfgfp_feature = feature_from_qualifier(kj541673, "gene", ["sfGFP"])
+        sfgfp = kj541673[sfgfp_feature.location.start:sfgfp_feature.location.end]
+    sfgfp_part = bsb.seqrec2part(sfgfp, add_i_seqs=True)
 
-For a part given in `SBOL <https://sbolstandard.org/>`_ use:
+For parts specified in `SBOL <https://sbolstandard.org/>`_ the following imports them as a generator object:
 
 .. code:: python
 
-    basic_part = bsb.import_sbol_part("basic_part.rdf")
-
-Finally you can also import one or more parts from a JBEI-ICE instance, e.g. the `public-registry`_:
-
-.. _public-registry: https://public-registry.jbei.org/
-
-.. code:: python
-
-    ice_nums = (string(int) for int in range(17297, 17339))
-    basic_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)  
-
+    basic_parts = bsb.import_sbol_part("basic_parts.rdf")
 
 All BasicPart objects require flanking *i*\ P and *i*\ S sequences. To add these
 when creating your object, use the optional ``add_i_seqs`` argument,
@@ -113,11 +115,11 @@ into the BASIC_SEVA_18 backbone.
 
 A desirable feature of BASIC DNA Assembly is its single-tier format (:doc:`introduction`).
 This ensures any assembly flanked by LMP and LMS linkers can be used in a 
-subsequent hierarchical assembly:
+subsequent hierarchical assembly. Use the ``return_part()`` method on a BasicAssembly object to simulate this behaviour:
 
 .. code:: python
 
-    new_part = assembly.return_part(id="new_part")
+    new_part = assembly.return_part(name="new part from assembly")
     hierarchical_assembly = bsb.BasicAssembly(
         new_part,
         ...
@@ -160,14 +162,14 @@ BasicBuild objects can be serialised using the `json API`_, part of the standard
     
     import json
 
-    with open("my_build.json", "w") as json_file:
-        json.dump(build, json_file, cls=bsb.BuildEncoder, indent=4)
+    with open("build.json", "w") as json_file:
+        json.dump(build, json_file, cls=bsb.BuildEncoder, indent=4, ensure_ascii=False)
 
 Like the associated build object, the resulting output (:doc:`build_example`)
 contains data on the unique BasicParts (``unique_parts``), BasicLinkers (``unique_linkers``)
 and ClipReactions (``clips_data``) objects required to build the assemblies (``assembly_data``).
 This data can either be analysed directly or further processed to 
-generate assemblies manually or via any liquid-handling robotic platform.
+generate assemblies manually or via liquid-handling robotics.
 
 In addition to exporting build data as a json file, **it is recommended to export
 annotated BasicAssembly objects and the unique BasicParts** associated with the build.

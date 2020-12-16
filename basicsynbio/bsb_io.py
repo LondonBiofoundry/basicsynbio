@@ -34,7 +34,7 @@ def import_part(handle: str, format: str, add_i_seqs: bool =False) -> bsb.BasicP
 
 
 @add2docs(CommonArgDocs.ADD_I_SEQS)
-def import_sbol_part(path: str, add_i_seqs=False) -> bsb.BasicPart:
+def import_sbol_parts(path: str, add_i_seqs=False) -> Generator[bsb.BasicPart, None, None]:
     """Imports a BasicPart object using sbol2.Document.exportToFormat.
 
     Note:
@@ -52,10 +52,10 @@ def import_sbol_part(path: str, add_i_seqs=False) -> bsb.BasicPart:
     doc = Document(path)
     fp = tempfile.NamedTemporaryFile(delete=False)
     doc.exportToFormat("GenBank", fp.name)
-    seqrec = SeqIO.read(fp.name, "genbank")
+    seqrecs = SeqIO.parse(fp.name, "genbank")
     fp.close()
     os.unlink(fp.name)
-    return seqrec2part(seqrec, add_i_seqs)
+    yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
