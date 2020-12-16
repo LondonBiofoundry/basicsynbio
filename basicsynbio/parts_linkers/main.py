@@ -1,11 +1,12 @@
 from basicsynbio.decorators import add2docs
-from basicsynbio.main import CommonArgDocs
-from basicsynbio.main import BasicPart, BasicLinker
 from basicsynbio.cam import _seqrecord_hexdigest
-from typing import Union
+from basicsynbio.main import CommonArgDocs, BasicPart, BasicLinker
+from typing import Union, Iterable, Dict
 
 
 class PartLinkerCollection(dict):
+    """Class to hold Part Linker Collections.
+    """
     def __str__(self):
         string = ""
         for item in self.items():
@@ -16,11 +17,17 @@ class PartLinkerCollection(dict):
 
 
 @add2docs(CommonArgDocs.PARTS_LINKERS_ARGS)
-def make_collection(*parts_linkers: Union[BasicPart, BasicLinker], keys=None, id_function: callable =None) -> dict:
+def make_collection(*parts_linkers: Union[BasicPart, BasicLinker], keys: Iterable[str] =None, id_function: callable =None) -> Dict[str, Union[BasicPart, BasicLinker]]:
     """Generates a PartLinkerCollection object using parts_linkers.
     Args:
-        keys -- if None, uses name attribute, otherwise user supplies iterable of keys corresponding to each part/linker.
+        *parts_linkers (iterable of Parts/Linkers): iterable of BasicParts
+            or BasicLinkers used to create the collection
+        keys (optional): If None, uses id attribute, otherwise user supplies
+            iterable of keys corresponding to each part/linker. Defaults to None
         id_function: function to define id of objects. If none uses set_part_linker_id function.
+
+    Returns:
+        Collection
     """
     parts_linkers_w_id = map(set_part_linker_id, parts_linkers)
     if not keys:

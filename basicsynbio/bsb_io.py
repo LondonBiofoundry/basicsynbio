@@ -9,31 +9,45 @@ import io
 import json
 import os
 import tempfile
+from typing import Union, Iterable, Iterator, Generator
 from sbol2 import Document
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_part(handle, format, add_i_seqs=False):
-    """:return: Part object using Bio.SeqIO.read().
+def import_part(handle: str, format: str, add_i_seqs: bool =False) -> bsb.BasicPart:
+    """Imports a Part object using Bio.SeqIO.read().
 
-    Refer to Biopython documentation for further information on Bio.SeqIO.read().
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.read().
 
-    :rtype: :py:class:`BasicPart`
+    Args:
+        handle: handle of file to be parsed
+        format: format of handle file could be 'fasta', 'genbank'...
+        add_i_seqs (optional): if True adds flanking BASIC iP and iS sequences.
+            Note, letter_annotations attribute is lost."
 
+    Returns:
+        BasicPart: a Part object using Bio.SeqIO.read()
     """
     seqrec = SeqIO.read(handle, format)
     return seqrec2part(seqrec, add_i_seqs)
 
 
 @add2docs(CommonArgDocs.ADD_I_SEQS)
-def import_sbol_part(path, add_i_seqs=False):
-    """:return: Part object using sbol2.Document.exportToFormat.
+def import_sbol_part(path: str, add_i_seqs=False) -> bsb.BasicPart:
+    """Imports a BasicPart object using sbol2.Document.exportToFormat.
 
-    Refer to pysbol2 documentation for further information.
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.read().
+        Refer to pysbol2 documentation for further information.
 
-    :rtype: :py:class:`BasicPart` object.
-    :param string path: Path to sbol file.
+    Args:
+        path: path to SBOL file.
+        add_i_seqs (optional): if True adds flanking BASIC iP and iS sequences.
+            Note, letter_annotations attribute is lost."
 
+    Returns:
+        BasicPart: a Part object using Bio.SeqIO.read()
     """
     doc = Document(path)
     fp = tempfile.NamedTemporaryFile(delete=False)
@@ -45,11 +59,20 @@ def import_sbol_part(path, add_i_seqs=False):
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_parts(handle, format, add_i_seqs=False):
-    """:return: Generator of :py:class:`BasicPart` instances using Bio.SeqIO.parse().
+def import_parts(handle: str , format: str, add_i_seqs=False) -> Iterable[bsb.BasicPart]:
+    """Imports a Generator of BasicPart objects using Bio.SeqIO.parse().
 
-    Refer to Biopython documentation for further information on Bio.SeqIO.parse().
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.parse().
 
+    Args:
+        handle: handle of file to be parsed
+        format: format of handle file could be 'fasta', 'genbank'...
+        add_i_seqs (optional): if True adds flanking BASIC iP and iS sequences.
+            Note, letter_annotations attribute is lost."
+
+    Yields:
+        BasicPart: all BasicPart objects within the file.
     """
     seqrecs = SeqIO.parse(handle, format)
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
@@ -59,13 +82,23 @@ def import_parts(handle, format, add_i_seqs=False):
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
 )
-def export_sequences_to_file(sequences, handle, format="genbank", molecule_type="DNA"):
-    """Exports sequences using Bio.SeqIO.write().
+def export_sequences_to_file(sequences: Iterable[Union[SeqRecord, bsb.BasicPart, bsb.BasicAssembly]], handle: str, format: str ="genbank", molecule_type: str ="DNA") -> None:
+    """Exports sequences to file using Bio.SeqIO.write().
 
-    Refer to Biopython documentation for further information on Bio.SeqIO.write().
+    Note:
+        Refer to Biopython documentation for further information on Bio.SeqIO.write().
 
-    :param sequences: objects to export to file handle.
-    :type sequences: A single object or iterable of type/s BasicPart, BasicAssembly or Bio.SeqRecord.SeqRecord.
+    Args:
+        sequences: Sequences to export.
+        handle: File name to write to.
+        format (optional): Format of handle file could be 'fasta', 'genbank'.
+            Defaults to 'genbank'.
+        molecule_type (optional): Type of molecule within sequences.
+            defaults to 'DNA'.
+
+    Raises:
+        ValueError: sequences was not of correct type.
+
     """
     if type(sequences) in [bsb.BasicPart, bsb.BasicAssembly, SeqRecord]:
         SeqIO.write(_process_basic_object(sequences, molecule_type), handle, format)
@@ -76,13 +109,15 @@ def export_sequences_to_file(sequences, handle, format="genbank", molecule_type=
         )
         SeqIO.write(sequences, handle, format)
     else:
-        raise ValueError(
+        raise TypeError(
             "sequences was not iterable or of type BasicPart, BasicAssembly or SeqRecord"
         )
 
 
 def _process_basic_object(basic_object, molecule_type):
-    """Converts basic_object into an object that can be processed by Bio.SeqIO."""
+    """Converts basic_object into an object that can be processed by Bio.SeqIO.
+
+    """
     try:
         basic_object = basic_object.return_seqrec()
     except AttributeError:
