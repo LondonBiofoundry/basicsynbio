@@ -115,15 +115,6 @@ def bseva_68_seqrec():
 
 
 @pytest.fixture
-def ice_user_config():
-    import os
-
-    ice_client = os.environ.get("JBEI_ICE_CLIENT")
-    ice_token = os.environ.get("JBEI_ICE_TOKEN")
-    return {"client": ice_client, "token": ice_token}
-
-
-@pytest.fixture
 def bsai_part_seqrec(gfp_orf_seq):
     from Bio.Seq import Seq
     from Bio.SeqRecord import SeqRecord
@@ -161,6 +152,12 @@ def promoter_assemblies_json(promoter_assemblies_build):
     import json
 
     return json.dumps(promoter_assemblies_build, cls=bsb.BuildEncoder, indent=4)
+
+
+@pytest.fixture
+def gfp_part_final_conc(gfp_basicpart):
+    from Bio.SeqUtils import molecular_weight
+    return 2.5*molecular_weight(gfp_basicpart.seq, double_stranded=True, circular=True)/1e6
 
 
 def compare_seqrec_instances(seqrec1, seqrec2):
@@ -216,6 +213,15 @@ def test_basic_part_exception(gfp_orf_seq):
 
     with pytest.raises(bsb_main.PartException):
         bsb.BasicPart(gfp_orf_seq, "sfGFP")
+
+
+def test_basic_part_final_concentration(gfp_basicpart, gfp_part_final_conc):
+    assert gfp_basicpart.concentration(stock=False) == round(gfp_part_final_conc)
+
+
+def test_basic_part_stock_concentration(gfp_basicpart, gfp_part_final_conc):
+    clip_vol = 30
+    assert gfp_basicpart.concentration(stock=True) == round(gfp_part_final_conc * clip_vol)
 
 
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
@@ -358,21 +364,6 @@ def test_new_part_resuspension(gfp_orf_basicpart):
     assert 75 == round(mass * 1e-9 / (vol * 1e-6 * mw) * 1e9)
 
 
-@pytest.mark.slow
-def test_import_ice_parts(bseva_68_seqrec, ice_user_config):
-    ice_nums = ["17337"]
-    print(f"ice_user_config before import parts: {ice_user_config}")
-    ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
-    assert compare_seqrec_instances(next(ice_parts), bseva_68_seqrec) == True
-
-
-@pytest.mark.slow
-def test_import_all_ice_parts(ice_user_config):
-    ice_nums = (value for value in bsb.BSEVA_ICE_DICT.values())
-    ice_parts = bsb.import_ice_parts(ice_user_config, *ice_nums)
-    assert len(list(ice_parts)) == len(bsb.BSEVA_ICE_DICT)
-
-
 def test_bseva_dict(bseva_68_seqrec):
     print(bsb.BASIC_SEVA_PARTS["v0.1"].keys())
     bseva_68_part = bsb.BASIC_SEVA_PARTS["v0.1"]["68"]
@@ -385,9 +376,11 @@ def test_bpromoter_dict():
     bpromoters_handle = "./basicsynbio/parts_linkers/BASIC_promoter_collection.gb"
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
+        collection_key = seqrec.id
+        setattr(seqrec,'id',bsb.cam._seqrecord_hexdigest(seqrec))
         assert (
             compare_seqrec_instances(
-                bsb.BASIC_PROMOTER_PARTS["v0.1"][seqrec.id], seqrec
+                bsb.BASIC_PROMOTER_PARTS["v0.1"][collection_key], seqrec
             )
             == True
         )
@@ -399,8 +392,10 @@ def test_bcds_dict():
     bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
+        collection_key = seqrec.id
+        setattr(seqrec,'id',bsb.cam._seqrecord_hexdigest(seqrec))
         assert (
-            compare_seqrec_instances(bsb.BASIC_CDS_PARTS["v0.1"][seqrec.id], seqrec)
+            compare_seqrec_instances(bsb.BASIC_CDS_PARTS["v0.1"][collection_key], seqrec)
             == True
         )
 
@@ -602,13 +597,34 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     )
 
 
+def test_error_raise_basic_slice_less_90():
+    from Bio.Seq import Seq
+
+    with pytest.raises(ValueError):
+        mypart = bsb.BasicPart(Seq("TCTGGTGGGTCTCTGTCCAAGGCTCGGGAGACCTATCG"), "test")
+
+
+def test_warning_raise_basic_slice_90_150():
+    from Bio.Seq import Seq
+
+    with pytest.warns(UserWarning):
+        mypart = bsb.BasicPart(
+            Seq(
+                "TCTGGTGGGTCTCTGTCCAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGGCTCGGGAGACCTATCG"
+            ),
+            "test",
+        )
+
+
 @pytest.mark.slow
 def test_import_sbol_part():
+    from basicsynbio.cam import _seqrecord_hexdigest
     bseva18_from_sbol = bsb.import_sbol_part(
         "./sequences/alternative_formats/bseva18.rdf"
-    )  #
+    )
     # online converter changes annotations attribute
     bseva18_from_sbol.annotations = bsb.BASIC_SEVA_PARTS["v0.1"]["18"].annotations
+    bseva18_from_sbol.id = _seqrecord_hexdigest(bseva18_from_sbol)
     assert (
         compare_seqrec_instances(bseva18_from_sbol, bsb.BASIC_SEVA_PARTS["v0.1"]["18"])
         == True

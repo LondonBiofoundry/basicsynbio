@@ -182,10 +182,12 @@ class BasicBuild:
             zip_path = path
         with open(Path.cwd() / "clips.csv", "w", newline="") as f:
             fieldnames = [
-                "Clip index",
+                "Clip Index",
                 "Prefix ID",
                 "Part ID",
-                "Part name",
+                "Part Name",
+                "Part suggested stock concentration (ng/µL)",
+                "Part stock per 30 µL clip (µL)",
                 "Suffix ID",
                 "Total assemblies",
                 "Assembly indexes",
@@ -195,10 +197,12 @@ class BasicBuild:
             for index, clip_data in enumerate(self.clips_data.items()):
                 thewriter.writerow(
                     {
-                        "Clip index": index + 1,
+                        "Clip Index": index + 1,
                         "Prefix ID": clip_data[0]._prefix.prefix_id,
                         "Part ID": clip_data[0]._part.id,
-                        "Part name": clip_data[0]._part.name,
+                        "Part Name": clip_data[0]._part.name,
+                        "Part suggested stock concentration (ng/µL)": clip_data[0]._part.concentration(),
+                        "Part stock per 30 µL clip (µL)": 1,
                         "Suffix ID": clip_data[0]._suffix.suffix_id,
                         "Total assemblies": len(clip_data[1]),
                         "Assembly indexes": [
@@ -208,13 +212,17 @@ class BasicBuild:
                     }
                 )
         with open(Path.cwd() / "assemblies.csv", "w", newline="") as f:
-            fieldnames = ["Assembly index", "Assembly ID", "Clip indexes"]
+            fieldnames = [
+                "Assembly Index",
+                "Assembly ID",
+                "Clip indexes"
+            ]
             thewriter = csv.DictWriter(f, fieldnames=fieldnames)
             thewriter.writeheader()
             for index, assembly in enumerate(self.basic_assemblies):
                 thewriter.writerow(
                     {
-                        "Assembly index": index + 1,
+                        "Assembly Index": index + 1,
                         "Assembly ID": assembly.id,
                         "Clip indexes": [
                             self.unique_clips.index(clip_reaction) + 1
@@ -274,7 +282,10 @@ class BuildEncoder(json.JSONEncoder):
                 "id": value["part"].id,
                 "name": value["part"].name,
                 "description": value["part"].description,
-                "clip_reactions": [
+                "suggested stock concentration (ng/µL)": value["part"].concentration(),
+                "stock per 30 µL clip (µL)": 1,
+                "total clip reactions": len(value["clip_reactions"]),
+                "clip reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in value["clip_reactions"]
                 ],
@@ -302,7 +313,8 @@ class BuildEncoder(json.JSONEncoder):
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
-                "clip_reactions": [
+                "total clip reactions": len(value["clip_reactions"]),
+                "clip reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in value["clip_reactions"]
                 ],
@@ -326,7 +338,7 @@ class BuildEncoder(json.JSONEncoder):
             key._hexdigest(): {
                 "prefix": {
                     "key": _seqrecord_hexdigest(key._prefix),
-                    "id": key._prefix.prefix_id,
+                    "prefix_id": key._prefix.prefix_id,
                 },
                 "part": {
                     "key": _seqrecord_hexdigest(key._part),
@@ -335,9 +347,10 @@ class BuildEncoder(json.JSONEncoder):
                 },
                 "suffix": {
                     "key": _seqrecord_hexdigest(key._suffix),
-                    "id": key._suffix.suffix_id,
+                    "suffix_id": key._suffix.suffix_id,
                 },
-                "assembly_data_indexes": [
+                "total assemblies": len(value),
+                "assembly indexes": [
                     obj.basic_assemblies.index(assembly) for assembly in value
                 ],
             }
@@ -360,7 +373,7 @@ class BuildEncoder(json.JSONEncoder):
         return [
             {
                 "id": assembly.id,
-                "clip_reactions": [
+                "clip reactions": [
                     clip_reaction._hexdigest()
                     for clip_reaction in assembly.clip_reactions
                 ],
@@ -404,7 +417,7 @@ class BuildDecoder(json.JSONDecoder):
         """
         for assembly in dictionary["assembly_data"]:
             parts_linkers = []
-            for clip_reaction in assembly["clip_reactions"]:
+            for clip_reaction in assembly["clip reactions"]:
                 parts_linkers += [
                     self.unique_linkers_data[
                         dictionary["clips_data"][clip_reaction]["prefix"]["key"]
@@ -481,7 +494,7 @@ def _seqrecord_hexdigest(seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]
     seqrec_hash = hashlib.md5(str(seqrecord_obj.seq).encode("UTF-8"))
     bytes_objs = [
         getattr(seqrecord_obj, attribute).encode("UTF-8")
-        for attribute in ["id", "name", "description"]
+        for attribute in ["name", "description"]
     ]
     for element in bytes_objs:
         seqrec_hash.update(element)
