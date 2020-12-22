@@ -623,9 +623,9 @@ def test_warning_raise_basic_slice_90_150():
 def test_import_sbol_part():
     from basicsynbio.cam import seqrecord_hexdigest
 
-    bseva18_from_sbol = next(bsb.import_sbol_parts(
-        "./sequences/alternative_formats/bseva18.rdf"
-    ))
+    bseva18_from_sbol = next(
+        bsb.import_sbol_parts("./sequences/alternative_formats/bseva18.rdf")
+    )
     # online converter changes annotations attribute
     bseva18_from_sbol.annotations = bsb.BASIC_SEVA_PARTS["v0.1"]["18"].annotations
     bseva18_from_sbol.id = seqrecord_hexdigest(bseva18_from_sbol)

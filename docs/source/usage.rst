@@ -16,27 +16,28 @@ it:
 #. Create the build
 #. Export your data
 
+.. _accessing-part-collections:
+
 1a. Accessing BASIC part collections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * The basicsynbio package contains collections of parts and linkers compatible with BASIC DNA assembly. 
-* Each collection behaves like a `dictionary`_ object.
-* For instance, to access the BASIC backbone with ampicilin resistance and a pUC ori (equivalent to `SEVA`_ 18), input the following:
+* Each collection can have multiple versions e.g. ``"v0.1"``, with changes only in minor numbers indicating backwards compatibility e.g. ``"v0.1"`` would be compatible with ``"v0.2"``.
+* Within each version of a collection are individual part or linker objects. For instance, to access the BASIC backbone with ampicilin resistance and a pUC ori (equivalent to `SEVA`_ 18), input the following:
 
-.. _dictionary: <https://docs.python.org/3/tutorial/datastructures.html#dictionaries>
 .. _SEVA:  <http://seva-plasmids.com/>
 
 .. code-block:: python
 
     import basicsynbio as bsb
-    basic_seva18 = bsb.BASIC_SEVA_PARTS["v0.1]["18"]
+    basic_seva18 = bsb.BASIC_SEVA_PARTS["v0.1"]["18"]
 
-* A list of all part and linker collections is given :doc:`collections`.
-* The contents of each collection can be displayed using the print function e.g.
+* A list of selected part and linker collections is given in :ref:`browse-collections`.
+* The contents of each collection can also be displayed using the print function e.g.
 
 .. code-block:: python
 
-    print(bsb.BASIC_SEVA_PARTS["v0.1])
+    print(bsb.BASIC_SEVA_PARTS["v0.1"])
 
 1b. Import parts from external sources
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
