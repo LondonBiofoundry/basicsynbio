@@ -6,10 +6,12 @@ from Bio.SeqRecord import SeqRecord
 from typing import Union, List
 
 
-def feature_from_qualifier(seqrec: Union['BasicPart', SeqRecord], qualifier_key: str, qualifier_value: str) -> SeqFeature:
+def feature_from_qualifier(
+    seqrec: Union["BasicPart", SeqRecord], qualifier_key: str, qualifier_value: str
+) -> SeqFeature:
     """Extract the feature from the seqrec that contains the corresponding
     qualifier key/qualifier value pair.
-    
+
     Args:
         seqrec: sequence record subject to search.
         qualifier_key: search key within seqrec.features.
@@ -35,7 +37,7 @@ def feature_from_qualifier(seqrec: Union['BasicPart', SeqRecord], qualifier_key:
 def _easy_seqrec(
     str_seq: str,
     id,
-    annotation_type: str ="misc_feature",
+    annotation_type: str = "misc_feature",
     start=0,
     end=None,
     **qualifiers: list,
@@ -71,10 +73,10 @@ def _easy_seqrec(
     return seqrec
 
 
-def all_feature_values(part: Union[SeqRecord, 'BasicPart']) -> List[str]:
+def all_feature_values(part: Union[SeqRecord, "BasicPart"]) -> List[str]:
     """Returns the values of all Bio.SeqFeature.qualifiers in part as a
     list.
-    
+
     Args:
         part: part to be analysed
 

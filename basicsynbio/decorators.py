@@ -1,6 +1,7 @@
 """Module contains decorators."""
 
-def add2docs(*doc_lines: str, indentation: int =0):
+
+def add2docs(*doc_lines: str, indentation: int = 0):
     """Decorator for adding docstrings to functions.
 
     Args:

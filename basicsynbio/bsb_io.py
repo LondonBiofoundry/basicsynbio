@@ -14,7 +14,7 @@ from sbol2 import Document
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_part(handle: str, format: str, add_i_seqs: bool =False) -> bsb.BasicPart:
+def import_part(handle: str, format: str, add_i_seqs: bool = False) -> bsb.BasicPart:
     """Imports a Part object using Bio.SeqIO.read().
 
     Note:
@@ -59,7 +59,7 @@ def import_sbol_part(path: str, add_i_seqs=False) -> bsb.BasicPart:
 
 
 @add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_parts(handle: str , format: str, add_i_seqs=False) -> Iterable[bsb.BasicPart]:
+def import_parts(handle: str, format: str, add_i_seqs=False) -> Iterable[bsb.BasicPart]:
     """Imports a Generator of BasicPart objects using Bio.SeqIO.parse().
 
     Note:
@@ -82,7 +82,12 @@ def import_parts(handle: str , format: str, add_i_seqs=False) -> Iterable[bsb.Ba
     CommonArgDocs.HANDLE,
     CommonArgDocs.FORMAT,
 )
-def export_sequences_to_file(sequences: Iterable[Union[SeqRecord, bsb.BasicPart, bsb.BasicAssembly]], handle: str, format: str ="genbank", molecule_type: str ="DNA") -> None:
+def export_sequences_to_file(
+    sequences: Iterable[Union[SeqRecord, bsb.BasicPart, bsb.BasicAssembly]],
+    handle: str,
+    format: str = "genbank",
+    molecule_type: str = "DNA",
+) -> None:
     """Exports sequences to file using Bio.SeqIO.write().
 
     Note:
@@ -115,9 +120,7 @@ def export_sequences_to_file(sequences: Iterable[Union[SeqRecord, bsb.BasicPart,
 
 
 def _process_basic_object(basic_object, molecule_type):
-    """Converts basic_object into an object that can be processed by Bio.SeqIO.
-
-    """
+    """Converts basic_object into an object that can be processed by Bio.SeqIO."""
     try:
         basic_object = basic_object.return_seqrec()
     except AttributeError:

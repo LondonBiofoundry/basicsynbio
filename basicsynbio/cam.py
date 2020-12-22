@@ -25,7 +25,9 @@ import re
 import zipfile
 
 
-def new_part_resuspension(part: BasicPart, mass: float, double_stranded: bool=True) -> float:
+def new_part_resuspension(
+    part: BasicPart, mass: float, double_stranded: bool = True
+) -> float:
     """Returns the volume of resuspension buffer (µL) required for a 75 nM
     solution of part, equivalent to 75 fmol/µL.
 
@@ -46,7 +48,7 @@ def new_part_resuspension(part: BasicPart, mass: float, double_stranded: bool=Tr
 class BasicBuild:
     """Class provides methods and attributes for building BasicAssembly
     objects.
-    
+
     Attributes:
         basic_assemblies: A collection of all the
             assemblies within the BasicBuild object.
@@ -76,8 +78,8 @@ class BasicBuild:
             "linker", *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
         for clip_reaction in self.unique_clips:
-            part_hash = _seqrecord_hexdigest(clip_reaction._part)
-            prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
+            part_hash = seqrecord_hexdigest(clip_reaction._part)
+            prefix_hash = seqrecord_hexdigest(clip_reaction._prefix)
             self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
             self.unique_linkers_data[prefix_hash]["clip_reactions"].append(
                 clip_reaction
@@ -111,7 +113,7 @@ class BasicBuild:
             parts_linkers = [
                 part_linker
                 if isinstance(part_linker, BasicLinker)
-                else parts_dict[_seqrecord_hexdigest(part_linker)]["part"]
+                else parts_dict[seqrecord_hexdigest(part_linker)]["part"]
                 for part_linker in assembly.parts_linkers
             ]
             basic_assemblies.append(BasicAssembly(assembly.id, *parts_linkers))
@@ -123,7 +125,7 @@ class BasicBuild:
         Returns:
             clips_dict: each ClipReaction as a key with values describing
             associated assemblies.
-                
+
         """
         clips_dict = OrderedDict(
             **{
@@ -137,7 +139,9 @@ class BasicBuild:
                 clips_dict[clip_reaction].append(assembly)
         return clips_dict
 
-    def _unique_parts_linkers_data(self, object_key: str, *parts_linkers: Union[BasicPart, BasicLinker]) -> Dict[str, dict]:
+    def _unique_parts_linkers_data(
+        self, object_key: str, *parts_linkers: Union[BasicPart, BasicLinker]
+    ) -> Dict[str, dict]:
         """Returns a dictionary of unique objects in *parts_linkers. Includes
         an empty list for each item to populate with clip_reactions used by
         each unique part/linker.
@@ -151,7 +155,7 @@ class BasicBuild:
             dict: hexdigest of part/linker along with a sub-dictionary containing part/linker and empty list for populating associated clip_reactions.
         """
         return {
-            _seqrecord_hexdigest(part_linker): {
+            seqrecord_hexdigest(part_linker): {
                 object_key: part_linker,
                 "clip_reactions": [],
             }
@@ -166,7 +170,7 @@ class BasicBuild:
                 f"ID '{top_assembly_id[0]}' has been assigned to {top_assembly_id[1]} BasicAssembly instance/s. All assemblies of a build should have a unique 'id' attribute."
             )
 
-    def export_csvs(self, path: str=None):
+    def export_csvs(self, path: str = None):
         """Writes information about each clip_data and assembly to
         two dependent CSV files in the same folder the command
         is executed.
@@ -201,7 +205,9 @@ class BasicBuild:
                         "Prefix ID": clip_data[0]._prefix.prefix_id,
                         "Part ID": clip_data[0]._part.id,
                         "Part Name": clip_data[0]._part.name,
-                        "Part suggested stock concentration (ng/µL)": clip_data[0]._part.concentration(),
+                        "Part suggested stock concentration (ng/µL)": clip_data[
+                            0
+                        ]._part.concentration(),
                         "Part stock per 30 µL clip (µL)": 1,
                         "Suffix ID": clip_data[0]._suffix.suffix_id,
                         "Total assemblies": len(clip_data[1]),
@@ -212,11 +218,7 @@ class BasicBuild:
                     }
                 )
         with open(Path.cwd() / "assemblies.csv", "w", newline="") as f:
-            fieldnames = [
-                "Assembly Index",
-                "Assembly ID",
-                "Clip indexes"
-            ]
+            fieldnames = ["Assembly Index", "Assembly ID", "Clip indexes"]
             thewriter = csv.DictWriter(f, fieldnames=fieldnames)
             thewriter.writeheader()
             for index, assembly in enumerate(self.basic_assemblies):
@@ -249,9 +251,8 @@ class BasicBuild:
 
 
 class BuildEncoder(json.JSONEncoder):
-    """A Class to encode BasicBuild objects extending `json.JSONEncoder` class
+    """A Class to encode BasicBuild objects extending `json.JSONEncoder` class"""
 
-    """
     def default(self, obj):
         if isinstance(obj, BasicBuild):
             return {
@@ -337,16 +338,16 @@ class BuildEncoder(json.JSONEncoder):
         return {
             key._hexdigest(): {
                 "prefix": {
-                    "key": _seqrecord_hexdigest(key._prefix),
+                    "key": seqrecord_hexdigest(key._prefix),
                     "prefix_id": key._prefix.prefix_id,
                 },
                 "part": {
-                    "key": _seqrecord_hexdigest(key._part),
+                    "key": seqrecord_hexdigest(key._part),
                     "id": key._part.id,
                     "name": key._part.name,
                 },
                 "suffix": {
-                    "key": _seqrecord_hexdigest(key._suffix),
+                    "key": seqrecord_hexdigest(key._suffix),
                     "suffix_id": key._suffix.suffix_id,
                 },
                 "total assemblies": len(value),
@@ -387,6 +388,7 @@ class BuildDecoder(json.JSONDecoder):
     extending `json.JSONDecoder` class
 
     """
+
     def __init__(self):
         json.JSONDecoder.__init__(self, object_hook=self.decode_build)
 
@@ -394,7 +396,7 @@ class BuildDecoder(json.JSONDecoder):
         """A Class to return BasicBuild from encoded json object
 
         Args:
-            dictionary: json object encoded by BuildEncoder 
+            dictionary: json object encoded by BuildEncoder
 
         Returns:
             BasicBuild: BasicBuild object built from encoded json
@@ -480,14 +482,17 @@ class BuildException(Exception):
     pass
 
 
-def _seqrecord_hexdigest(seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]) -> str:
+def seqrecord_hexdigest(seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]) -> str:
     """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
     relevant attributes.
-    
+
+    Note:
+        Care should be taken when using the return value of this function as an identifier/hash for seqrecord_obj given these objects are mutable.
+
     Args:
         seqrecord_obj: Bio.SeqRecord.SeqRecord-like object, containing relevant
             attributes
-    
+
     Returns:
         MD5 hash
     """
