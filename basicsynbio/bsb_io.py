@@ -1,6 +1,6 @@
 """Module contains objects for importing and exporting parts and sequences."""
 
-from basicsynbio.decorators import add2docs
+from basicsynbio.decorators import addargs2docs
 from basicsynbio.main import CommonArgDocs, IP_SEQREC, IS_SEQREC, seqrec2part
 import basicsynbio as bsb
 from Bio import SeqIO
@@ -13,18 +13,17 @@ from typing import Union, Iterable, Iterator, Generator
 from sbol2 import Document
 
 
-@add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_part(handle: str, format: str, add_i_seqs: bool =False) -> bsb.BasicPart:
+@addargs2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
+def import_part(handle: str, format: str, add_i_seqs: bool = False) -> bsb.BasicPart:
     """Imports a Part object using Bio.SeqIO.read().
 
     Note:
         Refer to Biopython documentation for further information on Bio.SeqIO.read().
 
     Args:
-        handle: handle of file to be parsed
-        format: format of handle file could be 'fasta', 'genbank'...
-        add_i_seqs (optional): if True adds flanking BASIC iP and iS sequences.
-            Note, letter_annotations attribute is lost."
+        handle:
+        format:
+        add_i_seqs:
 
     Returns:
         BasicPart: a Part object using Bio.SeqIO.read()
@@ -33,8 +32,10 @@ def import_part(handle: str, format: str, add_i_seqs: bool =False) -> bsb.BasicP
     return seqrec2part(seqrec, add_i_seqs)
 
 
-@add2docs(CommonArgDocs.ADD_I_SEQS)
-def import_sbol_parts(path: str, add_i_seqs=False) -> Generator[bsb.BasicPart, None, None]:
+@addargs2docs(CommonArgDocs.ADD_I_SEQS)
+def import_sbol_parts(
+    path: str, add_i_seqs=False
+) -> Generator[bsb.BasicPart, None, None]:
     """Imports a BasicPart object using sbol2.Document.exportToFormat.
 
     Note:
@@ -43,8 +44,7 @@ def import_sbol_parts(path: str, add_i_seqs=False) -> Generator[bsb.BasicPart, N
 
     Args:
         path: path to SBOL file.
-        add_i_seqs (optional): if True adds flanking BASIC iP and iS sequences.
-            Note, letter_annotations attribute is lost."
+        add_i_seqs: 
 
     Returns:
         BasicPart: a Part object using Bio.SeqIO.read()
@@ -58,19 +58,18 @@ def import_sbol_parts(path: str, add_i_seqs=False) -> Generator[bsb.BasicPart, N
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
 
-@add2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
-def import_parts(handle: str , format: str, add_i_seqs=False) -> Iterable[bsb.BasicPart]:
+@addargs2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
+def import_parts(handle: str, format: str, add_i_seqs=False) -> Iterable[bsb.BasicPart]:
     """Imports a Generator of BasicPart objects using Bio.SeqIO.parse().
 
     Note:
         Refer to Biopython documentation for further information on Bio.SeqIO.parse().
 
     Args:
-        handle: handle of file to be parsed
-        format: format of handle file could be 'fasta', 'genbank'...
-        add_i_seqs (optional): if True adds flanking BASIC iP and iS sequences.
-            Note, letter_annotations attribute is lost."
-
+        handle:
+        format:
+        add_i_seqs:
+        
     Yields:
         BasicPart: all BasicPart objects within the file.
     """
@@ -78,11 +77,12 @@ def import_parts(handle: str , format: str, add_i_seqs=False) -> Iterable[bsb.Ba
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
 
-@add2docs(
-    CommonArgDocs.HANDLE,
-    CommonArgDocs.FORMAT,
-)
-def export_sequences_to_file(sequences: Iterable[Union[SeqRecord, bsb.BasicPart, bsb.BasicAssembly]], handle: str, format: str ="genbank", molecule_type: str ="DNA") -> None:
+def export_sequences_to_file(
+    sequences: Iterable[Union[SeqRecord, bsb.BasicPart, bsb.BasicAssembly]],
+    handle: str,
+    format: str = "genbank",
+    molecule_type: str = "DNA",
+) -> None:
     """Exports sequences to file using Bio.SeqIO.write().
 
     Note:
@@ -115,9 +115,7 @@ def export_sequences_to_file(sequences: Iterable[Union[SeqRecord, bsb.BasicPart,
 
 
 def _process_basic_object(basic_object, molecule_type):
-    """Converts basic_object into an object that can be processed by Bio.SeqIO.
-
-    """
+    """Converts basic_object into an object that can be processed by Bio.SeqIO."""
     try:
         basic_object = basic_object.return_seqrec()
     except AttributeError:

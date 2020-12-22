@@ -1,12 +1,12 @@
-from basicsynbio.decorators import add2docs
+from basicsynbio.decorators import addargs2docs
 from basicsynbio.cam import _seqrecord_hexdigest
 from basicsynbio.main import CommonArgDocs, BasicPart, BasicLinker
 from typing import Union, Iterable, Dict
 
 
 class PartLinkerCollection(dict):
-    """Class to hold Part Linker Collections.
-    """
+    """Class to hold Part Linker Collections."""
+
     def __str__(self):
         string = ""
         for item in self.items():
@@ -16,12 +16,15 @@ class PartLinkerCollection(dict):
         return string
 
 
-@add2docs(CommonArgDocs.PARTS_LINKERS_ARGS)
-def make_collection(*parts_linkers: Union[BasicPart, BasicLinker], keys: Iterable[str] =None, id_function: callable =None) -> Dict[str, Union[BasicPart, BasicLinker]]:
+@addargs2docs(CommonArgDocs.PARTS_LINKERS_ARGS)
+def make_collection(
+    *parts_linkers: Union[BasicPart, BasicLinker],
+    keys: Iterable[str] = None,
+    id_function: callable = None,
+) -> Dict[str, Union[BasicPart, BasicLinker]]:
     """Generates a PartLinkerCollection object using parts_linkers.
     Args:
-        *parts_linkers (iterable of Parts/Linkers): iterable of BasicParts
-            or BasicLinkers used to create the collection
+        *parts_linkers:
         keys (optional): If None, uses id attribute, otherwise user supplies
             iterable of keys corresponding to each part/linker. Defaults to None
         id_function: function to define id of objects. If none uses set_part_linker_id function.
@@ -31,7 +34,9 @@ def make_collection(*parts_linkers: Union[BasicPart, BasicLinker], keys: Iterabl
     """
     parts_linkers_w_id = map(set_part_linker_id, parts_linkers)
     if not keys:
-        collection = {part_linker.name: part_linker for part_linker in parts_linkers_w_id}
+        collection = {
+            part_linker.name: part_linker for part_linker in parts_linkers_w_id
+        }
     else:
         collection = {key: value for key, value in zip(keys, parts_linkers_w_id)}
     return PartLinkerCollection(collection.items())

@@ -11,9 +11,6 @@ basicsynbio is an open-source Python package to help facilitate BASIC DNA Assemb
    Usage <usage>
    Contributing <contributing>
    Part and linker collections <collections>
-   build.json <build_json>
-   clips.csv <clips_csv.rst>
-   assemblies.csv <assemblies_csv.rst>
    API reference <api>
    
 
