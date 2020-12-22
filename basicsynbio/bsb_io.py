@@ -44,7 +44,7 @@ def import_sbol_parts(
 
     Args:
         path: path to SBOL file.
-        add_i_seqs: 
+        add_i_seqs:
 
     Returns:
         BasicPart: a Part object using Bio.SeqIO.read()
@@ -69,7 +69,7 @@ def import_parts(handle: str, format: str, add_i_seqs=False) -> Iterable[bsb.Bas
         handle:
         format:
         add_i_seqs:
-        
+
     Yields:
         BasicPart: all BasicPart objects within the file.
     """
@@ -77,6 +77,7 @@ def import_parts(handle: str, format: str, add_i_seqs=False) -> Iterable[bsb.Bas
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
 
+@addargs2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT)
 def export_sequences_to_file(
     sequences: Iterable[Union[SeqRecord, bsb.BasicPart, bsb.BasicAssembly]],
     handle: str,
@@ -90,9 +91,8 @@ def export_sequences_to_file(
 
     Args:
         sequences: Sequences to export.
-        handle: File name to write to.
-        format (optional): Format of handle file could be 'fasta', 'genbank'.
-            Defaults to 'genbank'.
+        handle:
+        format:
         molecule_type (optional): Type of molecule within sequences.
             defaults to 'DNA'.
 

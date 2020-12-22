@@ -27,10 +27,12 @@ def addargs2docs(*arg_descriptions: ArgDescription):
     def decor(func):
         for arg_description in arg_descriptions:
             if func.__doc__.find(arg_description.argument + ":") == -1:
-                raise ValueError(f"string '{arg_description.argument}:' not found in {func.__name__} __doc__")
-            description_start = func.__doc__.find(
+                raise ValueError(
+                    f"string '{arg_description.argument}:' not found in {func.__name__} __doc__"
+                )
+            description_start = func.__doc__.find(arg_description.argument + ":") + len(
                 arg_description.argument + ":"
-            ) + len(arg_description.argument + ":")
+            )
             func.__doc__ = (
                 func.__doc__[:description_start]
                 + " "

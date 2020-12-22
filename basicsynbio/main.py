@@ -57,13 +57,14 @@ class BasicPart(SeqRecord):
         _is_loc (int): The index/location of `IS_STR` within sequence.
     """
 
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def __init__(self, seq, id: str, **kwargs):
         """Class for BASIC DNA assembly parts.
 
         Args:
             seq: Refer to Bio.SeqRecord.SeqRecord documentation.
             id: Refer to Bio.SeqRecord.SeqRecord documentation.
-            **kwargs: assigns alternative SeqRecord attributes.
+            **kwargs:
         """
         self.id = id
         self.seq = seq
@@ -206,6 +207,7 @@ class BasicLinker(SeqRecord):
 
     """
 
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def __init__(
         self, seq, id: str, prefix_id: str = None, suffix_id: str = None, **kwargs
     ):
@@ -218,7 +220,7 @@ class BasicLinker(SeqRecord):
                 generation, defaults to None.
             suffix_id (optional): suffix id if known and not needing
                 generation, defaults to None.
-            **kwargs: assigns alternative SeqRecord attributes.
+            **kwargs:
         """
         super().__init__(seq=seq, id=id, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
@@ -315,23 +317,24 @@ class BasicAssembly:
         self.parts_linkers = parts_linkers
         self.clip_reactions = self.return_clip_reactions()
 
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def return_part(self, **kwargs) -> BasicPart:
         """A function to return the assembled construct as a new part.
 
         Args:
-            **kwargs: Assigns alternative SeqRecord attributes to the returned
-                object.
+            **kwargs:
 
         Returns:
             BasicPart: assembled construct as a new part.
         """
         return seqrec2part(self.return_seqrec(**kwargs))
 
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def return_seqrec(self, **kwargs) -> SeqRecord:
         """A function to return the assembled construct as a seqrecord.
 
         Args:
-            **kwargs: assigns alternative SeqRecord attributes.
+            **kwargs:
 
         Returns:
             seqrec: assembled construct as a new seqrecord.

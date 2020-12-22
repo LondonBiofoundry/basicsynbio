@@ -335,15 +335,17 @@ def test_export_csv(promoter_assemblies_build):
 def test_addargs2docs_decorator():
     from basicsynbio.main import CommonArgDocs
     from basicsynbio.decorators import addargs2docs
-    
+
     @addargs2docs(CommonArgDocs.ADD_I_SEQS)
     def dummy_func():
         """add_i_seqs:"""
         pass
+
     print(bsb.seqrec2part.__doc__)
     print(dummy_func.__doc__)
     assert (
-        dummy_func.__doc__ == """add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."""
+        dummy_func.__doc__
+        == """add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."""
     )
 
 
@@ -619,6 +621,8 @@ def test_warning_raise_basic_slice_90_150():
 
 @pytest.mark.slow
 def test_import_sbol_parts():
+    from basicsynbio.cam import _seqrecord_hexdigest
+
     bseva18_from_sbol = next(
         bsb.import_sbol_parts("./sequences/alternative_formats/bseva18.rdf")
     )
