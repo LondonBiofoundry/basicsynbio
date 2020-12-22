@@ -24,7 +24,7 @@ def make_collection(
 ) -> Dict[str, Union[BasicPart, BasicLinker]]:
     """Generates a PartLinkerCollection object using parts_linkers.
     Args:
-        *parts_linkers:
+        parts_linkers:
         keys (optional): If None, uses id attribute, otherwise user supplies
             iterable of keys corresponding to each part/linker. Defaults to None
         id_function: function to define id of objects. If none uses set_part_linker_id function.

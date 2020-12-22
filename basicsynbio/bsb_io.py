@@ -13,7 +13,12 @@ from typing import Union, Iterable, Iterator, Generator
 from sbol2 import Document
 
 
-@addargs2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
+@addargs2docs(
+    CommonArgDocs.HANDLE,
+    CommonArgDocs.FORMAT,
+    CommonArgDocs.ADD_I_SEQS,
+    CommonArgDocs.BASIC_PART,
+)
 def import_part(handle: str, format: str, add_i_seqs: bool = False) -> bsb.BasicPart:
     """Imports a Part object using Bio.SeqIO.read().
 
@@ -26,17 +31,17 @@ def import_part(handle: str, format: str, add_i_seqs: bool = False) -> bsb.Basic
         add_i_seqs:
 
     Returns:
-        BasicPart: a Part object using Bio.SeqIO.read()
+        BasicPart:
     """
     seqrec = SeqIO.read(handle, format)
     return seqrec2part(seqrec, add_i_seqs)
 
 
-@addargs2docs(CommonArgDocs.ADD_I_SEQS)
+@addargs2docs(CommonArgDocs.ADD_I_SEQS, CommonArgDocs.BASIC_PARTS)
 def import_sbol_parts(
     path: str, add_i_seqs=False
 ) -> Generator[bsb.BasicPart, None, None]:
-    """Imports a BasicPart object using sbol2.Document.exportToFormat.
+    """Imports BasicPart objects using sbol2.Document.exportToFormat.
 
     Note:
         Refer to Biopython documentation for further information on Bio.SeqIO.read().
@@ -46,8 +51,8 @@ def import_sbol_parts(
         path: path to SBOL file.
         add_i_seqs:
 
-    Returns:
-        BasicPart: a Part object using Bio.SeqIO.read()
+    Yields:
+        BasicPart:
     """
     doc = Document(path)
     fp = tempfile.NamedTemporaryFile(delete=False)
@@ -58,7 +63,12 @@ def import_sbol_parts(
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)
 
 
-@addargs2docs(CommonArgDocs.HANDLE, CommonArgDocs.FORMAT, CommonArgDocs.ADD_I_SEQS)
+@addargs2docs(
+    CommonArgDocs.HANDLE,
+    CommonArgDocs.FORMAT,
+    CommonArgDocs.ADD_I_SEQS,
+    CommonArgDocs.BASIC_PARTS,
+)
 def import_parts(handle: str, format: str, add_i_seqs=False) -> Iterable[bsb.BasicPart]:
     """Imports a Generator of BasicPart objects using Bio.SeqIO.parse().
 
@@ -71,7 +81,7 @@ def import_parts(handle: str, format: str, add_i_seqs=False) -> Iterable[bsb.Bas
         add_i_seqs:
 
     Yields:
-        BasicPart: all BasicPart objects within the file.
+        BasicPart:
     """
     seqrecs = SeqIO.parse(handle, format)
     yield from (seqrec2part(seqrec, add_i_seqs) for seqrec in seqrecs)

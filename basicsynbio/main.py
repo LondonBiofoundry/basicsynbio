@@ -35,13 +35,15 @@ class CommonArgDocs:
         "add_i_seqs",
         "if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.",
     )
+    BASIC_PART = ArgDescription("BasicPart", "a BASIC DNA assembly part.")
+    BASIC_PARTS = ArgDescription("BasicPart", "all parts within the file handle.")
     HANDLE = ArgDescription("handle", "handle to file.")
     FORMAT = ArgDescription("format", "file format.")
     SEQREC_KWARGS = ArgDescription(
-        "**kwargs", "assigns alternative SeqRecord attributes."
+        "kwargs", "assigns alternative SeqRecord attributes."
     )
     PARTS_LINKERS_ARGS = ArgDescription(
-        "*parts_linkers", "BasicPart and BasicLinker objects."
+        "parts_linkers", "BasicPart and BasicLinker objects."
     )
 
 
@@ -64,7 +66,7 @@ class BasicPart(SeqRecord):
         Args:
             seq: Refer to Bio.SeqRecord.SeqRecord documentation.
             id: Refer to Bio.SeqRecord.SeqRecord documentation.
-            **kwargs:
+            kwargs:
         """
         self.id = id
         self.seq = seq
@@ -220,7 +222,7 @@ class BasicLinker(SeqRecord):
                 generation, defaults to None.
             suffix_id (optional): suffix id if known and not needing
                 generation, defaults to None.
-            **kwargs:
+            kwargs:
         """
         super().__init__(seq=seq, id=id, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
@@ -302,7 +304,7 @@ class BasicAssembly:
             id: Identifier for BasicAssemby object. Must be unique
                 amongst BasicAssembly instances used to initiate a BasicBuild
                 object.
-            *parts_linkers: Alternating BasicPart and BasicLinker objects used
+            parts_linkers: Alternating BasicPart and BasicLinker objects used
                 to create this assembly.
 
         Raises:
@@ -322,7 +324,7 @@ class BasicAssembly:
         """A function to return the assembled construct as a new part.
 
         Args:
-            **kwargs:
+            kwargs:
 
         Returns:
             BasicPart: assembled construct as a new part.
@@ -334,7 +336,7 @@ class BasicAssembly:
         """A function to return the assembled construct as a seqrecord.
 
         Args:
-            **kwargs:
+            kwargs:
 
         Returns:
             seqrec: assembled construct as a new seqrecord.
@@ -425,7 +427,7 @@ class BasicAssembly:
             for value in values
         ):
             raise TypeError(
-                "Not all *parts_linkers are BasicParts or BasicLinkers instances."
+                "Not all parts_linkers are BasicParts or BasicLinkers instances."
             )
         for ind, value in enumerate(values):
             if ind != 0:
