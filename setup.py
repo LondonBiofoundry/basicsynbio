@@ -21,5 +21,5 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires=">=3.7",
-    install_requires=["biopython>=1.78", "icebreaker", "python-Levenshtein", "sbol2"],
+    install_requires=["biopython>=1.78", "python-Levenshtein", "sbol2"],
 )

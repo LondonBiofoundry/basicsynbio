@@ -378,7 +378,7 @@ def test_bpromoter_dict():
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
         collection_key = seqrec.id
-        setattr(seqrec, "id", bsb.cam._seqrecord_hexdigest(seqrec))
+        setattr(seqrec, "id", bsb.cam.seqrecord_hexdigest(seqrec))
         assert (
             compare_seqrec_instances(
                 bsb.BASIC_PROMOTER_PARTS["v0.1"][collection_key], seqrec
@@ -394,7 +394,7 @@ def test_bcds_dict():
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
         collection_key = seqrec.id
-        setattr(seqrec, "id", bsb.cam._seqrecord_hexdigest(seqrec))
+        setattr(seqrec, "id", bsb.cam.seqrecord_hexdigest(seqrec))
         assert (
             compare_seqrec_instances(
                 bsb.BASIC_CDS_PARTS["v0.1"][collection_key], seqrec
@@ -582,7 +582,7 @@ def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_b
 
 def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     import json
-    from basicsynbio.cam import _seqrecord_hexdigest
+    from basicsynbio.cam import seqrecord_hexdigest
 
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     original_parts = (
@@ -590,7 +590,7 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
         for part_dict in promoter_assemblies_build.unique_parts_data.values()
     )
     decoded_build.update_parts(*original_parts)
-    sfgfp_hash = _seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
+    sfgfp_hash = seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
     assert (
         compare_seqrec_instances(
             decoded_build.unique_parts_data[sfgfp_hash]["part"],
@@ -620,15 +620,15 @@ def test_warning_raise_basic_slice_90_150():
 
 
 @pytest.mark.slow
-def test_import_sbol_parts():
-    from basicsynbio.cam import _seqrecord_hexdigest
+def test_import_sbol_part():
+    from basicsynbio.cam import seqrecord_hexdigest
 
-    bseva18_from_sbol = next(
-        bsb.import_sbol_parts("./sequences/alternative_formats/bseva18.rdf")
-    )
+    bseva18_from_sbol = next(bsb.import_sbol_parts(
+        "./sequences/alternative_formats/bseva18.rdf"
+    ))
     # online converter changes annotations attribute
     bseva18_from_sbol.annotations = bsb.BASIC_SEVA_PARTS["v0.1"]["18"].annotations
-    bseva18_from_sbol.id = _seqrecord_hexdigest(bseva18_from_sbol)
+    bseva18_from_sbol.id = seqrecord_hexdigest(bseva18_from_sbol)
     assert (
         compare_seqrec_instances(bseva18_from_sbol, bsb.BASIC_SEVA_PARTS["v0.1"]["18"])
         == True

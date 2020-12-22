@@ -1,5 +1,5 @@
 from basicsynbio.decorators import addargs2docs
-from basicsynbio.cam import _seqrecord_hexdigest
+from basicsynbio.cam import seqrecord_hexdigest
 from basicsynbio.main import CommonArgDocs, BasicPart, BasicLinker
 from typing import Union, Iterable, Dict
 
@@ -43,6 +43,6 @@ def make_collection(
 
 
 def set_part_linker_id(part_linker):
-    """Sets the id attribute of a part_linker using the output of _seqrecord_hexdigest."""
-    part_linker.id = _seqrecord_hexdigest(part_linker)
+    """Sets the id attribute of a part_linker using the output of seqrecord_hexdigest."""
+    part_linker.id = seqrecord_hexdigest(part_linker)
     return part_linker

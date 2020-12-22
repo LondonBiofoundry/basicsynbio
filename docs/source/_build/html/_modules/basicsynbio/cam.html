@@ -95,6 +95,7 @@
             <span class="s2">&quot;linker&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span> <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="p">)</span>
         <span class="p">)</span>
         <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span><span class="p">:</span>
+<<<<<<< HEAD
             <span class="n">part_hash</span> <span class="o">=</span> <span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span><span class="p">)</span>
             <span class="n">prefix_hash</span> <span class="o">=</span> <span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span><span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span><span class="p">[</span><span class="n">part_hash</span><span class="p">][</span><span class="s2">&quot;clip_reactions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
@@ -107,6 +108,12 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
             <span class="n">linker_dict</span><span class="p">[</span><span class="s2">&quot;linker&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">linker_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
         <span class="p">)</span>
+=======
+            <span class="n">part_hash</span> <span class="o">=</span> <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span><span class="p">)</span>
+            <span class="n">prefix_hash</span> <span class="o">=</span> <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts</span><span class="p">[</span><span class="n">part_hash</span><span class="p">][</span><span class="s2">&quot;clip_reactions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers</span><span class="p">[</span><span class="n">prefix_hash</span><span class="p">][</span><span class="s2">&quot;clip_reactions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
+>>>>>>> seqrec-digest
 
 <div class="viewcode-block" id="BasicBuild.update_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.cam.BasicBuild.update_parts">[docs]</a>    <span class="k">def</span> <span class="nf">update_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">parts</span><span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Updates BasicBuild instance with *parts, replacing existing all</span>
@@ -124,7 +131,7 @@
             <span class="n">parts_linkers</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="n">part_linker</span>
                 <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">part_linker</span><span class="p">,</span> <span class="n">BasicLinker</span><span class="p">)</span>
-                <span class="k">else</span> <span class="n">parts_dict</span><span class="p">[</span><span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">part_linker</span><span class="p">)][</span><span class="s2">&quot;part&quot;</span><span class="p">]</span>
+                <span class="k">else</span> <span class="n">parts_dict</span><span class="p">[</span><span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">part_linker</span><span class="p">)][</span><span class="s2">&quot;part&quot;</span><span class="p">]</span>
                 <span class="k">for</span> <span class="n">part_linker</span> <span class="ow">in</span> <span class="n">assembly</span><span class="o">.</span><span class="n">parts_linkers</span>
             <span class="p">]</span>
             <span class="n">basic_assemblies</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">BasicAssembly</span><span class="p">(</span><span class="n">assembly</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="o">*</span><span class="n">parts_linkers</span><span class="p">))</span>
@@ -154,7 +161,7 @@
 <span class="sd">            object_key -- &quot;part&quot; or &quot;linker&quot;.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="p">{</span>
-            <span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">part_linker</span><span class="p">):</span> <span class="p">{</span>
+            <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">part_linker</span><span class="p">):</span> <span class="p">{</span>
                 <span class="n">object_key</span><span class="p">:</span> <span class="n">part_linker</span><span class="p">,</span>
                 <span class="s2">&quot;clip_reactions&quot;</span><span class="p">:</span> <span class="p">[],</span>
             <span class="p">}</span>
@@ -307,17 +314,27 @@
         <span class="k">return</span> <span class="p">{</span>
             <span class="n">key</span><span class="o">.</span><span class="n">_hexdigest</span><span class="p">():</span> <span class="p">{</span>
                 <span class="s2">&quot;prefix&quot;</span><span class="p">:</span> <span class="p">{</span>
+<<<<<<< HEAD
                     <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">_prefix</span><span class="p">),</span>
                     <span class="s2">&quot;prefix_id&quot;</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">prefix_id</span><span class="p">,</span>
+=======
+                    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">_prefix</span><span class="p">),</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">prefix_id</span><span class="p">,</span>
+>>>>>>> seqrec-digest
                 <span class="p">},</span>
                 <span class="s2">&quot;part&quot;</span><span class="p">:</span> <span class="p">{</span>
-                    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">_part</span><span class="p">),</span>
+                    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">_part</span><span class="p">),</span>
                     <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">_part</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
                     <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">_part</span><span class="o">.</span><span class="n">name</span><span class="p">,</span>
                 <span class="p">},</span>
                 <span class="s2">&quot;suffix&quot;</span><span class="p">:</span> <span class="p">{</span>
+<<<<<<< HEAD
                     <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">_suffix</span><span class="p">),</span>
                     <span class="s2">&quot;suffix_id&quot;</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">suffix_id</span><span class="p">,</span>
+=======
+                    <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">key</span><span class="o">.</span><span class="n">_suffix</span><span class="p">),</span>
+                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">key</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">suffix_id</span><span class="p">,</span>
+>>>>>>> seqrec-digest
                 <span class="p">},</span>
                 <span class="s2">&quot;total assemblies&quot;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">value</span><span class="p">),</span>
                 <span class="s2">&quot;assembly indexes&quot;</span><span class="p">:</span> <span class="p">[</span>
@@ -403,7 +420,7 @@
     <span class="k">pass</span></div>
 
 
-<span class="k">def</span> <span class="nf">_seqrecord_hexdigest</span><span class="p">(</span><span class="n">seqrecord_obj</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">seqrecord_hexdigest</span><span class="p">(</span><span class="n">seqrecord_obj</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using</span>
 <span class="sd">    relevant attributes.&quot;&quot;&quot;</span>
     <span class="n">seqrec_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">seqrecord_obj</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>

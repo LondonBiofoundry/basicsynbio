@@ -78,8 +78,8 @@ class BasicBuild:
             "linker", *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
         for clip_reaction in self.unique_clips:
-            part_hash = _seqrecord_hexdigest(clip_reaction._part)
-            prefix_hash = _seqrecord_hexdigest(clip_reaction._prefix)
+            part_hash = seqrecord_hexdigest(clip_reaction._part)
+            prefix_hash = seqrecord_hexdigest(clip_reaction._prefix)
             self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
             self.unique_linkers_data[prefix_hash]["clip_reactions"].append(
                 clip_reaction
@@ -94,7 +94,7 @@ class BasicBuild:
     def update_parts(self, *parts: BasicPart) -> None:
         """Updates BasicBuild instance with parts.
 
-        Replaces all existing BasicParts used in assemblies with the matching equivalent in parts. Parts are considered equivalent if _seqrecord_hexdigest() returns identical values for both.
+        Replaces all existing BasicParts used in assemblies with the matching equivalent in parts. Parts are considered equivalent if seqrecord_hexdigest() returns identical values for both.
 
         Args:
             parts: parts to replace the BasicParts used in
@@ -114,7 +114,7 @@ class BasicBuild:
             parts_linkers = [
                 part_linker
                 if isinstance(part_linker, BasicLinker)
-                else parts_dict[_seqrecord_hexdigest(part_linker)]["part"]
+                else parts_dict[seqrecord_hexdigest(part_linker)]["part"]
                 for part_linker in assembly.parts_linkers
             ]
             basic_assemblies.append(BasicAssembly(assembly.id, *parts_linkers))
@@ -156,7 +156,7 @@ class BasicBuild:
             dict: hexdigest of part/linker along with a sub-dictionary containing part/linker and empty list for populating associated clip_reactions.
         """
         return {
-            _seqrecord_hexdigest(part_linker): {
+            seqrecord_hexdigest(part_linker): {
                 object_key: part_linker,
                 "clip_reactions": [],
             }
@@ -334,16 +334,16 @@ class BuildEncoder(json.JSONEncoder):
         return {
             key._hexdigest(): {
                 "prefix": {
-                    "key": _seqrecord_hexdigest(key._prefix),
+                    "key": seqrecord_hexdigest(key._prefix),
                     "prefix_id": key._prefix.prefix_id,
                 },
                 "part": {
-                    "key": _seqrecord_hexdigest(key._part),
+                    "key": seqrecord_hexdigest(key._part),
                     "id": key._part.id,
                     "name": key._part.name,
                 },
                 "suffix": {
-                    "key": _seqrecord_hexdigest(key._suffix),
+                    "key": seqrecord_hexdigest(key._suffix),
                     "suffix_id": key._suffix.suffix_id,
                 },
                 "total assemblies": len(value),
@@ -479,11 +479,12 @@ class BuildException(Exception):
     pass
 
 
-def _seqrecord_hexdigest(
-    seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]
-) -> str:
+def seqrecord_hexdigest(seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]) -> str:
     """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
     relevant attributes.
+
+    Note:
+        Care should be taken when using the return value of this function as an identifier/hash for seqrecord_obj given these objects are mutable.
 
     Args:
         seqrecord_obj: Bio.SeqRecord.SeqRecord-like object, containing relevant

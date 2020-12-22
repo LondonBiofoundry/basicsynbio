@@ -4,7 +4,7 @@ pacakge."""
 import basicsynbio as bsb
 from Bio.Seq import Seq
 from .main import PartLinkerCollection
-from ..cam import _seqrecord_hexdigest
+from ..cam import seqrecord_hexdigest
 
 standard_linkers = {
     "L1": "CTCGTTACTTACGACACTCCGAGACAGTCAGAGGGTATTTATTGAACTAGTCC",
@@ -100,7 +100,7 @@ def _make_linker(
     """
     seq = Seq("GG" + str_seq)
     linker = linker_class(seq, id="temp_id", name=name, description=description)
-    linker.id = _seqrecord_hexdigest(linker)
+    linker.id = seqrecord_hexdigest(linker)
     return linker
 
 
