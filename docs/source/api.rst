@@ -18,3 +18,9 @@ cam.py
 
 .. automodule:: basicsynbio.cam
     :members:
+
+decorators.py
+-------------
+
+.. automodule:: basicsynbio.decorators
+    :members:

@@ -43,6 +43,7 @@ extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
     "sphinx.ext.viewcode",
+    "sphinx.ext.todo",
     "recommonmark",
 ]
 
@@ -184,3 +185,4 @@ epub_exclude_files = ["search.html"]
 
 
 # -- Extension configuration -------------------------------------------------
+todo_include_todos = True

@@ -80,17 +80,22 @@ To import one BASIC part from a local file (e.g. genbank file) run:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_parts</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_parts</span><span class="p">(</span><span class="s2">&quot;basic_parts.gb&quot;</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Convert <a class="reference external" href="https://biopython.org/wiki/SeqRecord">Biopython SeqRecords</a> or similar objects into BASIC parts:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">)</span>
+<p>Convert <a class="reference external" href="https://biopython.org/wiki/SeqRecord">Biopython SeqRecords</a> or similar objects into BASIC parts.
+This is useful for accessing sequences via <a class="reference external" href="https://www.ncbi.nlm.nih.gov/Web/Search/entrezfs.html">NCBI Entrez</a> directly.
+The following leverages BioPython and Entrez to generate a new BASIC part encoding sfGFP from <a class="reference external" href="https://www.ncbi.nlm.nih.gov/nuccore/KJ541673.2">KJ541673.2</a>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">Entrez</span><span class="p">,</span> <span class="n">SeqIO</span>
+<span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
+<span class="kn">from</span> <span class="nn">basicsynbio.utils</span> <span class="kn">import</span> <span class="n">feature_from_qualifier</span>
+<span class="n">Entrez</span><span class="o">.</span><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;hainesm6@gmail.com&quot;</span>
+<span class="k">with</span> <span class="n">Entrez</span><span class="o">.</span><span class="n">efetch</span><span class="p">(</span><span class="n">db</span><span class="o">=</span><span class="s2">&quot;nucleotide&quot;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;KJ541673.2&quot;</span><span class="p">,</span> <span class="n">rettype</span><span class="o">=</span><span class="s2">&quot;gb&quot;</span><span class="p">,</span> <span class="n">retmode</span><span class="o">=</span><span class="s2">&quot;text&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">handle</span><span class="p">:</span>
+    <span class="n">kj541673</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+    <span class="n">sfgfp_feature</span> <span class="o">=</span> <span class="n">feature_from_qualifier</span><span class="p">(</span><span class="n">kj541673</span><span class="p">,</span> <span class="s2">&quot;gene&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;sfGFP&quot;</span><span class="p">])</span>
+    <span class="n">sfgfp</span> <span class="o">=</span> <span class="n">kj541673</span><span class="p">[</span><span class="n">sfgfp_feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">start</span><span class="p">:</span><span class="n">sfgfp_feature</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">end</span><span class="p">]</span>
+<span class="n">sfgfp_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">sfgfp</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>For a part given in <a class="reference external" href="https://sbolstandard.org/">SBOL</a> use:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_sbol_part</span><span class="p">(</span><span class="s2">&quot;basic_part.rdf&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>Finally you can also import one or more parts from a JBEI-ICE instance, e.g. the <a class="reference external" href="https://public-registry.jbei.org/">public-registry</a>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">ice_nums</span> <span class="o">=</span> <span class="p">(</span><span class="n">string</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span> <span class="k">for</span> <span class="nb">int</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">17297</span><span class="p">,</span> <span class="mi">17339</span><span class="p">))</span>
-<span class="n">basic_parts</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_ice_parts</span><span class="p">(</span><span class="n">ice_user_config</span><span class="p">,</span> <span class="o">*</span><span class="n">ice_nums</span><span class="p">)</span>
+<p>For parts specified in <a class="reference external" href="https://sbolstandard.org/">SBOL</a> the following imports them as a generator object:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_parts</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">import_sbol_part</span><span class="p">(</span><span class="s2">&quot;basic_parts.rdf&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>All BasicPart objects require flanking <em>i</em>P and <em>i</em>S sequences. To add these
@@ -119,8 +124,8 @@ available for all the above functions e.g.</p>
 into the BASIC_SEVA_18 backbone.</p>
 <p>A desirable feature of BASIC DNA Assembly is its single-tier format (<a class="reference internal" href="introduction.html"><span class="doc">Introduction</span></a>).
 This ensures any assembly flanked by LMP and LMS linkers can be used in a
-subsequent hierarchical assembly:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_part</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">return_part</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;new_part&quot;</span><span class="p">)</span>
+subsequent hierarchical assembly. Use the <code class="docutils literal notranslate"><span class="pre">return_part()</span></code> method on a BasicAssembly object to simulate this behaviour:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_part</span> <span class="o">=</span> <span class="n">assembly</span><span class="o">.</span><span class="n">return_part</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;new part from assembly&quot;</span><span class="p">)</span>
 <span class="n">hierarchical_assembly</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">(</span>
     <span class="n">new_part</span><span class="p">,</span>
     <span class="o">...</span>
@@ -133,9 +138,7 @@ subsequent hierarchical assembly:</p>
 <p>More often than not, a collection of BASIC assemblies are constructed in parallel.
 To aid this process users should create a <code class="docutils literal notranslate"><span class="pre">BasicBuild</span></code> object using multiple
 BasicAssembly objects:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
-
-<span class="n">promoter_assemblies</span> <span class="o">=</span> <span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">(</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">promoter_assemblies</span> <span class="o">=</span> <span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">(</span>
     <span class="sa">f</span><span class="s2">&quot;promoter_construct_</span><span class="si">{</span><span class="n">ind</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
     <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_SEVA_PARTS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;26&quot;</span><span class="p">],</span>
     <span class="n">bsb</span><span class="o">.</span><span class="n">BASIC_BIOLEGIO_LINKERS</span><span class="p">[</span><span class="s2">&quot;v0.1&quot;</span><span class="p">][</span><span class="s2">&quot;LMP&quot;</span><span class="p">],</span>
@@ -153,22 +156,27 @@ to construct your assemblies.</p>
 </div>
 <div class="section" id="export-your-data">
 <h3>4. Export your data<a class="headerlink" href="#export-your-data" title="Permalink to this headline">¶</a></h3>
-<p>BasicBuild objects can be serialised using the <a class="reference external" href="https://docs.python.org/3/library/json.html">json API</a>, part of the standard library:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
-
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;my_build.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
-    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">build</span><span class="p">,</span> <span class="n">json_file</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">bsb</span><span class="o">.</span><span class="n">BuildEncoder</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<p>BasicBuild objects can be serialised as JSON or
+exported as two zipped csv files describing build clip reactions and assemblies.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">export_csvs()</span></code> method generates the zip file, containing <span class="xref std std-doc">clips_csv</span> and <span class="xref std std-doc">assemblies_csv</span>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">build</span><span class="o">.</span><span class="n">export_csvs</span><span class="p">(</span><span class="s2">&quot;build_csvs.zip&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Like the associated build object, the resulting output (<a class="reference internal" href="build_example.html"><span class="doc">build.json</span></a>)
+<p>Using the <a class="reference external" href="https://docs.python.org/3/library/json.html">json API</a>, the build can be serialised:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;build.json&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">json_file</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">build</span><span class="p">,</span> <span class="n">json_file</span><span class="p">,</span> <span class="bp">cls</span><span class="o">=</span><span class="n">bsb</span><span class="o">.</span><span class="n">BuildEncoder</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">ensure_ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Like the associated build object, the resulting output (<a class="reference internal" href="build_json.html"><span class="doc">build.json</span></a>)
 contains data on the unique BasicParts (<code class="docutils literal notranslate"><span class="pre">unique_parts</span></code>), BasicLinkers (<code class="docutils literal notranslate"><span class="pre">unique_linkers</span></code>)
 and ClipReactions (<code class="docutils literal notranslate"><span class="pre">clips_data</span></code>) objects required to build the assemblies (<code class="docutils literal notranslate"><span class="pre">assembly_data</span></code>).
 This data can either be analysed directly or further processed to
-generate assemblies manually or via any liquid-handling robotic platform.</p>
+generate arguments for liquid-handling systems.</p>
 <p>In addition to exporting build data as a json file, <strong>it is recommended to export
 annotated BasicAssembly objects and the unique BasicParts</strong> associated with the build.
 Notably, any collection of BasicPart <a class="footnote-reference brackets" href="#f1" id="id1">1</a> or BasicAssembly
-objects can be exported using the formats supported by <a class="reference external" href="https://biopython.org/wiki/SeqIO">BioPython</a>:</p>
+objects can be exported using the formats supported by <a class="reference external" href="https://biopython.org/wiki/SeqIO">BioPython</a>, with the default being genbank:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unique_parts</span> <span class="o">=</span> <span class="p">(</span><span class="n">part_dict</span><span class="p">[</span><span class="s2">&quot;part&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">part_dict</span> <span class="ow">in</span> <span class="n">build</span><span class="o">.</span><span class="n">unique_parts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 <span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">unique_parts</span><span class="p">,</span> <span class="s2">&quot;the_parts_i_need.gb&quot;</span><span class="p">)</span>
 <span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">cds_assemblies</span><span class="p">,</span> <span class="s2">&quot;cds_assemblies.gb&quot;</span><span class="p">)</span>
@@ -233,7 +241,6 @@ Users have two options:</p>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="collections.html">Part and linker collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="build_example.html">build.json</a></li>
 <li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
 </ul>
 

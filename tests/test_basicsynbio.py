@@ -157,7 +157,12 @@ def promoter_assemblies_json(promoter_assemblies_build):
 @pytest.fixture
 def gfp_part_final_conc(gfp_basicpart):
     from Bio.SeqUtils import molecular_weight
-    return 2.5*molecular_weight(gfp_basicpart.seq, double_stranded=True, circular=True)/1e6
+
+    return (
+        2.5
+        * molecular_weight(gfp_basicpart.seq, double_stranded=True, circular=True)
+        / 1e6
+    )
 
 
 def compare_seqrec_instances(seqrec1, seqrec2):
@@ -221,7 +226,9 @@ def test_basic_part_final_concentration(gfp_basicpart, gfp_part_final_conc):
 
 def test_basic_part_stock_concentration(gfp_basicpart, gfp_part_final_conc):
     clip_vol = 30
-    assert gfp_basicpart.concentration(stock=True) == round(gfp_part_final_conc * clip_vol)
+    assert gfp_basicpart.concentration(stock=True) == round(
+        gfp_part_final_conc * clip_vol
+    )
 
 
 def test_assembly_error(gfp_basicpart, cmr_p15a_basicpart):
@@ -325,26 +332,20 @@ def test_export_csv(promoter_assemblies_build):
         os.remove("test_build.zip")
 
 
-def test_add2docs_decorator():
+def test_addargs2docs_decorator():
     from basicsynbio.main import CommonArgDocs
+    from basicsynbio.decorators import addargs2docs
 
-    core_doc = """A function to Convert SeqRecord to :py:class:`BasicPart`.
-    
-    Note:
-        Relevant attributes are maintained.
+    @addargs2docs(CommonArgDocs.ADD_I_SEQS)
+    def dummy_func():
+        """add_i_seqs:"""
+        pass
 
-    Args:
-        seqrec: SeqRecord to be converted to
-            :py:class:`BasicPart` subclass.
-        add_i_seqs(optional): if True adds flanking BASIC iP and iS 
-            sequences. Note, letter_annotations attribute is lost.
-
-    Returns:
-        BasicPart: the BasicPart created from Args
-    """
     print(bsb.seqrec2part.__doc__)
+    print(dummy_func.__doc__)
     assert (
-        bsb.seqrec2part.__doc__ == core_doc + "\n" + " " * 4 + CommonArgDocs.ADD_I_SEQS
+        dummy_func.__doc__
+        == """add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."""
     )
 
 
@@ -377,7 +378,7 @@ def test_bpromoter_dict():
     bpromoter_seqrecs = SeqIO.parse(bpromoters_handle, "genbank")
     for seqrec in bpromoter_seqrecs:
         collection_key = seqrec.id
-        setattr(seqrec,'id',bsb.cam._seqrecord_hexdigest(seqrec))
+        setattr(seqrec, "id", bsb.cam.seqrecord_hexdigest(seqrec))
         assert (
             compare_seqrec_instances(
                 bsb.BASIC_PROMOTER_PARTS["v0.1"][collection_key], seqrec
@@ -393,9 +394,11 @@ def test_bcds_dict():
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
         collection_key = seqrec.id
-        setattr(seqrec,'id',bsb.cam._seqrecord_hexdigest(seqrec))
+        setattr(seqrec, "id", bsb.cam.seqrecord_hexdigest(seqrec))
         assert (
-            compare_seqrec_instances(bsb.BASIC_CDS_PARTS["v0.1"][collection_key], seqrec)
+            compare_seqrec_instances(
+                bsb.BASIC_CDS_PARTS["v0.1"][collection_key], seqrec
+            )
             == True
         )
 
@@ -579,7 +582,7 @@ def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_b
 
 def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     import json
-    from basicsynbio.cam import _seqrecord_hexdigest
+    from basicsynbio.cam import seqrecord_hexdigest
 
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     original_parts = (
@@ -587,7 +590,7 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
         for part_dict in promoter_assemblies_build.unique_parts_data.values()
     )
     decoded_build.update_parts(*original_parts)
-    sfgfp_hash = _seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
+    sfgfp_hash = seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
     assert (
         compare_seqrec_instances(
             decoded_build.unique_parts_data[sfgfp_hash]["part"],
@@ -618,13 +621,14 @@ def test_warning_raise_basic_slice_90_150():
 
 @pytest.mark.slow
 def test_import_sbol_part():
-    from basicsynbio.cam import _seqrecord_hexdigest
-    bseva18_from_sbol = bsb.import_sbol_part(
-        "./sequences/alternative_formats/bseva18.rdf"
+    from basicsynbio.cam import seqrecord_hexdigest
+
+    bseva18_from_sbol = next(
+        bsb.import_sbol_parts("./sequences/alternative_formats/bseva18.rdf")
     )
     # online converter changes annotations attribute
     bseva18_from_sbol.annotations = bsb.BASIC_SEVA_PARTS["v0.1"]["18"].annotations
-    bseva18_from_sbol.id = _seqrecord_hexdigest(bseva18_from_sbol)
+    bseva18_from_sbol.id = seqrecord_hexdigest(bseva18_from_sbol)
     assert (
         compare_seqrec_instances(bseva18_from_sbol, bsb.BASIC_SEVA_PARTS["v0.1"]["18"])
         == True

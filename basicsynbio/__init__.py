@@ -13,7 +13,7 @@ from .bsb_io import (
     export_sequences_to_file,
     import_part,
     import_parts,
-    import_sbol_part,
+    import_sbol_parts,
 )
 from .parts_linkers import (
     BASIC_CDS_PARTS,

@@ -1,6 +1,6 @@
 """Main module for basicsynbio."""
 from basicsynbio.utils import _easy_seqrec
-from basicsynbio.decorators import add2docs
+from basicsynbio.decorators import addargs2docs, ArgDescription
 from Bio import SeqUtils, SeqIO
 from Bio.Restriction.Restriction import BsaI
 from Bio.Seq import Seq
@@ -31,18 +31,27 @@ IS_SEQREC = _easy_seqrec(IS_STR, "iS", note=["BASIC integrated suffix"])
 
 
 class CommonArgDocs:
-    ADD_I_SEQS = ":param bool add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost."
-    HANDLE = ":param handle: handle to file."
-    FORMAT = ":param string format: file format."
-    SEQREC_KWARGS = ":param \**kwargs: assigns alternative SeqRecord attributes."
-    PARTS_LINKERS_ARGS = ":param \*parts_linkers: :py:class:`BasicPart` and :py:class:`BasicLinker` objects."
+    ADD_I_SEQS = ArgDescription(
+        "add_i_seqs",
+        "if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.",
+    )
+    BASIC_PART = ArgDescription("BasicPart", "a BASIC DNA assembly part.")
+    BASIC_PARTS = ArgDescription("BasicPart", "all parts within the file handle.")
+    HANDLE = ArgDescription("handle", "handle to file.")
+    FORMAT = ArgDescription("format", "file format.")
+    SEQREC_KWARGS = ArgDescription(
+        "kwargs", "assigns alternative SeqRecord attributes."
+    )
+    PARTS_LINKERS_ARGS = ArgDescription(
+        "parts_linkers", "BasicPart and BasicLinker objects."
+    )
 
 
 class BasicPart(SeqRecord):
     """Class for BASIC DNA assembly parts.
 
     A DNA sequence joined with other BasicParts via :py:class:`BasicLinker`
-    instances when initialising :py:class:`BasicAssembly` objects. All 
+    instances when initialising :py:class:`BasicAssembly` objects. All
     sequences must contain intergated prefix and suffix sequences.
 
     Attributes:
@@ -50,13 +59,14 @@ class BasicPart(SeqRecord):
         _is_loc (int): The index/location of `IS_STR` within sequence.
     """
 
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def __init__(self, seq, id: str, **kwargs):
         """Class for BASIC DNA assembly parts.
 
         Args:
             seq: Refer to Bio.SeqRecord.SeqRecord documentation.
             id: Refer to Bio.SeqRecord.SeqRecord documentation.
-            **kwargs: assigns alternative SeqRecord attributes.
+            kwargs:
         """
         self.id = id
         self.seq = seq
@@ -87,29 +97,43 @@ class BasicPart(SeqRecord):
             setattr(seqrec, key, self.__dict__[key])
         return seqrec
 
-    def concentration(self, stock: bool =True, clip_vol: float =30, circular: bool =True, ndigit: int =None) -> Union[float, int]:
+    def concentration(
+        self,
+        stock: bool = True,
+        clip_vol: float = 30,
+        circular: bool = True,
+        ndigit: int = None,
+    ) -> Union[float, int]:
         """Obtain the recommended concentration of part in ng/µL.
 
         This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.
 
         Args:
-            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the final concentration of part in a clip reaction (ng/µL).
+            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).
             clip_vol: volume of the clip reaction (µL).
             circular: The part is circular or linear if False.
             ndigit: Refer to built-in round function documentation.
         """
-        final_concentration = 2.5*SeqUtils.molecular_weight(self.seq, circular=circular, double_stranded=True)/1e6
+        final_concentration = (
+            2.5
+            * SeqUtils.molecular_weight(
+                self.seq, circular=circular, double_stranded=True
+            )
+            / 1e6
+        )
         if stock:
-            return round(final_concentration*clip_vol, ndigit)
+            return round(final_concentration * clip_vol, ndigit)
         return round(final_concentration, ndigit)
 
-    def _find_iseq(self, seq: Seq, iseq_str: str, iseq_id: str = "integrated sequence") -> int:
+    def _find_iseq(
+        self, seq: Seq, iseq_str: str, iseq_id: str = "integrated sequence"
+    ) -> int:
         """The Function to find index/location of iseq_str within the sequence.
 
         Args:
             seq: Sequence to search.
             iseq_str: The subsequence you are searching for.
-            iseq_id (optional): The id/name of the subsequence 
+            iseq_id (optional): The id/name of the subsequence
                 (iseq_str), Defaults to "integrated sequence".
 
         Returns:
@@ -128,7 +152,7 @@ class BasicPart(SeqRecord):
 
     def _check_bsai(self, seq):
         """The function to check if sliced BasicPart contains a BsaI site.
-        
+
         Raises:
             PartException: If the BasicPart sequence contains more than two
                 BsaI sites.
@@ -170,9 +194,6 @@ class BasicPart(SeqRecord):
         return self.id == other.id and str(self.seq) == str(other.seq)
 
 
-BasicPart.__doc__ += CommonArgDocs.SEQREC_KWARGS
-
-
 class BasicLinker(SeqRecord):
     """Class for BASIC DNA assembly linkers.
 
@@ -188,17 +209,20 @@ class BasicLinker(SeqRecord):
 
     """
 
-    def __init__(self, seq, id: str, prefix_id:str=None, suffix_id:str=None, **kwargs):
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
+    def __init__(
+        self, seq, id: str, prefix_id: str = None, suffix_id: str = None, **kwargs
+    ):
         """Class for BASIC DNA assembly linkers.
 
         Args:
             seq : Refer to Bio.SeqRecord.SeqRecord documentation.
             id : Refer to Bio.SeqRecord.SeqRecord documentation.
-            prefix_id (optional): prefix id if known and not needing 
+            prefix_id (optional): prefix id if known and not needing
                 generation, defaults to None.
-            suffix_id (optional): suffix id if known and not needing 
+            suffix_id (optional): suffix id if known and not needing
                 generation, defaults to None.
-            **kwargs: assigns alternative SeqRecord attributes.
+            kwargs:
         """
         super().__init__(seq=seq, id=id, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
@@ -214,8 +238,7 @@ class BasicLinker(SeqRecord):
         return self
 
     def _linker_feature(self):
-        """The function to populate `features` attribute of `BasicLinker` Object.
-        """
+        """The function to populate `features` attribute of `BasicLinker` Object."""
         self.features.append(
             SeqFeature(
                 type="misc_feature",
@@ -242,19 +265,14 @@ class BasicLinker(SeqRecord):
             return f"{self.name}-S"
         return id
 
-    def __eq__(self, other: 'BasicLinker') -> bool:
+    def __eq__(self, other: "BasicLinker") -> bool:
         if not isinstance(other, BasicLinker):
             raise TypeError(f"{other} is not a BasicLinker instance.")
         return self.id == other.id and str(self.seq) == str(other.seq)
 
 
-BasicLinker.__doc__ += CommonArgDocs.SEQREC_KWARGS
-
-
 class BasicUTRRBSLinker(BasicLinker):
-    """Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers.
-    
-    """
+    """Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers."""
 
     def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
         super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
@@ -286,7 +304,7 @@ class BasicAssembly:
             id: Identifier for BasicAssemby object. Must be unique
                 amongst BasicAssembly instances used to initiate a BasicBuild
                 object.
-            *parts_linkers: Alternating BasicPart and BasicLinker objects used
+            parts_linkers: Alternating BasicPart and BasicLinker objects used
                 to create this assembly.
 
         Raises:
@@ -301,25 +319,24 @@ class BasicAssembly:
         self.parts_linkers = parts_linkers
         self.clip_reactions = self.return_clip_reactions()
 
-    @add2docs(CommonArgDocs.SEQREC_KWARGS, indentation=8)
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def return_part(self, **kwargs) -> BasicPart:
         """A function to return the assembled construct as a new part.
 
         Args:
-            **kwargs: Assigns alternative SeqRecord attributes to the returned
-                object.
+            kwargs:
 
         Returns:
             BasicPart: assembled construct as a new part.
         """
         return seqrec2part(self.return_seqrec(**kwargs))
 
-
+    @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def return_seqrec(self, **kwargs) -> SeqRecord:
         """A function to return the assembled construct as a seqrecord.
 
         Args:
-            **kwargs: assigns alternative SeqRecord attributes.
+            kwargs:
 
         Returns:
             seqrec: assembled construct as a new seqrecord.
@@ -336,11 +353,11 @@ class BasicAssembly:
                 setattr(seqrec, key, value)
         return seqrec
 
-    def return_clip_reactions(self) -> Tuple['ClipReaction', ...]:
+    def return_clip_reactions(self) -> Tuple["ClipReaction", ...]:
         """A function to return the :py:class:`ClipReaction` instances required for BASIC assembly.
 
         Returns:
-            tuple: A collection of `ClipReaction` instances 
+            tuple: A collection of `ClipReaction` instances
             required for BASIC assembly.
         """
         clip_reactions = []
@@ -365,7 +382,7 @@ class BasicAssembly:
     def _check_clip_reactions(self, clip_reactions):
         """Checks `ClipReactions` are compatible e.g. same half linker not used
         multiple times.
-        
+
         Args:
             clip_reactions: the list of `ClipReaction`
                 objects to be analysed for compatability.
@@ -378,7 +395,7 @@ class BasicAssembly:
                 UTR linker-halves must be compatible.
 
             Args:
-                linker_halves: the list of 
+                linker_halves: the list of
                     half_linker_ids to be analysed for compatability.
 
             Raises:
@@ -410,7 +427,7 @@ class BasicAssembly:
             for value in values
         ):
             raise TypeError(
-                "Not all *parts_linkers are BasicParts or BasicLinkers instances."
+                "Not all parts_linkers are BasicParts or BasicLinkers instances."
             )
         for ind, value in enumerate(values):
             if ind != 0:
@@ -425,21 +442,16 @@ class BasicAssembly:
         self._parts_linkers = values
 
 
-BasicAssembly.__doc__ += CommonArgDocs.PARTS_LINKERS_ARGS
-
-
 class ClipReaction:
-    """Class for describing clip reactions. 
-    
-    Note: 
+    """Class for describing clip reactions.
+
+    Note:
         ClipReaction is hashable.
 
     """
 
     def __init__(self, prefix, part, suffix):
-        """Class for describing clip reactions.
-
-        """
+        """Class for describing clip reactions."""
         self._prefix = prefix
         self._suffix = suffix
         self._part = part
@@ -457,13 +469,13 @@ class ClipReaction:
         """A function to returns a tuple describing each of the items within each clip.
 
         Returns:
-            tuple: items within each clip
+            tuple: (prefix linker, part, suffix linker)
         """
         return self._prefix, self._part, self._suffix
 
     def _hexdigest(self, length=16, byteorder="big", signed=True):
         """The function to create the hexadecimal digest
-        
+
         the hexadecimal digest of the Clip Reaction md5 hash by
         converting it to a byte array
 
@@ -472,7 +484,7 @@ class ClipReaction:
 
         Args:
             length(optional): bit length.
-            byteorder(optional): determines where most signaficat byte is 
+            byteorder(optional): determines where most signaficat byte is
                 locatated, see Note.
             signed(optional): see Note.
 
@@ -495,9 +507,9 @@ class ClipReaction:
 
     def __eq__(self, other) -> bool:
         """The function test if an object `other` is equal to this `ClipReaction`.
-        
+
         Args:
-            other: The object to be compared for similarity with 
+            other: The object to be compared for similarity with
                 this ClipReaction.
 
         Returns:
@@ -527,21 +539,20 @@ class AssemblyException(Exception):
     pass
 
 
-@add2docs(CommonArgDocs.ADD_I_SEQS, indentation=4)
-def seqrec2part(seqrec: SeqRecord, add_i_seqs=False) -> BasicPart:
-    """A function to Convert SeqRecord to :py:class:`BasicPart`.
-    
+@addargs2docs(CommonArgDocs.ADD_I_SEQS)
+def seqrec2part(seqrec: SeqRecord, add_i_seqs: bool = False) -> BasicPart:
+    """A function to generate BasicPart instances based on SeqRecords.
+
     Note:
         Relevant attributes are maintained.
 
     Args:
         seqrec: SeqRecord to be converted to
-            :py:class:`BasicPart` subclass.
-        add_i_seqs(optional): if True adds flanking BASIC iP and iS 
-            sequences. Note, letter_annotations attribute is lost.
+            BasicPart subclass.
+        add_i_seqs:
 
     Returns:
-        BasicPart: the BasicPart created from Args
+        BasicPart: BasicPart instance of seqrec.
     """
     if add_i_seqs:
         new_seqrec = IP_SEQREC + seqrec + IS_SEQREC

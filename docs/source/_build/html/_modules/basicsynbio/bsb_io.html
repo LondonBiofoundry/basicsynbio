@@ -40,7 +40,6 @@
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
 <span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
 <span class="kn">import</span> <span class="nn">io</span>
-<span class="kn">import</span> <span class="nn">icebreaker</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
@@ -60,8 +59,8 @@
     <span class="k">return</span> <span class="n">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="import_sbol_part"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_sbol_part">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">import_sbol_part</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<div class="viewcode-block" id="import_sbol_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_sbol_parts">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">import_sbol_parts</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;:return: Part object using sbol2.Document.exportToFormat.</span>
 
 <span class="sd">    Refer to pysbol2 documentation for further information.</span>
@@ -73,10 +72,10 @@
     <span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">fp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">doc</span><span class="o">.</span><span class="n">exportToFormat</span><span class="p">(</span><span class="s2">&quot;GenBank&quot;</span><span class="p">,</span> <span class="n">fp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
+    <span class="n">seqrecs</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span>
     <span class="n">fp</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
     <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span><span class="n">fp</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">)</span></div>
+    <span class="k">yield from</span> <span class="p">(</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">)</span> <span class="k">for</span> <span class="n">seqrec</span> <span class="ow">in</span> <span class="n">seqrecs</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="import_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_parts">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
@@ -124,37 +123,6 @@
         <span class="k">pass</span>
     <span class="n">basic_object</span><span class="o">.</span><span class="n">annotations</span><span class="p">[</span><span class="s2">&quot;molecule_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">molecule_type</span>
     <span class="k">return</span> <span class="n">basic_object</span>
-
-
-<div class="viewcode-block" id="import_ice_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_ice_parts">[docs]</a><span class="k">def</span> <span class="nf">import_ice_parts</span><span class="p">(</span>
-    <span class="n">ice_user_config</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
-    <span class="o">*</span><span class="n">ice_nums</span><span class="p">,</span>
-    <span class="n">ice_root</span><span class="o">=</span><span class="s2">&quot;https://public-registry.jbei.org/&quot;</span><span class="p">,</span>
-    <span class="n">file_type</span><span class="o">=</span><span class="s2">&quot;original&quot;</span><span class="p">,</span>
-    <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;genbank&quot;</span><span class="p">,</span>
-<span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;:returns: a :py:class:`BasicPart` object using an entry on a JBEI-ICE instance.</span>
-
-<span class="sd">    Uses icebreaker under the hood. Refer to `icebreaker documentation &lt;https://edinburgh-genome-foundry.github.io/icebreaker/&gt;` for further information.</span>
-
-<span class="sd">    :param dict ice_user_config: Either {email: password:} or {token: client:}. Note, compared to icebreaker, &#39;Root&#39; is a separate default argument (ice_root).</span>
-<span class="sd">    :param \*ice_nums: Part ID numbers as strings e.g. &quot;17338&quot;. Note, the distinction between Part ID and Part ID number. For instance, number is 17338 for ID=JPUB_017338.</span>
-<span class="sd">    :param string ice_root: Root of ice registry.</span>
-<span class="sd">    :param string file_type: The file type to download e.g. &quot;original&quot;, &quot;genbank&quot; or &quot;fasta&quot;.</span>
-<span class="sd">    :param string format: Format of the downloaded file. If file_type == &quot;fasta&quot;, format must also be &quot;fasta&quot;.</span>
-
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">ice_config</span> <span class="o">=</span> <span class="n">ice_user_config</span>
-    <span class="n">ice_config</span><span class="p">[</span><span class="s2">&quot;root&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ice_root</span>
-    <span class="n">ice</span> <span class="o">=</span> <span class="n">icebreaker</span><span class="o">.</span><span class="n">IceClient</span><span class="p">(</span><span class="n">ice_config</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">ice_num</span> <span class="ow">in</span> <span class="n">ice_nums</span><span class="p">:</span>
-        <span class="n">bytes_file</span> <span class="o">=</span> <span class="n">ice</span><span class="o">.</span><span class="n">request</span><span class="p">(</span>
-            <span class="n">method</span><span class="o">=</span><span class="s2">&quot;GET&quot;</span><span class="p">,</span>
-            <span class="n">endpoint</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;file/</span><span class="si">{</span><span class="n">ice_num</span><span class="si">}</span><span class="s2">/sequence/</span><span class="si">{</span><span class="n">file_type</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
-            <span class="n">response_type</span><span class="o">=</span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
-        <span class="p">)</span>
-        <span class="n">memory_file</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">bytes_file</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
-        <span class="k">yield</span> <span class="n">import_part</span><span class="p">(</span><span class="n">memory_file</span><span class="p">,</span> <span class="s2">&quot;genbank&quot;</span><span class="p">)</span></div>
 </pre></div>
 
           </div>
@@ -179,7 +147,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../collections.html">Part and linker collections</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../build_example.html">build.json</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
 </ul>
 

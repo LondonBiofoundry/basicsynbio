@@ -1,6 +1,7 @@
 """Module contains utilities to improve the interface with benchling."""
 
-def only_label_feature(part: 'BasicPart')-> 'BasicPart':
+
+def only_label_feature(part: "BasicPart") -> "BasicPart":
     """Return part with only the label feature.
 
     Useful for getting rid of ApEinfo features following Benchling
