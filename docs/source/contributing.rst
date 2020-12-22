@@ -65,8 +65,10 @@ General Guidelines
 
 
 Guidelines for docstrings
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Format docstrings according to the `Google Style Guide`_. This enables automated documentation of the API using `sphinx.ext.napoleon`_.
+* Where the same argument is used by multiple methods/functions, the :py:func:`basicsynbio.decorators.addargs2docs` decorator may be used. Associated instances of :py:class:`basicsynbio.decorators.ArgDescription` are placed in :py:class:`basicsynbio.main.CommonArgDocs`. 
 
 
 .. _black: https://github.com/psf/black
