@@ -5,7 +5,6 @@ An open-source Python package to facilitate [BASIC DNA Assembly](https://www.bas
 [![Build Status][travis_badge]][travis_url]
 [![Coverage Status][coverage_badge]][coverage_url]
 [![pypi badge][pypi_badge]][pypi_url]
-[![MIT license](https://img.shields.io/badge/License-MIT-blue.svg)](https://lbesson.mit-license.org/)
 
 ## Installation
 
@@ -21,7 +20,7 @@ Refer to the [section of the documentation on contributing](/docs/build/html/con
 
 ## Meta
 
-This project is licensed under the MIT License - see the ``LICENSE`` file for details
+This project is licensed under the BSD 3-Clause License - see the ``LICENSE`` file for details
 
 [pypi_badge]: https://img.shields.io/pypi/v/basicsynbio.svg
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
