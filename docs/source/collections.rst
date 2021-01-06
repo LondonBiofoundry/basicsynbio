@@ -32,7 +32,7 @@ The following steps are required to add new part collections or versions of part
 #. Generate a genbank file containing all parts in the collection as separate elements.
 #. Via a pull-request (refer to :doc:`contributing`), complete the following:
 
-   * Add the genbank file to the :py:mod:`babasicsynbio.parts_linkers` sub-package.
+   * Add the genbank file to the :py:mod:`basicsynbio.parts_linkers` sub-package.
    * Using :py:mod:`importlib.resources` and :py:func:`basicsynbio.parts_linkers.main.make_collection`, make or update the collection in :py:mod:`basicsynbio.parts_linkers.basic_parts`.
    * Where required, update the parts_linkers sub-package \_\_init\_\_.py file to import the collection.
 
