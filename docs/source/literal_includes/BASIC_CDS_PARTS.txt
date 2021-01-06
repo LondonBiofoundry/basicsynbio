@@ -1,0 +1,13 @@
+sfGFP id: f3eb90a77c18c828cc1c0e2ce99d9f83
+sfGFP name: BASIC_sfGFP_CDS
+sfGFP description: sfGFP stored in BASIC_SEVA_18
+
+mCherry id: 62771c44c2711126d5250509d5b64554
+mCherry name: BASIC_mCherry_CDS
+mCherry description: mCherry stored in BASIC_SEVA_18
+
+mTagBFP2 id: adb85d1208ec49e5cf26279bbf0391c0
+mTagBFP2 name: BASIC_mTagBFP2_CDS
+mTagBFP2 description: mTagBFP2 stored in BASIC_SEVA_18
+
+

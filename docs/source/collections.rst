@@ -13,13 +13,16 @@ Below is a list of selected collections to browse and instructions for contribut
 Browse selected collections
 ---------------------------
 
-.. note::
+Collections can be searched and viewed using `SeqViz`_ at the `basicsynbio webapp`_.
+Alternatively collections can be viewed through the links below, displaying each items id, name and description.
 
-    Please print the following collections for information on them or see the web-app if available: ``BASIC_BIOLEGIO_LINKERS["v0.1"]``, ``BASIC_SEVA_PARTS["v0.1"]``, ``BASIC_PROMOTER_PARTS["v0.1"]``
+.. _SeqViz: https://tools.latticeautomation.com/seqviz/
+.. _basicsynbio webapp: https://basicsynbio.web.app
 
-.. todo::
-
-    Add links to printed versions of the collections and images of plasmid maps.
+* :doc:`basic_biolegio_linkers`
+* :doc:`basic_cds_parts`
+* :doc:`basic_promoter_parts`
+* :doc:`basic_seva_parts`
 
 Contributing part collections to basicsynbio
 --------------------------------------------

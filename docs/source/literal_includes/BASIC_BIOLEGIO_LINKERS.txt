@@ -1,0 +1,261 @@
+L1 id: 0893fc2b9795b280f4c43ee3267489aa
+L1 name: L1
+L1 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+L2 id: edd651940d345a5447cf8d52a7e55bb8
+L2 name: L2
+L2 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+L3 id: 97c74b65b44da2f7067b124118549149
+L3 name: L3
+L3 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+L4 id: 7a22202a9f583aa0162a950092b42214
+L4 name: L4
+L4 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+L5 id: cc431c8b2d3171f61db4e06226457930
+L5 name: L5
+L5 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+L6 id: 0ce3392fcc9379be69a6827f905e0060
+L6 name: L6
+L6 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LMP id: 00d898637a50a35f638cd3c4bc3ef744
+LMP name: LMP
+LMP description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LMS id: 1b62864ef7e8ad38d30e92a2dbc17670
+LMS name: LMS
+LMS description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LF1 id: 3dba4a2ad654e64e225a6f2f8bb7af56
+LF1 name: LF1
+LF1 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LF2 id: 9363b002ab3c87830711d0b41e4b64bf
+LF2 name: LF2
+LF2 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LF3 id: e153fef2c069e165c5ec2dba6a1404da
+LF3 name: LF3
+LF3 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LF4 id: d5b4666ba1dd2443a66c39ab86faa6c9
+LF4 name: LF4
+LF4 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LF5 id: 15593e99c7f9ee8ff0ad0a99fe8836c8
+LF5 name: LF5
+LF5 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+LF6 id: c13be98895e10de91aef13c0730dc91c
+LF6 name: LF6
+LF6 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS1 id: 64ae9c70fd948887b240d8ad3c6a5a76
+UTR1-RBS1 name: UTR1-RBS1
+UTR1-RBS1 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS2 id: 6bbd830ee167938f0dae3f872bc965b1
+UTR1-RBS2 name: UTR1-RBS2
+UTR1-RBS2 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS3 id: 8cb7b58a64af42b6a789aff6c1964d71
+UTR1-RBS3 name: UTR1-RBS3
+UTR1-RBS3 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A01 id: 0907969930e261cda278aa298685f146
+UTR1-RBS-A01 name: UTR1-RBS-A01
+UTR1-RBS-A01 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A02 id: baeee0c134f95d27d490ba64e60f5e21
+UTR1-RBS-A02 name: UTR1-RBS-A02
+UTR1-RBS-A02 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A03 id: 5cdc9bf0184268b9545803457105ee1c
+UTR1-RBS-A03 name: UTR1-RBS-A03
+UTR1-RBS-A03 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A04 id: 391980d42f427c819286cbf9ad29d2a9
+UTR1-RBS-A04 name: UTR1-RBS-A04
+UTR1-RBS-A04 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A05 id: 37e342ed4eb7552ec1d49e7f13510ba7
+UTR1-RBS-A05 name: UTR1-RBS-A05
+UTR1-RBS-A05 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A06 id: fa6d79f20fe200ab7372923981e65be7
+UTR1-RBS-A06 name: UTR1-RBS-A06
+UTR1-RBS-A06 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A07 id: 5f7a05b009c57070b62ba9ccf0ed30a1
+UTR1-RBS-A07 name: UTR1-RBS-A07
+UTR1-RBS-A07 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A08 id: 12b6f530b162ee31c3a6a51585c2b18c
+UTR1-RBS-A08 name: UTR1-RBS-A08
+UTR1-RBS-A08 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A09 id: 752c823d5da16e77328abf1534185857
+UTR1-RBS-A09 name: UTR1-RBS-A09
+UTR1-RBS-A09 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A10 id: 3279858541bb7efc8cbf57e7d2e47d2a
+UTR1-RBS-A10 name: UTR1-RBS-A10
+UTR1-RBS-A10 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A11 id: 2ac35f789459fe582bbf4fc4cd809ec0
+UTR1-RBS-A11 name: UTR1-RBS-A11
+UTR1-RBS-A11 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-A12 id: 7306fd414dbf389a2760afff5bf6a395
+UTR1-RBS-A12 name: UTR1-RBS-A12
+UTR1-RBS-A12 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS1 id: f0f4d42a987078be33f5b3a9c1dbc3cb
+UTR2-RBS1 name: UTR2-RBS1
+UTR2-RBS1 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS2 id: ab672049c8b56106d458b65235492868
+UTR2-RBS2 name: UTR2-RBS2
+UTR2-RBS2 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS3 id: d1b71c47c0be2efa1abad479c1ec5413
+UTR2-RBS3 name: UTR2-RBS3
+UTR2-RBS3 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A01 id: 718e056a59d5903802c37d9d6b3e5f90
+UTR2-RBS-A01 name: UTR2-RBS-A01
+UTR2-RBS-A01 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A02 id: a6171892e133a3d2bcd6ababba241fe8
+UTR2-RBS-A02 name: UTR2-RBS-A02
+UTR2-RBS-A02 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A03 id: 685a5074af227291b1a223793eb50c5c
+UTR2-RBS-A03 name: UTR2-RBS-A03
+UTR2-RBS-A03 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A04 id: e7d767bd7fbe1e3212eb1d10bca1fd65
+UTR2-RBS-A04 name: UTR2-RBS-A04
+UTR2-RBS-A04 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A05 id: d706b105571c3a4bafa1d04f3007b84b
+UTR2-RBS-A05 name: UTR2-RBS-A05
+UTR2-RBS-A05 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A06 id: f9374efcdb0a0e11bbe677f03d63d805
+UTR2-RBS-A06 name: UTR2-RBS-A06
+UTR2-RBS-A06 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A07 id: 3a853eed70dd58e5d1c4788c31db5f87
+UTR2-RBS-A07 name: UTR2-RBS-A07
+UTR2-RBS-A07 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A08 id: 7bdd5ddcf9c9164ed17af84788b5e4ee
+UTR2-RBS-A08 name: UTR2-RBS-A08
+UTR2-RBS-A08 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A09 id: 22661c99debdb0045cc853ebc5dc8168
+UTR2-RBS-A09 name: UTR2-RBS-A09
+UTR2-RBS-A09 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A10 id: 1471223a787dc58a6499f26bba1178ce
+UTR2-RBS-A10 name: UTR2-RBS-A10
+UTR2-RBS-A10 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A11 id: 078fcc54c3bc19d2d40af6a50d5da5dd
+UTR2-RBS-A11 name: UTR2-RBS-A11
+UTR2-RBS-A11 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-A12 id: 58b633636914793217f8b87cf9667e74
+UTR2-RBS-A12 name: UTR2-RBS-A12
+UTR2-RBS-A12 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS1 id: bca77c7687ab87e13e28f91b224e774b
+UTR3-RBS1 name: UTR3-RBS1
+UTR3-RBS1 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS2 id: f012ae13cc4ea6fd256b9352284fb4e0
+UTR3-RBS2 name: UTR3-RBS2
+UTR3-RBS2 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS3 id: 2d97cb65f8cdc1ad30e1aeeaf2bee326
+UTR3-RBS3 name: UTR3-RBS3
+UTR3-RBS3 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A01 id: a56d39731ca82b3cb7546e8fc4a00d48
+UTR3-RBS-A01 name: UTR3-RBS-A01
+UTR3-RBS-A01 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A02 id: 668593d5460b6d84ebc0046dd0d33ef3
+UTR3-RBS-A02 name: UTR3-RBS-A02
+UTR3-RBS-A02 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A03 id: f3976d8ef3d08745c33eaf4de32909e3
+UTR3-RBS-A03 name: UTR3-RBS-A03
+UTR3-RBS-A03 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A04 id: 2fdacd0087234f3ccfb2dc2923334178
+UTR3-RBS-A04 name: UTR3-RBS-A04
+UTR3-RBS-A04 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A05 id: 2ce398b62951e59ff1f79fc129d6597c
+UTR3-RBS-A05 name: UTR3-RBS-A05
+UTR3-RBS-A05 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A06 id: 1b5be340f5cc1f618932601e4a63a755
+UTR3-RBS-A06 name: UTR3-RBS-A06
+UTR3-RBS-A06 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A07 id: 73a8ff224fe7eaf60725634baa0247a7
+UTR3-RBS-A07 name: UTR3-RBS-A07
+UTR3-RBS-A07 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A08 id: 67cdcf1bc190bd99968c37f344530e6c
+UTR3-RBS-A08 name: UTR3-RBS-A08
+UTR3-RBS-A08 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A09 id: 98d31e83ff42da8a5fbc5ad79e794148
+UTR3-RBS-A09 name: UTR3-RBS-A09
+UTR3-RBS-A09 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A10 id: 8b36ca67ee9eadf1f392e9aee3829773
+UTR3-RBS-A10 name: UTR3-RBS-A10
+UTR3-RBS-A10 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A11 id: 8d48211a02d2270fbdfa8d80008893a1
+UTR3-RBS-A11 name: UTR3-RBS-A11
+UTR3-RBS-A11 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-A12 id: 7ca01cfe4061cf2ceb4999cd99a026d8
+UTR3-RBS-A12 name: UTR3-RBS-A12
+UTR3-RBS-A12 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-AM12 id: 874f2eec71f58b5ea689948f074d2d5a
+UTR1-RBS-AM12 name: UTR1-RBS-AM12
+UTR1-RBS-AM12 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR1-RBS-AM24 id: 4ec1b460101a3af758c528b91f3992bb
+UTR1-RBS-AM24 name: UTR1-RBS-AM24
+UTR1-RBS-AM24 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-AM12 id: 08bd28b5b76160cd713a99bf67343daa
+UTR2-RBS-AM12 name: UTR2-RBS-AM12
+UTR2-RBS-AM12 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR2-RBS-AM24 id: e8066eb21f1d4809c78abd8925dd900e
+UTR2-RBS-AM24 name: UTR2-RBS-AM24
+UTR2-RBS-AM24 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-AM12 id: f56ae28c523fde9db2521cc1adb8a5fa
+UTR3-RBS-AM12 name: UTR3-RBS-AM12
+UTR3-RBS-AM12 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+UTR3-RBS-AM24 id: c1e2a75d330308ac4419cc0bd09b80c3
+UTR3-RBS-AM24 name: UTR3-RBS-AM24
+UTR3-RBS-AM24 description: visit https://www.biolegio.com/products-services/basic/ for further information.
+
+
