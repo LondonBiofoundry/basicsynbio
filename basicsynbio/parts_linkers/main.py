@@ -10,9 +10,10 @@ class PartLinkerCollection(dict):
     def __str__(self):
         string = ""
         for item in self.items():
-            string += f"{item[0]} id: {item[1].id}\n"
-            string += f"{item[0]} name: {item[1].name}\n"
-            string += f"{item[0]} description: {item[1].description}\n\n"
+            string += f"{'PartLinkerCollection key:':30} '{item[0]}'\n"
+            string += f"{'id:':30} {item[1].id}\n"
+            string += f"{'name:':30} {item[1].name}\n"
+            string += f"{'description:':30} {item[1].description}\n\n"
         return string
 
 
