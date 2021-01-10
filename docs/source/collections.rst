@@ -14,7 +14,7 @@ Browse selected collections
 ---------------------------
 
 Collections can be searched and viewed using `SeqViz`_ at the `basicsynbio webapp`_.
-Alternatively collections can be viewed through the links below, displaying each items id, name and description.
+Alternatively collections can be viewed through the links below, displaying the *PartLinkerCollection key*, *id*, *name* and *description*.
 
 .. _SeqViz: https://tools.latticeautomation.com/seqviz/
 .. _basicsynbio webapp: https://basicsynbio.web.app

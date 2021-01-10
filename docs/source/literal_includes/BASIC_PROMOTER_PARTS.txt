@@ -1,253 +1,316 @@
-B-P1 id: 140aff43fdac9c3adddb754116e1630b
-B-P1 name: B-P1_Terminator1_J23119_RiboA
-B-P1 description: B-P1 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P1, contains a J23119 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P1'
+id:                            140aff43fdac9c3adddb754116e1630b
+name:                          B-P1_Terminator1_J23119_RiboA
+description:                   B-P1 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P1, contains a J23119 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P2 id: 373e6bfcc3cfd521c725e6667029aa9f
-B-P2 name: B-P2_Terminator1_J23111_RiboA
-B-P2 description: B-P2 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P2, contains a J23111 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P2'
+id:                            373e6bfcc3cfd521c725e6667029aa9f
+name:                          B-P2_Terminator1_J23111_RiboA
+description:                   B-P2 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P2, contains a J23111 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P3 id: 04dd87f307037cb34338c8d46fdec78a
-B-P3 name: B-P3_Terminator1_J23104_RiboA
-B-P3 description: B-P3 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P3, contains a J23104 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P3'
+id:                            04dd87f307037cb34338c8d46fdec78a
+name:                          B-P3_Terminator1_J23104_RiboA
+description:                   B-P3 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P3, contains a J23104 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P4 id: 93fdffea8985598476d07a621ab13441
-B-P4 name: B-P4_Terminator1_J23101_RiboA
-B-P4 description: B-P4 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P4, contains a J23101 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P4'
+id:                            93fdffea8985598476d07a621ab13441
+name:                          B-P4_Terminator1_J23101_RiboA
+description:                   B-P4 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P4, contains a J23101 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P5 id: 741f2bdde85d6df3b029ceddf0560ba1
-B-P5 name: B-P5_Terminator1_J23108_RiboA
-B-P5 description: B-P5 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P5, contains a J23108 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P5'
+id:                            741f2bdde85d6df3b029ceddf0560ba1
+name:                          B-P5_Terminator1_J23108_RiboA
+description:                   B-P5 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P5, contains a J23108 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P6 id: fd822f2a69a7d1fba7843f933c1d7a30
-B-P6 name: B-P6_Terminator1_J23106_RiboA
-B-P6 description: B-P6 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P6, contains a J23106 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P6'
+id:                            fd822f2a69a7d1fba7843f933c1d7a30
+name:                          B-P6_Terminator1_J23106_RiboA
+description:                   B-P6 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P6, contains a J23106 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P7 id: 63f7d6ad25024b0a6501661f11b70416
-B-P7 name: B-P7_Terminator1_J23105_RiboA
-B-P7 description: B-P7 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P7, contains a J23105 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P7'
+id:                            63f7d6ad25024b0a6501661f11b70416
+name:                          B-P7_Terminator1_J23105_RiboA
+description:                   B-P7 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P7, contains a J23105 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P8 id: b376f975081d9e9d603a43174ff51509
-B-P8 name: B-P8_Terminator1_J23116_RiboA
-B-P8 description: B-P8 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P8, contains a J23116 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P8'
+id:                            b376f975081d9e9d603a43174ff51509
+name:                          B-P8_Terminator1_J23116_RiboA
+description:                   B-P8 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P8, contains a J23116 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P9 id: e0be959d24f89e3a21244d76abfca953
-B-P9 name: B-P9_Terminator2_J23119_RiboB
-B-P9 description: B-P9 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P9, contains a J23119 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P9'
+id:                            e0be959d24f89e3a21244d76abfca953
+name:                          B-P9_Terminator2_J23119_RiboB
+description:                   B-P9 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P9, contains a J23119 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P10 id: ee7183692c893fa4a0e463be64c0067b
-B-P10 name: B-P10_Terminator2_J23111_RiboB
-B-P10 description: B-P10 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P10, contains a J23111 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P10'
+id:                            ee7183692c893fa4a0e463be64c0067b
+name:                          B-P10_Terminator2_J23111_RiboB
+description:                   B-P10 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P10, contains a J23111 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P11 id: baee1c5c40e63e2c9846dec120fe97f4
-B-P11 name: B-P11_Terminator2_J23104_RiboB
-B-P11 description: B-P11 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P11, contains a J23104 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P11'
+id:                            baee1c5c40e63e2c9846dec120fe97f4
+name:                          B-P11_Terminator2_J23104_RiboB
+description:                   B-P11 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P11, contains a J23104 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P12 id: 6fb15e609c9e58b6249ab21587510d0e
-B-P12 name: B-P12_Terminator2_J23101_RiboB
-B-P12 description: B-P12 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P12, contains a J23101 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P12'
+id:                            6fb15e609c9e58b6249ab21587510d0e
+name:                          B-P12_Terminator2_J23101_RiboB
+description:                   B-P12 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P12, contains a J23101 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P13 id: c3c77ad0c5b3ae043d031657f7b21c62
-B-P13 name: B-P13_Terminator2_J23108_RiboB
-B-P13 description: B-P13 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P13, contains a J23108 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P13'
+id:                            c3c77ad0c5b3ae043d031657f7b21c62
+name:                          B-P13_Terminator2_J23108_RiboB
+description:                   B-P13 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P13, contains a J23108 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P14 id: d9ef427406d95e12935e346c0aca1ff0
-B-P14 name: B-P14_Terminator2_J23106_RiboB
-B-P14 description: B-P14 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P14, contains a J23106 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P14'
+id:                            d9ef427406d95e12935e346c0aca1ff0
+name:                          B-P14_Terminator2_J23106_RiboB
+description:                   B-P14 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P14, contains a J23106 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P15 id: 0c1318ac5dd7dc9f013463d281b442f6
-B-P15 name: B-P15_Terminator2_J23105_RiboB
-B-P15 description: B-P15 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P15, contains a J23105 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P15'
+id:                            0c1318ac5dd7dc9f013463d281b442f6
+name:                          B-P15_Terminator2_J23105_RiboB
+description:                   B-P15 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P15, contains a J23105 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P16 id: c88d787d494b6416793f6171b143710d
-B-P16 name: B-P16_Terminator2_J23116_RiboB
-B-P16 description: B-P16 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P16, contains a J23116 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P16'
+id:                            c88d787d494b6416793f6171b143710d
+name:                          B-P16_Terminator2_J23116_RiboB
+description:                   B-P16 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P16, contains a J23116 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P17 id: 95e12f081eb6c938b7b5761f722fc567
-B-P17 name: B-P17_Terminator3_J23119_RiboC
-B-P17 description: B-P17 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P17, contains a J23119 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P17'
+id:                            95e12f081eb6c938b7b5761f722fc567
+name:                          B-P17_Terminator3_J23119_RiboC
+description:                   B-P17 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P17, contains a J23119 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P18 id: 3be3cf2b12c9b3c5c25488190a874b86
-B-P18 name: B-P18_Terminator3_J23111_RiboC
-B-P18 description: B-P18 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P18, contains a J23111 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P18'
+id:                            3be3cf2b12c9b3c5c25488190a874b86
+name:                          B-P18_Terminator3_J23111_RiboC
+description:                   B-P18 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P18, contains a J23111 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P19 id: da194de45dd62324fb2035cb22679a2e
-B-P19 name: B-P19_Terminator3_J23104_RiboC
-B-P19 description: B-P19 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P19, contains a J23104 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P19'
+id:                            da194de45dd62324fb2035cb22679a2e
+name:                          B-P19_Terminator3_J23104_RiboC
+description:                   B-P19 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P19, contains a J23104 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P20 id: 029367dd9ae1ce3bca4c3df38ebdacbe
-B-P20 name: B-P20_Terminator3_J23101_RiboC
-B-P20 description: B-P20 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P20, contains a J23101 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P20'
+id:                            029367dd9ae1ce3bca4c3df38ebdacbe
+name:                          B-P20_Terminator3_J23101_RiboC
+description:                   B-P20 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P20, contains a J23101 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P21 id: c1414fc1f7dc4ae25dcdf61e0e04473a
-B-P21 name: B-P21_Terminator3_J23108_RiboC
-B-P21 description: B-P21 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P21, contains a J23108 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P21'
+id:                            c1414fc1f7dc4ae25dcdf61e0e04473a
+name:                          B-P21_Terminator3_J23108_RiboC
+description:                   B-P21 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P21, contains a J23108 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P22 id: 57c8fdd1cbcfa1b30a14ee5c2207f399
-B-P22 name: B-P22_Terminator3_J23106_RiboC
-B-P22 description: B-P22 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P22, contains a J23106 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P22'
+id:                            57c8fdd1cbcfa1b30a14ee5c2207f399
+name:                          B-P22_Terminator3_J23106_RiboC
+description:                   B-P22 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P22, contains a J23106 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P23 id: 59081ef7095a024cd8526c81cf96b257
-B-P23 name: B-P23_Terminator3_J23105_RiboC
-B-P23 description: B-P23 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P23, contains a J23105 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P23'
+id:                            59081ef7095a024cd8526c81cf96b257
+name:                          B-P23_Terminator3_J23105_RiboC
+description:                   B-P23 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P23, contains a J23105 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P24 id: 70ac2741b20f24c0500471a4063566e3
-B-P24 name: B-P24_Terminator3_J23116_RiboC
-B-P24 description: B-P24 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P24, contains a J23116 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P24'
+id:                            70ac2741b20f24c0500471a4063566e3
+name:                          B-P24_Terminator3_J23116_RiboC
+description:                   B-P24 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P24, contains a J23116 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P25 id: c5c99d6f9edc250cc2036824925fef12
-B-P25 name: B-P25_Terminator1_Phlf_RiboA
-B-P25 description: B-P25 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P25, contains a Phlf promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P25'
+id:                            c5c99d6f9edc250cc2036824925fef12
+name:                          B-P25_Terminator1_Phlf_RiboA
+description:                   B-P25 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P25, contains a Phlf promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P26 id: fc616faf5b211f7257d4ff95be8331ab
-B-P26 name: B-P26_Terminator1_CymR_RiboA
-B-P26 description: B-P26 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P26, contains a CymR promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P26'
+id:                            fc616faf5b211f7257d4ff95be8331ab
+name:                          B-P26_Terminator1_CymR_RiboA
+description:                   B-P26 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P26, contains a CymR promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P27 id: 43e265b986607ce818f4106171afb6da
-B-P27 name: B-P27_Terminator1_TetR_RiboA
-B-P27 description: B-P27 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P27, contains a TetR promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P27'
+id:                            43e265b986607ce818f4106171afb6da
+name:                          B-P27_Terminator1_TetR_RiboA
+description:                   B-P27 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P27, contains a TetR promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P28 id: 498d8f796750f5ab0cb36d73b1e471d6
-B-P28 name: B-P28_Terminator1_VanR_RiboA
-B-P28 description: B-P28 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P28, contains a VanR promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P28'
+id:                            498d8f796750f5ab0cb36d73b1e471d6
+name:                          B-P28_Terminator1_VanR_RiboA
+description:                   B-P28 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P28, contains a VanR promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P29 id: 85bcb7964cf965dab7c268797d4b14b6
-B-P29 name: B-P29_Terminator1_LuxR_RiboA
-B-P29 description: B-P29 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P29, contains a LuxR promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P29'
+id:                            85bcb7964cf965dab7c268797d4b14b6
+name:                          B-P29_Terminator1_LuxR_RiboA
+description:                   B-P29 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P29, contains a LuxR promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P30 id: 850bbaead5b517b1ce7474177d789a12
-B-P30 name: B-P30_Terminator1_CinR_RiboA
-B-P30 description: B-P30 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P30, contains a CinR promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P30'
+id:                            850bbaead5b517b1ce7474177d789a12
+name:                          B-P30_Terminator1_CinR_RiboA
+description:                   B-P30 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P30, contains a CinR promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P31 id: 799e7bc2877a34a4e77979a5a5dd7e32
-B-P31 name: B-P31_Terminator1_LacI_RiboA
-B-P31 description: B-P31 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P31, contains a LacI promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P31'
+id:                            799e7bc2877a34a4e77979a5a5dd7e32
+name:                          B-P31_Terminator1_LacI_RiboA
+description:                   B-P31 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P31, contains a LacI promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P32 id: 65323e3f101fdfa95119f88b5a422479
-B-P32 name: B-P32_Terminator1_AraC_RiboA
-B-P32 description: B-P32 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P32, contains a AraC promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P32'
+id:                            65323e3f101fdfa95119f88b5a422479
+name:                          B-P32_Terminator1_AraC_RiboA
+description:                   B-P32 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P32, contains a AraC promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P33 id: 507ac3bfc97bb142a411df94df08c21d
-B-P33 name: B-P33_Terminator2_Phlf_RiboB
-B-P33 description: B-P33 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P33, contains a Phlf promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P33'
+id:                            507ac3bfc97bb142a411df94df08c21d
+name:                          B-P33_Terminator2_Phlf_RiboB
+description:                   B-P33 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P33, contains a Phlf promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P34 id: 9a90bfcef91d335edffe8a971329a723
-B-P34 name: B-P34_Terminator2_CymR_RiboB
-B-P34 description: B-P34 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P34, contains a CymR promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P34'
+id:                            9a90bfcef91d335edffe8a971329a723
+name:                          B-P34_Terminator2_CymR_RiboB
+description:                   B-P34 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P34, contains a CymR promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P35 id: 1f9db58ce8a2f58de8a3dde19aeebe76
-B-P35 name: B-P35_Terminator2_TetR_RiboB
-B-P35 description: B-P35 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P35, contains a TetR promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P35'
+id:                            1f9db58ce8a2f58de8a3dde19aeebe76
+name:                          B-P35_Terminator2_TetR_RiboB
+description:                   B-P35 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P35, contains a TetR promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P36 id: 7e1c61ba98d06b168606a185623bff8e
-B-P36 name: B-P36_Terminator2_VanR_RiboB
-B-P36 description: B-P36 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P36, contains a VanR promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P36'
+id:                            7e1c61ba98d06b168606a185623bff8e
+name:                          B-P36_Terminator2_VanR_RiboB
+description:                   B-P36 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P36, contains a VanR promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P37 id: 35394c3b5568eb599f5939d20759d28d
-B-P37 name: B-P37_Terminator2_LuxR_RiboB
-B-P37 description: B-P37 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P37, contains a LuxR promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P37'
+id:                            35394c3b5568eb599f5939d20759d28d
+name:                          B-P37_Terminator2_LuxR_RiboB
+description:                   B-P37 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P37, contains a LuxR promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P38 id: b4fac0a12e6b7829eb863441fd53892c
-B-P38 name: B-P38_Terminator2_CinR_RiboB
-B-P38 description: B-P38 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P38, contains a CinR promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P38'
+id:                            b4fac0a12e6b7829eb863441fd53892c
+name:                          B-P38_Terminator2_CinR_RiboB
+description:                   B-P38 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P38, contains a CinR promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P39 id: cf6dd91a62bdf7f6f7bfe823ffa07fec
-B-P39 name: B-P39_Terminator2_LacI_RiboB
-B-P39 description: B-P39 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P39, contains a LacI promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P39'
+id:                            cf6dd91a62bdf7f6f7bfe823ffa07fec
+name:                          B-P39_Terminator2_LacI_RiboB
+description:                   B-P39 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P39, contains a LacI promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P40 id: 4d3a1c37cb834f70e8b8196d27a410aa
-B-P40 name: B-P40_Terminator2_AraC_RiboB
-B-P40 description: B-P40 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P40, contains a AraC promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P40'
+id:                            4d3a1c37cb834f70e8b8196d27a410aa
+name:                          B-P40_Terminator2_AraC_RiboB
+description:                   B-P40 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P40, contains a AraC promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P41 id: dfe7d22dffcaa5dd14967c913e81bdba
-B-P41 name: B-P41_Terminator3_Phlf_RiboC
-B-P41 description: B-P41 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P41, contains a Phlf promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P41'
+id:                            dfe7d22dffcaa5dd14967c913e81bdba
+name:                          B-P41_Terminator3_Phlf_RiboC
+description:                   B-P41 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P41, contains a Phlf promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P42 id: 63ab766b44eab288aea425ef34671dc7
-B-P42 name: B-P42_Terminator3_CymR_RiboC
-B-P42 description: B-P42 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P42, contains a CymR promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P42'
+id:                            63ab766b44eab288aea425ef34671dc7
+name:                          B-P42_Terminator3_CymR_RiboC
+description:                   B-P42 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P42, contains a CymR promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P43 id: 19cc3a468322f28f945688208c29a88d
-B-P43 name: B-P43_Terminator3_TetR_RiboC
-B-P43 description: B-P43 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P43, contains a TetR promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P43'
+id:                            19cc3a468322f28f945688208c29a88d
+name:                          B-P43_Terminator3_TetR_RiboC
+description:                   B-P43 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P43, contains a TetR promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P44 id: fd90ec63fd091f9ad3024e4dfd59945a
-B-P44 name: B-P44_Terminator3_VanR_RiboC
-B-P44 description: B-P44 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P44, contains a VanR promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P44'
+id:                            fd90ec63fd091f9ad3024e4dfd59945a
+name:                          B-P44_Terminator3_VanR_RiboC
+description:                   B-P44 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P44, contains a VanR promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P45 id: 0e6680c658b4b48f94acb8d75ca20548
-B-P45 name: B-P45_Terminator3_LuxR_RiboC
-B-P45 description: B-P45 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P45, contains a LuxR promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P45'
+id:                            0e6680c658b4b48f94acb8d75ca20548
+name:                          B-P45_Terminator3_LuxR_RiboC
+description:                   B-P45 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P45, contains a LuxR promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P46 id: 9d6ba241db99f774ae41453942acfd98
-B-P46 name: B-P46_Terminator3_CinR_RiboC
-B-P46 description: B-P46 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P46, contains a CinR promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P46'
+id:                            9d6ba241db99f774ae41453942acfd98
+name:                          B-P46_Terminator3_CinR_RiboC
+description:                   B-P46 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P46, contains a CinR promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P47 id: 3bcbe58d4d3bb671aa0ae4e22c9e0046
-B-P47 name: B-P47_Terminator3_LacI_RiboC
-B-P47 description: B-P47 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P47, contains a LacI promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P47'
+id:                            3bcbe58d4d3bb671aa0ae4e22c9e0046
+name:                          B-P47_Terminator3_LacI_RiboC
+description:                   B-P47 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P47, contains a LacI promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P48 id: c218f26fe11fb70b1b8f30029cfe46b0
-B-P48 name: B-P48_Terminator3_AraC_RiboC
-B-P48 description: B-P48 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P48, contains a AraC promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P48'
+id:                            c218f26fe11fb70b1b8f30029cfe46b0
+name:                          B-P48_Terminator3_AraC_RiboC
+description:                   B-P48 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P48, contains a AraC promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P49 id: f7a49ade8938b0d405c2e93b26bdda7c
-B-P49 name: B-P49_Terminator1_T7_100_RiboA
-B-P49 description: B-P49 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P49, contains a T7_100 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P49'
+id:                            f7a49ade8938b0d405c2e93b26bdda7c
+name:                          B-P49_Terminator1_T7_100_RiboA
+description:                   B-P49 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P49, contains a T7_100 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P50 id: 9ec62f9104ad96390a89c4667d495a7a
-B-P50 name: B-P50_Terminator1_T7_52_RiboA
-B-P50 description: B-P50 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P50, contains a T7_52 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P50'
+id:                            9ec62f9104ad96390a89c4667d495a7a
+name:                          B-P50_Terminator1_T7_52_RiboA
+description:                   B-P50 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P50, contains a T7_52 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P51 id: e8e7d4adac5c136a5e15fc2806c6df24
-B-P51 name: B-P51_Terminator1_T7_50_RiboA
-B-P51 description: B-P51 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P51, contains a T7_50 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P51'
+id:                            e8e7d4adac5c136a5e15fc2806c6df24
+name:                          B-P51_Terminator1_T7_50_RiboA
+description:                   B-P51 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P51, contains a T7_50 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P52 id: 4362d6614da2053a11f81e72686b09d3
-B-P52 name: B-P52_Terminator1_T7_25_RiboA
-B-P52 description: B-P52 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P52, contains a T7_25 promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P52'
+id:                            4362d6614da2053a11f81e72686b09d3
+name:                          B-P52_Terminator1_T7_25_RiboA
+description:                   B-P52 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P52, contains a T7_25 promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P53 id: 39f179ccb35b6cf05448ba186f7a97ec
-B-P53 name: B-P53_Terminator2_T7_100_RiboB
-B-P53 description: B-P53 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P53, contains a T7_100 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P53'
+id:                            39f179ccb35b6cf05448ba186f7a97ec
+name:                          B-P53_Terminator2_T7_100_RiboB
+description:                   B-P53 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P53, contains a T7_100 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P54 id: 527594e1b54b342d84d66f8410b0a65d
-B-P54 name: B-P54_Terminator2_T7_52_RiboB
-B-P54 description: B-P54 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P54, contains a T7_52 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P54'
+id:                            527594e1b54b342d84d66f8410b0a65d
+name:                          B-P54_Terminator2_T7_52_RiboB
+description:                   B-P54 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P54, contains a T7_52 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P55 id: 5ea799cf09f81ca093f6f4da74552e19
-B-P55 name: B-P55_Terminator2_T7_50_RiboB
-B-P55 description: B-P55 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P55, contains a T7_50 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P55'
+id:                            5ea799cf09f81ca093f6f4da74552e19
+name:                          B-P55_Terminator2_T7_50_RiboB
+description:                   B-P55 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P55, contains a T7_50 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P56 id: 12ed8a1648477c13f738878266007b01
-B-P56 name: B-P56_Terminator2_T7_25_RiboB
-B-P56 description: B-P56 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P56, contains a T7_25 promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P56'
+id:                            12ed8a1648477c13f738878266007b01
+name:                          B-P56_Terminator2_T7_25_RiboB
+description:                   B-P56 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P56, contains a T7_25 promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P57 id: 3b4a88794480e918265b485a386e7165
-B-P57 name: B-P57_Terminator3_T7_100_RiboC
-B-P57 description: B-P57 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P57, contains a T7_100 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P57'
+id:                            3b4a88794480e918265b485a386e7165
+name:                          B-P57_Terminator3_T7_100_RiboC
+description:                   B-P57 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P57, contains a T7_100 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P58 id: 0716f7ec6f8963162f7a1f1ba43ec3cd
-B-P58 name: B-P58_Terminator3_T7_52_RiboC
-B-P58 description: B-P58 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P58, contains a T7_52 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P58'
+id:                            0716f7ec6f8963162f7a1f1ba43ec3cd
+name:                          B-P58_Terminator3_T7_52_RiboC
+description:                   B-P58 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P58, contains a T7_52 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P59 id: f5c5d3a7e16aef9a821b12cb66cf3338
-B-P59 name: B-P59_Terminator3_T7_50_RiboC
-B-P59 description: B-P59 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P59, contains a T7_50 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P59'
+id:                            f5c5d3a7e16aef9a821b12cb66cf3338
+name:                          B-P59_Terminator3_T7_50_RiboC
+description:                   B-P59 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P59, contains a T7_50 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P60 id: 7d164fce32bd2614755922c67cc39edd
-B-P60 name: B-P60_Terminator3_T7_25_RiboC
-B-P60 description: B-P60 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P60, contains a T7_25 promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P60'
+id:                            7d164fce32bd2614755922c67cc39edd
+name:                          B-P60_Terminator3_T7_25_RiboC
+description:                   B-P60 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P60, contains a T7_25 promoter with an upstream Terminator3 and a downstream RiboC
 
-B-P61 id: d7862cd6c317036242f4ee7e54226f9b
-B-P61 name: B-P61_Terminator1_BetI_RiboA
-B-P61 description: B-P61 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P61, contains a BetI promoter with an upstream Terminator1 and a downstream RiboA
+PartLinkerCollection key:      'B-P61'
+id:                            d7862cd6c317036242f4ee7e54226f9b
+name:                          B-P61_Terminator1_BetI_RiboA
+description:                   B-P61 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P61, contains a BetI promoter with an upstream Terminator1 and a downstream RiboA
 
-B-P62 id: ccb7702fea535c6b23e52d4df65b64ce
-B-P62 name: B-P62_Terminator2_Ttg_RiboB
-B-P62 description: B-P62 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P62, contains a Ttg promoter with an upstream Terminator2 and a downstream RiboB
+PartLinkerCollection key:      'B-P62'
+id:                            ccb7702fea535c6b23e52d4df65b64ce
+name:                          B-P62_Terminator2_Ttg_RiboB
+description:                   B-P62 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P62, contains a Ttg promoter with an upstream Terminator2 and a downstream RiboB
 
-B-P63 id: 2efe3b0c9d0a41739866e78d82414a55
-B-P63 name: B-P63_Terminator3_SaITTC_RiboC
-B-P63 description: B-P63 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P63, contains a SaITTC promoter with an upstream Terminator3 and a downstream RiboC
+PartLinkerCollection key:      'B-P63'
+id:                            2efe3b0c9d0a41739866e78d82414a55
+name:                          B-P63_Terminator3_SaITTC_RiboC
+description:                   B-P63 stored in BASIC_SEVA_18. The BASIC insulated promoter B-P63, contains a SaITTC promoter with an upstream Terminator3 and a downstream RiboC
 
 

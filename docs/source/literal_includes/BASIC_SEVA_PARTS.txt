@@ -1,193 +1,241 @@
-12 id: 5ffe4dd31e090d490d72196e4137cf82
-12 name: BASIC_SEVA_12
-12 description: BASIC SEVA vector containing Ampicillin resistance marker and RK2 origin of replication.
+PartLinkerCollection key:      '12'
+id:                            5ffe4dd31e090d490d72196e4137cf82
+name:                          BASIC_SEVA_12
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and RK2 origin of replication.
 
-13 id: b0cc681c00c117b6c86cdfbcb050b272
-13 name: BASIC_SEVA_13
-13 description: BASIC SEVA vector containing Ampicillin resistance marker and pBBR1 origin of replication.
+PartLinkerCollection key:      '13'
+id:                            b0cc681c00c117b6c86cdfbcb050b272
+name:                          BASIC_SEVA_13
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and pBBR1 origin of replication.
 
-14 id: 059542022621a0912a9ffdddc40ee292
-14 name: BASIC_SEVA_14
-14 description: BASIC SEVA vector containing Ampicillin resistance marker and pRO1600/ColE1 origin of replication.
+PartLinkerCollection key:      '14'
+id:                            059542022621a0912a9ffdddc40ee292
+name:                          BASIC_SEVA_14
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and pRO1600/ColE1 origin of replication.
 
-15 id: 51f82553488c3a17aacdc55d78b363a8
-15 name: BASIC_SEVA_15
-15 description: BASIC SEVA vector containing Ampicillin resistance marker and RSF1010 origin of replication.
+PartLinkerCollection key:      '15'
+id:                            51f82553488c3a17aacdc55d78b363a8
+name:                          BASIC_SEVA_15
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and RSF1010 origin of replication.
 
-16 id: f77fb6c59e6995d572ef33db00b9d7b0
-16 name: BASIC_SEVA_16
-16 description: BASIC SEVA vector containing Ampicillin resistance marker and p15A origin of replication.
+PartLinkerCollection key:      '16'
+id:                            f77fb6c59e6995d572ef33db00b9d7b0
+name:                          BASIC_SEVA_16
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and p15A origin of replication.
 
-17 id: 7a602b3ce4e26f30182ccbf045bff782
-17 name: BASIC_SEVA_17
-17 description: BASIC SEVA vector containing Ampicillin resistance marker and pSC101 origin of replication.
+PartLinkerCollection key:      '17'
+id:                            7a602b3ce4e26f30182ccbf045bff782
+name:                          BASIC_SEVA_17
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and pSC101 origin of replication.
 
-18 id: bb90c9b9713d85ff695493fde3f0051a
-18 name: BASIC_SEVA_18
-18 description: BASIC SEVA vector containing Ampicillin resistance marker and pUC origin of replication.
+PartLinkerCollection key:      '18'
+id:                            bb90c9b9713d85ff695493fde3f0051a
+name:                          BASIC_SEVA_18
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and pUC origin of replication.
 
-19 id: 12485441757bf3c0997b28b53938fa44
-19 name: BASIC_SEVA_19
-19 description: BASIC SEVA vector containing Ampicillin resistance marker and pBR322-ROP origin of replication.
+PartLinkerCollection key:      '19'
+id:                            12485441757bf3c0997b28b53938fa44
+name:                          BASIC_SEVA_19
+description:                   BASIC SEVA vector containing Ampicillin resistance marker and pBR322-ROP origin of replication.
 
-22 id: d916716736db2b7b6c4ce0a621fc6e9f
-22 name: BASIC_SEVA_22
-22 description: BASIC SEVA vector containing Kanamycin resistance marker and RK2 origin of replication.
+PartLinkerCollection key:      '22'
+id:                            d916716736db2b7b6c4ce0a621fc6e9f
+name:                          BASIC_SEVA_22
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and RK2 origin of replication.
 
-23 id: a883822f7f88a4f12c8e8e93cbc34cc3
-23 name: BASIC_SEVA_23
-23 description: BASIC SEVA vector containing Kanamycin resistance marker and pBBR1 origin of replication.
+PartLinkerCollection key:      '23'
+id:                            a883822f7f88a4f12c8e8e93cbc34cc3
+name:                          BASIC_SEVA_23
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and pBBR1 origin of replication.
 
-24 id: 9414713dcef3fac873f41a7d881db797
-24 name: BASIC_SEVA_24
-24 description: BASIC SEVA vector containing Kanamycin resistance marker and pRO1600/ColE1 origin of replication.
+PartLinkerCollection key:      '24'
+id:                            9414713dcef3fac873f41a7d881db797
+name:                          BASIC_SEVA_24
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and pRO1600/ColE1 origin of replication.
 
-25 id: c4c251994910cc0861fe6324822266fb
-25 name: BASIC_SEVA_25
-25 description: BASIC SEVA vector containing Kanamycin resistance marker and RSF1010 origin of replication.
+PartLinkerCollection key:      '25'
+id:                            c4c251994910cc0861fe6324822266fb
+name:                          BASIC_SEVA_25
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and RSF1010 origin of replication.
 
-26 id: c92d2eb763c0cd5a28e50d32a195c621
-26 name: BASIC_SEVA_26
-26 description: BASIC SEVA vector containing Kanamycin resistance marker and p15A origin of replication.
+PartLinkerCollection key:      '26'
+id:                            c92d2eb763c0cd5a28e50d32a195c621
+name:                          BASIC_SEVA_26
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and p15A origin of replication.
 
-27 id: 9d3f6c884c90f253ed894bcf0e72b193
-27 name: BASIC_SEVA_27
-27 description: BASIC SEVA vector containing Kanamycin resistance marker and pSC101 origin of replication.
+PartLinkerCollection key:      '27'
+id:                            9d3f6c884c90f253ed894bcf0e72b193
+name:                          BASIC_SEVA_27
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and pSC101 origin of replication.
 
-28 id: e960becd8f97dc2988e5ffd17ad4379f
-28 name: BASIC_SEVA_28
-28 description: BASIC SEVA vector containing Kanamycin resistance marker and pUC origin of replication.
+PartLinkerCollection key:      '28'
+id:                            e960becd8f97dc2988e5ffd17ad4379f
+name:                          BASIC_SEVA_28
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and pUC origin of replication.
 
-29 id: 52c4b95c8cfa7223c166bfa25ccb102f
-29 name: BASIC_SEVA_29
-29 description: BASIC SEVA vector containing Kanamycin resistance marker and pBR322-ROP origin of replication.
+PartLinkerCollection key:      '29'
+id:                            52c4b95c8cfa7223c166bfa25ccb102f
+name:                          BASIC_SEVA_29
+description:                   BASIC SEVA vector containing Kanamycin resistance marker and pBR322-ROP origin of replication.
 
-32 id: 24f70e7cdb2bbdf7e33cd505aa9194e0
-32 name: BASIC_SEVA_32
-32 description: BASIC SEVA vector containing Chloramphenicol resistance marker and RK2 origin of replication.
+PartLinkerCollection key:      '32'
+id:                            24f70e7cdb2bbdf7e33cd505aa9194e0
+name:                          BASIC_SEVA_32
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and RK2 origin of replication.
 
-33 id: 7e861708c72a18b544e5574679749a31
-33 name: BASIC_SEVA_33
-33 description: BASIC SEVA vector containing Chloramphenicol resistance marker and pBBR1 origin of replication.
+PartLinkerCollection key:      '33'
+id:                            7e861708c72a18b544e5574679749a31
+name:                          BASIC_SEVA_33
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and pBBR1 origin of replication.
 
-34 id: 1d0cfeeca882a775fadb595d2db6c0a4
-34 name: BASIC_SEVA_34
-34 description: BASIC SEVA vector containing Chloramphenicol resistance marker and pRO1600/ColE1 origin of replication.
+PartLinkerCollection key:      '34'
+id:                            1d0cfeeca882a775fadb595d2db6c0a4
+name:                          BASIC_SEVA_34
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and pRO1600/ColE1 origin of replication.
 
-35 id: e0003a4d55dabf27305128b65167bf44
-35 name: BASIC_SEVA_35
-35 description: BASIC SEVA vector containing Chloramphenicol resistance marker and RSF1010 origin of replication.
+PartLinkerCollection key:      '35'
+id:                            e0003a4d55dabf27305128b65167bf44
+name:                          BASIC_SEVA_35
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and RSF1010 origin of replication.
 
-36 id: 817f6b5c8cecf3151314b28b98a2a2e3
-36 name: BASIC_SEVA_36
-36 description: BASIC SEVA vector containing Chloramphenicol resistance marker and p15A origin of replication.
+PartLinkerCollection key:      '36'
+id:                            817f6b5c8cecf3151314b28b98a2a2e3
+name:                          BASIC_SEVA_36
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and p15A origin of replication.
 
-37 id: 58617d197d0335ce9ace1bb3a0402c30
-37 name: BASIC_SEVA_37
-37 description: BASIC SEVA vector containing Chloramphenicol resistance marker and pSC101 origin of replication.
+PartLinkerCollection key:      '37'
+id:                            58617d197d0335ce9ace1bb3a0402c30
+name:                          BASIC_SEVA_37
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and pSC101 origin of replication.
 
-38 id: dcf87eb4a87a61d8963500c2c5b854b4
-38 name: BASIC_SEVA_38
-38 description: BASIC SEVA vector containing Chloramphenicol resistance marker and pUC origin of replication.
+PartLinkerCollection key:      '38'
+id:                            dcf87eb4a87a61d8963500c2c5b854b4
+name:                          BASIC_SEVA_38
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and pUC origin of replication.
 
-39 id: 3d2aca52c1ccb2400dd9ca26546e5b40
-39 name: BASIC_SEVA_39
-39 description: BASIC SEVA vector containing Chloramphenicol resistance marker and pBR322-ROP origin of replication.
+PartLinkerCollection key:      '39'
+id:                            3d2aca52c1ccb2400dd9ca26546e5b40
+name:                          BASIC_SEVA_39
+description:                   BASIC SEVA vector containing Chloramphenicol resistance marker and pBR322-ROP origin of replication.
 
-42 id: 7c8d98d5b6b2effbc1c68261c8afdd63
-42 name: BASIC_SEVA_42
-42 description: BASIC SEVA vector containing Streptomycin resistance marker and RK2 origin of replication.
+PartLinkerCollection key:      '42'
+id:                            7c8d98d5b6b2effbc1c68261c8afdd63
+name:                          BASIC_SEVA_42
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and RK2 origin of replication.
 
-43 id: 1164f71e44b124d61f996b31340de6b0
-43 name: BASIC_SEVA_43
-43 description: BASIC SEVA vector containing Streptomycin resistance marker and pBBR1 origin of replication.
+PartLinkerCollection key:      '43'
+id:                            1164f71e44b124d61f996b31340de6b0
+name:                          BASIC_SEVA_43
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and pBBR1 origin of replication.
 
-44 id: 89e355d5c4ac3b3b96310ac1b3cb7412
-44 name: BASIC_SEVA_44
-44 description: BASIC SEVA vector containing Streptomycin resistance marker and pRO1600/ColE1 origin of replication.
+PartLinkerCollection key:      '44'
+id:                            89e355d5c4ac3b3b96310ac1b3cb7412
+name:                          BASIC_SEVA_44
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and pRO1600/ColE1 origin of replication.
 
-45 id: 7072310bb13203707bb813b628eff9b7
-45 name: BASIC_SEVA_45
-45 description: BASIC SEVA vector containing Streptomycin resistance marker and RSF1010 origin of replication.
+PartLinkerCollection key:      '45'
+id:                            7072310bb13203707bb813b628eff9b7
+name:                          BASIC_SEVA_45
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and RSF1010 origin of replication.
 
-46 id: 9d55b6bfb91e90bb21e6acb4fdb1915d
-46 name: BASIC_SEVA_46
-46 description: BASIC SEVA vector containing Streptomycin resistance marker and p15A origin of replication.
+PartLinkerCollection key:      '46'
+id:                            9d55b6bfb91e90bb21e6acb4fdb1915d
+name:                          BASIC_SEVA_46
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and p15A origin of replication.
 
-47 id: e276798c3ebd5ffdc016fbead7d37903
-47 name: BASIC_SEVA_47
-47 description: BASIC SEVA vector containing Streptomycin resistance marker and pSC101 origin of replication.
+PartLinkerCollection key:      '47'
+id:                            e276798c3ebd5ffdc016fbead7d37903
+name:                          BASIC_SEVA_47
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and pSC101 origin of replication.
 
-48 id: 72bca0fe0dc27fa1db1bd0a753193aca
-48 name: BASIC_SEVA_48
-48 description: BASIC SEVA vector containing Streptomycin resistance marker and pUC origin of replication.
+PartLinkerCollection key:      '48'
+id:                            72bca0fe0dc27fa1db1bd0a753193aca
+name:                          BASIC_SEVA_48
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and pUC origin of replication.
 
-49 id: e089de570a552d5c35715270486c48cc
-49 name: BASIC_SEVA_49
-49 description: BASIC SEVA vector containing Streptomycin resistance marker and pBR322-ROP origin of replication.
+PartLinkerCollection key:      '49'
+id:                            e089de570a552d5c35715270486c48cc
+name:                          BASIC_SEVA_49
+description:                   BASIC SEVA vector containing Streptomycin resistance marker and pBR322-ROP origin of replication.
 
-52 id: 8a6b275731b465403c0420f195ce90cb
-52 name: BASIC_SEVA_52
-52 description: BASIC SEVA vector containing Tetracycline resistance marker and RK2 origin of replication.
+PartLinkerCollection key:      '52'
+id:                            8a6b275731b465403c0420f195ce90cb
+name:                          BASIC_SEVA_52
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and RK2 origin of replication.
 
-53 id: b1c8b9f61d00f7f91859a0aaabe94db6
-53 name: BASIC_SEVA_53
-53 description: BASIC SEVA vector containing Tetracycline resistance marker and pBBR1 origin of replication.
+PartLinkerCollection key:      '53'
+id:                            b1c8b9f61d00f7f91859a0aaabe94db6
+name:                          BASIC_SEVA_53
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and pBBR1 origin of replication.
 
-54 id: 15433d91d38015969dce8c44b3dd1736
-54 name: BASIC_SEVA_54
-54 description: BASIC SEVA vector containing Tetracycline resistance marker and pRO1600/ColE1 origin of replication.
+PartLinkerCollection key:      '54'
+id:                            15433d91d38015969dce8c44b3dd1736
+name:                          BASIC_SEVA_54
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and pRO1600/ColE1 origin of replication.
 
-55 id: 958bce75e4cb6c99ecf451f888f9fd07
-55 name: BASIC_SEVA_55
-55 description: BASIC SEVA vector containing Tetracycline resistance marker and RSF1010 origin of replication.
+PartLinkerCollection key:      '55'
+id:                            958bce75e4cb6c99ecf451f888f9fd07
+name:                          BASIC_SEVA_55
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and RSF1010 origin of replication.
 
-56 id: 51852c5b59b43f6944de097f3ccb6d8e
-56 name: BASIC_SEVA_56
-56 description: BASIC SEVA vector containing Tetracycline resistance marker and p15A origin of replication.
+PartLinkerCollection key:      '56'
+id:                            51852c5b59b43f6944de097f3ccb6d8e
+name:                          BASIC_SEVA_56
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and p15A origin of replication.
 
-57 id: 1717a522fb5416a5f5f9666578dee856
-57 name: BASIC_SEVA_57
-57 description: BASIC SEVA vector containing Tetracycline resistance marker and pSC101 origin of replication.
+PartLinkerCollection key:      '57'
+id:                            1717a522fb5416a5f5f9666578dee856
+name:                          BASIC_SEVA_57
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and pSC101 origin of replication.
 
-58 id: 477b1d2b812116bc6151f3e4a1a0c635
-58 name: BASIC_SEVA_58
-58 description: BASIC SEVA vector containing Tetracycline resistance marker and pUC origin of replication.
+PartLinkerCollection key:      '58'
+id:                            477b1d2b812116bc6151f3e4a1a0c635
+name:                          BASIC_SEVA_58
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and pUC origin of replication.
 
-59 id: c169e83a91a8e4453627ae72c10f6bf0
-59 name: BASIC_SEVA_59
-59 description: BASIC SEVA vector containing Tetracycline resistance marker and pBR322-ROP origin of replication.
+PartLinkerCollection key:      '59'
+id:                            c169e83a91a8e4453627ae72c10f6bf0
+name:                          BASIC_SEVA_59
+description:                   BASIC SEVA vector containing Tetracycline resistance marker and pBR322-ROP origin of replication.
 
-62 id: d5cb5debc69f624ccc0d12b627816666
-62 name: BASIC_SEVA_62
-62 description: BASIC SEVA vector containing Gentamicin resistance marker and RK2 origin of replication.
+PartLinkerCollection key:      '62'
+id:                            d5cb5debc69f624ccc0d12b627816666
+name:                          BASIC_SEVA_62
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and RK2 origin of replication.
 
-63 id: dc4b1f3d7ce456eea715d1cf35deecc0
-63 name: BASIC_SEVA_63
-63 description: BASIC SEVA vector containing Gentamicin resistance marker and pBBR1 origin of replication.
+PartLinkerCollection key:      '63'
+id:                            dc4b1f3d7ce456eea715d1cf35deecc0
+name:                          BASIC_SEVA_63
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and pBBR1 origin of replication.
 
-64 id: 5bcbfec04b54bcc37a17ba5bd5d6776d
-64 name: BASIC_SEVA_64
-64 description: BASIC SEVA vector containing Gentamicin resistance marker and pRO1600/ColE1 origin of replication.
+PartLinkerCollection key:      '64'
+id:                            5bcbfec04b54bcc37a17ba5bd5d6776d
+name:                          BASIC_SEVA_64
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and pRO1600/ColE1 origin of replication.
 
-65 id: 4b8862f782d04fa17f10ec9484b1f945
-65 name: BASIC_SEVA_65
-65 description: BASIC SEVA vector containing Gentamicin resistance marker and RSF1010 origin of replication.
+PartLinkerCollection key:      '65'
+id:                            4b8862f782d04fa17f10ec9484b1f945
+name:                          BASIC_SEVA_65
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and RSF1010 origin of replication.
 
-66 id: c4086f1150c7096ada36e3445f07bc74
-66 name: BASIC_SEVA_66
-66 description: BASIC SEVA vector containing Gentamicin resistance marker and p15A origin of replication.
+PartLinkerCollection key:      '66'
+id:                            c4086f1150c7096ada36e3445f07bc74
+name:                          BASIC_SEVA_66
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and p15A origin of replication.
 
-67 id: 2ec5633c7edef85d47632723006c365c
-67 name: BASIC_SEVA_67
-67 description: BASIC SEVA vector containing Gentamicin resistance marker and pSC101 origin of replication.
+PartLinkerCollection key:      '67'
+id:                            2ec5633c7edef85d47632723006c365c
+name:                          BASIC_SEVA_67
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and pSC101 origin of replication.
 
-68 id: 6c867b6cbf05361d09da7c1ecca28613
-68 name: BASIC_SEVA_68
-68 description: BASIC SEVA vector containing Gentamicin resistance marker and pUC origin of replication.
+PartLinkerCollection key:      '68'
+id:                            6c867b6cbf05361d09da7c1ecca28613
+name:                          BASIC_SEVA_68
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and pUC origin of replication.
 
-69 id: c24ab786cffd654c2a89c82048dce73d
-69 name: BASIC_SEVA_69
-69 description: BASIC SEVA vector containing Gentamicin resistance marker and pBR322-ROP origin of replication.
+PartLinkerCollection key:      '69'
+id:                            c24ab786cffd654c2a89c82048dce73d
+name:                          BASIC_SEVA_69
+description:                   BASIC SEVA vector containing Gentamicin resistance marker and pBR322-ROP origin of replication.
 
 
