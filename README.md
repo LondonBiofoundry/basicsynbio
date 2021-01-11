@@ -8,15 +8,19 @@ An open-source Python package to facilitate [BASIC DNA Assembly](https://www.bas
 
 ## Installation
 
-*Available on PyPi soon. For now clone repo and install in [development mode][development_url] or build and install wheels (refer to [PyPA](https://www.pypa.io/en/latest/)).*
+Using a python environment running python version >= 3.7:
+
+```shell
+$ pip install basicsynbio
+```
 
 ## Usage
 
-Refer to the [section of the documentation of useage](/docs/build/html/useage.html).
+Refer to the [section of the documentation of usage](https://londonbiofoundry.github.io/basicsynbio/usage.html).
 
 ## Contributing
 
-Refer to the [section of the documentation on contributing](/docs/build/html/contributing.html).
+Refer to the [section of the documentation on contributing](https://londonbiofoundry.github.io/basicsynbio/contributing.html).
 
 ## Meta
 
@@ -24,8 +28,8 @@ This project is licensed under the BSD 3-Clause License - see the ``LICENSE`` fi
 
 [pypi_badge]: https://img.shields.io/pypi/v/basicsynbio.svg
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
-[travis_badge]: https://travis-ci.org/hainesm6/basicsynbio.svg
-[travis_url]: https://travis-ci.org/hainesm6/basicsynbio
-[coverage_badge]: https://coveralls.io/repos/github/hainesm6/basicsynbio/badge.svg?branch=master
-[coverage_url]: https://coveralls.io/github/hainesm6/basicsynbio?branch=master
+[travis_badge]: https://travis-ci.org/LondonBiofoundry/basicsynbio.svg?branch=master
+[travis_url]: https://travis-ci.org/LondonBiofoundry/basicsynbio
+[coverage_badge]: https://coveralls.io/repos/github/LondonBiofoundry/basicsynbio/badge.svg?branch=master
+[coverage_url]: https://coveralls.io/github/LondonBiofoundry/basicsynbio?branch=master
 [development_url]: https://packaging.python.org/guides/distributing-packages-using-setuptools/#working-in-development-mode
