@@ -8,11 +8,7 @@ An open-source Python package to facilitate [BASIC DNA Assembly](https://www.bas
 
 ## Installation
 
-Using a python environment running python version >= 3.7:
-
-```shell
-$ pip install basicsynbio
-```
+-*Available on PyPi soon. For now clone repo and install in [development mode][development_url] or build and install wheels (refer to [PyPA](https://www.pypa.io/en/latest/)).*
 
 ## Usage
 
