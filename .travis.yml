@@ -1,7 +1,10 @@
 language: python
 python:
+  - "3.7"
   - "3.8"
+before_install:
+  - pip install -e .
 script:
-  - python -m pytest --cov=basicsynbio --cov-report=term-missing
+  - pytest --runslow --cov=basicsynbio
 after_success:
   - coveralls
