@@ -6,5 +6,6 @@ before_install:
   - pip install -e .
 script:
   - pytest --runslow --cov=basicsynbio
+  - black --check ./basicsynbio/
 after_success:
   - coveralls
