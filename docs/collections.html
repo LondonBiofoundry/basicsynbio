@@ -1,0 +1,150 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Part and linker collections &#8212; basicsynbio 0.1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Contributing" href="contributing.html" />
+    <link rel="prev" title="Usage" href="usage.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="part-and-linker-collections">
+<h1>Part and linker collections<a class="headerlink" href="#part-and-linker-collections" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>As described and illustrated in the usage section (<a class="reference internal" href="usage.html#accessing-part-collections"><span class="std std-ref">1a. Accessing BASIC part collections</span></a>), basicsynbio contains a collection of Parts and Linkers accessible
+from within the API. In contrast to previous approaches, accessing these collections doesn’t require 3rd-party database access or even an internet connection.
+Below is a list of selected collections to browse and instructions for contributing part collections to the API.</p>
+</div>
+<div class="section" id="browse-selected-collections">
+<span id="browse-collections"></span><h2>Browse selected collections<a class="headerlink" href="#browse-selected-collections" title="Permalink to this headline">¶</a></h2>
+<p>Collections can be searched and viewed using <a class="reference external" href="https://tools.latticeautomation.com/seqviz/">SeqViz</a> at the <a class="reference external" href="https://basicsynbio.web.app">basicsynbio webapp</a>.
+Alternatively collections can be viewed through the links below, displaying the <em>PartLinkerCollection key</em>, <em>id</em>, <em>name</em> and <em>description</em>.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="basic_biolegio_linkers.html"><span class="doc">BASIC_BIOLEGIO_LINKERS[“v0.1”]</span></a></p></li>
+<li><p><a class="reference internal" href="basic_cds_parts.html"><span class="doc">BASIC_CDS_PARTS[“v0.1”]</span></a></p></li>
+<li><p><a class="reference internal" href="basic_promoter_parts.html"><span class="doc">BASIC_PROMOTER_PARTS[“v0.1”]</span></a></p></li>
+<li><p><a class="reference internal" href="basic_seva_parts.html"><span class="doc">BASIC_SEVA_PARTS[“v0.1”]</span></a></p></li>
+</ul>
+</div>
+<div class="section" id="contributing-part-collections-to-basicsynbio">
+<h2>Contributing part collections to basicsynbio<a class="headerlink" href="#contributing-part-collections-to-basicsynbio" title="Permalink to this headline">¶</a></h2>
+<p>The following steps are required to add new part collections or versions of part collections to the API.
+<em>Please feel free to contact</em> <a class="reference external" href="mailto:hainesm6&#37;&#52;&#48;gmail&#46;com">hainesm6</a> <em>directly for help with this</em>:</p>
+<ol class="arabic simple">
+<li><p>Generate a genbank file containing all parts in the collection as separate elements.</p></li>
+<li><p>Via a pull-request (refer to <a class="reference internal" href="contributing.html"><span class="doc">Contributing</span></a>), complete the following:</p>
+<ul class="simple">
+<li><p>Add the genbank file to the <code class="xref py py-mod docutils literal notranslate"><span class="pre">basicsynbio.parts_linkers</span></code> sub-package.</p></li>
+<li><p>Using <code class="xref py py-mod docutils literal notranslate"><span class="pre">importlib.resources</span></code> and <code class="xref py py-func docutils literal notranslate"><span class="pre">basicsynbio.parts_linkers.main.make_collection()</span></code>, make or update the collection in <code class="xref py py-mod docutils literal notranslate"><span class="pre">basicsynbio.parts_linkers.basic_parts</span></code>.</p></li>
+<li><p>Where required, update the parts_linkers sub-package __init__.py file to import the collection.</p></li>
+</ul>
+</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">basicsynbio</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Part and linker collections</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#browse-selected-collections">Browse selected collections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#contributing-part-collections-to-basicsynbio">Contributing part collections to basicsynbio</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">API reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="usage.html" title="previous chapter">Usage</a></li>
+      <li>Next: <a href="contributing.html" title="next chapter">Contributing</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, London Biofoundry.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/collections.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

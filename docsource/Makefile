@@ -17,3 +17,8 @@ help:
 # "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
 %: Makefile
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+# "make github" updates /docs directory for hosting documentation of github pages.
+github:
+	@make html
+	@cp -a build/html/. ../docs
