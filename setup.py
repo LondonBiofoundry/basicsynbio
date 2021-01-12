@@ -13,13 +13,7 @@ setuptools.setup(
     description="An open-source Python package to facilitate BASIC DNA Assembly workflows",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(
-        where="basicsynbio"
-    ),
-    package_dir={"":"basicsynbio"},
-    package_data={
-        "": ["*.gb"]
-    },
+    packages=setuptools.find_packages(exclude=("tests")),  # package_data not correctly migrated if "where" arg used.
     include_package_data=True,
     classifiers=[
         "Intended Audience :: Science/Research",
