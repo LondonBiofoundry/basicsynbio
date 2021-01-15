@@ -99,7 +99,7 @@ def _make_linker(
         object of type linker_class specified in Args.
     """
     seq = Seq("GG" + str_seq)
-    linker = linker_class(seq, id="temp_id", name=name, description=description)
+    linker = linker_class(seq, id=name, name=name, description=description)
     linker.id = seqrecord_hexdigest(linker)
     return linker
 
