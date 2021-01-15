@@ -621,7 +621,7 @@ def test_warning_raise_basic_slice_90_150():
 
 def test_basic_linker_label():
     mylinker = bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"]
-    boolea = True == "LMP" in mylinker.features[0].qualifiers["label"]
+    assert "LMP" in mylinker.features[0].qualifiers["label"]
 
 
 @pytest.mark.slow
