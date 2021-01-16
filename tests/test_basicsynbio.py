@@ -619,6 +619,11 @@ def test_warning_raise_basic_slice_90_150():
         )
 
 
+def test_basic_linker_label():
+    mylinker = bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"]
+    assert "LMP" in mylinker.features[0].qualifiers["label"]
+
+
 @pytest.mark.slow
 def test_import_sbol_part():
     from basicsynbio.cam import seqrecord_hexdigest

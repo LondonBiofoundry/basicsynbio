@@ -41,25 +41,30 @@ def export_json(build):
     with open("build.json", "w") as json_file:
         json.dump(build, json_file, cls=bsb.BuildEncoder, indent=4, ensure_ascii=False)
 
+
 def export_BASIC_BIOLEGIO_LINKERS():
     sys.stdout = open("BASIC_BIOLEGIO_LINKERS.txt", "w")
     print(bsb.BASIC_BIOLEGIO_LINKERS["v0.1"])
     sys.stdout.close()
+
 
 def export_BASIC_CDS_PARTS():
     sys.stdout = open("BASIC_CDS_PARTS.txt", "w")
     print(bsb.BASIC_CDS_PARTS["v0.1"])
     sys.stdout.close()
 
+
 def export_BASIC_PROMOTER_PARTS():
     sys.stdout = open("BASIC_PROMOTER_PARTS.txt", "w")
     print(bsb.BASIC_PROMOTER_PARTS["v0.1"])
     sys.stdout.close()
 
+
 def export_BASIC_SEVA_PARTS():
     sys.stdout = open("BASIC_SEVA_PARTS.txt", "w")
     print(bsb.BASIC_SEVA_PARTS["v0.1"])
     sys.stdout.close()
+
 
 if __name__ == "__main__":
     export_json(build_json())
