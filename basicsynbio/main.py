@@ -346,7 +346,7 @@ class BasicAssembly:
             seqrec += part_linker.basic_slice()
         seqrec.id = self.id
         seqrec.name = "BASIC_construct_" + self.id
-        seqrec.description = f"BASIC DNA Assembly of {[part_linker.id for part_linker in self.parts_linkers]}"
+        seqrec.description = f"BASIC DNA Assembly of {[part_linker.name for part_linker in self.parts_linkers]}"
         seqrec.annotations = DEFAULT_ANNOTATIONS
         if kwargs:
             for key, value in kwargs.items():
