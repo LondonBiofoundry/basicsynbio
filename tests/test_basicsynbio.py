@@ -165,6 +165,26 @@ def gfp_part_final_conc(gfp_basicpart):
     )
 
 
+@pytest.fixture
+def small_build_example():
+    return bsb.BasicBuild(
+        bsb.BasicAssembly(
+            "First_Assembly_With_18",
+            bsb.BASIC_SEVA_PARTS["v0.1"]["18"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+            bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+        ),
+        bsb.BasicAssembly(
+            "Second_Assembly_With_26",
+            bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+            bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+        ),
+    )
+
+
 def compare_seqrec_instances(seqrec1, seqrec2):
     """
     returns true if seqrec1 has equivalent seqrec2 attributes.
@@ -622,6 +642,52 @@ def test_warning_raise_basic_slice_90_150():
 def test_basic_linker_label():
     mylinker = bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"]
     assert "LMP" in mylinker.features[0].qualifiers["label"]
+
+
+def test_pdf_is_built_of_expected_size(small_build_example):
+    import PyPDF2
+    import os
+
+    build = small_build_example
+    pdffilename = build.export_pdf()
+    file = open(pdffilename, "rb")
+    fileReader = PyPDF2.PdfFileReader(file)
+    assert fileReader.numPages == 4
+    os.remove(pdffilename)
+
+
+def test_correct_template_text_written_to_pdf(small_build_example):
+    import PyPDF2
+    import os
+
+    build = small_build_example
+    pdffilename = build.export_pdf()
+    file = open(pdffilename, "rb")
+    fileReader = PyPDF2.PdfFileReader(file)
+    pageObj = fileReader.getPage(0)
+    firstPageText = pageObj.extractText()
+    assert "Materials" in firstPageText
+    assert "Ambion AM10050 (Thermo)" in firstPageText
+    os.remove(pdffilename)
+
+
+def test_assembly_build_objects_are_written_to_pdf(small_build_example):
+    import PyPDF2
+    import os
+
+    build = small_build_example
+    pdffilename = build.export_pdf()
+    file = open(pdffilename, "rb")
+    fileReader = PyPDF2.PdfFileReader(file)
+    allpdftext = ""
+    for i in range(fileReader.numPages):
+        pageObj = fileReader.getPage(i)
+        pageText = pageObj.extractText()
+        allpdftext += pageText
+    processed_text = "".join(allpdftext.split())
+    assert "BASIC_sfGFP_CDS" in processed_text
+    assert "Second_Assembly_With_26" in processed_text
+    os.remove(pdffilename)
 
 
 @pytest.mark.slow
