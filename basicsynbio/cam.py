@@ -259,8 +259,13 @@ class BasicBuild:
 
         Returns:
             str: Path of zip file containing echo automation scripts
+
+        Raises:
+            ValueError: If waterWell or BufferWell is not in ["A1", "B1", "A2", "B2", "A3", "B3"]; if self contains
+                96 or more assemblies or if the build requires equal or more than 384 used clip wells for useAllWells(True)
+                or 192 for useAllWells(False).
         """
-        # Volumes Given in Nanolitres
+        # Volumes Given in Nanoliters
         CLIP_VOLUME_FOLLOWING_MAGBEAD = 40000
         CLIP_VOLUME_PER_ASSEMBLY = 500
         BUFFER_VOLUME_PER_ASSEMBLY = 500
