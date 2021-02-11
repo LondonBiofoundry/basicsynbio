@@ -23,6 +23,8 @@ from pathlib import Path
 from typing import Union, Dict, Generator
 import re
 import zipfile
+import string
+import math
 
 
 def new_part_resuspension(
@@ -238,6 +240,145 @@ class BasicBuild:
             my_zip.write("clips.csv")
         os.remove(Path.cwd() / "assemblies.csv")
         os.remove(Path.cwd() / "clips.csv")
+
+    def export_echo_assembly(
+        self,
+        path: str = None,
+        bufferWell: str = "A1",
+        waterWell: str = "B1",
+        useAllWells: bool = True,
+    ) -> str:
+        """Writes automation scripts for a echo liquid handler to build assemblies from clips.
+
+        Args:
+            path (optional): path to zipped folder of csv files. If none defaults to
+                working directory with a time stamped name, output csvs is created.
+            bufferWell (optional): location in 6 well plate of assembly buffer.
+            waterWell (optional): lcoation in 6 well plate of dH20.
+            useAllWells (optional): specifies whether alternating wells are to be used in the input 384 well plate.
+
+        Returns:
+            str: Path of zip file containing echo automation scripts
+        """
+        # Volumes Given in Nanolitres
+        CLIP_VOLUME_FOLLOWING_MAGBEAD = 40000
+        CLIP_VOLUME_PER_ASSEMBLY = 500
+        BUFFER_VOLUME_PER_ASSEMBLY = 500
+        TOTAL_ASSEMBLY_VOLUME = 5000
+        DEADSPACE_96_WELL_PLATE = 20000
+        CLIPS_PER_WELL = (
+            CLIP_VOLUME_FOLLOWING_MAGBEAD - DEADSPACE_96_WELL_PLATE
+        ) / CLIP_VOLUME_PER_ASSEMBLY
+        WELLS_384 = [
+            letter + str(number)
+            for number in range(1, 25)
+            for letter in string.ascii_uppercase[0:16]
+        ]
+        WELLS_384_8_CHANNEL = [
+            letter + str(number)
+            for number in range(1, 25)
+            for letter in string.ascii_uppercase[0:16:2]
+        ]
+        WELLS_96 = [
+            letter + str(number)
+            for number in range(1, 13)
+            for letter in string.ascii_uppercase[:8]
+        ]
+
+        # Mapping clips to associated 384 plate wells considing wells needed from volume
+        # and useAllWells attribute
+
+        well_384_index = (
+            0  # index of WELLS_384(_8_CHANNEL) which increments as wells are assigned
+        )
+        # to clips facilitates multiple wells being assigned to one clip, as increments on new clip
+        # and when chip is used more than each multiple of CLIPS_PER_WELL
+        index_origin_plate_mapping = (
+            {}
+        )  # A dictionary with keys as index in clipdata object and
+        # values of a dictionary containing key of wells and values of number of times used e.g.
+        # > {0: {'A1': 0, 'B1': 0}, 1: {'C1': 0},... This says clip at index 0 is in wells A1 & B1.
+        # > {0: {'A1': 40, 'B1': 23}, 1: {'C1': 1}... After the CSV writing loop the dict looks
+        # similar to this as for clip index 0 A1 is used until is has been used CLIPS_PER_WELL times
+        # then the next index is used in this case B1.
+
+        for index, clip_data in enumerate(self.clips_data.items()):
+            wells_for_current_clip = {}
+            for i in range(1 + math.floor(len(clip_data[1]) / (CLIPS_PER_WELL))):
+                if useAllWells:
+                    wells_for_current_clip.update({WELLS_384[well_384_index]: 0})
+                else:
+                    wells_for_current_clip.update(
+                        {WELLS_384_8_CHANNEL[well_384_index]: 0}
+                    )
+                well_384_index += 1
+            index_origin_plate_mapping.update({index: wells_for_current_clip})
+
+        if path == None:
+            now = datetime.now()
+            zip_path = (
+                Path.cwd()
+                / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            )
+        else:
+            zip_path = path
+        # Create list of transfers by connecting clips used in assembly to clips wells
+        # ensuring each well is used maximum CLIPS_PER_WELL times
+        with open(Path.cwd() / "echo_clips_1.csv", "w", newline="") as f1, open(
+            Path.cwd() / "echo_water_buffer_2.csv", "w", newline=""
+        ) as f2:
+            fieldnames = ["Destination Well", "Source Well", "Transfer Volume"]
+            thewriter_clips = csv.DictWriter(f1, fieldnames=fieldnames)
+            thewriter_clips.writeheader()
+            thewriter_water_buffer = csv.DictWriter(f2, fieldnames=fieldnames)
+            thewriter_water_buffer.writeheader()
+            for index, assembly in enumerate(self.basic_assemblies):
+                for clip in [
+                    self.unique_clips.index(clip_reaction)
+                    for clip_reaction in assembly.clip_reactions
+                ]:
+                    for well in index_origin_plate_mapping[clip].keys():
+                        # print(well)
+                        if index_origin_plate_mapping[clip][well] < CLIPS_PER_WELL:
+                            index_origin_plate_mapping[clip][well] += 1
+                            print(index_origin_plate_mapping)
+                            break
+                    thewriter_clips.writerow(
+                        {
+                            "Destination Well": WELLS_96[index],
+                            "Source Well": well,
+                            "Transfer Volume": CLIP_VOLUME_PER_ASSEMBLY,
+                        }
+                    )
+                thewriter_water_buffer.writerow(
+                    {
+                        "Destination Well": WELLS_96[index],
+                        "Source Well": bufferWell,
+                        "Transfer Volume": BUFFER_VOLUME_PER_ASSEMBLY,
+                    }
+                )
+                thewriter_water_buffer.writerow(
+                    {
+                        "Destination Well": WELLS_96[index],
+                        "Source Well": waterWell,
+                        "Transfer Volume": TOTAL_ASSEMBLY_VOLUME
+                        - BUFFER_VOLUME_PER_ASSEMBLY
+                        - CLIP_VOLUME_PER_ASSEMBLY
+                        * len(
+                            [
+                                self.unique_clips.index(clip_reaction)
+                                for clip_reaction in assembly.clip_reactions
+                            ]
+                        ),
+                    }
+                )
+        index_origin_plate_mapping = {}
+        with zipfile.ZipFile(zip_path, "w") as my_zip:
+            my_zip.write("echo_clips_1.csv")
+            my_zip.write("echo_water_buffer_2.csv")
+        os.remove(Path.cwd() / "echo_clips_1.csv")
+        os.remove(Path.cwd() / "echo_water_buffer_2.csv")
+        return zip_path
 
     @property
     def basic_assemblies(self):
