@@ -246,7 +246,7 @@ class BasicBuild:
         path: str = None,
         bufferWell: str = "A1",
         waterWell: str = "B1",
-        useAllWells: bool = True,
+        alternate_well: bool = False,
     ) -> str:
         """Writes automation scripts for a echo liquid handler to build assemblies from clips.
 
@@ -255,15 +255,15 @@ class BasicBuild:
                 working directory with a time stamped name, output csvs is created.
             bufferWell (optional): location in 6 well plate of assembly buffer.
             waterWell (optional): lcoation in 6 well plate of dH20.
-            useAllWells (optional): specifies whether alternating wells are to be used in the input 384 well plate.
+            alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate.
 
         Returns:
             str: Path of zip file containing echo automation scripts
 
         Raises:
             ValueError: If waterWell or BufferWell is not in ["A1", "B1", "A2", "B2", "A3", "B3"]; if self contains
-                96 or more assemblies or if the build requires equal or more than 384 used clip wells for useAllWells(True)
-                or 192 for useAllWells(False).
+                96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
+                or 192 for alternate_well(False).
         """
         # Volumes Given in Nanoliters
         CLIP_VOLUME_FOLLOWING_MAGBEAD = 40000
@@ -319,22 +319,22 @@ class BasicBuild:
         # then the next index is used in this case B1.
 
         # Mapping clips to associated 384 plate wells considing wells needed from volume
-        # and useAllWells attribute
+        # and alternate_well attribute
         for index, clip_data in enumerate(self.clips_data.items()):
             wells_for_current_clip = {}
             for i in range(1 + math.floor(len(clip_data[1]) / (CLIPS_PER_WELL))):
-                if useAllWells:
+                if not alternate_well:
                     wells_for_current_clip.update({WELLS_384[well_384_index]: 0})
                 else:
                     wells_for_current_clip.update(
                         {WELLS_384_8_CHANNEL[well_384_index]: 0}
                     )
                 well_384_index += 1
-                if well_384_index >= (192 + useAllWells * 192):
+                if well_384_index >= (384 - alternate_well * 192):
                     raise ValueError(
-                        """The Number of clip wells used cannot exceed 384 for useAllWells(True) or 192 for
-                        useAllWells(False), please choose a build with less unique clips or change the
-                        useAllWells setting"""
+                        """The Number of clip wells used cannot exceed 384 for alternate_well(True) or 192 for
+                        alternate_well(False), please choose a build with less unique clips or change the
+                        alternate_well setting"""
                     )
             index_origin_plate_mapping.update({index: wells_for_current_clip})
 

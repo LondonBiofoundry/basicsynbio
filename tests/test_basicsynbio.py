@@ -701,7 +701,7 @@ def test_echo_instructions_small_build_useAllWell_False(small_build_example):
     import numpy as np
     from pathlib import Path
 
-    echozippath = small_build_example.export_echo_assembly(useAllWells=False)
+    echozippath = small_build_example.export_echo_assembly(alternate_well=True)
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
