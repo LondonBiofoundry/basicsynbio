@@ -285,8 +285,19 @@ class BasicBuild:
             for letter in string.ascii_uppercase[:8]
         ]
 
-        # Mapping clips to associated 384 plate wells considing wells needed from volume
-        # and useAllWells attribute
+        if waterWell not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
+            raise ValueError(
+                "Water Well location needs to be within the 6 well plate, between A1 - B3"
+            )
+        if bufferWell not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
+            raise ValueError(
+                "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
+            )
+        if len(self.basic_assemblies) >= 96:
+            raise ValueError(
+                """To many assemblies in the build to be handled by a single 96 
+                well plate, use less than 96 assemblies within the build"""
+            )
 
         well_384_index = (
             0  # index of WELLS_384(_8_CHANNEL) which increments as wells are assigned
@@ -302,6 +313,8 @@ class BasicBuild:
         # similar to this as for clip index 0 A1 is used until is has been used CLIPS_PER_WELL times
         # then the next index is used in this case B1.
 
+        # Mapping clips to associated 384 plate wells considing wells needed from volume
+        # and useAllWells attribute
         for index, clip_data in enumerate(self.clips_data.items()):
             wells_for_current_clip = {}
             for i in range(1 + math.floor(len(clip_data[1]) / (CLIPS_PER_WELL))):
@@ -312,6 +325,12 @@ class BasicBuild:
                         {WELLS_384_8_CHANNEL[well_384_index]: 0}
                     )
                 well_384_index += 1
+                if well_384_index >= (192 + useAllWells * 192):
+                    raise ValueError(
+                        """The Number of clip wells used cannot exceed 384 for useAllWells(True) or 192 for
+                        useAllWells(False), please choose a build with less unique clips or change the
+                        useAllWells setting"""
+                    )
             index_origin_plate_mapping.update({index: wells_for_current_clip})
 
         if path == None:
@@ -338,10 +357,8 @@ class BasicBuild:
                     for clip_reaction in assembly.clip_reactions
                 ]:
                     for well in index_origin_plate_mapping[clip].keys():
-                        # print(well)
                         if index_origin_plate_mapping[clip][well] < CLIPS_PER_WELL:
                             index_origin_plate_mapping[clip][well] += 1
-                            print(index_origin_plate_mapping)
                             break
                     thewriter_clips.writerow(
                         {
