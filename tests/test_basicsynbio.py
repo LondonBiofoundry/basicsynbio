@@ -763,17 +763,31 @@ def test_echo_overflow_wells(all_promoter_assemblies_build):
 
 
 def test_echo_instruction_assert_buffer_water_well_errors(small_build_example):
-    with pytest.raises(ValueError):
+    with pytest.raises(
+        ValueError,
+        match="Water Well location needs to be within the 6 well plate, between A1 - B3",
+    ):
         echozippath = small_build_example.export_echo_assembly(waterWell="D1")
-    with pytest.raises(ValueError):
+    with pytest.raises(
+        ValueError,
+        match="Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3",
+    ):
         echozippath = small_build_example.export_echo_assembly(bufferWell="D1")
 
 
 def test_echo_instruction_assert_buffer_water_well_errors(promoter_assemblies_build):
     # This Build contains ~180 assemblies function should raise errors for builds
     # with more than 96 assemblies
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match=r".*To many assemblies in the build.*"):
         echozippath = promoter_assemblies_build.export_echo_assembly()
+
+
+def test_echo_path(small_build_example):
+    from pathlib import Path
+
+    zippath = Path.cwd() / "uniquezippath.zip"
+    realzippath = small_build_example.export_echo_assembly(path=zippath)
+    assert zippath == realzippath
 
 
 def test_basic_linker_label():
