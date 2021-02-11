@@ -290,7 +290,6 @@ class BasicBuild:
 
         zip_path = self.export_csvs()
         with zipfile.ZipFile(zip_path, "r") as zip_ref:
-            zip_ref.extractall("PDF_CSVS")
             try:
                 zip_ref.extractall("PDF_CSVS")
             finally:
@@ -309,15 +308,14 @@ class BasicBuild:
 
         elems = []
         elems.append(Image("basicsynbio/static/introimg.png", 12 * cm, 4 * cm))
-        elems.append(Paragraph("Materials", styles["Heading2"]))
+        elems.append(Paragraph("Materials", styles["Heading1"]))
         elems.append(
             Table(PROCESSED_MATERIALS, colWidths=[10.5 * cm, 5 * cm], style=style)
         )
         elems.append(PageBreak())
-        elems.append(Paragraph("Method", styles["Heading2"]))
-        elems.append(Spacer(1, 0.4 * cm))
+        elems.append(Paragraph("Method", styles["Heading1"]))
         elems.append(
-            Paragraph("Preperation of BASIC linkers and parts", styles["BodyText"])
+            Paragraph("Preperation of BASIC linkers and parts", styles["Heading2"])
         )
         elems.append(
             Paragraph(
@@ -365,17 +363,11 @@ class BasicBuild:
                 ]
             )
         )
-        elems.append(
-            Paragraph(
-                "Typically, bioparts for BASIC assembly are provided in storage plasmids. For each BASIC linker ligation reaction 50 ng of plasmid per 1kb of total plasmid size (including BASIC part and storage backbone) are required. Usually, that amount of DNA is provided in 1 μl of a typical miniprep of biopart storage plasmids (200 ng/μl for a 4kb plasmid). If PCR products or gene fragments are used as reaction input, 50 ng per 1kb linear DNA are required. ",
-                styles["BodyText"],
-            )
-        )
         elems.append(Spacer(1, 0.4 * cm))
         ## Basic Reaction 1
         elems.append(
             Paragraph(
-                "I.  BASIC reaction (5 min hands on time + 90 min reaction)",
+                "Clips Reaction",
                 styles["Heading2"],
             )
         )
@@ -404,7 +396,7 @@ class BasicBuild:
         )
         elems.append(
             Paragraph(
-                "For each BASIC linker ligation reaction, setup 1 PCR tube with 30 μl total volume: ",
+                "For each Clip reaction, setup 1 PCR tube with 30 μl total volume: ",
                 styles["BodyText"],
             )
         )
@@ -432,11 +424,7 @@ class BasicBuild:
             )
         )
         ## Magbead Purification 2
-        elems.append(
-            Paragraph(
-                "II.  Magbead purification (20 min hands on time) ", styles["Heading2"]
-            )
-        )
+        elems.append(Paragraph("Magbead purification", styles["Heading2"]))
         elems.append(
             Paragraph(
                 "Prepare fresh 70% EtOH (0.5 ml per BASIC reaction) and bring magnetic beads (AmpureXP or Ampliclean) stored at 4°C back into homogeneous mix by shaking thoroughly. ",
@@ -506,7 +494,7 @@ class BasicBuild:
         # Assembly Reaction 3
         elems.append(
             Paragraph(
-                "III.  Assembly reaction (5 min hands on time + 45 min reaction)",
+                "Assembly reaction",
                 styles["Heading2"],
             )
         )
@@ -553,7 +541,7 @@ class BasicBuild:
         # Assembly Reaction 4
         elems.append(
             Paragraph(
-                "IV.  Transformation (5 min hands on time + 90 min incubation time) ",
+                "Transformation",
                 styles["Heading2"],
             )
         )

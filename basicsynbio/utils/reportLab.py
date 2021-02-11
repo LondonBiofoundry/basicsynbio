@@ -146,13 +146,12 @@ TEMPERATURE_PROFILE_1 = [
     ["37", "2 min", "x20 cycles"],
     ["20", "1 min", ""],
     ["37", "5 min", ""],
-    ["80", "20 min", ""],
 ]
 
 ASSEMBLY_REACTION_3 = [
     ["Reagent", "Volume "],
     ["dH20", "2 μl"],
-    ["NEB CutSmart buffer 10x", "1 μl"],
+    ["10x Assembly Buffer (or 10x NEB CutSmart)", "1 μl"],
     [
         "Each Linker Ligated Basic Part (clip) within the assembly",
         "1 μl for each",
