@@ -26,6 +26,22 @@ import zipfile
 import string
 import math
 
+WELLS_384 = [
+    letter + str(number)
+    for number in range(1, 25)
+    for letter in string.ascii_uppercase[0:16]
+]
+WELLS_384_8_CHANNEL = [
+    letter + str(number)
+    for number in range(1, 25)
+    for letter in string.ascii_uppercase[0:16:2]
+]
+WELLS_96 = [
+    letter + str(number)
+    for number in range(1, 13)
+    for letter in string.ascii_uppercase[:8]
+]
+
 
 def new_part_resuspension(
     part: BasicPart, mass: float, double_stranded: bool = True
@@ -247,14 +263,14 @@ class BasicBuild:
         bufferWell: str = "A1",
         waterWell: str = "B1",
         alternate_well: bool = False,
-    ) -> str:
+    ) -> None:
         """Writes automation scripts for a echo liquid handler to build assemblies from clips.
 
         Args:
             path (optional): path to zipped folder of csv files. If none defaults to
                 working directory with a time stamped name, output csvs is created.
             bufferWell (optional): location in 6 well plate of assembly buffer.
-            waterWell (optional): lcoation in 6 well plate of dH20.
+            waterWell (optional): location in 6 well plate of dH20.
             alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate.
 
         Returns:
@@ -265,7 +281,7 @@ class BasicBuild:
                 96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
                 or 192 for alternate_well(False).
         """
-        # Volumes Given in Nanoliters
+        # Volumes given in nanoliters
         CLIP_VOLUME_FOLLOWING_MAGBEAD = 40000
         CLIP_VOLUME_PER_ASSEMBLY = 500
         BUFFER_VOLUME_PER_ASSEMBLY = 500
@@ -274,22 +290,6 @@ class BasicBuild:
         CLIPS_PER_WELL = (
             CLIP_VOLUME_FOLLOWING_MAGBEAD - DEADSPACE_96_WELL_PLATE
         ) / CLIP_VOLUME_PER_ASSEMBLY
-        WELLS_384 = [
-            letter + str(number)
-            for number in range(1, 25)
-            for letter in string.ascii_uppercase[0:16]
-        ]
-        WELLS_384_8_CHANNEL = [
-            letter + str(number)
-            for number in range(1, 25)
-            for letter in string.ascii_uppercase[0:16:2]
-        ]
-        WELLS_96 = [
-            letter + str(number)
-            for number in range(1, 13)
-            for letter in string.ascii_uppercase[:8]
-        ]
-
         if waterWell not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
             raise ValueError(
                 "Water Well location needs to be within the 6 well plate, between A1 - B3"
