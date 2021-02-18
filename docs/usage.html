@@ -6,13 +6,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Usage &#8212; basicsynbio 0.1.0 documentation</title>
-    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Part and linker collections" href="collections.html" />
@@ -182,7 +181,7 @@ annotated BasicAssembly objects and the unique BasicParts</strong> associated wi
 for completly decoding serialised BasicBuild objects, described in the next section.
 Notably, any collection of BasicPart <a class="footnote-reference brackets" href="#f1" id="id1">1</a> or BasicAssembly
 objects can be exported using the formats supported by <a class="reference external" href="https://biopython.org/wiki/SeqIO">BioPython</a>, with the default being genbank:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unique_parts</span> <span class="o">=</span> <span class="p">(</span><span class="n">part_dict</span><span class="p">[</span><span class="s2">&quot;part&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">part_dict</span> <span class="ow">in</span> <span class="n">build</span><span class="o">.</span><span class="n">unique_parts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unique_parts</span> <span class="o">=</span> <span class="n">build</span><span class="o">.</span><span class="n">unique_parts</span>
 <span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">unique_parts</span><span class="p">,</span> <span class="s2">&quot;the_parts_i_need.gb&quot;</span><span class="p">)</span>
 <span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">promoter_assemblies</span><span class="p">,</span> <span class="s2">&quot;promoter_assemblies.gb&quot;</span><span class="p">)</span>
 </pre></div>
@@ -284,7 +283,7 @@ Users have two options:</p>
       &copy;2020, London Biofoundry.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

@@ -180,7 +180,7 @@ objects can be exported using the formats supported by `BioPython`_, with the de
 
 .. code-block:: python
 
-    unique_parts = (part_dict["part"] for part_dict in build.unique_parts.values())
+    unique_parts = build.unique_parts
     bsb.export_sequences_to_file(unique_parts, "the_parts_i_need.gb")
     bsb.export_sequences_to_file(promoter_assemblies, "promoter_assemblies.gb")
 
