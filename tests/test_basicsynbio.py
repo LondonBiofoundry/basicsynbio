@@ -127,7 +127,7 @@ def bsai_part_seqrec(gfp_orf_seq):
     )
 
 
-@pytest.yield_fixture
+@pytest.fixture
 def promoter_assemblies_build():
     utr_linkers = ["UTR1-RBS1", "UTR1-RBS2", "UTR1-RBS3"]
     promoter_assemblies = []
