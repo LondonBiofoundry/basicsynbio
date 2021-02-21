@@ -646,7 +646,7 @@ def test_basic_linker_label():
 
 def test_pdf_is_built_of_expected_size(small_build_example):
     import PyPDF2
-    import os  
+    import os
 
     build = small_build_example
     pdffilename = bsb.pdf_instructions(build)
