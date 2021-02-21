@@ -646,10 +646,10 @@ def test_basic_linker_label():
 
 def test_pdf_is_built_of_expected_size(small_build_example):
     import PyPDF2
-    import os
+    import os  
 
     build = small_build_example
-    pdffilename = build.export_pdf()
+    pdffilename = bsb.pdf_instructions(build)
     file = open(pdffilename, "rb")
     fileReader = PyPDF2.PdfFileReader(file)
     assert fileReader.numPages == 4
@@ -661,7 +661,7 @@ def test_correct_template_text_written_to_pdf(small_build_example):
     import os
 
     build = small_build_example
-    pdffilename = build.export_pdf()
+    pdffilename = bsb.pdf_instructions(build)
     file = open(pdffilename, "rb")
     fileReader = PyPDF2.PdfFileReader(file)
     pageObj = fileReader.getPage(0)
@@ -676,7 +676,7 @@ def test_assembly_build_objects_are_written_to_pdf(small_build_example):
     import os
 
     build = small_build_example
-    pdffilename = build.export_pdf()
+    pdffilename = bsb.pdf_instructions(build)
     file = open(pdffilename, "rb")
     fileReader = PyPDF2.PdfFileReader(file)
     allpdftext = ""
