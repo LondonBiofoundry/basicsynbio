@@ -26,22 +26,6 @@ import zipfile
 import string
 import math
 
-WELLS_384 = [
-    letter + str(number)
-    for number in range(1, 25)
-    for letter in string.ascii_uppercase[0:16]
-]
-WELLS_384_8_CHANNEL = [
-    letter + str(number)
-    for number in range(1, 25)
-    for letter in string.ascii_uppercase[0:16:2]
-]
-WELLS_96 = [
-    letter + str(number)
-    for number in range(1, 13)
-    for letter in string.ascii_uppercase[:8]
-]
-
 
 def new_part_resuspension(
     part: BasicPart, mass: float, double_stranded: bool = True

@@ -664,7 +664,7 @@ def test_echo_instructions_small_build(small_build_example):
     import numpy as np
     from pathlib import Path
 
-    echozippath = small_build_example.export_echo_assembly()
+    echozippath = bsb.export_echo_assembly(small_build_example)
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
@@ -701,7 +701,7 @@ def test_echo_instructions_small_build_useAllWell_False(small_build_example):
     import numpy as np
     from pathlib import Path
 
-    echozippath = small_build_example.export_echo_assembly(alternate_well=True)
+    echozippath = bsb.export_echo_assembly(small_build_example, alternate_well=True)
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
@@ -731,62 +731,31 @@ def test_echo_instructions_small_build_useAllWell_False(small_build_example):
     assert expected_water_buffer == echo_water_buffer.to_numpy().tolist()
 
 
-def test_echo_overflow_wells(all_promoter_assemblies_build):
-    import zipfile
-    import os
-    import pandas as pd
-    import numpy as np
-    from pathlib import Path
-
-    echozippath = all_promoter_assemblies_build.export_echo_assembly()
-    with zipfile.ZipFile(echozippath, "r") as zip_ref:
-        try:
-            zip_ref.extractall("ECHO_CSVS")
-        finally:
-            zip_ref.close()
-            os.remove(echozippath)
-    echo_clips = pd.read_csv(Path.cwd() / "ECHO_CSVS" / "echo_clips_1.csv")
-    echo_water_buffer = pd.read_csv(
-        Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_2.csv"
-    )
-    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_1.csv")
-    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_2.csv")
-    os.rmdir(Path.cwd() / "ECHO_CSVS")
-    output_as_string = ""
-    for item in echo_clips.to_numpy().tolist():
-        for subitem in item:
-            output_as_string += str(subitem)
-    # clips CSV as a string to reduce size cointains well swapping once
-    # well has been used 40 times
-    expected = "A1A1500A1C1500A1D1500B1A1500B1F1500B1D1500C1A1500C1G1500C1D1500D1A1500D1H1500D1D1500E1A1500E1I1500E1D1500F1A1500F1J1500F1D1500G1A1500G1K1500G1D1500H1A1500H1L1500H1D1500A2A1500A2M1500A2D1500B2A1500B2N1500B2D1500C2A1500C2O1500C2D1500D2A1500D2P1500D2D1500E2A1500E2A2500E2D1500F2A1500F2B2500F2D1500G2A1500G2C2500G2D1500H2A1500H2D2500H2D1500A3A1500A3E2500A3D1500B3A1500B3F2500B3D1500C3A1500C3G2500C3D1500D3A1500D3H2500D3D1500E3A1500E3I2500E3D1500F3A1500F3J2500F3D1500G3A1500G3K2500G3D1500H3A1500H3L2500H3D1500A4A1500A4M2500A4D1500B4A1500B4N2500B4D1500C4A1500C4O2500C4D1500D4A1500D4P2500D4D1500E4A1500E4A3500E4D1500F4A1500F4B3500F4D1500G4A1500G4C3500G4D1500H4A1500H4D3500H4D1500A5A1500A5E3500A5D1500B5A1500B5F3500B5D1500C5A1500C5G3500C5D1500D5A1500D5H3500D5D1500E5A1500E5I3500E5D1500F5A1500F5J3500F5D1500G5A1500G5K3500G5D1500H5A1500H5L3500H5D1500A6B1500A6M3500A6E1500B6B1500B6N3500B6E1500C6B1500C6O3500C6E1500D6B1500D6P3500D6E1500E6B1500E6A4500E6E1500F6B1500F6B4500F6E1500G6B1500G6C4500G6E1500H6B1500H6D4500H6E1500A7B1500A7E4500A7E1500B7B1500B7F4500B7E1500C7B1500C7G4500C7E1500D7B1500D7H4500D7E1500E7B1500E7I4500E7E1500F7B1500F7J4500F7E1500G7B1500G7K4500G7E1500H7B1500H7L4500H7E1500A8B1500A8M4500A8E1500B8B1500B8N4500B8E1500C8B1500C8O4500C8E1500D8B1500D8P4500D8E1500E8B1500E8A5500E8E1500F8B1500F8B5500F8E1500G8B1500G8C5500G8E1500"
-    assert expected == output_as_string
-
-
 def test_echo_instruction_assert_buffer_water_well_errors(small_build_example):
     with pytest.raises(
         ValueError,
         match="Water Well location needs to be within the 6 well plate, between A1 - B3",
     ):
-        echozippath = small_build_example.export_echo_assembly(waterWell="D1")
+        echozippath = bsb.export_echo_assembly(small_build_example, waterWell="D1")
     with pytest.raises(
         ValueError,
         match="Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3",
     ):
-        echozippath = small_build_example.export_echo_assembly(bufferWell="D1")
+        echozippath = bsb.export_echo_assembly(small_build_example, bufferWell="D1")
 
 
 def test_echo_instruction_assert_buffer_water_well_errors(promoter_assemblies_build):
     # This Build contains ~180 assemblies function should raise errors for builds
     # with more than 96 assemblies
     with pytest.raises(ValueError, match=r".*To many assemblies in the build.*"):
-        echozippath = promoter_assemblies_build.export_echo_assembly()
+        echozippath = bsb.export_echo_assembly(promoter_assemblies_build)
 
 
 def test_echo_path(small_build_example):
     from pathlib import Path
 
     zippath = Path.cwd() / "uniquezippath.zip"
-    realzippath = small_build_example.export_echo_assembly(path=zippath)
+    realzippath = bsb.export_echo_assembly(small_build_example, path=zippath)
     assert zippath == realzippath
 
 
