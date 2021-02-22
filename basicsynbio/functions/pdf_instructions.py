@@ -18,7 +18,6 @@ from reportlab.lib.pagesizes import A4
 from reportlab.lib.units import cm
 from basicsynbio.utils import (
     PROCESSED_MATERIALS,
-    PROCESSED_BASIC_REACTION,
     PROCESSED_INCUBATION_TIMES,
     PROCESSED_TEMPERATURE_PROFILE_1,
     PROCESSED_ASSEMBLY_REACTION_3,
@@ -46,6 +45,45 @@ def pdf_instructions(basic_build: BasicBuild):
     Returns:
         str: filepath of created pdf
     """
+
+    import pandas as pd
+    import math
+
+    def calculate_clip_num(assemblies: list, assemblies_per_clip: int = 28):
+        return math.ceil(len(assemblies)/assemblies_per_clip)
+
+    COMPONENTS = pd.read_csv('csv_xlsx_files/clip_master_mix.csv')
+    total_clips = sum([calculate_clip_num(assemblies) for _, assemblies in basic_build.clips_data.items()])
+    dead_clips = math.ceil(total_clips/20)
+    array = COMPONENTS["Volume per clip (µL)"]*(total_clips+ dead_clips)
+
+    MASTER_MIX_BASIC_REACTION = [
+        [
+            "Component",
+            "Volume per clip (µL)",
+        ],
+        [
+            "Promega T4 DNA Ligase 10x Buffer",
+            str(array[0]),
+        ],
+        [
+            "Water",
+            str(array[1]),
+        ],
+        [
+            "NEB BsaI-HFv2",
+            str(array[2]),
+        ],
+        [
+            "Promega T4 DNA Ligase",
+            str(array[3]),
+        ],
+    ]
+
+    PROCESSED_MASTER_MIX_BASIC_REACTION = [
+        list(map(lambda x: Paragraph(x, styleN), x)) for x in MASTER_MIX_BASIC_REACTION
+    ]
+
 
     zip_path = basic_build.export_csvs()
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
@@ -130,7 +168,7 @@ def pdf_instructions(basic_build: BasicBuild):
     )
     elems.append(
         Paragraph(
-            "Below contains a table with each clip needed for the assemblies of the build",
+            "Below contains a table with each clip needed for the assemblies of the build.",
             styles["BodyText"],
         )
     )
@@ -153,16 +191,35 @@ def pdf_instructions(basic_build: BasicBuild):
     )
     elems.append(
         Paragraph(
-            "For each Clip reaction, setup 1 PCR tube with 30 μl total volume: ",
+            "Prepare a Master mix for clip reactions, the below table provides the required components for the master mix with sufficient quantities for all clip reactions.",
             styles["BodyText"],
         )
     )
     elems.append(Spacer(1, 0.4 * cm))
     elems.append(
         Table(
-            PROCESSED_BASIC_REACTION,
+            PROCESSED_MASTER_MIX_BASIC_REACTION,
             colWidths=[7 * cm, 7 * cm],
             style=style_no_split,
+        )
+    )
+    elems.append(
+        Paragraph(
+            "For each Clip reaction, setup 1 PCR tube with 30 μl total volume: ",
+            styles["BodyText"],
+        )
+    )
+    elems.append(
+        Paragraph(
+            "Dispense 20 uL master mix, 1 μl of each prefix and suffix Linker, 1 μl of part (or more depending on concentration) into a PCR tube and make up to 30 μl with water.",
+            styles["BodyText"],
+        )
+    )
+    elems.append(Spacer(1, 0.4 * cm))
+    elems.append(
+        Paragraph(
+            "We recommend the above up each clip can be used in up to 28 assemblies.",
+            styles["BodyText"],
         )
     )
     elems.append(Spacer(1, 0.4 * cm))

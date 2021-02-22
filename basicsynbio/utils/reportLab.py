@@ -91,49 +91,6 @@ MATERIALS = [
     ["LB-Agar + antibiotic/s", ""],
 ]
 
-BASIC_REACTION = [
-    [
-        "Reagent",
-        "Volume",
-    ],
-    [
-        "dH20",
-        "17 μl",
-    ],
-    [
-        "Promega T4 buffer (10x)",
-        "3 μl",
-    ],
-    [
-        "Prefix Linker",
-        "1 μl",
-    ],
-    [
-        "Suffix Linker",
-        "1 μl",
-    ],
-    [
-        "BASIC biopart",
-        "0.5-6 μl (50 ng per 1kb total plasmid size)",
-    ],
-    [
-        "dH20",
-        "add dH20 to reach 28.5 μl volume",
-    ],
-    [
-        "NEB BsaI-HF v2 enzyme (R3733) 20 U/μl",
-        "1 μl",
-    ],
-    [
-        "Promega T4 ligase (M1801) 1-3 U/μl",
-        "0.5 μl",
-    ],
-    [
-        "",
-        "Mix by pipetting up and down",
-    ],
-]
-
 INCUBATION_TIMES = [
     ["Temperature (°C)", "Time", ""],
     ["95", "2 min", ""],
@@ -222,9 +179,6 @@ style_joint_cell = TableStyle(
 )
 
 PROCESSED_MATERIALS = [list(map(lambda x: Paragraph(x, styleN), x)) for x in MATERIALS]
-PROCESSED_BASIC_REACTION = [
-    list(map(lambda x: Paragraph(x, styleN), x)) for x in BASIC_REACTION
-]
 PROCESSED_INCUBATION_TIMES = [
     list(map(lambda x: Paragraph(x, styleN), x)) for x in INCUBATION_TIMES
 ]
