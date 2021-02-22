@@ -48,7 +48,7 @@ def export_echo_assembly(
         raise ValueError(
             "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
         )
-    if len(basic_build.unique_clips) >= 384-192*alternate_well:
+    if len(basic_build.unique_clips) >= 384 - 192 * alternate_well:
         raise ValueError(
             """To many clips in the build to be handled by a single 384 
                 source plate, considering you alternate_well setting."""
@@ -84,9 +84,9 @@ def export_echo_assembly(
         )
     ):
         with open(
-            Path.cwd() / "echo_clips_{}.csv".format(index+1), "w", newline=""
+            Path.cwd() / "echo_clips_{}.csv".format(index + 1), "w", newline=""
         ) as f1, open(
-            Path.cwd() / "echo_water_buffer_{}.csv".format(index+1), "w", newline=""
+            Path.cwd() / "echo_water_buffer_{}.csv".format(index + 1), "w", newline=""
         ) as f2:
             fieldnames = ["Destination Well", "Source Well", "Transfer Volume"]
             thewriter_clips = csv.DictWriter(f1, fieldnames=fieldnames)
@@ -134,7 +134,7 @@ def export_echo_assembly(
                 )
     with zipfile.ZipFile(zip_path, "w") as my_zip:
         for file in os.listdir(Path.cwd()):
-            if file.startswith('echo_') and file.endswith('.csv'):
+            if file.startswith("echo_") and file.endswith(".csv"):
                 my_zip.write(file)
                 os.remove(file)
 
