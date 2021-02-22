@@ -118,7 +118,9 @@ def test_echo_instruction_assert_buffer_water_well_errors(promoter_assemblies_bu
 
 def test_echo_path(small_build_example):
     from pathlib import Path
+    import os
 
     zippath = Path.cwd() / "uniquezippath.zip"
     realzippath = bsb.export_echo_assembly(small_build_example, path=zippath)
+    os.remove(zippath)
     assert zippath == realzippath
