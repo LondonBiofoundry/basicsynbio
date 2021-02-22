@@ -50,12 +50,17 @@ def pdf_instructions(basic_build: BasicBuild):
     import math
 
     def calculate_clip_num(assemblies: list, assemblies_per_clip: int = 28):
-        return math.ceil(len(assemblies)/assemblies_per_clip)
+        return math.ceil(len(assemblies) / assemblies_per_clip)
 
-    COMPONENTS = pd.read_csv('csv_xlsx_files/clip_master_mix.csv')
-    total_clips = sum([calculate_clip_num(assemblies) for _, assemblies in basic_build.clips_data.items()])
-    dead_clips = math.ceil(total_clips/20)
-    array = COMPONENTS["Volume per clip (µL)"]*(total_clips+ dead_clips)
+    COMPONENTS = pd.read_csv("csv_xlsx_files/clip_master_mix.csv")
+    total_clips = sum(
+        [
+            calculate_clip_num(assemblies)
+            for _, assemblies in basic_build.clips_data.items()
+        ]
+    )
+    dead_clips = math.ceil(total_clips / 20)
+    array = COMPONENTS["Volume per clip (µL)"] * (total_clips + dead_clips)
 
     MASTER_MIX_BASIC_REACTION = [
         [
@@ -83,7 +88,6 @@ def pdf_instructions(basic_build: BasicBuild):
     PROCESSED_MASTER_MIX_BASIC_REACTION = [
         list(map(lambda x: Paragraph(x, styleN), x)) for x in MASTER_MIX_BASIC_REACTION
     ]
-
 
     zip_path = basic_build.export_csvs()
     with zipfile.ZipFile(zip_path, "r") as zip_ref:

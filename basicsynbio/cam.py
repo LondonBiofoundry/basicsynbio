@@ -50,12 +50,11 @@ class BasicBuild:
     objects.
 
     Attributes:
-        basic_assemblies: A collection of all the
-            assemblies within the BasicBuild object.
-        clips_data: A dictionary of each clip reaction as a key
-            with associated assemblies as values.
-        unique_clips: A list of each unique ClipReaction
-            within the BasicBuild object.
+        basic_assemblies: Tuple of BasicAssembly objects used to initiate BasicBuild.
+        unique_clips: Tuple of unique ClipReaction objects
+            required to implement the build.
+        clips_data: A dictionary with each ClipReaction as a key
+            and BasicAssembly objects that require it as values.
         unique_parts: Tuple of the unique BasicPart object required
             to implement the build.
         unique_linkers: Tuple of the unique BasicLinker objects
@@ -70,7 +69,7 @@ class BasicBuild:
         """
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
-        self.unique_clips = [clip for clip in self.clips_data.keys()]
+        self.unique_clips = tuple(clip for clip in self.clips_data.keys())
         self.unique_parts_data = self._unique_parts_linkers_data(
             "part", *(clip_reaction._part for clip_reaction in self.clips_data)
         )
