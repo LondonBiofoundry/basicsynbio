@@ -137,7 +137,4 @@ def export_echo_assembly(
             if file.startswith("echo_") and file.endswith(".csv"):
                 my_zip.write(file)
                 os.remove(file)
-
-    print(source_plate.rows)
-    print(source_plate.columns)
     return zip_path
