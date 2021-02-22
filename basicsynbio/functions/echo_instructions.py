@@ -48,27 +48,28 @@ def export_echo_assembly(
         raise ValueError(
             "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
         )
-    if len(basic_build.unique_clips) >= 384 - 192 * alternate_well:
+
+    source_plate = Plate(size=384, well_volume=40000, deadspace=20000)
+    destination_plate = Plate(size=96)
+    try:
+        assign_source_wells(
+            source_plate,
+            reduce(
+                lambda a, b: {**a, **b},
+                list(
+                    map(
+                        lambda x: {x[0]: len(x[1][1] * CLIP_VOLUME)},
+                        enumerate(basic_build.clips_data.items()),
+                    )
+                ),
+            ),
+            alternate_wells=alternate_well,
+        )
+    except:
         raise ValueError(
             """To many clips in the build to be handled by a single 384 
                 source plate, considering you alternate_well setting."""
         )
-
-    source_plate = Plate(size=384, well_volume=40000, deadspace=20000)
-    destination_plate = Plate(size=96)
-    assign_source_wells(
-        source_plate,
-        reduce(
-            lambda a, b: {**a, **b},
-            list(
-                map(
-                    lambda x: {x[0]: len(x[1][1] * CLIP_VOLUME)},
-                    enumerate(basic_build.clips_data.items()),
-                )
-            ),
-        ),
-        alternate_wells=alternate_well,
-    )
 
     if path == None:
         now = datetime.now()
