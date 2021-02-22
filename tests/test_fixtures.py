@@ -144,6 +144,36 @@ def promoter_assemblies_build():
 
 
 @pytest.fixture
+def promoter_assemblies_build_more_than_384():
+    utr_linkers = [
+        "UTR1-RBS1",
+        "UTR1-RBS2",
+        "UTR1-RBS3",
+        "UTR2-RBS1",
+        "UTR2-RBS2",
+        "UTR2-RBS3",
+        "UTR3-RBS1",
+        "UTR3-RBS2",
+        "UTR3-RBS3",
+    ]
+    promoter_assemblies = []
+    for utr_linker in utr_linkers:
+        promoter_assemblies += [
+            bsb.BasicAssembly(
+                f"promoter_construct_{ind}_{utr_linker}",
+                bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
+                bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+                promoter,
+                bsb.BASIC_BIOLEGIO_LINKERS["v0.1"][utr_linker],
+                bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+                bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+            )
+            for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values())
+        ]
+    return bsb.BasicBuild(*promoter_assemblies)
+
+
+@pytest.fixture
 def promoter_assemblies_json(promoter_assemblies_build):
     import json
 

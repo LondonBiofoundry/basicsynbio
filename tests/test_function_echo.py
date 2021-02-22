@@ -19,6 +19,7 @@ from .test_fixtures import (
     gfp_part_final_conc,
     small_build_example,
     all_promoter_assemblies_build,
+    promoter_assemblies_build_more_than_384,
 )
 
 
@@ -331,3 +332,14 @@ def test_multiple_files_made_more_than_96_assemblies(promoter_assemblies_build):
         ["E12", "B1", 3000],
     ]
     assert expected_water_buffer_2 == echo_water_buffer_2.to_numpy().tolist()
+
+
+def test_echo_instructions_too_many_clips(promoter_assemblies_build_more_than_384):
+    import zipfile
+    import os
+    import pandas as pd
+    import numpy as np
+    from pathlib import Path
+
+    with pytest.raises(ValueError):
+        bsb.export_echo_assembly(promoter_assemblies_build_more_than_384)
