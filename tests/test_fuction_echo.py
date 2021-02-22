@@ -18,8 +18,9 @@ from test_fixtures import (
     promoter_assemblies_json,
     gfp_part_final_conc,
     small_build_example,
-    all_promoter_assemblies_build
+    all_promoter_assemblies_build,
 )
+
 
 def test_echo_instructions_small_build(small_build_example):
     import zipfile
@@ -121,4 +122,3 @@ def test_echo_path(small_build_example):
     zippath = Path.cwd() / "uniquezippath.zip"
     realzippath = bsb.export_echo_assembly(small_build_example, path=zippath)
     assert zippath == realzippath
-

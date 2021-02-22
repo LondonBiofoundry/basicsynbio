@@ -66,7 +66,7 @@ def export_echo_assembly(
                 )
             ),
         ),
-        alternate_wells=alternate_well
+        alternate_wells=alternate_well,
     )
 
     if path == None:
@@ -92,11 +92,15 @@ def export_echo_assembly(
                 thewriter_clips.writerow(
                     {
                         "Destination Well": source_plate.wells[index],
-                        "Source Well": find_well(source_plate,clip,CLIP_VOLUME),
+                        "Source Well": find_well(source_plate, clip, CLIP_VOLUME),
                         "Transfer Volume": CLIP_VOLUME,
                     }
                 )
-                remove_volume(source_plate,find_well(source_plate,clip,CLIP_VOLUME),CLIP_VOLUME)
+                remove_volume(
+                    source_plate,
+                    find_well(source_plate, clip, CLIP_VOLUME),
+                    CLIP_VOLUME,
+                )
             thewriter_water_buffer.writerow(
                 {
                     "Destination Well": source_plate.wells[index],

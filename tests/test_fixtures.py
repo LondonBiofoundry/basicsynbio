@@ -197,5 +197,3 @@ def all_promoter_assemblies_build():
         for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values())
     ]
     return bsb.BasicBuild(*promoter_assemblies)
-
-
