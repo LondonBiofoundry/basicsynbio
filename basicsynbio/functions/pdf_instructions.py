@@ -275,7 +275,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
                     styles["BodyText"],
                 ),
                 Paragraph(
-                    "Add 190 μl 70'%' EtOH to each well and wait 30 s. ",
+                    "Add 190 μl 70% EtOH to each well and wait 30 s. ",
                     styles["BodyText"],
                 ),
                 Paragraph(
@@ -283,7 +283,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
                     styles["BodyText"],
                 ),
                 Paragraph(
-                    "Add 190 μl 70'%' EtOH to each well and wait 30 s. ",
+                    "Add 190 μl 70% EtOH to each well and wait 30 s. ",
                     styles["BodyText"],
                 ),
                 Paragraph(
