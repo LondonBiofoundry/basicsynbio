@@ -178,6 +178,9 @@ class BasicBuild:
         Args:
             path (optional): path to zipped folder of csv files. If none defaults to
                 working directory with a time stamped name, output csvs is created.
+
+        Returns:
+            str: filepath of created zip containing the CSV files
         """
         if path == None:
             now = datetime.now()
@@ -233,10 +236,14 @@ class BasicBuild:
                     }
                 )
         with zipfile.ZipFile(zip_path, "w") as my_zip:
-            my_zip.write("assemblies.csv")
-            my_zip.write("clips.csv")
+            try:
+                my_zip.write("assemblies.csv")
+                my_zip.write("clips.csv")
+            finally:
+                my_zip.close()
         os.remove(Path.cwd() / "assemblies.csv")
         os.remove(Path.cwd() / "clips.csv")
+        return zip_path
 
     @property
     def basic_assemblies(self):

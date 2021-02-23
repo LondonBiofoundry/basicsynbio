@@ -7,3 +7,4 @@ basicsynbio package.
 from .benchling import *
 from .biopython import _easy_seqrec
 from .biopython import *
+from .reportLab import *

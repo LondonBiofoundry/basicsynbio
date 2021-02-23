@@ -1,1 +1,2 @@
 include ./basicsynbio/parts_linkers/*.gb
+include ./basicsynbio/static/*.png

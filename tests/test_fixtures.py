@@ -159,3 +159,23 @@ def gfp_part_final_conc(gfp_basicpart):
         * molecular_weight(gfp_basicpart.seq, double_stranded=True, circular=True)
         / 1e6
     )
+
+
+@pytest.fixture
+def small_build_example():
+    return bsb.BasicBuild(
+        bsb.BasicAssembly(
+            "First_Assembly_With_18",
+            bsb.BASIC_SEVA_PARTS["v0.1"]["18"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+            bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+        ),
+        bsb.BasicAssembly(
+            "Second_Assembly_With_26",
+            bsb.BASIC_SEVA_PARTS["v0.1"]["26"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"],
+            bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
+            bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
+        ),
+    )
