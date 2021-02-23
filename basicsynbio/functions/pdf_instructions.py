@@ -33,7 +33,7 @@ from basicsynbio.utils import (
 )
 
 
-def pdf_instructions(basic_build: BasicBuild):
+def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
     """Writes information about each clip_data and assembly to
     two dependent CSV files in the same folder the command
     is executed.
@@ -49,7 +49,7 @@ def pdf_instructions(basic_build: BasicBuild):
     import pandas as pd
     import math
 
-    def calculate_clip_num(assemblies: list, assemblies_per_clip: int = 28):
+    def calculate_clip_num(assemblies: list):
         return math.ceil(len(assemblies) / assemblies_per_clip)
 
     COMPONENTS = pd.read_csv("csv_xlsx_files/clip_master_mix.csv")
