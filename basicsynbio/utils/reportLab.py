@@ -107,10 +107,9 @@ TEMPERATURE_PROFILE_1 = [
 
 ASSEMBLY_REACTION_3 = [
     ["Reagent", "Volume "],
-    ["dH20", "2 μl"],
     ["10x Assembly Buffer (or 10x NEB CutSmart)", "1 μl"],
     [
-        "Each Linker Ligated Basic Part (clip) within the assembly",
+        "Each purified clip reaction required for the assembly",
         "1 μl for each",
     ],
     ["dH20 ", "Top up to 10 μl total volume"],

@@ -271,7 +271,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
                     styles["BodyText"],
                 ),
                 Paragraph(
-                    "Remove the solution with a 200 μl pipette tip from the centre of each well.",
+                    "Aspirate most of the solution with a 200 µL pipette set to 80 µL.",
                     styles["BodyText"],
                 ),
                 Paragraph(
@@ -301,7 +301,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
                     styles["BodyText"],
                 ),
                 Paragraph(
-                    "Pipette 30 μl of H20 with eluted DNA into fresh 1.5 ml Eppendorf tube for direct use in assembly or storage at -20°C for up to 1 month. ",
+                    "Transfer 30 μl of purified clip reaction into a clean microcentrifuge tube or well and store at at -20°C for up to 1 month.",
                     styles["BodyText"],
                 ),
             ]
@@ -326,7 +326,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
     )
     elems.append(
         Paragraph(
-            "For each BASIC assembly (example here with 3 parts) combine parts with buffer in a PCR tube: ",
+            "For each BASIC assembly, combine the required purified clip reactions in a final volume of 10 μl in 1x Assembly or NEB CutSmart buffer. Below gives an example for a 3-part assembly:",
             styles["BodyText"],
         )
     )
@@ -377,7 +377,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
                     styles["BodyText"],
                 ),
                 Paragraph(
-                    "Cool 5 μl of BASIC DNA assembly in 1.5 ml Eppendorf tube on ice. ",
+                    "Cool 5 μl of BASIC DNA assembly in 1.5 ml microcentrifuge tube on ice. ",
                     styles["BodyText"],
                 ),
                 Paragraph(
