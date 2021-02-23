@@ -263,7 +263,7 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
                     styles["BodyText"],
                 ),
                 Paragraph(
-                    "Wait 5min to allow DNA binding to magbeads. ",
+                    "Wait 5 min to allow DNA binding to magbeads. ",
                     styles["BodyText"],
                 ),
                 Paragraph(
