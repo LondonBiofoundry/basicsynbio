@@ -250,12 +250,6 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
         )
     )
     elems.append(
-        Paragraph(
-            "We recommend using a 96 well Falcon plate (Falcon 351177) in combination with an Ambion magnetic plate (AM10050) for quick magbead immobilisation and easy pipetting access. ",
-            styles["BodyText"],
-        )
-    )
-    elems.append(
         ListFlowable(
             [
                 Paragraph(

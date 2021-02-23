@@ -74,7 +74,7 @@ MATERIALS = [
     ["Pipettes/tips 10 and 200 μl", ""],
     ["Agencourt AMPure XP SPRI paramagnetic beads", "A6388 (Beckman Coulter) "],
     ["ddH20", ""],
-    ["70% EtOH1", ""],
+    ["70% EtOH", ""],
     ["Biolegio BASIC linkers", ""],
     ["NEB BsaI-HF v2 enzyme (R3733) 20 U/μl", "R3733 (NEB)"],
     ["Promega T4 ligase (M1801) 1-3U/μl", "M1801 (Promega)"],
