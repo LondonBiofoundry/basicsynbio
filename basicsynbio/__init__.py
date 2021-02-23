@@ -23,4 +23,8 @@ from .parts_linkers import (
 )
 from .cam import BasicBuild, BuildDecoder, BuildEncoder, new_part_resuspension
 
+<<<<<<< HEAD
 from .functions import export_echo_assembly
+=======
+from .functions import pdf_instructions
+>>>>>>> f0de883237059f7b67d17c30000e592bb8b1119d
