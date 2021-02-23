@@ -18,8 +18,8 @@ TOTAL_VOLUME = 5000
 def export_echo_assembly(
     basic_build: BasicBuild,
     path: str = None,
-    bufferWell: str = "A1",
-    waterWell: str = "B1",
+    buffer_well: str = "A1",
+    water_well: str = "B1",
     alternate_well: bool = False,
 ) -> None:
     """Writes automation scripts for a echo liquid handler to build assemblies from clips.
@@ -27,24 +27,24 @@ def export_echo_assembly(
     Args:
         path (optional): path to zipped folder of csv files. If none defaults to
             working directory with a time stamped name, output csvs is created.
-        bufferWell (optional): location in 6 well plate of assembly buffer.
-        waterWell (optional): location in 6 well plate of dH20.
+        buffer_well (optional): location in 6 well plate of assembly buffer.
+        water_well (optional): location in 6 well plate of dH20.
         alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate.
 
     Returns:
         str: Path of zip file containing echo automation scripts
 
     Raises:
-        ValueError: If waterWell or BufferWell is not in ["A1", "B1", "A2", "B2", "A3", "B3"]; if self contains
+        ValueError: If water_well or buffer_well is not in ["A1", "B1", "A2", "B2", "A3", "B3"]; if self contains
             96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
             or 192 for alternate_well(False).
     """
 
-    if waterWell not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
+    if water_well not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
         raise ValueError(
             "Water Well location needs to be within the 6 well plate, between A1 - B3"
         )
-    if bufferWell not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
+    if buffer_well not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
         raise ValueError(
             "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
         )
@@ -114,14 +114,14 @@ def export_echo_assembly(
                 thewriter_water_buffer.writerow(
                     {
                         "Destination Well": destination_plate.wells[index],
-                        "Source Well": bufferWell,
+                        "Source Well": buffer_well,
                         "Transfer Volume": BUFFER_VOLUME,
                     }
                 )
                 thewriter_water_buffer.writerow(
                     {
                         "Destination Well": destination_plate.wells[index],
-                        "Source Well": waterWell,
+                        "Source Well": water_well,
                         "Transfer Volume": TOTAL_VOLUME
                         - BUFFER_VOLUME
                         - CLIP_VOLUME

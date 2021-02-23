@@ -102,12 +102,12 @@ def test_echo_instruction_assert_buffer_water_well_errors(small_build_example):
         ValueError,
         match="Water Well location needs to be within the 6 well plate, between A1 - B3",
     ):
-        echozippath = bsb.export_echo_assembly(small_build_example, waterWell="D1")
+        echozippath = bsb.export_echo_assembly(small_build_example, water_well="D1")
     with pytest.raises(
         ValueError,
         match="Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3",
     ):
-        echozippath = bsb.export_echo_assembly(small_build_example, bufferWell="D1")
+        echozippath = bsb.export_echo_assembly(small_build_example, buffer_well="D1")
 
 
 def test_echo_path(small_build_example):
