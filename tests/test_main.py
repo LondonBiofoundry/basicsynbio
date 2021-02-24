@@ -1,7 +1,7 @@
 import basicsynbio as bsb
 import pytest
 
-from test_fixtures import (
+from .test_fixtures import (
     gfp_basicpart,
     gfp_seqrec,
     gfp_orf_seq,

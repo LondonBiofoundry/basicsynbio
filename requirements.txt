@@ -70,6 +70,7 @@ pathtools==0.1.2
 pexpect==4.8.0
 pickleshare==0.7.5
 pkginfo==1.6.1
+platemap==0.0.10
 pluggy==0.13.1
 proglog==0.1.9
 prometheus-client==0.8.0

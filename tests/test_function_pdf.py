@@ -1,7 +1,7 @@
 import basicsynbio as bsb
 import pytest
 
-from test_fixtures import small_build_example
+from .test_fixtures import small_build_example
 
 
 def test_pdf_is_built_of_expected_size(small_build_example):
