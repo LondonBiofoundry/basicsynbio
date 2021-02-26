@@ -155,6 +155,20 @@ The ``export_csvs()`` method generates a zip file, containing :doc:`clips_csv` a
     
     build.export_csvs("build_csvs.zip")
 
+The ``bsb.pdf_instructions()`` function creates pdf instructions for manual assembly of the build in the lab. An example can be seen here_
+
+.. _here: https://github.com/LondonBiofoundry/basicsynbio/blob/master/docsource/source/literal_includes/export_pdf_example.pdf
+
+.. code-block::
+    
+    bsb.export_csvs(build)
+
+The ``bsb.export_echo_assembly(build)`` function creates echo lab automation instructions for the clips to assembly step of the build. Example outputs, :doc:`echo_clips_1_csv` and :doc:`echo_water_buffer_1_csv`
+
+.. code-block::
+    
+    bsb.export_echo_assembly(build)
+
 To serialise the build, the `json API`_ can be used, in the following case yielding (:doc:`build_json`):
 
 .. _json API: https://docs.python.org/3/library/json.html
