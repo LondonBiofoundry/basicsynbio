@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="basicsynbio",
-    version="0.3.0",
+    version="0.4.0",
     url="https://github.com/LondonBiofoundry/basicsynbio",
     license="BSD-3-Clause License",
     author="LondonBiofoundry",
@@ -15,7 +15,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     packages=setuptools.find_packages(
         exclude=("tests")
-    ),  # package_data not correctly migrated if "where" arg used.
+    ),
     include_package_data=True,
     classifiers=[
         "Intended Audience :: Science/Research",
