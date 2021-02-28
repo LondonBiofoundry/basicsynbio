@@ -32,7 +32,7 @@ setuptools.setup(
         "platemap",
         "python-Levenshtein",
         "reportlab",
-        "sbol2"
+        "sbol2",
     ],
     project_urls={
         "Documentation": "https://londonbiofoundry.github.io/basicsynbio/index.html",

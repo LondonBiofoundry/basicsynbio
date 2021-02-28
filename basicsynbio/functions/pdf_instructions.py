@@ -52,7 +52,18 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
     def calculate_clip_num(assemblies: list):
         return math.ceil(len(assemblies) / assemblies_per_clip)
 
-    COMPONENTS = pd.read_csv("csv_xlsx_files/clip_master_mix.csv")
+    COMPONENTS = pd.DataFrame(
+        {
+            "Component": [
+                "Promega T4 DNA Ligase 10x Buffer",
+                "Water",
+                "NEB BsaI-HFv2",
+                "Promega T4 DNA Ligase",
+            ],
+            "Volume per clip (µL)": [3, 15.5, 1, 0.5],
+        }
+    )
+
     total_clips = sum(
         [
             calculate_clip_num(assemblies)
