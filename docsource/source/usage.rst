@@ -161,9 +161,9 @@ The ``bsb.pdf_instructions()`` function creates pdf instructions for manual asse
 
 .. code-block::
     
-    bsb.export_csvs(build)
+    bsb.pdf_instructions(build)
 
-The ``bsb.export_echo_assembly(build)`` function creates echo lab automation instructions for the clips to assembly step of the build. Example outputs, :doc:`echo_clips_1_csv` and :doc:`echo_water_buffer_1_csv`
+The ``bsb.export_echo_assembly(build)`` function creates Echo liquid handling instructions to combine purified clip reactions with buffer and water, yielding assemblies for transformation. The following :doc:`echo_clips_1_csv` and :doc:`echo_water_buffer_1_csv` are example outputs.
 
 .. code-block::
     
