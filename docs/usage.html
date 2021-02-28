@@ -164,6 +164,14 @@ exported as two zipped csv files describing build clip reactions and assemblies.
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">build</span><span class="o">.</span><span class="n">export_csvs</span><span class="p">(</span><span class="s2">&quot;build_csvs.zip&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bsb.pdf_instructions()</span></code> function creates pdf instructions for manual assembly of the build in the lab. An example can be seen <a class="reference external" href="https://github.com/LondonBiofoundry/basicsynbio/blob/master/docsource/source/literal_includes/export_pdf_example.pdf">here</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">pdf_instructions</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bsb.export_echo_assembly(build)</span></code> function creates Echo liquid handling instructions to combine purified clip reactions with buffer and water, yielding assemblies for transformation. The following <a class="reference internal" href="echo_clips_1_csv.html"><span class="doc">echo_clips_1.csv</span></a> and <a class="reference internal" href="echo_water_buffer_1_csv.html"><span class="doc">echo_water_buffer_1.csv</span></a> are example outputs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">export_echo_assembly</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+</pre></div>
+</div>
 <p>To serialise the build, the <a class="reference external" href="https://docs.python.org/3/library/json.html">json API</a> can be used, in the following case yielding (<a class="reference internal" href="build_json.html"><span class="doc">build.json</span></a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 

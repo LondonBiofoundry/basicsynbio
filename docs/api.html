@@ -452,22 +452,21 @@ objects.</p>
 <dl class="py attribute">
 <dt id="basicsynbio.cam.BasicBuild.basic_assemblies">
 <code class="sig-name descname">basic_assemblies</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.basic_assemblies" title="Permalink to this definition">¶</a></dt>
-<dd><p>A collection of all the
-assemblies within the BasicBuild object.</p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt id="basicsynbio.cam.BasicBuild.clips_data">
-<code class="sig-name descname">clips_data</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.clips_data" title="Permalink to this definition">¶</a></dt>
-<dd><p>A dictionary of each clip reaction as a key
-with associated assemblies as values.</p>
+<dd><p>Tuple of BasicAssembly objects used to initiate BasicBuild.</p>
 </dd></dl>
 
 <dl class="py attribute">
 <dt id="basicsynbio.cam.BasicBuild.unique_clips">
 <code class="sig-name descname">unique_clips</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.unique_clips" title="Permalink to this definition">¶</a></dt>
-<dd><p>A list of each unique ClipReaction
-within the BasicBuild object.</p>
+<dd><p>Tuple of unique ClipReaction objects
+required to implement the build.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="basicsynbio.cam.BasicBuild.clips_data">
+<code class="sig-name descname">clips_data</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.clips_data" title="Permalink to this definition">¶</a></dt>
+<dd><p>A dictionary with each ClipReaction as a key
+and BasicAssembly objects that require it as values.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -494,6 +493,12 @@ is executed.</p>
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to
 working directory with a time stamped name, output csvs is created.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>filepath of created zip containing the CSV files</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
 </dd>
 </dl>
 </dd></dl>

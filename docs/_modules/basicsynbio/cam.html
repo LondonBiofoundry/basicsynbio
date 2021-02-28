@@ -83,12 +83,11 @@
 <span class="sd">    objects.</span>
 
 <span class="sd">    Attributes:</span>
-<span class="sd">        basic_assemblies: A collection of all the</span>
-<span class="sd">            assemblies within the BasicBuild object.</span>
-<span class="sd">        clips_data: A dictionary of each clip reaction as a key</span>
-<span class="sd">            with associated assemblies as values.</span>
-<span class="sd">        unique_clips: A list of each unique ClipReaction</span>
-<span class="sd">            within the BasicBuild object.</span>
+<span class="sd">        basic_assemblies: Tuple of BasicAssembly objects used to initiate BasicBuild.</span>
+<span class="sd">        unique_clips: Tuple of unique ClipReaction objects</span>
+<span class="sd">            required to implement the build.</span>
+<span class="sd">        clips_data: A dictionary with each ClipReaction as a key</span>
+<span class="sd">            and BasicAssembly objects that require it as values.</span>
 <span class="sd">        unique_parts: Tuple of the unique BasicPart object required</span>
 <span class="sd">            to implement the build.</span>
 <span class="sd">        unique_linkers: Tuple of the unique BasicLinker objects</span>
@@ -103,7 +102,7 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">basic_assemblies</span> <span class="o">=</span> <span class="n">basic_assemblies</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_clips_data</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span> <span class="o">=</span> <span class="p">[</span><span class="n">clip</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="o">.</span><span class="n">keys</span><span class="p">()]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clip</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unique_parts_linkers_data</span><span class="p">(</span>
             <span class="s2">&quot;part&quot;</span><span class="p">,</span> <span class="o">*</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span> <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="p">)</span>
         <span class="p">)</span>
@@ -212,6 +211,9 @@
 <span class="sd">        Args:</span>
 <span class="sd">            path (optional): path to zipped folder of csv files. If none defaults to</span>
 <span class="sd">                working directory with a time stamped name, output csvs is created.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            str: filepath of created zip containing the CSV files</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -267,10 +269,14 @@
                     <span class="p">}</span>
                 <span class="p">)</span>
         <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">my_zip</span><span class="p">:</span>
-            <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;assemblies.csv&quot;</span><span class="p">)</span>
-            <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;clips.csv&quot;</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;assemblies.csv&quot;</span><span class="p">)</span>
+                <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;clips.csv&quot;</span><span class="p">)</span>
+            <span class="k">finally</span><span class="p">:</span>
+                <span class="n">my_zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;assemblies.csv&quot;</span><span class="p">)</span>
-        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;clips.csv&quot;</span><span class="p">)</span></div>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;clips.csv&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">zip_path</span></div>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">basic_assemblies</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
