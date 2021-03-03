@@ -13,9 +13,7 @@ setuptools.setup(
     description="An open-source Python package to facilitate BASIC DNA Assembly workflows",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(
-        exclude=("tests")
-    ),
+    packages=setuptools.find_packages(exclude=("tests")),
     include_package_data=True,
     classifiers=[
         "Intended Audience :: Science/Research",

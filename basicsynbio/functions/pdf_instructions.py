@@ -4,6 +4,7 @@ import os
 import pandas as pd
 from pathlib import Path
 from datetime import datetime
+from importlib import resources
 from reportlab.platypus import (
     SimpleDocTemplate,
     ListFlowable,
@@ -119,7 +120,8 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
     pdf = SimpleDocTemplate(pdf_filename, pagesizes=A4)
 
     elems = []
-    elems.append(Image("basicsynbio/static/introimg.png", 12 * cm, 4 * cm))
+    with resources.path("basicsynbio.static", "introimg.png") as image_path:
+        elems.append(Image(image_path, 12 * cm, 4 * cm))
     elems.append(Paragraph("Materials", styles["Heading1"]))
     elems.append(Table(PROCESSED_MATERIALS, colWidths=[10.5 * cm, 5 * cm], style=style))
     elems.append(PageBreak())
