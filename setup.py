@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="basicsynbio",
-    version="0.4.0",
+    version="0.5.0",
     url="https://github.com/LondonBiofoundry/basicsynbio",
     license="BSD-3-Clause License",
     author="LondonBiofoundry",
