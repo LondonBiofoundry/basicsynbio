@@ -41,7 +41,7 @@ isodate==0.6.0
 isort==4.3.21
 jedi==0.17.2
 jeepney==0.6.0
-Jinja2==2.11.2
+Jinja2==2.11.3
 jsonschema==3.2.0
 jupyter==1.0.0
 jupyter-client==6.1.6
