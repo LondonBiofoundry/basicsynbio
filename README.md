@@ -1,6 +1,6 @@
 # basicsynbio
 
-An open-source Python package to facilitate [BASIC DNA Assembly](https://www.basic-assembly.org/about) workflows
+An open-source Python package to facilitate BASIC DNA assembly workflows. Also available as a [web-app][webapp_url]!
 
 [![Build Status][travis_badge]][travis_url]
 [![Coverage Status][coverage_badge]][coverage_url]
@@ -34,3 +34,4 @@ This project is licensed under the BSD 3-Clause License - see the ``LICENSE`` fi
 [coverage_badge]: https://coveralls.io/repos/github/LondonBiofoundry/basicsynbio/badge.svg?branch=master
 [coverage_url]: https://coveralls.io/github/LondonBiofoundry/basicsynbio?branch=master
 [development_url]: https://packaging.python.org/guides/distributing-packages-using-setuptools/#working-in-development-mode
+[webapp_url]: https://basicsynbio.web.app/designer
