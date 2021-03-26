@@ -18,22 +18,9 @@ from .test_fixtures import (
     promoter_assemblies_json,
     gfp_part_final_conc,
 )
-
-
-def compare_seqrec_instances(seqrec1, seqrec2):
-    """
-    returns true if seqrec1 has equivalent seqrec2 attributes.
-    Ignores seqrec.features as contains SeqFeature objects.
-
-    """
-    for key, value in seqrec2.__dict__.items():
-        if key != "features":
-            if value != getattr(seqrec1, key):
-                print(
-                    f"seqrec2's '{key}' attribute does not match that obtained from seqrec1."
-                )
-                return False
-    return True
+from .functions import (
+    compare_seqrec_instances,
+)
 
 
 def test_export_csv(promoter_assemblies_build):
@@ -45,20 +32,6 @@ def test_export_csv(promoter_assemblies_build):
         print("finished exporting Clips.csv")
     finally:
         os.remove("test_build.zip")
-
-
-def json_round_trip(class_instance, encoder, decoder):
-    """Encodes object as serialised json and returns decoded object.
-
-    Args:
-        object -- class instance to be serialised.
-        encoder -- json encoder Class.
-        decoder -- json decoder function.
-    """
-    import json
-
-    serialised_object = json.dumps(class_instance, cls=encoder)
-    return json.loads(serialised_object, cls=decoder)
 
 
 def test_new_part_resuspension(gfp_orf_basicpart):

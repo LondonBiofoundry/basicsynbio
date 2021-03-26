@@ -18,22 +18,7 @@ from .test_fixtures import (
     promoter_assemblies_json,
     gfp_part_final_conc,
 )
-
-
-def compare_seqrec_instances(seqrec1, seqrec2):
-    """
-    returns true if seqrec1 has equivalent seqrec2 attributes.
-    Ignores seqrec.features as contains SeqFeature objects.
-
-    """
-    for key, value in seqrec2.__dict__.items():
-        if key != "features":
-            if value != getattr(seqrec1, key):
-                print(
-                    f"seqrec2's '{key}' attribute does not match that obtained from seqrec1."
-                )
-                return False
-    return True
+from .functions import compare_seqrec_instances
 
 
 def test_basic_part(gfp_basicpart, gfp_seqrec):
@@ -69,6 +54,34 @@ def test_basic_part_stock_concentration(gfp_basicpart, gfp_part_final_conc):
     clip_vol = 30
     assert gfp_basicpart.concentration(stock=True) == round(
         gfp_part_final_conc * clip_vol
+    )
+
+
+def test_primer3py_on_part(gfp_orf_basicpart, gfp_orf_seq):
+    primer3_out = gfp_orf_basicpart._primer3py(global_args={"PRIMER_MIN_TM": 50})
+    print(primer3_out)
+    assert "PRIMER_LEFT_0_SEQUENCE" in primer3_out.keys()
+    assert "PRIMER_RIGHT_0_SEQUENCE" in primer3_out.keys()
+    assert str(gfp_orf_seq[:15]) in primer3_out["PRIMER_LEFT_0_SEQUENCE"]
+    assert (
+        str(gfp_orf_seq[-15:].reverse_complement())
+        in primer3_out["PRIMER_RIGHT_0_SEQUENCE"]
+    )
+
+
+def test_part_pcr_primers(gfp_orf_basicpart):
+    from Bio.SeqRecord import SeqRecord
+    from basicsynbio.main import IP_SEQREC, IS_SEQREC
+
+    left_primer, right_primer = gfp_orf_basicpart.taming_primers(
+        global_args={"PRIMER_MIN_TM": 50}
+    )
+    assert type(left_primer) == type(right_primer) == SeqRecord
+    assert str(IP_SEQREC.seq) + str(gfp_orf_seq[:15]) in left_primer.seq
+    assert (
+        str(IS_SEQREC.reverse_complement().seq)
+        + str(gfp_orf_seq[-15:].reverse_complement())
+        in right_primer.seq
     )
 
 
