@@ -1,13 +1,16 @@
 """Main module for basicsynbio."""
-from basicsynbio.utils import _easy_seqrec
+from basicsynbio.utils import (
+    _easy_seqrec,
+    p3_seqrec
+)
 from basicsynbio.decorators import addargs2docs, ArgDescription
 from Bio import SeqUtils, SeqIO
 from Bio.Restriction.Restriction import BsaI
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
+from dataclasses import dataclass
 import datetime
 import hashlib
 from primer3.bindings import designPrimers
@@ -48,11 +51,18 @@ class CommonArgDocs:
     )
 
 
+@dataclass
+class DomesticatingPrimers():
+    left_primer: SeqRecord
+    right_primer: SeqRecord
+    data: dict
+
+
 class BasicPart(SeqRecord):
     """Class for BASIC DNA assembly parts.
 
     A DNA sequence joined with other BasicParts via :py:class:`BasicLinker`
-    instances when initialising :py:class:`BasicAssembly` objects. All
+    instances when initializing :py:class:`BasicAssembly` objects. All
     sequences must contain intergated prefix and suffix sequences.
 
     Attributes:
@@ -119,28 +129,54 @@ class BasicPart(SeqRecord):
             return round(final_concentration * clip_vol, ndigit)
         return round(final_concentration, ndigit)
 
-    def taming_primers(
+    def domesticating_primers(
         self,
-        primer_pair: int = 0,
         seq_args: dict = 0,
         global_args: dict = 0,
-    ) -> Tuple[SeqRecord, SeqRecord, dict]:
-        """Generate PCR primers and associated data for taming the intervening DNA sequence.
+        left_attrs: dict = None,
+        right_attrs: dict = None,
+        primer_pair: int = 0,
+    ) -> DomesticatingPrimers:
+        """Generate PCR primers and associated data for domesticating parts from various sources using PCR.
 
         PCR primers contain iP and iS sequences, respectively, in addition to a region of homology for the intervening DNA sequence.
-        They can be used to add iP and iS sequences, taming the DNA sequence and generating a BasicPart object for use in downstream
-        BASIC assemblies.
+        They can be used to domesticate parts from various sources, adding iP and iS sequences, enabling downstream BASIC assemblies.
 
         Args:
+            seq_args: Refer to '_primer3py' method and primer3-py docs.
+            global_args: Refer to '_primer3py' method and primer3-py docs.
+            left_attrs: Additional attributes to assign to `left_primer` SeqRecord.
+            right_attrs: Additional attributes to assign to the `right_primer` SeqRecord.
             primer_pair: Which of the returned primer3-py primer pairs to use. Defaults to 0 which is the primer pair with the lowest penalty value.
-            seq_args: Refer to '_primer3py' method.
-            global_args: Refer to '_primer3py' method.
 
         Returns:
-            Tuple: 1st element is a Bio.SeqRecord of the left primer. 2nd element is a Bio.SeqRecord of the right primer. 3rd element displays primer3-py data including regions that are homologous to the template and product size.
+            DomesticatingPrimers: `left_primer` & `right_primer` attributes contain iP & iS sequences, respectively while `data` corresponds to primer regions homologous to template DNA.
 
+        Raises:
+            ValueError: If primer3 fails to identify suitable primer pairs.
         """
-        pass
+        p3py_out = self._primer3py(seq_args, global_args)
+        if p3py_out["PRIMER_PAIR_NUM_RETURNED"] == 0:
+            raise ValueError("primer3 returned no suitable primers. Refer to the primer3 documentation and change `seq_args` and/or `global_args`.")
+        left_primer = p3_seqrec(
+            p3py_out,
+            "LEFT",
+            left_attrs,
+            primer_pair
+        )
+        left_primer.seq = Seq(IP_STR) + left_primer.seq
+        right_primer = p3_seqrec(
+            p3py_out,
+            "RIGHT",
+            right_attrs,
+            primer_pair
+        )
+        right_primer.seq = Seq(IS_STR).reverse_complement() + right_primer.seq
+        return DomesticatingPrimers(
+            left_primer,
+            right_primer,
+            data=dict(item for item in p3py_out.items() if f"_{str(primer_pair)}_" in item[0]),
+        )
 
     def to_seqrec(self) -> SeqRecord:
         """Create a SeqRecord instance. All relevant attributes are maintained."""

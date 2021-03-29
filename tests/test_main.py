@@ -69,19 +69,23 @@ def test_primer3py_on_part(gfp_orf_basicpart, gfp_orf_seq):
     )
 
 
-def test_part_pcr_primers(gfp_orf_basicpart):
-    from Bio.SeqRecord import SeqRecord
-    from basicsynbio.main import IP_SEQREC, IS_SEQREC
+def test_domesticating_primers_error(gfp_orf_basicpart):
+    with pytest.raises(ValueError):
+        gfp_orf_basicpart.domesticating_primers()
 
-    left_primer, right_primer = gfp_orf_basicpart.taming_primers(
+
+def test_part_pcr_primers(gfp_orf_basicpart, gfp_orf_seq):
+    from basicsynbio.main import DomesticatingPrimers
+    from basicsynbio.main import IP_SEQREC, IS_SEQREC
+    domesticating_primers = gfp_orf_basicpart.domesticating_primers(
         global_args={"PRIMER_MIN_TM": 50}
     )
-    assert type(left_primer) == type(right_primer) == SeqRecord
-    assert str(IP_SEQREC.seq) + str(gfp_orf_seq[:15]) in left_primer.seq
+    assert type(domesticating_primers) == DomesticatingPrimers
+    assert IP_SEQREC.seq + gfp_orf_seq[:15] in domesticating_primers.left_primer.seq
     assert (
-        str(IS_SEQREC.reverse_complement().seq)
-        + str(gfp_orf_seq[-15:].reverse_complement())
-        in right_primer.seq
+        IS_SEQREC.reverse_complement().seq
+        + gfp_orf_seq[-15:].reverse_complement()
+        in domesticating_primers.right_primer.seq
     )
 
 
