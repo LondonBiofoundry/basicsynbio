@@ -6,12 +6,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>API reference &#8212; basicsynbio 0.1.0 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="prev" title="Contributing" href="contributing.html" />
@@ -125,7 +126,7 @@ required for BASIC assembly.</p>
 
 <dl class="py class">
 <dt id="basicsynbio.main.BasicLinker">
-<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicLinker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">prefix_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">suffix_id</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicLinker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicLinker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicLinker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">prefix_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">suffix_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicLinker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicLinker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for BASIC DNA assembly linkers.</p>
 <p>A DNA sequence joined with other BasicLinkers via <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a>
 instances when initialising <a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicAssembly</span></code></a> objects.</p>
@@ -190,7 +191,7 @@ instances when initialising <a class="reference internal" href="#basicsynbio.mai
 <em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicPart</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for BASIC DNA assembly parts.</p>
 <p>A DNA sequence joined with other BasicParts via <a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicLinker</span></code></a>
-instances when initialising <a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicAssembly</span></code></a> objects. All
+instances when initializing <a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicAssembly</span></code></a> objects. All
 sequences must contain intergated prefix and suffix sequences.</p>
 <dl class="py attribute">
 <dt id="basicsynbio.main.BasicPart._ip_loc">
@@ -233,7 +234,7 @@ sequences must contain intergated prefix and suffix sequences.</p>
 
 <dl class="py method">
 <dt id="basicsynbio.main.BasicPart.concentration">
-<code class="sig-name descname">concentration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stock</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.concentration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.concentration" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">concentration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stock</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.concentration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.concentration" title="Permalink to this definition">¶</a></dt>
 <dd><p>Obtain the recommended concentration of part in ng/µL.</p>
 <p>This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</p>
 <dl class="field-list simple">
@@ -244,6 +245,34 @@ sequences must contain intergated prefix and suffix sequences.</p>
 <li><p><strong>circular</strong> – The part is circular or linear if False.</p></li>
 <li><p><strong>ndigit</strong> – Refer to built-in round function documentation.</p></li>
 </ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="basicsynbio.main.BasicPart.domesticating_primers">
+<code class="sig-name descname">domesticating_primers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq_args</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">global_args</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">0</span></em>, <em class="sig-param"><span class="n">left_attrs</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">right_attrs</span><span class="p">:</span> <span class="n">dict</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">primer_pair</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">0</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#basicsynbio.main.DomesticatingPrimers" title="basicsynbio.main.DomesticatingPrimers">basicsynbio.main.DomesticatingPrimers</a><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.domesticating_primers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.domesticating_primers" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generate PCR primers and associated data for domesticating parts from various sources using PCR.</p>
+<p>PCR primers contain iP and iS sequences, respectively, in addition to a region of homology for the intervening DNA sequence.
+They can be used to domesticate parts from various sources, adding iP and iS sequences, enabling downstream BASIC assemblies.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>seq_args</strong> – Refer to ‘_primer3py’ method and primer3-py docs.</p></li>
+<li><p><strong>global_args</strong> – Refer to ‘_primer3py’ method and primer3-py docs.</p></li>
+<li><p><strong>left_attrs</strong> – Additional attributes to assign to <cite>left_primer</cite> SeqRecord.</p></li>
+<li><p><strong>right_attrs</strong> – Additional attributes to assign to the <cite>right_primer</cite> SeqRecord.</p></li>
+<li><p><strong>primer_pair</strong> – Which of the returned primer3-py primer pairs to use. Defaults to 0 which is the primer pair with the lowest penalty value.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p><cite>left_primer</cite> &amp; <cite>right_primer</cite> attributes contain iP &amp; iS sequences, respectively while <cite>data</cite> corresponds to primer regions homologous to template DNA.</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p><a class="reference internal" href="#basicsynbio.main.DomesticatingPrimers" title="basicsynbio.main.DomesticatingPrimers">DomesticatingPrimers</a></p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If primer3 fails to identify suitable primer pairs.</p>
 </dd>
 </dl>
 </dd></dl>
@@ -306,6 +335,11 @@ the form (prefix_id, suffix_id).</p>
 </dd></dl>
 
 </dd></dl>
+
+<dl class="py class">
+<dt id="basicsynbio.main.DomesticatingPrimers">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">DomesticatingPrimers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">left_primer</span><span class="p">:</span> <span class="n">Bio.SeqRecord.SeqRecord</span></em>, <em class="sig-param"><span class="n">right_primer</span><span class="p">:</span> <span class="n">Bio.SeqRecord.SeqRecord</span></em>, <em class="sig-param"><span class="n">data</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#DomesticatingPrimers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.DomesticatingPrimers" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="py exception">
 <dt id="basicsynbio.main.LinkerException">
@@ -485,7 +519,7 @@ required to implement the build.</p>
 
 <dl class="py method">
 <dt id="basicsynbio.cam.BasicBuild.export_csvs">
-<code class="sig-name descname">export_csvs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.export_csvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.export_csvs" title="Permalink to this definition">¶</a></dt>
+<code class="sig-name descname">export_csvs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.export_csvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.export_csvs" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes information about each clip_data and assembly to
 two dependent CSV files in the same folder the command
 is executed.</p>
@@ -832,7 +866,7 @@ attributes</p>
       &copy;2020, London Biofoundry.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

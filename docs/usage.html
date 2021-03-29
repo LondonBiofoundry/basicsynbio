@@ -6,12 +6,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Usage &#8212; basicsynbio 0.1.0 documentation</title>
-    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/language_data.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Part and linker collections" href="collections.html" />
@@ -101,6 +102,19 @@ The following leverages BioPython and Entrez to generate a new BASIC part encodi
 when creating your object, use the optional <code class="docutils literal notranslate"><span class="pre">add_i_seqs</span></code> argument,
 available for all the above functions e.g.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>To physically generate BasicParts from external sources – referred to as domestication – users can amplify DNA lacking
+<em>i</em>P and <em>i</em>S sequences with primers that contain them.
+The BasicPart class contains a <code class="docutils literal notranslate"><span class="pre">domesticating_primers()</span></code> method to aid this.
+This method works by running <a class="reference external" href="https://libnano.github.io/primer3-py/">primer3-py</a> under the hood, returning an object containing left and right primers, in addition to associated data as attributes.
+The primer attributes are easily exported to a .tsv file, a format accepted by various DNA synthesis companies:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">domesticating_primers</span> <span class="o">=</span> <span class="n">basic_part</span><span class="o">.</span><span class="n">domesticating_primers</span><span class="p">()</span>
+<span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">domesticating_primers</span><span class="o">.</span><span class="n">left_primer</span><span class="p">,</span> <span class="n">domesticating_primers</span><span class="o">.</span><span class="n">right_primer</span><span class="p">),</span>
+    <span class="s2">&quot;primers_for_domesticating_parts.tsv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tsv&quot;</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -291,7 +305,7 @@ Users have two options:</p>
       &copy;2020, London Biofoundry.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
