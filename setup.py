@@ -28,6 +28,7 @@ setuptools.setup(
         "biopython>=1.78",
         "pandas",
         "platemap",
+        "primer3-py",
         "python-Levenshtein",
         "reportlab",
         "sbol2",

@@ -1,15 +1,16 @@
 """Main module for basicsynbio."""
-from basicsynbio.utils import _easy_seqrec
+from basicsynbio.utils import _easy_seqrec, p3_seqrec
 from basicsynbio.decorators import addargs2docs, ArgDescription
 from Bio import SeqUtils, SeqIO
 from Bio.Restriction.Restriction import BsaI
 from Bio.Seq import Seq
 from Bio.SeqRecord import SeqRecord
 from Bio.SeqFeature import SeqFeature, FeatureLocation
-from Bio.SeqUtils.CheckSum import seguid
 from collections import Counter
+from dataclasses import dataclass
 import datetime
 import hashlib
+from primer3.bindings import designPrimers
 from typing import Union, Tuple
 import warnings
 
@@ -47,11 +48,18 @@ class CommonArgDocs:
     )
 
 
+@dataclass
+class DomesticatingPrimers:
+    left_primer: SeqRecord
+    right_primer: SeqRecord
+    data: dict
+
+
 class BasicPart(SeqRecord):
     """Class for BASIC DNA assembly parts.
 
     A DNA sequence joined with other BasicParts via :py:class:`BasicLinker`
-    instances when initialising :py:class:`BasicAssembly` objects. All
+    instances when initializing :py:class:`BasicAssembly` objects. All
     sequences must contain intergated prefix and suffix sequences.
 
     Attributes:
@@ -90,13 +98,6 @@ class BasicPart(SeqRecord):
         else:
             raise ValueError("incorrect sequence used.")
 
-    def to_seqrec(self) -> SeqRecord:
-        """Create a SeqRecord instance. All relevant attributes are maintained."""
-        seqrec = SeqRecord(seq=self.seq, id=self.id)
-        for key in seqrec.__dict__.keys():
-            setattr(seqrec, key, self.__dict__[key])
-        return seqrec
-
     def concentration(
         self,
         stock: bool = True,
@@ -124,6 +125,56 @@ class BasicPart(SeqRecord):
         if stock:
             return round(final_concentration * clip_vol, ndigit)
         return round(final_concentration, ndigit)
+
+    def domesticating_primers(
+        self,
+        seq_args: dict = 0,
+        global_args: dict = 0,
+        left_attrs: dict = None,
+        right_attrs: dict = None,
+        primer_pair: int = 0,
+    ) -> DomesticatingPrimers:
+        """Generate PCR primers and associated data for domesticating parts from various sources using PCR.
+
+        PCR primers contain iP and iS sequences, respectively, in addition to a region of homology for the intervening DNA sequence.
+        They can be used to domesticate parts from various sources, adding iP and iS sequences, enabling downstream BASIC assemblies.
+
+        Args:
+            seq_args: Refer to '_primer3py' method and primer3-py docs.
+            global_args: Refer to '_primer3py' method and primer3-py docs.
+            left_attrs: Additional attributes to assign to `left_primer` SeqRecord.
+            right_attrs: Additional attributes to assign to the `right_primer` SeqRecord.
+            primer_pair: Which of the returned primer3-py primer pairs to use. Defaults to 0 which is the primer pair with the lowest penalty value.
+
+        Returns:
+            DomesticatingPrimers: `left_primer` & `right_primer` attributes contain iP & iS sequences, respectively while `data` corresponds to primer regions homologous to template DNA.
+
+        Raises:
+            ValueError: If primer3 fails to identify suitable primer pairs.
+        """
+        p3py_out = self._primer3py(seq_args, global_args)
+        if p3py_out["PRIMER_PAIR_NUM_RETURNED"] == 0:
+            raise ValueError(
+                "primer3 returned no suitable primers. Refer to the primer3 documentation and change `seq_args` and/or `global_args`."
+            )
+        left_primer = p3_seqrec(p3py_out, "LEFT", left_attrs, primer_pair)
+        left_primer.seq = Seq(IP_STR) + left_primer.seq
+        right_primer = p3_seqrec(p3py_out, "RIGHT", right_attrs, primer_pair)
+        right_primer.seq = Seq(IS_STR).reverse_complement() + right_primer.seq
+        return DomesticatingPrimers(
+            left_primer,
+            right_primer,
+            data=dict(
+                item for item in p3py_out.items() if f"_{str(primer_pair)}_" in item[0]
+            ),
+        )
+
+    def to_seqrec(self) -> SeqRecord:
+        """Create a SeqRecord instance. All relevant attributes are maintained."""
+        seqrec = SeqRecord(seq=self.seq, id=self.id)
+        for key in seqrec.__dict__.keys():
+            setattr(seqrec, key, self.__dict__[key])
+        return seqrec
 
     def _find_iseq(
         self, seq: Seq, iseq_str: str, iseq_id: str = "integrated sequence"
@@ -170,6 +221,40 @@ class BasicPart(SeqRecord):
             raise ValueError(
                 f"Sequence flanked by iP and iS sequences in {self.id} is {num_base_pairs} base pairs long, this is less than 90 base pairs which is incompatible with unligated linker removal during clip reaction purification."
             )
+
+    def _primer3py(
+        self,
+        seq_args: dict = None,
+        global_args: dict = None,
+    ) -> dict:
+        """Return dictionary of primer3-py results for sequence flanked by iP and iS sequences.
+
+        Notes:
+            Refer to the primer3-py documentation for further information.
+
+        Args:
+            seq_args: Primer3 sequence arguments. If left blank chooses suitable defaults.
+            global_args: Primer3 global arguments If left blank chooses suitable defaults.
+
+        """
+        template = str(self.basic_slice().seq)
+        input_seq_args = {
+            "SEQUENCE_TEMPLATE": template,
+        }
+        if seq_args:
+            input_seq_args.update(seq_args)
+        input_global_args = {
+            "PRIMER_TASK": "generic",
+            "PRIMER_PICK_LEFT_PRIMER": 1,
+            "PRIMER_PICK_RIGHT_PRIMER": 1,
+            "PRIMER_PRODUCT_SIZE_RANGE": [[len(template), len(template)]],
+        }
+        if global_args:
+            input_global_args.update(global_args)
+        return designPrimers(
+            input_seq_args,
+            input_global_args,
+        )
 
     @property
     def seq(self):
