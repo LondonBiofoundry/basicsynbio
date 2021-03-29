@@ -77,14 +77,14 @@ def test_domesticating_primers_error(gfp_orf_basicpart):
 def test_part_pcr_primers(gfp_orf_basicpart, gfp_orf_seq):
     from basicsynbio.main import DomesticatingPrimers
     from basicsynbio.main import IP_SEQREC, IS_SEQREC
+
     domesticating_primers = gfp_orf_basicpart.domesticating_primers(
         global_args={"PRIMER_MIN_TM": 50}
     )
     assert type(domesticating_primers) == DomesticatingPrimers
     assert IP_SEQREC.seq + gfp_orf_seq[:15] in domesticating_primers.left_primer.seq
     assert (
-        IS_SEQREC.reverse_complement().seq
-        + gfp_orf_seq[-15:].reverse_complement()
+        IS_SEQREC.reverse_complement().seq + gfp_orf_seq[-15:].reverse_complement()
         in domesticating_primers.right_primer.seq
     )
 

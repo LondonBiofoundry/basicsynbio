@@ -1,8 +1,5 @@
 """Main module for basicsynbio."""
-from basicsynbio.utils import (
-    _easy_seqrec,
-    p3_seqrec
-)
+from basicsynbio.utils import _easy_seqrec, p3_seqrec
 from basicsynbio.decorators import addargs2docs, ArgDescription
 from Bio import SeqUtils, SeqIO
 from Bio.Restriction.Restriction import BsaI
@@ -52,7 +49,7 @@ class CommonArgDocs:
 
 
 @dataclass
-class DomesticatingPrimers():
+class DomesticatingPrimers:
     left_primer: SeqRecord
     right_primer: SeqRecord
     data: dict
@@ -157,25 +154,19 @@ class BasicPart(SeqRecord):
         """
         p3py_out = self._primer3py(seq_args, global_args)
         if p3py_out["PRIMER_PAIR_NUM_RETURNED"] == 0:
-            raise ValueError("primer3 returned no suitable primers. Refer to the primer3 documentation and change `seq_args` and/or `global_args`.")
-        left_primer = p3_seqrec(
-            p3py_out,
-            "LEFT",
-            left_attrs,
-            primer_pair
-        )
+            raise ValueError(
+                "primer3 returned no suitable primers. Refer to the primer3 documentation and change `seq_args` and/or `global_args`."
+            )
+        left_primer = p3_seqrec(p3py_out, "LEFT", left_attrs, primer_pair)
         left_primer.seq = Seq(IP_STR) + left_primer.seq
-        right_primer = p3_seqrec(
-            p3py_out,
-            "RIGHT",
-            right_attrs,
-            primer_pair
-        )
+        right_primer = p3_seqrec(p3py_out, "RIGHT", right_attrs, primer_pair)
         right_primer.seq = Seq(IS_STR).reverse_complement() + right_primer.seq
         return DomesticatingPrimers(
             left_primer,
             right_primer,
-            data=dict(item for item in p3py_out.items() if f"_{str(primer_pair)}_" in item[0]),
+            data=dict(
+                item for item in p3py_out.items() if f"_{str(primer_pair)}_" in item[0]
+            ),
         )
 
     def to_seqrec(self) -> SeqRecord:
