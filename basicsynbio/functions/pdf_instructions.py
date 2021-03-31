@@ -42,8 +42,10 @@ def pdf_instructions(
     is executed.
 
     Args:
+        basic_build: BasicBuild object the pdf lab instructions are written for.
         path (optional): path to zipped folder of csv files. If none defaults to
             working directory with a time stamped name, output csvs is created.
+        assemblies_per_clip (optional): amount of clips to be used in each assembly.
 
     Returns:
         str: filepath of created pdf
