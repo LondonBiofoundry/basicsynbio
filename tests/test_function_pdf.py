@@ -16,6 +16,24 @@ def test_pdf_is_built_of_expected_size(small_build_example):
     os.remove(pdffilename)
 
 
+def test_pdf_file_path(small_build_example):
+    import PyPDF2
+    import os
+    from pathlib import Path
+    from datetime import datetime
+
+    now = datetime.now()
+    filepath = str(
+        Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+    )
+    build = small_build_example
+    pdffilename = bsb.pdf_instructions(build, path=filepath)
+    file = open(pdffilename, "rb")
+    fileReader = PyPDF2.PdfFileReader(file)
+    assert fileReader.numPages == 4
+    os.remove(pdffilename)
+
+
 def test_correct_template_text_written_to_pdf(small_build_example):
     import PyPDF2
     import os
