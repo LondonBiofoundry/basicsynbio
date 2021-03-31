@@ -73,6 +73,7 @@ Pillow==8.1.2
 pkginfo==1.6.1
 platemap==0.0.10
 pluggy==0.13.1
+primer3-py==0.6.1
 proglog==0.1.9
 prometheus-client==0.8.0
 prompt-toolkit==3.0.6
