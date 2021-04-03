@@ -283,7 +283,7 @@ class BuildEncoder(json.JSONEncoder):
             dictionary: Each item describes a unique BasicPart object required for the build.
         """
         return {
-            key: {
+            str(index): {
                 "sequence": str(value["part"].seq),
                 "id": value["part"].id,
                 "name": value["part"].name,
@@ -296,7 +296,7 @@ class BuildEncoder(json.JSONEncoder):
                     for clip_reaction in value["clip_reactions"]
                 ],
             }
-            for key, value in obj.unique_parts_data.items()
+            for index, value in enumerate(obj.unique_parts_data.values())
         }
 
     @staticmethod
@@ -311,7 +311,7 @@ class BuildEncoder(json.JSONEncoder):
             dictionary: Each item describes a given unique BasicLinker object required for the build.
         """
         return {
-            key: {
+            str(index): {
                 "id": value["linker"].id,
                 "linker_class": str(type(value["linker"])),
                 "sequence": str(value["linker"].seq),
@@ -323,7 +323,7 @@ class BuildEncoder(json.JSONEncoder):
                     for clip_reaction in value["clip_reactions"]
                 ],
             }
-            for key, value in obj.unique_linkers_data.items()
+            for index, value in enumerate(obj.unique_linkers_data.values())
         }
 
     @staticmethod
@@ -338,26 +338,44 @@ class BuildEncoder(json.JSONEncoder):
             dictionary: Each item describes a given unique ClipReaction object required for the build.
         """
         return {
-            key._hexdigest(): {
+            str(index): {
                 "prefix": {
-                    "key": seqrecord_hexdigest(key._prefix),
-                    "prefix_id": key._prefix.prefix_id,
+                    "key": [
+                        uprefix_index
+                        for uprefix_index, prefix in enumerate(
+                            obj.unique_linkers_data.values()
+                        )
+                        if value[0]._prefix == prefix["linker"]
+                    ][0],
+                    "prefix_id": value[0]._prefix.prefix_id,
                 },
                 "part": {
-                    "key": seqrecord_hexdigest(key._part),
-                    "id": key._part.id,
-                    "name": key._part.name,
+                    "key": [
+                        up_index
+                        for up_index, unique_part in enumerate(
+                            obj.unique_parts_data.values()
+                        )
+                        if value[0]._part == unique_part["part"]
+                    ][0],
+                    "id": value[0]._part.id,
+                    "name": value[0]._part.name,
                 },
                 "suffix": {
-                    "key": seqrecord_hexdigest(key._suffix),
-                    "suffix_id": key._suffix.suffix_id,
+                    "key": [
+                        usuffix_index
+                        for usuffix_index, suffix in enumerate(
+                            obj.unique_linkers_data.values()
+                        )
+                        if value[0]._suffix == suffix["linker"]
+                    ][0],
+                    "suffix_id": value[0]._suffix.suffix_id,
                 },
-                "total assemblies": len(value),
+                "total assemblies": len(value[1]),
                 "assembly indexes": [
-                    obj.basic_assemblies.index(assembly) for assembly in value
+                    obj.basic_assemblies.index(assembly) for assembly in value[1]
                 ],
             }
-            for key, value in obj.clips_data.items()
+            for index, value in enumerate(obj.clips_data.items())
         }
 
     @staticmethod
@@ -376,7 +394,7 @@ class BuildEncoder(json.JSONEncoder):
             {
                 "id": assembly.id,
                 "clip reactions": [
-                    clip_reaction._hexdigest()
+                    list(obj.clips_data.keys()).index(clip_reaction)
                     for clip_reaction in assembly.clip_reactions
                 ],
             }
@@ -425,12 +443,17 @@ class BuildDecoder(json.JSONDecoder):
             for clip_reaction in assembly["clip reactions"]:
                 parts_linkers += [
                     self.unique_linkers_data[
-                        dictionary["clips_data"][clip_reaction]["prefix"]["key"]
+                        str(
+                            dictionary["clips_data"][str(clip_reaction)]["prefix"][
+                                "key"
+                            ]
+                        )
                     ],
                     self.unique_parts_data[
-                        dictionary["clips_data"][clip_reaction]["part"]["key"]
+                        str(dictionary["clips_data"][str(clip_reaction)]["part"]["key"])
                     ],
                 ]
+                print("part/linkers", parts_linkers)
             yield BasicAssembly(assembly["id"], *parts_linkers)
 
     @staticmethod
