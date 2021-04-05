@@ -68,14 +68,18 @@
 <span class="p">)</span>
 
 
-<div class="viewcode-block" id="pdf_instructions"><a class="viewcode-back" href="../../../api.html#basicsynbio.functions.pdf_instructions.pdf_instructions">[docs]</a><span class="k">def</span> <span class="nf">pdf_instructions</span><span class="p">(</span><span class="n">basic_build</span><span class="p">:</span> <span class="n">BasicBuild</span><span class="p">,</span> <span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">28</span><span class="p">):</span>
+<div class="viewcode-block" id="pdf_instructions"><a class="viewcode-back" href="../../../api.html#basicsynbio.functions.pdf_instructions.pdf_instructions">[docs]</a><span class="k">def</span> <span class="nf">pdf_instructions</span><span class="p">(</span>
+    <span class="n">basic_build</span><span class="p">:</span> <span class="n">BasicBuild</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Writes information about each clip_data and assembly to</span>
 <span class="sd">    two dependent CSV files in the same folder the command</span>
 <span class="sd">    is executed.</span>
 
 <span class="sd">    Args:</span>
+<span class="sd">        basic_build: BasicBuild object the pdf lab instructions are written for.</span>
 <span class="sd">        path (optional): path to zipped folder of csv files. If none defaults to</span>
 <span class="sd">            working directory with a time stamped name, output csvs is created.</span>
+<span class="sd">        assemblies_per_clip (optional): amount of clips to be used in each assembly.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        str: filepath of created pdf</span>
@@ -150,7 +154,14 @@
     <span class="n">CLIPS_DATA</span> <span class="o">=</span> <span class="n">clips_data_from_pandas</span><span class="p">(</span><span class="n">clips_data</span><span class="p">)</span>
     <span class="n">ASSEMBLIES_DATA</span> <span class="o">=</span> <span class="n">assembly_data_from_pandas</span><span class="p">(</span><span class="n">assemeblies_data</span><span class="p">)</span>
 
-    <span class="n">pdf_filename</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;pdf_</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y_%H.%M.%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.pdf&quot;</span>
+    <span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">pdf_filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;Echo_Instructions_</span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y_%H.%M.%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.zip&quot;</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pdf_filename</span> <span class="o">=</span> <span class="n">path</span>
+
     <span class="n">pdf</span> <span class="o">=</span> <span class="n">SimpleDocTemplate</span><span class="p">(</span><span class="n">pdf_filename</span><span class="p">,</span> <span class="n">pagesizes</span><span class="o">=</span><span class="n">A4</span><span class="p">)</span>
 
     <span class="n">elems</span> <span class="o">=</span> <span class="p">[]</span>
@@ -447,7 +458,7 @@
     <span class="p">)</span>
     <span class="n">pdf</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">elems</span><span class="p">,</span> <span class="n">canvasmaker</span><span class="o">=</span><span class="n">PageNumCanvas</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">pdf_filename</span></div>
+    <span class="k">return</span> <span class="n">pdf_filename</span></div>
 </pre></div>
 
           </div>

@@ -34,14 +34,18 @@ from basicsynbio.utils import (
 )
 
 
-def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
+def pdf_instructions(
+    basic_build: BasicBuild, path: str = None, assemblies_per_clip: int = 28
+):
     """Writes information about each clip_data and assembly to
     two dependent CSV files in the same folder the command
     is executed.
 
     Args:
+        basic_build: BasicBuild object the pdf lab instructions are written for.
         path (optional): path to zipped folder of csv files. If none defaults to
             working directory with a time stamped name, output csvs is created.
+        assemblies_per_clip (optional): amount of clips to be used in each assembly.
 
     Returns:
         str: filepath of created pdf
@@ -116,7 +120,14 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
     CLIPS_DATA = clips_data_from_pandas(clips_data)
     ASSEMBLIES_DATA = assembly_data_from_pandas(assemeblies_data)
 
-    pdf_filename = f"pdf_{datetime.now().strftime('%d-%m-%Y_%H.%M.%S')}.pdf"
+    if path == None:
+        now = datetime.now()
+        pdf_filename = str(
+            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+        )
+    else:
+        pdf_filename = path
+
     pdf = SimpleDocTemplate(pdf_filename, pagesizes=A4)
 
     elems = []
@@ -413,4 +424,4 @@ def pdf_instructions(basic_build: BasicBuild, assemblies_per_clip: int = 28):
     )
     pdf.build(elems, canvasmaker=PageNumCanvas)
 
-    return Path.cwd() / pdf_filename
+    return pdf_filename

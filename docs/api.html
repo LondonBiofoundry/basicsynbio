@@ -802,14 +802,18 @@ attributes</p>
 <span id="pdf-instructions-py"></span><h2>pdf_instructions.py<a class="headerlink" href="#module-basicsynbio.functions.pdf_instructions" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
 <dt id="basicsynbio.functions.pdf_instructions.pdf_instructions">
-<code class="sig-prename descclassname">basicsynbio.functions.pdf_instructions.</code><code class="sig-name descname">pdf_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/functions/pdf_instructions.html#pdf_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.functions.pdf_instructions.pdf_instructions" title="Permalink to this definition">¶</a></dt>
+<code class="sig-prename descclassname">basicsynbio.functions.pdf_instructions.</code><code class="sig-name descname">pdf_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/functions/pdf_instructions.html#pdf_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.functions.pdf_instructions.pdf_instructions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes information about each clip_data and assembly to
 two dependent CSV files in the same folder the command
 is executed.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to
-working directory with a time stamped name, output csvs is created.</p>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>basic_build</strong> – BasicBuild object the pdf lab instructions are written for.</p></li>
+<li><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to
+working directory with a time stamped name, output csvs is created.</p></li>
+<li><p><strong>assemblies_per_clip</strong> (<em>optional</em>) – amount of clips to be used in each assembly.</p></li>
+</ul>
 </dd>
 <dt class="field-even">Returns</dt>
 <dd class="field-even"><p>filepath of created pdf</p>
