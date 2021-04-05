@@ -26,13 +26,13 @@ decorators.py
     :members:
 
 pdf_instructions.py
--------------
+-------------------
 
 .. automodule:: basicsynbio.functions.pdf_instructions
     :members:
 
 echo_instructions.py
--------------
+--------------------
 
 .. automodule:: basicsynbio.functions.echo_instructions
     :members:
