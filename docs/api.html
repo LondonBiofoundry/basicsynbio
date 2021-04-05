@@ -798,6 +798,60 @@ attributes</p>
 </dd></dl>
 
 </div>
+<div class="section" id="module-basicsynbio.functions.pdf_instructions">
+<span id="pdf-instructions-py"></span><h2>pdf_instructions.py<a class="headerlink" href="#module-basicsynbio.functions.pdf_instructions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="basicsynbio.functions.pdf_instructions.pdf_instructions">
+<code class="sig-prename descclassname">basicsynbio.functions.pdf_instructions.</code><code class="sig-name descname">pdf_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/functions/pdf_instructions.html#pdf_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.functions.pdf_instructions.pdf_instructions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes information about each clip_data and assembly to
+two dependent CSV files in the same folder the command
+is executed.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to
+working directory with a time stamped name, output csvs is created.</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>filepath of created pdf</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="module-basicsynbio.functions.echo_instructions">
+<span id="echo-instructions-py"></span><h2>echo_instructions.py<a class="headerlink" href="#module-basicsynbio.functions.echo_instructions" title="Permalink to this headline">¶</a></h2>
+<dl class="py function">
+<dt id="basicsynbio.functions.echo_instructions.export_echo_assembly">
+<code class="sig-prename descclassname">basicsynbio.functions.echo_instructions.</code><code class="sig-name descname">export_echo_assembly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffer_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A1'</span></em>, <em class="sig-param"><span class="n">water_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'B1'</span></em>, <em class="sig-param"><span class="n">alternate_well</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/functions/echo_instructions.html#export_echo_assembly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.functions.echo_instructions.export_echo_assembly" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes automation scripts for a echo liquid handler to build assemblies from clips.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to
+working directory with a time stamped name, output csvs is created.</p></li>
+<li><p><strong>buffer_well</strong> (<em>optional</em>) – location in 6 well plate of assembly buffer.</p></li>
+<li><p><strong>water_well</strong> (<em>optional</em>) – location in 6 well plate of dH20.</p></li>
+<li><p><strong>alternate_well</strong> (<em>optional</em>) – specifies whether alternating wells are to be used in the input 384 well plate.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>Path of zip file containing echo automation scripts</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – If water_well or buffer_well is not in [“A1”, “B1”, “A2”, “B2”, “A3”, “B3”]; if self contains
+    96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
+    or 192 for alternate_well(False).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
 </div>
 
 
@@ -828,6 +882,8 @@ attributes</p>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.bsb_io">bsb_io.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.cam">cam.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.decorators">decorators.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.functions.pdf_instructions">pdf_instructions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.functions.echo_instructions">echo_instructions.py</a></li>
 </ul>
 </li>
 </ul>
