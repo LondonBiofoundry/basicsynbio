@@ -292,7 +292,7 @@ class BuildEncoder(json.JSONEncoder):
                 "stock per 30 µL clip (µL)": 1,
                 "total clip reactions": len(value["clip_reactions"]),
                 "clip reactions": [
-                    clip_reaction._hexdigest()
+                    list(obj.clips_data.keys()).index(clip_reaction)
                     for clip_reaction in value["clip_reactions"]
                 ],
             }
@@ -319,7 +319,7 @@ class BuildEncoder(json.JSONEncoder):
                 "suffix_id": value["linker"].suffix_id,
                 "total clip reactions": len(value["clip_reactions"]),
                 "clip reactions": [
-                    clip_reaction._hexdigest()
+                    list(obj.clips_data.keys()).index(clip_reaction)
                     for clip_reaction in value["clip_reactions"]
                 ],
             }
