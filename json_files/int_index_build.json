@@ -9,7 +9,7 @@
             "stock per 30 µL clip (µL)": 1,
             "total clip reactions": 1,
             "clip reactions": [
-                "35aadc07d7877c0aa3037c099fe1722f"
+                0
             ]
         },
         "1": {
@@ -21,7 +21,7 @@
             "stock per 30 µL clip (µL)": 1,
             "total clip reactions": 1,
             "clip reactions": [
-                "01762d28fcd1824624b1db25274266ec"
+                1
             ]
         },
         "2": {
@@ -33,7 +33,7 @@
             "stock per 30 µL clip (µL)": 1,
             "total clip reactions": 1,
             "clip reactions": [
-                "798885a8b5385a84bfb0efc0ac0c5876"
+                2
             ]
         }
     },
@@ -46,8 +46,8 @@
             "suffix_id": "LMS-S",
             "total clip reactions": 2,
             "clip reactions": [
-                "35aadc07d7877c0aa3037c099fe1722f",
-                "798885a8b5385a84bfb0efc0ac0c5876"
+                0,
+                2
             ]
         },
         "1": {
@@ -58,7 +58,7 @@
             "suffix_id": "LMP-S",
             "total clip reactions": 1,
             "clip reactions": [
-                "01762d28fcd1824624b1db25274266ec"
+                1
             ]
         }
     },
