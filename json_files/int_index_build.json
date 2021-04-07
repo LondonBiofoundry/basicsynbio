@@ -9,7 +9,7 @@
             "stock per 30 µL clip (µL)": 1,
             "total clip reactions": 1,
             "clip reactions": [
-                0
+                "0"
             ]
         },
         "1": {
@@ -21,7 +21,7 @@
             "stock per 30 µL clip (µL)": 1,
             "total clip reactions": 1,
             "clip reactions": [
-                1
+                "1"
             ]
         },
         "2": {
@@ -33,7 +33,7 @@
             "stock per 30 µL clip (µL)": 1,
             "total clip reactions": 1,
             "clip reactions": [
-                2
+                "2"
             ]
         }
     },
@@ -46,8 +46,8 @@
             "suffix_id": "LMS-S",
             "total clip reactions": 2,
             "clip reactions": [
-                0,
-                2
+                "0",
+                "2"
             ]
         },
         "1": {
@@ -58,85 +58,85 @@
             "suffix_id": "LMP-S",
             "total clip reactions": 1,
             "clip reactions": [
-                1
+                "1"
             ]
         }
     },
     "clips_data": {
         "0": {
             "prefix": {
-                "key": 0,
+                "key": "0",
                 "prefix_id": "LMS-P"
             },
             "part": {
-                "key": 0,
+                "key": "0",
                 "id": "bb90c9b9713d85ff695493fde3f0051a",
                 "name": "BASIC_SEVA_18"
             },
             "suffix": {
-                "key": 1,
+                "key": "1",
                 "suffix_id": "LMP-S"
             },
             "total assemblies": 1,
             "assembly indexes": [
-                0
+                "0"
             ]
         },
         "1": {
             "prefix": {
-                "key": 1,
+                "key": "1",
                 "prefix_id": "LMP-P"
             },
             "part": {
-                "key": 1,
+                "key": "1",
                 "id": "f3eb90a77c18c828cc1c0e2ce99d9f83",
                 "name": "BASIC_sfGFP_CDS"
             },
             "suffix": {
-                "key": 0,
+                "key": "0",
                 "suffix_id": "LMS-S"
             },
             "total assemblies": 2,
             "assembly indexes": [
-                0,
-                1
+                "0",
+                "1"
             ]
         },
         "2": {
             "prefix": {
-                "key": 0,
+                "key": "0",
                 "prefix_id": "LMS-P"
             },
             "part": {
-                "key": 2,
+                "key": "2",
                 "id": "c92d2eb763c0cd5a28e50d32a195c621",
                 "name": "BASIC_SEVA_26"
             },
             "suffix": {
-                "key": 1,
+                "key": "1",
                 "suffix_id": "LMP-S"
             },
             "total assemblies": 1,
             "assembly indexes": [
-                1
+                "1"
             ]
         }
     },
-    "assembly_data": [
-        {
+    "assembly_data": {
+        "0": {
             "id": "First_Assembly_With_18",
             "clip reactions": [
-                0,
-                1
+                "0",
+                "1"
             ]
         },
-        {
+        "1": {
             "id": "Second_Assembly_With_26",
             "clip reactions": [
-                2,
-                1
+                "2",
+                "1"
             ]
         }
-    ],
+    },
     "__BasicBuild__": true
 }
