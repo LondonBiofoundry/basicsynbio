@@ -588,7 +588,7 @@ class ClipReaction:
         Returns:
             string: hash of tuple containing, prefix_id, part_id and suffix_id
         """
-        return hash((self._prefix.id, self._part.id, self._suffix.id))
+        return hash((self._prefix.seq, self._part.seq, self._suffix.seq))
 
     def __eq__(self, other) -> bool:
         """The function test if an object `other` is equal to this `ClipReaction`.

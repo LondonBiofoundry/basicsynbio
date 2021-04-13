@@ -70,19 +70,22 @@ class BasicBuild:
         self.basic_assemblies = basic_assemblies
         self.clips_data = self._return_clips_data()
         self.unique_clips = tuple(clip for clip in self.clips_data.keys())
-        self.unique_parts_data = self._unique_parts_linkers_data(
-            "part", *(clip_reaction._part for clip_reaction in self.clips_data)
+        self.unique_parts_data = self._unique_parts_data(
+            *(clip_reaction._part for clip_reaction in self.clips_data)
         )
-        self.unique_linkers_data = self._unique_parts_linkers_data(
-            "linker", *(clip_reaction._prefix for clip_reaction in self.clips_data)
+        self.unique_linkers_data = self._unique_linkers_data(
+            *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
         for clip_reaction in self.unique_clips:
-            part_hash = seqrecord_hexdigest(clip_reaction._part)
-            prefix_hash = seqrecord_hexdigest(clip_reaction._prefix)
-            self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
-            self.unique_linkers_data[prefix_hash]["clip_reactions"].append(
+            self.unique_parts_data[clip_reaction._part.seq]["clip reactions"].append(
                 clip_reaction
             )
+            self.unique_linkers_data[clip_reaction._prefix.seq][
+                "prefix clip reactions"
+            ].append(clip_reaction)
+            self.unique_linkers_data[clip_reaction._suffix.seq][
+                "suffix clip reactions"
+            ].append(clip_reaction)
         self.unique_parts = tuple(
             part_dict["part"] for part_dict in self.unique_parts_data.values()
         )
@@ -93,27 +96,27 @@ class BasicBuild:
     def update_parts(self, *parts: BasicPart) -> None:
         """Updates BasicBuild instance with parts.
 
-        Replaces all existing BasicParts used in assemblies with the matching equivalent in parts. Parts are considered equivalent if seqrecord_hexdigest() returns identical values for both.
+        Replaces all existing BasicParts used in assemblies with the matching equivalent in parts.
 
         Args:
             parts: parts to replace the BasicParts used in
                 assemblies
 
         Raises:
-            ValueError: if length parts is not equal to lenght this build's
+            ValueError: if length parts is not equal to length this build's
                 unique parts
         """
         if len(parts) != len(self.unique_parts_data):
             raise ValueError(
                 f"length of *parts is {len(parts)} whereas self.unqiue_parts has {len(self.unique_parts_data)} elements. The two must match."
             )
-        parts_dict = self._unique_parts_linkers_data("part", *parts)
+        parts_dict = self._unique_parts_data(*parts)
         basic_assemblies = []
         for assembly in self.basic_assemblies:
             parts_linkers = [
                 part_linker
                 if isinstance(part_linker, BasicLinker)
-                else parts_dict[seqrecord_hexdigest(part_linker)]["part"]
+                else parts_dict[part_linker.seq]["part"]
                 for part_linker in assembly.parts_linkers
             ]
             basic_assemblies.append(BasicAssembly(assembly.id, *parts_linkers))
@@ -139,27 +142,44 @@ class BasicBuild:
                 clips_dict[clip_reaction].append(assembly)
         return clips_dict
 
-    def _unique_parts_linkers_data(
-        self, object_key: str, *parts_linkers: Union[BasicPart, BasicLinker]
-    ) -> Dict[str, dict]:
-        """Returns a dictionary of unique objects in parts_linkers. Includes
+    def _unique_parts_data(self, *parts: BasicPart) -> Dict[Seq, dict]:
+        """Returns a dictionary of unique objects in parts. Includes
         an empty list for each item to populate with clip_reactions used by
-        each unique part/linker.
+        each unique part.
 
         Args:
-            object_key: can be "part" or "linker".
-            parts_linkers: collection of parts and linkers present within build
+            parts: collection of parts present within build
                 used to search through for uniqueness.
 
         Returns:
-            dict: hexdigest of part/linker along with a sub-dictionary containing part/linker and empty list for populating associated clip_reactions.
+            dict: seq attribute of part along with a sub-dictionary containing part and empty list for populating associated clip_reactions.
         """
         return {
-            seqrecord_hexdigest(part_linker): {
-                object_key: part_linker,
-                "clip_reactions": [],
+            part.seq: {
+                "part": part,
+                "clip reactions": [],
             }
-            for part_linker in parts_linkers
+            for part in parts
+        }
+
+    def _unique_linkers_data(self, *linkers: BasicLinker) -> Dict[Seq, dict]:
+        """Returns a dictionary of unique objects in linkers. Includes
+        an empty lists to populate with clip_reactions using prefix or suffix linkers.
+
+        Args:
+            linkers: collection of linkers present within build
+                used to search through for uniqueness.
+
+        Returns:
+            dict: seq attribute of linker along with a sub-dictionary containing linker and empty list for populating associated clip_reactions.
+        """
+        return {
+            linker.seq: {
+                "linker": linker,
+                "prefix clip reactions": [],
+                "suffix clip reactions": [],
+            }
+            for linker in linkers
         }
 
     def _duplicate_assembly_ids(self, assemblies):
@@ -283,20 +303,21 @@ class BuildEncoder(json.JSONEncoder):
             dictionary: Each item describes a unique BasicPart object required for the build.
         """
         return {
-            key: {
+            "UP"
+            + str(index): {
                 "sequence": str(value["part"].seq),
                 "id": value["part"].id,
                 "name": value["part"].name,
                 "description": value["part"].description,
                 "suggested stock concentration (ng/µL)": value["part"].concentration(),
                 "stock per 30 µL clip (µL)": 1,
-                "total clip reactions": len(value["clip_reactions"]),
+                "total clip reactions": len(value["clip reactions"]),
                 "clip reactions": [
-                    clip_reaction._hexdigest()
-                    for clip_reaction in value["clip_reactions"]
+                    "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
+                    for clip_reaction in value["clip reactions"]
                 ],
             }
-            for key, value in obj.unique_parts_data.items()
+            for index, value in enumerate(obj.unique_parts_data.values())
         }
 
     @staticmethod
@@ -311,19 +332,25 @@ class BuildEncoder(json.JSONEncoder):
             dictionary: Each item describes a given unique BasicLinker object required for the build.
         """
         return {
-            key: {
+            "UL"
+            + str(index): {
                 "id": value["linker"].id,
                 "linker_class": str(type(value["linker"])),
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
-                "total clip reactions": len(value["clip_reactions"]),
-                "clip reactions": [
-                    clip_reaction._hexdigest()
-                    for clip_reaction in value["clip_reactions"]
+                "total prefix clip reactions": len(value["prefix clip reactions"]),
+                "total suffix clip reactions": len(value["suffix clip reactions"]),
+                "prefix clip reactions": [
+                    "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
+                    for clip_reaction in value["prefix clip reactions"]
+                ],
+                "suffix clip reactions": [
+                    "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
+                    for clip_reaction in value["suffix clip reactions"]
                 ],
             }
-            for key, value in obj.unique_linkers_data.items()
+            for index, value in enumerate(obj.unique_linkers_data.values())
         }
 
     @staticmethod
@@ -337,27 +364,31 @@ class BuildEncoder(json.JSONEncoder):
         Returns:
             dictionary: Each item describes a given unique ClipReaction object required for the build.
         """
+        linker_seqs = [linker_seq for linker_seq in obj.unique_linkers_data.keys()]
+        part_seqs = [part_seq for part_seq in obj.unique_parts_data.keys()]
         return {
-            key._hexdigest(): {
+            "CR"
+            + str(index): {
                 "prefix": {
-                    "key": seqrecord_hexdigest(key._prefix),
-                    "prefix_id": key._prefix.prefix_id,
+                    "key": "UL" + str(linker_seqs.index(value[0]._prefix.seq)),
+                    "prefix_id": value[0]._prefix.prefix_id,
                 },
                 "part": {
-                    "key": seqrecord_hexdigest(key._part),
-                    "id": key._part.id,
-                    "name": key._part.name,
+                    "key": "UP" + str(part_seqs.index(value[0]._part.seq)),
+                    "id": value[0]._part.id,
+                    "name": value[0]._part.name,
                 },
                 "suffix": {
-                    "key": seqrecord_hexdigest(key._suffix),
-                    "suffix_id": key._suffix.suffix_id,
+                    "key": "UL" + str(linker_seqs.index(value[0]._suffix.seq)),
+                    "suffix_id": value[0]._suffix.suffix_id,
                 },
-                "total assemblies": len(value),
-                "assembly indexes": [
-                    obj.basic_assemblies.index(assembly) for assembly in value
+                "total assemblies": len(value[1]),
+                "assembly keys": [
+                    "A" + str(obj.basic_assemblies.index(assembly))
+                    for assembly in value[1]
                 ],
             }
-            for key, value in obj.clips_data.items()
+            for index, value in enumerate(obj.clips_data.items())
         }
 
     @staticmethod
@@ -372,16 +403,17 @@ class BuildEncoder(json.JSONEncoder):
             list: returns a list of dictionaries populated by
             dictionaries with items describing BasicAssemblies generated by the build.
         """
-        return [
-            {
+        return {
+            "A"
+            + str(index): {
                 "id": assembly.id,
                 "clip reactions": [
-                    clip_reaction._hexdigest()
+                    "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
                     for clip_reaction in assembly.clip_reactions
                 ],
             }
-            for assembly in obj.basic_assemblies
-        ]
+            for index, assembly in enumerate(obj.basic_assemblies)
+        }
 
 
 class BuildDecoder(json.JSONDecoder):
@@ -420,7 +452,7 @@ class BuildDecoder(json.JSONDecoder):
         Yields:
             BasicAssembly: BasicAssembly objects within encoded BasicBuild
         """
-        for assembly in dictionary["assembly_data"]:
+        for assembly in dictionary["assembly_data"].values():
             parts_linkers = []
             for clip_reaction in assembly["clip reactions"]:
                 parts_linkers += [
@@ -431,6 +463,7 @@ class BuildDecoder(json.JSONDecoder):
                         dictionary["clips_data"][clip_reaction]["part"]["key"]
                     ],
                 ]
+                print("part/linkers", parts_linkers)
             yield BasicAssembly(assembly["id"], *parts_linkers)
 
     @staticmethod

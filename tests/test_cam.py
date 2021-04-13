@@ -82,6 +82,40 @@ def test_type_of_unique_linkers_is_tuple_of_parts(promoter_assemblies_build):
     assert isinstance(promoter_assemblies_build.unique_linkers[0], bsb.BasicLinker)
 
 
+def test_unique_linkers_data_clips(promoter_assemblies_build):
+    lmp = bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMP"]
+    lmp_prefix_instances = len(
+        [
+            clip_reaction
+            for clip_reaction in promoter_assemblies_build.unique_clips
+            if clip_reaction._prefix == lmp
+        ]
+    )
+    lmp_suffix_instances = len(
+        [
+            clip_reaction
+            for clip_reaction in promoter_assemblies_build.unique_clips
+            if clip_reaction._suffix == lmp
+        ]
+    )
+    assert (
+        len(
+            promoter_assemblies_build.unique_linkers_data[lmp.seq][
+                "prefix clip reactions"
+            ]
+        )
+        == lmp_prefix_instances
+    )
+    assert (
+        len(
+            promoter_assemblies_build.unique_linkers_data[lmp.seq][
+                "suffix clip reactions"
+            ]
+        )
+        == lmp_suffix_instances
+    )
+
+
 def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_build):
     import json
 
@@ -94,7 +128,6 @@ def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_b
 
 def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     import json
-    from basicsynbio.cam import seqrecord_hexdigest
 
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     original_parts = (
@@ -102,7 +135,7 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
         for part_dict in promoter_assemblies_build.unique_parts_data.values()
     )
     decoded_build.update_parts(*original_parts)
-    sfgfp_hash = seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
+    sfgfp_hash = bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"].seq
     assert (
         compare_seqrec_instances(
             decoded_build.unique_parts_data[sfgfp_hash]["part"],
