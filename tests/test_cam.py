@@ -94,7 +94,6 @@ def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_b
 
 def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
     import json
-    from basicsynbio.cam import seqrecord_hexdigest
 
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     original_parts = (
@@ -102,7 +101,7 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
         for part_dict in promoter_assemblies_build.unique_parts_data.values()
     )
     decoded_build.update_parts(*original_parts)
-    sfgfp_hash = seqrecord_hexdigest(bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"])
+    sfgfp_hash = bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"].seq
     assert (
         compare_seqrec_instances(
             decoded_build.unique_parts_data[sfgfp_hash]["part"],

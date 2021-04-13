@@ -77,12 +77,12 @@ class BasicBuild:
             "linker", *(clip_reaction._prefix for clip_reaction in self.clips_data)
         )
         for clip_reaction in self.unique_clips:
-            part_hash = seqrecord_hexdigest(clip_reaction._part)
-            prefix_hash = seqrecord_hexdigest(clip_reaction._prefix)
-            self.unique_parts_data[part_hash]["clip_reactions"].append(clip_reaction)
-            self.unique_linkers_data[prefix_hash]["clip_reactions"].append(
+            self.unique_parts_data[clip_reaction._part.seq]["clip_reactions"].append(
                 clip_reaction
             )
+            self.unique_linkers_data[clip_reaction._prefix.seq][
+                "clip_reactions"
+            ].append(clip_reaction)
         self.unique_parts = tuple(
             part_dict["part"] for part_dict in self.unique_parts_data.values()
         )
@@ -93,14 +93,14 @@ class BasicBuild:
     def update_parts(self, *parts: BasicPart) -> None:
         """Updates BasicBuild instance with parts.
 
-        Replaces all existing BasicParts used in assemblies with the matching equivalent in parts. Parts are considered equivalent if seqrecord_hexdigest() returns identical values for both.
+        Replaces all existing BasicParts used in assemblies with the matching equivalent in parts.
 
         Args:
             parts: parts to replace the BasicParts used in
                 assemblies
 
         Raises:
-            ValueError: if length parts is not equal to lenght this build's
+            ValueError: if length parts is not equal to length this build's
                 unique parts
         """
         if len(parts) != len(self.unique_parts_data):
@@ -113,7 +113,7 @@ class BasicBuild:
             parts_linkers = [
                 part_linker
                 if isinstance(part_linker, BasicLinker)
-                else parts_dict[seqrecord_hexdigest(part_linker)]["part"]
+                else parts_dict[part_linker.seq]["part"]
                 for part_linker in assembly.parts_linkers
             ]
             basic_assemblies.append(BasicAssembly(assembly.id, *parts_linkers))
@@ -152,10 +152,10 @@ class BasicBuild:
                 used to search through for uniqueness.
 
         Returns:
-            dict: hexdigest of part/linker along with a sub-dictionary containing part/linker and empty list for populating associated clip_reactions.
+            dict: seq attribute of part/linker along with a sub-dictionary containing part/linker and empty list for populating associated clip_reactions.
         """
         return {
-            seqrecord_hexdigest(part_linker): {
+            part_linker.seq: {
                 object_key: part_linker,
                 "clip_reactions": [],
             }
@@ -337,42 +337,30 @@ class BuildEncoder(json.JSONEncoder):
         Returns:
             dictionary: Each item describes a given unique ClipReaction object required for the build.
         """
+        linker_seqs = [
+            linker_seq for linker_seq in obj.unique_linkers_data.keys()
+        ]
+        part_seqs = [
+            part_seq for part_seq in obj.unique_parts_data.keys()
+        ]
         return {
             str(index): {
                 "prefix": {
                     "key": str(
-                        [
-                            uprefix_index
-                            for uprefix_index, prefix in enumerate(
-                                obj.unique_linkers_data.values()
-                            )
-                            if value[0]._prefix == prefix["linker"]
-                        ][0]
+                        linker_seqs.index(value[0]._prefix.seq)
                     ),
                     "prefix_id": value[0]._prefix.prefix_id,
                 },
                 "part": {
                     "key": str(
-                        [
-                            up_index
-                            for up_index, unique_part in enumerate(
-                                obj.unique_parts_data.values()
-                            )
-                            if value[0]._part == unique_part["part"]
-                        ][0]
+                        part_seqs.index(value[0]._part.seq)
                     ),
                     "id": value[0]._part.id,
                     "name": value[0]._part.name,
                 },
                 "suffix": {
                     "key": str(
-                        [
-                            usuffix_index
-                            for usuffix_index, suffix in enumerate(
-                                obj.unique_linkers_data.values()
-                            )
-                            if value[0]._suffix == suffix["linker"]
-                        ][0]
+                        linker_seqs.index(value[0]._suffix.seq)
                     ),
                     "suffix_id": value[0]._suffix.suffix_id,
                 },
