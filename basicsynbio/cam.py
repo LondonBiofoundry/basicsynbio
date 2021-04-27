@@ -134,11 +134,11 @@ class BasicBuild:
             **{
                 clip_reaction: []
                 for assembly in self.basic_assemblies
-                for clip_reaction in assembly.clip_reactions
+                for clip_reaction in assembly._clip_reactions
             }
         )
         for assembly in self.basic_assemblies:
-            for clip_reaction in assembly.clip_reactions:
+            for clip_reaction in assembly._clip_reactions:
                 clips_dict[clip_reaction].append(assembly)
         return clips_dict
 
@@ -251,7 +251,7 @@ class BasicBuild:
                         "Assembly ID": assembly.id,
                         "Clip indexes": [
                             self.unique_clips.index(clip_reaction) + 1
-                            for clip_reaction in assembly.clip_reactions
+                            for clip_reaction in assembly._clip_reactions
                         ],
                     }
                 )
@@ -409,7 +409,7 @@ class BuildEncoder(json.JSONEncoder):
                 "id": assembly.id,
                 "clip reactions": [
                     "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
-                    for clip_reaction in assembly.clip_reactions
+                    for clip_reaction in assembly._clip_reactions
                 ],
             }
             for index, assembly in enumerate(obj.basic_assemblies)

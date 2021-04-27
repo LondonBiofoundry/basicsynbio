@@ -154,7 +154,7 @@ def test_BasicAssembly_clips(
                 )
             )
     for clip in clips:
-        assert clip in five_part_assembly.clip_reactions
+        assert clip in five_part_assembly._clip_reactions
 
 
 @pytest.mark.skip(reason="people should realise this is a bad idea!")
@@ -165,7 +165,7 @@ def test_assembly_monkey_clips(five_part_assembly):
         bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"],
         bsb.BASIC_BIOLEGIO_LINKERS["v0.1"]["LMS"],
     )
-    assert len(five_part_assembly.clip_reactions) == len(
+    assert len(five_part_assembly._clip_reactions) == len(
         [
             part
             for part in five_part_assembly.parts_linkers
