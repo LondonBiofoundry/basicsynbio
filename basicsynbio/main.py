@@ -378,8 +378,6 @@ class BasicAssembly:
             object.
         parts_linkers: tuple of BasicPart and BasicLinker objects used to
             create this assembly.
-        clip_reactions: The :py:class:`ClipReaction` instances required
-            for BASIC assembly.
     """
 
     def __init__(self, id: str, *parts_linkers: Union[BasicPart, BasicLinker]):
@@ -402,7 +400,6 @@ class BasicAssembly:
             )
         self.id = id
         self.parts_linkers = parts_linkers
-        self.clip_reactions = self.return_clip_reactions()
 
     @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def return_part(self, **kwargs) -> BasicPart:
@@ -464,7 +461,8 @@ class BasicAssembly:
         self._check_clip_reactions(clip_reactions)
         return tuple(clip_reactions)
 
-    def _check_clip_reactions(self, clip_reactions):
+    @staticmethod
+    def _check_clip_reactions(clip_reactions):
         """Checks `ClipReactions` are compatible e.g. same half linker not used
         multiple times.
 
@@ -525,6 +523,7 @@ class BasicAssembly:
                 f"BasicAssembly instance with id:{self.id}, initiated with an odd number of BasicPart/BasicLinker objects. An even number is a requirement."
             )
         self._parts_linkers = values
+        self._clip_reactions = self.return_clip_reactions()
 
 
 class ClipReaction:
