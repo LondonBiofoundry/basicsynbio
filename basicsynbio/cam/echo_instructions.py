@@ -97,7 +97,7 @@ def export_echo_assembly(
             for index, assembly in enumerate(set_of_96_assemblies):
                 for clip in [
                     basic_build.unique_clips.index(clip_reaction)
-                    for clip_reaction in assembly.clip_reactions
+                    for clip_reaction in assembly._clip_reactions
                 ]:
                     thewriter_clips.writerow(
                         {
@@ -128,7 +128,7 @@ def export_echo_assembly(
                         * len(
                             [
                                 basic_build.unique_clips.index(clip_reaction)
-                                for clip_reaction in assembly.clip_reactions
+                                for clip_reaction in assembly._clip_reactions
                             ]
                         ),
                     }
