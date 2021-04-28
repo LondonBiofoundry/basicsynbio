@@ -68,30 +68,6 @@ class BasicBuild:
             *basic_assemblies: BasicAssembly objects.
         """
         self.basic_assemblies = basic_assemblies
-        self.clips_data = self._return_clips_data()
-        self.unique_clips = tuple(clip for clip in self.clips_data.keys())
-        self.unique_parts_data = self._unique_parts_data(
-            *(clip_reaction._part for clip_reaction in self.clips_data)
-        )
-        self.unique_linkers_data = self._unique_linkers_data(
-            *(clip_reaction._prefix for clip_reaction in self.clips_data)
-        )
-        for clip_reaction in self.unique_clips:
-            self.unique_parts_data[clip_reaction._part.seq]["clip reactions"].append(
-                clip_reaction
-            )
-            self.unique_linkers_data[clip_reaction._prefix.seq][
-                "prefix clip reactions"
-            ].append(clip_reaction)
-            self.unique_linkers_data[clip_reaction._suffix.seq][
-                "suffix clip reactions"
-            ].append(clip_reaction)
-        self.unique_parts = tuple(
-            part_dict["part"] for part_dict in self.unique_parts_data.values()
-        )
-        self.unique_linkers = tuple(
-            linker_dict["linker"] for linker_dict in self.unique_linkers_data.values()
-        )
 
     def update_parts(self, *parts: BasicPart) -> None:
         """Updates BasicBuild instance with parts.
@@ -200,6 +176,30 @@ class BasicBuild:
             raise TypeError("Not all *basic_assemblies are BasicAssembly instances.")
         self._duplicate_assembly_ids(values)
         self._basic_assemblies = values
+        self.clips_data = self._return_clips_data()
+        self.unique_clips = tuple(clip for clip in self.clips_data.keys())
+        self.unique_parts_data = self._unique_parts_data(
+            *(clip_reaction._part for clip_reaction in self.clips_data)
+        )
+        self.unique_linkers_data = self._unique_linkers_data(
+            *(clip_reaction._prefix for clip_reaction in self.clips_data)
+        )
+        for clip_reaction in self.unique_clips:
+            self.unique_parts_data[clip_reaction._part.seq]["clip reactions"].append(
+                clip_reaction
+            )
+            self.unique_linkers_data[clip_reaction._prefix.seq][
+                "prefix clip reactions"
+            ].append(clip_reaction)
+            self.unique_linkers_data[clip_reaction._suffix.seq][
+                "suffix clip reactions"
+            ].append(clip_reaction)
+        self.unique_parts = tuple(
+            part_dict["part"] for part_dict in self.unique_parts_data.values()
+        )
+        self.unique_linkers = tuple(
+            linker_dict["linker"] for linker_dict in self.unique_linkers_data.values()
+        )
 
 
 class BuildEncoder(json.JSONEncoder):
