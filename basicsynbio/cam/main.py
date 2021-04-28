@@ -158,6 +158,25 @@ class BasicBuild:
             for linker in linkers
         }
 
+    def _set_unique_parts_linkers_data(self) -> None:
+        """sets unique_part_data and unique_linker_data attributes."""
+        self.unique_parts_data = self._unique_parts_data(
+            *(clip_reaction._part for clip_reaction in self.clips_data)
+        )
+        self.unique_linkers_data = self._unique_linkers_data(
+            *(clip_reaction._prefix for clip_reaction in self.clips_data)
+        )
+        for clip_reaction in self.unique_clips:
+            self.unique_parts_data[clip_reaction._part.seq]["clip reactions"].append(
+                clip_reaction
+            )
+            self.unique_linkers_data[clip_reaction._prefix.seq][
+                "prefix clip reactions"
+            ].append(clip_reaction)
+            self.unique_linkers_data[clip_reaction._suffix.seq][
+                "suffix clip reactions"
+            ].append(clip_reaction)
+
     def _duplicate_assembly_ids(self, assemblies):
         assemblies_ids = [assembly.id for assembly in assemblies]
         if len(set(assemblies_ids)) < len(assemblies):
@@ -178,22 +197,7 @@ class BasicBuild:
         self._basic_assemblies = values
         self.clips_data = self._return_clips_data()
         self.unique_clips = tuple(clip for clip in self.clips_data.keys())
-        self.unique_parts_data = self._unique_parts_data(
-            *(clip_reaction._part for clip_reaction in self.clips_data)
-        )
-        self.unique_linkers_data = self._unique_linkers_data(
-            *(clip_reaction._prefix for clip_reaction in self.clips_data)
-        )
-        for clip_reaction in self.unique_clips:
-            self.unique_parts_data[clip_reaction._part.seq]["clip reactions"].append(
-                clip_reaction
-            )
-            self.unique_linkers_data[clip_reaction._prefix.seq][
-                "prefix clip reactions"
-            ].append(clip_reaction)
-            self.unique_linkers_data[clip_reaction._suffix.seq][
-                "suffix clip reactions"
-            ].append(clip_reaction)
+        self._set_unique_parts_linkers_data()
         self.unique_parts = tuple(
             part_dict["part"] for part_dict in self.unique_parts_data.values()
         )
