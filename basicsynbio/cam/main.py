@@ -236,7 +236,6 @@ class BuildEncoder(json.JSONEncoder):
                 "description": value["part"].description,
                 "suggested stock concentration (ng/µL)": value["part"].concentration(),
                 "stock per 30 µL clip (µL)": 1,
-                "total clip reactions": len(value["clip reactions"]),
                 "clip reactions": [
                     "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
                     for clip_reaction in value["clip reactions"]
@@ -264,8 +263,6 @@ class BuildEncoder(json.JSONEncoder):
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
-                "total prefix clip reactions": len(value["prefix clip reactions"]),
-                "total suffix clip reactions": len(value["suffix clip reactions"]),
                 "prefix clip reactions": [
                     "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
                     for clip_reaction in value["prefix clip reactions"]
