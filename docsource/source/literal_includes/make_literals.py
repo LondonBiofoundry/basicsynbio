@@ -31,9 +31,8 @@ def build_json():
     return build
 
 
-def export_csvs(build):
-    build.export_csvs("build_csvs.zip")
-
+def export_csvs_internal(build):
+    bsb.cam.export_csvs(build,"build_csvs.zip")
 
 def export_json(build):
     import json
@@ -74,7 +73,7 @@ if __name__ == "__main__":
     export_BASIC_SEVA_PARTS()
     BUILD_ZIP_PATH = "build_csvs.zip"
     try:
-        export_csvs(build_json())
+        export_csvs_internal(build_json())
         with zipfile.ZipFile(BUILD_ZIP_PATH, "r") as myzip:
             myzip.extractall()
     finally:
