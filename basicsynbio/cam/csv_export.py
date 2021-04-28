@@ -5,7 +5,8 @@ import pandas as pd
 from pathlib import Path
 from datetime import datetime
 import csv
-    
+
+
 def export_csvs(basic_build: BasicBuild, path: str = None):
     """Writes information about each clip_data and assembly to
     two dependent CSV files in the same folder the command

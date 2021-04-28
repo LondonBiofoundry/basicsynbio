@@ -27,7 +27,7 @@ def test_export_csv(promoter_assemblies_build):
     import os
 
     try:
-        bsb.cam.export_csvs(promoter_assemblies_build,"test_build.zip")
+        bsb.cam.export_csvs(promoter_assemblies_build, "test_build.zip")
         print("finished exporting Assemblies.csv")
         print("finished exporting Clips.csv")
     finally:

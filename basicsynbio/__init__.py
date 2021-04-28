@@ -21,4 +21,11 @@ from .parts_linkers import (
     BASIC_PROMOTER_PARTS,
     BASIC_SEVA_PARTS,
 )
-from .cam import BasicBuild, BuildDecoder, BuildEncoder, new_part_resuspension, export_echo_assembly, pdf_instructions
+from .cam import (
+    BasicBuild,
+    BuildDecoder,
+    BuildEncoder,
+    new_part_resuspension,
+    export_echo_assembly,
+    pdf_instructions,
+)
