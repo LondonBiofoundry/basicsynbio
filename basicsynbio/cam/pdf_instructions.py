@@ -1,4 +1,5 @@
-from basicsynbio.cam import BasicBuild
+from .main import BasicBuild
+from .csv_export import export_csvs
 import zipfile
 import os
 import pandas as pd
@@ -105,7 +106,7 @@ def pdf_instructions(
         list(map(lambda x: Paragraph(x, styleN), x)) for x in MASTER_MIX_BASIC_REACTION
     ]
 
-    zip_path = basic_build.export_csvs()
+    zip_path = export_csvs(basic_build)
     with zipfile.ZipFile(zip_path, "r") as zip_ref:
         try:
             zip_ref.extractall("PDF_CSVS")

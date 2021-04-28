@@ -1,4 +1,4 @@
-from basicsynbio.cam import BasicBuild
+from .main import BasicBuild
 import zipfile
 import os
 import pandas as pd
