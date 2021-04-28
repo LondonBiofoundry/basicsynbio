@@ -13,10 +13,10 @@ bsb_io.py
 .. automodule:: basicsynbio.bsb_io
     :members:
 
-cam.py
-------
+cam.main.py
+-----------
 
-.. automodule:: basicsynbio.cam
+.. automodule:: basicsynbio.cam.main
     :members:
 
 decorators.py
@@ -28,13 +28,13 @@ decorators.py
 pdf_instructions.py
 -------------------
 
-.. automodule:: basicsynbio.functions.pdf_instructions
+.. automodule:: basicsynbio.cam.pdf_instructions
     :members:
 
 echo_instructions.py
 --------------------
 
-.. automodule:: basicsynbio.functions.echo_instructions
+.. automodule:: basicsynbio.cam.echo_instructions
     :members:
 
 

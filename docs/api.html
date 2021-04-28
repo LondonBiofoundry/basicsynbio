@@ -66,13 +66,6 @@ object.</p>
 create this assembly.</p>
 </dd></dl>
 
-<dl class="py attribute">
-<dt id="basicsynbio.main.BasicAssembly.clip_reactions">
-<code class="sig-name descname">clip_reactions</code><a class="headerlink" href="#basicsynbio.main.BasicAssembly.clip_reactions" title="Permalink to this definition">¶</a></dt>
-<dd><p>The <a class="reference internal" href="#basicsynbio.main.ClipReaction" title="basicsynbio.main.ClipReaction"><code class="xref py py-class docutils literal notranslate"><span class="pre">ClipReaction</span></code></a> instances required
-for BASIC assembly.</p>
-</dd></dl>
-
 <dl class="py method">
 <dt id="basicsynbio.main.BasicAssembly.return_clip_reactions">
 <code class="sig-name descname">return_clip_reactions</code><span class="sig-paren">(</span><span class="sig-paren">)</span> &#x2192; Tuple<span class="p">[</span><a class="reference internal" href="#basicsynbio.main.ClipReaction" title="basicsynbio.main.ClipReaction">basicsynbio.main.ClipReaction</a><span class="p">, </span><span class="p">…</span><span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicAssembly.return_clip_reactions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicAssembly.return_clip_reactions" title="Permalink to this definition">¶</a></dt>
@@ -474,81 +467,61 @@ Refer to pysbol2 documentation for further information.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-basicsynbio.cam">
-<span id="cam-py"></span><h2>cam.py<a class="headerlink" href="#module-basicsynbio.cam" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-basicsynbio.cam.main">
+<span id="cam-main-py"></span><h2>cam.main.py<a class="headerlink" href="#module-basicsynbio.cam.main" title="Permalink to this headline">¶</a></h2>
 <p>Module contains a collection of objects for computer assisted manufacturing
 within the BASIC DNA assembly framework.</p>
 <dl class="py class">
-<dt id="basicsynbio.cam.BasicBuild">
-<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BasicBuild</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">basic_assemblies</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly">basicsynbio.main.BasicAssembly</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">BasicBuild</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">basic_assemblies</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly">basicsynbio.main.BasicAssembly</a></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BasicBuild"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class provides methods and attributes for building BasicAssembly
 objects.</p>
 <dl class="py attribute">
-<dt id="basicsynbio.cam.BasicBuild.basic_assemblies">
-<code class="sig-name descname">basic_assemblies</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.basic_assemblies" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild.basic_assemblies">
+<code class="sig-name descname">basic_assemblies</code><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild.basic_assemblies" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of BasicAssembly objects used to initiate BasicBuild.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="basicsynbio.cam.BasicBuild.unique_clips">
-<code class="sig-name descname">unique_clips</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.unique_clips" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild.unique_clips">
+<code class="sig-name descname">unique_clips</code><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild.unique_clips" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of unique ClipReaction objects
 required to implement the build.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="basicsynbio.cam.BasicBuild.clips_data">
-<code class="sig-name descname">clips_data</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.clips_data" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild.clips_data">
+<code class="sig-name descname">clips_data</code><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild.clips_data" title="Permalink to this definition">¶</a></dt>
 <dd><p>A dictionary with each ClipReaction as a key
 and BasicAssembly objects that require it as values.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="basicsynbio.cam.BasicBuild.unique_parts">
-<code class="sig-name descname">unique_parts</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.unique_parts" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild.unique_parts">
+<code class="sig-name descname">unique_parts</code><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild.unique_parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of the unique BasicPart object required
 to implement the build.</p>
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="basicsynbio.cam.BasicBuild.unique_linkers">
-<code class="sig-name descname">unique_linkers</code><a class="headerlink" href="#basicsynbio.cam.BasicBuild.unique_linkers" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild.unique_linkers">
+<code class="sig-name descname">unique_linkers</code><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild.unique_linkers" title="Permalink to this definition">¶</a></dt>
 <dd><p>Tuple of the unique BasicLinker objects
 required to implement the build.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BasicBuild.export_csvs">
-<code class="sig-name descname">export_csvs</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.export_csvs"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.export_csvs" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes information about each clip_data and assembly to
-two dependent CSV files in the same folder the command
-is executed.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to
-working directory with a time stamped name, output csvs is created.</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>filepath of created zip containing the CSV files</p>
-</dd>
-<dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p>str</p>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py method">
-<dt id="basicsynbio.cam.BasicBuild.update_parts">
-<code class="sig-name descname">update_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">parts</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a></span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/cam.html#BasicBuild.update_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BasicBuild.update_parts" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BasicBuild.update_parts">
+<code class="sig-name descname">update_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">parts</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a></span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/cam/main.html#BasicBuild.update_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BasicBuild.update_parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>Updates BasicBuild instance with parts.</p>
-<p>Replaces all existing BasicParts used in assemblies with the matching equivalent in parts. Parts are considered equivalent if seqrecord_hexdigest() returns identical values for both.</p>
+<p>Replaces all existing BasicParts used in assemblies with the matching equivalent in parts.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><p><strong>parts</strong> – parts to replace the BasicParts used in
 assemblies</p>
 </dd>
 <dt class="field-even">Raises</dt>
-<dd class="field-even"><p><strong>ValueError</strong> – if length parts is not equal to lenght this build’s
+<dd class="field-even"><p><strong>ValueError</strong> – if length parts is not equal to length this build’s
     unique parts</p>
 </dd>
 </dl>
@@ -557,13 +530,13 @@ assemblies</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="basicsynbio.cam.BuildDecoder">
-<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BuildDecoder</code><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildDecoder" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildDecoder">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">BuildDecoder</code><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildDecoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildDecoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Class to decode json dictionary to basicsynbio objects,
 extending <cite>json.JSONDecoder</cite> class</p>
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildDecoder.decode_build">
-<code class="sig-name descname">decode_build</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildDecoder.decode_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildDecoder.decode_build" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildDecoder.decode_build">
+<code class="sig-name descname">decode_build</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; <a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">basicsynbio.cam.main.BasicBuild</a><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildDecoder.decode_build"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildDecoder.decode_build" title="Permalink to this definition">¶</a></dt>
 <dd><p>A method to return BasicBuild from encoded json object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -573,14 +546,14 @@ extending <cite>json.JSONDecoder</cite> class</p>
 <dd class="field-even"><p>BasicBuild object built from encoded json</p>
 </dd>
 <dt class="field-odd">Return type</dt>
-<dd class="field-odd"><p><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">BasicBuild</a></p>
+<dd class="field-odd"><p><a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">BasicBuild</a></p>
 </dd>
 </dl>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildDecoder.return_basic_assemblies">
-<code class="sig-name descname">return_basic_assemblies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; Generator<span class="p">[</span><a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly">basicsynbio.main.BasicAssembly</a><span class="p">, </span>None<span class="p">, </span>None<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildDecoder.return_basic_assemblies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildDecoder.return_basic_assemblies" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildDecoder.return_basic_assemblies">
+<code class="sig-name descname">return_basic_assemblies</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span><span class="p">:</span> <span class="n">dict</span></em><span class="sig-paren">)</span> &#x2192; Generator<span class="p">[</span><a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly">basicsynbio.main.BasicAssembly</a><span class="p">, </span>None<span class="p">, </span>None<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildDecoder.return_basic_assemblies"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildDecoder.return_basic_assemblies" title="Permalink to this definition">¶</a></dt>
 <dd><p>A method to yield BasicAssembly objects from encoded json object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -593,8 +566,8 @@ extending <cite>json.JSONDecoder</cite> class</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildDecoder.return_unique_linkers">
-<em class="property">static </em><code class="sig-name descname">return_unique_linkers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildDecoder.return_unique_linkers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildDecoder.return_unique_linkers" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildDecoder.return_unique_linkers">
+<em class="property">static </em><code class="sig-name descname">return_unique_linkers</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildDecoder.return_unique_linkers"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildDecoder.return_unique_linkers" title="Permalink to this definition">¶</a></dt>
 <dd><p>A method to return unqiue BasicLinker objects from encoded json object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -610,8 +583,8 @@ extending <cite>json.JSONDecoder</cite> class</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildDecoder.return_unqiue_parts">
-<em class="property">static </em><code class="sig-name descname">return_unqiue_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildDecoder.return_unqiue_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildDecoder.return_unqiue_parts" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildDecoder.return_unqiue_parts">
+<em class="property">static </em><code class="sig-name descname">return_unqiue_parts</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">dictionary</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildDecoder.return_unqiue_parts"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildDecoder.return_unqiue_parts" title="Permalink to this definition">¶</a></dt>
 <dd><p>A method to return unique BasicPart objects from encoded json object</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -629,12 +602,12 @@ extending <cite>json.JSONDecoder</cite> class</p>
 </dd></dl>
 
 <dl class="py class">
-<dt id="basicsynbio.cam.BuildEncoder">
-<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BuildEncoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">skipkeys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ensure_ascii</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">check_circular</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">allow_nan</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">sort_keys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">separators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildEncoder">
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">BuildEncoder</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">skipkeys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ensure_ascii</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">check_circular</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">allow_nan</span><span class="o">=</span><span class="default_value">True</span></em>, <em class="sig-param"><span class="n">sort_keys</span><span class="o">=</span><span class="default_value">False</span></em>, <em class="sig-param"><span class="n">indent</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">separators</span><span class="o">=</span><span class="default_value">None</span></em>, <em class="sig-param"><span class="n">default</span><span class="o">=</span><span class="default_value">None</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildEncoder"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildEncoder" title="Permalink to this definition">¶</a></dt>
 <dd><p>A Class to encode BasicBuild objects extending <cite>json.JSONEncoder</cite> class</p>
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildEncoder.assembly_data_json">
-<em class="property">static </em><code class="sig-name descname">assembly_data_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder.assembly_data_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder.assembly_data_json" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildEncoder.assembly_data_json">
+<em class="property">static </em><code class="sig-name descname">assembly_data_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildEncoder.assembly_data_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildEncoder.assembly_data_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function to create machine readable json objects, completely
 describing BasicAssembly objects within BasicBuild.</p>
 <dl class="field-list simple">
@@ -652,8 +625,8 @@ dictionaries with items describing BasicAssemblies generated by the build.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildEncoder.clips_data_json">
-<em class="property">static </em><code class="sig-name descname">clips_data_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder.clips_data_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder.clips_data_json" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildEncoder.clips_data_json">
+<em class="property">static </em><code class="sig-name descname">clips_data_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildEncoder.clips_data_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildEncoder.clips_data_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function to create machine readable json objects, completely
 describing ClipReaction objects within BasicBuild.</p>
 <dl class="field-list simple">
@@ -670,8 +643,8 @@ describing ClipReaction objects within BasicBuild.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildEncoder.default">
-<code class="sig-name descname">default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder.default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder.default" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildEncoder.default">
+<code class="sig-name descname">default</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildEncoder.default"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildEncoder.default" title="Permalink to this definition">¶</a></dt>
 <dd><p>Implement this method in a subclass such that it returns
 a serializable object for <code class="docutils literal notranslate"><span class="pre">o</span></code>, or calls the base implementation
 (to raise a <code class="docutils literal notranslate"><span class="pre">TypeError</span></code>).</p>
@@ -691,8 +664,8 @@ implement default like this:</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildEncoder.unique_linkers_json">
-<em class="property">static </em><code class="sig-name descname">unique_linkers_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder.unique_linkers_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder.unique_linkers_json" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildEncoder.unique_linkers_json">
+<em class="property">static </em><code class="sig-name descname">unique_linkers_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildEncoder.unique_linkers_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildEncoder.unique_linkers_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function to create machine readable json objects, completely
 describing unique linkers.</p>
 <dl class="field-list simple">
@@ -709,8 +682,8 @@ describing unique linkers.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.cam.BuildEncoder.unique_parts_json">
-<em class="property">static </em><code class="sig-name descname">unique_parts_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildEncoder.unique_parts_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildEncoder.unique_parts_json" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildEncoder.unique_parts_json">
+<em class="property">static </em><code class="sig-name descname">unique_parts_json</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">obj</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildEncoder.unique_parts_json"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildEncoder.unique_parts_json" title="Permalink to this definition">¶</a></dt>
 <dd><p>A function to create machine readable json objects, completely
 describing unique parts.</p>
 <dl class="field-list simple">
@@ -729,13 +702,13 @@ describing unique parts.</p>
 </dd></dl>
 
 <dl class="py exception">
-<dt id="basicsynbio.cam.BuildException">
-<em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">BuildException</code><a class="reference internal" href="_modules/basicsynbio/cam.html#BuildException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.BuildException" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.BuildException">
+<em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">BuildException</code><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildException" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="py function">
-<dt id="basicsynbio.cam.new_part_resuspension">
-<code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">new_part_resuspension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a></span></em>, <em class="sig-param"><span class="n">mass</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">double_stranded</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/basicsynbio/cam.html#new_part_resuspension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.new_part_resuspension" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.new_part_resuspension">
+<code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">new_part_resuspension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a></span></em>, <em class="sig-param"><span class="n">mass</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">double_stranded</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/basicsynbio/cam/main.html#new_part_resuspension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.new_part_resuspension" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns the volume of resuspension buffer (µL) required for a 75 nM
 solution of part, equivalent to 75 fmol/µL.</p>
 <dl class="field-list simple">
@@ -750,8 +723,8 @@ solution of part, equivalent to 75 fmol/µL.</p>
 </dd></dl>
 
 <dl class="py function">
-<dt id="basicsynbio.cam.seqrecord_hexdigest">
-<code class="sig-prename descclassname">basicsynbio.cam.</code><code class="sig-name descname">seqrecord_hexdigest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seqrecord_obj</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>Bio.SeqRecord.SeqRecord<span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a><span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker">basicsynbio.main.BasicLinker</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/basicsynbio/cam.html#seqrecord_hexdigest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.seqrecord_hexdigest" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.main.seqrecord_hexdigest">
+<code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">seqrecord_hexdigest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seqrecord_obj</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>Bio.SeqRecord.SeqRecord<span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a><span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker">basicsynbio.main.BasicLinker</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/basicsynbio/cam/main.html#seqrecord_hexdigest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.seqrecord_hexdigest" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
 relevant attributes.</p>
 <div class="admonition note">
@@ -798,11 +771,11 @@ attributes</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-basicsynbio.functions.pdf_instructions">
-<span id="pdf-instructions-py"></span><h2>pdf_instructions.py<a class="headerlink" href="#module-basicsynbio.functions.pdf_instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-basicsynbio.cam.pdf_instructions">
+<span id="pdf-instructions-py"></span><h2>pdf_instructions.py<a class="headerlink" href="#module-basicsynbio.cam.pdf_instructions" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="basicsynbio.functions.pdf_instructions.pdf_instructions">
-<code class="sig-prename descclassname">basicsynbio.functions.pdf_instructions.</code><code class="sig-name descname">pdf_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/functions/pdf_instructions.html#pdf_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.functions.pdf_instructions.pdf_instructions" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.pdf_instructions.pdf_instructions">
+<code class="sig-prename descclassname">basicsynbio.cam.pdf_instructions.</code><code class="sig-name descname">pdf_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">basicsynbio.cam.main.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/pdf_instructions.html#pdf_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.pdf_instructions.pdf_instructions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes information about each clip_data and assembly to
 two dependent CSV files in the same folder the command
 is executed.</p>
@@ -825,11 +798,11 @@ working directory with a time stamped name, output csvs is created.</p></li>
 </dd></dl>
 
 </div>
-<div class="section" id="module-basicsynbio.functions.echo_instructions">
-<span id="echo-instructions-py"></span><h2>echo_instructions.py<a class="headerlink" href="#module-basicsynbio.functions.echo_instructions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-basicsynbio.cam.echo_instructions">
+<span id="echo-instructions-py"></span><h2>echo_instructions.py<a class="headerlink" href="#module-basicsynbio.cam.echo_instructions" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="basicsynbio.functions.echo_instructions.export_echo_assembly">
-<code class="sig-prename descclassname">basicsynbio.functions.echo_instructions.</code><code class="sig-name descname">export_echo_assembly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.BasicBuild" title="basicsynbio.cam.BasicBuild">basicsynbio.cam.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffer_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A1'</span></em>, <em class="sig-param"><span class="n">water_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'B1'</span></em>, <em class="sig-param"><span class="n">alternate_well</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/functions/echo_instructions.html#export_echo_assembly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.functions.echo_instructions.export_echo_assembly" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.echo_instructions.export_echo_assembly">
+<code class="sig-prename descclassname">basicsynbio.cam.echo_instructions.</code><code class="sig-name descname">export_echo_assembly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">basicsynbio.cam.main.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffer_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A1'</span></em>, <em class="sig-param"><span class="n">water_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'B1'</span></em>, <em class="sig-param"><span class="n">alternate_well</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/cam/echo_instructions.html#export_echo_assembly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.echo_instructions.export_echo_assembly" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes automation scripts for a echo liquid handler to build assemblies from clips.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -884,10 +857,10 @@ working directory with a time stamped name, output csvs is created.</p></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">API reference</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.main">main.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.bsb_io">bsb_io.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.cam">cam.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.cam.main">cam.main.py</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.decorators">decorators.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.functions.pdf_instructions">pdf_instructions.py</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.functions.echo_instructions">echo_instructions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.cam.pdf_instructions">pdf_instructions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#module-basicsynbio.cam.echo_instructions">echo_instructions.py</a></li>
 </ul>
 </li>
 </ul>
