@@ -68,7 +68,7 @@ def export_csvs(basic_build: BasicBuild, path: str = None):
                     "Assembly ID": assembly.id,
                     "Clip indexes": [
                         basic_build.unique_clips.index(clip_reaction) + 1
-                        for clip_reaction in assembly.clip_reactions
+                        for clip_reaction in assembly._clip_reactions
                     ],
                 }
             )
