@@ -6,7 +6,7 @@ from importlib import resources
 from .main import PartLinkerCollection, make_collection
 
 with resources.open_text(
-    "basicsynbio.parts_linkers", f"BASIC_promoter_collection.gb"
+    "basicsynbio.parts_linkers", f"BASIC_promoter_collection_v01.gb"
 ) as gb_file:
     imported_parts = list(bsb.import_parts(gb_file, "genbank"))
     BASIC_PROMOTER_PARTS = {
@@ -14,6 +14,15 @@ with resources.open_text(
             *imported_parts, keys=(part.id for part in imported_parts)
         )
     }
+
+with resources.open_text(
+    "basicsynbio.parts_linkers", "BASIC_promoter_collection_v02.gb"
+) as gb_file:
+    imported_parts = list(bsb.import_parts(gb_file, "genbank"))
+    BASIC_PROMOTER_PARTS["v0.2"] = make_collection(
+        *imported_parts, keys=(part.id for part in imported_parts)
+    )
+
 
 with resources.open_text(
     "basicsynbio.parts_linkers", f"BASIC_CDS_collection.gb"
