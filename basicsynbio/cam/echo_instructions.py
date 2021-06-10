@@ -21,7 +21,7 @@ def export_echo_assembly(
     buffer_well: str = "A1",
     water_well: str = "B1",
     alternate_well: bool = False,
-) -> None:
+) -> str:
     """Writes automation scripts for a echo liquid handler to build assemblies from clips.
 
     Args:
@@ -29,7 +29,7 @@ def export_echo_assembly(
             working directory with a time stamped name, output csvs is created.
         buffer_well (optional): location in 6 well plate of assembly buffer.
         water_well (optional): location in 6 well plate of dH20.
-        alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate.
+        alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate. This facilitates transfer for clip reactions from a 96-well format to the required source plate.
 
     Returns:
         str: Path of zip file containing echo automation scripts
