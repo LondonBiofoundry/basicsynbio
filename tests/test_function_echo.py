@@ -43,6 +43,8 @@ def test_echo_instructions_small_build(small_build_example):
     )
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_1.csv")
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_1.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "assemblies.csv")
     os.rmdir(Path.cwd() / "ECHO_CSVS")
     expected_clips = [
         ["A1", "A1", 500],
@@ -80,6 +82,8 @@ def test_echo_instructions_small_build_useAllWell_False(small_build_example):
     )
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_1.csv")
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_1.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "assemblies.csv")
     os.rmdir(Path.cwd() / "ECHO_CSVS")
     expected_clips = [
         ["A1", "A1", 500],
@@ -142,6 +146,8 @@ def test_multiple_files_made_more_than_96_assemblies(promoter_assemblies_build):
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_1.csv")
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_2.csv")
     os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_2.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "assemblies.csv")
     os.rmdir(Path.cwd() / "ECHO_CSVS")
     expected_water_buffer_2 = [
         ["A1", "A1", 500],
@@ -332,6 +338,64 @@ def test_multiple_files_made_more_than_96_assemblies(promoter_assemblies_build):
         ["E12", "B1", 3000],
     ]
     assert expected_water_buffer_2 == echo_water_buffer_2.to_numpy().tolist()
+
+
+def test_multiple_files_made_more_than_96_assemblies_clips_assignment(
+    promoter_assemblies_build,
+):
+    import zipfile
+    import os
+    import pandas as pd
+    import numpy as np
+    from pathlib import Path
+
+    echozippath = bsb.export_echo_assembly(promoter_assemblies_build)
+    with zipfile.ZipFile(echozippath, "r") as zip_ref:
+        try:
+            zip_ref.extractall("ECHO_CSVS")
+        finally:
+            zip_ref.close()
+            os.remove(echozippath)
+    echo_clips_csv = pd.read_csv(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_1.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_1.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_2.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_2.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "assemblies.csv")
+    os.rmdir(Path.cwd() / "ECHO_CSVS")
+    echo_clips_first_clip_wells = "['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1']"
+    assert echo_clips_first_clip_wells == echo_clips_csv.to_numpy().tolist()[0][-1]
+
+
+def test_multiple_files_made_more_than_96_assemblies_clips_assignment_with_alternate_wells(
+    promoter_assemblies_build,
+):
+    import zipfile
+    import os
+    import pandas as pd
+    import numpy as np
+    from pathlib import Path
+
+    echozippath = bsb.export_echo_assembly(
+        promoter_assemblies_build, alternate_well=True, clips_plate_size=1536
+    )
+    with zipfile.ZipFile(echozippath, "r") as zip_ref:
+        try:
+            zip_ref.extractall("ECHO_CSVS")
+        finally:
+            zip_ref.close()
+            os.remove(echozippath)
+    echo_clips_csv = pd.read_csv(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_1.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_1.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_clips_2.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "echo_water_buffer_2.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "clips.csv")
+    os.remove(Path.cwd() / "ECHO_CSVS" / "assemblies.csv")
+    os.rmdir(Path.cwd() / "ECHO_CSVS")
+    echo_clips_first_clip_wells = "['A1', 'C1', 'E1', 'G1', 'I1', 'K1', 'M1']"
+    assert echo_clips_first_clip_wells == echo_clips_csv.to_numpy().tolist()[0][-1]
 
 
 def test_echo_instructions_too_many_clips(promoter_assemblies_build_more_than_384):

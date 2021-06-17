@@ -1,4 +1,5 @@
 from .main import BasicBuild
+from .csv_export import export_csvs
 import zipfile
 import os
 import pandas as pd
@@ -9,6 +10,9 @@ import string
 import csv
 from functools import reduce
 from platemap import Plate, assign_source_wells, find_well, remove_volume
+from typing import Literal
+from collections import defaultdict
+
 
 CLIP_VOLUME = 500
 BUFFER_VOLUME = 500
@@ -21,6 +25,9 @@ def export_echo_assembly(
     buffer_well: str = "A1",
     water_well: str = "B1",
     alternate_well: bool = False,
+    assemblies_per_clip: int = 28,
+    clips_plate_size: Literal[6, 24, 96, 384, 1536] = 384,
+    assemblies_plate_size: Literal[6, 24, 96, 384, 1536] = 96,
 ) -> None:
     """Writes automation scripts for a echo liquid handler to build assemblies from clips.
 
@@ -30,6 +37,12 @@ def export_echo_assembly(
         buffer_well (optional): location in 6 well plate of assembly buffer.
         water_well (optional): location in 6 well plate of dH20.
         alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate.
+        assemblies_per_clip (optional): specifies the number of clip reactions (to create assemblies) one filled
+            well of clips can complete. for example if assemblies_per_clip is set to 20 and the clip is needed for
+            25 clip reaction two wells within the source plate would need to be filled by the same clip
+        clips_plate_size (optional): specifies the size of the clips plate. Defaults to 384
+        assemblies_plate_size (optional): specifiesthe size of the assemblies plates. Defaults to 96
+
 
     Returns:
         str: Path of zip file containing echo automation scripts
@@ -49,8 +62,12 @@ def export_echo_assembly(
             "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
         )
 
-    source_plate = Plate(size=384, well_volume=40000, deadspace=20000)
-    destination_plate = Plate(size=96)
+    calculated_well_volume = assemblies_per_clip * CLIP_VOLUME
+    source_plate = Plate(
+        size=clips_plate_size, well_volume=calculated_well_volume, deadspace=0
+    )
+    destination_plate = Plate(size=assemblies_plate_size)
+
     try:
         assign_source_wells(
             source_plate,
@@ -58,18 +75,35 @@ def export_echo_assembly(
                 lambda a, b: {**a, **b},
                 list(
                     map(
-                        lambda x: {x[0]: len(x[1][1] * CLIP_VOLUME)},
+                        lambda x: {x[0] + 1: len(x[1][1] * CLIP_VOLUME)},
                         enumerate(basic_build.clips_data.items()),
                     )
                 ),
             ),
             alternate_wells=alternate_well,
         )
+
     except:
         raise ValueError(
             """To many clips in the build to be handled by a single 384 
                 source plate, considering you alternate_well setting."""
         )
+
+    dd = defaultdict(list)
+
+    for d in list(
+        map(
+            lambda well_item: {well_item[1][1]["id"]: well_item[1][0]},
+            enumerate(
+                filter(lambda x: x[1]["total_volume"], source_plate.contents.items())
+            ),
+        )
+    ):
+        for key, value in d.items():
+            dd[str(key)].append(value)
+
+    clip_sourceplate_mapping = dict(dd)
+    assembly_outputplate_mapping = {}
 
     if path == None:
         now = datetime.now()
@@ -78,10 +112,10 @@ def export_echo_assembly(
         )
     else:
         zip_path = path
-    for index, set_of_96_assemblies in enumerate(
+    for index, set_of_full_assemblies in enumerate(
         list(
-            basic_build.basic_assemblies[x : x + 96]
-            for x in range(0, len(basic_build.basic_assemblies), 96)
+            basic_build.basic_assemblies[x : x + assemblies_plate_size]
+            for x in range(0, len(basic_build.basic_assemblies), assemblies_plate_size)
         )
     ):
         with open(
@@ -94,14 +128,17 @@ def export_echo_assembly(
             thewriter_clips.writeheader()
             thewriter_water_buffer = csv.DictWriter(f2, fieldnames=fieldnames)
             thewriter_water_buffer.writeheader()
-            for index, assembly in enumerate(set_of_96_assemblies):
+            for assembly_index, assembly in enumerate(set_of_full_assemblies):
+                assembly_outputplate_mapping[
+                    str((index * assemblies_plate_size) + (assembly_index + 1))
+                ] = (str(index) + "-" + str(destination_plate.wells[assembly_index]))
                 for clip in [
-                    basic_build.unique_clips.index(clip_reaction)
+                    basic_build.unique_clips.index(clip_reaction) + 1
                     for clip_reaction in assembly._clip_reactions
                 ]:
                     thewriter_clips.writerow(
                         {
-                            "Destination Well": destination_plate.wells[index],
+                            "Destination Well": destination_plate.wells[assembly_index],
                             "Source Well": find_well(source_plate, clip, CLIP_VOLUME),
                             "Transfer Volume": CLIP_VOLUME,
                         }
@@ -113,14 +150,14 @@ def export_echo_assembly(
                     )
                 thewriter_water_buffer.writerow(
                     {
-                        "Destination Well": destination_plate.wells[index],
+                        "Destination Well": destination_plate.wells[assembly_index],
                         "Source Well": buffer_well,
                         "Transfer Volume": BUFFER_VOLUME,
                     }
                 )
                 thewriter_water_buffer.writerow(
                     {
-                        "Destination Well": destination_plate.wells[index],
+                        "Destination Well": destination_plate.wells[assembly_index],
                         "Source Well": water_well,
                         "Transfer Volume": TOTAL_VOLUME
                         - BUFFER_VOLUME
@@ -133,7 +170,17 @@ def export_echo_assembly(
                         ),
                     }
                 )
+    csv_zip = export_csvs(
+        basic_build, None, clip_sourceplate_mapping, assembly_outputplate_mapping
+    )
+    with zipfile.ZipFile(csv_zip, "r") as zip_ref:
+        zip_ref.extractall()
     with zipfile.ZipFile(zip_path, "w") as my_zip:
+        my_zip.write("clips.csv")
+        my_zip.write("assemblies.csv")
+        os.remove("clips.csv")
+        os.remove("assemblies.csv")
+        os.remove(csv_zip)
         for file in os.listdir(Path.cwd()):
             if file.startswith("echo_") and file.endswith(".csv"):
                 my_zip.write(file)
