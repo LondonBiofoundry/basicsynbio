@@ -10,8 +10,8 @@ import csv
 def export_csvs(
     basic_build: BasicBuild,
     path: str = None,
-    clip_plate_mapping: dict = None,
-    assembly_plate_mapping: dict = None,
+    clip_plate_mapping: dict[str, list[str]] = None,
+    assembly_plate_mapping: dict[str, str] = None,
 ):
     """Writes information about each clip_data and assembly to
     two dependent CSV files in the same folder the command
@@ -20,12 +20,12 @@ def export_csvs(
     Args:
         path (optional): path to zipped folder of csv files. If none defaults to
             working directory with a time stamped name, output csvs is created.
-        clip_plate_mapping (optional): A dictionary with a keys containing clip
+        clip_plate_mapping (optional): A dictionary with keys containing clip
             indicies and values containing lists of well locations's where the
             clips are stored.
-        assembly_plate_mapping (optional): A dictionary with a keys containing
-            assembly indicies and values containing lists of well locations's
-            where the assembly is stored.
+        assembly_plate_mapping (optional): A dictionary with keys containing
+            assembly indicies and values containing the assemblies location plate
+            followed by a dash then the well locations for example {1:'0-A1',...}
 
 
     Returns:
