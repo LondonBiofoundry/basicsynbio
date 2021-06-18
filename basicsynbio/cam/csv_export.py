@@ -7,7 +7,12 @@ from datetime import datetime
 import csv
 
 
-def export_csvs(basic_build: BasicBuild, path: str = None):
+def export_csvs(
+    basic_build: BasicBuild,
+    path: str = None,
+    clip_plate_mapping: dict[str, list[str]] = None,
+    assembly_plate_mapping: dict[str, str] = None,
+):
     """Writes information about each clip_data and assembly to
     two dependent CSV files in the same folder the command
     is executed.
@@ -15,6 +20,13 @@ def export_csvs(basic_build: BasicBuild, path: str = None):
     Args:
         path (optional): path to zipped folder of csv files. If none defaults to
             working directory with a time stamped name, output csvs is created.
+        clip_plate_mapping (optional): A dictionary with keys containing clip
+            indicies and values containing lists of well locations's where the
+            clips are stored.
+        assembly_plate_mapping (optional): A dictionary with keys containing
+            assembly indicies and values containing the assemblies location plate
+            followed by a dash then the well locations for example {1:'0-A1',...}
+
 
     Returns:
         str: filepath of created zip containing the CSV files
@@ -35,6 +47,7 @@ def export_csvs(basic_build: BasicBuild, path: str = None):
             "Suffix ID",
             "Total assemblies",
             "Assembly indexes",
+            "Clip plate mapping",
         ]
         thewriter = csv.DictWriter(f, fieldnames=fieldnames)
         thewriter.writeheader()
@@ -55,10 +68,18 @@ def export_csvs(basic_build: BasicBuild, path: str = None):
                         basic_build.basic_assemblies.index(assembly) + 1
                         for assembly in clip_data[1]
                     ],
+                    "Clip plate mapping": clip_plate_mapping[str(index + 1)]
+                    if clip_plate_mapping
+                    else "N/A",
                 }
             )
     with open(Path.cwd() / "assemblies.csv", "w", newline="") as f:
-        fieldnames = ["Assembly Index", "Assembly ID", "Clip indexes"]
+        fieldnames = [
+            "Assembly Index",
+            "Assembly ID",
+            "Clip indexes",
+            "Assembly plate mapping",
+        ]
         thewriter = csv.DictWriter(f, fieldnames=fieldnames)
         thewriter.writeheader()
         for index, assembly in enumerate(basic_build.basic_assemblies):
@@ -70,6 +91,9 @@ def export_csvs(basic_build: BasicBuild, path: str = None):
                         basic_build.unique_clips.index(clip_reaction) + 1
                         for clip_reaction in assembly._clip_reactions
                     ],
+                    "Assembly plate mapping": assembly_plate_mapping[str(index + 1)]
+                    if assembly_plate_mapping
+                    else "N/A",
                 }
             )
     with zipfile.ZipFile(zip_path, "w") as my_zip:
