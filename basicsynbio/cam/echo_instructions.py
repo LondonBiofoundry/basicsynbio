@@ -37,9 +37,7 @@ def export_echo_assembly(
         buffer_well (optional): location in 6 well plate of assembly buffer.
         water_well (optional): location in 6 well plate of dH20.
         alternate_well (optional): specifies whether alternating wells are to be used in the input 384 well plate.
-        assemblies_per_clip (optional): specifies the number of clip reactions (to create assemblies) one filled
-            well of clips can complete. for example if assemblies_per_clip is set to 20 and the clip is needed for
-            25 clip reaction two wells within the source plate would need to be filled by the same clip
+        assemblies_per_clip (optional): amount of clips to be used in each assembly.
         clips_plate_size (optional): specifies the size of the clips plate. Defaults to 384
         assemblies_plate_size (optional): specifiesthe size of the assemblies plates. Defaults to 96
 
