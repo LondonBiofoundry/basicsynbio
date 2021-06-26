@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="basicsynbio",
-    version="0.5.0",
+    version="0.6.0",
     url="https://github.com/LondonBiofoundry/basicsynbio",
     license="BSD-3-Clause License",
     author="LondonBiofoundry",
@@ -20,10 +20,10 @@ setuptools.setup(
         "License :: OSI Approved :: BSD License",
         "Natural Language :: English",
         "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
         "Topic :: Scientific/Engineering :: Bio-Informatics",
     ],
-    python_requires=">=3.7",
+    python_requires=">=3.8",
     install_requires=[
         "biopython>=1.78",
         "pandas",

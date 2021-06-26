@@ -9,7 +9,7 @@ An open-source Python package to facilitate BASIC DNA assembly workflows. Also a
 
 ## Installation
 
-Using a python environment running python version >= 3.7:
+Using a python environment running python version >= 3.8:
 
 ```shell
 $ pip install basicsynbio
