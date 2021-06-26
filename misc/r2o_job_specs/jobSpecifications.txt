@@ -1,0 +1,41 @@
+ProjectName	YTKlinkers_v8 
+JobID r2o_willshaw_manual_run
+Email w.shaw14@imperial.ac.uk
+Seqnum 50
+Format NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN
+ReverseMode false
+Evalue 1
+Genomes saccharomyces_cerevisiae_genome 
+gc 0.5
+MinInterEnergy -13.0
+MinIntraEnergy -5.0
+FoldTemp 50.0
+MaxSWScore 180.0
+MaxSubMatch 10
+ForbSeq TTGACA	E.coli sig70 -35 site 
+ForbSeq TATAAT	E.coli sig70 -10 site 
+ForbSeq TTGNNNNNNNNNNNNNNNNNNNNTATNNT	E.coli sig70 promoter weak consensus 
+ForbSeq TGGCACGNNNNTTGC	E.coli sig54 promoter consensus 
+ForbSeq TCNCCCTTGAANNNNNNNNNNNNNNNNNCCCCATTTA	E.coli sig32 promoter consensus 
+ForbSeq GAACTNNNNNNNNNNNNNNNNGTCNNA	E.coli sig24 promoter consensus 
+ForbSeq AAAGA	RBS 
+ForbSeq AGGAGG	Shine-Dalgarno sequence or 2xArg bad codon 
+ForbSeq ATG	translation initiation sites 
+ForbSeq TTATNCACA	DnaA binding sites 
+ForbSeq TGTGANNNNNNTCACANT	CAP binding sites 
+ForbSeq CTAG	IS5 insertion site 
+ForbSeq CTAA	IS5 insertion site 
+ForbSeq CAAA	IS5 insertion site 
+ForbSeq CAAG	IS5 insertion site 
+ForbSeq NGCTNAGCN	IS10 insertion site 
+ForbSeq GGGNNNNNCCC	IS231 insertion site 
+ForbSeq G{3,}[ATGC]{1,7}G{3,}[ATGC]{1,7}G{3,}[ATGC]{1,7}G{3,}	G-quadruplex 
+ForbSeq GGGG	G-quadruplex 
+ForbSeq GAATTC	EcoRI 
+ForbSeq ACTAGT	SpeI 
+ForbSeq TCTAGA	XbaI 
+ForbSeq CTGCAG	PstI 
+ForbSeq GGTCTC	BsaI 
+ForbSeq CGTCTC	BsmBI 
+ForbSeq GAAGAC	BbsI 
+ForbSeq GCGGCCGC	NotI 

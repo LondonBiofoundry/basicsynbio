@@ -1,0 +1,32 @@
+ProjectName	basic_bb_linker_001 
+JobID 92f0817faf716045872b354b5b2482a7
+Email mh2210@ic.ac.uk
+Seqnum 1
+Format GGCTCGNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNGTCC
+ReverseMode false
+Evalue 1
+Genomes eschericichia_coli_k12_dh10b eschericichia_coli_k12_mg1655 eschericichia_coli_k12_w3110 igem_all_parts_082013
+gc_range 0.4 0 54
+tm_range 60 13 34
+MaxSubMatch 8
+ForbSeq TTGACA	E.coli sig70 -35 site 
+ForbSeq TATAAT	E.coli sig70 -10 site 
+ForbSeq TTGNNNNNNNNNNNNNNNNNNNNTATNNT	E.coli sig70 promoter weak consensus 
+ForbSeq TGGCACGNNNNTTGC	E.coli sig54 promoter consensus 
+ForbSeq TCNCCCTTGAANNNNNNNNNNNNNNNNNCCCCATTTA	E.coli sig32 promoter consensus 
+ForbSeq GAACTNNNNNNNNNNNNNNNNGTCNNA	E.coli sig24 promoter consensus 
+ForbSeq AAAGA	RBS 
+ForbSeq AGGAGG	Shine-Dalgarno sequence or 2xArg bad codon 
+ForbSeq ATG	translation initiation sites 
+ForbSeq TTATNCACA	DnaA binding sites 
+ForbSeq TGTGANNNNNNTCACANT	CAP binding sites 
+ForbSeq NGCTNAGCN	IS10 insertion site 
+ForbSeq GGGNNNNNCCC	IS231 insertion site 
+ForbSeq (G{3,}[ATGC]{1,7}){3,}G{3,}	G-quadruplex 
+ForbSeq GGGG	G-quadruplex 
+ForbSeq GAATTC	EcoRI 
+ForbSeq ACTAGT	SpeI 
+ForbSeq TCTAGA	XbaI 
+ForbSeq CTGCAG	PstI 
+ForbSeq GGTCTC	BsaI 
+ForbSeq CGTCTC	BsmBI
