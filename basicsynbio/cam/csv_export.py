@@ -1,17 +1,18 @@
+import csv
+from datetime import datetime
 from .main import BasicBuild
-import zipfile
 import os
 import pandas as pd
 from pathlib import Path
-from datetime import datetime
-import csv
+from typing import Dict, List
+import zipfile
 
 
 def export_csvs(
     basic_build: BasicBuild,
     path: str = None,
-    clip_plate_mapping: dict[str, list[str]] = None,
-    assembly_plate_mapping: dict[str, str] = None,
+    clip_plate_mapping: Dict[str, List[str]] = None,
+    assembly_plate_mapping: Dict[str, str] = None,
 ):
     """Writes information about each clip_data and assembly to
     two dependent CSV files in the same folder the command
