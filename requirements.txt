@@ -6,6 +6,7 @@ attrs==19.3.0
 autopep8==1.5.4
 Babel==2.8.0
 backcall==0.2.0
+-e git+git@github.com:LondonBiofoundry/basicsynbio.git@3a387f223ea057eca21189ed8f7170a29cf1e66f#egg=basicsynbio
 biopython==1.78
 black==20.8b1
 bleach==3.3.0
@@ -62,14 +63,14 @@ networkx==2.5
 notebook==6.1.5
 numpy==1.19.1
 packaging==20.4
-pandas==1.1.0
+pandas==1.2.5
 pandocfilters==1.4.2
 parso==0.7.1
 pathspec==0.8.1
 pathtools==0.1.2
 pexpect==4.8.0
 pickleshare==0.7.5
-Pillow==8.2.0
+Pillow==8.1.2
 pkginfo==1.6.1
 platemap==0.0.10
 pluggy==0.13.1
@@ -111,7 +112,7 @@ sbol2==1.1
 SecretStorage==3.3.0
 Send2Trash==1.5.0
 six==1.15.0
-snooty-lextudio==1.8.6.dev0
+snooty-lextudio==1.9.2.dev0
 snowballstemmer==2.0.0
 Sphinx==3.2.1
 sphinx-autobuild==2020.9.1
@@ -133,7 +134,7 @@ typing-extensions==3.7.4.3
 ujson==1.35
 untokenize==0.1.1
 urllib3==1.25.10
-watchdog==0.10.4
+watchdog==1.0.2
 wcwidth==0.2.5
 webencodings==0.5.1
 widgetsnbextension==3.5.1
