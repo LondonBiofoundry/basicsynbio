@@ -172,20 +172,8 @@ to construct your assemblies.</p>
 </div>
 <div class="section" id="export-your-data">
 <h3>4. Export your data<a class="headerlink" href="#export-your-data" title="Permalink to this headline">¶</a></h3>
-<p>BasicBuild objects can be serialised as JSON or
-exported as two zipped csv files describing build clip reactions and assemblies.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">export_csvs()</span></code> method generates a zip file, containing <a class="reference internal" href="clips_csv.html"><span class="doc">clips.csv</span></a> and <a class="reference internal" href="assemblies_csv.html"><span class="doc">assemblies.csv</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">build</span><span class="o">.</span><span class="n">export_csvs</span><span class="p">(</span><span class="s2">&quot;build_csvs.zip&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">bsb.pdf_instructions()</span></code> function creates pdf instructions for manual assembly of the build in the lab. An example can be seen <a class="reference external" href="https://github.com/LondonBiofoundry/basicsynbio/blob/master/docsource/source/literal_includes/export_pdf_example.pdf">here</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">pdf_instructions</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">bsb.export_echo_assembly(build)</span></code> function creates Echo liquid handling instructions to combine purified clip reactions with buffer and water, yielding assemblies for transformation. The following <a class="reference internal" href="echo_clips_1_csv.html"><span class="doc">echo_clips_1.csv</span></a> and <a class="reference internal" href="echo_water_buffer_1_csv.html"><span class="doc">echo_water_buffer_1.csv</span></a> are example outputs.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">export_echo_assembly</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
-</pre></div>
-</div>
+<p>BasicBuild objects can be serialised as JSON objects which are compliant with the <a class="reference external" href="https://basicsynbio.web.app/basicbuild-standard">BasicBuild Open Standard</a>.
+These provide a minimum description of the build, necessary to manufacture associated BASIC DNA assemblies.</p>
 <p>To serialise the build, the <a class="reference external" href="https://docs.python.org/3/library/json.html">json API</a> can be used, in the following case yielding (<a class="reference internal" href="build_json.html"><span class="doc">build.json</span></a>):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
 
@@ -196,12 +184,24 @@ exported as two zipped csv files describing build clip reactions and assemblies.
 <p>Depending on the file format, the resulting output
 contains data on the unique BasicParts (<code class="docutils literal notranslate"><span class="pre">unique_parts</span></code>), BasicLinkers (<code class="docutils literal notranslate"><span class="pre">unique_linkers</span></code>)
 and ClipReactions (<code class="docutils literal notranslate"><span class="pre">clips_data</span></code>) objects required to build the assemblies (<code class="docutils literal notranslate"><span class="pre">assembly_data</span></code>).
-This data can either be analysed directly, informing manual workflows or further processed to
-generate arguments for liquid-handling systems.</p>
-<p>In addition to exporting build data, <strong>it is recommended to export
-annotated BasicAssembly objects and the unique BasicParts</strong> associated with the build. The later is important
-for completly decoding serialised BasicBuild objects, described in the next section.
-Notably, any collection of BasicPart <a class="footnote-reference brackets" href="#f1" id="id1">1</a> or BasicAssembly
+This data can be further processed to inform manual or liquid handling workflows.
+We have already generated several functions accessible via the API that generate additional data types using BasicBuild objects as arguments.</p>
+<p>For instance, The <code class="docutils literal notranslate"><span class="pre">export_csvs()</span></code> function generates a zip file, containing <a class="reference internal" href="clips_csv.html"><span class="doc">clips.csv</span></a> and <a class="reference internal" href="assemblies_csv.html"><span class="doc">assemblies.csv</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">export_csvs</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bsb.pdf_instructions()</span></code> function creates pdf instructions for manual assembly of the build in the lab. An example can be seen <a class="reference external" href="https://github.com/LondonBiofoundry/basicsynbio/blob/master/docsource/source/literal_includes/export_pdf_example.pdf">here</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">pdf_instructions</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">bsb.export_echo_assembly(build)</span></code> function creates Echo liquid handling instructions to combine purified clip reactions with buffer and water, yielding assemblies for transformation. The following <a class="reference internal" href="echo_clips_1_csv.html"><span class="doc">echo_clips_1.csv</span></a> and <a class="reference internal" href="echo_water_buffer_1_csv.html"><span class="doc">echo_water_buffer_1.csv</span></a> are example outputs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bsb</span><span class="o">.</span><span class="n">export_echo_assembly</span><span class="p">(</span><span class="n">build</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In addition to exporting manufacturing data, <strong>it is recommended to export
+annotated BasicAssembly objects and the unique BasicParts</strong> associated with the build.
+Annotated BasicAssembly objects are useful for illustrating resulting constructs while unique BasicParts are required for completely decoding serialised BasicBuild objects, described in the next section.
+Any collection of BasicPart <a class="footnote-reference brackets" href="#f1" id="id1">1</a> or BasicAssembly
 objects can be exported using the formats supported by <a class="reference external" href="https://biopython.org/wiki/SeqIO">BioPython</a>, with the default being genbank:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">unique_parts</span> <span class="o">=</span> <span class="n">build</span><span class="o">.</span><span class="n">unique_parts</span>
 <span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span><span class="n">unique_parts</span><span class="p">,</span> <span class="s2">&quot;the_parts_i_need.gb&quot;</span><span class="p">)</span>

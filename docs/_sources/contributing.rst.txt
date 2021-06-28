@@ -10,7 +10,7 @@ Setting up a development environment
     git clone https://github.com/username/basicsynbio.git
 
 #. cd into the directory.
-#. Using a virtual environment running Python 3.7 or greater install the dependencies::
+#. Using a virtual environment running Python 3.8 or greater install the dependencies::
 
     pip install -r requirements.txt
 
