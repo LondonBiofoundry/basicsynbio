@@ -2,7 +2,7 @@
 
 An open-source Python package to facilitate BASIC DNA assembly workflows. Also available as a [web-app][webapp_url]!
 
-![Build Status](https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/main.yml/badge.svg)
+[![Build Status][ci_badge]][ci_url]
 [![Coverage Status][coverage_badge]][coverage_url]
 [![pypi badge][pypi_badge]][pypi_url]
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
@@ -27,6 +27,8 @@ Refer to the [section of the documentation on contributing](https://londonbiofou
 
 This project is licensed under the BSD 3-Clause License - see the ``LICENSE`` file for details
 
+[ci_badge]: https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/main.yml/badge.svg
+[ci_url]: https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/main.yml
 [pypi_badge]: https://img.shields.io/pypi/v/basicsynbio.svg
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
 [coverage_badge]: https://coveralls.io/repos/github/LondonBiofoundry/basicsynbio/badge.svg?branch=master
