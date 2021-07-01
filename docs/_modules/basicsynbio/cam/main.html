@@ -102,30 +102,6 @@
 <span class="sd">            *basic_assemblies: BasicAssembly objects.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">basic_assemblies</span> <span class="o">=</span> <span class="n">basic_assemblies</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_clips_data</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clip</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unique_parts_data</span><span class="p">(</span>
-            <span class="o">*</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span> <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unique_linkers_data</span><span class="p">(</span>
-            <span class="o">*</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span> <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="p">)</span>
-        <span class="p">)</span>
-        <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span><span class="p">[</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span><span class="o">.</span><span class="n">seq</span><span class="p">][</span><span class="s2">&quot;clip reactions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-                <span class="n">clip_reaction</span>
-            <span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="p">[</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">seq</span><span class="p">][</span>
-                <span class="s2">&quot;prefix clip reactions&quot;</span>
-            <span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="p">[</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">seq</span><span class="p">][</span>
-                <span class="s2">&quot;suffix clip reactions&quot;</span>
-            <span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="n">part_dict</span><span class="p">[</span><span class="s2">&quot;part&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">part_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-        <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
-            <span class="n">linker_dict</span><span class="p">[</span><span class="s2">&quot;linker&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">linker_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
-        <span class="p">)</span>
 
 <div class="viewcode-block" id="BasicBuild.update_parts"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.main.BasicBuild.update_parts">[docs]</a>    <span class="k">def</span> <span class="nf">update_parts</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">*</span><span class="n">parts</span><span class="p">:</span> <span class="n">BasicPart</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Updates BasicBuild instance with parts.</span>
@@ -216,6 +192,25 @@
             <span class="k">for</span> <span class="n">linker</span> <span class="ow">in</span> <span class="n">linkers</span>
         <span class="p">}</span>
 
+    <span class="k">def</span> <span class="nf">_set_unique_parts_linkers_data</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;sets unique_part_data and unique_linker_data attributes.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unique_parts_data</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span> <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_unique_linkers_data</span><span class="p">(</span>
+            <span class="o">*</span><span class="p">(</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span> <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="k">for</span> <span class="n">clip_reaction</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span><span class="p">[</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_part</span><span class="o">.</span><span class="n">seq</span><span class="p">][</span><span class="s2">&quot;clip reactions&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                <span class="n">clip_reaction</span>
+            <span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="p">[</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">seq</span><span class="p">][</span>
+                <span class="s2">&quot;prefix clip reactions&quot;</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="p">[</span><span class="n">clip_reaction</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">seq</span><span class="p">][</span>
+                <span class="s2">&quot;suffix clip reactions&quot;</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">clip_reaction</span><span class="p">)</span>
+
     <span class="k">def</span> <span class="nf">_duplicate_assembly_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">assemblies</span><span class="p">):</span>
         <span class="n">assemblies_ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">assembly</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">assembly</span> <span class="ow">in</span> <span class="n">assemblies</span><span class="p">]</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">assemblies_ids</span><span class="p">))</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">assemblies</span><span class="p">):</span>
@@ -233,7 +228,16 @@
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="nb">issubclass</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">value</span><span class="p">),</span> <span class="n">BasicAssembly</span><span class="p">)</span> <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="s2">&quot;Not all *basic_assemblies are BasicAssembly instances.&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_duplicate_assembly_ids</span><span class="p">(</span><span class="n">values</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_basic_assemblies</span> <span class="o">=</span> <span class="n">values</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_basic_assemblies</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_return_clips_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_clips</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clip</span> <span class="k">for</span> <span class="n">clip</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">clips_data</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_set_unique_parts_linkers_data</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">part_dict</span><span class="p">[</span><span class="s2">&quot;part&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">part_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_parts_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">(</span>
+            <span class="n">linker_dict</span><span class="p">[</span><span class="s2">&quot;linker&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">linker_dict</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">unique_linkers_data</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+        <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BuildEncoder"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.main.BuildEncoder">[docs]</a><span class="k">class</span> <span class="nc">BuildEncoder</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">JSONEncoder</span><span class="p">):</span>

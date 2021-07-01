@@ -163,14 +163,31 @@ to construct your assemblies.
 4. Export your data
 ~~~~~~~~~~~~~~~~~~~
 
-BasicBuild objects can be serialised as JSON or
-exported as two zipped csv files describing build clip reactions and assemblies.
+BasicBuild objects can be serialised as JSON objects which are compliant with the `BasicBuild Open Standard`_.
+These provide a minimum description of the build, necessary to manufacture associated BASIC DNA assemblies.
 
-The ``export_csvs()`` method generates a zip file, containing :doc:`clips_csv` and :doc:`assemblies_csv`:
+.. _BasicBuild open standard: https://basicsynbio.web.app/basicbuild-standard
+
+To serialise the build, the `json API`_ can be used, in the following case yielding (:doc:`build_json`):
+
+.. _json API: https://docs.python.org/3/library/json.html
+
+.. literalinclude:: /literal_includes/make_literals.py
+    :pyobject: export_json
+    :start-after: def export_json(build):
+    :dedent: 4
+
+Depending on the file format, the resulting output 
+contains data on the unique BasicParts (``unique_parts``), BasicLinkers (``unique_linkers``)
+and ClipReactions (``clips_data``) objects required to build the assemblies (``assembly_data``).
+This data can be further processed to inform manual or liquid handling workflows.
+We have already generated several functions accessible via the API that generate additional data types using BasicBuild objects as arguments.
+
+For instance, The ``export_csvs()`` function generates a zip file, containing :doc:`clips_csv` and :doc:`assemblies_csv`:
 
 .. code-block::
     
-    build.export_csvs("build_csvs.zip")
+    bsb.export_csvs(build)
 
 The ``bsb.pdf_instructions()`` function creates pdf instructions for manual assembly of the build in the lab. An example can be seen here_
 
@@ -186,25 +203,10 @@ The ``bsb.export_echo_assembly(build)`` function creates Echo liquid handling in
     
     bsb.export_echo_assembly(build)
 
-To serialise the build, the `json API`_ can be used, in the following case yielding (:doc:`build_json`):
-
-.. _json API: https://docs.python.org/3/library/json.html
-
-.. literalinclude:: /literal_includes/make_literals.py
-    :pyobject: export_json
-    :start-after: def export_json(build):
-    :dedent: 4
-
-Depending on the file format, the resulting output 
-contains data on the unique BasicParts (``unique_parts``), BasicLinkers (``unique_linkers``)
-and ClipReactions (``clips_data``) objects required to build the assemblies (``assembly_data``).
-This data can either be analysed directly, informing manual workflows or further processed to 
-generate arguments for liquid-handling systems.
-
-In addition to exporting build data, **it is recommended to export
-annotated BasicAssembly objects and the unique BasicParts** associated with the build. The later is important
-for completly decoding serialised BasicBuild objects, described in the next section.
-Notably, any collection of BasicPart [#f1]_ or BasicAssembly
+In addition to exporting manufacturing data, **it is recommended to export
+annotated BasicAssembly objects and the unique BasicParts** associated with the build.
+Annotated BasicAssembly objects are useful for illustrating resulting constructs while unique BasicParts are required for completely decoding serialised BasicBuild objects, described in the next section.
+Any collection of BasicPart [#f1]_ or BasicAssembly
 objects can be exported using the formats supported by `BioPython`_, with the default being genbank:
 
 .. _BioPython: https://biopython.org/wiki/SeqIO
