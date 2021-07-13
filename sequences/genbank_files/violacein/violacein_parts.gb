@@ -1,0 +1,167 @@
+LOCUS       VioA_BASIC_fragment     1293 bp ds-DNA     linear       01-NOV-2019
+DEFINITION  .
+KEYWORDS    "creator:Imperial College London"                                  
+FEATURES             Location/Qualifiers
+     CDS             19..1275
+                     /label="VioA"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCat gaaacattct tccgatatct gcattgttgg tgctggtatt
+       61 tctggtttga cgtgcgcaag ccatctgctg gacagcccgg catgccgtgg tctgagcctg
+      121 cgtatctttg acatgcagca agaagccggt ggccgtatcc gcagcaaaat gctggatggt
+      181 aaggcaagca ttgaactggg cgcaggtcgc tactcccctc agttgcaccc gcatttccaa
+      241 agcgcaatgc agcactatag ccaaaagagc gaagtctatc cgttcaccca gttgaagttc
+      301 aaatctcacg tgcagcaaaa gctgaagcgc gccatgaatg aactgtcccc gcgtctgaaa
+      361 gagcatggta aagagagctt tttgcagttt gtcagccgtt atcaaggtca cgatagcgcg
+      421 gttggtatga tccgctctat gggttacgac gcactgttcc tgccggatat cagcgcagaa
+      481 atggcctacg acattgtggg taagcacccg gagatccaga gcgtgacgga caacgacgcg
+      541 aaccaatggt ttgcagcgga aacgggcttt gctggtctga ttcagggcat caaggctaag
+      601 gttaaggcgg caggtgcgcg ttttagcctg ggttatcgtc tgctgagcgt ccgtaccgac
+      661 ggtgacggct acctgctgca actggcaggt gacgacggct ggaaactgga gcaccgtacc
+      721 cgccatctga ttctggcgat tccgccgagc gcgatggcgg gtttgaatgt tgattttcca
+      781 gaagcctggt ccggtgcgcg ctatggcagc ctgccgctgt ttaagggctt tctgacgtac
+      841 ggtgagccgt ggtggttgga ctacaaactg gacgatcagg tgctgattgt tgacaacccg
+      901 ctgcgcaaaa tctatttcaa aggcgataag tacctgttct tctataccga tagcgagatg
+      961 gcgaattact ggcgcggttg tgtcgcggag ggcgaggacg gttacctgga gcaaattcgc
+     1021 acccatttgg ctagcgcact gggtatcgtc cgtgaacgta tcccgcaacc gctggcacac
+     1081 gttcacaagt attgggcgca cggcgttgag ttttgccgtg attctgatat tgaccacccg
+     1141 agcgcactgt ctcatcgcga cagcggtatc atcgcgtgct ccgatgcgta cacggagcat
+     1201 tgtggttgga tggagggcgg tctgctgagc gcccgtgagg caagccgtct gctgttgcag
+     1261 cgtatcgccg cgtgaGGCTC GGGAGACCTA TCG
+//
+LOCUS       VioB_BASIC_fragment     3033 bp ds-DNA     linear       01-NOV-2019
+DEFINITION  .
+KEYWORDS    "creator:Imperial College London"                                  
+FEATURES             Location/Qualifiers
+     CDS             19..3015
+                     /label="VioB"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCAT GAGCATTCTG GATTTCCCgc gtatccactt ccgtggctgg
+       61 gcccgtgtca atgcgccgac cgcgaaccgc gatccgcacg gccacatcga tatggccagc
+      121 aataccgtgg cgatggcggg tgagccgttc gacctggcac gccatcctac ggagttccac
+      181 cgtcacctgc gctccctggg tccgcgcttc ggcttggatg gtcgtgctga cccggaaggc
+      241 ccgttcagcc tggccgaggg ctacaacgct gccggtaaca accacttttc gtgggagagc
+      301 gcaaccgtta gccacgtgca atgggatggc ggtgaggcgg atcgtggtga cggtctggtc
+      361 ggtgctcgtt tggcactgtg gggtcactac aatgattatc tgcgtaccac cttcaatcgt
+      421 gctcgttggg tcgacagcga cccgacgcgc cgtgacgctg cacaaatcta tgcgggccaa
+      481 ttcaccatta gcccggctgg tgccggtccg ggtacgccgt ggctgtttac ggcagacatt
+      541 gatgatagcc atggtgcacg ttggacgcgt ggcggccaca ttgcagagcg tggcggccac
+      601 ttcttggatg aagagtttgg tctggcacgc ctgtttcagt tctctgtgcc gaaagatcac
+      661 ccacattttc tgtttcaccc gggtccgttt gattccgagg cctggcgtcg tctgcaattg
+      721 gctctggagg atgacgacgt tctgggtctg accgtgcaat atgcgttgtt caatatgagc
+      781 accccgcctc agccgaacag cccggttttt cacgatatgg tcggtgttgt cggtctgtgg
+      841 cgtcgtggtg aactggcgag ctacccggct ggtcgtctgc tgcgtccgcg tcaaccgggt
+      901 ctgggtgacc tgaccctgcg cgtcaacggt ggtcgcgttg cgctgaattt ggcgtgtgcc
+      961 attccgttca gcactcgtgc cgcgcagcca agcgcaccgg accgcctgac cccggacctg
+     1021 ggtgccaaac tgccgctggg cgatctgctg ctgcgtgatg aggacggcgc actgttggca
+     1081 cgtgtgccgc aggctctgta ccaagactat tggacgaatc acggtattgt ggacctgccg
+     1141 ctgctgcgcg aaccgcgtgg tagcttgacc ctgagcagcg aactggcgga gtggcgtgag
+     1201 caagactggg tcacccaaag cgacgcgtct aacctgtacc tggaggcacc ggatcgccgt
+     1261 cacggtcgct ttttccctga gagcatcgcg ctgcgcagct actttcgcgg tgaagcgcgt
+     1321 gcgcgtccgg atatcccgca tcgtatcgag ggcatgggcc tggtcggcgt cgaatctcgt
+     1381 caggatggcg acgctgcgga atggcgtctg acgggtctgc gtccgggtcc ggcacgcatt
+     1441 gttctggacg atggtgccga ggcgatccct ctgcgtgttc tgcctgacga ttgggcgctg
+     1501 gatgacgcga ccgtcgaaga agtggattac gcctttttgt accgccacgt tatggcgtat
+     1561 tacgagctgg tgtatccatt catgagcgac aaggtgtttt ccctggctga tcgttgcaaa
+     1621 tgtgaaacgt acgcacgtct gatgtggcag atgtgtgatc cgcagaaccg caacaagtcc
+     1681 tattacatgc cgagcacccg cgaactgtcg gcaccgaaag ctcgtttgtt cttgaagtat
+     1741 ctggcccacg tggaaggcca ggcacgcctg caagcacctc cgccagcggg tccggcacgc
+     1801 attgaatcta aagcccagtt ggcggcagag ctgcgtaaag ccgtcgacct ggagctgtct
+     1861 gtgatgctgc aatacctgta cgcggcgtat agcattccga actatgcaca gggccaacaa
+     1921 cgtgttcgtg acggtgcgtg gaccgccgag cagctgcaac tggcgtgcgg tagcggtgac
+     1981 cgtcgccgtg atggcggtat tcgtgcagca ctgctggaaa ttgctcatga agaaatgatt
+     2041 cattacctgg tcgttaacaa cctgctgatg gccctgggcg agccgttcta cgcgggtgtc
+     2101 ccgctgatgg gcgaagcggc acgtcaggcg tttggcctgg acaccgagtt cgctctggaa
+     2161 ccgtttagcg aaagcacgct ggcacgtttt gttcgtctgg aatggccgca ctttatccca
+     2221 gcaccgggca aatccatcgc ggactgctat gccgccattc gtcaggcgtt tttggatctg
+     2281 ccggacttgt ttggtggcga ggcaggtaag cgtggcggtg aacaccacct gttcctgaat
+     2341 gagctgacca accgtgcgca tccgggttat caactggaag ttttcgatcg cgactcggcg
+     2401 ctgtttggta ttgcatttgt gaccgatcag ggcgaaggtg gcgctctgga cagcccgcac
+     2461 tacgaacata gccattttca acgtctgcgt gaaatgagcg cgcgtatcat ggctcaaagc
+     2521 gcaccgttcg aaccggcgct gccggcgttg cgtaatccgg ttctggatga gagcccgggt
+     2581 tgccaacgtg tcgcagacgg tcgtgcgcgt gcgctgatgg cattgtacca aggcgtttat
+     2641 gagctgatgt ttgcgatgat ggcgcagcac ttcgccgtga aaccgctggg tagcttgcgt
+     2701 cgcagccgcc tgatgaacgc agcaatcgat ctgatgaccg gtctgttgcg tccgctgagc
+     2761 tgcgcgctga tgaacctgcc aagcggcatc gccggtcgca cggccggtcc gccgctgccg
+     2821 ggtccggttg acacccgtag ctatgacgac tacgcgctgg gctgtcgcat gctggcacgc
+     2881 cgttgcgagc gtctgctgga gcaggcgagc atgctggaac cgggttggct gccggatgcg
+     2941 cagatggagc tgctggattt ctatcgtcgc caaatgctgg acttggcgtg cggcaaactg
+     3001 agccgcgagg cctaaGGCTC GGGAGACCTA TCG
+//
+LOCUS       VioC_BASIC_fragment     1326 bp ds-DNA     linear       01-NOV-2019
+DEFINITION  .
+KEYWORDS    "creator:Imperial College London"                                  
+FEATURES             Location/Qualifiers
+     CDS             19..1308
+                     /label="VioC"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCat gaaacgtgcg attatcgttg gtggcggcct ggcgggtggc
+       61 ctgaccgcga tctacctggc gaagcgtggc tacgaagtgc acgtcgtgga gaagcgtggt
+      121 gatcctctgc gcgatctgag ctcttacgtg gacgttgtta gcagccgtgc gatcggcgtg
+      181 agcatgaccg ttcgtggtat caagagcgtt ttggctgcgg gcattccgcg tgcagagctg
+      241 gatgcgtgtg gcgaaccgat cgtggcaatg gctttctccg tgggtggtca gtatcgcatg
+      301 cgcgaactga agccgttgga ggatttccgt ccgctgagct tgaaccgtgc ggcgtttcaa
+      361 aagctgctga acaaatacgc gaacctggca ggcgttcgtt actactttga gcataagtgc
+      421 ctggatgttg acctggatgg taagagcgtg ttgattcagg gcaaagatgg tcagccgcag
+      481 cgtctgcaag gtgacatgat tatcggtgcg gatggcgccc acagcgccgt ccgtcaggcg
+      541 atgcagagcg gcctgcgtcg tttcgagttc cagcaaacgt tcttccgcca tggctacaaa
+      601 accctggttt tgccggacgc gcaagcactg ggttaccgta aagacacgct gtactttttc
+      661 ggcatggatt ccggtggcct gttcgcgggt cgtgcggcta cgatcccaga tggtagcgtc
+      721 agcatcgccg tttgcctgcc gtactcgggt agcccttccc tgacgaccac cgacgaaccg
+      781 acgatgcgtg cgttcttcga tcgttacttc ggtggcctgc cgcgtgacgc gcgtgacgaa
+      841 atgctgcgtc agtttctggc gaagccgagc aacgacctga ttaacgtgcg ctctagcacc
+      901 tttcactata agggtaatgt gctgttgctg ggtgatgctg cgcatgcgac tgcgccgttc
+      961 ctgggtcagg gtatgaacat ggcgctggag gacgcccgca cgtttgtcga gctgctggac
+     1021 cgccaccagg gcgaccaaga caaagccttt ccggagttca cggagctgcg caaagtccag
+     1081 gcagacgcaa tgcaagacat ggctcgcgcc aactatgacg ttttgagctg ctcgaacccg
+     1141 atctttttca tgcgtgcgcg ttacacgcgt tacatgcatt ccaagtttcc gggcctgtat
+     1201 ccgccggata tggccgagaa actgtacttt acgagcgagc cgtacgatcg tctgcaacaa
+     1261 atccagcgta aacagaatgt ttggtacaag attggtcgcg tgaattgaGG CTCGGGAGAC
+     1321 CTATCG
+//
+LOCUS       VioD_BASIC_fragment     1158 bp ds-DNA     linear       01-NOV-2019
+DEFINITION  .
+KEYWORDS    "creator:Imperial College London"                                  
+FEATURES             Location/Qualifiers
+     CDS             19..1140
+                     /label="VioD"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCat gaagattctg gtcattggtg ctggtccagc tggtctggtt
+       61 ttcgcatccc aactgaagca ggcacgccct ttgtgggcca ttgacatcgt ggagaagaat
+      121 gacgagcaag aagtgctggg ctggggtgtc gtgctgcctg gccgtccggg tcagcacccg
+      181 gcgaacccgc tgtcctatct ggatgcaccg gagcgtctga atccgcaatt tctggaggac
+      241 ttcaaactgg tgcatcataa tgagccgtcc ttgatgtcca cgggcgtttt gttgtgcggc
+      301 gtggagcgtc gcggtctggt tcacgcgctg cgcgataagt gccgcagcca aggcattgct
+      361 attcgtttcg aaagcccgtt gctggaacac ggtgagctgc cgctggcgga ctatgatctg
+      421 gtggtcctgg ctaatggtgt taatcacaaa accgcgcatt tcaccgaggc tctggtcccg
+      481 caggtggact acggccgcaa taagtacatt tggtatggca ctagccagct gttcgatcag
+      541 atgaatctgg tttttcgtac ccatggtaaa gatatcttta tcgcgcatgc ctataagtat
+      601 agcgatacca tgagcacgtt cattgtcgaa tgtagcgaag agacttacgc acgcgcacgc
+      661 ctgggcgaaa tgtccgaaga ggcgagcgca gaatacgttg ctaaggtgtt ccaggccgag
+      721 ctgggtggtc acggcctggt gagccagccg ggtctgggtt ggcgtaactt catgacgttg
+      781 tctcatgacc gttgtcatga tggtaagttg gttctgctgg gtgacgcgct gcaaagcggt
+      841 cactttagca tcggccacgg caccacgatg gccgtggtgg tggcgcagct gctggttaaa
+      901 gcgctgtgta ccgaagatgg tgtgcctgcc gcgctgaaac gtttcgaaga gcgtgccctg
+      961 ccgctggtgc agttgttccg tggccacgca gacaacagcc gcgtttggtt cgaaaccgtc
+     1021 gaagagcgca tgcacctgtc ctcggcggaa tttgtgcaaa gcttcgacgc acgccgcaaa
+     1081 agcctgccgc cgatgccgga agcactggcg cagaatctgc gttatgcttt gcagcgctga
+     1141 GGCTCGGGAG ACCTATCG
+//
+LOCUS       VioE_BASIC_fragment      612 bp ds-DNA     linear       01-NOV-2019
+DEFINITION  .
+KEYWORDS    "creator:Imperial College London"                                  
+FEATURES             Location/Qualifiers
+     CDS             19..594
+                     /label="VioE"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCat ggagaaccgt gagccaccac tgttgccagc ccgttggagc
+       61 agcgcctatg tctcttattg gagcccgatg ctgccggatg accagctgac cagcggctat
+      121 tgctggttcg actatgaacg tgacatctgt cgtattgacg gcctgttcaa tccgtggagc
+      181 gagcgtgata ctggttatcg cctgtggatg tcggaggttg gtaatgcggc cagcggccgt
+      241 acctggaaac aaaaagtcgc ctatggtcgt gagcgtaccg ccctgggtga acagctgtgt
+      301 gagcgtccgc tggatgatga gactggccct tttgccgaat tgttcctgcc acgcgatgtc
+      361 ctgcgccgtc tgggtgcccg tcacattggc cgtcgcgtgg ttctgggtcg cgaagcggac
+      421 ggttggcgtt accagcgccc aggtaaaggt ccgagcaccc tgtacctgga tgcggcgagc
+      481 ggcactccac tgcgcatggt caccggcgat gaagcgtcgc gtgcaagcct gcgtgatttt
+      541 ccgaatgtga gcgaggcgga gatcccggac gcggttttcg cggccaagcg ctaaGGCTCG
+      601 GGAGACCTAT CG
+//
