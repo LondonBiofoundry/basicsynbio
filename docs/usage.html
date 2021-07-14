@@ -108,7 +108,9 @@ available for all the above functions e.g.</p>
 <em>i</em>P and <em>i</em>S sequences with primers that contain them.
 The BasicPart class contains a <code class="docutils literal notranslate"><span class="pre">domesticating_primers()</span></code> method to aid this.
 This method works by running <a class="reference external" href="https://libnano.github.io/primer3-py/">primer3-py</a> under the hood, returning an object containing left and right primers, in addition to associated data as attributes.
-The primer attributes are easily exported to a .tsv file, a format accepted by various DNA synthesis companies:</p>
+The primer attributes are easily exported to a .tsv file,
+a format accepted by various DNA synthesis companies.
+For additional examples of bsb.export_sequences_to_file() refer to <a class="reference internal" href="#export-your-data">4. Export your data</a>:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">domesticating_primers</span> <span class="o">=</span> <span class="n">basic_part</span><span class="o">.</span><span class="n">domesticating_primers</span><span class="p">()</span>
 <span class="n">bsb</span><span class="o">.</span><span class="n">export_sequences_to_file</span><span class="p">(</span>
     <span class="p">(</span><span class="n">domesticating_primers</span><span class="o">.</span><span class="n">left_primer</span><span class="p">,</span> <span class="n">domesticating_primers</span><span class="o">.</span><span class="n">right_primer</span><span class="p">),</span>

@@ -95,7 +95,9 @@ To physically generate BasicParts from external sources -- referred to as domest
 *i*\ P and *i*\ S sequences with primers that contain them.
 The BasicPart class contains a ``domesticating_primers()`` method to aid this. 
 This method works by running `primer3-py`_ under the hood, returning an object containing left and right primers, in addition to associated data as attributes.
-The primer attributes are easily exported to a .tsv file, a format accepted by various DNA synthesis companies:
+The primer attributes are easily exported to a .tsv file,
+a format accepted by various DNA synthesis companies. 
+For additional examples of bsb.export_sequences_to_file() refer to `4. Export your data`_:
 
 .. _primer3-py: https://libnano.github.io/primer3-py/
 
