@@ -1,5 +1,9 @@
-"""Main module for basicsynbio."""
-from basicsynbio.utils import _easy_seqrec, p3_seqrec
+"""Main module for basicsynbio.
+
+This module can import from utils but not from cam or parts_linkers packages.
+
+"""
+from basicsynbio.utils import _easy_seqrec, p3_seqrec, OLIGO_ANNOTATIONS
 from basicsynbio.decorators import addargs2docs, ArgDescription
 from Bio import SeqUtils, SeqIO
 from Bio.Restriction.Restriction import BsaI
@@ -280,13 +284,14 @@ class BasicPart(SeqRecord):
 
 
 @dataclass
-class LinkerHalfOligos():
+class LinkerHalfOligos:
     """Oligos used by a linker half."""
+
     long: Seq
     adapter: Seq
 
 
-class _LinkerOligos():
+class _LinkerOligos:
     """Description of oligonucleotides used to physically generate BasicLinker instances.
 
     Not to be initiated directly but called by the BasicLinker class.
@@ -294,27 +299,81 @@ class _LinkerOligos():
     Attributes:
         prefix: Oligos used to generate prefix linker half.
         suffix: Oligos used to generate suffix linker half.
-    
+
     """
 
     def __init__(self, seq: Seq, overhang_indicies: Tuple[int, int]) -> None:
+        """Init function.
+
+        Args:
+            seq: Sequence of linker including scars.
+            overhang_indicies: Indicies defining position of overhang in linker.
+        """
         self.prefix = LinkerHalfOligos(
-            long=seq[overhang_indicies[0]:].reverse_complement(),
-            adapter=seq[overhang_indicies[1]:-1*len(BasicLinker.DOWNSTREAM_SCAR)],
+            long=seq[overhang_indicies[0] :].reverse_complement(),
+            adapter=seq[overhang_indicies[1] : -1 * len(BasicLinker.DOWNSTREAM_SCAR)],
         )
         self.suffix = LinkerHalfOligos(
-            long=seq[2:overhang_indicies[1]],
-            adapter=seq[len(BasicLinker.UPSTREAM_SCAR):overhang_indicies[0]].reverse_complement(),
+            long=seq[2 : overhang_indicies[1]],
+            adapter=seq[
+                len(BasicLinker.UPSTREAM_SCAR) : overhang_indicies[0]
+            ].reverse_complement(),
         )
-    
-    def all_oligos(self) -> Tuple[Seq, Seq, Seq, Seq]:
-        """Return all oligos required by linker."""
+
+    def all_oligo_seqrecs(
+        self,
+        prefix_long_attrs: dict = None,
+        prefix_adapter_attrs: dict = None,
+        suffix_long_attrs: dict = None,
+        suffix_adapter_attrs: dict = None,
+    ) -> Tuple[SeqRecord, SeqRecord, SeqRecord, SeqRecord]:
+        """Return all oligos required by linker as SeqRecords.
+
+        Args:
+            prefix_long_attrs: Additional attributes to assign to `prefix.long` SeqRecord.
+            prefix_adapter_attrs: Additional attributes to assign to `prefix.adapter` SeqRecord.
+            suffix_long_attrs: Additional attributes to assign to `suffix.long` SeqRecord.
+            suffix_adapter_attrs: Additional attributes to assign to `suffix.adapter` SeqRecord.
+        """
         return (
-            self.prefix.long,
-            self.prefix.adapter,
-            self.suffix.long,
-            self.suffix.adapter,
+            self._linker_oligo_seqrec(
+                seq=self.prefix.long,
+                id="prefix long",
+                additional_attrs=prefix_long_attrs,
+            ),
+            self._linker_oligo_seqrec(
+                seq=self.prefix.adapter,
+                id="prefix adapter",
+                additional_attrs=prefix_adapter_attrs,
+            ),
+            self._linker_oligo_seqrec(
+                seq=self.suffix.long,
+                id="suffix long",
+                additional_attrs=suffix_long_attrs,
+            ),
+            self._linker_oligo_seqrec(
+                seq=self.suffix.adapter,
+                id="suffix adapter",
+                additional_attrs=suffix_adapter_attrs,
+            ),
         )
+
+    def _linker_oligo_seqrec(self, seq: Seq, id: str, additional_attrs: dict):
+        """Return a SeqRecord object for a linker oligonucleotide.
+
+        Args:
+            seq: Sequence of oligonucleotide.
+            id: ID attribute for oligonucleotide.
+            additional_attrs: Additional attributes to assign to oligonucleotide SeqRecord.
+
+        Notes:
+            By default assigns `OLIGO_ANNOTATIONS` to annoations attribute.
+        """
+        seqrec = SeqRecord(seq=seq, id=id, annotations=OLIGO_ANNOTATIONS)
+        if additional_attrs:
+            for key, value in additional_attrs.items():
+                setattr(seqrec, key, value)
+        return seqrec
 
 
 class BasicLinker(SeqRecord):
@@ -333,12 +392,20 @@ class BasicLinker(SeqRecord):
         linker_oligos: Oligonucleotides used to physically generate linker.
 
     """
+
     UPSTREAM_SCAR = "GGCTCG"
     DOWNSTREAM_SCAR = "GTCC"
 
     @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def __init__(
-        self, seq: Seq, id: str, name: str = None, prefix_id: str = None, suffix_id: str = None, overhang_indicies: Tuple[int, int] = None, **kwargs
+        self,
+        seq: Seq,
+        id: str,
+        name: str = None,
+        prefix_id: str = None,
+        suffix_id: str = None,
+        overhang_indicies: Tuple[int, int] = None,
+        **kwargs,
     ):
         """Class for BASIC DNA assembly linkers.
 
@@ -404,10 +471,14 @@ class BasicLinker(SeqRecord):
 
     @seq.setter
     def seq(self, value):
-        if value[:len(self.UPSTREAM_SCAR)] != self.UPSTREAM_SCAR:
-            raise ValueError(f"BasicLinker class/subclass initiated with sequence lacking upstream scar: {self.UPSTREAM_SCAR}")
-        if value[-1*len(self.DOWNSTREAM_SCAR):] != self.DOWNSTREAM_SCAR:
-            raise ValueError(f"BasicLinker class/subclass initiated with sequence lacking downstream scar: {self.DOWNSTREAM_SCAR}")
+        if value[: len(self.UPSTREAM_SCAR)] != self.UPSTREAM_SCAR:
+            raise ValueError(
+                f"BasicLinker class/subclass initiated with sequence lacking upstream scar: {self.UPSTREAM_SCAR}"
+            )
+        if value[-1 * len(self.DOWNSTREAM_SCAR) :] != self.DOWNSTREAM_SCAR:
+            raise ValueError(
+                f"BasicLinker class/subclass initiated with sequence lacking downstream scar: {self.DOWNSTREAM_SCAR}"
+            )
         self._seq = value
 
     def __eq__(self, other: "BasicLinker") -> bool:
@@ -419,7 +490,15 @@ class BasicLinker(SeqRecord):
 class BasicUTRRBSLinker(BasicLinker):
     """Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers."""
 
-    def __init__(self, seq: Seq, id: str, name: str, prefix_id: str =None, suffix_id: str =None, **kwargs):
+    def __init__(
+        self,
+        seq: Seq,
+        id: str,
+        name: str,
+        prefix_id: str = None,
+        suffix_id: str = None,
+        **kwargs,
+    ):
         super().__init__(seq, id, name, prefix_id, suffix_id, **kwargs)
         self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = f"UTR{self.name[3]}-S"

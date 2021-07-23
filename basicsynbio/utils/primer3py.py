@@ -4,7 +4,7 @@ from Bio.Seq import Seq
 from datetime import datetime
 
 DATE = datetime.now()
-PRIMER_ANNOTATIONS = {
+OLIGO_ANNOTATIONS = {
     "date": DATE.strftime("%d-") + DATE.strftime("%b").upper() + DATE.strftime("-%Y"),
     "sequence_version": 1,
     "topology": "linear",
@@ -31,7 +31,7 @@ def p3_seqrec(
     seqrec = SeqRecord(
         Seq(p3py_out[primer_str + "_SEQUENCE"]),
         primer_str,
-        annotations=PRIMER_ANNOTATIONS,
+        annotations=OLIGO_ANNOTATIONS,
     )
     if seqrec_attrs:
         for key, value in seqrec_attrs.items():
