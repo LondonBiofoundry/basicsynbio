@@ -1,3 +1,4 @@
+from basicsynbio.main import BasicLinker
 import basicsynbio as bsb
 import pytest
 
@@ -230,9 +231,18 @@ def all_promoter_assemblies_build():
 
 
 @pytest.fixture
-def backbone_linker():
+def bb_linker():
+    from Bio.Seq import Seq
+    from basicsynbio.cam.main import seqrecord_hexdigest
     bb_linker = bsb.BasicLinker(
-        str_seq="CTCGCTAGACTTGCGTCAAAGGATCCGGGCTGTTAGCTCAACAGATAGTGTCC",
-        name="bb_link_v1.0",
-        description="BASIC backbone linker for assembling SEVA AbR casettes and Origins or replication."
+        seq=Seq("GGCTCGGCCCACTTGTGTGTCTCGTACAATTCTGAGGTCCACACAGATAGTGTCC"),
+        id="foobar",
+        name="SEVA-BB1",
+        description="BASIC backbone linker for assembling SEVA AbR casettes and SEVA Oris.",
+        overhang_indicies = (
+            len(bsb.BasicLinker.UPSTREAM_SCAR) + 12,
+            len(bsb.BasicLinker.UPSTREAM_SCAR) + 12 + 21
+        )
     )
+    bb_linker.id = seqrecord_hexdigest(bb_linker)
+    return  bb_linker

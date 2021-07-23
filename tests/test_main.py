@@ -1,27 +1,11 @@
 import basicsynbio as bsb
 import pytest
 
-from .test_fixtures import (
-    gfp_basicpart,
-    gfp_seqrec,
-    gfp_orf_seq,
-    cmr_p15a_basicpart,
-    cmr_p15a_backbone,
-    five_part_assembly_parts,
-    five_part_assembly_linkers,
-    five_part_assembly,
-    gfp_orf_seqrec,
-    gfp_orf_basicpart,
-    bseva_68_seqrec,
-    bsai_part_seqrec,
-    promoter_assemblies_build,
-    promoter_assemblies_json,
-    gfp_part_final_conc,
-)
-from .functions import compare_seqrec_instances
+from .test_fixtures import *
 
 
 def test_basic_part(gfp_basicpart, gfp_seqrec):
+    from .functions import compare_seqrec_instances
     assert compare_seqrec_instances(gfp_basicpart, gfp_seqrec) == True
 
 
@@ -273,6 +257,7 @@ def test_basic_linker_label():
 @pytest.mark.slow
 def test_import_sbol_part():
     from basicsynbio.cam import seqrecord_hexdigest
+    from .functions import compare_seqrec_instances
 
     bseva18_from_sbol = next(
         bsb.import_sbol_parts("./sequences/alternative_formats/bseva18.rdf")
@@ -286,4 +271,17 @@ def test_import_sbol_part():
     )
 
 
-# def test_linker_oligos():
+def test_linker_oligos_complementary(bb_linker):
+    for half in ("prefix", "suffix"):
+        adapter = getattr(bb_linker.linker_oligos, half).adapter
+        long = getattr(bb_linker.linker_oligos, half).long
+        assert len(adapter) == 12
+        assert len(long) == 4 + len(adapter) + 21
+        assert long[4: 4 + len(adapter)] == adapter.reverse_complement()
+
+
+def test_linker_overhang_complementary(bb_linker):
+    prefix_overhang = bb_linker.linker_oligos.prefix.long[4 + len(bb_linker.linker_oligos.prefix.adapter):]
+    suffix_overhang = bb_linker.linker_oligos.suffix.long[4 + len(bb_linker.linker_oligos.suffix.adapter):]
+    # breakpoint()
+    assert suffix_overhang == prefix_overhang.reverse_complement()

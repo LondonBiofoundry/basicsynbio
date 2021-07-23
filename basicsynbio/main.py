@@ -279,6 +279,44 @@ class BasicPart(SeqRecord):
         return self.id == other.id and str(self.seq) == str(other.seq)
 
 
+@dataclass
+class LinkerHalfOligos():
+    """Oligos used by a linker half."""
+    long: Seq
+    adapter: Seq
+
+
+class _LinkerOligos():
+    """Description of oligonucleotides used to physically generate BasicLinker instances.
+
+    Not to be initiated directly but called by the BasicLinker class.
+
+    Attributes:
+        prefix: Oligos used to generate prefix linker half.
+        suffix: Oligos used to generate suffix linker half.
+    
+    """
+
+    def __init__(self, seq: Seq, overhang_indicies: Tuple[int, int]) -> None:
+        self.prefix = LinkerHalfOligos(
+            long=seq[overhang_indicies[0]:].reverse_complement(),
+            adapter=seq[overhang_indicies[1]:-1*len(BasicLinker.DOWNSTREAM_SCAR)],
+        )
+        self.suffix = LinkerHalfOligos(
+            long=seq[2:overhang_indicies[1]],
+            adapter=seq[len(BasicLinker.UPSTREAM_SCAR):overhang_indicies[0]].reverse_complement(),
+        )
+    
+    def all_oligos(self) -> Tuple[Seq, Seq, Seq, Seq]:
+        """Return all oligos required by linker."""
+        return (
+            self.prefix.long,
+            self.prefix.adapter,
+            self.suffix.long,
+            self.suffix.adapter,
+        )
+
+
 class BasicLinker(SeqRecord):
     """Class for BASIC DNA assembly linkers.
 
@@ -288,10 +326,11 @@ class BasicLinker(SeqRecord):
     Attributes:
         prefix_id (str): The prefix half linker id.
         suffix_id (str): The suffix half linker id.
-        seq: Refer to Bio.SeqRecord.SeqRecord documentation.
+        seq : Refer to Bio.SeqRecord.SeqRecord documentation.
         id: Refer to Bio.SeqRecord.SeqRecord documentation.
         name: This attribute is used to label the annotation in exported gb files or equivalent.
-        features : Refer to Bio.SeqRecord.SeqRecord documentation.
+        overhang_indicies: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.
+        linker_oligos: Oligonucleotides used to physically generate linker.
 
     """
     UPSTREAM_SCAR = "GGCTCG"
@@ -299,7 +338,7 @@ class BasicLinker(SeqRecord):
 
     @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def __init__(
-        self, seq: Seq, id: str, name: str = None, prefix_id: str = None, suffix_id: str = None, **kwargs
+        self, seq: Seq, id: str, name: str = None, prefix_id: str = None, suffix_id: str = None, overhang_indicies: Tuple[int, int] = None, **kwargs
     ):
         """Class for BASIC DNA assembly linkers.
 
@@ -308,15 +347,19 @@ class BasicLinker(SeqRecord):
             id : Refer to Bio.SeqRecord.SeqRecord documentation.
             name: This attribute is used to label the annotation in exported gb files or equivalent.
             prefix_id (optional): prefix id if known and not needing
-                generation, defaults to None.
+                generation, defaults to f"{self.name}-P".
             suffix_id (optional): suffix id if known and not needing
-                generation, defaults to None.
+                generation, defaults to f"{self.name}-S".
+            overhang_indicies: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.
             kwargs:
         """
         self.seq = seq
         super().__init__(seq=self.seq, id=id, name=name, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
+        self.overhang_indicies = overhang_indicies
+        if overhang_indicies:
+            self.linker_oligos = _LinkerOligos(self.seq, self.overhang_indicies)
         self._linker_feature()
 
     def basic_slice(self):
