@@ -284,3 +284,6 @@ def test_import_sbol_part():
         compare_seqrec_instances(bseva18_from_sbol, bsb.BASIC_SEVA_PARTS["v0.1"]["18"])
         == True
     )
+
+
+# def test_linker_oligos():

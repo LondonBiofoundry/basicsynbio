@@ -283,33 +283,38 @@ class BasicLinker(SeqRecord):
     """Class for BASIC DNA assembly linkers.
 
     A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart`
-    instances when initialising :py:class:`BasicAssembly` objects.
+    instances when initializing :py:class:`BasicAssembly` objects.
 
     Attributes:
         prefix_id (str): The prefix half linker id.
         suffix_id (str): The suffix half linker id.
         seq: Refer to Bio.SeqRecord.SeqRecord documentation.
         id: Refer to Bio.SeqRecord.SeqRecord documentation.
+        name: This attribute is used to label the annotation in exported gb files or equivalent.
         features : Refer to Bio.SeqRecord.SeqRecord documentation.
 
     """
+    UPSTREAM_SCAR = "GGCTCG"
+    DOWNSTREAM_SCAR = "GTCC"
 
     @addargs2docs(CommonArgDocs.SEQREC_KWARGS)
     def __init__(
-        self, seq, id: str, prefix_id: str = None, suffix_id: str = None, **kwargs
+        self, seq: Seq, id: str, name: str = None, prefix_id: str = None, suffix_id: str = None, **kwargs
     ):
         """Class for BASIC DNA assembly linkers.
 
         Args:
             seq : Refer to Bio.SeqRecord.SeqRecord documentation.
             id : Refer to Bio.SeqRecord.SeqRecord documentation.
+            name: This attribute is used to label the annotation in exported gb files or equivalent.
             prefix_id (optional): prefix id if known and not needing
                 generation, defaults to None.
             suffix_id (optional): suffix id if known and not needing
                 generation, defaults to None.
             kwargs:
         """
-        super().__init__(seq=seq, id=id, **kwargs)
+        self.seq = seq
+        super().__init__(seq=self.seq, id=id, name=name, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
         self._linker_feature()
@@ -328,7 +333,7 @@ class BasicLinker(SeqRecord):
             SeqFeature(
                 type="misc_feature",
                 location=FeatureLocation(2, len(self.seq), strand=+1),
-                qualifiers={"label": [str(self.id)]},
+                qualifiers={"label": [str(self.name)]},
             )
         )
 
@@ -350,6 +355,18 @@ class BasicLinker(SeqRecord):
             return f"{self.name}-S"
         return id
 
+    @property
+    def seq(self):
+        return self._seq
+
+    @seq.setter
+    def seq(self, value):
+        if value[:len(self.UPSTREAM_SCAR)] != self.UPSTREAM_SCAR:
+            raise ValueError(f"BasicLinker class/subclass initiated with sequence lacking upstream scar: {self.UPSTREAM_SCAR}")
+        if value[-1*len(self.DOWNSTREAM_SCAR):] != self.DOWNSTREAM_SCAR:
+            raise ValueError(f"BasicLinker class/subclass initiated with sequence lacking downstream scar: {self.DOWNSTREAM_SCAR}")
+        self._seq = value
+
     def __eq__(self, other: "BasicLinker") -> bool:
         if not isinstance(other, BasicLinker):
             raise TypeError(f"{other} is not a BasicLinker instance.")
@@ -359,8 +376,8 @@ class BasicLinker(SeqRecord):
 class BasicUTRRBSLinker(BasicLinker):
     """Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers."""
 
-    def __init__(self, seq, id, prefix_id=None, suffix_id=None, **kwargs):
-        super().__init__(seq, id, prefix_id, suffix_id, **kwargs)
+    def __init__(self, seq: Seq, id: str, name: str, prefix_id: str =None, suffix_id: str =None, **kwargs):
+        super().__init__(seq, id, name, prefix_id, suffix_id, **kwargs)
         self.prefix_id = super()._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = f"UTR{self.name[3]}-S"
 

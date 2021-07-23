@@ -227,3 +227,12 @@ def all_promoter_assemblies_build():
         for ind, promoter in enumerate(bsb.BASIC_PROMOTER_PARTS["v0.1"].values())
     ]
     return bsb.BasicBuild(*promoter_assemblies)
+
+
+@pytest.fixture
+def backbone_linker():
+    bb_linker = bsb.BasicLinker(
+        str_seq="CTCGCTAGACTTGCGTCAAAGGATCCGGGCTGTTAGCTCAACAGATAGTGTCC",
+        name="bb_link_v1.0",
+        description="BASIC backbone linker for assembling SEVA AbR casettes and Origins or replication."
+    )

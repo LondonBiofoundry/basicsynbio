@@ -118,7 +118,6 @@ def test_unique_linkers_data_clips(promoter_assemblies_build):
 
 def test_partially_decoded_build(promoter_assemblies_json, promoter_assemblies_build):
     import json
-
     decoded_build = json.loads(promoter_assemblies_json, cls=bsb.BuildDecoder)
     assert True == isinstance(decoded_build, bsb.BasicBuild)
     assert len(promoter_assemblies_build.basic_assemblies) == len(
