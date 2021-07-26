@@ -264,6 +264,7 @@ class BuildEncoder(json.JSONEncoder):
             + str(index): {
                 "id": value["linker"].id,
                 "linker_class": str(type(value["linker"])),
+                "name": value["linker"].name,
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
@@ -425,10 +426,16 @@ class BuildDecoder(json.JSONDecoder):
         unique_linkers = {}
         for key, value in dictionary["unique_linkers"].items():
             if re.match(".*BasicLinker", value["linker_class"]):
-                unique_linker = BasicLinker(seq=Seq(value["sequence"]), id=value["id"])
+                unique_linker = BasicLinker(
+                    seq=Seq(value["sequence"]),
+                    id=value["id"],
+                    name=value["name"],
+                )
             elif re.match(".*BasicUTRRBSLinker", value["linker_class"]):
                 unique_linker = BasicUTRRBSLinker(
-                    seq=Seq(value["sequence"]), id=value["id"]
+                    seq=Seq(value["sequence"]),
+                    id=value["id"],
+                    name=value["name"],
                 )
             else:
                 raise LinkerException(

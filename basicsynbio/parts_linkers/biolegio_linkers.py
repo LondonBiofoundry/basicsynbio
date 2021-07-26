@@ -90,7 +90,7 @@ def _make_linker(
         linker_class: object to parse linker into, e.g. 'bsb.BasicLinker',
             'bsb.BasicUTRRBSLinker'.
         str_seq: Sequence of Linker.
-        id: Identification on Linker.
+        name: Generic name for linker.
         description (str, optional): Description of Linker, Defaults to "visit
             https://www.biolegio.com/products-services/basic/ for further
             information.".
