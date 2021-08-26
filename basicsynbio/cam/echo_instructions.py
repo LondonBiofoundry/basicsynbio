@@ -25,7 +25,7 @@ def export_echo_assembly(
     buffer_well: str = "A1",
     water_well: str = "B1",
     alternate_well: bool = False,
-    assemblies_per_clip: int = 28,
+    assemblies_per_clip: int = 20,
     clips_plate_size: Literal[6, 24, 96, 384, 1536] = 384,
     assemblies_plate_size: Literal[6, 24, 96, 384, 1536] = 96,
 ) -> None:

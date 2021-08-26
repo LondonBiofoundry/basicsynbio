@@ -9,3 +9,4 @@ from .biopython import *
 from .biopython import _easy_seqrec
 from .reportLab import *
 from .primer3py import *
+from .seva import *
