@@ -35,7 +35,7 @@ with resources.open_text(
     }
 
 with resources.open_text(
-    "basicsynbio.parts_linkers", f"BASIC_SEVA_collection.gb"
+    "basicsynbio.parts_linkers", f"BASIC_SEVA_collection_v01.gb"
 ) as gb_file:
     BSEVA_PARTS = list(bsb.import_parts(gb_file, "genbank"))
     BASIC_SEVA_PARTS = {

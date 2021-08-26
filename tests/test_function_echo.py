@@ -349,7 +349,9 @@ def test_multiple_files_made_more_than_96_assemblies_clips_assignment(
     import numpy as np
     from pathlib import Path
 
-    echozippath = bsb.export_echo_assembly(promoter_assemblies_build)
+    echozippath = bsb.export_echo_assembly(
+        promoter_assemblies_build, assemblies_per_clip=28
+    )
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
@@ -378,7 +380,10 @@ def test_multiple_files_made_more_than_96_assemblies_clips_assignment_with_alter
     from pathlib import Path
 
     echozippath = bsb.export_echo_assembly(
-        promoter_assemblies_build, alternate_well=True, clips_plate_size=1536
+        promoter_assemblies_build,
+        alternate_well=True,
+        clips_plate_size=1536,
+        assemblies_per_clip=28,
     )
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
