@@ -44,8 +44,8 @@ def pdf_instructions(
 
     Args:
         basic_build: BasicBuild object the pdf lab instructions are written for.
-        path (optional): path to zipped folder of csv files. If none defaults to
-            working directory with a time stamped name, output csvs is created.
+        path (optional): path to pdf file. If none defaults to
+            working directory with a time stamped name.
         assemblies_per_clip (optional): number of assemblies each purified clip reaction can support.
 
     Returns:
@@ -124,7 +124,7 @@ def pdf_instructions(
     if path == None:
         now = datetime.now()
         pdf_filename = str(
-            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            Path.cwd() / f"Manual_instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.pdf"
         )
     else:
         pdf_filename = path
@@ -245,12 +245,6 @@ def pdf_instructions(
         )
     )
     elems.append(Spacer(1, 0.4 * cm))
-    elems.append(
-        Paragraph(
-            "We recommend the above up each clip can be used in up to 28 assemblies.",
-            styles["BodyText"],
-        )
-    )
     elems.append(Spacer(1, 0.4 * cm))
     elems.append(
         Paragraph(
