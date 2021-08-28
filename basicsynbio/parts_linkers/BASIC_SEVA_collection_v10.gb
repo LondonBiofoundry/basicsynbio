@@ -1,4 +1,4 @@
-LOCUS       BASIC_SEVA_15.10        5933 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_15.10        5933 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_15
@@ -129,7 +129,7 @@ ORIGIN
      5821 aactggatat taccagccac aacgaggatt ataccgtggt tgagcaatat gagcgtagcg
      5881 agggtcgcca cagcaccggc ggcatggacg aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_16.10        2991 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_16.10        2991 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and p15A
             origin of replication..
 ACCESSION   BASIC_SEVA_16
@@ -211,7 +211,7 @@ ORIGIN
      2881 ctggatatta ccagccacaa cgaggattat accgtggttg agcaatatga gcgtagcgag
      2941 ggtcgccaca gcaccggcgg catggacgaa ctgtataagg gatcctaata a
 //
-LOCUS       BASIC_SEVA_17.10        3915 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_17.10        3915 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and pSC101
             origin of replication..
 ACCESSION   BASIC_SEVA_17
@@ -309,7 +309,7 @@ ORIGIN
      3841 gttgagcaat atgagcgtag cgagggtcgc cacagcaccg gcggcatgga cgaactgtat
      3901 aagggatcct aataa
 //
-LOCUS       BASIC_SEVA_17_TS.1      3984 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_17_TS.1      3984 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_17_TS
@@ -410,7 +410,7 @@ ORIGIN
      3901 tataccgtgg ttgagcaata tgagcgtagc gagggtcgcc acagcaccgg cggcatggac
      3961 gaactgtata agggatccta ataa
 //
-LOCUS       BASIC_SEVA_18.10        3188 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_18.10        3188 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and pUC
             origin of replication..
 ACCESSION   BASIC_SEVA_18
@@ -496,7 +496,7 @@ ORIGIN
      3121 aatatgagcg tagcgagggt cgccacagca ccggcggcat ggacgaactg tataagggat
      3181 cctaataa
 //
-LOCUS       BASIC_SEVA_19.10        3644 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_19.10        3644 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_19
@@ -589,7 +589,7 @@ ORIGIN
      3541 ttaccagcca caacgaggat tataccgtgg ttgagcaata tgagcgtagc gagggtcgcc
      3601 acagcaccgg cggcatggac gaactgtata agggatccta ataa
 //
-LOCUS       BASIC_SEVA_25.10        5821 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_25.10        5821 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and RSF1010
             origin of replication..
 ACCESSION   BASIC_SEVA_25
@@ -719,7 +719,7 @@ ORIGIN
      5761 gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg gatcctaata
      5821 a
 //
-LOCUS       BASIC_SEVA_26.10        2879 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_26.10        2879 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and p15A
             origin of replication..
 ACCESSION   BASIC_SEVA_26
@@ -799,7 +799,7 @@ ORIGIN
      2761 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      2821 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_27.10        3803 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_27.10        3803 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and pSC101
             origin of replication..
 ACCESSION   BASIC_SEVA_27
@@ -895,7 +895,7 @@ ORIGIN
      3721 ataccgtggt tgagcaatat gagcgtagcg agggtcgcca cagcaccggc ggcatggacg
      3781 aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_27_TS.1      3872 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_27_TS.1      3872 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_27_TS
@@ -994,7 +994,7 @@ ORIGIN
      3781 acgaggatta taccgtggtt gagcaatatg agcgtagcga gggtcgccac agcaccggcg
      3841 gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_28.10        3076 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_28.10        3076 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and pUC
             origin of replication..
 ACCESSION   BASIC_SEVA_28
@@ -1078,7 +1078,7 @@ ORIGIN
      3001 ggttgagcaa tatgagcgta gcgagggtcg ccacagcacc ggcggcatgg acgaactgta
      3061 taagggatcc taataa
 //
-LOCUS       BASIC_SEVA_29.10        3532 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_29.10        3532 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
             pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_29
@@ -1169,7 +1169,7 @@ ORIGIN
      3421 actggatatt accagccaca acgaggatta taccgtggtt gagcaatatg agcgtagcga
      3481 gggtcgccac agcaccggcg gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_35.10        5677 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_35.10        5677 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_35
@@ -1296,7 +1296,7 @@ ORIGIN
      5581 ccacaacgag gattataccg tggttgagca atatgagcgt agcgagggtc gccacagcac
      5641 cggcggcatg gacgaactgt ataagggatc ctaataa
 //
-LOCUS       BASIC_SEVA_36.10        2735 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_36.10        2735 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             p15A origin of replication..
 ACCESSION   BASIC_SEVA_36
@@ -1374,7 +1374,7 @@ ORIGIN
      2641 acaacgagga ttataccgtg gttgagcaat atgagcgtag cgagggtcgc cacagcaccg
      2701 gcggcatgga cgaactgtat aagggatcct aataa
 //
-LOCUS       BASIC_SEVA_37.10        3659 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_37.10        3659 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_37
@@ -1467,7 +1467,7 @@ ORIGIN
      3541 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      3601 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_37_TS.1      3728 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_37_TS.1      3728 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_37_TS
@@ -1564,7 +1564,7 @@ ORIGIN
      3661 aatatgagcg tagcgagggt cgccacagca ccggcggcat ggacgaactg tataagggat
      3721 cctaataa
 //
-LOCUS       BASIC_SEVA_38.10        2932 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_38.10        2932 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             pUC origin of replication..
 ACCESSION   BASIC_SEVA_38
@@ -1645,7 +1645,7 @@ ORIGIN
      2821 actggatatt accagccaca acgaggatta taccgtggtt gagcaatatg agcgtagcga
      2881 gggtcgccac agcaccggcg gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_39.10        3388 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_39.10        3388 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_39
@@ -1734,7 +1734,7 @@ ORIGIN
      3301 ggattatacc gtggttgagc aatatgagcg tagcgagggt cgccacagca ccggcggcat
      3361 ggacgaactg tataagggat cctaataa
 //
-LOCUS       BASIC_SEVA_45.10        5891 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_45.10        5891 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_45
@@ -1865,7 +1865,7 @@ ORIGIN
      5821 agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg
      5881 gatcctaata a
 //
-LOCUS       BASIC_SEVA_46.10        2949 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_46.10        2949 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and p15A
             origin of replication..
 ACCESSION   BASIC_SEVA_46
@@ -1947,7 +1947,7 @@ ORIGIN
      2881 caatatgagc gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga
      2941 tcctaataa
 //
-LOCUS       BASIC_SEVA_47.10        3873 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_47.10        3873 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_47
@@ -2044,7 +2044,7 @@ ORIGIN
      3781 aacgaggatt ataccgtggt tgagcaatat gagcgtagcg agggtcgcca cagcaccggc
      3841 ggcatggacg aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_47_TS.1      3942 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_47_TS.1      3942 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_47_TS
@@ -2144,7 +2144,7 @@ ORIGIN
      3841 accagccaca acgaggatta taccgtggtt gagcaatatg agcgtagcga gggtcgccac
      3901 agcaccggcg gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_48.10        3146 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_48.10        3146 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and pUC
             origin of replication..
 ACCESSION   BASIC_SEVA_48
@@ -2229,7 +2229,7 @@ ORIGIN
      3061 attataccgt ggttgagcaa tatgagcgta gcgagggtcg ccacagcacc ggcggcatgg
      3121 acgaactgta taagggatcc taataa
 //
-LOCUS       BASIC_SEVA_49.10        3602 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_49.10        3602 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_49
@@ -2322,7 +2322,7 @@ ORIGIN
      3541 agcgtagcga gggtcgccac agcaccggcg gcatggacga actgtataag ggatcctaat
      3601 aa
 //
-LOCUS       BASIC_SEVA_55.10        6169 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_55.10        6169 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_55
@@ -2457,7 +2457,7 @@ ORIGIN
      6061 ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc gtagcgaggg
      6121 tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_56.10        3227 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_56.10        3227 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and p15A
             origin of replication..
 ACCESSION   BASIC_SEVA_56
@@ -2543,7 +2543,7 @@ ORIGIN
      3121 atattaccag ccacaacgag gattataccg tggttgagca atatgagcgt agcgagggtc
      3181 gccacagcac cggcggcatg gacgaactgt ataagggatc ctaataa
 //
-LOCUS       BASIC_SEVA_57.10        4151 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_57.10        4151 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_57
@@ -2645,7 +2645,7 @@ ORIGIN
      4081 agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg
      4141 gatcctaata a
 //
-LOCUS       BASIC_SEVA_57_TS.1      4220 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_57_TS.1      4220 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_57_TS
@@ -2750,7 +2750,7 @@ ORIGIN
      4141 ccgtggttga gcaatatgag cgtagcgagg gtcgccacag caccggcggc atggacgaac
      4201 tgtataaggg atcctaataa
 //
-LOCUS       BASIC_SEVA_58.10        3424 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_58.10        3424 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and pUC
             origin of replication..
 ACCESSION   BASIC_SEVA_58
@@ -2840,7 +2840,7 @@ ORIGIN
      3361 tgagcgtagc gagggtcgcc acagcaccgg cggcatggac gaactgtata agggatccta
      3421 ataa
 //
-LOCUS       BASIC_SEVA_59.10        3880 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_59.10        3880 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_59
@@ -2937,7 +2937,7 @@ ORIGIN
      3781 cagccacaac gaggattata ccgtggttga gcaatatgag cgtagcgagg gtcgccacag
      3841 caccggcggc atggacgaac tgtataaggg atcctaataa
 //
-LOCUS       BASIC_SEVA_65.10        5699 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_65.10        5699 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             RSF1010 origin of replication..
 ACCESSION   BASIC_SEVA_65
@@ -3064,7 +3064,7 @@ ORIGIN
      5581 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      5641 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_66.10        2757 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_66.10        2757 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and p15A
             origin of replication..
 ACCESSION   BASIC_SEVA_66
@@ -3142,7 +3142,7 @@ ORIGIN
      2641 cgtaaactgg atattaccag ccacaacgag gattataccg tggttgagca atatgagcgt
      2701 agcgagggtc gccacagcac cggcggcatg gacgaactgt ataagggatc ctaataa
 //
-LOCUS       BASIC_SEVA_67.10        3681 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_67.10        3681 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and pSC101
             origin of replication..
 ACCESSION   BASIC_SEVA_67
@@ -3236,7 +3236,7 @@ ORIGIN
      3601 accgtggttg agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa
      3661 ctgtataagg gatcctaata a
 //
-LOCUS       BASIC_SEVA_67_TS.1      3750 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_67_TS.1      3750 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_67_TS
@@ -3333,7 +3333,7 @@ ORIGIN
      3661 gaggattata ccgtggttga gcaatatgag cgtagcgagg gtcgccacag caccggcggc
      3721 atggacgaac tgtataaggg atcctaataa
 //
-LOCUS       BASIC_SEVA_68.10        2954 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_68.10        2954 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and pUC
             origin of replication..
 ACCESSION   BASIC_SEVA_68
@@ -3415,7 +3415,7 @@ ORIGIN
      2881 ttgagcaata tgagcgtagc gagggtcgcc acagcaccgg cggcatggac gaactgtata
      2941 agggatccta ataa
 //
-LOCUS       BASIC_SEVA_69.10        3410 bp    DNA     circular UNK 26-AUG-2021
+LOCUS       BASIC_SEVA_69.10        3410 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             pBR322-ROP origin of replication..
 ACCESSION   BASIC_SEVA_69
