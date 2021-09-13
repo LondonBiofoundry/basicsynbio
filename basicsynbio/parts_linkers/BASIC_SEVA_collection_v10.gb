@@ -309,11 +309,11 @@ ORIGIN
      3841 gttgagcaat atgagcgtag cgagggtcgc cacagcaccg gcggcatgga cgaactgtat
      3901 aagggatcct aataa
 //
-LOCUS       BASIC_SEVA_17_TS.1      3984 bp    DNA     circular UNK 28-AUG-2021
+LOCUS       BASIC_SEVA_17_TS.10     3984 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_17_TS
-VERSION     BASIC_SEVA_17_TS.1
+VERSION     BASIC_SEVA_17_TS.10
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -895,11 +895,11 @@ ORIGIN
      3721 ataccgtggt tgagcaatat gagcgtagcg agggtcgcca cagcaccggc ggcatggacg
      3781 aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_27_TS.1      3872 bp    DNA     circular UNK 28-AUG-2021
+LOCUS       BASIC_SEVA_27_TS.10     3872 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_27_TS
-VERSION     BASIC_SEVA_27_TS.1
+VERSION     BASIC_SEVA_27_TS.10
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -1467,11 +1467,11 @@ ORIGIN
      3541 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      3601 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_37_TS.1      3728 bp    DNA     circular UNK 28-AUG-2021
+LOCUS       BASIC_SEVA_37_TS.10     3728 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_37_TS
-VERSION     BASIC_SEVA_37_TS.1
+VERSION     BASIC_SEVA_37_TS.10
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -2044,11 +2044,11 @@ ORIGIN
      3781 aacgaggatt ataccgtggt tgagcaatat gagcgtagcg agggtcgcca cagcaccggc
      3841 ggcatggacg aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_47_TS.1      3942 bp    DNA     circular UNK 28-AUG-2021
+LOCUS       BASIC_SEVA_47_TS.10     3942 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_47_TS
-VERSION     BASIC_SEVA_47_TS.1
+VERSION     BASIC_SEVA_47_TS.10
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -2645,11 +2645,11 @@ ORIGIN
      4081 agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg
      4141 gatcctaata a
 //
-LOCUS       BASIC_SEVA_57_TS.1      4220 bp    DNA     circular UNK 28-AUG-2021
+LOCUS       BASIC_SEVA_57_TS.10     4220 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_57_TS
-VERSION     BASIC_SEVA_57_TS.1
+VERSION     BASIC_SEVA_57_TS.10
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -3236,11 +3236,11 @@ ORIGIN
      3601 accgtggttg agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa
      3661 ctgtataagg gatcctaata a
 //
-LOCUS       BASIC_SEVA_67_TS.1      3750 bp    DNA     circular UNK 28-AUG-2021
+LOCUS       BASIC_SEVA_67_TS.10     3750 bp    DNA     circular UNK 28-AUG-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             temperature sensitive pSC101 origin of replication..
 ACCESSION   BASIC_SEVA_67_TS
-VERSION     BASIC_SEVA_67_TS.1
+VERSION     BASIC_SEVA_67_TS.10
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct

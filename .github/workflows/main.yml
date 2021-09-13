@@ -71,6 +71,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Black
-        uses: jpetrucciani/black-check@master
+        uses: rickstaa/action-black@v1
         with:
-          path: ./basicsynbio 
+          black_args: "./basicsynbio --check --diff"
