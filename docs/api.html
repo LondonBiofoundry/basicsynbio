@@ -35,7 +35,7 @@
   <div class="section" id="api-reference">
 <h1>API reference<a class="headerlink" href="#api-reference" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="module-basicsynbio.main">
-<span id="main-py"></span><h2>main.py<a class="headerlink" href="#module-basicsynbio.main" title="Permalink to this headline">¶</a></h2>
+<span id="main-py"></span><span id="main-py-api"></span><h2>main.py<a class="headerlink" href="#module-basicsynbio.main" title="Permalink to this headline">¶</a></h2>
 <p>Main module for basicsynbio.</p>
 <p>This module can import from utils but not from cam or parts_linkers packages.</p>
 <dl class="py exception">
@@ -120,7 +120,7 @@ required for BASIC assembly.</p>
 
 <dl class="py class">
 <dt id="basicsynbio.main.BasicLinker">
-<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicLinker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span><span class="p">:</span> <span class="n">Bio.Seq.Seq</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prefix_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">suffix_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">overhang_indicies</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicLinker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicLinker" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="sig-prename descclassname">basicsynbio.main.</code><code class="sig-name descname">BasicLinker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seq</span><span class="p">:</span> <span class="n">Bio.Seq.Seq</span></em>, <em class="sig-param"><span class="n">id</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">name</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">prefix_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">suffix_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">overhang_slice_params</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>int<span class="p">, </span>int<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicLinker"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicLinker" title="Permalink to this definition">¶</a></dt>
 <dd><p>Class for BASIC DNA assembly linkers.</p>
 <p>A DNA sequence joined with other BasicLinkers via <a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicPart</span></code></a>
 instances when initializing <a class="reference internal" href="#basicsynbio.main.BasicAssembly" title="basicsynbio.main.BasicAssembly"><code class="xref py py-class docutils literal notranslate"><span class="pre">BasicAssembly</span></code></a> objects.</p>
@@ -165,9 +165,9 @@ instances when initializing <a class="reference internal" href="#basicsynbio.mai
 </dd></dl>
 
 <dl class="py attribute">
-<dt id="basicsynbio.main.BasicLinker.overhang_indicies">
-<code class="sig-name descname">overhang_indicies</code><a class="headerlink" href="#basicsynbio.main.BasicLinker.overhang_indicies" title="Permalink to this definition">¶</a></dt>
-<dd><p>Indicies defining position of overhang in linker. Required to access <cite>linker_oligos</cite> attribute.</p>
+<dt id="basicsynbio.main.BasicLinker.overhang_slice_params">
+<code class="sig-name descname">overhang_slice_params</code><a class="headerlink" href="#basicsynbio.main.BasicLinker.overhang_slice_params" title="Permalink to this definition">¶</a></dt>
+<dd><p>Parameters used to slice <cite>seq</cite> attribute returning overhang sequence. Parameters are in the form (start, stop). Required to access <cite>linker_oligos</cite> attribute.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -801,9 +801,7 @@ attributes</p>
 <dl class="py function">
 <dt id="basicsynbio.cam.pdf_instructions.pdf_instructions">
 <code class="sig-prename descclassname">basicsynbio.cam.pdf_instructions.</code><code class="sig-name descname">pdf_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">basicsynbio.cam.main.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">28</span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/basicsynbio/cam/pdf_instructions.html#pdf_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.pdf_instructions.pdf_instructions" title="Permalink to this definition">¶</a></dt>
-<dd><p>Writes information about each clip_data and assembly to
-two dependent CSV files in the same folder the command
-is executed.</p>
+<dd><p>Writes instructions to implement build to a pdf file.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">

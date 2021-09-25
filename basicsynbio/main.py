@@ -390,7 +390,7 @@ class BasicLinker(SeqRecord):
         seq : Refer to Bio.SeqRecord.SeqRecord documentation.
         id: Refer to Bio.SeqRecord.SeqRecord documentation.
         name: This attribute is used to label the annotation in exported gb files or equivalent.
-        overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Required to access `linker_oligos` attribute.
+        overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Parameters are in the form (start, stop). Required to access `linker_oligos` attribute.
         linker_oligos: Oligonucleotides used to physically generate linker.
 
     """
@@ -419,7 +419,7 @@ class BasicLinker(SeqRecord):
                 generation, defaults to f"{self.name}-P".
             suffix_id (optional): suffix id if known and not needing
                 generation, defaults to f"{self.name}-S".
-            overhang_slice_params: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.
+            overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Parameters are in the form (start, stop). Required to access `linker_oligos` attribute.
             kwargs:
         """
         self.seq = seq

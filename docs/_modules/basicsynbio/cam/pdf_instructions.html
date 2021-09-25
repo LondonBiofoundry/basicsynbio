@@ -72,9 +72,7 @@
 <div class="viewcode-block" id="pdf_instructions"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.pdf_instructions.pdf_instructions">[docs]</a><span class="k">def</span> <span class="nf">pdf_instructions</span><span class="p">(</span>
     <span class="n">basic_build</span><span class="p">:</span> <span class="n">BasicBuild</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">28</span>
 <span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Writes information about each clip_data and assembly to</span>
-<span class="sd">    two dependent CSV files in the same folder the command</span>
-<span class="sd">    is executed.</span>
+    <span class="sd">&quot;&quot;&quot;Writes instructions to implement build to a pdf file.</span>
 
 <span class="sd">    Args:</span>
 <span class="sd">        basic_build: BasicBuild object the pdf lab instructions are written for.</span>
@@ -373,7 +371,7 @@
     <span class="p">)</span>
     <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
         <span class="n">Paragraph</span><span class="p">(</span>
-            <span class="s2">&quot;For each BASIC assembly, combine the required purified clip reactions in a final volume of 10 μl in 1x Assembly or NEB CutSmart buffer. Below gives an example for a 3-part assembly:&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;For each BASIC assembly, combine the required purified clip reactions in a final volume of 10 μl in 1x Assembly or NEB CutSmart buffer as follows:&quot;</span><span class="p">,</span>
             <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
         <span class="p">)</span>
     <span class="p">)</span>

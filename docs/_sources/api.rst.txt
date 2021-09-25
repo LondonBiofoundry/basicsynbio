@@ -1,6 +1,8 @@
 API reference
 =============
 
+.. _main.py-API:
+
 main.py
 -------
 

@@ -104,7 +104,7 @@ available for all the above functions e.g.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">basic_part</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>To physically generate BasicParts from external sources – referred to as domestication – users can amplify DNA lacking
+<p id="domesticating-primers">To physically generate BasicParts from external sources – referred to as domestication – users can amplify DNA lacking
 <em>i</em>P and <em>i</em>S sequences with primers that contain them.
 The BasicPart class contains a <code class="docutils literal notranslate"><span class="pre">domesticating_primers()</span></code> method to aid this.
 This method works by running <a class="reference external" href="https://libnano.github.io/primer3-py/">primer3-py</a> under the hood, returning an object containing left and right primers, in addition to associated data as attributes.
@@ -233,6 +233,43 @@ Users have two options:</p>
 <span class="n">decoded_build</span><span class="o">.</span><span class="n">update_parts</span><span class="p">(</span><span class="o">*</span><span class="n">original_parts</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="generating-oligonucleotides-for-new-linkers">
+<h2>Generating oligonucleotides for new linkers<a class="headerlink" href="#generating-oligonucleotides-for-new-linkers" title="Permalink to this headline">¶</a></h2>
+<p>Users may wish to design their own linkers. For instance, linkers more suited to specific
+organisms. The basicsynbio API provide users with the ability to generate
+oligonucleotide sequences required for new linkers. We do not currently provide
+users with the functionality to design new linker sequences. Linker sequences have
+previously been designed using <a class="reference external" href="https://pubs.acs.org/doi/abs/10.1021/sb4001323">R2oDNA Designer</a> and <a class="reference external" href="https://edinburgh-genome-foundry.github.io/DnaChisel/">DNA Chisel</a>. For an
+example of a neutral linker being designed using DNA Chisel, users can consult
+the following <a class="reference external" href="dna_chisel_integration.ipynb">jupyter notebook</a>.</p>
+<p>To generate linker oligonucleotides, users need to supply values for the
+<code class="docutils literal notranslate"><span class="pre">overhang_slice_params</span></code> argument when initiating a BasicLinker instance.
+This argument is described further in
+the <a class="reference internal" href="api.html#main-py-api"><span class="std std-ref">main.py</span></a> section of the API documentation under the BasicLinker
+class. In a similar manner to that implemented for
+<a class="reference internal" href="#domesticating-primers"><span class="std std-ref">domesticating primer sequences</span></a>, users can export
+sequences
+encoding long and adapter oligonucleotides for each prefix and suffix linker
+half to a tsv file enabling subsequent ordering. This is illustrated in the
+example below:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="n">my_new_linker</span> <span class="o">=</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicLinker</span><span class="p">(</span>
+    <span class="n">seq</span><span class="o">=</span><span class="n">linker_sequence_designed_with_dna_chisel</span><span class="p">,</span>
+    <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;foobar&quot;</span><span class="p">,</span>
+    <span class="n">name</span><span class="o">=</span><span class="s2">&quot;my_new_linker&quot;</span><span class="p">,</span>
+    <span class="n">overhang_indicies</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">)</span> <span class="o">+</span> <span class="mi">12</span><span class="p">,</span>
+        <span class="nb">len</span><span class="p">(</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">)</span> <span class="o">+</span> <span class="mi">12</span> <span class="o">+</span> <span class="mi">21</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+<span class="n">bb_linker</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">seqrecord_hexdigest</span><span class="p">(</span><span class="n">bb_linker</span><span class="p">)</span>
+<span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+    <span class="n">my_new_linker</span><span class="o">.</span><span class="n">linker_oligos</span><span class="o">.</span><span class="n">all_oligo_seqrecs</span><span class="p">(),</span>
+    <span class="n">path_to_seqs</span> <span class="o">/</span> <span class="s2">&quot;alternative_formats&quot;</span> <span class="o">/</span> <span class="s2">&quot;tsv&quot;</span> <span class="o">/</span> <span class="s2">&quot;my_new_linker.tsv&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;tab&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
 <p class="rubric">Footnotes</p>
 <dl class="footnote brackets">
 <dt class="label" id="f1"><span class="brackets"><a class="fn-backref" href="#id1">1</a></span></dt>
@@ -265,6 +302,7 @@ Users have two options:</p>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Usage</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#basicsynbio-workflow">basicsynbio workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#importing-from-build-json">Importing from build.json</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#generating-oligonucleotides-for-new-linkers">Generating oligonucleotides for new linkers</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="collections.html">Part and linker collections</a></li>
