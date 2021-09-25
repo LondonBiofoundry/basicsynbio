@@ -32,8 +32,12 @@
           <div class="body" role="main">
             
   <h1>Source code for basicsynbio.main</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Main module for basicsynbio.&quot;&quot;&quot;</span>
-<span class="kn">from</span> <span class="nn">basicsynbio.utils</span> <span class="kn">import</span> <span class="n">_easy_seqrec</span><span class="p">,</span> <span class="n">p3_seqrec</span>
+<span></span><span class="sd">&quot;&quot;&quot;Main module for basicsynbio.</span>
+
+<span class="sd">This module can import from utils but not from cam or parts_linkers packages.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">basicsynbio.utils</span> <span class="kn">import</span> <span class="n">_easy_seqrec</span><span class="p">,</span> <span class="n">p3_seqrec</span><span class="p">,</span> <span class="n">OLIGO_ANNOTATIONS</span>
 <span class="kn">from</span> <span class="nn">basicsynbio.decorators</span> <span class="kn">import</span> <span class="n">addargs2docs</span><span class="p">,</span> <span class="n">ArgDescription</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqUtils</span><span class="p">,</span> <span class="n">SeqIO</span>
 <span class="kn">from</span> <span class="nn">Bio.Restriction.Restriction</span> <span class="kn">import</span> <span class="n">BsaI</span>
@@ -313,39 +317,150 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span></div>
 
 
+<div class="viewcode-block" id="LinkerHalfOligos"><a class="viewcode-back" href="../../api.html#basicsynbio.main.LinkerHalfOligos">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LinkerHalfOligos</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Oligos used by a linker half.&quot;&quot;&quot;</span>
+
+    <span class="n">long</span><span class="p">:</span> <span class="n">Seq</span>
+    <span class="n">adapter</span><span class="p">:</span> <span class="n">Seq</span></div>
+
+
+<span class="k">class</span> <span class="nc">_LinkerOligos</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Description of oligonucleotides used to physically generate BasicLinker instances.</span>
+
+<span class="sd">    Not to be initiated directly but called by the BasicLinker class.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        prefix: Oligos used to generate prefix linker half.</span>
+<span class="sd">        suffix: Oligos used to generate suffix linker half.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span> <span class="n">overhang_indicies</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Init function.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq: Sequence of linker including scars.</span>
+<span class="sd">            overhang_indicies: Indicies defining position of overhang in linker.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">LinkerHalfOligos</span><span class="p">(</span>
+            <span class="n">long</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="n">overhang_indicies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">(),</span>
+            <span class="n">adapter</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="n">overhang_indicies</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">)],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suffix</span> <span class="o">=</span> <span class="n">LinkerHalfOligos</span><span class="p">(</span>
+            <span class="n">long</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="mi">2</span> <span class="p">:</span> <span class="n">overhang_indicies</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="n">adapter</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">)</span> <span class="p">:</span> <span class="n">overhang_indicies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">all_oligo_seqrecs</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">prefix_long_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">prefix_adapter_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_long_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_adapter_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return all oligos required by linker as SeqRecords.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            prefix_long_attrs: Additional attributes to assign to `prefix.long` SeqRecord.</span>
+<span class="sd">            prefix_adapter_attrs: Additional attributes to assign to `prefix.adapter` SeqRecord.</span>
+<span class="sd">            suffix_long_attrs: Additional attributes to assign to `suffix.long` SeqRecord.</span>
+<span class="sd">            suffix_adapter_attrs: Additional attributes to assign to `suffix.adapter` SeqRecord.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">long</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;prefix long&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">prefix_long_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">adapter</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;prefix adapter&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">prefix_adapter_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">long</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;suffix long&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">suffix_long_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">adapter</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;suffix adapter&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">suffix_adapter_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_linker_oligo_seqrec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">additional_attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a SeqRecord object for a linker oligonucleotide.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq: Sequence of oligonucleotide.</span>
+<span class="sd">            id: ID attribute for oligonucleotide.</span>
+<span class="sd">            additional_attrs: Additional attributes to assign to oligonucleotide SeqRecord.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            By default assigns `OLIGO_ANNOTATIONS` to annoations attribute.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">OLIGO_ANNOTATIONS</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">additional_attrs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">additional_attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">seqrec</span>
+
+
 <div class="viewcode-block" id="BasicLinker"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicLinker">[docs]</a><span class="k">class</span> <span class="nc">BasicLinker</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assembly linkers.</span>
 
 <span class="sd">    A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart`</span>
-<span class="sd">    instances when initialising :py:class:`BasicAssembly` objects.</span>
+<span class="sd">    instances when initializing :py:class:`BasicAssembly` objects.</span>
 
 <span class="sd">    Attributes:</span>
 <span class="sd">        prefix_id (str): The prefix half linker id.</span>
 <span class="sd">        suffix_id (str): The suffix half linker id.</span>
-<span class="sd">        seq: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">        seq : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
 <span class="sd">        id: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
-<span class="sd">        features : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">        name: This attribute is used to label the annotation in exported gb files or equivalent.</span>
+<span class="sd">        overhang_indicies: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.</span>
+<span class="sd">        linker_oligos: Oligonucleotides used to physically generate linker.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
+    <span class="n">UPSTREAM_SCAR</span> <span class="o">=</span> <span class="s2">&quot;GGCTCG&quot;</span>
+    <span class="n">DOWNSTREAM_SCAR</span> <span class="o">=</span> <span class="s2">&quot;GTCC&quot;</span>
+
     <span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">)</span>
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
-        <span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">prefix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">overhang_indicies</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
     <span class="p">):</span>
         <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assembly linkers.</span>
 
 <span class="sd">        Args:</span>
 <span class="sd">            seq : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
 <span class="sd">            id : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">            name: This attribute is used to label the annotation in exported gb files or equivalent.</span>
 <span class="sd">            prefix_id (optional): prefix id if known and not needing</span>
-<span class="sd">                generation, defaults to None.</span>
+<span class="sd">                generation, defaults to f&quot;{self.name}-P&quot;.</span>
 <span class="sd">            suffix_id (optional): suffix id if known and not needing</span>
-<span class="sd">                generation, defaults to None.</span>
+<span class="sd">                generation, defaults to f&quot;{self.name}-S&quot;.</span>
+<span class="sd">            overhang_indicies: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.</span>
 <span class="sd">            kwargs:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prefix_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_linker_half_id</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suffix_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_linker_half_id</span><span class="p">(</span><span class="s2">&quot;suffix&quot;</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overhang_indicies</span> <span class="o">=</span> <span class="n">overhang_indicies</span>
+        <span class="k">if</span> <span class="n">overhang_indicies</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linker_oligos</span> <span class="o">=</span> <span class="n">_LinkerOligos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">overhang_indicies</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_linker_feature</span><span class="p">()</span>
 
 <div class="viewcode-block" id="BasicLinker.basic_slice"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicLinker.basic_slice">[docs]</a>    <span class="k">def</span> <span class="nf">basic_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -362,7 +477,7 @@
             <span class="n">SeqFeature</span><span class="p">(</span>
                 <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;misc_feature&quot;</span><span class="p">,</span>
                 <span class="n">location</span><span class="o">=</span><span class="n">FeatureLocation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">),</span> <span class="n">strand</span><span class="o">=+</span><span class="mi">1</span><span class="p">),</span>
-                <span class="n">qualifiers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)]},</span>
+                <span class="n">qualifiers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)]},</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
@@ -384,6 +499,22 @@
             <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">-S&quot;</span>
         <span class="k">return</span> <span class="nb">id</span>
 
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seq</span>
+
+    <span class="nd">@seq</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">)]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;BasicLinker class/subclass initiated with sequence lacking upstream scar: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">)</span> <span class="p">:]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;BasicLinker class/subclass initiated with sequence lacking downstream scar: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seq</span> <span class="o">=</span> <span class="n">value</span>
+
     <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;BasicLinker&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">BasicLinker</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">other</span><span class="si">}</span><span class="s2"> is not a BasicLinker instance.&quot;</span><span class="p">)</span>
@@ -393,8 +524,16 @@
 <div class="viewcode-block" id="BasicUTRRBSLinker"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicUTRRBSLinker">[docs]</a><span class="k">class</span> <span class="nc">BasicUTRRBSLinker</span><span class="p">(</span><span class="n">BasicLinker</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">prefix_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suffix_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">prefix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prefix_id</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_assign_linker_half_id</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suffix_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;UTR</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">-S&quot;</span></div>
 
