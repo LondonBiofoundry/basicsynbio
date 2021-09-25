@@ -260,7 +260,7 @@ the following `jupyter notebook`_.
 
 .. _R2oDNA Designer: https://pubs.acs.org/doi/abs/10.1021/sb4001323
 .. _DNA Chisel: https://edinburgh-genome-foundry.github.io/DnaChisel/
-.. _jupyter notebook: /scripts_nbs/dna_chisel_integration.ipynb
+.. _jupyter notebook: https://github.com/LondonBiofoundry/basicsynbio/blob/master/scripts_nbs/dna_chisel_integration.ipynb
 
 To generate linker oligonucleotides, users need to supply values for the
 ``overhang_slice_params`` argument when initiating a BasicLinker instance.
