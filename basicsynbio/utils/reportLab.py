@@ -102,7 +102,7 @@ TEMPERATURE_PROFILE_1 = [
     ["Temperature (°C)", "Time", ""],
     ["37", "2 min", "x20 cycles"],
     ["20", "1 min", ""],
-    ["37", "5 min", ""],
+    ["60", "5 min", ""],
 ]
 
 ASSEMBLY_REACTION_3 = [
