@@ -91,6 +91,8 @@ available for all the above functions e.g.
 
     basic_part = bsb.seqrec2part(SeqRecord, add_i_seqs=True)
 
+.. _domesticating_primers:
+
 To physically generate BasicParts from external sources -- referred to as domestication -- users can amplify DNA lacking
 *i*\ P and *i*\ S sequences with primers that contain them.
 The BasicPart class contains a ``domesticating_primers()`` method to aid this. 
@@ -244,6 +246,50 @@ To completely decode this file:
 
     original_parts = bsb.import_parts("the_parts_i_need.gb", "genbank")
     decoded_build.update_parts(*original_parts)
+
+Generating oligonucleotides for new linkers
+-------------------------------------------
+
+Users may wish to design their own linkers. For instance, linkers more suited to specific 
+organisms. The basicsynbio API provide users with the ability to generate
+oligonucleotide sequences required for new linkers. We do not currently provide
+users with the functionality to design new linker sequences. Linker sequences have
+previously been designed using `R2oDNA Designer`_ and `DNA Chisel`_. For an
+example of a neutral linker being designed using DNA Chisel, users can consult
+the following `jupyter notebook`_.
+
+.. _R2oDNA Designer: https://pubs.acs.org/doi/abs/10.1021/sb4001323
+.. _DNA Chisel: https://edinburgh-genome-foundry.github.io/DnaChisel/
+.. _jupyter notebook: dna_chisel_integration.ipynb
+
+To generate linker oligonucleotides, users need to supply values for the
+``overhang_slice_params`` argument when initiating a BasicLinker instance.
+This argument is described further in
+the :ref:`main.py-API` section of the API documentation under the BasicLinker 
+class. In a similar manner to that implemented for
+:ref:`domesticating primer sequences <domesticating_primers>`, users can export 
+sequences 
+encoding long and adapter oligonucleotides for each prefix and suffix linker
+half to a tsv file enabling subsequent ordering. This is illustrated in the 
+example below:
+
+.. code-block:: python
+    
+    my_new_linker = bsb.BasicLinker(
+       seq=linker_sequence_designed_with_dna_chisel,
+       id="foobar",
+       name="my_new_linker",
+       overhang_indicies = (
+           len(bsb.BasicLinker.UPSTREAM_SCAR) + 12,
+           len(bsb.BasicLinker.UPSTREAM_SCAR) + 12 + 21
+       )
+   )
+   bb_linker.id = seqrecord_hexdigest(bb_linker)
+   SeqIO.write(
+       my_new_linker.linker_oligos.all_oligo_seqrecs(),
+       path_to_seqs / "alternative_formats" / "tsv" / "my_new_linker.tsv",
+       "tab"
+   )
 
 .. rubric:: Footnotes
 

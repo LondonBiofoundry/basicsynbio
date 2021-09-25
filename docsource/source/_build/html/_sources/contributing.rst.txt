@@ -10,7 +10,7 @@ Setting up a development environment
     git clone https://github.com/username/basicsynbio.git
 
 #. cd into the directory.
-#. Using a virtual environment running Python 3.7 or greater install the dependancies::
+#. Using a virtual environment running Python 3.8 or greater install the dependencies::
 
     pip install -r requirements.txt
 
@@ -60,13 +60,15 @@ General Guidelines
 ^^^^^^^^^^^^^^^^^^
 
 * Code should be formatted using `black`_.
-* New code should have assocated tests written using `pytest`_.
-* Update the documentation if required. The documentation is formated using `Sphinx`_ and as such all files must be written in reST.
-
+* New code should have associated tests written using `pytest`_.
+* Update the documentation if required. The documentation is formatted using `Sphinx`_ and as such all files must be written in reST.
+* Update GitHub pages by running ``make github`` in the */docsource* directory.
 
 Guidelines for docstrings
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 * Format docstrings according to the `Google Style Guide`_. This enables automated documentation of the API using `sphinx.ext.napoleon`_.
+* Where the same argument is used by multiple methods/functions, the :py:func:`basicsynbio.decorators.addargs2docs` decorator may be used. Associated instances of :py:class:`basicsynbio.decorators.ArgDescription` are placed in :py:class:`basicsynbio.main.CommonArgDocs`. 
 
 
 .. _black: https://github.com/psf/black

@@ -240,7 +240,7 @@ def bb_linker():
         id="foobar",
         name="SEVA-BB1",
         description="BASIC backbone linker for assembling SEVA AbR casettes and SEVA Oris.",
-        overhang_indicies=(
+        overhang_slice_params=(
             len(bsb.BasicLinker.UPSTREAM_SCAR) + 12,
             len(bsb.BasicLinker.UPSTREAM_SCAR) + 12 + 21,
         ),

@@ -2,6 +2,7 @@
 
 Objects that peform various tasks but are not core objects of the
 basicsynbio package.
+Modules in this sub-package should not import from modules in other sub-packages of basicsynbio.
 """
 
 from .benchling import *

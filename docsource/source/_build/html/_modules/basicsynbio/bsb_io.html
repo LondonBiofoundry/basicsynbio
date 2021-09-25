@@ -34,7 +34,7 @@
   <h1>Source code for basicsynbio.bsb_io</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;Module contains objects for importing and exporting parts and sequences.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">basicsynbio.decorators</span> <span class="kn">import</span> <span class="n">add2docs</span>
+<span class="kn">from</span> <span class="nn">basicsynbio.decorators</span> <span class="kn">import</span> <span class="n">addargs2docs</span>
 <span class="kn">from</span> <span class="nn">basicsynbio.main</span> <span class="kn">import</span> <span class="n">CommonArgDocs</span><span class="p">,</span> <span class="n">IP_SEQREC</span><span class="p">,</span> <span class="n">IS_SEQREC</span><span class="p">,</span> <span class="n">seqrec2part</span>
 <span class="kn">import</span> <span class="nn">basicsynbio</span> <span class="k">as</span> <span class="nn">bsb</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqIO</span>
@@ -43,31 +43,50 @@
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Iterable</span><span class="p">,</span> <span class="n">Iterator</span><span class="p">,</span> <span class="n">Generator</span>
 <span class="kn">from</span> <span class="nn">sbol2</span> <span class="kn">import</span> <span class="n">Document</span>
 
 
-<div class="viewcode-block" id="import_part"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_part">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">import_part</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;:return: Part object using Bio.SeqIO.read().</span>
+<div class="viewcode-block" id="import_part"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_part">[docs]</a><span class="nd">@addargs2docs</span><span class="p">(</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">,</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">,</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">BASIC_PART</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">import_part</span><span class="p">(</span><span class="n">handle</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicPart</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Imports a Part object using Bio.SeqIO.read().</span>
 
-<span class="sd">    Refer to Biopython documentation for further information on Bio.SeqIO.read().</span>
+<span class="sd">    Note:</span>
+<span class="sd">        Refer to Biopython documentation for further information on Bio.SeqIO.read().</span>
 
-<span class="sd">    :rtype: :py:class:`BasicPart`</span>
+<span class="sd">    Args:</span>
+<span class="sd">        handle:</span>
+<span class="sd">        format:</span>
+<span class="sd">        add_i_seqs:</span>
 
+<span class="sd">    Returns:</span>
+<span class="sd">        BasicPart:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="import_sbol_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_sbol_parts">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">import_sbol_parts</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;:return: Part object using sbol2.Document.exportToFormat.</span>
+<div class="viewcode-block" id="import_sbol_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_sbol_parts">[docs]</a><span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">BASIC_PARTS</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">import_sbol_parts</span><span class="p">(</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Generator</span><span class="p">[</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicPart</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">None</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Imports BasicPart objects using sbol2.Document.exportToFormat.</span>
 
-<span class="sd">    Refer to pysbol2 documentation for further information.</span>
+<span class="sd">    Note:</span>
+<span class="sd">        Refer to Biopython documentation for further information on Bio.SeqIO.read().</span>
+<span class="sd">        Refer to pysbol2 documentation for further information.</span>
 
-<span class="sd">    :rtype: :py:class:`BasicPart` object.</span>
-<span class="sd">    :param string path: Path to sbol file.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        path: path to SBOL file.</span>
+<span class="sd">        add_i_seqs:</span>
 
+<span class="sd">    Yields:</span>
+<span class="sd">        BasicPart:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">doc</span> <span class="o">=</span> <span class="n">Document</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
     <span class="n">fp</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -78,28 +97,52 @@
     <span class="k">yield from</span> <span class="p">(</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">)</span> <span class="k">for</span> <span class="n">seqrec</span> <span class="ow">in</span> <span class="n">seqrecs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="import_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_parts">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">import_parts</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;:return: Generator of :py:class:`BasicPart` instances using Bio.SeqIO.parse().</span>
+<div class="viewcode-block" id="import_parts"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.import_parts">[docs]</a><span class="nd">@addargs2docs</span><span class="p">(</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">,</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">,</span>
+    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">BASIC_PARTS</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">import_parts</span><span class="p">(</span><span class="n">handle</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicPart</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Imports a Generator of BasicPart objects using Bio.SeqIO.parse().</span>
 
-<span class="sd">    Refer to Biopython documentation for further information on Bio.SeqIO.parse().</span>
+<span class="sd">    Note:</span>
+<span class="sd">        Refer to Biopython documentation for further information on Bio.SeqIO.parse().</span>
 
+<span class="sd">    Args:</span>
+<span class="sd">        handle:</span>
+<span class="sd">        format:</span>
+<span class="sd">        add_i_seqs:</span>
+
+<span class="sd">    Yields:</span>
+<span class="sd">        BasicPart:</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">seqrecs</span> <span class="o">=</span> <span class="n">SeqIO</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
     <span class="k">yield from</span> <span class="p">(</span><span class="n">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">)</span> <span class="k">for</span> <span class="n">seqrec</span> <span class="ow">in</span> <span class="n">seqrecs</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="export_sequences_to_file"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.export_sequences_to_file">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span>
-    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span>
-    <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="k">def</span> <span class="nf">export_sequences_to_file</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;genbank&quot;</span><span class="p">,</span> <span class="n">molecule_type</span><span class="o">=</span><span class="s2">&quot;DNA&quot;</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Exports sequences using Bio.SeqIO.write().</span>
+<div class="viewcode-block" id="export_sequences_to_file"><a class="viewcode-back" href="../../api.html#basicsynbio.bsb_io.export_sequences_to_file">[docs]</a><span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">HANDLE</span><span class="p">,</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">FORMAT</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">export_sequences_to_file</span><span class="p">(</span>
+    <span class="n">sequences</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicPart</span><span class="p">,</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">]],</span>
+    <span class="n">handle</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+    <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;genbank&quot;</span><span class="p">,</span>
+    <span class="n">molecule_type</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;DNA&quot;</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Exports sequences to file using Bio.SeqIO.write().</span>
 
-<span class="sd">    Refer to Biopython documentation for further information on Bio.SeqIO.write().</span>
+<span class="sd">    Note:</span>
+<span class="sd">        Refer to Biopython documentation for further information on Bio.SeqIO.write().</span>
 
-<span class="sd">    :param sequences: objects to export to file handle.</span>
-<span class="sd">    :type sequences: A single object or iterable of type/s BasicPart, BasicAssembly or Bio.SeqRecord.SeqRecord.</span>
+<span class="sd">    Args:</span>
+<span class="sd">        sequences: Sequences to export.</span>
+<span class="sd">        handle:</span>
+<span class="sd">        format:</span>
+<span class="sd">        molecule_type (optional): Type of molecule within sequences.</span>
+<span class="sd">            defaults to &#39;DNA&#39;.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: sequences was not of correct type.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">type</span><span class="p">(</span><span class="n">sequences</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="n">bsb</span><span class="o">.</span><span class="n">BasicPart</span><span class="p">,</span> <span class="n">bsb</span><span class="o">.</span><span class="n">BasicAssembly</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">]:</span>
         <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">_process_basic_object</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">molecule_type</span><span class="p">),</span> <span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
@@ -110,7 +153,7 @@
         <span class="p">)</span>
         <span class="n">SeqIO</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">sequences</span><span class="p">,</span> <span class="n">handle</span><span class="p">,</span> <span class="nb">format</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+        <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
             <span class="s2">&quot;sequences was not iterable or of type BasicPart, BasicAssembly or SeqRecord&quot;</span>
         <span class="p">)</span></div>
 
@@ -145,8 +188,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../collections.html">Part and linker collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
 </ul>
 

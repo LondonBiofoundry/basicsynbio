@@ -1,6 +1,8 @@
 API reference
 =============
 
+.. _main.py-API:
+
 main.py
 -------
 
@@ -13,8 +15,28 @@ bsb_io.py
 .. automodule:: basicsynbio.bsb_io
     :members:
 
-cam.py
-------
+cam.main.py
+-----------
 
-.. automodule:: basicsynbio.cam
+.. automodule:: basicsynbio.cam.main
     :members:
+
+decorators.py
+-------------
+
+.. automodule:: basicsynbio.decorators
+    :members:
+
+pdf_instructions.py
+-------------------
+
+.. automodule:: basicsynbio.cam.pdf_instructions
+    :members:
+
+echo_instructions.py
+--------------------
+
+.. automodule:: basicsynbio.cam.echo_instructions
+    :members:
+
+

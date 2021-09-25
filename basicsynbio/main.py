@@ -302,21 +302,23 @@ class _LinkerOligos:
 
     """
 
-    def __init__(self, seq: Seq, overhang_indicies: Tuple[int, int]) -> None:
+    def __init__(self, seq: Seq, overhang_slice_params: Tuple[int, int]) -> None:
         """Init function.
 
         Args:
             seq: Sequence of linker including scars.
-            overhang_indicies: Indicies defining position of overhang in linker.
+            overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence.
         """
         self.prefix = LinkerHalfOligos(
-            long=seq[overhang_indicies[0] :].reverse_complement(),
-            adapter=seq[overhang_indicies[1] : -1 * len(BasicLinker.DOWNSTREAM_SCAR)],
+            long=seq[overhang_slice_params[0] :].reverse_complement(),
+            adapter=seq[
+                overhang_slice_params[1] : -1 * len(BasicLinker.DOWNSTREAM_SCAR)
+            ],
         )
         self.suffix = LinkerHalfOligos(
-            long=seq[2 : overhang_indicies[1]],
+            long=seq[2 : overhang_slice_params[1]],
             adapter=seq[
-                len(BasicLinker.UPSTREAM_SCAR) : overhang_indicies[0]
+                len(BasicLinker.UPSTREAM_SCAR) : overhang_slice_params[0]
             ].reverse_complement(),
         )
 
@@ -327,7 +329,7 @@ class _LinkerOligos:
         suffix_long_attrs: dict = None,
         suffix_adapter_attrs: dict = None,
     ) -> Tuple[SeqRecord, SeqRecord, SeqRecord, SeqRecord]:
-        """Return all oligos required by linker as SeqRecords.
+        """Return all oligos required to generate linker as SeqRecords.
 
         Args:
             prefix_long_attrs: Additional attributes to assign to `prefix.long` SeqRecord.
@@ -388,7 +390,7 @@ class BasicLinker(SeqRecord):
         seq : Refer to Bio.SeqRecord.SeqRecord documentation.
         id: Refer to Bio.SeqRecord.SeqRecord documentation.
         name: This attribute is used to label the annotation in exported gb files or equivalent.
-        overhang_indicies: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.
+        overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Required to access `linker_oligos` attribute.
         linker_oligos: Oligonucleotides used to physically generate linker.
 
     """
@@ -404,7 +406,7 @@ class BasicLinker(SeqRecord):
         name: str = None,
         prefix_id: str = None,
         suffix_id: str = None,
-        overhang_indicies: Tuple[int, int] = None,
+        overhang_slice_params: Tuple[int, int] = None,
         **kwargs,
     ):
         """Class for BASIC DNA assembly linkers.
@@ -417,16 +419,16 @@ class BasicLinker(SeqRecord):
                 generation, defaults to f"{self.name}-P".
             suffix_id (optional): suffix id if known and not needing
                 generation, defaults to f"{self.name}-S".
-            overhang_indicies: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.
+            overhang_slice_params: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.
             kwargs:
         """
         self.seq = seq
         super().__init__(seq=self.seq, id=id, name=name, **kwargs)
         self.prefix_id = self._assign_linker_half_id("prefix", prefix_id)
         self.suffix_id = self._assign_linker_half_id("suffix", suffix_id)
-        self.overhang_indicies = overhang_indicies
-        if overhang_indicies:
-            self.linker_oligos = _LinkerOligos(self.seq, self.overhang_indicies)
+        self.overhang_slice_params = overhang_slice_params
+        if overhang_slice_params:
+            self.linker_oligos = _LinkerOligos(self.seq, self.overhang_slice_params)
         self._linker_feature()
 
     def basic_slice(self):
