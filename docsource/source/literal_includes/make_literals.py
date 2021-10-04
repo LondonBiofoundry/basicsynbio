@@ -67,11 +67,13 @@ def export_BASIC_SEVA_PARTS():
 
 
 if __name__ == "__main__":
-    export_json(build_json())
+    build = build_json()
+    export_json(build)
     export_BASIC_BIOLEGIO_LINKERS()
     export_BASIC_CDS_PARTS()
     export_BASIC_PROMOTER_PARTS()
     export_BASIC_SEVA_PARTS()
+    bsb.pdf_instructions(build, "export_pdf_example.pdf")
     BUILD_ZIP_PATH = "build_csvs.zip"
     try:
         export_csvs_internal(build_json())

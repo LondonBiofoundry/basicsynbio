@@ -720,6 +720,7 @@
         "UL0": {
             "id": "1b62864ef7e8ad38d30e92a2dbc17670",
             "linker_class": "<class 'basicsynbio.main.BasicLinker'>",
+            "name": "LMS",
             "sequence": "GGCTCGGGAGACCTATCGGTAATAACAGTCCAATCTGGTGTAACTTCGGAATCGTCC",
             "prefix_id": "LMS-P",
             "suffix_id": "LMS-S",
@@ -733,6 +734,7 @@
         "UL1": {
             "id": "00d898637a50a35f638cd3c4bc3ef744",
             "linker_class": "<class 'basicsynbio.main.BasicLinker'>",
+            "name": "LMP",
             "sequence": "GGCTCGGGTAAGAACTCGCACTTCGTGGAAACACTATTATCTGGTGGGTCTCTGTCC",
             "prefix_id": "LMP-P",
             "suffix_id": "LMP-S",
@@ -808,6 +810,7 @@
         "UL2": {
             "id": "6bbd830ee167938f0dae3f872bc965b1",
             "linker_class": "<class 'basicsynbio.main.BasicUTRRBSLinker'>",
+            "name": "UTR1-RBS2",
             "sequence": "GGCTCGTTGAACACCGTCTCAGGTAAGTATCAGTTGTAAAAAGAGGGGAAATAGTCC",
             "prefix_id": "UTR1-RBS2-P",
             "suffix_id": "UTR1-S",

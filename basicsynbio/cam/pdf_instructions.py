@@ -38,9 +38,7 @@ from basicsynbio.utils import (
 def pdf_instructions(
     basic_build: BasicBuild, path: str = None, assemblies_per_clip: int = 28
 ):
-    """Writes information about each clip_data and assembly to
-    two dependent CSV files in the same folder the command
-    is executed.
+    """Writes instructions to implement build to a pdf file.
 
     Args:
         basic_build: BasicBuild object the pdf lab instructions are written for.
@@ -339,7 +337,7 @@ def pdf_instructions(
     )
     elems.append(
         Paragraph(
-            "For each BASIC assembly, combine the required purified clip reactions in a final volume of 10 μl in 1x Assembly or NEB CutSmart buffer. Below gives an example for a 3-part assembly:",
+            "For each BASIC assembly, combine the required purified clip reactions in a final volume of 10 μl in 1x Assembly or NEB CutSmart buffer as follows:",
             styles["BodyText"],
         )
     )
