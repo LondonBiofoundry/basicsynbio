@@ -32,20 +32,24 @@
           <div class="body" role="main">
             
   <h1>Source code for basicsynbio.main</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Main module for basicsynbio.&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;Main module for basicsynbio.</span>
 
-<span class="kn">from</span> <span class="nn">basicsynbio.utils</span> <span class="kn">import</span> <span class="n">_easy_seqrec</span>
-<span class="kn">from</span> <span class="nn">basicsynbio.decorators</span> <span class="kn">import</span> <span class="n">add2docs</span>
+<span class="sd">This module can import from utils but not from cam or parts_linkers packages.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">from</span> <span class="nn">basicsynbio.utils</span> <span class="kn">import</span> <span class="n">_easy_seqrec</span><span class="p">,</span> <span class="n">p3_seqrec</span><span class="p">,</span> <span class="n">OLIGO_ANNOTATIONS</span>
+<span class="kn">from</span> <span class="nn">basicsynbio.decorators</span> <span class="kn">import</span> <span class="n">addargs2docs</span><span class="p">,</span> <span class="n">ArgDescription</span>
 <span class="kn">from</span> <span class="nn">Bio</span> <span class="kn">import</span> <span class="n">SeqUtils</span><span class="p">,</span> <span class="n">SeqIO</span>
 <span class="kn">from</span> <span class="nn">Bio.Restriction.Restriction</span> <span class="kn">import</span> <span class="n">BsaI</span>
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
 <span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
 <span class="kn">from</span> <span class="nn">Bio.SeqFeature</span> <span class="kn">import</span> <span class="n">SeqFeature</span><span class="p">,</span> <span class="n">FeatureLocation</span>
-<span class="kn">from</span> <span class="nn">Bio.SeqUtils.CheckSum</span> <span class="kn">import</span> <span class="n">seguid</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
 <span class="kn">import</span> <span class="nn">datetime</span>
 <span class="kn">import</span> <span class="nn">hashlib</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span>
+<span class="kn">from</span> <span class="nn">primer3.bindings</span> <span class="kn">import</span> <span class="n">designPrimers</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Tuple</span>
 <span class="kn">import</span> <span class="nn">warnings</span>
 
 <span class="n">DATE</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
@@ -66,31 +70,63 @@
 
 
 <span class="k">class</span> <span class="nc">CommonArgDocs</span><span class="p">:</span>
-    <span class="n">ADD_I_SEQS</span> <span class="o">=</span> <span class="s2">&quot;:param bool add_i_seqs: if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.&quot;</span>
-    <span class="n">HANDLE</span> <span class="o">=</span> <span class="s2">&quot;:param handle: handle to file.&quot;</span>
-    <span class="n">FORMAT</span> <span class="o">=</span> <span class="s2">&quot;:param string format: file format.&quot;</span>
-    <span class="n">SEQREC_KWARGS</span> <span class="o">=</span> <span class="s2">&quot;:param \**kwargs: assigns alternative SeqRecord attributes.&quot;</span>
-    <span class="n">PARTS_LINKERS_ARGS</span> <span class="o">=</span> <span class="s2">&quot;:param \*parts_linkers: :py:class:`BasicPart` and :py:class:`BasicLinker` objects.&quot;</span>
+    <span class="n">ADD_I_SEQS</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span>
+        <span class="s2">&quot;add_i_seqs&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;if True adds flanking BASIC iP and iS sequences. Note, letter_annotations attribute is lost.&quot;</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">BASIC_PART</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span><span class="s2">&quot;BasicPart&quot;</span><span class="p">,</span> <span class="s2">&quot;a BASIC DNA assembly part.&quot;</span><span class="p">)</span>
+    <span class="n">BASIC_PARTS</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span><span class="s2">&quot;BasicPart&quot;</span><span class="p">,</span> <span class="s2">&quot;all parts within the file handle.&quot;</span><span class="p">)</span>
+    <span class="n">HANDLE</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span><span class="s2">&quot;handle&quot;</span><span class="p">,</span> <span class="s2">&quot;handle to file.&quot;</span><span class="p">)</span>
+    <span class="n">FORMAT</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span><span class="s2">&quot;format&quot;</span><span class="p">,</span> <span class="s2">&quot;file format.&quot;</span><span class="p">)</span>
+    <span class="n">SEQREC_KWARGS</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span>
+        <span class="s2">&quot;kwargs&quot;</span><span class="p">,</span> <span class="s2">&quot;assigns alternative SeqRecord attributes.&quot;</span>
+    <span class="p">)</span>
+    <span class="n">PARTS_LINKERS_ARGS</span> <span class="o">=</span> <span class="n">ArgDescription</span><span class="p">(</span>
+        <span class="s2">&quot;parts_linkers&quot;</span><span class="p">,</span> <span class="s2">&quot;BasicPart and BasicLinker objects.&quot;</span>
+    <span class="p">)</span>
+
+
+<div class="viewcode-block" id="DomesticatingPrimers"><a class="viewcode-back" href="../../api.html#basicsynbio.main.DomesticatingPrimers">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">DomesticatingPrimers</span><span class="p">:</span>
+    <span class="n">left_primer</span><span class="p">:</span> <span class="n">SeqRecord</span>
+    <span class="n">right_primer</span><span class="p">:</span> <span class="n">SeqRecord</span>
+    <span class="n">data</span><span class="p">:</span> <span class="nb">dict</span></div>
 
 
 <div class="viewcode-block" id="BasicPart"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart">[docs]</a><span class="k">class</span> <span class="nc">BasicPart</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assembly parts.</span>
 
-<span class="sd">    A DNA sequence joined with other BasicParts via :py:class:`BasicLinker` instances when initialising :py:class:`BasicAssembly` objects. All sequences must contain intergated prefix and suffix sequences.</span>
+<span class="sd">    A DNA sequence joined with other BasicParts via :py:class:`BasicLinker`</span>
+<span class="sd">    instances when initializing :py:class:`BasicAssembly` objects. All</span>
+<span class="sd">    sequences must contain intergated prefix and suffix sequences.</span>
 
-<span class="sd">    :param seq: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
-<span class="sd">    :param string id: Refer to Bio.SeqRecord.SeqRecord documentation</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        _ip_loc (int): The index/location of `IP_STR` within sequence.</span>
+<span class="sd">        _is_loc (int): The index/location of `IS_STR` within sequence.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assembly parts.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">            id: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">            kwargs:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<div class="viewcode-block" id="BasicPart.basic_slice"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.basic_slice">[docs]</a>    <span class="k">def</span> <span class="nf">basic_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;:return: seqrecord flanked by BASIC iP &amp; iS sequences.</span>
+<div class="viewcode-block" id="BasicPart.basic_slice"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.basic_slice">[docs]</a>    <span class="k">def</span> <span class="nf">basic_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeqRecord</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The Function to obtain region flanked by BASIC iP &amp; iS sequences</span>
 
-<span class="sd">        :rtype: Bio.SeqRecord.SeqRecord</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            SeqRecord: The region flanked by BASIC iP &amp; iS sequences as a SeqRecord object.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If iP and iS sequences not correctly identified.</span>
+
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">seqrec</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_seqrec</span><span class="p">()</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_ip_loc</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_loc</span><span class="p">:</span>
@@ -100,6 +136,77 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;incorrect sequence used.&quot;</span><span class="p">)</span></div>
 
+<div class="viewcode-block" id="BasicPart.concentration"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.concentration">[docs]</a>    <span class="k">def</span> <span class="nf">concentration</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">stock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">clip_vol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+        <span class="n">circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="n">ndigit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Obtain the recommended concentration of part in ng/µL.</span>
+
+<span class="sd">        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).</span>
+<span class="sd">            clip_vol: volume of the clip reaction (µL).</span>
+<span class="sd">            circular: The part is circular or linear if False.</span>
+<span class="sd">            ndigit: Refer to built-in round function documentation.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">final_concentration</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="mf">2.5</span>
+            <span class="o">*</span> <span class="n">SeqUtils</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="n">circular</span><span class="p">,</span> <span class="n">double_stranded</span><span class="o">=</span><span class="kc">True</span>
+            <span class="p">)</span>
+            <span class="o">/</span> <span class="mf">1e6</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">stock</span><span class="p">:</span>
+            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span> <span class="o">*</span> <span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
+
+<div class="viewcode-block" id="BasicPart.domesticating_primers"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.domesticating_primers">[docs]</a>    <span class="k">def</span> <span class="nf">domesticating_primers</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">seq_args</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">global_args</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="n">left_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">right_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">primer_pair</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DomesticatingPrimers</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Generate PCR primers and associated data for domesticating parts from various sources using PCR.</span>
+
+<span class="sd">        PCR primers contain iP and iS sequences, respectively, in addition to a region of homology for the intervening DNA sequence.</span>
+<span class="sd">        They can be used to domesticate parts from various sources, adding iP and iS sequences, enabling downstream BASIC assemblies.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq_args: Refer to &#39;_primer3py&#39; method and primer3-py docs.</span>
+<span class="sd">            global_args: Refer to &#39;_primer3py&#39; method and primer3-py docs.</span>
+<span class="sd">            left_attrs: Additional attributes to assign to `left_primer` SeqRecord.</span>
+<span class="sd">            right_attrs: Additional attributes to assign to the `right_primer` SeqRecord.</span>
+<span class="sd">            primer_pair: Which of the returned primer3-py primer pairs to use. Defaults to 0 which is the primer pair with the lowest penalty value.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            DomesticatingPrimers: `left_primer` &amp; `right_primer` attributes contain iP &amp; iS sequences, respectively while `data` corresponds to primer regions homologous to template DNA.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If primer3 fails to identify suitable primer pairs.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">p3py_out</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_primer3py</span><span class="p">(</span><span class="n">seq_args</span><span class="p">,</span> <span class="n">global_args</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">p3py_out</span><span class="p">[</span><span class="s2">&quot;PRIMER_PAIR_NUM_RETURNED&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;primer3 returned no suitable primers. Refer to the primer3 documentation and change `seq_args` and/or `global_args`.&quot;</span>
+            <span class="p">)</span>
+        <span class="n">left_primer</span> <span class="o">=</span> <span class="n">p3_seqrec</span><span class="p">(</span><span class="n">p3py_out</span><span class="p">,</span> <span class="s2">&quot;LEFT&quot;</span><span class="p">,</span> <span class="n">left_attrs</span><span class="p">,</span> <span class="n">primer_pair</span><span class="p">)</span>
+        <span class="n">left_primer</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="n">IP_STR</span><span class="p">)</span> <span class="o">+</span> <span class="n">left_primer</span><span class="o">.</span><span class="n">seq</span>
+        <span class="n">right_primer</span> <span class="o">=</span> <span class="n">p3_seqrec</span><span class="p">(</span><span class="n">p3py_out</span><span class="p">,</span> <span class="s2">&quot;RIGHT&quot;</span><span class="p">,</span> <span class="n">right_attrs</span><span class="p">,</span> <span class="n">primer_pair</span><span class="p">)</span>
+        <span class="n">right_primer</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">Seq</span><span class="p">(</span><span class="n">IS_STR</span><span class="p">)</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">()</span> <span class="o">+</span> <span class="n">right_primer</span><span class="o">.</span><span class="n">seq</span>
+        <span class="k">return</span> <span class="n">DomesticatingPrimers</span><span class="p">(</span>
+            <span class="n">left_primer</span><span class="p">,</span>
+            <span class="n">right_primer</span><span class="p">,</span>
+            <span class="n">data</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span>
+                <span class="n">item</span> <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">p3py_out</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="sa">f</span><span class="s2">&quot;_</span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">primer_pair</span><span class="p">)</span><span class="si">}</span><span class="s2">_&quot;</span> <span class="ow">in</span> <span class="n">item</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">),</span>
+        <span class="p">)</span></div>
+
 <div class="viewcode-block" id="BasicPart.to_seqrec"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.to_seqrec">[docs]</a>    <span class="k">def</span> <span class="nf">to_seqrec</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeqRecord</span><span class="p">:</span>
         <span class="sd">&quot;&quot;&quot;Create a SeqRecord instance. All relevant attributes are maintained.&quot;&quot;&quot;</span>
         <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
@@ -107,23 +214,24 @@
             <span class="nb">setattr</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="vm">__dict__</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
         <span class="k">return</span> <span class="n">seqrec</span></div>
 
-<div class="viewcode-block" id="BasicPart.concentration"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.concentration">[docs]</a>    <span class="k">def</span> <span class="nf">concentration</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">stock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">clip_vol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Obtain the recommended concentration of part in ng/µL.</span>
-
-<span class="sd">        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</span>
+    <span class="k">def</span> <span class="nf">_find_iseq</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span> <span class="n">iseq_str</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">iseq_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;integrated sequence&quot;</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The Function to find index/location of iseq_str within the sequence.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the final concentration of part in a clip reaction (ng/µL).</span>
-<span class="sd">            clip_vol: volume of the clip reaction (µL).</span>
-<span class="sd">            circular: The part is circular or linear if False.</span>
-<span class="sd">            ndigit: Refer to built-in round function documentation.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">final_concentration</span> <span class="o">=</span> <span class="mf">2.5</span><span class="o">*</span><span class="n">SeqUtils</span><span class="o">.</span><span class="n">molecular_weight</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="n">circular</span><span class="o">=</span><span class="n">circular</span><span class="p">,</span> <span class="n">double_stranded</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">/</span><span class="mf">1e6</span>
-        <span class="k">if</span> <span class="n">stock</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="o">*</span><span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
+<span class="sd">            seq: Sequence to search.</span>
+<span class="sd">            iseq_str: The subsequence you are searching for.</span>
+<span class="sd">            iseq_id (optional): The id/name of the subsequence</span>
+<span class="sd">                (iseq_str), Defaults to &quot;integrated sequence&quot;.</span>
 
-    <span class="k">def</span> <span class="nf">_find_iseq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="n">iseq_str</span><span class="p">,</span> <span class="n">iseq_id</span><span class="o">=</span><span class="s2">&quot;integrated sequence&quot;</span><span class="p">):</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            int: The index/location of iseq within sequence.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            PartException: If iseq_str can not be found within the sequence,</span>
+<span class="sd">                if multiple iseq_str exist within the sequence.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">search_out</span> <span class="o">=</span> <span class="n">SeqUtils</span><span class="o">.</span><span class="n">nt_search</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">seq</span><span class="p">),</span> <span class="n">iseq_str</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">search_out</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PartException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> lacks </span><span class="si">{</span><span class="n">iseq_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
@@ -132,7 +240,12 @@
         <span class="k">return</span> <span class="n">search_out</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 
     <span class="k">def</span> <span class="nf">_check_bsai</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks if seq contains a BsaI site.&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;The function to check if sliced BasicPart contains a BsaI site.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            PartException: If the BasicPart sequence contains more than two</span>
+<span class="sd">                BsaI sites.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">BsaI</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">seq</span><span class="p">))</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
             <span class="k">raise</span> <span class="n">PartException</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> contains more than two BsaI sites.&quot;</span><span class="p">)</span>
 
@@ -146,6 +259,40 @@
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;Sequence flanked by iP and iS sequences in </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">num_base_pairs</span><span class="si">}</span><span class="s2"> base pairs long, this is less than 90 base pairs which is incompatible with unligated linker removal during clip reaction purification.&quot;</span>
             <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_primer3py</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">seq_args</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">global_args</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Return dictionary of primer3-py results for sequence flanked by iP and iS sequences.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            Refer to the primer3-py documentation for further information.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq_args: Primer3 sequence arguments. If left blank chooses suitable defaults.</span>
+<span class="sd">            global_args: Primer3 global arguments If left blank chooses suitable defaults.</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">template</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">basic_slice</span><span class="p">()</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span>
+        <span class="n">input_seq_args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;SEQUENCE_TEMPLATE&quot;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">seq_args</span><span class="p">:</span>
+            <span class="n">input_seq_args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">seq_args</span><span class="p">)</span>
+        <span class="n">input_global_args</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;PRIMER_TASK&quot;</span><span class="p">:</span> <span class="s2">&quot;generic&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;PRIMER_PICK_LEFT_PRIMER&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;PRIMER_PICK_RIGHT_PRIMER&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;PRIMER_PRODUCT_SIZE_RANGE&quot;</span><span class="p">:</span> <span class="p">[[</span><span class="nb">len</span><span class="p">(</span><span class="n">template</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">template</span><span class="p">)]],</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">global_args</span><span class="p">:</span>
+            <span class="n">input_global_args</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">global_args</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">designPrimers</span><span class="p">(</span>
+            <span class="n">input_seq_args</span><span class="p">,</span>
+            <span class="n">input_global_args</span><span class="p">,</span>
+        <span class="p">)</span>
 
     <span class="nd">@property</span>
     <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -170,110 +317,303 @@
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span></div>
 
 
-<span class="n">BasicPart</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">+=</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span>
+<div class="viewcode-block" id="LinkerHalfOligos"><a class="viewcode-back" href="../../api.html#basicsynbio.main.LinkerHalfOligos">[docs]</a><span class="nd">@dataclass</span>
+<span class="k">class</span> <span class="nc">LinkerHalfOligos</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Oligos used by a linker half.&quot;&quot;&quot;</span>
+
+    <span class="n">long</span><span class="p">:</span> <span class="n">Seq</span>
+    <span class="n">adapter</span><span class="p">:</span> <span class="n">Seq</span></div>
+
+
+<span class="k">class</span> <span class="nc">_LinkerOligos</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Description of oligonucleotides used to physically generate BasicLinker instances.</span>
+
+<span class="sd">    Not to be initiated directly but called by the BasicLinker class.</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        prefix: Oligos used to generate prefix linker half.</span>
+<span class="sd">        suffix: Oligos used to generate suffix linker half.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span> <span class="n">overhang_slice_params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;Init function.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq: Sequence of linker including scars.</span>
+<span class="sd">            overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">LinkerHalfOligos</span><span class="p">(</span>
+            <span class="n">long</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">(),</span>
+            <span class="n">adapter</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">)],</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suffix</span> <span class="o">=</span> <span class="n">LinkerHalfOligos</span><span class="p">(</span>
+            <span class="n">long</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="mi">2</span> <span class="p">:</span> <span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
+            <span class="n">adapter</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span>
+                <span class="nb">len</span><span class="p">(</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">)</span> <span class="p">:</span> <span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="p">]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">(),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">all_oligo_seqrecs</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">prefix_long_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">prefix_adapter_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_long_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_adapter_attrs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">,</span> <span class="n">SeqRecord</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;Return all oligos required to generate linker as SeqRecords.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            prefix_long_attrs: Additional attributes to assign to `prefix.long` SeqRecord.</span>
+<span class="sd">            prefix_adapter_attrs: Additional attributes to assign to `prefix.adapter` SeqRecord.</span>
+<span class="sd">            suffix_long_attrs: Additional attributes to assign to `suffix.long` SeqRecord.</span>
+<span class="sd">            suffix_adapter_attrs: Additional attributes to assign to `suffix.adapter` SeqRecord.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">long</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;prefix long&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">prefix_long_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">prefix</span><span class="o">.</span><span class="n">adapter</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;prefix adapter&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">prefix_adapter_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">long</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;suffix long&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">suffix_long_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">_linker_oligo_seqrec</span><span class="p">(</span>
+                <span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">adapter</span><span class="p">,</span>
+                <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;suffix adapter&quot;</span><span class="p">,</span>
+                <span class="n">additional_attrs</span><span class="o">=</span><span class="n">suffix_adapter_attrs</span><span class="p">,</span>
+            <span class="p">),</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">_linker_oligo_seqrec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">additional_attrs</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Return a SeqRecord object for a linker oligonucleotide.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq: Sequence of oligonucleotide.</span>
+<span class="sd">            id: ID attribute for oligonucleotide.</span>
+<span class="sd">            additional_attrs: Additional attributes to assign to oligonucleotide SeqRecord.</span>
+
+<span class="sd">        Notes:</span>
+<span class="sd">            By default assigns `OLIGO_ANNOTATIONS` to annoations attribute.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">annotations</span><span class="o">=</span><span class="n">OLIGO_ANNOTATIONS</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">additional_attrs</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">additional_attrs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="nb">setattr</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">seqrec</span>
 
 
 <div class="viewcode-block" id="BasicLinker"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicLinker">[docs]</a><span class="k">class</span> <span class="nc">BasicLinker</span><span class="p">(</span><span class="n">SeqRecord</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assembly linkers.</span>
 
-<span class="sd">    A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart` instances when initialising :py:class:`BasicAssembly` objects.</span>
+<span class="sd">    A DNA sequence joined with other BasicLinkers via :py:class:`BasicPart`</span>
+<span class="sd">    instances when initializing :py:class:`BasicAssembly` objects.</span>
 
-<span class="sd">    :param seq: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
-<span class="sd">    :param string id: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
-<span class="sd">    :param string prefix_id: ID for prefix linker half.</span>
-<span class="sd">    :param string suffix_id: ID for suffix linker half.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        prefix_id (str): The prefix half linker id.</span>
+<span class="sd">        suffix_id (str): The suffix half linker id.</span>
+<span class="sd">        seq : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">        id: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">        name: This attribute is used to label the annotation in exported gb files or equivalent.</span>
+<span class="sd">        overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Required to access `linker_oligos` attribute.</span>
+<span class="sd">        linker_oligos: Oligonucleotides used to physically generate linker.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">prefix_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suffix_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="n">UPSTREAM_SCAR</span> <span class="o">=</span> <span class="s2">&quot;GGCTCG&quot;</span>
+    <span class="n">DOWNSTREAM_SCAR</span> <span class="o">=</span> <span class="s2">&quot;GTCC&quot;</span>
+
+    <span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">prefix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">overhang_slice_params</span><span class="p">:</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assembly linkers.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            seq : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">            id : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
+<span class="sd">            name: This attribute is used to label the annotation in exported gb files or equivalent.</span>
+<span class="sd">            prefix_id (optional): prefix id if known and not needing</span>
+<span class="sd">                generation, defaults to f&quot;{self.name}-P&quot;.</span>
+<span class="sd">            suffix_id (optional): suffix id if known and not needing</span>
+<span class="sd">                generation, defaults to f&quot;{self.name}-S&quot;.</span>
+<span class="sd">            overhang_slice_params: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.</span>
+<span class="sd">            kwargs:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prefix_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_linker_half_id</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suffix_id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_assign_linker_half_id</span><span class="p">(</span><span class="s2">&quot;suffix&quot;</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">overhang_slice_params</span> <span class="o">=</span> <span class="n">overhang_slice_params</span>
+        <span class="k">if</span> <span class="n">overhang_slice_params</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">linker_oligos</span> <span class="o">=</span> <span class="n">_LinkerOligos</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">overhang_slice_params</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_linker_feature</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">basic_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="bp">self</span>
+<div class="viewcode-block" id="BasicLinker.basic_slice"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicLinker.basic_slice">[docs]</a>    <span class="k">def</span> <span class="nf">basic_slice</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The function to obtain the basic slice of `BasicLinker` objects.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BasicLinker: returns self, the basic slice of `BasicLinker` objects.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span></div>
 
     <span class="k">def</span> <span class="nf">_linker_feature</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;The function to populate `features` attribute of `BasicLinker` Object.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">features</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
             <span class="n">SeqFeature</span><span class="p">(</span>
                 <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;misc_feature&quot;</span><span class="p">,</span>
                 <span class="n">location</span><span class="o">=</span><span class="n">FeatureLocation</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">),</span> <span class="n">strand</span><span class="o">=+</span><span class="mi">1</span><span class="p">),</span>
-                <span class="n">qualifiers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">)]},</span>
+                <span class="n">qualifiers</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="p">[</span><span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">)]},</span>
             <span class="p">)</span>
         <span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">_assign_linker_half_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linker_half</span><span class="p">,</span> <span class="nb">id</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">_assign_linker_half_id</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">linker_half</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The function to assign half linker id attributes.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            linker_half : A variable to determine whether linker half</span>
+<span class="sd">                is being assigned for a &#39;prefix&#39; or a &#39;suffix&#39;.</span>
+<span class="sd">            id: if present linker half id is determined and returned, if half</span>
+<span class="sd">                linker id needs generating, pass (None).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            NoneType: the assigned half linker id.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">id</span> <span class="ow">and</span> <span class="n">linker_half</span> <span class="o">==</span> <span class="s2">&quot;prefix&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">-P&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">-P&quot;</span>
         <span class="k">elif</span> <span class="ow">not</span> <span class="nb">id</span> <span class="ow">and</span> <span class="n">linker_half</span> <span class="o">==</span> <span class="s2">&quot;suffix&quot;</span><span class="p">:</span>
-            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">-S&quot;</span>
+            <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="si">}</span><span class="s2">-S&quot;</span>
         <span class="k">return</span> <span class="nb">id</span>
 
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+    <span class="nd">@property</span>
+    <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_seq</span>
+
+    <span class="nd">@seq</span><span class="o">.</span><span class="n">setter</span>
+    <span class="k">def</span> <span class="nf">seq</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">[:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">)]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;BasicLinker class/subclass initiated with sequence lacking upstream scar: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">UPSTREAM_SCAR</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="k">if</span> <span class="n">value</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">)</span> <span class="p">:]</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">&quot;BasicLinker class/subclass initiated with sequence lacking downstream scar: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_seq</span> <span class="o">=</span> <span class="n">value</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">:</span> <span class="s2">&quot;BasicLinker&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">BasicLinker</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">other</span><span class="si">}</span><span class="s2"> is not a BasicLinker instance.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">==</span> <span class="n">other</span><span class="o">.</span><span class="n">id</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span> <span class="o">==</span> <span class="nb">str</span><span class="p">(</span><span class="n">other</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span></div>
 
 
-<span class="n">BasicLinker</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">+=</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span>
-
-
 <div class="viewcode-block" id="BasicUTRRBSLinker"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicUTRRBSLinker">[docs]</a><span class="k">class</span> <span class="nc">BasicUTRRBSLinker</span><span class="p">(</span><span class="n">BasicLinker</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Sub-class of :py:class:`BasicLinker` for UTR-RBS linkers.&quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">prefix_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">suffix_id</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">seq</span><span class="p">:</span> <span class="n">Seq</span><span class="p">,</span>
+        <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span>
+        <span class="n">prefix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="n">suffix_id</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+        <span class="o">**</span><span class="n">kwargs</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">seq</span><span class="p">,</span> <span class="nb">id</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">,</span> <span class="n">suffix_id</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prefix_id</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_assign_linker_half_id</span><span class="p">(</span><span class="s2">&quot;prefix&quot;</span><span class="p">,</span> <span class="n">prefix_id</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">suffix_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;UTR</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">-S&quot;</span></div>
+        <span class="bp">self</span><span class="o">.</span><span class="n">suffix_id</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;UTR</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="si">}</span><span class="s2">-S&quot;</span></div>
 
 
 <div class="viewcode-block" id="BasicAssembly"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly">[docs]</a><span class="k">class</span> <span class="nc">BasicAssembly</span><span class="p">:</span>
     <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assemblies.</span>
 
-<span class="sd">    BasicAssembly class requires alternating :py:class:`BasicPart` and :py:class:`BasicLinker` instances in any order.</span>
+<span class="sd">    Note:</span>
+<span class="sd">        BasicAssembly class requires alternating :py:class:`BasicPart` and</span>
+<span class="sd">        :py:class:`BasicLinker` instances in any order.</span>
 
-<span class="sd">    :param string id: Identifier for BasicAssemby object. Must be unique amongst BasicAssembly instances used to initiate a BasicBuild object.</span>
+<span class="sd">    Attributes:</span>
+<span class="sd">        id: Identifier for BasicAssemby object. Must be unique</span>
+<span class="sd">            amongst BasicAssembly instances used to initiate a BasicBuild</span>
+<span class="sd">            object.</span>
+<span class="sd">        parts_linkers: tuple of BasicPart and BasicLinker objects used to</span>
+<span class="sd">            create this assembly.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">parts_linkers</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="o">*</span><span class="n">parts_linkers</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">BasicPart</span><span class="p">,</span> <span class="n">BasicLinker</span><span class="p">]):</span>
+        <span class="sd">&quot;&quot;&quot;Class for BASIC DNA assemblies.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            id: Identifier for BasicAssemby object. Must be unique</span>
+<span class="sd">                amongst BasicAssembly instances used to initiate a BasicBuild</span>
+<span class="sd">                object.</span>
+<span class="sd">            parts_linkers: Alternating BasicPart and BasicLinker objects used</span>
+<span class="sd">                to create this assembly.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If the id parsed to BasicAssembly constructor was not of</span>
+<span class="sd">                type str.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="nb">id</span><span class="p">,</span> <span class="nb">str</span><span class="p">)</span> <span class="o">==</span> <span class="kc">False</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;id parsed to BasicAssembly constructor was not of type str.&quot;</span>
             <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="nb">id</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parts_linkers</span> <span class="o">=</span> <span class="n">parts_linkers</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">clip_reactions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_clip_reactions</span><span class="p">()</span>
 
-<div class="viewcode-block" id="BasicAssembly.return_part"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly.return_part">[docs]</a>    <span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">,</span> <span class="n">indentation</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">return_part</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assembled construct as a new part.</span>
+<div class="viewcode-block" id="BasicAssembly.return_part"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly.return_part">[docs]</a>    <span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">return_part</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BasicPart</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;A function to return the assembled construct as a new part.</span>
 
-<span class="sd">        :rtype: :py:class:`BasicPart`.</span>
+<span class="sd">        Args:</span>
+<span class="sd">            kwargs:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            BasicPart: assembled construct as a new part.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">seqrec2part</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">return_seqrec</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">))</span></div>
 
-<div class="viewcode-block" id="BasicAssembly.return_seqrec"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly.return_seqrec">[docs]</a>    <span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">,</span> <span class="n">indentation</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
-    <span class="k">def</span> <span class="nf">return_seqrec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Assembled construct as a seqrecord.</span>
+<div class="viewcode-block" id="BasicAssembly.return_seqrec"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly.return_seqrec">[docs]</a>    <span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">SEQREC_KWARGS</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">return_seqrec</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">SeqRecord</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;A function to return the assembled construct as a seqrecord.</span>
 
-<span class="sd">        :rtype: Bio.SeqRecord.SeqRecord</span>
+<span class="sd">        Args:</span>
+<span class="sd">            kwargs:</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            seqrec: assembled construct as a new seqrecord.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">seqrec</span> <span class="o">=</span> <span class="n">SeqRecord</span><span class="p">(</span><span class="n">Seq</span><span class="p">(</span><span class="nb">str</span><span class="p">()))</span>
         <span class="k">for</span> <span class="n">part_linker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts_linkers</span><span class="p">:</span>
             <span class="n">seqrec</span> <span class="o">+=</span> <span class="n">part_linker</span><span class="o">.</span><span class="n">basic_slice</span><span class="p">()</span>
         <span class="n">seqrec</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
         <span class="n">seqrec</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;BASIC_construct_&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">id</span>
-        <span class="n">seqrec</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;BASIC DNA Assembly of </span><span class="si">{</span><span class="p">[</span><span class="n">part_linker</span><span class="o">.</span><span class="n">id</span> <span class="k">for</span> <span class="n">part_linker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts_linkers</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">seqrec</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;BASIC DNA Assembly of </span><span class="si">{</span><span class="p">[</span><span class="n">part_linker</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">part_linker</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">parts_linkers</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="n">seqrec</span><span class="o">.</span><span class="n">annotations</span> <span class="o">=</span> <span class="n">DEFAULT_ANNOTATIONS</span>
         <span class="k">if</span> <span class="n">kwargs</span><span class="p">:</span>
             <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
                 <span class="nb">setattr</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">seqrec</span></div>
 
-<div class="viewcode-block" id="BasicAssembly.return_clip_reactions"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly.return_clip_reactions">[docs]</a>    <span class="k">def</span> <span class="nf">return_clip_reactions</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;:py:class:`ClipReaction` instances required for BASIC assembly.</span>
+<div class="viewcode-block" id="BasicAssembly.return_clip_reactions"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicAssembly.return_clip_reactions">[docs]</a>    <span class="k">def</span> <span class="nf">return_clip_reactions</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="s2">&quot;ClipReaction&quot;</span><span class="p">,</span> <span class="o">...</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;A function to return the :py:class:`ClipReaction` instances required for BASIC assembly.</span>
 
-<span class="sd">        :rtype: A tuple of ClipReactions.</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: A collection of `ClipReaction` instances</span>
+<span class="sd">            required for BASIC assembly.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">clip_reactions</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">part_linker</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parts_linkers</span><span class="p">):</span>
@@ -294,14 +634,28 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">_check_clip_reactions</span><span class="p">(</span><span class="n">clip_reactions</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">tuple</span><span class="p">(</span><span class="n">clip_reactions</span><span class="p">)</span></div>
 
-    <span class="k">def</span> <span class="nf">_check_clip_reactions</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">clip_reactions</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;Checks clip reactions are compatible e.g. same half linker not used</span>
-<span class="sd">        multiple times.&quot;&quot;&quot;</span>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span> <span class="nf">_check_clip_reactions</span><span class="p">(</span><span class="n">clip_reactions</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Checks `ClipReactions` are compatible e.g. same half linker not used</span>
+<span class="sd">        multiple times.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            clip_reactions: the list of `ClipReaction`</span>
+<span class="sd">                objects to be analysed for compatability.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
 
         <span class="k">def</span> <span class="nf">_check_linker_halves</span><span class="p">(</span><span class="n">linker_halves</span><span class="p">):</span>
-            <span class="sd">&quot;&quot;&quot;Check linker_havles are compatible.</span>
+            <span class="sd">&quot;&quot;&quot;Check linker_halves are compatible.</span>
 
-<span class="sd">            Note UTR linker-halves must be compatible.</span>
+<span class="sd">            Note:</span>
+<span class="sd">                UTR linker-halves must be compatible.</span>
+
+<span class="sd">            Args:</span>
+<span class="sd">                linker_halves: the list of</span>
+<span class="sd">                    half_linker_ids to be analysed for compatability.</span>
+
+<span class="sd">            Raises:</span>
+<span class="sd">                AssemblyException: If non unique half linker ids present.</span>
 <span class="sd">            &quot;&quot;&quot;</span>
             <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">linker_halves</span><span class="p">)</span> <span class="o">&gt;</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">linker_halves</span><span class="p">)):</span>
                 <span class="n">top_linker_half</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">linker_halves</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -329,7 +683,7 @@
             <span class="k">for</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">values</span>
         <span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span>
-                <span class="s2">&quot;Not all *parts_linkers are BasicParts or BasicLinkers instances.&quot;</span>
+                <span class="s2">&quot;Not all parts_linkers are BasicParts or BasicLinkers instances.&quot;</span>
             <span class="p">)</span>
         <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">values</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">ind</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
@@ -341,49 +695,86 @@
             <span class="k">raise</span> <span class="n">AssemblyException</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;BasicAssembly instance with id:</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">, initiated with an odd number of BasicPart/BasicLinker objects. An even number is a requirement.&quot;</span>
             <span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">_parts_linkers</span> <span class="o">=</span> <span class="n">values</span></div>
-
-
-<span class="n">BasicAssembly</span><span class="o">.</span><span class="vm">__doc__</span> <span class="o">+=</span> <span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">PARTS_LINKERS_ARGS</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_parts_linkers</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">_clip_reactions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">return_clip_reactions</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="ClipReaction"><a class="viewcode-back" href="../../api.html#basicsynbio.main.ClipReaction">[docs]</a><span class="k">class</span> <span class="nc">ClipReaction</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Class for describing clip reactions. Note ClipReaction is hashable.</span>
+    <span class="sd">&quot;&quot;&quot;Class for describing clip reactions.</span>
 
-<span class="sd">    :param BasicLinker prefix: :py:class:`BasicLinker` used as prefix in clip reaction.</span>
-<span class="sd">    :param BasicPart part: :py:class:`BasicPart` used as part in clip reaction.</span>
-<span class="sd">    :param BasicLinker suffix: :py:class:`BasicLinker` used as suffix in clip reaction.</span>
+<span class="sd">    Note:</span>
+<span class="sd">        ClipReaction is hashable.</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prefix</span><span class="p">,</span> <span class="n">part</span><span class="p">,</span> <span class="n">suffix</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;Class for describing clip reactions.&quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span> <span class="o">=</span> <span class="n">prefix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span> <span class="o">=</span> <span class="n">suffix</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_part</span> <span class="o">=</span> <span class="n">part</span>
 
-<div class="viewcode-block" id="ClipReaction.linker_half_ids"><a class="viewcode-back" href="../../api.html#basicsynbio.main.ClipReaction.linker_half_ids">[docs]</a>    <span class="k">def</span> <span class="nf">linker_half_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;:return: ids for prefix and suffix linkers in the form (prefix_id, suffix_id).</span>
+<div class="viewcode-block" id="ClipReaction.linker_half_ids"><a class="viewcode-back" href="../../api.html#basicsynbio.main.ClipReaction.linker_half_ids">[docs]</a>    <span class="k">def</span> <span class="nf">linker_half_ids</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;A function to return ids for prefix and suffix linkers in the form (prefix_id, suffix_id).</span>
 
-<span class="sd">        :rtype: tuple(string, string)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: returns ids for prefix and suffix linkers in</span>
+<span class="sd">            the form (prefix_id, suffix_id).</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">prefix_id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">suffix_id</span></div>
 
-<div class="viewcode-block" id="ClipReaction.clip_items"><a class="viewcode-back" href="../../api.html#basicsynbio.main.ClipReaction.clip_items">[docs]</a>    <span class="k">def</span> <span class="nf">clip_items</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;:return: (prefix, part, suffix).</span>
+<div class="viewcode-block" id="ClipReaction.clip_items"><a class="viewcode-back" href="../../api.html#basicsynbio.main.ClipReaction.clip_items">[docs]</a>    <span class="k">def</span> <span class="nf">clip_items</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">BasicLinker</span><span class="p">,</span> <span class="n">BasicPart</span><span class="p">,</span> <span class="n">BasicLinker</span><span class="p">]:</span>
+        <span class="sd">&quot;&quot;&quot;A function to returns a tuple describing each of the items within each clip.</span>
 
-<span class="sd">        :rtype: tuple(BasicLinker, BasicPart, BasicLinker)</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            tuple: (prefix linker, part, suffix linker)</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_part</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span></div>
 
     <span class="k">def</span> <span class="nf">_hexdigest</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="s2">&quot;big&quot;</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;:return: the hexadecimal digest of the Clip Reaction md5 hash by converting it to a byte array. See docs on built-in function: int.to_bytes().&quot;&quot;&quot;</span>
+        <span class="sd">&quot;&quot;&quot;The function to create the hexadecimal digest</span>
+
+<span class="sd">        the hexadecimal digest of the Clip Reaction md5 hash by</span>
+<span class="sd">        converting it to a byte array</span>
+
+<span class="sd">        Note:</span>
+<span class="sd">            See docs for information on built-in function: int.to_bytes().</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            length(optional): bit length.</span>
+<span class="sd">            byteorder(optional): determines where most signaficat byte is</span>
+<span class="sd">                locatated, see Note.</span>
+<span class="sd">            signed(optional): see Note.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            string: hexadecimal digest of the Clip Reaction md5 hash by</span>
+<span class="sd">            converting it to a byte array</span>
+
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span>
             <span class="bp">self</span><span class="o">.</span><span class="fm">__hash__</span><span class="p">()</span><span class="o">.</span><span class="n">to_bytes</span><span class="p">(</span><span class="n">length</span><span class="p">,</span> <span class="n">byteorder</span><span class="o">=</span><span class="n">byteorder</span><span class="p">,</span> <span class="n">signed</span><span class="o">=</span><span class="n">signed</span><span class="p">)</span>
         <span class="p">)</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="fm">__hash__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_part</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">id</span><span class="p">))</span>
+        <span class="sd">&quot;&quot;&quot;The function to create the object hash</span>
 
-    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">):</span>
+<span class="sd">        Returns:</span>
+<span class="sd">            string: hash of tuple containing, prefix_id, part_id and suffix_id</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="nb">hash</span><span class="p">((</span><span class="bp">self</span><span class="o">.</span><span class="n">_prefix</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_part</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_suffix</span><span class="o">.</span><span class="n">seq</span><span class="p">))</span>
+
+    <span class="k">def</span> <span class="fm">__eq__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">other</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+        <span class="sd">&quot;&quot;&quot;The function test if an object `other` is equal to this `ClipReaction`.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            other: The object to be compared for similarity with</span>
+<span class="sd">                this ClipReaction.</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if `other` is equal to self, false otherwise.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            TypeError: If the `other` arg is not of type ClipReaction.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">other</span><span class="p">,</span> <span class="n">ClipReaction</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">TypeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">other</span><span class="si">}</span><span class="s2"> is not a ClipReaction instance.&quot;</span><span class="p">)</span>
         <span class="k">return</span> <span class="p">(</span>
@@ -405,14 +796,20 @@
     <span class="k">pass</span></div>
 
 
-<div class="viewcode-block" id="seqrec2part"><a class="viewcode-back" href="../../api.html#basicsynbio.main.seqrec2part">[docs]</a><span class="nd">@add2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">,</span> <span class="n">indentation</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;Convert SeqRecord to :py:class:`BasicPart`.</span>
+<div class="viewcode-block" id="seqrec2part"><a class="viewcode-back" href="../../api.html#basicsynbio.main.seqrec2part">[docs]</a><span class="nd">@addargs2docs</span><span class="p">(</span><span class="n">CommonArgDocs</span><span class="o">.</span><span class="n">ADD_I_SEQS</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">seqrec2part</span><span class="p">(</span><span class="n">seqrec</span><span class="p">:</span> <span class="n">SeqRecord</span><span class="p">,</span> <span class="n">add_i_seqs</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">BasicPart</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;A function to generate BasicPart instances based on SeqRecords.</span>
 
-<span class="sd">    Relevant attributes are maintained.</span>
+<span class="sd">    Note:</span>
+<span class="sd">        Relevant attributes are maintained.</span>
 
-<span class="sd">    :param seqrec: SeqRecord to be converted to :py:class:`BasicPart` subclass.</span>
-<span class="sd">    :type seqrec: Bio.SeqRecord.SeqRecord</span>
+<span class="sd">    Args:</span>
+<span class="sd">        seqrec: SeqRecord to be converted to</span>
+<span class="sd">            BasicPart subclass.</span>
+<span class="sd">        add_i_seqs:</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        BasicPart: BasicPart instance of seqrec.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="n">add_i_seqs</span><span class="p">:</span>
         <span class="n">new_seqrec</span> <span class="o">=</span> <span class="n">IP_SEQREC</span> <span class="o">+</span> <span class="n">seqrec</span> <span class="o">+</span> <span class="n">IS_SEQREC</span>
@@ -447,8 +844,8 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../usage.html">Usage</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../collections.html">Part and linker collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../contributing.html">Contributing</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
 </ul>
 

@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>basicsynbio.cam.pdf_instructions &#8212; basicsynbio 0.1.0 documentation</title>
+    <link rel="stylesheet" href="../../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+   
+  <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <h1>Source code for basicsynbio.cam.pdf_instructions</h1><div class="highlight"><pre>
+<span></span><span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">BasicBuild</span>
+<span class="kn">from</span> <span class="nn">.csv_export</span> <span class="kn">import</span> <span class="n">export_csvs</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<span class="kn">from</span> <span class="nn">importlib</span> <span class="kn">import</span> <span class="n">resources</span>
+<span class="kn">from</span> <span class="nn">reportlab.platypus</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">SimpleDocTemplate</span><span class="p">,</span>
+    <span class="n">ListFlowable</span><span class="p">,</span>
+    <span class="n">Paragraph</span><span class="p">,</span>
+    <span class="n">Spacer</span><span class="p">,</span>
+    <span class="n">Image</span><span class="p">,</span>
+    <span class="n">PageBreak</span><span class="p">,</span>
+    <span class="n">KeepTogether</span><span class="p">,</span>
+    <span class="n">Table</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="kn">from</span> <span class="nn">reportlab.lib.pagesizes</span> <span class="kn">import</span> <span class="n">A4</span>
+<span class="kn">from</span> <span class="nn">reportlab.lib.units</span> <span class="kn">import</span> <span class="n">cm</span>
+<span class="kn">from</span> <span class="nn">basicsynbio.utils</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">PROCESSED_MATERIALS</span><span class="p">,</span>
+    <span class="n">PROCESSED_INCUBATION_TIMES</span><span class="p">,</span>
+    <span class="n">PROCESSED_TEMPERATURE_PROFILE_1</span><span class="p">,</span>
+    <span class="n">PROCESSED_ASSEMBLY_REACTION_3</span><span class="p">,</span>
+    <span class="n">PROCESSED_PCR_MACHINE_3</span><span class="p">,</span>
+    <span class="n">PageNumCanvas</span><span class="p">,</span>
+    <span class="n">style</span><span class="p">,</span>
+    <span class="n">style_joint_cell</span><span class="p">,</span>
+    <span class="n">style_no_split</span><span class="p">,</span>
+    <span class="n">styleN</span><span class="p">,</span>
+    <span class="n">styles</span><span class="p">,</span>
+    <span class="n">clips_data_from_pandas</span><span class="p">,</span>
+    <span class="n">assembly_data_from_pandas</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<div class="viewcode-block" id="pdf_instructions"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.pdf_instructions.pdf_instructions">[docs]</a><span class="k">def</span> <span class="nf">pdf_instructions</span><span class="p">(</span>
+    <span class="n">basic_build</span><span class="p">:</span> <span class="n">BasicBuild</span><span class="p">,</span> <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">28</span>
+<span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Writes instructions to implement build to a pdf file.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        basic_build: BasicBuild object the pdf lab instructions are written for.</span>
+<span class="sd">        path (optional): path to pdf file. If none defaults to</span>
+<span class="sd">            working directory with a time stamped name.</span>
+<span class="sd">        assemblies_per_clip (optional): number of assemblies each purified clip reaction can support.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: filepath of created pdf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+
+    <span class="k">def</span> <span class="nf">calculate_clip_num</span><span class="p">(</span><span class="n">assemblies</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">assemblies</span><span class="p">)</span> <span class="o">/</span> <span class="n">assemblies_per_clip</span><span class="p">)</span>
+
+    <span class="n">COMPONENTS</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;Component&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;Promega T4 DNA Ligase 10x Buffer&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Water&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;NEB BsaI-HFv2&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;Promega T4 DNA Ligase&quot;</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;Volume per clip (µL)&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mf">15.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+
+    <span class="n">total_clips</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span>
+        <span class="p">[</span>
+            <span class="n">calculate_clip_num</span><span class="p">(</span><span class="n">assemblies</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">_</span><span class="p">,</span> <span class="n">assemblies</span> <span class="ow">in</span> <span class="n">basic_build</span><span class="o">.</span><span class="n">clips_data</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+        <span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">dead_clips</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">total_clips</span> <span class="o">/</span> <span class="mi">20</span><span class="p">)</span>
+    <span class="n">array</span> <span class="o">=</span> <span class="n">COMPONENTS</span><span class="p">[</span><span class="s2">&quot;Volume per clip (µL)&quot;</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">total_clips</span> <span class="o">+</span> <span class="n">dead_clips</span><span class="p">)</span>
+
+    <span class="n">MASTER_MIX_BASIC_REACTION</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Component&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Volume per clip (µL)&quot;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Promega T4 DNA Ligase 10x Buffer&quot;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Water&quot;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;NEB BsaI-HFv2&quot;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">2</span><span class="p">]),</span>
+        <span class="p">],</span>
+        <span class="p">[</span>
+            <span class="s2">&quot;Promega T4 DNA Ligase&quot;</span><span class="p">,</span>
+            <span class="nb">str</span><span class="p">(</span><span class="n">array</span><span class="p">[</span><span class="mi">3</span><span class="p">]),</span>
+        <span class="p">],</span>
+    <span class="p">]</span>
+
+    <span class="n">PROCESSED_MASTER_MIX_BASIC_REACTION</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">Paragraph</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">styleN</span><span class="p">),</span> <span class="n">x</span><span class="p">))</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">MASTER_MIX_BASIC_REACTION</span>
+    <span class="p">]</span>
+
+    <span class="n">zip_path</span> <span class="o">=</span> <span class="n">export_csvs</span><span class="p">(</span><span class="n">basic_build</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="s2">&quot;PDF_CSVS&quot;</span><span class="p">)</span>
+        <span class="k">finally</span><span class="p">:</span>
+            <span class="n">zip_ref</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">zip_path</span><span class="p">)</span>
+    <span class="n">assemeblies_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;PDF_CSVS&quot;</span> <span class="o">/</span> <span class="s2">&quot;assemblies.csv&quot;</span><span class="p">)</span>
+    <span class="n">clips_data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;PDF_CSVS&quot;</span> <span class="o">/</span> <span class="s2">&quot;clips.csv&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;PDF_CSVS&quot;</span> <span class="o">/</span> <span class="s2">&quot;assemblies.csv&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;PDF_CSVS&quot;</span> <span class="o">/</span> <span class="s2">&quot;clips.csv&quot;</span><span class="p">)</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;PDF_CSVS&quot;</span><span class="p">)</span>
+    <span class="n">CLIPS_DATA</span> <span class="o">=</span> <span class="n">clips_data_from_pandas</span><span class="p">(</span><span class="n">clips_data</span><span class="p">)</span>
+    <span class="n">ASSEMBLIES_DATA</span> <span class="o">=</span> <span class="n">assembly_data_from_pandas</span><span class="p">(</span><span class="n">assemeblies_data</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">pdf_filename</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;Manual_instructions_</span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y_%H.%M.%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.pdf&quot;</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">pdf_filename</span> <span class="o">=</span> <span class="n">path</span>
+
+    <span class="n">pdf</span> <span class="o">=</span> <span class="n">SimpleDocTemplate</span><span class="p">(</span><span class="n">pdf_filename</span><span class="p">,</span> <span class="n">pagesizes</span><span class="o">=</span><span class="n">A4</span><span class="p">)</span>
+
+    <span class="n">elems</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">with</span> <span class="n">resources</span><span class="o">.</span><span class="n">path</span><span class="p">(</span><span class="s2">&quot;basicsynbio.static&quot;</span><span class="p">,</span> <span class="s2">&quot;introimg.png&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image_path</span><span class="p">:</span>
+        <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Image</span><span class="p">(</span><span class="n">image_path</span><span class="p">,</span> <span class="mi">12</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Materials&quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading1&quot;</span><span class="p">]))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Table</span><span class="p">(</span><span class="n">PROCESSED_MATERIALS</span><span class="p">,</span> <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mf">10.5</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PageBreak</span><span class="p">())</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Method&quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading1&quot;</span><span class="p">]))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Preperation of BASIC linkers and parts&quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading2&quot;</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;BASIC linkers can be ordered from Biolegio (info@biolegio.com) and will be delivered in a lyophilized format along with linker annealing buffer.&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">ListFlowable</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Spin down plates containing lyophilized linkers. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Add 150 μl of linker annealing buffer to each well, seal the plate with a PCR foil and incubate for 1 hour at room temperate. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Vortex the plate and collect liquid via centrifugation. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">KeepTogether</span><span class="p">(</span>
+                    <span class="p">[</span>
+                        <span class="n">Paragraph</span><span class="p">(</span>
+                            <span class="s2">&quot;Conduct the following incubation in a thermocycler: &quot;</span><span class="p">,</span>
+                            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                        <span class="p">),</span>
+                        <span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">),</span>
+                        <span class="n">Table</span><span class="p">(</span>
+                            <span class="n">PROCESSED_INCUBATION_TIMES</span><span class="p">,</span>
+                            <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span>
+                            <span class="n">style</span><span class="o">=</span><span class="n">style_no_split</span><span class="p">,</span>
+                        <span class="p">),</span>
+                    <span class="p">]</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Collect the liquid in wells via centrifugation.&quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Linkers are ready to use or can be stored at -20°C until required.&quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="c1">## Basic Reaction 1</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Clips Reaction&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading2&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Below contains a table with each clip needed for the assemblies of the build.&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Table</span><span class="p">(</span>
+            <span class="n">CLIPS_DATA</span><span class="p">,</span>
+            <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span>
+                <span class="mi">2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mf">1.9</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mi">3</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mi">3</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mi">2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mi">2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mf">2.3</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+                <span class="mi">2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span>
+            <span class="p">],</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Prepare a Master mix for clip reactions, the below table provides the required components for the master mix with sufficient quantities for all clip reactions.&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Table</span><span class="p">(</span>
+            <span class="n">PROCESSED_MASTER_MIX_BASIC_REACTION</span><span class="p">,</span>
+            <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">7</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">style_no_split</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;For each Clip reaction, setup 1 PCR tube with 30 μl total volume: &quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Dispense 20 uL master mix, 1 μl of each prefix and suffix Linker, 1 μl of part (or more depending on concentration) into a PCR tube and make up to 30 μl with water.&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;After mixing, tubes are placed in a PCR machine running the following programme: &quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Table</span><span class="p">(</span>
+            <span class="n">PROCESSED_TEMPERATURE_PROFILE_1</span><span class="p">,</span>
+            <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">style_joint_cell</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1">## Magbead Purification 2</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Magbead purification&quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading2&quot;</span><span class="p">]))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Prepare fresh 70</span><span class="si">% E</span><span class="s2">tOH (0.5 ml per BASIC reaction) and bring magnetic beads (AmpureXP or Ampliclean) stored at 4°C back into homogeneous mix by shaking thoroughly. &quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">ListFlowable</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Add 54 μl of magnetic beads into 96 well Falcon plate (one well per BASIC reaction) and add the 30 μl BASIC linker ligation from the PCR machine step, mix by pipetting 10 times. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Wait 5 min to allow DNA binding to magbeads. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Place Falcon plate on magnetic stand and wait for rings to form and solution to clear.&quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Aspirate most of the solution with a 200 µL pipette set to 80 µL.&quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Add 190 μl 70</span><span class="si">% E</span><span class="s2">tOH to each well and wait 30 s. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Remove solution from each well (pipette set to 200 μl volume) &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Add 190 μl 70</span><span class="si">% E</span><span class="s2">tOH to each well and wait 30 s. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Remove solution from each well (pipette set to 200 μl volume)&quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Leave the plate to dry for 1-2 min.&quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">]),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Remove Falcon plate from magnet and resuspend magbeads in 32 μl dH20. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Wait 1 min for DNA to elute. &quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">]),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Place Falcon plate back on magnetic stand and allow ring to form and solution to clear. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Transfer 30 μl of purified clip reaction into a clean microcentrifuge tube or well and store at at -20°C for up to 1 month.&quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Assembly Reaction 3</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Assembly reaction&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading2&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Below contains a table with each BASIC assembly within your build&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Table</span><span class="p">(</span><span class="n">ASSEMBLIES_DATA</span><span class="p">,</span> <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mf">5.2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mf">5.2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mf">5.2</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span> <span class="n">style</span><span class="o">=</span><span class="n">style</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;For each BASIC assembly, combine the required purified clip reactions in a final volume of 10 μl in 1x Assembly or NEB CutSmart buffer as follows:&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Table</span><span class="p">(</span>
+            <span class="n">PROCESSED_ASSEMBLY_REACTION_3</span><span class="p">,</span>
+            <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">style_no_split</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Run assembly reaction in PCR machine with following programme&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">Spacer</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">))</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Table</span><span class="p">(</span>
+            <span class="n">PROCESSED_PCR_MACHINE_3</span><span class="p">,</span>
+            <span class="n">colWidths</span><span class="o">=</span><span class="p">[</span><span class="mi">7</span> <span class="o">*</span> <span class="n">cm</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="n">cm</span><span class="p">],</span>
+            <span class="n">style</span><span class="o">=</span><span class="n">style_no_split</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="c1"># Assembly Reaction 4</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Transformation&quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;Heading2&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">Paragraph</span><span class="p">(</span>
+            <span class="s2">&quot;Use 50 μl of chemically competent cells DH5alpha with high transformation efficiency  (109 CFU/μg pUC19, for instance NEB C2987I) to transform 5 μl of each BASIC assembly: &quot;</span><span class="p">,</span>
+            <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">elems</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+        <span class="n">ListFlowable</span><span class="p">(</span>
+            <span class="p">[</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Chemically competent cells are stored at -80°C. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Thaw competent cells on ice (takes 5-10 min); 50 μl per BASIC assembly to be transformed. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Cool 5 μl of BASIC DNA assembly in 1.5 ml microcentrifuge tube on ice. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Add 50 μl of competent cells to each precooled 5 μl BASIC reaction. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span><span class="s2">&quot;Incubate on ice for 20 min. &quot;</span><span class="p">,</span> <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">]),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Apply heat shock in 42°C water bath for 45s and place back on ice for 2 min. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Add 200 μl SOC medium to each tube and incubate shaking at 37°C for 1h recovery. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Spot or plate cells on agar plates with appropriate antibiotics. Depending on number of parts assembled and transformation efficiency 2-250 μl might be spotted or plated. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+                <span class="n">Paragraph</span><span class="p">(</span>
+                    <span class="s2">&quot;Incubate agar plates at 37°C overnight, next day pick colony for assay or miniprep. &quot;</span><span class="p">,</span>
+                    <span class="n">styles</span><span class="p">[</span><span class="s2">&quot;BodyText&quot;</span><span class="p">],</span>
+                <span class="p">),</span>
+            <span class="p">]</span>
+        <span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">pdf</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">elems</span><span class="p">,</span> <span class="n">canvasmaker</span><span class="o">=</span><span class="n">PageNumCanvas</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">pdf_filename</span></div>
+</pre></div>
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../../index.html">basicsynbio</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption"><span class="caption-text">Table of Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../usage.html">Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../collections.html">Part and linker collections</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../contributing.html">Contributing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API reference</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../../index.html">Documentation overview</a><ul>
+  <li><a href="../../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../../../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2020, London Biofoundry.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.2.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

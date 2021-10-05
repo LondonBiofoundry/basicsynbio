@@ -53,6 +53,7 @@ of this technology. For instance:
 * They wouldn't flank their parts with *i*\ P and *i*\ S sequences.
 * Their part would contain an internal BsaI restriction site.
 * Parts would be too small in length, leading to loss during purification.
+* Parts and linkers wouldn't alternate.
 * They would use the same Linker or Linker-half multiple times in the same assembly.
 
 It would then take some time to identify the fault which often involved the help of experts.
