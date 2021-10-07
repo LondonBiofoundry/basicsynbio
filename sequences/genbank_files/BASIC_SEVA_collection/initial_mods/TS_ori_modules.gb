@@ -1,4 +1,4 @@
-LOCUS       BASIC_construct_BS_x7x_TS_CASc 2963 bp    DNA     circular UNK 09-SEP-2021
+LOCUS       BASIC_construct_BS_x7x_TS_CASc 2963 bp    DNA     circular UNK 07-OCT-2021
 DEFINITION  BASIC DNA Assembly of ['LMP', 'BS_x7x_TS_CASc', 'LMS', 'BS_1xx'].
 ACCESSION   BS_x7x_TS_CASc
 VERSION     BS_x7x_TS_CASc
@@ -73,7 +73,7 @@ ORIGIN
      2881 ttggcgcgag cctgattaaa cattggtaaa ccgatacaat taaaggctcc ttttggagcc
      2941 tttttttttg gacgaccctt gtc
 //
-LOCUS       BASIC_construct_BS_x7x_TS_PKD46 2963 bp    DNA     circular UNK 09-SEP-2021
+LOCUS       BASIC_construct_BS_x7x_TS_PKD46 2963 bp    DNA     circular UNK 07-OCT-2021
 DEFINITION  BASIC DNA Assembly of ['LMP', 'BS_x7x_TS_PKD46', 'LMS', 'BS_1xx'].
 ACCESSION   BS_x7x_TS_PKD46
 VERSION     BS_x7x_TS_PKD46
