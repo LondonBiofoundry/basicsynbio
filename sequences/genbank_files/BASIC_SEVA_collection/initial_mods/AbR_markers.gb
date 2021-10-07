@@ -1,0 +1,175 @@
+LOCUS       BS_1xx                  1220 bp ds-DNA     linear       07-OCT-2021
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    25..127
+                     /label="SEVA_T0"
+     misc_feature    154..1192
+                     /label="SEVA_Ap"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCac tagtcttgga ctcctgttga tagatccagt aatgacctca
+       61 gaactccatc tggatttgtt cagaacgctc ggttgccgcc gggcgttttt tattggtgag
+      121 aatccagggg tccccaataa ttacgattta aattagtagc ccgcctaatg agcgggcttt
+      181 tttttaattc ccctatttgt ttatttttct aaatacattc aaatatgtat ccgctcatga
+      241 gacaataacc ctgataaatg cttcaataat attgaaaaag gaagagtatg agcattcagc
+      301 attttcgtgt ggcgctgatt ccgttttttg cggcgttttg cctgccggtg tttgcgcatc
+      361 cggaaaccct ggtgaaagtg aaagatgcgg aagatcaact gggtgcgcgc gtgggctata
+      421 ttgaactgga tctgaacagc ggcaaaattc tggaatcttt tcgtccggaa gaacgttttc
+      481 cgatgatgag cacctttaaa gtgctgctgt gcggtgcggt tctgagccgt gtggatgcgg
+      541 gccaggaaca actgggccgt cgtattcatt atagccagaa cgatctggtg gaatatagcc
+      601 cggtgaccga aaaacatctg accgatggca tgaccgtgcg tgaactgtgc agcgcggcga
+      661 ttaccatgag cgataacacc gcggcgaacc tgctgctgac gaccattggc ggtccgaaag
+      721 aactgaccgc gtttctgcat aacatgggcg atcatgtgac ccgtctggat cgttgggaac
+      781 cggaactgaa cgaagcgatt ccgaacgatg aacgtgatac caccatgccg gcagcaatgg
+      841 cgaccaccct gcgtaaactg ctgacgggtg agctgctgac cctggcaagc cgccagcaac
+      901 tgattgattg gatggaagcg gataaagtgg cgggtccgct gctgcgtagc gcgctgccgg
+      961 ctggctggtt tattgcggat aaaagcggtg cgggcgaacg tggcagccgt ggcattattg
+     1021 cggcgctggg cccggatggt aaaccgagcc gtattgtggt gatttatacc accggcagcc
+     1081 aggcgacgat ggatgaacgt aaccgtcaga ttgcggaaat tggcgcgagc ctgattaaac
+     1141 attggtaaac cgatacaatt aaaggctcct tttggagcct ttttttttgg acgacccttg
+     1201 tcGGCTCGGG AGACCTATCG
+//
+LOCUS       BS_2xx                  1108 bp ds-DNA     linear       07-OCT-2021
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    25..127
+                     /label="SEVA_T0"
+     misc_feature    154..1080
+                     /label="SEVA_Km"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCAC TAGTCTTGGA CTCCTGTTGA TAGATCCAGT AATGACCTCA
+       61 GAACTCCATC TGGATTTGTT CAGAACGCTC GGTTGCCGCC GGGCGTTTTT TATTGGTGAG
+      121 AATCCAGGGG TCCCCAATAA TTACGATTTA AATTTGTGTC TCAAAATCTC TGATGTTACA
+      181 TTGCACAAGA TAAAAATATA TCATCATGAA CAATAAAACT GTCTGCTTAC ATAAACAGTA
+      241 ATACAAGGGG TGTTATGAGC CATATTCAGC GTGAAACGAG CTGTAGCCGT CCGCGTCTGA
+      301 ACAGCAACAT GGATGCGGAT CTGTATGGCT ATAAATGGGC GCGTGATAAC GTGGGTCAGA
+      361 GCGGCGCGAC CATTTATCGT CTGTATGGCA AACCGGATGC GCCGGAACTG TTTCTGAAAC
+      421 ATGGCAAAGG CAGCGTGGCG AACGATGTGA CCGATGAAAT GGTGCGTCTG AACTGGCTGA
+      481 CCGAATTTAT GCCGCTGCCG ACCATTAAAC ATTTTATTCG CACCCCGGAT GATGCGTGGC
+      541 TGCTGACCAC CGCGATTCCG GGCAAAACCG CGTTTCAGGT GCTGGAAGAA TATCCGGATA
+      601 GCGGCGAAAA CATTGTGGAT GCGCTGGCCG TGTTTCTGCG TCGTCTGCAT AGCATTCCGG
+      661 TGTGCAACTG CCCGTTTAAC AGCGATCGTG TGTTTCGTCT GGCCCAGGCG CAGAGCCGTA
+      721 TGAACAACGG CCTGGTGGAT GCGAGCGATT TTGATGATGA ACGTAACGGC TGGCCGGTGG
+      781 AACAGGTGTG GAAAGAAATG CATAAACTGC TGCCGTTTAG CCCGGATAGC GTGGTGACCC
+      841 ACGGCGATTT TAGCCTGGAT AACCTGATTT TCGATGAAGG CAAACTGATT GGCTGCATTG
+      901 ATGTGGGCCG TGTGGGCATT GCGGATCGTT ATCAGGATCT GGCCATTCTG TGGAACTGCC
+      961 TGGGCGAATT TAGCCCGAGC CTGCAAAAAC GTCTGTTTCA GAAATATGGC ATTGATAATC
+     1021 CGGATATGAA CAAACTGCAA TTTCATCTGA TGCTGGATGA ATTTTTCTAA TAATTAATTG
+     1081 GACCGCGGTC GGCTCGGGAG ACCTATCG
+//
+LOCUS       BS_3xx                   964 bp ds-DNA     linear       07-OCT-2021
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    25..127
+                     /label="SEVA_T0"
+     misc_feature    154..936
+                     /label="SEVA_Cm"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCac tagtcttgga ctcctgttga tagatccagt aatgacctca
+       61 gaactccatc tggatttgtt cagaacgctc ggttgccgcc gggcgttttt tattggtgag
+      121 aatccagggg tccccaataa ttacgattta aattggcgaa aatgagacgt tgatcggcac
+      181 gtaagaggtt ccaactttca ccataatgaa ataagatcac taccgggcgt attttttgag
+      241 ttatcgagat tttcaggagc taaggaagct aaaatggaga aaaaaatcac tggatatacc
+      301 accgttgata tatcccaatg gcatcgtaaa gaacattttg aggcatttca gtcagttgct
+      361 caatgtacct ataaccagac cgttcagctg gatattacgg cctttttaaa gaccgtaaag
+      421 aaaaataagc acaagtttta tccggccttt attcacattc ttgcccgcct gatgaatgct
+      481 catccggaat ttcgtatggc aatgaaagac ggtgagctgg tgatatggga tagtgttcac
+      541 ccttgttaca ccgttttcca tgagcaaact gaaacgtttt catcgctctg gagtgaatac
+      601 cacgacgatt tccggcagtt tctacacata tattcgcaag atgtggcgtg ttacggtgaa
+      661 aacctggcct atttccctaa agggtttatt gagaatatgt ttttcgtctc agccaatccc
+      721 tgggtgagtt tcaccagttt tgatttaaac gtggccaata tggacaactt cttcgccccc
+      781 gttttcacca tgggcaaata ttatacgcaa ggcgacaagg tgctgatgcc gctggcgatt
+      841 caggttcatc atgccgtttg tgatggcttc catgtcggca gaatgcttaa tgaattacaa
+      901 cagtactgcg atgagtggca gggcggggcg taatttgact tttgtcGGCT CGGGAGACCT
+      961 ATCG
+//
+LOCUS       BS_4xx                  1178 bp ds-DNA     linear       07-OCT-2021
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    25..127
+                     /label="SEVA_T0"
+     misc_feature    162..1150
+                     /label="SEVA_Sm/Sp"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCac tagtcttgga ctcctgttga tagatccagt aatgacctca
+       61 gaactccatc tggatttgtt cagaacgctc ggttgccgcc gggcgttttt tattggtgag
+      121 aatccagggg tccccaataa ttacgattta cgtatttaaa tgaaccttga ccgaacgcag
+      181 cggtggtaac ggcgcagtgg cggttttcat ggcttgttat gactgttttt ttggggtaca
+      241 gtctatgcct cgggcatcca agcagcaagc gcgttacgcc gtgggtcgat gtttgatgtt
+      301 atggagcagc aacgatgtta cgcagcaggg cagtcgccct aaaacaaagt taaacatcat
+      361 gagggaagcg gtgatcgccg aagtatcgac tcaactatca gaggtagttg gcgtcatcga
+      421 gcgccatctc gaaccgacgt tgctggccgt acatttgtac ggctccgcag tggatggcgg
+      481 cctgaagcca cacagtgata ttgatttgct ggttacggtg accgtaaggc ttgatgaaac
+      541 aacgcggcga gctttgatca acgacctttt ggaaacttcg gcttcccctg gagagagcga
+      601 gattctccgc gctgtagaag tcaccattgt tgtgcacgac gacatcattc cgtggcgtta
+      661 tccagctaag cgcgaactgc aatttggaga atggcagcgc aatgacattc ttgcaggtat
+      721 cttcgagcca gccacgatcg acattgatct ggctatcttg ctgacaaaag caagagaaca
+      781 tagcgttgcc ttggtaggtc cagcggcgga ggaactcttt gatccggttc ctgaacagga
+      841 tctatttgag gcgctaaatg aaaccttaac gctatggaac tcgccgcccg actgggctgg
+      901 cgatgagcga aatgtagtgc ttacgttgtc ccgcatttgg tacagcgcag taaccggcaa
+      961 aatcgcgccg aaggatgtcg ctgccgactg ggcaatggag cgcctgccgg cccagtatca
+     1021 gcccgtcata cttgaagcta gacaggctta tcttggacaa gaagaagatc gcttggcctc
+     1081 gcgcgcagat cagttggaag aatttgtcca ctacgtgaaa ggcgagatca ccaaggtagt
+     1141 cggcaaataa gacaattgtc GGCTCGGGAG ACCTATCG
+//
+LOCUS       BS_5axx                 1456 bp ds-DNA     linear       07-OCT-2021
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    25..127
+                     /label="SEVA_T0"
+     misc_feature    162..1428
+                     /label="SEVA_Tet"
+     CDS             238..1428
+                     /label="Translation 238-1428"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCac tagtcttgga ctcctgttga tagatccagt aatgacctca
+       61 gaactccatc tggatttgtt cagaacgctc ggttgccgcc gggcgttttt tattggtgag
+      121 aatccagggg tccccaataa ttacgattta cgtatttaaa tttgacagct tatcatcgat
+      181 aaactgtaat gcggtagttt atcacagtta aattgctaac gcagtcaggc accgtgtatg
+      241 aaatctaaca atgcgctcat cgtcatcctc ggcaccgtca ccctggatgc tgtaggcata
+      301 ggcttggtta tgccggtact gccgggcctc ttgcgggata tcgtccattc cgacagcatc
+      361 gccagtcact atggcgtgct gctagcgcta tatgcgttga tgcaatttct atgcgcaccc
+      421 gttctcggag cactgtccga ccgctttggc cgccgcccag tcctgctcgc ttcgctactt
+      481 ggagccacta tcgactacgc gatcatggcg accacacccg tcctgtggat tctctacgcc
+      541 ggacgcatcg tggccggcat caccggcgcc acaggtgcgg ttgctggcgc ctatatcgcc
+      601 gacatcaccg atggggaaga tcgggctcgc cacttcgggc tcatgagcgc ttgtttcggc
+      661 gtgggtatgg tggcaggccc cgtggccggg ggactgttgg gcgccatctc cctgcacgca
+      721 ccattccttg cggcggcggt gctcaacggc ctcaacctac tactgggctg cttcctaatg
+      781 caggagtcgc ataagggaga gcgccgtccg atgcccttga gagccttcaa cccagtcagc
+      841 tccttccggt gggcgcgggg catgaccatt gtggccgcac ttatgactgt cttctttatc
+      901 atgcaactcg taggacaggt gccggcagcg ctctgggtca ttttcggcga ggaccgcttt
+      961 cgctggagcg cgacgatgag cggcctgtcg cttgcggtat tcggaatctt gcacgccctc
+     1021 gctcaagcct tcgtcactgg tcccgccacc aaacgtttcg gcgagaagca ggccattatc
+     1081 gccggcatgg cggccgacgc gctgggctac gtcttgctgg cgttcgcgac gcgaggctgg
+     1141 atggccttcc ccattatgat tcttctcgct tccggcggca tcgggatgcc cgcgttgcag
+     1201 gccatgctgt ccaggcaggt agatgacgac catcagggac agcttcaagg atcgctcgcg
+     1261 gctcttacca gcctaacttc gatcactgga ccgctgatcg tcacggcgat ttatgccgcc
+     1321 tcggcgagca catggaacgg gttggcatgg attgtaggcg ccgccctata ccttgtctgc
+     1381 ctccccgcgt tgcgtcgcgg tgcatggagc cgggccacct cgacctgaga caattgtcGG
+     1441 CTCGGGAGAC CTATCG
+//
+LOCUS       BS_6xx                   986 bp ds-DNA     linear       07-OCT-2021
+DEFINITION  .
+FEATURES             Location/Qualifiers
+     misc_feature    25..127
+                     /label="SEVA_T0"
+     misc_feature    154..958
+                     /label="SEVA_Gm"
+ORIGIN
+        1 TCTGGTGGGT CTCTGTCCac tagtcttgga ctcctgttga tagatccagt aatgacctca
+       61 gaactccatc tggatttgtt cagaacgctc ggttgccgcc gggcgttttt tattggtgag
+      121 aatccagggg tccccaataa ttacgattta aatttgacat aagcctgttc ggttcgtaaa
+      181 ctgtaatgca agtagcgtat gcgctcacgc aactggtcca gaaccttgac cgaacgcagc
+      241 ggtggtaacg gcgcagtggc ggttttcatg gcttgttatg actgtttttt tgtacagcct
+      301 atgcctcggg catccaagca gcaagcgcgt tacgccgtgg gtcgatgttt gatgttatgg
+      361 agcagcaacg atgttacgca gcagcaacga tgttacgcag cagggcagtc gccctaaaac
+      421 aaagttaggt ggctcaagta tgggcatcat tcgcacatgt aggctcggcc ctgaccaagt
+      481 caaatccatg cgggctgctc ttgatctttt cggtcgtgag ttcggagacg tagccaccta
+      541 ctcccaacat cagccggact ccgattacct cgggaacttg ctccgtagta agacattcat
+      601 cgcgcttgct gccttcgacc aagaagcggt tgttggcgct ctcgcggctt acgttctgcc
+      661 caagtttgag cagccgcgta gtgagatcta tatctatgat ctcgcagtct ccggagagca
+      721 ccggaggcag ggcattgcca ccgcgctcat caatctcctc aagcatgagg ccaacgcgct
+      781 tggtgcttat gtgatctacg tgcaagcaga ttacggtgac gatcccgcag tggctctcta
+      841 tacaaagttg ggcatacggg aagaagtgat gcactttgat atcgacccaa gtaccgccac
+      901 ctaacaattc gttcaagccg agatcggctt cccggccgcg gagttgttcg gtaaattgga
+      961 caacggtcGG CTCGGGAGAC CTATCG
+//
