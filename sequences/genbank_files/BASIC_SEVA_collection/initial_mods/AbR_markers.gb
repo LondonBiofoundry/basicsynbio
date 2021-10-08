@@ -1,4 +1,4 @@
-LOCUS       BS_1xx                  1220 bp ds-DNA     linear       07-OCT-2021
+LOCUS       BS_1xx                  1220 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    25..127
@@ -28,7 +28,7 @@ ORIGIN
      1141 attggtaaac cgatacaatt aaaggctcct tttggagcct ttttttttgg acgacccttg
      1201 tcGGCTCGGG AGACCTATCG
 //
-LOCUS       BS_2xx                  1108 bp ds-DNA     linear       07-OCT-2021
+LOCUS       BS_2xx                  1108 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    25..127
@@ -56,7 +56,7 @@ ORIGIN
      1021 CGGATATGAA CAAACTGCAA TTTCATCTGA TGCTGGATGA ATTTTTCTAA TAATTAATTG
      1081 GACCGCGGTC GGCTCGGGAG ACCTATCG
 //
-LOCUS       BS_3xx                   964 bp ds-DNA     linear       07-OCT-2021
+LOCUS       BS_3xx                   964 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    25..127
@@ -82,7 +82,7 @@ ORIGIN
       901 cagtactgcg atgagtggca gggcggggcg taatttgact tttgtcGGCT CGGGAGACCT
       961 ATCG
 //
-LOCUS       BS_4xx                  1178 bp ds-DNA     linear       07-OCT-2021
+LOCUS       BS_4xx                  1178 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    25..127
@@ -111,15 +111,13 @@ ORIGIN
      1081 gcgcgcagat cagttggaag aatttgtcca ctacgtgaaa ggcgagatca ccaaggtagt
      1141 cggcaaataa gacaattgtc GGCTCGGGAG ACCTATCG
 //
-LOCUS       BS_5axx                 1456 bp ds-DNA     linear       07-OCT-2021
+LOCUS       BS_5axx                 1456 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    25..127
                      /label="SEVA_T0"
      misc_feature    162..1428
-                     /label="SEVA_Tet"
-     CDS             238..1428
-                     /label="Translation 238-1428"
+                     /label="SEVA_Tet(5axx)"
 ORIGIN
         1 TCTGGTGGGT CTCTGTCCac tagtcttgga ctcctgttga tagatccagt aatgacctca
        61 gaactccatc tggatttgtt cagaacgctc ggttgccgcc gggcgttttt tattggtgag
@@ -147,7 +145,7 @@ ORIGIN
      1381 ctccccgcgt tgcgtcgcgg tgcatggagc cgggccacct cgacctgaga caattgtcGG
      1441 CTCGGGAGAC CTATCG
 //
-LOCUS       BS_6xx                   986 bp ds-DNA     linear       07-OCT-2021
+LOCUS       BS_6xx                   986 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    25..127

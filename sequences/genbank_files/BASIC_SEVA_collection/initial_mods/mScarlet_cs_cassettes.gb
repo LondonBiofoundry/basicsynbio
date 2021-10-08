@@ -1,4 +1,4 @@
-LOCUS       B407_J23119-RBS34-mScarl 806 bp ds-DNA     linear       07-OCT-2021
+LOCUS       B407_J23119-RBS34-mScarl 806 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    19..53
@@ -23,7 +23,7 @@ ORIGIN
       721 AATATGAGCG TAGCGAGGGT CGCCACAGCA CCGGCGGCAT GGACGAACTG TATAAGGGAT
       781 CCtaataaGG CTCGGGAGAC CTATCG
 //
-LOCUS       B408_J23119-RBS-A12-mSc 1002 bp ds-DNA     linear       07-OCT-2021
+LOCUS       B408_J23119-RBS-A12-mSc 1002 bp ds-DNA     linear       15-OCT-2021
 DEFINITION  .
 FEATURES             Location/Qualifiers
      misc_feature    111..145
