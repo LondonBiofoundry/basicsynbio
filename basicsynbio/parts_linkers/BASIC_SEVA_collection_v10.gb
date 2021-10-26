@@ -1,4 +1,4 @@
-LOCUS       BASIC_SEVA_15a.10       5933 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_15a.10       5933 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             RSF1010 origin of replication.
 ACCESSION   f695f7983bc926fe22312ceea133ece8
@@ -129,7 +129,7 @@ ORIGIN
      5821 aactggatat taccagccac aacgaggatt ataccgtggt tgagcaatat gagcgtagcg
      5881 agggtcgcca cagcaccggc ggcatggacg aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_16.10        2991 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_16.10        2991 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and p15A
             origin of replication.
 ACCESSION   6568bcea77ad3ed95be9cf305b393522
@@ -211,7 +211,7 @@ ORIGIN
      2881 ctggatatta ccagccacaa cgaggattat accgtggttg agcaatatga gcgtagcgag
      2941 ggtcgccaca gcaccggcgg catggacgaa ctgtataagg gatcctaata a
 //
-LOCUS       BASIC_SEVA_17.10        3915 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_17.10        3915 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and pSC101
             origin of replication.
 ACCESSION   50e0aa1b55ef02db0cf62a84c4ecb719
@@ -309,11 +309,11 @@ ORIGIN
      3841 gttgagcaat atgagcgtag cgagggtcgc cacagcaccg gcggcatgga cgaactgtat
      3901 aagggatcct aataa
 //
-LOCUS       BASIC_SEVA_19.10        3644 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_19.10        3644 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             pBR322-ROP origin of replication.
-ACCESSION   23914d8e0c4eeb7787c4f7e34eac82d2
-VERSION     23914d8e0c4eeb7787c4f7e34eac82d2
+ACCESSION   314fdd9dca836243b4181ccd287e2dc0
+VERSION     314fdd9dca836243b4181ccd287e2dc0
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -334,7 +334,7 @@ FEATURES             Location/Qualifiers
      misc_feature    2820..2874
                      /label="LMS"
      misc_feature    2875..2909
-                     /label="J23119"
+                     /label="J23106"
      misc_feature    2918..2929
                      /label="B0034"
      CDS             2937..3641
@@ -387,8 +387,8 @@ ORIGIN
      2641 ttactggaac gttgtgaggg taaacaactg gcggtatgga tgcggcgggg gcgcgcccag
      2701 ctgtctaggg cggcggattt gtcctactca ggagagcgtt caccgacaaa caacagataa
      2761 aacgaaaggc ccagtctttc gactgagcct ttcgttttat ttgatgcctt taattaaggc
-     2821 tcgggagacc tatcggtaat aacagtccaa tctggtgtaa cttcggaatc gtccttgaca
-     2881 gctagctcag tcctaggtat aatgctagct actagtgaaa gaggagaaat actagtatgg
+     2821 tcgggagacc tatcggtaat aacagtccaa tctggtgtaa cttcggaatc gtcctttacg
+     2881 gctagctcag tcctaggtat agtgctagct actagtgaaa gaggagaaat actagtatgg
      2941 ttagcaaagg cgaggcggtt atcaaggagt ttatgcgttt taaggttcac atggagggta
      3001 gcatgaatgg tcacgagttc gagatcgagg gtgaaggcga gggtcgtccg tacgaaggca
      3061 cccagaccgc gaagctgaaa gtgaccaagg gtggcccgct gccgttcagc tgggacatcc
@@ -402,7 +402,7 @@ ORIGIN
      3541 ttaccagcca caacgaggat tataccgtgg ttgagcaata tgagcgtagc gagggtcgcc
      3601 acagcaccgg cggcatggac gaactgtata agggatccta ataa
 //
-LOCUS       BASIC_SEVA_17_pKD46.10  3984 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_17_pKD46.10  3984 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Ampicillin resistance marker and
             temperature sensitive pSC101 origin of replication.
 ACCESSION   c2ce6224a5d3a0001db46ce89a840642
@@ -503,7 +503,7 @@ ORIGIN
      3901 tataccgtgg ttgagcaata tgagcgtagc gagggtcgcc acagcaccgg cggcatggac
      3961 gaactgtata agggatccta ataa
 //
-LOCUS       BASIC_SEVA_25a.10       5821 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_25a.10       5821 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and RSF1010
             origin of replication.
 ACCESSION   4683b5e8bb9714875a28a0880c88f904
@@ -633,7 +633,7 @@ ORIGIN
      5761 gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg gatcctaata
      5821 a
 //
-LOCUS       BASIC_SEVA_26.10        2879 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_26.10        2879 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and p15A
             origin of replication.
 ACCESSION   b484d417d0b514190db028347fa66fba
@@ -713,7 +713,7 @@ ORIGIN
      2761 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      2821 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_27.10        3803 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_27.10        3803 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and pSC101
             origin of replication.
 ACCESSION   3b433d3fd1e298bff6d5d066a372d067
@@ -809,11 +809,11 @@ ORIGIN
      3721 ataccgtggt tgagcaatat gagcgtagcg agggtcgcca cagcaccggc ggcatggacg
      3781 aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_29.10        3532 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_29.10        3532 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
             pBR322-ROP origin of replication.
-ACCESSION   5df348f963cde6fce9f523bf687bf6dd
-VERSION     5df348f963cde6fce9f523bf687bf6dd
+ACCESSION   b0dbd8bc2d60e1a7aad51780fcdbffd8
+VERSION     b0dbd8bc2d60e1a7aad51780fcdbffd8
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -834,7 +834,7 @@ FEATURES             Location/Qualifiers
      misc_feature    2708..2762
                      /label="LMS"
      misc_feature    2763..2797
-                     /label="J23119"
+                     /label="J23106"
      misc_feature    2806..2817
                      /label="B0034"
      CDS             2825..3529
@@ -886,7 +886,7 @@ ORIGIN
      2581 gcgcccagct gtctagggcg gcggatttgt cctactcagg agagcgttca ccgacaaaca
      2641 acagataaaa cgaaaggccc agtctttcga ctgagccttt cgttttattt gatgccttta
      2701 attaaggctc gggagaccta tcggtaataa cagtccaatc tggtgtaact tcggaatcgt
-     2761 ccttgacagc tagctcagtc ctaggtataa tgctagctac tagtgaaaga ggagaaatac
+     2761 cctttacggc tagctcagtc ctaggtatag tgctagctac tagtgaaaga ggagaaatac
      2821 tagtatggtt agcaaaggcg aggcggttat caaggagttt atgcgtttta aggttcacat
      2881 ggagggtagc atgaatggtc acgagttcga gatcgagggt gaaggcgagg gtcgtccgta
      2941 cgaaggcacc cagaccgcga agctgaaagt gaccaagggt ggcccgctgc cgttcagctg
@@ -900,7 +900,7 @@ ORIGIN
      3421 actggatatt accagccaca acgaggatta taccgtggtt gagcaatatg agcgtagcga
      3481 gggtcgccac agcaccggcg gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_27_pKD46.10  3872 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_27_pKD46.10  3872 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Kanamycin resistance marker and
             temperature sensitive pSC101 origin of replication.
 ACCESSION   016b73059a8fa9268d8b35d2bdfa96ed
@@ -999,7 +999,7 @@ ORIGIN
      3781 acgaggatta taccgtggtt gagcaatatg agcgtagcga gggtcgccac agcaccggcg
      3841 gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_35a.10       5677 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_35a.10       5677 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             RSF1010 origin of replication.
 ACCESSION   01bb230a5ebe20dc3196b1f760d42d94
@@ -1126,7 +1126,7 @@ ORIGIN
      5581 ccacaacgag gattataccg tggttgagca atatgagcgt agcgagggtc gccacagcac
      5641 cggcggcatg gacgaactgt ataagggatc ctaataa
 //
-LOCUS       BASIC_SEVA_36.10        2735 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_36.10        2735 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             p15A origin of replication.
 ACCESSION   1413513c978a56f243171c4f4cf6aaac
@@ -1204,7 +1204,7 @@ ORIGIN
      2641 acaacgagga ttataccgtg gttgagcaat atgagcgtag cgagggtcgc cacagcaccg
      2701 gcggcatgga cgaactgtat aagggatcct aataa
 //
-LOCUS       BASIC_SEVA_37.10        3659 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_37.10        3659 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             pSC101 origin of replication.
 ACCESSION   eceac71fa048bd052921bf134322c381
@@ -1297,11 +1297,11 @@ ORIGIN
      3541 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      3601 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_39.10        3388 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_39.10        3388 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             pBR322-ROP origin of replication.
-ACCESSION   3f836580818010bc244dc1f083d39a91
-VERSION     3f836580818010bc244dc1f083d39a91
+ACCESSION   927f54a3afd7bab22d2c2cc3e428bf4a
+VERSION     927f54a3afd7bab22d2c2cc3e428bf4a
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -1322,7 +1322,7 @@ FEATURES             Location/Qualifiers
      misc_feature    2564..2618
                      /label="LMS"
      misc_feature    2619..2653
-                     /label="J23119"
+                     /label="J23106"
      misc_feature    2662..2673
                      /label="B0034"
      CDS             2681..3385
@@ -1371,8 +1371,8 @@ ORIGIN
      2401 agggtaaaca actggcggta tggatgcggc gggggcgcgc ccagctgtct agggcggcgg
      2461 atttgtccta ctcaggagag cgttcaccga caaacaacag ataaaacgaa aggcccagtc
      2521 tttcgactga gcctttcgtt ttatttgatg cctttaatta aggctcggga gacctatcgg
-     2581 taataacagt ccaatctggt gtaacttcgg aatcgtcctt gacagctagc tcagtcctag
-     2641 gtataatgct agctactagt gaaagaggag aaatactagt atggttagca aaggcgaggc
+     2581 taataacagt ccaatctggt gtaacttcgg aatcgtcctt tacggctagc tcagtcctag
+     2641 gtatagtgct agctactagt gaaagaggag aaatactagt atggttagca aaggcgaggc
      2701 ggttatcaag gagtttatgc gttttaaggt tcacatggag ggtagcatga atggtcacga
      2761 gttcgagatc gagggtgaag gcgagggtcg tccgtacgaa ggcacccaga ccgcgaagct
      2821 gaaagtgacc aagggtggcc cgctgccgtt cagctgggac atcctgagcc cgcagttcat
@@ -1386,7 +1386,7 @@ ORIGIN
      3301 ggattatacc gtggttgagc aatatgagcg tagcgagggt cgccacagca ccggcggcat
      3361 ggacgaactg tataagggat cctaataa
 //
-LOCUS       BASIC_SEVA_37_pKD46.10  3728 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_37_pKD46.10  3728 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Chloramphenicol resistance marker and
             temperature sensitive pSC101 origin of replication.
 ACCESSION   b89dedf6aac9bef578d7fd8ac362c845
@@ -1483,7 +1483,7 @@ ORIGIN
      3661 aatatgagcg tagcgagggt cgccacagca ccggcggcat ggacgaactg tataagggat
      3721 cctaataa
 //
-LOCUS       BASIC_SEVA_45a.10       5891 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_45a.10       5891 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             RSF1010 origin of replication.
 ACCESSION   56da3cbe26311835d21578bba476ebad
@@ -1614,7 +1614,7 @@ ORIGIN
      5821 agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg
      5881 gatcctaata a
 //
-LOCUS       BASIC_SEVA_46.10        2949 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_46.10        2949 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and p15A
             origin of replication.
 ACCESSION   4d797ce1665dcb6dc7e73376928424e7
@@ -1696,7 +1696,7 @@ ORIGIN
      2881 caatatgagc gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga
      2941 tcctaataa
 //
-LOCUS       BASIC_SEVA_47.10        3873 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_47.10        3873 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             pSC101 origin of replication.
 ACCESSION   b23db40e89aa7f017b096e4158e729bc
@@ -1793,11 +1793,11 @@ ORIGIN
      3781 aacgaggatt ataccgtggt tgagcaatat gagcgtagcg agggtcgcca cagcaccggc
      3841 ggcatggacg aactgtataa gggatcctaa taa
 //
-LOCUS       BASIC_SEVA_49.10        3602 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_49.10        3602 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             pBR322-ROP origin of replication.
-ACCESSION   a84e9a456fbb9f2b4f363456c87d4de5
-VERSION     a84e9a456fbb9f2b4f363456c87d4de5
+ACCESSION   804fbb49400cf5027a668feb1ec60c06
+VERSION     804fbb49400cf5027a668feb1ec60c06
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -1818,7 +1818,7 @@ FEATURES             Location/Qualifiers
      misc_feature    2778..2832
                      /label="LMS"
      misc_feature    2833..2867
-                     /label="J23119"
+                     /label="J23106"
      misc_feature    2876..2887
                      /label="B0034"
      CDS             2895..3599
@@ -1871,7 +1871,7 @@ ORIGIN
      2641 cggcgggggc gcgcccagct gtctagggcg gcggatttgt cctactcagg agagcgttca
      2701 ccgacaaaca acagataaaa cgaaaggccc agtctttcga ctgagccttt cgttttattt
      2761 gatgccttta attaaggctc gggagaccta tcggtaataa cagtccaatc tggtgtaact
-     2821 tcggaatcgt ccttgacagc tagctcagtc ctaggtataa tgctagctac tagtgaaaga
+     2821 tcggaatcgt cctttacggc tagctcagtc ctaggtatag tgctagctac tagtgaaaga
      2881 ggagaaatac tagtatggtt agcaaaggcg aggcggttat caaggagttt atgcgtttta
      2941 aggttcacat ggagggtagc atgaatggtc acgagttcga gatcgagggt gaaggcgagg
      3001 gtcgtccgta cgaaggcacc cagaccgcga agctgaaagt gaccaagggt ggcccgctgc
@@ -1886,7 +1886,7 @@ ORIGIN
      3541 agcgtagcga gggtcgccac agcaccggcg gcatggacga actgtataag ggatcctaat
      3601 aa
 //
-LOCUS       BASIC_SEVA_47_pKD46.10  3942 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_47_pKD46.10  3942 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Streptomycin resistance marker and
             temperature sensitive pSC101 origin of replication.
 ACCESSION   a388b01c3624b66b0f4f70447ef4b42c
@@ -1986,7 +1986,7 @@ ORIGIN
      3841 accagccaca acgaggatta taccgtggtt gagcaatatg agcgtagcga gggtcgccac
      3901 agcaccggcg gcatggacga actgtataag ggatcctaat aa
 //
-LOCUS       BASIC_SEVA_5a5a.10      6169 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_5a5a.10      6169 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             RSF1010 origin of replication.
 ACCESSION   4dc7813eba6298720b8e47f618aa2a4b
@@ -2121,7 +2121,7 @@ ORIGIN
      6061 ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc gtagcgaggg
      6121 tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_5a6.10       3227 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_5a6.10       3227 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and p15A
             origin of replication.
 ACCESSION   da102cb0396b5d4633d32fa99b1b6cdb
@@ -2207,7 +2207,7 @@ ORIGIN
      3121 atattaccag ccacaacgag gattataccg tggttgagca atatgagcgt agcgagggtc
      3181 gccacagcac cggcggcatg gacgaactgt ataagggatc ctaataa
 //
-LOCUS       BASIC_SEVA_5a7.10       4151 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_5a7.10       4151 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             pSC101 origin of replication.
 ACCESSION   d9f4ac855df0c3fcafcab2ae7e872036
@@ -2309,11 +2309,11 @@ ORIGIN
      4081 agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa ctgtataagg
      4141 gatcctaata a
 //
-LOCUS       BASIC_SEVA_5a9.10       3880 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_5a9.10       3880 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             pBR322-ROP origin of replication.
-ACCESSION   a47331e59bdaf74765c4b77503a5cb9f
-VERSION     a47331e59bdaf74765c4b77503a5cb9f
+ACCESSION   de15e534a36c66f3ebe7c835782cffa7
+VERSION     de15e534a36c66f3ebe7c835782cffa7
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -2334,7 +2334,7 @@ FEATURES             Location/Qualifiers
      misc_feature    3056..3110
                      /label="LMS"
      misc_feature    3111..3145
-                     /label="J23119"
+                     /label="J23106"
      misc_feature    3154..3165
                      /label="B0034"
      CDS             3173..3877
@@ -2391,8 +2391,8 @@ ORIGIN
      2881 tggaacgttg tgagggtaaa caactggcgg tatggatgcg gcgggggcgc gcccagctgt
      2941 ctagggcggc ggatttgtcc tactcaggag agcgttcacc gacaaacaac agataaaacg
      3001 aaaggcccag tctttcgact gagcctttcg ttttatttga tgcctttaat taaggctcgg
-     3061 gagacctatc ggtaataaca gtccaatctg gtgtaacttc ggaatcgtcc ttgacagcta
-     3121 gctcagtcct aggtataatg ctagctacta gtgaaagagg agaaatacta gtatggttag
+     3061 gagacctatc ggtaataaca gtccaatctg gtgtaacttc ggaatcgtcc tttacggcta
+     3121 gctcagtcct aggtatagtg ctagctacta gtgaaagagg agaaatacta gtatggttag
      3181 caaaggcgag gcggttatca aggagtttat gcgttttaag gttcacatgg agggtagcat
      3241 gaatggtcac gagttcgaga tcgagggtga aggcgagggt cgtccgtacg aaggcaccca
      3301 gaccgcgaag ctgaaagtga ccaagggtgg cccgctgccg ttcagctggg acatcctgag
@@ -2406,7 +2406,7 @@ ORIGIN
      3781 cagccacaac gaggattata ccgtggttga gcaatatgag cgtagcgagg gtcgccacag
      3841 caccggcggc atggacgaac tgtataaggg atcctaataa
 //
-LOCUS       BASIC_SEVA_5a7_pKD46.10 4220 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_5a7_pKD46.10 4220 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Tetracycline resistance marker and
             temperature sensitive pSC101 origin of replication.
 ACCESSION   1319bafa14d98407fe18627921dba1c3
@@ -2511,7 +2511,7 @@ ORIGIN
      4141 ccgtggttga gcaatatgag cgtagcgagg gtcgccacag caccggcggc atggacgaac
      4201 tgtataaggg atcctaataa
 //
-LOCUS       BASIC_SEVA_65a.10       5699 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_65a.10       5699 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             RSF1010 origin of replication.
 ACCESSION   ba9809f0bba102f479d902c3fb82b5f7
@@ -2638,7 +2638,7 @@ ORIGIN
      5581 accgtaaact ggatattacc agccacaacg aggattatac cgtggttgag caatatgagc
      5641 gtagcgaggg tcgccacagc accggcggca tggacgaact gtataaggga tcctaataa
 //
-LOCUS       BASIC_SEVA_66.10        2757 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_66.10        2757 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and p15A
             origin of replication.
 ACCESSION   9874d4b94b5ebed8ea99f69534b4656e
@@ -2716,7 +2716,7 @@ ORIGIN
      2641 cgtaaactgg atattaccag ccacaacgag gattataccg tggttgagca atatgagcgt
      2701 agcgagggtc gccacagcac cggcggcatg gacgaactgt ataagggatc ctaataa
 //
-LOCUS       BASIC_SEVA_67.10        3681 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_67.10        3681 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and pSC101
             origin of replication.
 ACCESSION   db12df1f8d044fdd49a6237418780dd1
@@ -2810,11 +2810,11 @@ ORIGIN
      3601 accgtggttg agcaatatga gcgtagcgag ggtcgccaca gcaccggcgg catggacgaa
      3661 ctgtataagg gatcctaata a
 //
-LOCUS       BASIC_SEVA_69.10        3410 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_69.10        3410 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             pBR322-ROP origin of replication.
-ACCESSION   e3555f4e84d0a27ef90c3be2adfb03a9
-VERSION     e3555f4e84d0a27ef90c3be2adfb03a9
+ACCESSION   7cce40252f64427685493882230c8bf1
+VERSION     7cce40252f64427685493882230c8bf1
 KEYWORDS    .
 SOURCE      synthetic construct
   ORGANISM  synthetic construct
@@ -2835,7 +2835,7 @@ FEATURES             Location/Qualifiers
      misc_feature    2586..2640
                      /label="LMS"
      misc_feature    2641..2675
-                     /label="J23119"
+                     /label="J23106"
      misc_feature    2684..2695
                      /label="B0034"
      CDS             2703..3407
@@ -2885,7 +2885,7 @@ ORIGIN
      2461 gcccagctgt ctagggcggc ggatttgtcc tactcaggag agcgttcacc gacaaacaac
      2521 agataaaacg aaaggcccag tctttcgact gagcctttcg ttttatttga tgcctttaat
      2581 taaggctcgg gagacctatc ggtaataaca gtccaatctg gtgtaacttc ggaatcgtcc
-     2641 ttgacagcta gctcagtcct aggtataatg ctagctacta gtgaaagagg agaaatacta
+     2641 tttacggcta gctcagtcct aggtatagtg ctagctacta gtgaaagagg agaaatacta
      2701 gtatggttag caaaggcgag gcggttatca aggagtttat gcgttttaag gttcacatgg
      2761 agggtagcat gaatggtcac gagttcgaga tcgagggtga aggcgagggt cgtccgtacg
      2821 aaggcaccca gaccgcgaag ctgaaagtga ccaagggtgg cccgctgccg ttcagctggg
@@ -2899,7 +2899,7 @@ ORIGIN
      3301 tggatattac cagccacaac gaggattata ccgtggttga gcaatatgag cgtagcgagg
      3361 gtcgccacag caccggcggc atggacgaac tgtataaggg atcctaataa
 //
-LOCUS       BASIC_SEVA_67_pKD46.10  3750 bp    DNA     circular UNK 07-OCT-2021
+LOCUS       BASIC_SEVA_67_pKD46.10  3750 bp    DNA     circular UNK 26-OCT-2021
 DEFINITION  BASIC SEVA vector containing Gentamicin resistance marker and
             temperature sensitive pSC101 origin of replication.
 ACCESSION   4fe6ecc619de0d790bdb44aeef93df39
