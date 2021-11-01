@@ -102,19 +102,15 @@ class BasicPart(SeqRecord):
         else:
             raise ValueError("incorrect sequence used.")
 
-    def concentration(
+    def clip_mass(
         self,
-        stock: bool = True,
         clip_vol: float = 30,
         circular: bool = True,
         ndigit: int = None,
     ) -> Union[float, int]:
-        """Obtain the recommended concentration of part in ng/µL.
-
-        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.
+        """Obtain the recommended mass of part (ng) for a clip reaction.
 
         Args:
-            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).
             clip_vol: volume of the clip reaction (µL).
             circular: The part is circular or linear if False.
             ndigit: Refer to built-in round function documentation.
@@ -126,9 +122,7 @@ class BasicPart(SeqRecord):
             )
             / 1e6
         )
-        if stock:
-            return round(final_concentration * clip_vol, ndigit)
-        return round(final_concentration, ndigit)
+        return round(final_concentration * clip_vol, ndigit)
 
     def domesticating_primers(
         self,

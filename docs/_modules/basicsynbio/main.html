@@ -136,19 +136,15 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;incorrect sequence used.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BasicPart.concentration"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.concentration">[docs]</a>    <span class="k">def</span> <span class="nf">concentration</span><span class="p">(</span>
+<div class="viewcode-block" id="BasicPart.clip_mass"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.clip_mass">[docs]</a>    <span class="k">def</span> <span class="nf">clip_mass</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">stock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">clip_vol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
         <span class="n">circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">ndigit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Obtain the recommended concentration of part in ng/µL.</span>
-
-<span class="sd">        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</span>
+        <span class="sd">&quot;&quot;&quot;Obtain the recommended mass of part (ng) for a clip reaction.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).</span>
 <span class="sd">            clip_vol: volume of the clip reaction (µL).</span>
 <span class="sd">            circular: The part is circular or linear if False.</span>
 <span class="sd">            ndigit: Refer to built-in round function documentation.</span>
@@ -160,9 +156,7 @@
             <span class="p">)</span>
             <span class="o">/</span> <span class="mf">1e6</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">stock</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span> <span class="o">*</span> <span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span> <span class="o">*</span> <span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BasicPart.domesticating_primers"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.domesticating_primers">[docs]</a>    <span class="k">def</span> <span class="nf">domesticating_primers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>

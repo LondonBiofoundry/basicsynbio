@@ -31,15 +31,8 @@ def test_basic_part_exception(gfp_orf_seq):
         bsb.BasicPart(gfp_orf_seq, "sfGFP")
 
 
-def test_basic_part_final_concentration(gfp_basicpart, gfp_part_final_conc):
-    assert gfp_basicpart.concentration(stock=False) == round(gfp_part_final_conc)
-
-
-def test_basic_part_stock_concentration(gfp_basicpart, gfp_part_final_conc):
-    clip_vol = 30
-    assert gfp_basicpart.concentration(stock=True) == round(
-        gfp_part_final_conc * clip_vol
-    )
+def test_basic_part_clip_mass(gfp_basicpart, gfp_part_clip_mass):
+    assert gfp_basicpart.clip_mass() == round(gfp_part_clip_mass)
 
 
 def test_primer3py_on_part(gfp_orf_basicpart, gfp_orf_seq):

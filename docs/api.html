@@ -245,14 +245,12 @@ sequences must contain intergated prefix and suffix sequences.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.main.BasicPart.concentration">
-<code class="sig-name descname">concentration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stock</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.concentration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.concentration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Obtain the recommended concentration of part in ng/µL.</p>
-<p>This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</p>
+<dt id="basicsynbio.main.BasicPart.clip_mass">
+<code class="sig-name descname">clip_mass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.clip_mass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.clip_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the recommended mass of part (ng) for a clip reaction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stock</strong> – If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).</p></li>
 <li><p><strong>clip_vol</strong> – volume of the clip reaction (µL).</p></li>
 <li><p><strong>circular</strong> – The part is circular or linear if False.</p></li>
 <li><p><strong>ndigit</strong> – Refer to built-in round function documentation.</p></li>

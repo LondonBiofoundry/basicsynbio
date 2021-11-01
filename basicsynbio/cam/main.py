@@ -238,8 +238,7 @@ class BuildEncoder(json.JSONEncoder):
                 "id": value["part"].id,
                 "name": value["part"].name,
                 "description": value["part"].description,
-                "suggested stock concentration (ng/µL)": value["part"].concentration(),
-                "stock per 30 µL clip (µL)": 1,
+                "Part mass for 30 μL clip reaction (ng)": value["part"].clip_mass(),
                 "clip reactions": [
                     "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
                     for clip_reaction in value["clip reactions"]
