@@ -1,48 +1,19 @@
-"""Module contains a collection of objects for computer assisted manufacturing
-within the BASIC DNA assembly framework."""
+"""Module contains key objects for computer assisted manufacturing (CAM)
+within the BASIC DNA assembly framework.
+"""
 
-from Bio.SeqUtils import molecular_weight
 from Bio.Seq import Seq
-from Bio.SeqRecord import SeqRecord
 from basicsynbio.main import (
     BasicAssembly,
     BasicLinker,
     BasicPart,
     BasicUTRRBSLinker,
-    ClipReaction,
     LinkerException,
 )
-import csv
-from dataclasses import dataclass
-from datetime import datetime
 from collections import OrderedDict, Counter
-import hashlib
 import json
-import os
-from pathlib import Path
-from typing import Union, Dict, Generator
+from typing import Dict, Generator
 import re
-import zipfile
-
-
-def new_part_resuspension(
-    part: BasicPart, mass: float, double_stranded: bool = True
-) -> float:
-    """Returns the volume of resuspension buffer (µL) required for a 75 nM
-    solution of part, equivalent to 75 fmol/µL.
-
-    Args:
-        part: BasicPart object.
-        mass: mass of synthesised part (ng).
-        double_stranded (optional): True (default) indicates part is dsDNA.
-    """
-    return (
-        (mass * 10 ** -9)
-        / molecular_weight(part.seq, double_stranded=double_stranded)
-        * 1
-        / (75e-9)
-        * 10 ** 6
-    )
 
 
 class BasicBuild:
@@ -448,27 +419,3 @@ class BuildDecoder(json.JSONDecoder):
 
 class BuildException(Exception):
     pass
-
-
-def seqrecord_hexdigest(seqrecord_obj: Union[SeqRecord, BasicPart, BasicLinker]) -> str:
-    """Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
-    relevant attributes.
-
-    Note:
-        Care should be taken when using the return value of this function as an identifier/hash for seqrecord_obj given these objects are mutable.
-
-    Args:
-        seqrecord_obj: Bio.SeqRecord.SeqRecord-like object, containing relevant
-            attributes
-
-    Returns:
-        MD5 hash
-    """
-    seqrec_hash = hashlib.md5(str(seqrecord_obj.seq).encode("UTF-8"))
-    bytes_objs = [
-        getattr(seqrecord_obj, attribute).encode("UTF-8")
-        for attribute in ["name", "description"]
-    ]
-    for element in bytes_objs:
-        seqrec_hash.update(element)
-    return seqrec_hash.hexdigest()

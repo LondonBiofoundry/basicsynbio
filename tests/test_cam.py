@@ -142,3 +142,16 @@ def test_decoded_build(promoter_assemblies_build, promoter_assemblies_json):
         )
         == True
     )
+
+
+def test_build_digest(promoter_assemblies_build):
+    build_digest = tuple(bsb.build_digest(promoter_assemblies_build))
+    assert len(build_digest) == len(promoter_assemblies_build.basic_assemblies)
+    for assembly_digest in build_digest:
+        assert len(assembly_digest.sequences) == 2
+    promoter_assemblies_returned_parts = (
+        assembly.return_part()
+        for assembly in promoter_assemblies_build.basic_assemblies
+    )
+    for ind, part in enumerate(promoter_assemblies_returned_parts):
+        assert len(part.basic_slice()) + 6 in build_digest[ind].product_lengths
