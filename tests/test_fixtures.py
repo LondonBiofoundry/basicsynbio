@@ -182,13 +182,15 @@ def promoter_assemblies_json(promoter_assemblies_build):
 
 
 @pytest.fixture
-def gfp_part_final_conc(gfp_basicpart):
+def gfp_part_clip_mass(gfp_basicpart):
     from Bio.SeqUtils import molecular_weight
 
+    CLIP_VOLUME = 30
     return (
         2.5
         * molecular_weight(gfp_basicpart.seq, double_stranded=True, circular=True)
         / 1e6
+        * CLIP_VOLUME
     )
 
 

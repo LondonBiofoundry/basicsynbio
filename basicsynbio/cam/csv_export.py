@@ -43,8 +43,7 @@ def export_csvs(
             "Prefix ID",
             "Part ID",
             "Part Name",
-            "Part suggested stock concentration (ng/µL)",
-            "Part stock per 30 µL clip (µL)",
+            "Part mass for 30 μL clip reaction (ng)",
             "Suffix ID",
             "Total assemblies",
             "Assembly indexes",
@@ -59,10 +58,9 @@ def export_csvs(
                     "Prefix ID": clip_data[0]._prefix.prefix_id,
                     "Part ID": clip_data[0]._part.id,
                     "Part Name": clip_data[0]._part.name,
-                    "Part suggested stock concentration (ng/µL)": clip_data[
+                    "Part mass for 30 μL clip reaction (ng)": clip_data[
                         0
-                    ]._part.concentration(),
-                    "Part stock per 30 µL clip (µL)": 1,
+                    ]._part.clip_mass(),
                     "Suffix ID": clip_data[0]._suffix.suffix_id,
                     "Total assemblies": len(clip_data[1]),
                     "Assembly indexes": [

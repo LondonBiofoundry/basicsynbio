@@ -16,7 +16,6 @@ from .test_fixtures import (
     bsai_part_seqrec,
     promoter_assemblies_build,
     promoter_assemblies_json,
-    gfp_part_final_conc,
     small_build_example,
     all_promoter_assemblies_build,
     promoter_assemblies_build_more_than_384,
