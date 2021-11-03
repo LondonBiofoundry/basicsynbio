@@ -25,6 +25,7 @@ from .cam import (
     BasicBuild,
     BuildDecoder,
     BuildEncoder,
+    build_digest,
     new_part_resuspension,
     export_echo_assembly,
     pdf_instructions,

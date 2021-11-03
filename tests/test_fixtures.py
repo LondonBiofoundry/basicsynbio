@@ -235,7 +235,7 @@ def all_promoter_assemblies_build():
 @pytest.fixture
 def bb_linker():
     from Bio.Seq import Seq
-    from basicsynbio.cam.main import seqrecord_hexdigest
+    from basicsynbio.cam import seqrecord_hexdigest
 
     bb_linker = bsb.BasicLinker(
         seq=Seq("GGCTCGGCCCACTTGTGTGTCTCGTACAATTCTGAGGTCCACACAGATAGTGTCC"),
