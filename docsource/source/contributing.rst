@@ -62,7 +62,9 @@ General Guidelines
 * Code should be formatted using `black`_.
 * New code should have associated tests written using `pytest`_.
 * Update the documentation if required. The documentation is formatted using `Sphinx`_ and as such all files must be written in reST.
-* Update GitHub pages by running ``make github`` in the */docsource* directory.
+* Update GitHub pages by running ``make github`` in the */docsource* directory. This implements GitHub Pages as described by `Anne Gentle`_.
+
+.. _Anne Gentle: https://www.docslikecode.com/articles/github-pages-python-sphinx/
 
 Guidelines for docstrings
 ^^^^^^^^^^^^^^^^^^^^^^^^^
