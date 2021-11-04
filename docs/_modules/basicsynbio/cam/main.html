@@ -32,51 +32,22 @@
           <div class="body" role="main">
             
   <h1>Source code for basicsynbio.cam.main</h1><div class="highlight"><pre>
-<span></span><span class="sd">&quot;&quot;&quot;Module contains a collection of objects for computer assisted manufacturing</span>
-<span class="sd">within the BASIC DNA assembly framework.&quot;&quot;&quot;</span>
+<span></span><span class="sd">&quot;&quot;&quot;Module contains key objects for computer assisted manufacturing (CAM)</span>
+<span class="sd">within the BASIC DNA assembly framework.</span>
+<span class="sd">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">Bio.SeqUtils</span> <span class="kn">import</span> <span class="n">molecular_weight</span>
 <span class="kn">from</span> <span class="nn">Bio.Seq</span> <span class="kn">import</span> <span class="n">Seq</span>
-<span class="kn">from</span> <span class="nn">Bio.SeqRecord</span> <span class="kn">import</span> <span class="n">SeqRecord</span>
 <span class="kn">from</span> <span class="nn">basicsynbio.main</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">BasicAssembly</span><span class="p">,</span>
     <span class="n">BasicLinker</span><span class="p">,</span>
     <span class="n">BasicPart</span><span class="p">,</span>
     <span class="n">BasicUTRRBSLinker</span><span class="p">,</span>
-    <span class="n">ClipReaction</span><span class="p">,</span>
     <span class="n">LinkerException</span><span class="p">,</span>
 <span class="p">)</span>
-<span class="kn">import</span> <span class="nn">csv</span>
-<span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">OrderedDict</span><span class="p">,</span> <span class="n">Counter</span>
-<span class="kn">import</span> <span class="nn">hashlib</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Union</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Generator</span>
+<span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Generator</span>
 <span class="kn">import</span> <span class="nn">re</span>
-<span class="kn">import</span> <span class="nn">zipfile</span>
-
-
-<div class="viewcode-block" id="new_part_resuspension"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.main.new_part_resuspension">[docs]</a><span class="k">def</span> <span class="nf">new_part_resuspension</span><span class="p">(</span>
-    <span class="n">part</span><span class="p">:</span> <span class="n">BasicPart</span><span class="p">,</span> <span class="n">mass</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">double_stranded</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Returns the volume of resuspension buffer (µL) required for a 75 nM</span>
-<span class="sd">    solution of part, equivalent to 75 fmol/µL.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        part: BasicPart object.</span>
-<span class="sd">        mass: mass of synthesised part (ng).</span>
-<span class="sd">        double_stranded (optional): True (default) indicates part is dsDNA.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">(</span>
-        <span class="p">(</span><span class="n">mass</span> <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="o">-</span><span class="mi">9</span><span class="p">)</span>
-        <span class="o">/</span> <span class="n">molecular_weight</span><span class="p">(</span><span class="n">part</span><span class="o">.</span><span class="n">seq</span><span class="p">,</span> <span class="n">double_stranded</span><span class="o">=</span><span class="n">double_stranded</span><span class="p">)</span>
-        <span class="o">*</span> <span class="mi">1</span>
-        <span class="o">/</span> <span class="p">(</span><span class="mf">75e-9</span><span class="p">)</span>
-        <span class="o">*</span> <span class="mi">10</span> <span class="o">**</span> <span class="mi">6</span>
-    <span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="BasicBuild"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.main.BasicBuild">[docs]</a><span class="k">class</span> <span class="nc">BasicBuild</span><span class="p">:</span>
@@ -482,30 +453,6 @@
 
 <div class="viewcode-block" id="BuildException"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.main.BuildException">[docs]</a><span class="k">class</span> <span class="nc">BuildException</span><span class="p">(</span><span class="ne">Exception</span><span class="p">):</span>
     <span class="k">pass</span></div>
-
-
-<div class="viewcode-block" id="seqrecord_hexdigest"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.main.seqrecord_hexdigest">[docs]</a><span class="k">def</span> <span class="nf">seqrecord_hexdigest</span><span class="p">(</span><span class="n">seqrecord_obj</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="n">SeqRecord</span><span class="p">,</span> <span class="n">BasicPart</span><span class="p">,</span> <span class="n">BasicLinker</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="sd">&quot;&quot;&quot;Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using</span>
-<span class="sd">    relevant attributes.</span>
-
-<span class="sd">    Note:</span>
-<span class="sd">        Care should be taken when using the return value of this function as an identifier/hash for seqrecord_obj given these objects are mutable.</span>
-
-<span class="sd">    Args:</span>
-<span class="sd">        seqrecord_obj: Bio.SeqRecord.SeqRecord-like object, containing relevant</span>
-<span class="sd">            attributes</span>
-
-<span class="sd">    Returns:</span>
-<span class="sd">        MD5 hash</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">seqrec_hash</span> <span class="o">=</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">seqrecord_obj</span><span class="o">.</span><span class="n">seq</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">))</span>
-    <span class="n">bytes_objs</span> <span class="o">=</span> <span class="p">[</span>
-        <span class="nb">getattr</span><span class="p">(</span><span class="n">seqrecord_obj</span><span class="p">,</span> <span class="n">attribute</span><span class="p">)</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;UTF-8&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;description&quot;</span><span class="p">]</span>
-    <span class="p">]</span>
-    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">bytes_objs</span><span class="p">:</span>
-        <span class="n">seqrec_hash</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">seqrec_hash</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span></div>
 </pre></div>
 
           </div>
