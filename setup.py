@@ -10,9 +10,13 @@ def main():
         name=app.__project__,
         version=app.__version__,
         url=app.__url__,
-        license=next((
-            classifier.rsplit("::", 1)[1].strip() for classifier in app.__classifiers__ if classifier.startswith("License ::")
-        )),
+        license=next(
+            (
+                classifier.rsplit("::", 1)[1].strip()
+                for classifier in app.__classifiers__
+                if classifier.startswith("License ::")
+            )
+        ),
         author=app.__author__,
         author_email=app.__author_email__,
         description=app.__description__,
