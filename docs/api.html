@@ -492,7 +492,7 @@ Refer to pysbol2 documentation for further information.</p>
 </div>
 <div class="section" id="module-basicsynbio.cam.main">
 <span id="cam-main-py"></span><h2>cam.main.py<a class="headerlink" href="#module-basicsynbio.cam.main" title="Permalink to this headline">¶</a></h2>
-<p>Module contains a collection of objects for computer assisted manufacturing
+<p>Module contains key objects for computer assisted manufacturing (CAM)
 within the BASIC DNA assembly framework.</p>
 <dl class="py class">
 <dt id="basicsynbio.cam.main.BasicBuild">
@@ -728,42 +728,6 @@ describing unique parts.</p>
 <dt id="basicsynbio.cam.main.BuildException">
 <em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">BuildException</code><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildException" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
-
-<dl class="py function">
-<dt id="basicsynbio.cam.main.new_part_resuspension">
-<code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">new_part_resuspension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a></span></em>, <em class="sig-param"><span class="n">mass</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">double_stranded</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/basicsynbio/cam/main.html#new_part_resuspension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.new_part_resuspension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the volume of resuspension buffer (µL) required for a 75 nM
-solution of part, equivalent to 75 fmol/µL.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>part</strong> – BasicPart object.</p></li>
-<li><p><strong>mass</strong> – mass of synthesised part (ng).</p></li>
-<li><p><strong>double_stranded</strong> (<em>optional</em>) – True (default) indicates part is dsDNA.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="basicsynbio.cam.main.seqrecord_hexdigest">
-<code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">seqrecord_hexdigest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seqrecord_obj</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>Bio.SeqRecord.SeqRecord<span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a><span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker">basicsynbio.main.BasicLinker</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/basicsynbio/cam/main.html#seqrecord_hexdigest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.seqrecord_hexdigest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
-relevant attributes.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Care should be taken when using the return value of this function as an identifier/hash for seqrecord_obj given these objects are mutable.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>seqrecord_obj</strong> – Bio.SeqRecord.SeqRecord-like object, containing relevant
-attributes</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>MD5 hash</p>
-</dd>
-</dl>
-</dd></dl>
 
 </div>
 <div class="section" id="module-basicsynbio.decorators">

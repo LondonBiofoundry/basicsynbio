@@ -99,7 +99,6 @@ qtconsole==4.7.5
 QtPy==1.9.0
 rdflib==5.0.0
 readme-renderer==28.0
-recommonmark==0.6.0
 regex==2020.11.13
 reportlab==3.5.59
 requests==2.24.0

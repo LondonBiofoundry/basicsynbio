@@ -1,40 +1,35 @@
 import setuptools
+import basicsynbio as app
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
 
-setuptools.setup(
-    name="basicsynbio",
-    version="0.6.0",
-    url="https://github.com/LondonBiofoundry/basicsynbio",
-    license="BSD-3-Clause License",
-    author="LondonBiofoundry",
-    author_email="hainesm6@gmail.com",
-    description="An open-source Python package to facilitate BASIC DNA Assembly workflows",
-    long_description=long_description,
-    long_description_content_type="text/markdown",
-    packages=setuptools.find_packages(exclude=("tests")),
-    include_package_data=True,
-    classifiers=[
-        "Intended Audience :: Science/Research",
-        "License :: OSI Approved :: BSD License",
-        "Natural Language :: English",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python :: 3.8",
-        "Topic :: Scientific/Engineering :: Bio-Informatics",
-    ],
-    python_requires=">=3.8",
-    install_requires=[
-        "biopython>=1.78",
-        "pandas",
-        "platemap",
-        "primer3-py",
-        "python-Levenshtein",
-        "reportlab",
-        "sbol2",
-    ],
-    project_urls={
-        "Documentation": "https://londonbiofoundry.github.io/basicsynbio/index.html",
-        "Source": "https://github.com/LondonBiofoundry/basicsynbio",
-    },
-)
+def main():
+    with open("README.md", "r") as fh:
+        long_description = fh.read()
+
+    setuptools.setup(
+        name=app.__project__,
+        version=app.__version__,
+        url=app.__url__,
+        license=next(
+            (
+                classifier.rsplit("::", 1)[1].strip()
+                for classifier in app.__classifiers__
+                if classifier.startswith("License ::")
+            )
+        ),
+        author=app.__author__,
+        author_email=app.__author_email__,
+        description=app.__description__,
+        long_description=long_description,
+        long_description_content_type="text/markdown",
+        packages=setuptools.find_packages(exclude=("tests")),
+        include_package_data=True,
+        classifiers=app.__classifiers__,
+        python_requires=app.__python_version__,
+        install_requires=app.__requires__,
+        project_urls=app.__project_urls__,
+    )
+
+
+if __name__ == "__main__":
+    main()
