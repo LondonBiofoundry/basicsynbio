@@ -3,7 +3,9 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-__version__ = "develop" # Version is overwritten by GitHub actions workflow `build-publish.yml`
+__version__ = (
+    "develop"  # Version is overwritten by GitHub actions workflow `build-publish.yml`
+)
 
 setuptools.setup(
     name="basicsynbio",
