@@ -27,8 +27,8 @@ Refer to the [section of the documentation on contributing](https://londonbiofou
 
 This project is licensed under the BSD 3-Clause License - see the ``LICENSE`` file for details
 
-[ci_badge]: https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/main.yml/badge.svg
-[ci_url]: https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/main.yml
+[ci_badge]: https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/push.yml/badge.svg
+[ci_url]: https://github.com/LondonBiofoundry/basicsynbio/actions/workflows/push.yml
 [pypi_badge]: https://img.shields.io/pypi/v/basicsynbio.svg
 [pypi_url]: https://pypi.python.org/pypi/basicsynbio
 [coverage_badge]: https://coveralls.io/repos/github/LondonBiofoundry/basicsynbio/badge.svg?branch=master
