@@ -8,7 +8,7 @@ MARKER_DICT = {
     "1": "Ampicillin",
     "2": "Kanamycin",
     "3": "Chloramphenicol",
-    "4": "Streptomycin",
+    "4": "Streptomycin/Spectinomycin",
     "5": "Tetracycline",
     "6": "Gentamicin",
 }
