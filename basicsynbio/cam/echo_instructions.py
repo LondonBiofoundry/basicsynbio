@@ -192,7 +192,7 @@ def export_echo_assembly_instructions(
 def export_echo_clips_instructions(
     basic_build: BasicBuild,
     linker_plate: Plate = None,
-    parts_plate: Plate = None,
+    part_plate: Plate = None,
     fold_dilution: float = 0.7,
     buffer_well: str = "A1",
     water_well: str = "B1",
@@ -251,15 +251,16 @@ def export_echo_clips_instructions(
 
     # Stage 1
     stage_1_liquid_transfers = []
+    stage_2_liquid_transfers = []
     for index, clip in enumerate(basic_build.unique_clips):
         # Defining the location of each clip in the desination plate.
         destination_plate.set_well_id(
             destination_plate.wells[index], "CR{}".format(index + 1))
-        # Finding the location of the half-linker in the source plate
+        # Finding the location of the half-linker in the linker plate
         prefix_half_linker_id, suffix_half_linker_id = clip.linker_half_ids()
         prefix_well = find_well(
             linker_plate, prefix_half_linker_id, HALF_LINKER_VOLUME)
-        if prefix_well is 0:  # The value returned in no well was found
+        if prefix_well == 0:  # The value returned in no well was found
             raise ValueError(
                 "The half linker {} is not in the source plate".format(prefix_half_linker_id))
         suffix_well = find_well(
@@ -280,6 +281,37 @@ def export_echo_clips_instructions(
              "Source Well": suffix_well,
              "Transfer Volume": HALF_LINKER_VOLUME}
         )
+
+        # Stage 2
+        basic_part = list(clip.clip_items())[1]
+        # Calculate volume required of part
+        required_mass_nano_grams = basic_part.clip_mass(
+            clip_vol=30*fold_dilution)
+        part_well = find_well(part_plate, basic_part.id, 0)
+        if part_well is 0:  # The value returned in no well was found
+            raise ValueError(
+                "The part {} is not in the part plate".format(basic_part.name))
+        required_volume = required_mass_nano_grams / \
+            part_plate[part_well]["composition"][basic_part.id]["concentration"]
+        required_volume_1dp = round(required_volume, 1)
+
+        # Finding the location of the parts in the part plate
+        part_well_with_requiured_volume = find_well(
+            part_plate, basic_part.id, required_volume_1dp)
+        if part_well_with_requiured_volume is 0:  # The value returned in no well was found
+            raise ValueError(
+                "The part {} is not in the part plate".format(basic_part.name))
+
+        # Adding the transfer instructions to the list
+        stage_2_liquid_transfers.append(
+            {"Destination Well": destination_plate.wells[index],
+             "Source Well": part_well_with_requiured_volume,
+             "Transfer Volume": required_volume_1dp}
+        )
+    print("Stage 1")
     for transfer in stage_1_liquid_transfers:
+        print(transfer)
+    print("Stage 2")
+    for transfer in stage_2_liquid_transfers:
         print(transfer)
     return 0
