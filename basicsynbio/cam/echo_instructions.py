@@ -191,8 +191,8 @@ def export_echo_assembly_instructions(
 
 def export_echo_clips_instructions(
     basic_build: BasicBuild,
-    linker_plate: Plate = None,
-    part_plate: Plate = None,
+    linker_plate: Plate,
+    part_plate: Plate,
     fold_dilution: float = 0.7,
     buffer_well: str = "A1",
     water_well: str = "B1",
