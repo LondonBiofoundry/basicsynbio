@@ -186,6 +186,7 @@ def export_echo_assembly_instructions(
             if file.startswith("echo_") and file.endswith(".csv"):
                 my_zip.write(file)
                 os.remove(file)
+    my_zip.close()
     return zip_path
 
 
@@ -196,6 +197,7 @@ def export_echo_clips_instructions(
     fold_dilution: float = 0.7,
     buffer_well: str = "A1",
     water_well: str = "B1",
+    path: str = None,
 ) -> None:
     """ Export automation instuctions to build the basic clips present within the basic build.
 
@@ -225,6 +227,8 @@ def export_echo_clips_instructions(
             20µl by adjusting the amount of water we add as the final reagent added to the destination plate.
         buffer_well: The location of the buffer well on the source plate.
         water_well: The location of the water well on the source plate.
+        path (optional): path to zipped folder of csv files. If none defaults to working directory with a time
+            stamped name, output csvs is created.
 
 
     Returns:
@@ -330,13 +334,53 @@ def export_echo_clips_instructions(
              "Transfer Volume": water_volume}
         )
 
-    print("Stage 1")
-    for transfer in stage_1_liquid_transfers:
-        print(transfer)
-    print("Stage 2")
-    for transfer in stage_2_liquid_transfers:
-        print(transfer)
-    print("Stage 3")
-    for transfer in stage_3_liquid_transfers:
-        print(transfer)
-    return 0
+    # Write transfer steps to CSV
+    if path == None:
+        now = datetime.now()
+        zip_path = (
+            Path.cwd() /
+            f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+        )
+    else:
+        zip_path = path
+
+    with open(
+            Path.cwd() / "stage_1_half_linkers.csv", "w", newline=""
+        ) as f1, open(
+            Path.cwd() / "stage_2_parts.csv", "w", newline=""
+    ) as f2, open(
+            Path.cwd() / "stage_3_water_buffer.csv", "w", newline=""
+    ) as f3:
+        fieldnames = ["Destination Well", "Source Well", "Transfer Volume"]
+        w1 = csv.DictWriter(f1, fieldnames=fieldnames)
+        w1.writeheader()
+        w2 = csv.DictWriter(f2, fieldnames=fieldnames)
+        w2.writeheader()
+        w3 = csv.DictWriter(f3, fieldnames=fieldnames)
+        w3.writeheader()
+        for transfer in stage_1_liquid_transfers:
+            w1.writerow(transfer)
+        for transfer in stage_2_liquid_transfers:
+            w2.writerow(transfer)
+        for transfer in stage_3_liquid_transfers:
+            w3.writerow(transfer)
+
+    with zipfile.ZipFile(zip_path, "w") as my_zip:
+        my_zip.write("stage_1_half_linkers.csv")
+        my_zip.write("stage_2_parts.csv")
+        my_zip.write("stage_3_water_buffer.csv")
+        os.remove("stage_1_half_linkers.csv")
+        os.remove("stage_2_parts.csv")
+        os.remove("stage_3_water_buffer.csv")
+
+    my_zip.close()
+    # print("Stage 1")
+    # for transfer in stage_1_liquid_transfers:
+    #     print(transfer)
+    # print("Stage 2")
+    # for transfer in stage_2_liquid_transfers:
+    #     print(transfer)
+    # print("Stage 3")
+    # for transfer in stage_3_liquid_transfers:
+    #     print(transfer)
+    return zip_path
