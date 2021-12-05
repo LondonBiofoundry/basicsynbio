@@ -374,13 +374,7 @@ def export_echo_clips_instructions(
         os.remove("stage_3_water_buffer.csv")
 
     my_zip.close()
-    # print("Stage 1")
-    # for transfer in stage_1_liquid_transfers:
-    #     print(transfer)
-    # print("Stage 2")
-    # for transfer in stage_2_liquid_transfers:
-    #     print(transfer)
     # print("Stage 3")
-    # for transfer in stage_3_liquid_transfers:
-    #     print(transfer)
+    for transfer in stage_3_liquid_transfers:
+        print(transfer)
     return zip_path
