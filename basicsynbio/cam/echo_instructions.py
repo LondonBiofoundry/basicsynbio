@@ -297,8 +297,12 @@ def export_echo_clips_instructions(
         if part_well is 0:  # The value returned in no well was found
             raise ValueError(
                 "The part {} is not in the part plate".format(basic_part.name))
-        required_volume = required_mass_nano_grams / \
-            part_plate[part_well]["composition"][basic_part.id]["concentration"]
+        try:
+            required_volume = required_mass_nano_grams / \
+                part_plate[part_well]["composition"][basic_part.id]["concentration"]
+        except:
+            raise ValueError(
+                "The part {} in the part_plate is does not have a concentration defined, please define and retry".format(basic_part.name))
         required_volume_1dp = round(required_volume, 1)
 
         # Finding the location of the parts in the part plate
