@@ -22,9 +22,9 @@ def getPartPlate():
     partPlate["A1"]["composition"][bsb.BASIC_SEVA_PARTS["v0.1"]
                                    ["18"].id]["concentration"] = 40  # ng / ul
     partPlate["B1"]["composition"][bsb.BASIC_CDS_PARTS["v0.1"]
-                                   ["sfGFP"].id]["concentration"] = 40  # ng / ul
+                                   ["sfGFP"].id]["concentration"] = 30  # ng / ul
     partPlate["C1"]["composition"][bsb.BASIC_SEVA_PARTS["v0.1"]
-                                   ["26"].id]["concentration"] = 40  # ng / ul
+                                   ["26"].id]["concentration"] = 50  # ng / ul
 
     return partPlate
 

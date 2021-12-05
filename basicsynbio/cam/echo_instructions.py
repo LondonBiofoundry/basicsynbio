@@ -252,6 +252,8 @@ def export_echo_clips_instructions(
     # Stage 1
     stage_1_liquid_transfers = []
     stage_2_liquid_transfers = []
+    stage_3_liquid_transfers = []
+
     for index, clip in enumerate(basic_build.unique_clips):
         # Defining the location of each clip in the desination plate.
         destination_plate.set_well_id(
@@ -308,10 +310,33 @@ def export_echo_clips_instructions(
              "Source Well": part_well_with_requiured_volume,
              "Transfer Volume": required_volume_1dp}
         )
+
+        # Stage 3
+        # Add buffer
+        stage_3_liquid_transfers.append(
+            {"Destination Well": destination_plate.wells[index],
+             "Source Well": buffer_well,
+             "Transfer Volume": round(20/3, 1)}
+        )
+        # Add Water
+        water_volume = round(20 - round(20/3, 1) -
+                             required_volume_1dp - (2*HALF_LINKER_VOLUME), 1)
+        if water_volume < 0:
+            raise ValueError(
+                "Cannot add more water than the destination plate can hold, increase the concentration of the parts")
+        stage_3_liquid_transfers.append(
+            {"Destination Well": destination_plate.wells[index],
+             "Source Well": water_well,
+             "Transfer Volume": water_volume}
+        )
+
     print("Stage 1")
     for transfer in stage_1_liquid_transfers:
         print(transfer)
     print("Stage 2")
     for transfer in stage_2_liquid_transfers:
+        print(transfer)
+    print("Stage 3")
+    for transfer in stage_3_liquid_transfers:
         print(transfer)
     return 0
