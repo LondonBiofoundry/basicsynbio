@@ -190,12 +190,50 @@ def export_echo_assembly_instructions(
 
 def export_echo_clips_instructions(
     basic_build: BasicBuild,
-    path: str = None,
+    linker_plate: Plate = None,
+    parts_plate: Plate = None,
+    fold_dilution: float = 0.7,
     buffer_well: str = "A1",
     water_well: str = "B1",
-    alternate_well: bool = False,
-    assemblies_per_clip: int = 20,
-    clips_plate_size: Literal[6, 24, 96, 384, 1536] = 384,
-    assemblies_plate_size: Literal[6, 24, 96, 384, 1536] = 96,
 ) -> None:
+    """ Export automation instuctions to build the basic clips present within the basic build.
+
+    A function to export the necessary csvs files for the Labcyte Echo liquid handling robot to transform half
+    linkers and parts into basic clips ready for assembly into full basic assemblies.
+
+    The assembly occurs in three stages each with their corresponding csv file, the source plates for each stage
+    change however the desination plates do not. The three stages are:
+
+        1. Adding the half-linkers to the desination plate
+        2. Adding the parts to the desination plate
+        3. Adding water and the buffer to the desination plate
+
+    The input parameter, linker_plate, is the plate containing the half-linkers, the source plate supplied for the
+    first stage. The input parameter, parts_plate, is the plate containing the parts, the source plate supplied for
+    the second stage. The input parameters buffer_well and water_well define where in the source plate for the first
+    stage the buffer and water are located.
+
+    Args:
+        basic_build: the basic build to export the instructions for.
+        linker_plate: A platemap instance containing the half linker locations and volumes.
+        parts_plate: A platemap instance containing the half linker locations and volumes.
+        fold_dilution: The manual workflow to sythesise basic clips from half linkers and parts forms 30 µl of
+            each linker. The Labcyte Echo robot is designed to have the desination plate upside down and volumes
+            over 20µl have a risk of being lost. As the lab instructions generated in this function target this
+            machine we default to a fold dilution of 0.7. to dilute 30µl to approximately 20µl. We obtain exactly
+            20µl by adjusting the amount of water we add as the final reagent added to the destination plate. 
+        buffer_well: The location of the buffer well on the source plate.
+        water_well: The location of the water well on the source plate.
+
+
+    Returns:
+        str: The Path of zip file containing the Labcyte Echo clips automation scripts
+
+    Raises:
+        ValueError: If water_well or buffer_well is not in ["A1", "B1", "A2", "B2", "A3", "B3"]; if self contains
+            96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
+            or 192 for alternate_well(False).
+    """
+    print("Exporting Echo Clips Instructions")
+    print("Clips to build: {}".format(basic_build.unique_clips))
     return 0
