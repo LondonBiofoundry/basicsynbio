@@ -94,8 +94,7 @@ def export_echo_assembly_instructions(
         map(
             lambda well_item: {well_item[1][1]["id"]: well_item[1][0]},
             enumerate(
-                filter(lambda x: x[1]["total_volume"],
-                       source_plate.contents.items())
+                filter(lambda x: x[1]["total_volume"], source_plate.contents.items())
             ),
         )
     ):
@@ -108,14 +107,13 @@ def export_echo_assembly_instructions(
     if path == None:
         now = datetime.now()
         zip_path = (
-            Path.cwd() /
-            f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
         )
     else:
         zip_path = path
     for index, set_of_full_assemblies in enumerate(
         list(
-            basic_build.basic_assemblies[x: x + assemblies_plate_size]
+            basic_build.basic_assemblies[x : x + assemblies_plate_size]
             for x in range(0, len(basic_build.basic_assemblies), assemblies_plate_size)
         )
     ):
@@ -199,7 +197,7 @@ def export_echo_clips_instructions(
     water_well: str = "B1",
     path: str = None,
 ) -> None:
-    """ Export automation instuctions to build the basic clips present within the basic build.
+    """Export automation instuctions to build the basic clips present within the basic build.
 
     A function to export the necessary csvs files for the Labcyte Echo liquid handling robot to transform half
     linkers and parts into basic clips ready for assembly into full basic assemblies.
@@ -240,7 +238,8 @@ def export_echo_clips_instructions(
     print("Planning destination plate")
     if len(basic_build.unique_clips) > 96:
         raise ValueError(
-            "Export clips is currently limited to 96 clips, please reduce the number of clips")
+            "Export clips is currently limited to 96 clips, please reduce the number of clips"
+        )
     if water_well not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
         raise ValueError(
             "Water Well location needs to be within the 6 well plate, between A1 - B3"
@@ -250,7 +249,7 @@ def export_echo_clips_instructions(
             "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
         )
     # Defining function variables
-    HALF_LINKER_VOLUME = 1*fold_dilution
+    HALF_LINKER_VOLUME = 1 * fold_dilution
     destination_plate = Plate(size=96, well_volume=20)
 
     # Stage 1
@@ -261,100 +260,121 @@ def export_echo_clips_instructions(
     for index, clip in enumerate(basic_build.unique_clips):
         # Defining the location of each clip in the desination plate.
         destination_plate.set_well_id(
-            destination_plate.wells[index], "CR{}".format(index + 1))
+            destination_plate.wells[index], "CR{}".format(index + 1)
+        )
         # Finding the location of the half-linker in the linker plate
         prefix_half_linker_id, suffix_half_linker_id = clip.linker_half_ids()
-        prefix_well = find_well(
-            linker_plate, prefix_half_linker_id, HALF_LINKER_VOLUME)
+        prefix_well = find_well(linker_plate, prefix_half_linker_id, HALF_LINKER_VOLUME)
         if prefix_well == 0:  # The value returned in no well was found
             raise ValueError(
-                "The half linker {} is not in the source plate".format(prefix_half_linker_id))
-        suffix_well = find_well(
-            linker_plate, suffix_half_linker_id, HALF_LINKER_VOLUME)
+                "The half linker {} is not in the source plate".format(
+                    prefix_half_linker_id
+                )
+            )
+        suffix_well = find_well(linker_plate, suffix_half_linker_id, HALF_LINKER_VOLUME)
         if suffix_well == 0:  # The value returned in no well was found
             raise ValueError(
-                "The half linker {} is not in the source plate".format(suffix_half_linker_id))
+                "The half linker {} is not in the source plate".format(
+                    suffix_half_linker_id
+                )
+            )
         # Adding the transfer instructions to the list
         # Adding prefix half linkers
         stage_1_liquid_transfers.append(
-            {"Destination Well": destination_plate.wells[index],
-             "Source Well": prefix_well,
-             "Transfer Volume": HALF_LINKER_VOLUME}
+            {
+                "Destination Well": destination_plate.wells[index],
+                "Source Well": prefix_well,
+                "Transfer Volume": HALF_LINKER_VOLUME,
+            }
         )
         # Adding suffix half linkers
         stage_1_liquid_transfers.append(
-            {"Destination Well": destination_plate.wells[index],
-             "Source Well": suffix_well,
-             "Transfer Volume": HALF_LINKER_VOLUME}
+            {
+                "Destination Well": destination_plate.wells[index],
+                "Source Well": suffix_well,
+                "Transfer Volume": HALF_LINKER_VOLUME,
+            }
         )
 
         # Stage 2
         basic_part = list(clip.clip_items())[1]
         # Calculate volume required of part
-        required_mass_nano_grams = basic_part.clip_mass(
-            clip_vol=30*fold_dilution)
+        required_mass_nano_grams = basic_part.clip_mass(clip_vol=30 * fold_dilution)
         part_well = find_well(part_plate, basic_part.id, 0)
         if part_well is 0:  # The value returned in no well was found
             raise ValueError(
-                "The part {} is not in the part plate".format(basic_part.name))
+                "The part {} is not in the part plate".format(basic_part.name)
+            )
         try:
-            required_volume = required_mass_nano_grams / \
-                part_plate[part_well]["composition"][basic_part.id]["concentration"]
+            required_volume = (
+                required_mass_nano_grams
+                / part_plate[part_well]["composition"][basic_part.id]["concentration"]
+            )
         except:
             raise ValueError(
-                "The part {} in the part_plate is does not have a concentration defined, please define and retry".format(basic_part.name))
+                "The part {} in the part_plate is does not have a concentration defined, please define and retry".format(
+                    basic_part.name
+                )
+            )
         required_volume_1dp = round(required_volume, 1)
 
         # Finding the location of the parts in the part plate
         part_well_with_requiured_volume = find_well(
-            part_plate, basic_part.id, required_volume_1dp)
-        if part_well_with_requiured_volume is 0:  # The value returned in no well was found
+            part_plate, basic_part.id, required_volume_1dp
+        )
+        if (
+            part_well_with_requiured_volume is 0
+        ):  # The value returned in no well was found
             raise ValueError(
-                "The part {} is not in the part plate".format(basic_part.name))
+                "The part {} is not in the part plate".format(basic_part.name)
+            )
 
         # Adding the transfer instructions to the list
         stage_2_liquid_transfers.append(
-            {"Destination Well": destination_plate.wells[index],
-             "Source Well": part_well_with_requiured_volume,
-             "Transfer Volume": required_volume_1dp}
+            {
+                "Destination Well": destination_plate.wells[index],
+                "Source Well": part_well_with_requiured_volume,
+                "Transfer Volume": required_volume_1dp,
+            }
         )
 
         # Stage 3
         # Add buffer
         stage_3_liquid_transfers.append(
-            {"Destination Well": destination_plate.wells[index],
-             "Source Well": buffer_well,
-             "Transfer Volume": round(20/3, 1)}
+            {
+                "Destination Well": destination_plate.wells[index],
+                "Source Well": buffer_well,
+                "Transfer Volume": round(20 / 3, 1),
+            }
         )
         # Add Water
-        water_volume = round(20 - round(20/3, 1) -
-                             required_volume_1dp - (2*HALF_LINKER_VOLUME), 1)
+        water_volume = round(
+            20 - round(20 / 3, 1) - required_volume_1dp - (2 * HALF_LINKER_VOLUME), 1
+        )
         if water_volume < 0:
             raise ValueError(
-                "Cannot add more water than the destination plate can hold, increase the concentration of the parts")
+                "Cannot add more water than the destination plate can hold, increase the concentration of the parts"
+            )
         stage_3_liquid_transfers.append(
-            {"Destination Well": destination_plate.wells[index],
-             "Source Well": water_well,
-             "Transfer Volume": water_volume}
+            {
+                "Destination Well": destination_plate.wells[index],
+                "Source Well": water_well,
+                "Transfer Volume": water_volume,
+            }
         )
 
     # Write transfer steps to CSV
     if path == None:
         now = datetime.now()
         zip_path = (
-            Path.cwd() /
-            f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
         )
     else:
         zip_path = path
 
-    with open(
-            Path.cwd() / "stage_1_half_linkers.csv", "w", newline=""
-        ) as f1, open(
-            Path.cwd() / "stage_2_parts.csv", "w", newline=""
-    ) as f2, open(
-            Path.cwd() / "stage_3_water_buffer.csv", "w", newline=""
-    ) as f3:
+    with open(Path.cwd() / "stage_1_half_linkers.csv", "w", newline="") as f1, open(
+        Path.cwd() / "stage_2_parts.csv", "w", newline=""
+    ) as f2, open(Path.cwd() / "stage_3_water_buffer.csv", "w", newline="") as f3:
         fieldnames = ["Destination Well", "Source Well", "Transfer Volume"]
         w1 = csv.DictWriter(f1, fieldnames=fieldnames)
         w1.writeheader()

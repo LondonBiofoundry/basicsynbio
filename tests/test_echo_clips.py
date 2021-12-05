@@ -24,12 +24,15 @@ def getPartPlate():
     add_volume(partPlate, "A1", 10, bsb.BASIC_SEVA_PARTS["v0.1"]["18"].id)
     add_volume(partPlate, "B1", 10, bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"].id)
     add_volume(partPlate, "C1", 10, bsb.BASIC_SEVA_PARTS["v0.1"]["26"].id)
-    partPlate["A1"]["composition"][bsb.BASIC_SEVA_PARTS["v0.1"]
-                                   ["18"].id]["concentration"] = 40  # ng / ul
-    partPlate["B1"]["composition"][bsb.BASIC_CDS_PARTS["v0.1"]
-                                   ["sfGFP"].id]["concentration"] = 30  # ng / ul
-    partPlate["C1"]["composition"][bsb.BASIC_SEVA_PARTS["v0.1"]
-                                   ["26"].id]["concentration"] = 50  # ng / ul
+    partPlate["A1"]["composition"][bsb.BASIC_SEVA_PARTS["v0.1"]["18"].id][
+        "concentration"
+    ] = 40  # ng / ul
+    partPlate["B1"]["composition"][bsb.BASIC_CDS_PARTS["v0.1"]["sfGFP"].id][
+        "concentration"
+    ] = 30  # ng / ul
+    partPlate["C1"]["composition"][bsb.BASIC_SEVA_PARTS["v0.1"]["26"].id][
+        "concentration"
+    ] = 50  # ng / ul
 
     return partPlate
 
@@ -38,7 +41,8 @@ def test_echo_instructions_small_build(small_build_example):
     linker_plate = getLinkerPlate()
     part_plate = getPartPlate()
     echo_clips_zippath = bsb.export_echo_clips_instructions(
-        small_build_example, linker_plate=linker_plate, part_plate=part_plate)
+        small_build_example, linker_plate=linker_plate, part_plate=part_plate
+    )
     with zipfile.ZipFile(echo_clips_zippath, "r") as zip_ref:
         try:
             zip_ref.extractall()
