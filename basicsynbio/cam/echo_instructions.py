@@ -19,7 +19,7 @@ BUFFER_VOLUME = 500
 TOTAL_VOLUME = 5000
 
 
-def export_echo_assembly(
+def export_echo_assembly_instructions(
     basic_build: BasicBuild,
     path: str = None,
     buffer_well: str = "A1",
@@ -93,7 +93,8 @@ def export_echo_assembly(
         map(
             lambda well_item: {well_item[1][1]["id"]: well_item[1][0]},
             enumerate(
-                filter(lambda x: x[1]["total_volume"], source_plate.contents.items())
+                filter(lambda x: x[1]["total_volume"],
+                       source_plate.contents.items())
             ),
         )
     ):
@@ -106,13 +107,14 @@ def export_echo_assembly(
     if path == None:
         now = datetime.now()
         zip_path = (
-            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            Path.cwd() /
+            f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
         )
     else:
         zip_path = path
     for index, set_of_full_assemblies in enumerate(
         list(
-            basic_build.basic_assemblies[x : x + assemblies_plate_size]
+            basic_build.basic_assemblies[x: x + assemblies_plate_size]
             for x in range(0, len(basic_build.basic_assemblies), assemblies_plate_size)
         )
     ):
@@ -184,3 +186,16 @@ def export_echo_assembly(
                 my_zip.write(file)
                 os.remove(file)
     return zip_path
+
+
+def export_echo_clips_instructions(
+    basic_build: BasicBuild,
+    path: str = None,
+    buffer_well: str = "A1",
+    water_well: str = "B1",
+    alternate_well: bool = False,
+    assemblies_per_clip: int = 20,
+    clips_plate_size: Literal[6, 24, 96, 384, 1536] = 384,
+    assemblies_plate_size: Literal[6, 24, 96, 384, 1536] = 96,
+) -> None:
+    return 0

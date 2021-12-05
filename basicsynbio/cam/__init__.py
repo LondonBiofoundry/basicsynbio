@@ -1,5 +1,5 @@
 from .csv_export import export_csvs
-from .echo_instructions import export_echo_assembly
+from .echo_instructions import export_echo_assembly_instructions
 from .pdf_instructions import pdf_instructions
 from .main import *
 from .misc_funs import (
