@@ -1,4 +1,4 @@
-from .main import BasicBuild
+from .main import BasicBuild, BuildEncoder
 from .csv_export import export_csvs
 import zipfile
 import os
@@ -12,6 +12,7 @@ from functools import reduce
 from platemap import Plate, assign_source_wells, find_well, remove_volume
 from typing import Literal
 from collections import defaultdict
+import json
 
 
 CLIP_VOLUME = 500
@@ -83,7 +84,7 @@ def export_echo_assembly_instructions(
 
     except:
         raise ValueError(
-            """To many clips in the build to be handled by a single 384 
+            """To many clips in the build to be handled by a single 384
                 source plate, considering you alternate_well setting."""
         )
 
@@ -221,7 +222,7 @@ def export_echo_clips_instructions(
             each linker. The Labcyte Echo robot is designed to have the desination plate upside down and volumes
             over 20µl have a risk of being lost. As the lab instructions generated in this function target this
             machine we default to a fold dilution of 0.7. to dilute 30µl to approximately 20µl. We obtain exactly
-            20µl by adjusting the amount of water we add as the final reagent added to the destination plate. 
+            20µl by adjusting the amount of water we add as the final reagent added to the destination plate.
         buffer_well: The location of the buffer well on the source plate.
         water_well: The location of the water well on the source plate.
 
@@ -230,10 +231,55 @@ def export_echo_clips_instructions(
         str: The Path of zip file containing the Labcyte Echo clips automation scripts
 
     Raises:
-        ValueError: If water_well or buffer_well is not in ["A1", "B1", "A2", "B2", "A3", "B3"]; if self contains
-            96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
-            or 192 for alternate_well(False).
+        ValueError: Export clips is currently limited to 96 clips, please reduce the number of clips.
     """
-    print("Exporting Echo Clips Instructions")
-    print("Clips to build: {}".format(basic_build.unique_clips))
+    print("Planning destination plate")
+    if len(basic_build.unique_clips) > 96:
+        raise ValueError(
+            "Export clips is currently limited to 96 clips, please reduce the number of clips")
+    if water_well not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
+        raise ValueError(
+            "Water Well location needs to be within the 6 well plate, between A1 - B3"
+        )
+    if buffer_well not in ["A1", "B1", "A2", "B2", "A3", "B3"]:
+        raise ValueError(
+            "Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3"
+        )
+    # Defining function variables
+    HALF_LINKER_VOLUME = 1*fold_dilution
+    destination_plate = Plate(size=96, well_volume=20)
+
+    # Stage 1
+    stage_1_liquid_transfers = []
+    for index, clip in enumerate(basic_build.unique_clips):
+        # Defining the location of each clip in the desination plate.
+        destination_plate.set_well_id(
+            destination_plate.wells[index], "CR{}".format(index + 1))
+        # Finding the location of the half-linker in the source plate
+        prefix_half_linker_id, suffix_half_linker_id = clip.linker_half_ids()
+        prefix_well = find_well(
+            linker_plate, prefix_half_linker_id, HALF_LINKER_VOLUME)
+        if prefix_well is 0:  # The value returned in no well was found
+            raise ValueError(
+                "The half linker {} is not in the source plate".format(prefix_half_linker_id))
+        suffix_well = find_well(
+            linker_plate, suffix_half_linker_id, HALF_LINKER_VOLUME)
+        if suffix_well == 0:  # The value returned in no well was found
+            raise ValueError(
+                "The half linker {} is not in the source plate".format(suffix_half_linker_id))
+        # Adding the transfer instructions to the list
+        # Adding prefix half linkers
+        stage_1_liquid_transfers.append(
+            {"Destination Well": destination_plate.wells[index],
+             "Source Well": prefix_well,
+             "Transfer Volume": HALF_LINKER_VOLUME}
+        )
+        # Adding suffix half linkers
+        stage_1_liquid_transfers.append(
+            {"Destination Well": destination_plate.wells[index],
+             "Source Well": suffix_well,
+             "Transfer Volume": HALF_LINKER_VOLUME}
+        )
+    for transfer in stage_1_liquid_transfers:
+        print(transfer)
     return 0
