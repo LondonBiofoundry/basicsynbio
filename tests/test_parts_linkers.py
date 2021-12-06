@@ -43,3 +43,17 @@ def test_bcds_dict():
 
 def test_basic_promoter_parts_v02():
     assert len(bsb.BASIC_PROMOTER_PARTS["v0.2"]) == 60
+
+
+def test_linker_384_plate():
+    from basicsynbio.parts_linkers.biolegio_linkers import LINKER_384_PLATE
+    from platemap import Plate
+
+    assert type(LINKER_384_PLATE) == Plate
+    assert LINKER_384_PLATE.size == 384
+    assert LINKER_384_PLATE.deadspace == 20e3
+    assert LINKER_384_PLATE.well_volume == 65e3
+    for well_id in ("A1", "B1", "A2", "B2"):
+        assert "L1-S" in LINKER_384_PLATE[well_id]["composition"].keys()
+    for well_id in ("O21", "P21", "O22", "P22"):
+        assert "UTR3-S" in LINKER_384_PLATE[well_id]["composition"].keys()
