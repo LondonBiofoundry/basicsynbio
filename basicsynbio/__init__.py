@@ -23,6 +23,7 @@ from .cam import (
     BuildEncoder,
     build_digest,
     new_part_resuspension,
-    export_echo_assembly,
+    export_echo_assembly_instructions,
+    export_echo_clips_instructions,
     pdf_instructions,
 )

@@ -29,7 +29,7 @@ def test_echo_instructions_small_build(small_build_example):
     import numpy as np
     from pathlib import Path
 
-    echozippath = bsb.export_echo_assembly(small_build_example)
+    echozippath = bsb.export_echo_assembly_instructions(small_build_example)
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
@@ -68,7 +68,9 @@ def test_echo_instructions_small_build_useAllWell_False(small_build_example):
     import numpy as np
     from pathlib import Path
 
-    echozippath = bsb.export_echo_assembly(small_build_example, alternate_well=True)
+    echozippath = bsb.export_echo_assembly_instructions(
+        small_build_example, alternate_well=True
+    )
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
@@ -105,12 +107,16 @@ def test_echo_instruction_assert_buffer_water_well_errors(small_build_example):
         ValueError,
         match="Water Well location needs to be within the 6 well plate, between A1 - B3",
     ):
-        echozippath = bsb.export_echo_assembly(small_build_example, water_well="D1")
+        echozippath = bsb.export_echo_assembly_instructions(
+            small_build_example, water_well="D1"
+        )
     with pytest.raises(
         ValueError,
         match="Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3",
     ):
-        echozippath = bsb.export_echo_assembly(small_build_example, buffer_well="D1")
+        echozippath = bsb.export_echo_assembly_instructions(
+            small_build_example, buffer_well="D1"
+        )
 
 
 def test_echo_path(small_build_example):
@@ -118,7 +124,9 @@ def test_echo_path(small_build_example):
     import os
 
     zippath = Path.cwd() / "uniquezippath.zip"
-    realzippath = bsb.export_echo_assembly(small_build_example, path=zippath)
+    realzippath = bsb.export_echo_assembly_instructions(
+        small_build_example, path=zippath
+    )
     os.remove(zippath)
     assert zippath == realzippath
 
@@ -130,7 +138,7 @@ def test_multiple_files_made_more_than_96_assemblies(promoter_assemblies_build):
     import numpy as np
     from pathlib import Path
 
-    echozippath = bsb.export_echo_assembly(promoter_assemblies_build)
+    echozippath = bsb.export_echo_assembly_instructions(promoter_assemblies_build)
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
         try:
             zip_ref.extractall("ECHO_CSVS")
@@ -348,7 +356,7 @@ def test_multiple_files_made_more_than_96_assemblies_clips_assignment(
     import numpy as np
     from pathlib import Path
 
-    echozippath = bsb.export_echo_assembly(
+    echozippath = bsb.export_echo_assembly_instructions(
         promoter_assemblies_build, assemblies_per_clip=28
     )
     with zipfile.ZipFile(echozippath, "r") as zip_ref:
@@ -378,7 +386,7 @@ def test_multiple_files_made_more_than_96_assemblies_clips_assignment_with_alter
     import numpy as np
     from pathlib import Path
 
-    echozippath = bsb.export_echo_assembly(
+    echozippath = bsb.export_echo_assembly_instructions(
         promoter_assemblies_build,
         alternate_well=True,
         clips_plate_size=1536,
@@ -410,4 +418,4 @@ def test_echo_instructions_too_many_clips(promoter_assemblies_build_more_than_38
     from pathlib import Path
 
     with pytest.raises(ValueError):
-        bsb.export_echo_assembly(promoter_assemblies_build_more_than_384)
+        bsb.export_echo_assembly_instructions(promoter_assemblies_build_more_than_384)
