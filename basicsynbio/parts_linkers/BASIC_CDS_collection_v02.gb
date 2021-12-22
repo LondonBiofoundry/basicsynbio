@@ -1,0 +1,108 @@
+LOCUS       BASIC_sfGFP_CDS          759 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   sfGFP
+VERSION     sfGFP
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    1..18
+                     /note="BASIC integrated prefix"
+     CDS             19..741
+                     /note="fluorescent reporter protein"
+                     /gene="sfGFP"
+                     /translation="MRKGEELFTGVVPILVELDGDVNGHKFSVRGEGEGDATNGKLTLK
+                     FICTTGKLPVPWPTLVTTLTYGVQCFARYPDHMKQHDFFKSAMPEGYVQERTISFKDDG
+                     TYKTRAEVKFEGDTLVNRIELKGIDFKEDGNILGHKLEYNFNSHNVYITADKQKNGIKA
+                     NFKIRHNVEDGSVQLADHYQQNTPIGDGPVLLPDNHYLSTQSVLSKDPNEKRDHMVLLE
+                     FVTAAGITHGMDELYKRP"
+     misc_feature    742..759
+                     /note="BASIC integrated suffix"
+ORIGIN
+        1 tctggtgggt ctctgtccat gcgtaaaggc gaagaactgt tcacgggcgt agttccgatt
+       61 ctggtcgagc tggacggcga tgtgaacggt cataagttta gcgttcgcgg tgaaggtgag
+      121 ggcgacgcga ccaacggcaa actgaccctg aagttcatct gcaccaccgg taaactgccg
+      181 gtgccttggc cgaccttggt gacgacgttg acgtatggcg tgcagtgttt tgcgcgttat
+      241 ccggaccaca tgaaacaaca cgatttcttc aaatctgcga tgccggaggg ttacgtccag
+      301 gagcgtacca tttccttcaa ggatgatggc acttacaaaa ctcgcgcaga ggttaagttt
+      361 gaaggtgaca cgctggtcaa tcgtatcgaa ttgaagggta tcgactttaa agaggatggt
+      421 aacattctgg gccataaact ggagtataac ttcaacagcc ataatgttta cattacggca
+      481 gacaagcaaa agaacggcat caaggccaat ttcaagattc gccacaatgt tgaggacggt
+      541 agcgtccaac tggccgacca ttaccagcag aacaccccaa ttggtgacgg tccggttttg
+      601 ctgccggata atcactatct gagcacccaa agcgtgctga gcaaagatcc gaacgaaaaa
+      661 cgtgatcaca tggtcctgct ggaatttgtg accgctgcgg gcatcaccca cggtatggac
+      721 gagctgtata agcgtccgta aggctcggga gacctatcg
+//
+LOCUS       BASIC_mCherry_CDS        747 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   mCherry
+VERSION     mCherry
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    1..18
+                     /note="BASIC integrated prefix"
+     CDS             19..729
+                     /note="fluorescent reporter protein"
+                     /gene="mCherry"
+                     /translation="MVSKGEEDNMAIIKEFMRFKVHMEGSVNGHEFEIEGEGEGRPYEG
+                     TQTAKLKVTKGGPLPFAWDILSPQFMYGSKAYVKHPADIPDYLKLSFPEGFKWERVMNF
+                     EDGGVVTVTQDSSLQDGEFIYKVKLRGTNFPSDGPVMQKKTMGWEASSERMYPEDGALK
+                     GEIKQRLKLKDGGHYDAEVKTTYKAKKPVQLPGAYNVNIKLDITSHNEDYTIVEQYERA
+                     EGRHSTGGMDELYK"
+     misc_feature    730..747
+                     /note="BASIC integrated suffix"
+ORIGIN
+        1 tctggtgggt ctctgtccat ggtgagcaag ggcgaggagg ataacatggc catcatcaag
+       61 gagttcatgc gcttcaaggt gcacatggag ggctccgtga acggccacga gttcgagatc
+      121 gagggcgagg gcgagggccg cccctacgag ggcacccaga ccgccaagct gaaggtgacc
+      181 aagggtggcc ccctgccctt cgcctgggac atcctgtccc ctcagttcat gtacggctcc
+      241 aaggcctacg tgaagcaccc cgccgacatc cccgactact tgaagctgtc cttccccgag
+      301 ggcttcaagt gggagcgcgt gatgaacttc gaggacggcg gcgtggtgac cgtgacccag
+      361 gactcctcct tgcaggacgg cgagttcatc tacaaggtga agctgcgcgg caccaacttc
+      421 ccctccgacg gccccgtaat gcagaagaag accatgggct gggaggcctc ctccgagcgg
+      481 atgtaccccg aggacggcgc cctgaagggc gagatcaagc agaggctgaa gctgaaggac
+      541 ggcggccact acgacgctga ggtcaagacc acctacaagg ccaagaagcc cgtgcagctg
+      601 cccggcgcct acaacgtcaa catcaagttg gacatcacct cccacaacga ggactacacc
+      661 atcgtggaac agtacgaacg cgccgagggc cgccactcca ccggcggcat ggacgagctg
+      721 tacaagtaag gctcgggaga cctatcg
+//
+LOCUS       BASIC_mTagBFP2_CDS       744 bp    DNA              UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   mTagBFP2
+VERSION     mTagBFP2
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    1..18
+                     /note="BASIC integrated prefix"
+     CDS             19..726
+                     /note="fluorescent reporter protein"
+                     /gene="mTagBFP2"
+                     /translation="MSELIKENMHMKLYMEGTVDNHHFKCTSEGEGKPYEGTQTMRIKV
+                     VEGGPLPFAFDILATSFLYGSKTFINHTQGIPDFFKQSFPEGFTWERVTTYEDGGVLTA
+                     TQDTSLQDGCLIYNVKIRGVNFTSNGPVMQKKTLGWEAFTETLYPADGGLEGRNDMALK
+                     LVGGSHLIANAKTTYRSKKPAKNLKMPGVYYVDYRLERIKEANNETYVEQHEVAVARYC
+                     DLPSKLGHKLNGS"
+     misc_feature    727..744
+                     /note="BASIC integrated suffix"
+ORIGIN
+        1 tctggtgggt ctctgtccat gtccgagttg atcaaagaga acatgcatat gaaattatat
+       61 atggaaggca ctgtagataa tcatcatttt aaatgtacgt cggaaggcga aggtaaacca
+      121 tatgaaggta cgcagacgat gcgcatcaag gtggtggagg gcggtccgct gccattcgct
+      181 ttcgatattt tagccacgag cttcctctac ggttctaaaa ctttcatcaa tcacacgcag
+      241 ggtattccgg acttctttaa acagtcgttc ccggagggtt tcacctggga acgcgttacc
+      301 acgtatgaag atggtggtgt gcttacggca acgcaggaca cgagccttca ggatgggtgt
+      361 ttgatttaca acgtgaaaat tcgtggtgtg aacttcacgt ctaacggccc ggtgatgcag
+      421 aaaaaaacac tgggttggga agcctttacc gaaaccctgt atccggcgga cggtggcctg
+      481 gaaggccgta atgatatggc cttgaaatta gtcggcggtt cacacctgat cgcgaacgcg
+      541 aaaacaacct atcgtagtaa aaaaccagcc aaaaacctga aaatgccggg cgtctactac
+      601 gtagactacc gtctggagcg cattaaagag gcgaataatg aaacctatgt cgagcagcac
+      661 gaagttgcgg ttgcacgcta ttgcgatctg cccagcaaac tgggccacaa gcttaatggt
+      721 agctaaggct cgggagacct atcg
+//

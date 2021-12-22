@@ -2,6 +2,8 @@
 
 When importing objects from modules, list each alphabetically.
 
+Modules in the top-level package can import from utils but not from cam or parts_linkers packages.
+
 """
 
 from .main import BasicAssembly, BasicLinker, BasicPart, BasicUTRRBSLinker, seqrec2part

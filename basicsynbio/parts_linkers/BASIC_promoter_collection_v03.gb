@@ -1,0 +1,1476 @@
+LOCUS       B-P1_Terminator1_J23119_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P1, contains a J23119 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P1
+VERSION     B-P1
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23119"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacagctag ctcagtccta
+      121 ggtataatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P2_Terminator1_J23111_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P2, contains a J23111 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P2
+VERSION     B-P2
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23111"
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    80..99
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacggctag ctcagtccta
+      121 ggtatagtgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P3_Terminator1_J23104_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P3, contains a J23104 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P3
+VERSION     B-P3
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23104"
+     misc_feature    80..99
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacagctag ctcagtccta
+      121 ggtattgtgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P4_Terminator1_J23101_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P4, contains a J23101 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P4
+VERSION     B-P4
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23101"
+     misc_feature    80..99
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt ttacagctag ctcagtccta
+      121 ggtattatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P5_Terminator1_J23108_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P5, contains a J23108 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P5
+VERSION     B-P5
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23108"
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    80..99
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctc tgacagctag ctcagtccta
+      121 ggtataatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P6_Terminator1_J23106_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P6, contains a J23106 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P6
+VERSION     B-P6
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23106"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt ttacggctag ctcagtccta
+      121 ggtatagtgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P7_Terminator1_J23105_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P7, contains a J23105 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P7
+VERSION     B-P7
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      100..134
+                     /label="J23105"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt ttacggctag ctcagtccta
+      121 ggtactatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P8_Terminator1_J23116_RiboA 227 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P8, contains a J23116 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P8
+VERSION     B-P8
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      100..134
+                     /label="J23116"
+     misc_feature    135..209
+                     /label="RiboA"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tgacagctag ctcagtccta
+      121 gggactatgc tagcagctgt caccggatgt gctttccggt ctgatgagtc cgtgaggacg
+      181 aaacagcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P9_Terminator2_J23119_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P9, contains a J23119 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P9
+VERSION     B-P9
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     regulatory      96..130
+                     /label="J23119"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac agctagctca gtcctaggta
+      121 taatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P10_Terminator2_J23111_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P10, contains a J23111 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P10
+VERSION     B-P10
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      96..130
+                     /label="J23111"
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac ggctagctca gtcctaggta
+      121 tagtgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P11_Terminator2_J23104_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P11, contains a J23104 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P11
+VERSION     B-P11
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      96..130
+                     /label="J23104"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac agctagctca gtcctaggta
+      121 ttgtgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P12_Terminator2_J23101_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P12, contains a J23101 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P12
+VERSION     B-P12
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      96..130
+                     /label="J23101"
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttttac agctagctca gtcctaggta
+      121 ttatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P13_Terminator2_J23108_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P13, contains a J23108 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P13
+VERSION     B-P13
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+     regulatory      96..130
+                     /label="J23108"
+     misc_feature    131..205
+                     /label="RiboB"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctctgac agctagctca gtcctaggta
+      121 taatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P14_Terminator2_J23106_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P14, contains a J23106 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P14
+VERSION     B-P14
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      96..130
+                     /label="J23106"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttttac ggctagctca gtcctaggta
+      121 tagtgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P15_Terminator2_J23105_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P15, contains a J23105 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P15
+VERSION     B-P15
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      96..130
+                     /label="J23105"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttttac ggctagctca gtcctaggta
+      121 ctatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P16_Terminator2_J23116_RiboB 223 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P16, contains a J23116 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P16
+VERSION     B-P16
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    76..95
+                     /label="SpacerA"
+     misc_feature    131..205
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     regulatory      96..130
+                     /label="J23116"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttgac agctagctca gtcctaggga
+      121 ctatgctagc agcgctcaac gggtgtgctt cccgttctga tgagtccgtg aggacgaaag
+      181 cgcctctaca aataattttg tttaaggctc gggagaccta tcg
+//
+LOCUS       B-P17_Terminator3_J23119_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P17, contains a J23119 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P17
+VERSION     B-P17
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..124
+                     /label="J23119"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    125..199
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacagctag ctcagtccta ggtataatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P18_Terminator3_J23111_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P18, contains a J23111 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P18
+VERSION     B-P18
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    125..199
+                     /label="RiboC"
+     regulatory      90..124
+                     /label="J23111"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacggctag ctcagtccta ggtatagtgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P19_Terminator3_J23104_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P19, contains a J23104 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P19
+VERSION     B-P19
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+     regulatory      90..124
+                     /label="J23104"
+     misc_feature    125..199
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacagctag ctcagtccta ggtattgtgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P20_Terminator3_J23101_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P20, contains a J23101 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P20
+VERSION     B-P20
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    125..199
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     regulatory      90..124
+                     /label="J23101"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt ttacagctag ctcagtccta ggtattatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P21_Terminator3_J23108_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P21, contains a J23108 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P21
+VERSION     B-P21
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..124
+                     /label="J23108"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    125..199
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctc tgacagctag ctcagtccta ggtataatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P22_Terminator3_J23106_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P22, contains a J23106 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P22
+VERSION     B-P22
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..124
+                     /label="J23106"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    125..199
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt ttacggctag ctcagtccta ggtatagtgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P23_Terminator3_J23105_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P23, contains a J23105 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P23
+VERSION     B-P23
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    125..199
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     regulatory      90..124
+                     /label="J23105"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt ttacggctag ctcagtccta ggtactatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P24_Terminator3_J23116_RiboC 217 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P24, contains a J23116 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P24
+VERSION     B-P24
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    70..89
+                     /label="SpacerA"
+     misc_feature    125..199
+                     /label="RiboC"
+     regulatory      90..124
+                     /label="J23116"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tgacagctag ctcagtccta gggactatgc
+      121 tagcagtagt caccggctgt gcttgccggt ctgatgagcc tgtgaaggcg aaactacctc
+      181 tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P25_Terminator1_Phlf_RiboA 258 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P25, contains a Phlf promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P25
+VERSION     B-P25
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      100..165
+                     /label="Phlf"
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    166..240
+                     /label="RiboA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctc gacgtacggt ggaatctgat
+      121 tcgttaccaa ttgacatgat acgaaacgta ccgtatcgtt aaggtagctg tcaccggatg
+      181 tgctttccgg tctgatgagt ccgtgaggac gaaacagcct ctacaaataa ttttgtttaa
+      241 ggctcgggag acctatcg
+//
+LOCUS       B-P26_Terminator1_CymR_RiboA 282 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P26, contains a CymR promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P26
+VERSION     B-P26
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+     regulatory      100..189
+                     /label="CymR"
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    190..264
+                     /label="RiboA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta acaaacagac aatctggtct
+      121 gtttgtatta tggaaaattt ttctgtataa tagattcaac aaacagacaa tctggtctgt
+      181 ttgtattata gctgtcaccg gatgtgcttt ccggtctgat gagtccgtga ggacgaaaca
+      241 gcctctacaa ataattttgt ttaaggctcg ggagacctat cg
+//
+LOCUS       B-P27_Terminator1_TetR_RiboA 268 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P27, contains a TetR promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P27
+VERSION     B-P27
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    176..250
+                     /label="RiboA"
+     regulatory      100..175
+                     /label="TetR"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt tttcagcagg acgcactgac
+      121 ctccctatca gtgatagaga ttgacatccc tatcagtgat agagatactg agcacagctg
+      181 tcaccggatg tgctttccgg tctgatgagt ccgtgaggac gaaacagcct ctacaaataa
+      241 ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       B-P28_Terminator1_VanR_RiboA 242 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P28, contains a VanR promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P28
+VERSION     B-P28
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      100..149
+                     /label="VanR"
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    150..224
+                     /label="RiboA"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta ttggatccaa ttgacagcta
+      121 gctcagtcct aggtaccatt ggatccaata gctgtcaccg gatgtgcttt ccggtctgat
+      181 gagtccgtga ggacgaaaca gcctctacaa ataattttgt ttaaggctcg ggagacctat
+      241 cg
+//
+LOCUS       B-P29_Terminator1_LuxR_RiboA 247 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P29, contains a LuxR promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P29
+VERSION     B-P29
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    155..229
+                     /label="RiboA"
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      100..154
+                     /label="LuxR"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta cctgtaggat cgtacaggtt
+      121 tacgcaagaa aatggtttgt tacagtcgaa taaaagctgt caccggatgt gctttccggt
+      181 ctgatgagtc cgtgaggacg aaacagcctc tacaaataat tttgtttaag gctcgggaga
+      241 cctatcg
+//
+LOCUS       B-P30_Terminator1_CinR_RiboA 418 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P30, contains a CinR promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P30
+VERSION     B-P30
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      100..325
+                     /label="CinR"
+     misc_feature    326..400
+                     /label="RiboA"
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctc cctttgtgcg tccaaacgga
+      121 cgcacggcgc tctaaagcgg gtcgcgatct ttcagattcg ctcctcgcgc tttcagtctt
+      181 tgttttggcg catgtcgtta tcgcaaaacc gctgcacact tttgcgcgac atgctctgat
+      241 ccccctcatc tgggggggcc tatctgaggg aatttccgat ccggctcgcc tgaaccattc
+      301 tgctttccac gaacttgaaa acgctagctg tcaccggatg tgctttccgg tctgatgagt
+      361 ccgtgaggac gaaacagcct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       B-P31_Terminator1_LacI_RiboA 248 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P31, contains a LacI promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P31
+VERSION     B-P31
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..79
+                     /label="Terminator1"
+     misc_feature    156..230
+                     /label="RiboA"
+     regulatory      100..155
+                     /label="LacI"
+     misc_feature    80..99
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt gttgacaatt aatcatcggc
+      121 tcgtataatg tgtggaattg tgagcgctca caattagctg tcaccggatg tgctttccgg
+      181 tctgatgagt ccgtgaggac gaaacagcct ctacaaataa ttttgtttaa ggctcgggag
+      241 acctatcg
+//
+LOCUS       B-P32_Terminator1_AraC_RiboA 481 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P32, contains a AraC promoter with an
+            upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P32
+VERSION     B-P32
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      100..388
+                     /label="AraC"
+     misc_feature    389..463
+                     /label="RiboA"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatcta gaaaccaatt gtccatattg
+      121 catcagacat tgccgtcact gcgtctttta ctggctcttc tcgctaacca aaccggtaac
+      181 cccgcttatt aaaagcattc tgtaacaaag cgggaccaaa gccatgacaa aaacgcgtaa
+      241 caaaagtgtc tataatcacg gcagaaaagt ccacattgat tatttgcacg gcgtcacact
+      301 ttgctatgcc atagcatttt tatccataag attagcggat cctacctgac gctttttatc
+      361 gcaactctct actgtttctc catacccgag ctgtcaccgg atgtgctttc cggtctgatg
+      421 agtccgtgag gacgaaacag cctctacaaa taattttgtt taaggctcgg gagacctatc
+      481 g
+//
+LOCUS       B-P33_Terminator2_Phlf_RiboB 254 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P33, contains a Phlf promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P33
+VERSION     B-P33
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    162..236
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+     regulatory      96..161
+                     /label="Phlf"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctcgacg tacggtggaa tctgattcgt
+      121 taccaattga catgatacga aacgtaccgt atcgttaagg tagcgctcaa cgggtgtgct
+      181 tcccgttctg atgagtccgt gaggacgaaa gcgcctctac aaataatttt gtttaaggct
+      241 cgggagacct atcg
+//
+LOCUS       B-P34_Terminator2_CymR_RiboB 278 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P34, contains a CymR promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P34
+VERSION     B-P34
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    76..95
+                     /label="SpacerA"
+     regulatory      96..185
+                     /label="CymR"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    186..260
+                     /label="RiboB"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctaacaa acagacaatc tggtctgttt
+      121 gtattatgga aaatttttct gtataataga ttcaacaaac agacaatctg gtctgtttgt
+      181 attatagcgc tcaacgggtg tgcttcccgt tctgatgagt ccgtgaggac gaaagcgcct
+      241 ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       B-P35_Terminator2_TetR_RiboB 264 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P35, contains a TetR promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P35
+VERSION     B-P35
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      96..171
+                     /label="TetR"
+     misc_feature    172..246
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctttttc agcaggacgc actgacctcc
+      121 ctatcagtga tagagattga catccctatc agtgatagag atactgagca cagcgctcaa
+      181 cgggtgtgct tcccgttctg atgagtccgt gaggacgaaa gcgcctctac aaataatttt
+      241 gtttaaggct cgggagacct atcg
+//
+LOCUS       B-P36_Terminator2_VanR_RiboB 238 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P36, contains a VanR promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P36
+VERSION     B-P36
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    76..95
+                     /label="SpacerA"
+     misc_feature    146..220
+                     /label="RiboB"
+     regulatory      96..145
+                     /label="VanR"
+     regulatory      19..75
+                     /label="Terminator2"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctattgg atccaattga cagctagctc
+      121 agtcctaggt accattggat ccaatagcgc tcaacgggtg tgcttcccgt tctgatgagt
+      181 ccgtgaggac gaaagcgcct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       B-P37_Terminator2_LuxR_RiboB 243 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P37, contains a LuxR promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P37
+VERSION     B-P37
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+     regulatory      96..150
+                     /label="LuxR"
+     misc_feature    151..225
+                     /label="RiboB"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctacctg taggatcgta caggtttacg
+      121 caagaaaatg gtttgttaca gtcgaataaa agcgctcaac gggtgtgctt cccgttctga
+      181 tgagtccgtg aggacgaaag cgcctctaca aataattttg tttaaggctc gggagaccta
+      241 tcg
+//
+LOCUS       B-P38_Terminator2_CinR_RiboB 414 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P38, contains a CinR promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P38
+VERSION     B-P38
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    322..396
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     regulatory      96..321
+                     /label="CinR"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctccctt tgtgcgtcca aacggacgca
+      121 cggcgctcta aagcgggtcg cgatctttca gattcgctcc tcgcgctttc agtctttgtt
+      181 ttggcgcatg tcgttatcgc aaaaccgctg cacacttttg cgcgacatgc tctgatcccc
+      241 ctcatctggg ggggcctatc tgagggaatt tccgatccgg ctcgcctgaa ccattctgct
+      301 ttccacgaac ttgaaaacgc tagcgctcaa cgggtgtgct tcccgttctg atgagtccgt
+      361 gaggacgaaa gcgcctctac aaataatttt gtttaaggct cgggagacct atcg
+//
+LOCUS       B-P39_Terminator2_LacI_RiboB 244 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P39, contains a LacI promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P39
+VERSION     B-P39
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      96..151
+                     /label="LacI"
+     misc_feature    152..226
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttgttg acaattaatc atcggctcgt
+      121 ataatgtgtg gaattgtgag cgctcacaat tagcgctcaa cgggtgtgct tcccgttctg
+      181 atgagtccgt gaggacgaaa gcgcctctac aaataatttt gtttaaggct cgggagacct
+      241 atcg
+//
+LOCUS       B-P40_Terminator2_AraC_RiboB 477 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P40, contains a AraC promoter with an
+            upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P40
+VERSION     B-P40
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    385..459
+                     /label="RiboB"
+     regulatory      96..384
+                     /label="AraC"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatctagaaa ccaattgtcc atattgcatc
+      121 agacattgcc gtcactgcgt cttttactgg ctcttctcgc taaccaaacc ggtaaccccg
+      181 cttattaaaa gcattctgta acaaagcggg accaaagcca tgacaaaaac gcgtaacaaa
+      241 agtgtctata atcacggcag aaaagtccac attgattatt tgcacggcgt cacactttgc
+      301 tatgccatag catttttatc cataagatta gcggatccta cctgacgctt tttatcgcaa
+      361 ctctctactg tttctccata cccgagcgct caacgggtgt gcttcccgtt ctgatgagtc
+      421 cgtgaggacg aaagcgcctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P41_Terminator3_Phlf_RiboC 248 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P41, contains a Phlf promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P41
+VERSION     B-P41
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    156..230
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    70..89
+                     /label="SpacerA"
+     regulatory      90..155
+                     /label="Phlf"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctc gacgtacggt ggaatctgat tcgttaccaa
+      121 ttgacatgat acgaaacgta ccgtatcgtt aaggtagtag tcaccggctg tgcttgccgg
+      181 tctgatgagc ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa ggctcgggag
+      241 acctatcg
+//
+LOCUS       B-P42_Terminator3_CymR_RiboC 272 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P42, contains a CymR promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P42
+VERSION     B-P42
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    70..89
+                     /label="SpacerA"
+     misc_feature    180..254
+                     /label="RiboC"
+     regulatory      90..179
+                     /label="CymR"
+     regulatory      19..69
+                     /label="Terminator3"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta acaaacagac aatctggtct gtttgtatta
+      121 tggaaaattt ttctgtataa tagattcaac aaacagacaa tctggtctgt ttgtattata
+      181 gtagtcaccg gctgtgcttg ccggtctgat gagcctgtga aggcgaaact acctctacaa
+      241 ataattttgt ttaaggctcg ggagacctat cg
+//
+LOCUS       B-P43_Terminator3_TetR_RiboC 258 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P43, contains a TetR promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P43
+VERSION     B-P43
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    166..240
+                     /label="RiboC"
+     regulatory      90..165
+                     /label="TetR"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt tttcagcagg acgcactgac ctccctatca
+      121 gtgatagaga ttgacatccc tatcagtgat agagatactg agcacagtag tcaccggctg
+      181 tgcttgccgg tctgatgagc ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa
+      241 ggctcgggag acctatcg
+//
+LOCUS       B-P44_Terminator3_VanR_RiboC 232 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P44, contains a VanR promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P44
+VERSION     B-P44
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..139
+                     /label="VanR"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    140..214
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta ttggatccaa ttgacagcta gctcagtcct
+      121 aggtaccatt ggatccaata gtagtcaccg gctgtgcttg ccggtctgat gagcctgtga
+      181 aggcgaaact acctctacaa ataattttgt ttaaggctcg ggagacctat cg
+//
+LOCUS       B-P45_Terminator3_LuxR_RiboC 237 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P45, contains a LuxR promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P45
+VERSION     B-P45
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    145..219
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     regulatory      90..144
+                     /label="LuxR"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta cctgtaggat cgtacaggtt tacgcaagaa
+      121 aatggtttgt tacagtcgaa taaaagtagt caccggctgt gcttgccggt ctgatgagcc
+      181 tgtgaaggcg aaactacctc tacaaataat tttgtttaag gctcgggaga cctatcg
+//
+LOCUS       B-P46_Terminator3_CinR_RiboC 408 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P46, contains a CinR promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P46
+VERSION     B-P46
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    316..390
+                     /label="RiboC"
+     regulatory      90..315
+                     /label="CinR"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctc cctttgtgcg tccaaacgga cgcacggcgc
+      121 tctaaagcgg gtcgcgatct ttcagattcg ctcctcgcgc tttcagtctt tgttttggcg
+      181 catgtcgtta tcgcaaaacc gctgcacact tttgcgcgac atgctctgat ccccctcatc
+      241 tgggggggcc tatctgaggg aatttccgat ccggctcgcc tgaaccattc tgctttccac
+      301 gaacttgaaa acgctagtag tcaccggctg tgcttgccgg tctgatgagc ctgtgaaggc
+      361 gaaactacct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       B-P47_Terminator3_LacI_RiboC 238 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P47, contains a LacI promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P47
+VERSION     B-P47
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..145
+                     /label="LacI"
+     misc_feature    146..220
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt gttgacaatt aatcatcggc tcgtataatg
+      121 tgtggaattg tgagcgctca caattagtag tcaccggctg tgcttgccgg tctgatgagc
+      181 ctgtgaaggc gaaactacct ctacaaataa ttttgtttaa ggctcgggag acctatcg
+//
+LOCUS       B-P48_Terminator3_AraC_RiboC 471 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P48, contains a AraC promoter with an
+            upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P48
+VERSION     B-P48
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    379..453
+                     /label="RiboC"
+     regulatory      90..378
+                     /label="AraC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatcta gaaaccaatt gtccatattg catcagacat
+      121 tgccgtcact gcgtctttta ctggctcttc tcgctaacca aaccggtaac cccgcttatt
+      181 aaaagcattc tgtaacaaag cgggaccaaa gccatgacaa aaacgcgtaa caaaagtgtc
+      241 tataatcacg gcagaaaagt ccacattgat tatttgcacg gcgtcacact ttgctatgcc
+      301 atagcatttt tatccataag attagcggat cctacctgac gctttttatc gcaactctct
+      361 actgtttctc catacccgag tagtcaccgg ctgtgcttgc cggtctgatg agcctgtgaa
+      421 ggcgaaacta cctctacaaa taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       B-P49_Terminator1_T7_100_RiboA 215 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P49, contains a T7_100 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P49
+VERSION     B-P49
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    123..197
+                     /label="RiboA"
+     regulatory      100..122
+                     /label="T7_100"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actatagggg
+      121 acagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P50_Terminator1_T7_52_RiboA 215 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P50, contains a T7_52 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P50
+VERSION     B-P50
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      100..122
+                     /label="T7_52"
+     misc_feature    123..197
+                     /label="RiboA"
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actgccggga
+      121 gaagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P51_Terminator1_T7_50_RiboA 215 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P51, contains a T7_50 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P51
+VERSION     B-P51
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    123..197
+                     /label="RiboA"
+     regulatory      100..122
+                     /label="T7_50"
+     misc_feature    80..99
+                     /label="SpacerA"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actatgggga
+      121 gaagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P52_Terminator1_T7_25_RiboA 215 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P52, contains a T7_25 promoter with
+            an upstream Terminator1 and a downstream RiboA.
+ACCESSION   B-P52
+VERSION     B-P52
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    80..99
+                     /label="SpacerA"
+     misc_feature    123..197
+                     /label="RiboA"
+     regulatory      100..122
+                     /label="T7_25"
+     regulatory      19..79
+                     /label="Terminator1"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gaggcctccc gaaagggggg
+       61 ccttttttcg ttttggtccg tgcctactct ggaaaatctt aatacgactc actgtcgggg
+      121 gaagctgtca ccggatgtgc tttccggtct gatgagtccg tgaggacgaa acagcctcta
+      181 caaataattt tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P53_Terminator2_T7_100_RiboB 211 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P53, contains a T7_100 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P53
+VERSION     B-P53
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    119..193
+                     /label="RiboB"
+     regulatory      96..118
+                     /label="T7_100"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcacta taggggacag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       B-P54_Terminator2_T7_52_RiboB 211 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P54, contains a T7_52 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P54
+VERSION     B-P54
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    119..193
+                     /label="RiboB"
+     regulatory      96..118
+                     /label="T7_52"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcactg ccgggagaag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       B-P55_Terminator2_T7_50_RiboB 211 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P55, contains a T7_50 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P55
+VERSION     B-P55
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      96..118
+                     /label="T7_50"
+     misc_feature    119..193
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcacta tggggagaag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       B-P56_Terminator2_T7_25_RiboB 211 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P56, contains a T7_25 promoter with
+            an upstream Terminator2 and a downstream RiboB.
+ACCESSION   B-P56
+VERSION     B-P56
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      96..118
+                     /label="T7_25"
+     misc_feature    119..193
+                     /label="RiboB"
+     regulatory      19..75
+                     /label="Terminator2"
+     misc_feature    76..95
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccct cggtaccaaa ttccagaaaa gagacgcttt cgagcgtctt
+       61 ttttcgtttt ggtccgtgcc tactctggaa aatcttaata cgactcactg tcgggggaag
+      121 cgctcaacgg gtgtgcttcc cgttctgatg agtccgtgag gacgaaagcg cctctacaaa
+      181 taattttgtt taaggctcgg gagacctatc g
+//
+LOCUS       B-P57_Terminator3_T7_100_RiboC 205 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P57, contains a T7_100 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P57
+VERSION     B-P57
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    113..187
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     regulatory      90..112
+                     /label="T7_100"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actatagggg acagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P58_Terminator3_T7_52_RiboC 205 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P58, contains a T7_52 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P58
+VERSION     B-P58
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..112
+                     /label="T7_52"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    113..187
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actgccggga gaagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P59_Terminator3_T7_50_RiboC 205 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P59, contains a T7_50 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P59
+VERSION     B-P59
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    113..187
+                     /label="RiboC"
+     regulatory      19..69
+                     /label="Terminator3"
+     regulatory      90..112
+                     /label="T7_50"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actatgggga gaagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//
+LOCUS       B-P60_Terminator3_T7_25_RiboC 205 bp    DNA     linear   UNK 22-JUL-2020
+DEFINITION  The BASIC insulated promoter B-P60, contains a T7_25 promoter with
+            an upstream Terminator3 and a downstream RiboC.
+ACCESSION   B-P60
+VERSION     B-P60
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     regulatory      90..112
+                     /label="T7_25"
+     regulatory      19..69
+                     /label="Terminator3"
+     misc_feature    113..187
+                     /label="RiboC"
+     misc_feature    70..89
+                     /label="SpacerA"
+ORIGIN
+        1 tctggtgggt ctctgtccga cgaacaataa ggcctcccta acggggggcc ttttttattg
+       61 ataacaaaag tgcctactct ggaaaatctt aatacgactc actgtcgggg gaagtagtca
+      121 ccggctgtgc ttgccggtct gatgagcctg tgaaggcgaa actacctcta caaataattt
+      181 tgtttaaggc tcgggagacc tatcg
+//

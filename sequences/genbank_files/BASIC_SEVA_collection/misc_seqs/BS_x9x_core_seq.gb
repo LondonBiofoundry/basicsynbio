@@ -1,0 +1,41 @@
+LOCUS       BS_x9x                  1521 bp    ds-DNA           UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   BS_x9x
+VERSION     BS_x9x
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    9..1393
+                     /label="SEVA_pBR322-ROP"
+     misc_feature    1408..1512
+                     /label="SEVA_T1"
+ORIGIN
+        1 ggccggcccc gtagaaaaga tcaaaggatc ttcttgagat cctttttttc tgcgcgtaat
+       61 ctgctgcttg caaacaaaaa aaccaccgct accagcggtg gtttgtttgc cggatcaaga
+      121 gctaccaact ctttttccga aggtaactgg cttcagcaga gcgcagatac caaatactgt
+      181 ccttctagtg tagccgtagt taggccacca cttcaagaac tctgtagcac cgcctacata
+      241 cctcgctctg ctaatcctgt taccagtggc tgctgccagt ggcgataagt cgtgtcttac
+      301 cgggttggac tcaagacgat agttaccgga taaggcgcag cggtcgggct gaacgggggg
+      361 ttcgtgcaca cagcccagct tggagcgaac gacctacacc gaactgagat acctacagcg
+      421 tgagctatga gaaagcgcca cgcttcccga agggagaaag gcggacaggt atccggtaag
+      481 cggcagggtc ggaacaggag agcgcacgag ggagcttcca gggggaaacg cctggtatct
+      541 ttatagtcct gtcgggtttc gccacctctg acttgagcgt cgatttttgt gatgctcgtc
+      601 aggggggcgg agcctatgga aaaacgccag caacgcggcc tttttacggt tcctggcctt
+      661 ttgctggcct tttgctcaca tgttctttcc tgcgttatcc cctgattctg tggataaccg
+      721 tattaccgcc tttgagtgag ctgataccgc tcgccgcagc cgaacgaccg agcgcagcga
+      781 gtcagtgagc gaggaagcgg aagagcgcct gatgcggtat tttctcctta cgcatctgtg
+      841 cggtatttca caccgcatat ggtgcactct cagtacaatc tgctctgatg ccgcatagtt
+      901 aagccagtat acactccgct atcgctacgt gactgggtca tggctgcgcc ccgacacccg
+      961 ccaacacccg ctgacgcgcc ctgacgggct tgtctgctcc cggcatccgc ttacagacaa
+     1021 gctgtgaccg tctccgggag ctgcatgtgt cagaggtttt caccgtcatc accgaaacgc
+     1081 gcgaggcagc tgcggtaaag ctcatcagcg tggtcgtgca gcgattcaca gatgtctgcc
+     1141 tgttcatccg cgtccagctc gttgagtttc tccagaagcg ttaatgtctg gcttctgata
+     1201 aagcgggcca tgttaagggc ggttttttcc tgtttggtca ctgatgcctc cgtgtaaggg
+     1261 ggatttctgt tcatgggggt aatgataccg atgaaacgag agaggatgct cacgatacgg
+     1321 gttactgatg atgaacatgc ccggttactg gaacgttgtg agggtaaaca actggcggta
+     1381 tggatgcggc gggggcgcgc ccagctgtct agggcggcgg atttgtccta ctcaggagag
+     1441 cgttcaccga caaacaacag ataaaacgaa aggcccagtc tttcgactga gcctttcgtt
+     1501 ttatttgatg cctttaatta a
+//

@@ -28,7 +28,7 @@ def test_bpromoter_dict():
 def test_bcds_dict():
     from Bio import SeqIO
 
-    bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection.gb"
+    bcds_handle = "./basicsynbio/parts_linkers/BASIC_CDS_collection_v01.gb"
     bcds_seqrecs = SeqIO.parse(bcds_handle, "genbank")
     for seqrec in bcds_seqrecs:
         collection_key = seqrec.id
@@ -41,8 +41,28 @@ def test_bcds_dict():
         )
 
 
+def test_basic_cds_parts_v02():
+    assert len(bsb.BASIC_CDS_PARTS["v0.2"]) == 3
+    for value in bsb.BASIC_CDS_PARTS["v0.2"].values():
+        assert type(value) == bsb.BasicPart
+
+
 def test_basic_promoter_parts_v02():
     assert len(bsb.BASIC_PROMOTER_PARTS["v0.2"]) == 60
+    for value in bsb.BASIC_PROMOTER_PARTS["v0.2"].values():
+        assert type(value) == bsb.BasicPart
+
+
+def test_basic_promoter_parts_v03():
+    assert len(bsb.BASIC_PROMOTER_PARTS["v0.3"]) == 60
+    for value in bsb.BASIC_PROMOTER_PARTS["v0.3"].values():
+        assert type(value) == bsb.BasicPart
+
+
+def test_basic_seva_parts_v10():
+    assert len(bsb.BASIC_SEVA_PARTS["v1.0"]) == 30
+    for value in bsb.BASIC_SEVA_PARTS["v1.0"].values():
+        assert type(value) == bsb.BasicPart
 
 
 def test_linker_384_plate():

@@ -1,0 +1,30 @@
+LOCUS       BS_x6x                   868 bp    ds-DNA           UNK 01-JAN-1980
+DEFINITION  .
+ACCESSION   BS_x6x
+VERSION     BS_x6x
+KEYWORDS    .
+SOURCE      .
+  ORGANISM  .
+            .
+FEATURES             Location/Qualifiers
+     misc_feature    9..740
+                     /label="SEVA_p15A"
+     misc_feature    755..859
+                     /label="SEVA_T1"
+ORIGIN
+        1 ggccggccct agaaatattt tatctgatta ataagatgat cttcttgaga tcgttttggt
+       61 ctgcgcgtaa tctcttgctc tgaaaacgaa aaaaccgcct tgcagggcgg tttttcgaag
+      121 gttctctgag ctaccaactc tttgaaccga ggtaactggc ttggaggagc gcagtcacca
+      181 aaacttgtcc tttcagttta gccttaaccg gcgcatgact tcaagactaa ctcctctaaa
+      241 tcaattacca gtggctgctg ccagtggtgc ttttgcatgt ctttccgggt tggactcaag
+      301 acgatagtta ccggataagg cgcagcggtc ggactgaacg gggggttcgt gcatacagtc
+      361 cagcttggag cgaactgcct acccggaact gagtgtcagg cgtggaatga gacaaacgcg
+      421 gccataacag cggaatgaca ccggtaaacc gaaaggcagg aacaggagag cgcacgaggg
+      481 agccgccagg gggaaacgcc tggtatcttt atagtcctgt cgggtttcgc caccactgat
+      541 ttgagcgtca gatttcgtga tgcttgtcag gggggcggag cctatggaaa aacggctttg
+      601 ccgcggccct ctcacttccc tgttaagtat cttcctggca tcttccagga aatctccgcc
+      661 ccgttcgtaa gccatttccg ctcgccgcag tcgaacgacc gagcgtagcg agtcagtgag
+      721 cgaggaagcg gaatatatcc ggcgcgccca gctgtctagg gcggcggatt tgtcctactc
+      781 aggagagcgt tcaccgacaa acaacagata aaacgaaagg cccagtcttt cgactgagcc
+      841 tttcgtttta tttgatgcct ttaattaa
+//

@@ -188,6 +188,7 @@ class BuildEncoder(json.JSONEncoder):
                 "clips_data": self.clips_data_json(obj),
                 "assembly_data": self.assembly_data_json(obj),
                 "__BasicBuild__": True,
+                "__version__": "0.1",
             }
         return super().default(obj)
 
@@ -209,7 +210,7 @@ class BuildEncoder(json.JSONEncoder):
                 "id": value["part"].id,
                 "name": value["part"].name,
                 "description": value["part"].description,
-                "Part mass for 30 μL clip reaction (ng)": value["part"].clip_mass(),
+                "part mass per 30 μL clip reaction (ng)": value["part"].clip_mass(),
                 "clip reactions": [
                     "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
                     for clip_reaction in value["clip reactions"]
@@ -238,6 +239,7 @@ class BuildEncoder(json.JSONEncoder):
                 "sequence": str(value["linker"].seq),
                 "prefix_id": value["linker"].prefix_id,
                 "suffix_id": value["linker"].suffix_id,
+                "overhang_slice_params": value["linker"].overhang_slice_params,
                 "prefix clip reactions": [
                     "CR" + str(list(obj.clips_data.keys()).index(clip_reaction))
                     for clip_reaction in value["prefix clip reactions"]
@@ -400,12 +402,14 @@ class BuildDecoder(json.JSONDecoder):
                     seq=Seq(value["sequence"]),
                     id=value["id"],
                     name=value["name"],
+                    overhang_slice_params=value["overhang_slice_params"],
                 )
             elif re.match(".*BasicUTRRBSLinker", value["linker_class"]):
                 unique_linker = BasicUTRRBSLinker(
                     seq=Seq(value["sequence"]),
                     id=value["id"],
                     name=value["name"],
+                    overhang_slice_params=value["overhang_slice_params"],
                 )
             else:
                 raise LinkerException(
