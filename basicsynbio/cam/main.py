@@ -188,7 +188,7 @@ class BuildEncoder(json.JSONEncoder):
                 "clips_data": self.clips_data_json(obj),
                 "assembly_data": self.assembly_data_json(obj),
                 "__BasicBuild__": True,
-                "__version__": "0.1.0",
+                "__version__": "0.1",
             }
         return super().default(obj)
 
