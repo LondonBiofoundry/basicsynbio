@@ -105,29 +105,25 @@ for key, value in LINKER_96_LAYOUT.items():
     column_index = int(key[1:]) - 1
     add_volume(
         destination_plate=LINKER_384_PLATE,
-        destination_well=ascii_uppercase[row_index *
-                                         2] + str(column_index * 2 + 1),
+        destination_well=ascii_uppercase[row_index * 2] + str(column_index * 2 + 1),
         volume=45e3,
         volume_id=value,
     )
     add_volume(
         destination_plate=LINKER_384_PLATE,
-        destination_well=ascii_uppercase[row_index *
-                                         2 + 1] + str(column_index * 2 + 1),
+        destination_well=ascii_uppercase[row_index * 2 + 1] + str(column_index * 2 + 1),
         volume=45e3,
         volume_id=value,
     )
     add_volume(
         destination_plate=LINKER_384_PLATE,
-        destination_well=ascii_uppercase[row_index *
-                                         2] + str(column_index * 2 + 2),
+        destination_well=ascii_uppercase[row_index * 2] + str(column_index * 2 + 2),
         volume=45e3,
         volume_id=value,
     )
     add_volume(
         destination_plate=LINKER_384_PLATE,
-        destination_well=ascii_uppercase[row_index *
-                                         2 + 1] + str(column_index * 2 + 2),
+        destination_well=ascii_uppercase[row_index * 2 + 1] + str(column_index * 2 + 2),
         volume=45e3,
         volume_id=value,
     )

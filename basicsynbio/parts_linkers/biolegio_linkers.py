@@ -114,5 +114,4 @@ BIOLEGIO_LINKERS.update(
         for key, value in UTR_RBS_LINKERS.items()
     }
 )
-BASIC_BIOLEGIO_LINKERS = {
-    "v0.1": PartLinkerCollection(BIOLEGIO_LINKERS.items())}
+BASIC_BIOLEGIO_LINKERS = {"v0.1": PartLinkerCollection(BIOLEGIO_LINKERS.items())}
