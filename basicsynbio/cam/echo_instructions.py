@@ -1,3 +1,4 @@
+from .default_linker_plate import LINKER_384_PLATE
 from .main import BasicBuild, BuildEncoder
 from .csv_export import export_csvs
 import zipfile
@@ -190,8 +191,8 @@ def export_echo_assembly_instructions(
 
 def export_echo_clips_instructions(
     basic_build: BasicBuild,
-    linker_plate: Plate,
     part_plate: Plate,
+    linker_plate: Plate = LINKER_384_PLATE,
     fold_dilution: float = 0.7,
     buffer_well: str = "A1",
     water_well: str = "B1",
@@ -216,8 +217,8 @@ def export_echo_clips_instructions(
 
     Args:
         basic_build: the basic build to export the instructions for.
-        linker_plate: A platemap instance containing the half linker locations and volumes.
         parts_plate: A platemap instance containing the half linker locations and volumes.
+        linker_plate: A platemap instance containing the half linker locations and volumes.
         fold_dilution: The manual workflow to sythesise basic clips from half linkers and parts forms 30 µl of
             each linker. The Labcyte Echo robot is designed to have the desination plate upside down and volumes
             over 20µl have a risk of being lost. As the lab instructions generated in this function target this
@@ -301,7 +302,7 @@ def export_echo_clips_instructions(
         # Calculate volume required of part
         required_mass_nano_grams = basic_part.clip_mass(clip_vol=30 * fold_dilution)
         part_well = find_well(part_plate, basic_part.id, 0)
-        if part_well is 0:  # The value returned in no well was found
+        if part_well == 0:  # The value returned in no well was found
             raise ValueError(
                 "The part {} is not in the part plate".format(basic_part.name)
             )
@@ -323,7 +324,7 @@ def export_echo_clips_instructions(
             part_plate, basic_part.id, required_volume_1dp
         )
         if (
-            part_well_with_requiured_volume is 0
+            part_well_with_requiured_volume == 0
         ):  # The value returned in no well was found
             raise ValueError(
                 "The part {} is not in the part plate".format(basic_part.name)

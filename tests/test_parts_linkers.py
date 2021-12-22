@@ -46,7 +46,7 @@ def test_basic_promoter_parts_v02():
 
 
 def test_linker_384_plate():
-    from basicsynbio.parts_linkers.biolegio_linkers import LINKER_384_PLATE
+    from basicsynbio.cam.default_linker_plate import LINKER_384_PLATE
     from platemap import Plate
 
     assert type(LINKER_384_PLATE) == Plate
