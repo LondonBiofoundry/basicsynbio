@@ -1,3 +1,4 @@
+from .default_linker_plate import LINKER_384_PLATE
 from .main import BasicBuild, BuildEncoder
 from .csv_export import export_csvs
 import zipfile
@@ -192,8 +193,8 @@ def export_echo_assembly_instructions(
 
 def export_echo_clips_instructions(
     basic_build: BasicBuild,
-    linker_plate: Plate,
     part_plate: Plate,
+    linker_plate: Plate = LINKER_384_PLATE,
     fold_dilution: float = 0.7,
     buffer_well: str = "A1",
     water_well: str = "B1",
@@ -218,8 +219,8 @@ def export_echo_clips_instructions(
 
     Args:
         basic_build: the basic build to export the instructions for.
-        linker_plate: A platemap instance containing the half linker locations and volumes.
         parts_plate: A platemap instance containing the half linker locations and volumes.
+        linker_plate: A platemap instance containing the half linker locations and volumes.
         fold_dilution: The manual workflow to sythesise basic clips from half linkers and parts forms 30 µl of
             each linker. The Labcyte Echo robot is designed to have the desination plate upside down and volumes
             over 20µl have a risk of being lost. As the lab instructions generated in this function target this
