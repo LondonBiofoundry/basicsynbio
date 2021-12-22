@@ -94,7 +94,8 @@ def export_echo_assembly_instructions(
         map(
             lambda well_item: {well_item[1][1]["id"]: well_item[1][0]},
             enumerate(
-                filter(lambda x: x[1]["total_volume"], source_plate.contents.items())
+                filter(lambda x: x[1]["total_volume"],
+                       source_plate.contents.items())
             ),
         )
     ):
@@ -107,13 +108,14 @@ def export_echo_assembly_instructions(
     if path == None:
         now = datetime.now()
         zip_path = (
-            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            Path.cwd() /
+            f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
         )
     else:
         zip_path = path
     for index, set_of_full_assemblies in enumerate(
         list(
-            basic_build.basic_assemblies[x : x + assemblies_plate_size]
+            basic_build.basic_assemblies[x: x + assemblies_plate_size]
             for x in range(0, len(basic_build.basic_assemblies), assemblies_plate_size)
         )
     ):
@@ -264,14 +266,16 @@ def export_echo_clips_instructions(
         )
         # Finding the location of the half-linker in the linker plate
         prefix_half_linker_id, suffix_half_linker_id = clip.linker_half_ids()
-        prefix_well = find_well(linker_plate, prefix_half_linker_id, HALF_LINKER_VOLUME)
+        prefix_well = find_well(
+            linker_plate, prefix_half_linker_id, HALF_LINKER_VOLUME)
         if prefix_well == 0:  # The value returned in no well was found
             raise ValueError(
                 "The half linker {} is not in the source plate".format(
                     prefix_half_linker_id
                 )
             )
-        suffix_well = find_well(linker_plate, suffix_half_linker_id, HALF_LINKER_VOLUME)
+        suffix_well = find_well(
+            linker_plate, suffix_half_linker_id, HALF_LINKER_VOLUME)
         if suffix_well == 0:  # The value returned in no well was found
             raise ValueError(
                 "The half linker {} is not in the source plate".format(
@@ -299,9 +303,10 @@ def export_echo_clips_instructions(
         # Stage 2
         basic_part = list(clip.clip_items())[1]
         # Calculate volume required of part
-        required_mass_nano_grams = basic_part.clip_mass(clip_vol=30 * fold_dilution)
+        required_mass_nano_grams = basic_part.clip_mass(
+            clip_vol=30 * fold_dilution)
         part_well = find_well(part_plate, basic_part.id, 0)
-        if part_well is 0:  # The value returned in no well was found
+        if part_well == 0:  # The value returned in no well was found
             raise ValueError(
                 "The part {} is not in the part plate".format(basic_part.name)
             )
@@ -323,7 +328,7 @@ def export_echo_clips_instructions(
             part_plate, basic_part.id, required_volume_1dp
         )
         if (
-            part_well_with_requiured_volume is 0
+            part_well_with_requiured_volume == 0
         ):  # The value returned in no well was found
             raise ValueError(
                 "The part {} is not in the part plate".format(basic_part.name)
@@ -349,7 +354,8 @@ def export_echo_clips_instructions(
         )
         # Add Water
         water_volume = round(
-            20 - round(20 / 3, 1) - required_volume_1dp - (2 * HALF_LINKER_VOLUME), 1
+            20 - round(20 / 3, 1) - required_volume_1dp -
+            (2 * HALF_LINKER_VOLUME), 1
         )
         if water_volume < 0:
             raise ValueError(
@@ -367,7 +373,8 @@ def export_echo_clips_instructions(
     if path == None:
         now = datetime.now()
         zip_path = (
-            Path.cwd() / f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
+            Path.cwd() /
+            f"Echo_Instructions_{now.strftime('%d-%m-%Y_%H.%M.%S')}.zip"
         )
     else:
         zip_path = path
