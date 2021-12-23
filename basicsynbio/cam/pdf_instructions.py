@@ -189,7 +189,7 @@ def pdf_instructions(
     ## Basic Reaction 1
     elems.append(
         Paragraph(
-            "Clips Reaction",
+            "Clip reactions",
             styles["Heading2"],
         )
     )
@@ -262,7 +262,7 @@ def pdf_instructions(
     elems.append(Paragraph("Magbead purification", styles["Heading2"]))
     elems.append(
         Paragraph(
-            "Prepare fresh 70% EtOH (0.5 ml per BASIC reaction) and bring magnetic beads (AmpureXP or Ampliclean) stored at 4°C back into homogeneous mix by shaking thoroughly. ",
+            "Prepare 70% EtOH (0.5 ml per BASIC reaction) and bring magnetic beads (AmpureXP or Ampliclean) stored at 4°C back into homogeneous mix by shaking thoroughly. ",
             styles["BodyText"],
         )
     )
@@ -321,7 +321,7 @@ def pdf_instructions(
     # Assembly Reaction 3
     elems.append(
         Paragraph(
-            "Assembly reaction",
+            "Assembly reactions",
             styles["Heading2"],
         )
     )
@@ -372,7 +372,7 @@ def pdf_instructions(
     )
     elems.append(
         Paragraph(
-            "Use 50 μl of chemically competent cells DH5alpha with high transformation efficiency  (109 CFU/μg pUC19, for instance NEB C2987I) to transform 5 μl of each BASIC assembly: ",
+            "Use 50 μl of chemically competent cells DH5alpha with high transformation efficiency  (10^9 CFU/μg pUC19, for instance NEB C2987) to transform 5 μl of each BASIC assembly: ",
             styles["BodyText"],
         )
     )
