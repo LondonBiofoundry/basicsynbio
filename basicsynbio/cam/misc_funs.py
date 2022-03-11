@@ -60,11 +60,11 @@ def new_part_resuspension(
         double_stranded (optional): True (default) indicates part is dsDNA.
     """
     return (
-        (mass * 10 ** -9)
+        (mass * 10**-9)
         / molecular_weight(part.seq, double_stranded=double_stranded)
         * 1
         / (75e-9)
-        * 10 ** 6
+        * 10**6
     )
 
 
