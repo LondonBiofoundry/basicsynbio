@@ -21,7 +21,6 @@ class PartLinkerCollection(dict):
 def make_collection(
     *parts_linkers: Union[BasicPart, BasicLinker],
     keys: Iterable[str] = None,
-    id_function: callable = None,
 ) -> Dict[str, Union[BasicPart, BasicLinker]]:
     """Generates a PartLinkerCollection object using parts_linkers.
     Args:
