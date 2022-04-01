@@ -59,44 +59,69 @@ BASIC_PROMOTER_PARTS = {
 
 BASIC_SEVA_PARTS_V01 = list(parts_linkers_from_gb_file("BASIC_SEVA_collection_v01.gb"))
 BASIC_SEVA_PARTS_V10 = list(parts_linkers_from_gb_file("BASIC_SEVA_collection_v10.gb"))
+BASIC_SEVA_PARTS_V20_DIFF = list(
+    parts_linkers_from_gb_file("BASIC_SEVA_66-11_&_69-11.gb")
+)
+BASIC_SEVA_PARTS_V20 = BASIC_SEVA_PARTS_V10.copy()
+BASIC_SEVA_PARTS_V20.pop(
+    [part.name for part in BASIC_SEVA_PARTS_V20].index("BASIC_SEVA_66.10")
+)
+BASIC_SEVA_PARTS_V20.pop(
+    [part.name for part in BASIC_SEVA_PARTS_V20].index("BASIC_SEVA_69.10")
+)
+BASIC_SEVA_PARTS_V20 += BASIC_SEVA_PARTS_V20_DIFF
+
 BASIC_SEVA_PARTS_V10_KEYS = {
-    "f695f7983bc926fe22312ceea133ece8": "15a",
-    "6568bcea77ad3ed95be9cf305b393522": "16",
-    "50e0aa1b55ef02db0cf62a84c4ecb719": "17",
-    "314fdd9dca836243b4181ccd287e2dc0": "19",
-    "c2ce6224a5d3a0001db46ce89a840642": "17_pKD46",
-    "4683b5e8bb9714875a28a0880c88f904": "25a",
-    "b484d417d0b514190db028347fa66fba": "26",
-    "3b433d3fd1e298bff6d5d066a372d067": "27",
-    "b0dbd8bc2d60e1a7aad51780fcdbffd8": "29",
-    "016b73059a8fa9268d8b35d2bdfa96ed": "27_pKD46",
-    "01bb230a5ebe20dc3196b1f760d42d94": "35a",
-    "1413513c978a56f243171c4f4cf6aaac": "36",
-    "eceac71fa048bd052921bf134322c381": "37",
-    "927f54a3afd7bab22d2c2cc3e428bf4a": "39",
-    "b89dedf6aac9bef578d7fd8ac362c845": "37_pKD46",
-    "56da3cbe26311835d21578bba476ebad": "45a",
-    "4d797ce1665dcb6dc7e73376928424e7": "46",
-    "b23db40e89aa7f017b096e4158e729bc": "47",
-    "804fbb49400cf5027a668feb1ec60c06": "49",
-    "a388b01c3624b66b0f4f70447ef4b42c": "47_pKD46",
-    "4dc7813eba6298720b8e47f618aa2a4b": "5a5a",
-    "da102cb0396b5d4633d32fa99b1b6cdb": "5a6",
-    "d9f4ac855df0c3fcafcab2ae7e872036": "5a7",
-    "de15e534a36c66f3ebe7c835782cffa7": "5a9",
-    "1319bafa14d98407fe18627921dba1c3": "5a7_pKD46",
-    "ba9809f0bba102f479d902c3fb82b5f7": "65a",
-    "9874d4b94b5ebed8ea99f69534b4656e": "66",
-    "db12df1f8d044fdd49a6237418780dd1": "67",
-    "7cce40252f64427685493882230c8bf1": "69",
-    "4fe6ecc619de0d790bdb44aeef93df39": "67_pKD46",
+    "BASIC_SEVA_15a.10": "15a",
+    "BASIC_SEVA_16.10": "16",
+    "BASIC_SEVA_17.10": "17",
+    "BASIC_SEVA_19.10": "19",
+    "BASIC_SEVA_17_pKD46.10": "17_pKD46",
+    "BASIC_SEVA_25a.10": "25a",
+    "BASIC_SEVA_26.10": "26",
+    "BASIC_SEVA_27.10": "27",
+    "BASIC_SEVA_29.10": "29",
+    "BASIC_SEVA_27_pKD46.10": "27_pKD46",
+    "BASIC_SEVA_35a.10": "35a",
+    "BASIC_SEVA_36.10": "36",
+    "BASIC_SEVA_37.10": "37",
+    "BASIC_SEVA_39.10": "39",
+    "BASIC_SEVA_37_pKD46.10": "37_pKD46",
+    "BASIC_SEVA_45a.10": "45a",
+    "BASIC_SEVA_46.10": "46",
+    "BASIC_SEVA_47.10": "47",
+    "BASIC_SEVA_49.10": "49",
+    "BASIC_SEVA_47_pKD46.10": "47_pKD46",
+    "BASIC_SEVA_5a5a.10": "5a5a",
+    "BASIC_SEVA_5a6.10": "5a6",
+    "BASIC_SEVA_5a7.10": "5a7",
+    "BASIC_SEVA_5a9.10": "5a9",
+    "BASIC_SEVA_5a7_pKD46.10": "5a7_pKD46",
+    "BASIC_SEVA_65a.10": "65a",
+    "BASIC_SEVA_66.10": "66",
+    "BASIC_SEVA_67.10": "67",
+    "BASIC_SEVA_69.10": "69",
+    "BASIC_SEVA_67_pKD46.10": "67_pKD46",
 }
+BASIC_SEVA_PARTS_V20_KEYS = BASIC_SEVA_PARTS_V10_KEYS.copy()
+BASIC_SEVA_PARTS_V20_KEYS.pop("BASIC_SEVA_66.10")
+BASIC_SEVA_PARTS_V20_KEYS.pop("BASIC_SEVA_69.10")
+BASIC_SEVA_PARTS_V20_KEYS.update(
+    {
+        "BASIC_SEVA_66.11": "66",
+        "BASIC_SEVA_69.11": "69",
+    }
+)
 BASIC_SEVA_PARTS = {
     "v0.1": make_collection(
         *BASIC_SEVA_PARTS_V01, keys=(part.id[-2:] for part in BASIC_SEVA_PARTS_V01)
     ),
     "v1.0": make_collection(
         *BASIC_SEVA_PARTS_V10,
-        keys=(BASIC_SEVA_PARTS_V10_KEYS[part.id] for part in BASIC_SEVA_PARTS_V10)
+        keys=(BASIC_SEVA_PARTS_V10_KEYS[part.name] for part in BASIC_SEVA_PARTS_V10)
+    ),
+    "v2.0": make_collection(
+        *BASIC_SEVA_PARTS_V20,
+        keys=(BASIC_SEVA_PARTS_V20_KEYS[part.name] for part in BASIC_SEVA_PARTS_V20)
     ),
 }

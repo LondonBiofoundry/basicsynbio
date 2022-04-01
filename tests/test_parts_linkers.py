@@ -1,6 +1,6 @@
 import basicsynbio as bsb
 from .test_fixtures import bseva_68_seqrec
-from .functions import compare_seqrec_instances
+from .functions import compare_seqrec_instances, analyse_part_linker_collection
 
 
 def test_bseva_dict(bseva_68_seqrec):
@@ -42,27 +42,19 @@ def test_bcds_dict():
 
 
 def test_basic_cds_parts_v02():
-    assert len(bsb.BASIC_CDS_PARTS["v0.2"]) == 3
-    for value in bsb.BASIC_CDS_PARTS["v0.2"].values():
-        assert type(value) == bsb.BasicPart
+    analyse_part_linker_collection(bsb.BASIC_CDS_PARTS["v0.2"], bsb.BasicPart, 3)
 
 
 def test_basic_promoter_parts_v02():
-    assert len(bsb.BASIC_PROMOTER_PARTS["v0.2"]) == 60
-    for value in bsb.BASIC_PROMOTER_PARTS["v0.2"].values():
-        assert type(value) == bsb.BasicPart
+    analyse_part_linker_collection(bsb.BASIC_PROMOTER_PARTS["v0.2"], bsb.BasicPart, 60)
 
 
 def test_basic_promoter_parts_v03():
-    assert len(bsb.BASIC_PROMOTER_PARTS["v0.3"]) == 60
-    for value in bsb.BASIC_PROMOTER_PARTS["v0.3"].values():
-        assert type(value) == bsb.BasicPart
+    analyse_part_linker_collection(bsb.BASIC_PROMOTER_PARTS["v0.3"], bsb.BasicPart, 60)
 
 
 def test_basic_seva_parts_v10():
-    assert len(bsb.BASIC_SEVA_PARTS["v1.0"]) == 30
-    for value in bsb.BASIC_SEVA_PARTS["v1.0"].values():
-        assert type(value) == bsb.BasicPart
+    analyse_part_linker_collection(bsb.BASIC_SEVA_PARTS["v1.0"], bsb.BasicPart, 30)
 
 
 def test_linker_384_plate():
@@ -77,3 +69,9 @@ def test_linker_384_plate():
         assert "L1-S" in LINKER_384_PLATE[well_id]["composition"].keys()
     for well_id in ("O21", "P21", "O22", "P22"):
         assert "UTR3-S" in LINKER_384_PLATE[well_id]["composition"].keys()
+
+
+def test_basic_seva_parts_v20():
+    collection = bsb.BASIC_SEVA_PARTS["v2.0"]
+    analyse_part_linker_collection(collection, bsb.BasicPart, 30)
+    assert "BASIC_SEVA_66.11" in [part.name for part in collection.values()]
