@@ -32,7 +32,8 @@
           <div class="body" role="main">
             
   <h1>Source code for basicsynbio.cam.echo_instructions</h1><div class="highlight"><pre>
-<span></span><span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">BasicBuild</span>
+<span></span><span class="kn">from</span> <span class="nn">.default_linker_plate</span> <span class="kn">import</span> <span class="n">LINKER_384_PLATE</span>
+<span class="kn">from</span> <span class="nn">.main</span> <span class="kn">import</span> <span class="n">BasicBuild</span><span class="p">,</span> <span class="n">BuildEncoder</span>
 <span class="kn">from</span> <span class="nn">.csv_export</span> <span class="kn">import</span> <span class="n">export_csvs</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
 <span class="kn">import</span> <span class="nn">os</span>
@@ -46,6 +47,7 @@
 <span class="kn">from</span> <span class="nn">platemap</span> <span class="kn">import</span> <span class="n">Plate</span><span class="p">,</span> <span class="n">assign_source_wells</span><span class="p">,</span> <span class="n">find_well</span><span class="p">,</span> <span class="n">remove_volume</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Literal</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+<span class="kn">import</span> <span class="nn">json</span>
 
 
 <span class="n">CLIP_VOLUME</span> <span class="o">=</span> <span class="mi">500</span>
@@ -53,7 +55,7 @@
 <span class="n">TOTAL_VOLUME</span> <span class="o">=</span> <span class="mi">5000</span>
 
 
-<div class="viewcode-block" id="export_echo_assembly"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.echo_instructions.export_echo_assembly">[docs]</a><span class="k">def</span> <span class="nf">export_echo_assembly</span><span class="p">(</span>
+<div class="viewcode-block" id="export_echo_assembly_instructions"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.echo_instructions.export_echo_assembly_instructions">[docs]</a><span class="k">def</span> <span class="nf">export_echo_assembly_instructions</span><span class="p">(</span>
     <span class="n">basic_build</span><span class="p">:</span> <span class="n">BasicBuild</span><span class="p">,</span>
     <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">buffer_well</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span>
@@ -117,7 +119,7 @@
 
     <span class="k">except</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-            <span class="sd">&quot;&quot;&quot;To many clips in the build to be handled by a single 384 </span>
+            <span class="sd">&quot;&quot;&quot;To many clips in the build to be handled by a single 384</span>
 <span class="sd">                source plate, considering you alternate_well setting.&quot;&quot;&quot;</span>
         <span class="p">)</span>
 
@@ -217,6 +219,223 @@
             <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;echo_&quot;</span><span class="p">)</span> <span class="ow">and</span> <span class="n">file</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.csv&quot;</span><span class="p">):</span>
                 <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
                 <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="n">my_zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">zip_path</span></div>
+
+
+<div class="viewcode-block" id="export_echo_clips_instructions"><a class="viewcode-back" href="../../../api.html#basicsynbio.cam.echo_instructions.export_echo_clips_instructions">[docs]</a><span class="k">def</span> <span class="nf">export_echo_clips_instructions</span><span class="p">(</span>
+    <span class="n">basic_build</span><span class="p">:</span> <span class="n">BasicBuild</span><span class="p">,</span>
+    <span class="n">part_plate</span><span class="p">:</span> <span class="n">Plate</span><span class="p">,</span>
+    <span class="n">linker_plate</span><span class="p">:</span> <span class="n">Plate</span> <span class="o">=</span> <span class="n">LINKER_384_PLATE</span><span class="p">,</span>
+    <span class="n">fold_dilution</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">,</span>
+    <span class="n">buffer_well</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;A1&quot;</span><span class="p">,</span>
+    <span class="n">water_well</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span>
+    <span class="n">path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;Export automation instuctions to build the basic clips present within the basic build.</span>
+
+<span class="sd">    A function to export the necessary csvs files for the Labcyte Echo liquid handling robot to transform half</span>
+<span class="sd">    linkers and parts into basic clips ready for assembly into full basic assemblies.</span>
+
+<span class="sd">    The assembly occurs in three stages each with their corresponding csv file, the source plates for each stage</span>
+<span class="sd">    change however the desination plates do not. The three stages are:</span>
+
+<span class="sd">        1. Adding the half-linkers to the desination plate</span>
+<span class="sd">        2. Adding the parts to the desination plate</span>
+<span class="sd">        3. Adding water and the buffer to the desination plate</span>
+
+<span class="sd">    The input parameter, linker_plate, is the plate containing the half-linkers, the source plate supplied for the</span>
+<span class="sd">    first stage. The input parameter, parts_plate, is the plate containing the parts, the source plate supplied for</span>
+<span class="sd">    the second stage. The input parameters buffer_well and water_well define where in the source plate for the first</span>
+<span class="sd">    stage the buffer and water are located.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        basic_build: the basic build to export the instructions for.</span>
+<span class="sd">        parts_plate: A platemap instance containing the half linker locations and volumes.</span>
+<span class="sd">        linker_plate: A platemap instance containing the half linker locations and volumes.</span>
+<span class="sd">        fold_dilution: The manual workflow to sythesise basic clips from half linkers and parts forms 30 µl of</span>
+<span class="sd">            each linker. The Labcyte Echo robot is designed to have the desination plate upside down and volumes</span>
+<span class="sd">            over 20µl have a risk of being lost. As the lab instructions generated in this function target this</span>
+<span class="sd">            machine we default to a fold dilution of 0.7. to dilute 30µl to approximately 20µl. We obtain exactly</span>
+<span class="sd">            20µl by adjusting the amount of water we add as the final reagent added to the destination plate.</span>
+<span class="sd">        buffer_well: The location of the buffer well on the source plate.</span>
+<span class="sd">        water_well: The location of the water well on the source plate.</span>
+<span class="sd">        path (optional): path to zipped folder of csv files. If none defaults to working directory with a time</span>
+<span class="sd">            stamped name, output csvs is created.</span>
+
+
+<span class="sd">    Returns:</span>
+<span class="sd">        str: The Path of zip file containing the Labcyte Echo clips automation scripts</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: Export clips is currently limited to 96 clips, please reduce the number of clips.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Planning destination plate&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">basic_build</span><span class="o">.</span><span class="n">unique_clips</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">96</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Export clips is currently limited to 96 clips, please reduce the number of clips&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">water_well</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Water Well location needs to be within the 6 well plate, between A1 - B3&quot;</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="n">buffer_well</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;A1&quot;</span><span class="p">,</span> <span class="s2">&quot;B1&quot;</span><span class="p">,</span> <span class="s2">&quot;A2&quot;</span><span class="p">,</span> <span class="s2">&quot;B2&quot;</span><span class="p">,</span> <span class="s2">&quot;A3&quot;</span><span class="p">,</span> <span class="s2">&quot;B3&quot;</span><span class="p">]:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">&quot;Assembly Buffer Well location needs to be within the 6 well plate, between A1 - B3&quot;</span>
+        <span class="p">)</span>
+    <span class="c1"># Defining function variables</span>
+    <span class="n">HALF_LINKER_VOLUME</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">fold_dilution</span>
+    <span class="n">destination_plate</span> <span class="o">=</span> <span class="n">Plate</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">96</span><span class="p">,</span> <span class="n">well_volume</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+
+    <span class="c1"># Stage 1</span>
+    <span class="n">stage_1_liquid_transfers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stage_2_liquid_transfers</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">stage_3_liquid_transfers</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">clip</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">basic_build</span><span class="o">.</span><span class="n">unique_clips</span><span class="p">):</span>
+        <span class="c1"># Defining the location of each clip in the desination plate.</span>
+        <span class="n">destination_plate</span><span class="o">.</span><span class="n">set_well_id</span><span class="p">(</span>
+            <span class="n">destination_plate</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">index</span><span class="p">],</span> <span class="s2">&quot;CR</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">index</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="p">)</span>
+        <span class="c1"># Finding the location of the half-linker in the linker plate</span>
+        <span class="n">prefix_half_linker_id</span><span class="p">,</span> <span class="n">suffix_half_linker_id</span> <span class="o">=</span> <span class="n">clip</span><span class="o">.</span><span class="n">linker_half_ids</span><span class="p">()</span>
+        <span class="n">prefix_well</span> <span class="o">=</span> <span class="n">find_well</span><span class="p">(</span><span class="n">linker_plate</span><span class="p">,</span> <span class="n">prefix_half_linker_id</span><span class="p">,</span> <span class="n">HALF_LINKER_VOLUME</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">prefix_well</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># The value returned in no well was found</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The half linker </span><span class="si">{}</span><span class="s2"> is not in the source plate&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">prefix_half_linker_id</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">suffix_well</span> <span class="o">=</span> <span class="n">find_well</span><span class="p">(</span><span class="n">linker_plate</span><span class="p">,</span> <span class="n">suffix_half_linker_id</span><span class="p">,</span> <span class="n">HALF_LINKER_VOLUME</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">suffix_well</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># The value returned in no well was found</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The half linker </span><span class="si">{}</span><span class="s2"> is not in the source plate&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">suffix_half_linker_id</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="c1"># Adding the transfer instructions to the list</span>
+        <span class="c1"># Adding prefix half linkers</span>
+        <span class="n">stage_1_liquid_transfers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Destination Well&quot;</span><span class="p">:</span> <span class="n">destination_plate</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                <span class="s2">&quot;Source Well&quot;</span><span class="p">:</span> <span class="n">prefix_well</span><span class="p">,</span>
+                <span class="s2">&quot;Transfer Volume&quot;</span><span class="p">:</span> <span class="n">HALF_LINKER_VOLUME</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="c1"># Adding suffix half linkers</span>
+        <span class="n">stage_1_liquid_transfers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Destination Well&quot;</span><span class="p">:</span> <span class="n">destination_plate</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                <span class="s2">&quot;Source Well&quot;</span><span class="p">:</span> <span class="n">suffix_well</span><span class="p">,</span>
+                <span class="s2">&quot;Transfer Volume&quot;</span><span class="p">:</span> <span class="n">HALF_LINKER_VOLUME</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Stage 2</span>
+        <span class="n">basic_part</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">clip</span><span class="o">.</span><span class="n">clip_items</span><span class="p">())[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="c1"># Calculate volume required of part</span>
+        <span class="n">required_mass_nano_grams</span> <span class="o">=</span> <span class="n">basic_part</span><span class="o">.</span><span class="n">clip_mass</span><span class="p">(</span><span class="n">clip_vol</span><span class="o">=</span><span class="mi">30</span> <span class="o">*</span> <span class="n">fold_dilution</span><span class="p">)</span>
+        <span class="n">part_well</span> <span class="o">=</span> <span class="n">find_well</span><span class="p">(</span><span class="n">part_plate</span><span class="p">,</span> <span class="n">basic_part</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">part_well</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>  <span class="c1"># The value returned in no well was found</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The part </span><span class="si">{}</span><span class="s2"> is not in the part plate&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basic_part</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">required_volume</span> <span class="o">=</span> <span class="p">(</span>
+                <span class="n">required_mass_nano_grams</span>
+                <span class="o">/</span> <span class="n">part_plate</span><span class="p">[</span><span class="n">part_well</span><span class="p">][</span><span class="s2">&quot;composition&quot;</span><span class="p">][</span><span class="n">basic_part</span><span class="o">.</span><span class="n">id</span><span class="p">][</span><span class="s2">&quot;concentration&quot;</span><span class="p">]</span>
+            <span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The part </span><span class="si">{}</span><span class="s2"> in the part_plate is does not have a concentration defined, please define and retry&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+                    <span class="n">basic_part</span><span class="o">.</span><span class="n">name</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">required_volume_1dp</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span><span class="n">required_volume</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="c1"># Finding the location of the parts in the part plate</span>
+        <span class="n">part_well_with_requiured_volume</span> <span class="o">=</span> <span class="n">find_well</span><span class="p">(</span>
+            <span class="n">part_plate</span><span class="p">,</span> <span class="n">basic_part</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">required_volume_1dp</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="p">(</span>
+            <span class="n">part_well_with_requiured_volume</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="p">):</span>  <span class="c1"># The value returned in no well was found</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;The part </span><span class="si">{}</span><span class="s2"> is not in the part plate&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">basic_part</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="c1"># Adding the transfer instructions to the list</span>
+        <span class="n">stage_2_liquid_transfers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Destination Well&quot;</span><span class="p">:</span> <span class="n">destination_plate</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                <span class="s2">&quot;Source Well&quot;</span><span class="p">:</span> <span class="n">part_well_with_requiured_volume</span><span class="p">,</span>
+                <span class="s2">&quot;Transfer Volume&quot;</span><span class="p">:</span> <span class="n">required_volume_1dp</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+        <span class="c1"># Stage 3</span>
+        <span class="c1"># Add buffer</span>
+        <span class="n">stage_3_liquid_transfers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Destination Well&quot;</span><span class="p">:</span> <span class="n">destination_plate</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                <span class="s2">&quot;Source Well&quot;</span><span class="p">:</span> <span class="n">buffer_well</span><span class="p">,</span>
+                <span class="s2">&quot;Transfer Volume&quot;</span><span class="p">:</span> <span class="nb">round</span><span class="p">(</span><span class="mi">20</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+        <span class="c1"># Add Water</span>
+        <span class="n">water_volume</span> <span class="o">=</span> <span class="nb">round</span><span class="p">(</span>
+            <span class="mi">20</span> <span class="o">-</span> <span class="nb">round</span><span class="p">(</span><span class="mi">20</span> <span class="o">/</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">required_volume_1dp</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">HALF_LINKER_VOLUME</span><span class="p">),</span> <span class="mi">1</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">water_volume</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Cannot add more water than the destination plate can hold, increase the concentration of the parts&quot;</span>
+            <span class="p">)</span>
+        <span class="n">stage_3_liquid_transfers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;Destination Well&quot;</span><span class="p">:</span> <span class="n">destination_plate</span><span class="o">.</span><span class="n">wells</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                <span class="s2">&quot;Source Well&quot;</span><span class="p">:</span> <span class="n">water_well</span><span class="p">,</span>
+                <span class="s2">&quot;Transfer Volume&quot;</span><span class="p">:</span> <span class="n">water_volume</span><span class="p">,</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
+
+    <span class="c1"># Write transfer steps to CSV</span>
+    <span class="k">if</span> <span class="n">path</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
+        <span class="n">zip_path</span> <span class="o">=</span> <span class="p">(</span>
+            <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">&quot;Echo_Instructions_</span><span class="si">{</span><span class="n">now</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">%d</span><span class="s1">-%m-%Y_%H.%M.%S&#39;</span><span class="p">)</span><span class="si">}</span><span class="s2">.zip&quot;</span>
+        <span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">zip_path</span> <span class="o">=</span> <span class="n">path</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;stage_1_half_linkers.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f1</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;stage_2_parts.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+    <span class="p">)</span> <span class="k">as</span> <span class="n">f2</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="s2">&quot;stage_3_water_buffer.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f3</span><span class="p">:</span>
+        <span class="n">fieldnames</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Destination Well&quot;</span><span class="p">,</span> <span class="s2">&quot;Source Well&quot;</span><span class="p">,</span> <span class="s2">&quot;Transfer Volume&quot;</span><span class="p">]</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+        <span class="n">w1</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="n">w2</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+        <span class="n">w2</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="n">w3</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+        <span class="n">w3</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">transfer</span> <span class="ow">in</span> <span class="n">stage_1_liquid_transfers</span><span class="p">:</span>
+            <span class="n">w1</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">transfer</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">transfer</span> <span class="ow">in</span> <span class="n">stage_2_liquid_transfers</span><span class="p">:</span>
+            <span class="n">w2</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">transfer</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">transfer</span> <span class="ow">in</span> <span class="n">stage_3_liquid_transfers</span><span class="p">:</span>
+            <span class="n">w3</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">transfer</span><span class="p">)</span>
+
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">zip_path</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">my_zip</span><span class="p">:</span>
+        <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;stage_1_half_linkers.csv&quot;</span><span class="p">)</span>
+        <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;stage_2_parts.csv&quot;</span><span class="p">)</span>
+        <span class="n">my_zip</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;stage_3_water_buffer.csv&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;stage_1_half_linkers.csv&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;stage_2_parts.csv&quot;</span><span class="p">)</span>
+        <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;stage_3_water_buffer.csv&quot;</span><span class="p">)</span>
+
+    <span class="n">my_zip</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="c1"># print(&quot;Stage 3&quot;)</span>
+    <span class="k">for</span> <span class="n">transfer</span> <span class="ow">in</span> <span class="n">stage_3_liquid_transfers</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">transfer</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">zip_path</span></div>
 </pre></div>
 

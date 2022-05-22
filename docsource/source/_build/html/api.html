@@ -167,7 +167,7 @@ instances when initializing <a class="reference internal" href="#basicsynbio.mai
 <dl class="py attribute">
 <dt id="basicsynbio.main.BasicLinker.overhang_slice_params">
 <code class="sig-name descname">overhang_slice_params</code><a class="headerlink" href="#basicsynbio.main.BasicLinker.overhang_slice_params" title="Permalink to this definition">¶</a></dt>
-<dd><p>Parameters used to slice <cite>seq</cite> attribute returning overhang sequence. Required to access <cite>linker_oligos</cite> attribute.</p>
+<dd><p>Parameters used to slice <cite>seq</cite> attribute returning overhang sequence. Parameters are in the form (start, stop). Required to access <cite>linker_oligos</cite> attribute.</p>
 </dd></dl>
 
 <dl class="py attribute">
@@ -245,14 +245,12 @@ sequences must contain intergated prefix and suffix sequences.</p>
 </dd></dl>
 
 <dl class="py method">
-<dt id="basicsynbio.main.BasicPart.concentration">
-<code class="sig-name descname">concentration</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">stock</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.concentration"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.concentration" title="Permalink to this definition">¶</a></dt>
-<dd><p>Obtain the recommended concentration of part in ng/µL.</p>
-<p>This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</p>
+<dt id="basicsynbio.main.BasicPart.clip_mass">
+<code class="sig-name descname">clip_mass</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">clip_vol</span><span class="p">:</span> <span class="n">float</span> <span class="o">=</span> <span class="default_value">30</span></em>, <em class="sig-param"><span class="n">circular</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em>, <em class="sig-param"><span class="n">ndigit</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">None</span></em><span class="sig-paren">)</span> &#x2192; Union<span class="p">[</span>float<span class="p">, </span>int<span class="p">]</span><a class="reference internal" href="_modules/basicsynbio/main.html#BasicPart.clip_mass"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.main.BasicPart.clip_mass" title="Permalink to this definition">¶</a></dt>
+<dd><p>Obtain the recommended mass of part (ng) for a clip reaction.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>stock</strong> – If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).</p></li>
 <li><p><strong>clip_vol</strong> – volume of the clip reaction (µL).</p></li>
 <li><p><strong>circular</strong> – The part is circular or linear if False.</p></li>
 <li><p><strong>ndigit</strong> – Refer to built-in round function documentation.</p></li>
@@ -494,7 +492,7 @@ Refer to pysbol2 documentation for further information.</p>
 </div>
 <div class="section" id="module-basicsynbio.cam.main">
 <span id="cam-main-py"></span><h2>cam.main.py<a class="headerlink" href="#module-basicsynbio.cam.main" title="Permalink to this headline">¶</a></h2>
-<p>Module contains a collection of objects for computer assisted manufacturing
+<p>Module contains key objects for computer assisted manufacturing (CAM)
 within the BASIC DNA assembly framework.</p>
 <dl class="py class">
 <dt id="basicsynbio.cam.main.BasicBuild">
@@ -731,42 +729,6 @@ describing unique parts.</p>
 <em class="property">exception </em><code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">BuildException</code><a class="reference internal" href="_modules/basicsynbio/cam/main.html#BuildException"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.BuildException" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="py function">
-<dt id="basicsynbio.cam.main.new_part_resuspension">
-<code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">new_part_resuspension</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">part</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a></span></em>, <em class="sig-param"><span class="n">mass</span><span class="p">:</span> <span class="n">float</span></em>, <em class="sig-param"><span class="n">double_stranded</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span> &#x2192; float<a class="reference internal" href="_modules/basicsynbio/cam/main.html#new_part_resuspension"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.new_part_resuspension" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the volume of resuspension buffer (µL) required for a 75 nM
-solution of part, equivalent to 75 fmol/µL.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>part</strong> – BasicPart object.</p></li>
-<li><p><strong>mass</strong> – mass of synthesised part (ng).</p></li>
-<li><p><strong>double_stranded</strong> (<em>optional</em>) – True (default) indicates part is dsDNA.</p></li>
-</ul>
-</dd>
-</dl>
-</dd></dl>
-
-<dl class="py function">
-<dt id="basicsynbio.cam.main.seqrecord_hexdigest">
-<code class="sig-prename descclassname">basicsynbio.cam.main.</code><code class="sig-name descname">seqrecord_hexdigest</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">seqrecord_obj</span><span class="p">:</span> <span class="n">Union<span class="p">[</span>Bio.SeqRecord.SeqRecord<span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicPart" title="basicsynbio.main.BasicPart">basicsynbio.main.BasicPart</a><span class="p">, </span><a class="reference internal" href="#basicsynbio.main.BasicLinker" title="basicsynbio.main.BasicLinker">basicsynbio.main.BasicLinker</a><span class="p">]</span></span></em><span class="sig-paren">)</span> &#x2192; str<a class="reference internal" href="_modules/basicsynbio/cam/main.html#seqrecord_hexdigest"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.main.seqrecord_hexdigest" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns an MD5 hash of a Bio.SeqRecord.SeqRecord-like object, using
-relevant attributes.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Care should be taken when using the return value of this function as an identifier/hash for seqrecord_obj given these objects are mutable.</p>
-</div>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters</dt>
-<dd class="field-odd"><p><strong>seqrecord_obj</strong> – Bio.SeqRecord.SeqRecord-like object, containing relevant
-attributes</p>
-</dd>
-<dt class="field-even">Returns</dt>
-<dd class="field-even"><p>MD5 hash</p>
-</dd>
-</dl>
-</dd></dl>
-
 </div>
 <div class="section" id="module-basicsynbio.decorators">
 <span id="decorators-py"></span><h2>decorators.py<a class="headerlink" href="#module-basicsynbio.decorators" title="Permalink to this headline">¶</a></h2>
@@ -824,8 +786,8 @@ working directory with a time stamped name.</p></li>
 <div class="section" id="module-basicsynbio.cam.echo_instructions">
 <span id="echo-instructions-py"></span><h2>echo_instructions.py<a class="headerlink" href="#module-basicsynbio.cam.echo_instructions" title="Permalink to this headline">¶</a></h2>
 <dl class="py function">
-<dt id="basicsynbio.cam.echo_instructions.export_echo_assembly">
-<code class="sig-prename descclassname">basicsynbio.cam.echo_instructions.</code><code class="sig-name descname">export_echo_assembly</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">basicsynbio.cam.main.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffer_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A1'</span></em>, <em class="sig-param"><span class="n">water_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'B1'</span></em>, <em class="sig-param"><span class="n">alternate_well</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">clips_plate_size</span><span class="p">:</span> <span class="n">Literal<span class="p">[</span>6<span class="p">, </span>24<span class="p">, </span>96<span class="p">, </span>384<span class="p">, </span>1536<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">384</span></em>, <em class="sig-param"><span class="n">assemblies_plate_size</span><span class="p">:</span> <span class="n">Literal<span class="p">[</span>6<span class="p">, </span>24<span class="p">, </span>96<span class="p">, </span>384<span class="p">, </span>1536<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">96</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/cam/echo_instructions.html#export_echo_assembly"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.echo_instructions.export_echo_assembly" title="Permalink to this definition">¶</a></dt>
+<dt id="basicsynbio.cam.echo_instructions.export_echo_assembly_instructions">
+<code class="sig-prename descclassname">basicsynbio.cam.echo_instructions.</code><code class="sig-name descname">export_echo_assembly_instructions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">basic_build</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#basicsynbio.cam.main.BasicBuild" title="basicsynbio.cam.main.BasicBuild">basicsynbio.cam.main.BasicBuild</a></span></em>, <em class="sig-param"><span class="n">path</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">buffer_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'A1'</span></em>, <em class="sig-param"><span class="n">water_well</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">'B1'</span></em>, <em class="sig-param"><span class="n">alternate_well</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">assemblies_per_clip</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">20</span></em>, <em class="sig-param"><span class="n">clips_plate_size</span><span class="p">:</span> <span class="n">Literal<span class="p">[</span>6<span class="p">, </span>24<span class="p">, </span>96<span class="p">, </span>384<span class="p">, </span>1536<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">384</span></em>, <em class="sig-param"><span class="n">assemblies_plate_size</span><span class="p">:</span> <span class="n">Literal<span class="p">[</span>6<span class="p">, </span>24<span class="p">, </span>96<span class="p">, </span>384<span class="p">, </span>1536<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">96</span></em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/cam/echo_instructions.html#export_echo_assembly_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.echo_instructions.export_echo_assembly_instructions" title="Permalink to this definition">¶</a></dt>
 <dd><p>Writes automation scripts for a echo liquid handler to build assemblies from clips.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -850,6 +812,54 @@ working directory with a time stamped name, output csvs is created.</p></li>
 <dd class="field-even"><p><strong>ValueError</strong> – If water_well or buffer_well is not in [“A1”, “B1”, “A2”, “B2”, “A3”, “B3”]; if self contains
     96 or more assemblies or if the build requires equal or more than 384 used clip wells for alternate_well(True)
     or 192 for alternate_well(False).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="basicsynbio.cam.echo_instructions.export_echo_clips_instructions">
+<code class="sig-prename descclassname">basicsynbio.cam.echo_instructions.</code><code class="sig-name descname">export_echo_clips_instructions</code><span class="sig-paren">(</span><em class="sig-param">basic_build: basicsynbio.cam.main.BasicBuild</em>, <em class="sig-param">part_plate: platemap.plate.Plate</em>, <em class="sig-param">linker_plate: platemap.plate.Plate = &lt;platemap.plate.Plate object&gt;</em>, <em class="sig-param">fold_dilution: float = 0.7</em>, <em class="sig-param">buffer_well: str = 'A1'</em>, <em class="sig-param">water_well: str = 'B1'</em>, <em class="sig-param">path: str = None</em><span class="sig-paren">)</span> &#x2192; None<a class="reference internal" href="_modules/basicsynbio/cam/echo_instructions.html#export_echo_clips_instructions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#basicsynbio.cam.echo_instructions.export_echo_clips_instructions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export automation instuctions to build the basic clips present within the basic build.</p>
+<p>A function to export the necessary csvs files for the Labcyte Echo liquid handling robot to transform half
+linkers and parts into basic clips ready for assembly into full basic assemblies.</p>
+<p>The assembly occurs in three stages each with their corresponding csv file, the source plates for each stage
+change however the desination plates do not. The three stages are:</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Adding the half-linkers to the desination plate</p></li>
+<li><p>Adding the parts to the desination plate</p></li>
+<li><p>Adding water and the buffer to the desination plate</p></li>
+</ol>
+</div></blockquote>
+<p>The input parameter, linker_plate, is the plate containing the half-linkers, the source plate supplied for the
+first stage. The input parameter, parts_plate, is the plate containing the parts, the source plate supplied for
+the second stage. The input parameters buffer_well and water_well define where in the source plate for the first
+stage the buffer and water are located.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>basic_build</strong> – the basic build to export the instructions for.</p></li>
+<li><p><strong>parts_plate</strong> – A platemap instance containing the half linker locations and volumes.</p></li>
+<li><p><strong>linker_plate</strong> – A platemap instance containing the half linker locations and volumes.</p></li>
+<li><p><strong>fold_dilution</strong> – The manual workflow to sythesise basic clips from half linkers and parts forms 30 µl of
+each linker. The Labcyte Echo robot is designed to have the desination plate upside down and volumes
+over 20µl have a risk of being lost. As the lab instructions generated in this function target this
+machine we default to a fold dilution of 0.7. to dilute 30µl to approximately 20µl. We obtain exactly
+20µl by adjusting the amount of water we add as the final reagent added to the destination plate.</p></li>
+<li><p><strong>buffer_well</strong> – The location of the buffer well on the source plate.</p></li>
+<li><p><strong>water_well</strong> – The location of the water well on the source plate.</p></li>
+<li><p><strong>path</strong> (<em>optional</em>) – path to zipped folder of csv files. If none defaults to working directory with a time
+stamped name, output csvs is created.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>The Path of zip file containing the Labcyte Echo clips automation scripts</p>
+</dd>
+<dt class="field-odd">Return type</dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+<dt class="field-even">Raises</dt>
+<dd class="field-even"><p><strong>ValueError</strong> – Export clips is currently limited to 96 clips, please reduce the number of clips.</p>
 </dd>
 </dl>
 </dd></dl>

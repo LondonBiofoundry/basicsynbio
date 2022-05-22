@@ -136,19 +136,15 @@
         <span class="k">else</span><span class="p">:</span>
             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;incorrect sequence used.&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="BasicPart.concentration"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.concentration">[docs]</a>    <span class="k">def</span> <span class="nf">concentration</span><span class="p">(</span>
+<div class="viewcode-block" id="BasicPart.clip_mass"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.clip_mass">[docs]</a>    <span class="k">def</span> <span class="nf">clip_mass</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
-        <span class="n">stock</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">clip_vol</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
         <span class="n">circular</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
         <span class="n">ndigit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="nb">float</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
-        <span class="sd">&quot;&quot;&quot;Obtain the recommended concentration of part in ng/µL.</span>
-
-<span class="sd">        This can either be the recommended stock concentration of part or the final concentration of part in clip reactions.</span>
+        <span class="sd">&quot;&quot;&quot;Obtain the recommended mass of part (ng) for a clip reaction.</span>
 
 <span class="sd">        Args:</span>
-<span class="sd">            stock: If true, method returns the stock concentration required for adding 1 µL part to each clip reaction with volume = clip_vol. Else returns the suggested final concentration of part in a clip reaction (ng/µL).</span>
 <span class="sd">            clip_vol: volume of the clip reaction (µL).</span>
 <span class="sd">            circular: The part is circular or linear if False.</span>
 <span class="sd">            ndigit: Refer to built-in round function documentation.</span>
@@ -160,9 +156,7 @@
             <span class="p">)</span>
             <span class="o">/</span> <span class="mf">1e6</span>
         <span class="p">)</span>
-        <span class="k">if</span> <span class="n">stock</span><span class="p">:</span>
-            <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span> <span class="o">*</span> <span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span>
-        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
+        <span class="k">return</span> <span class="nb">round</span><span class="p">(</span><span class="n">final_concentration</span> <span class="o">*</span> <span class="n">clip_vol</span><span class="p">,</span> <span class="n">ndigit</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="BasicPart.domesticating_primers"><a class="viewcode-back" href="../../api.html#basicsynbio.main.BasicPart.domesticating_primers">[docs]</a>    <span class="k">def</span> <span class="nf">domesticating_primers</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
@@ -345,7 +339,9 @@
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">prefix</span> <span class="o">=</span> <span class="n">LinkerHalfOligos</span><span class="p">(</span>
             <span class="n">long</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="p">:]</span><span class="o">.</span><span class="n">reverse_complement</span><span class="p">(),</span>
-            <span class="n">adapter</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">)],</span>
+            <span class="n">adapter</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span>
+                <span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">BasicLinker</span><span class="o">.</span><span class="n">DOWNSTREAM_SCAR</span><span class="p">)</span>
+            <span class="p">],</span>
         <span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">suffix</span> <span class="o">=</span> <span class="n">LinkerHalfOligos</span><span class="p">(</span>
             <span class="n">long</span><span class="o">=</span><span class="n">seq</span><span class="p">[</span><span class="mi">2</span> <span class="p">:</span> <span class="n">overhang_slice_params</span><span class="p">[</span><span class="mi">1</span><span class="p">]],</span>
@@ -422,7 +418,7 @@
 <span class="sd">        seq : Refer to Bio.SeqRecord.SeqRecord documentation.</span>
 <span class="sd">        id: Refer to Bio.SeqRecord.SeqRecord documentation.</span>
 <span class="sd">        name: This attribute is used to label the annotation in exported gb files or equivalent.</span>
-<span class="sd">        overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Required to access `linker_oligos` attribute.</span>
+<span class="sd">        overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Parameters are in the form (start, stop). Required to access `linker_oligos` attribute.</span>
 <span class="sd">        linker_oligos: Oligonucleotides used to physically generate linker.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
@@ -451,7 +447,7 @@
 <span class="sd">                generation, defaults to f&quot;{self.name}-P&quot;.</span>
 <span class="sd">            suffix_id (optional): suffix id if known and not needing</span>
 <span class="sd">                generation, defaults to f&quot;{self.name}-S&quot;.</span>
-<span class="sd">            overhang_slice_params: Indicies defining position of overhang in linker. Required to access `linker_oligos` attribute.</span>
+<span class="sd">            overhang_slice_params: Parameters used to slice `seq` attribute returning overhang sequence. Parameters are in the form (start, stop). Required to access `linker_oligos` attribute.</span>
 <span class="sd">            kwargs:</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">seq</span> <span class="o">=</span> <span class="n">seq</span>
