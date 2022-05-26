@@ -129,7 +129,7 @@ traitlets==4.3.3
 twine==3.2.0
 typed-ast==1.4.1
 typing-extensions==3.7.4.3
-ujson==1.35
+ujson==5.2.0
 untokenize==0.1.1
 urllib3==1.25.10
 watchdog==1.0.2
