@@ -46,7 +46,7 @@ jsonschema==3.2.0
 jupyter==1.0.0
 jupyter-client==6.1.6
 jupyter-console==6.1.0
-jupyter-core==4.6.3
+jupyter-core==4.11.2
 keyring==21.5.0
 lazy-object-proxy==1.4.3
 livereload==2.6.3
