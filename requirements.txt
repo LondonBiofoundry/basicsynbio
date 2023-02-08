@@ -17,7 +17,7 @@ colorama==0.4.4
 commonmark==0.9.1
 coverage==5.3.1
 coveralls==3.1.0
-cryptography==3.3.2
+cryptography==39.0.1
 decorator==4.4.2
 defusedxml==0.6.0
 Deprecated==1.2.10
