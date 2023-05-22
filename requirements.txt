@@ -101,7 +101,7 @@ rdflib==5.0.0
 readme-renderer==28.0
 regex==2020.11.13
 reportlab==3.5.59
-requests==2.24.0
+requests==2.31.0
 requests-cache==0.5.2
 requests-toolbelt==0.9.1
 rfc3986==1.4.0
