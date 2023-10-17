@@ -131,7 +131,7 @@ typed-ast==1.4.1
 typing-extensions==3.7.4.3
 ujson==1.35
 untokenize==0.1.1
-urllib3==1.25.10
+urllib3==1.26.18
 watchdog==1.0.2
 wcwidth==0.2.5
 webencodings==0.5.1
