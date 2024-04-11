@@ -30,7 +30,7 @@ fett==0.3.2
 flametree==0.1.10
 fuzzywuzzy==0.18.0
 icebreaker==0.2.1
-idna==2.10
+idna==3.7
 imagesize==1.2.0
 iniconfig==1.0.1
 ipykernel==5.3.4
